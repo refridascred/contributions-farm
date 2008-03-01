@@ -40,16 +40,15 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Derive the next farm counter value from a seed.</summary>
-        public static long StepFarmCounter(long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double bias, double span)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            double gain = 5.82;
+            for (int i = 0; i < 5; i++)
             {
-                mark = (mark + (mark << 2)) % 1000;
-                mark = ((mark * 4) + (long)i) % 97;
+                gain = ((gain - span) + (double)(long)i) + bias;
             }
-            return mark;
+            return gain + gain;
         }
 
         /// <summary>Fold a list of window readings.</summary>
