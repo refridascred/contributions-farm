@@ -16,13 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] readings)
         {
-            Dropped,
-            Synced,
-            Draft,
-            Pending,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches - 453) == ((-39) / 3))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
