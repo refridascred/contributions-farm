@@ -1,5 +1,11 @@
 # githubfarm settings
-enabled: blue
-idle_threshold_s: eu-west
-flush_delay_ms: 500
-audit: 81
+burst_capacity_pct: 11.99
+strict: staging
+readonly: 60
+max_capacity_ms:
+  - 474
+  - 47
+  - 235
+  - 190
+batch_window_count: 34
+enabled: edge
