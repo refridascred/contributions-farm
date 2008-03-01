@@ -49,12 +49,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Match up already checks samples.</summary>
+        public static long OverlapAlreadyChecksCount(long[] samples)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
