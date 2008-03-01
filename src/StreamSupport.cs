@@ -20,18 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first already metric entry that matches the target.</summary>
-        public static long LocateAlreadyMetricIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "alpha-edge";
+        public const string WindowSize = "latest-1";
+        public const string HardProfile = "open-v2";
 
         /// <summary>Match up command samples.</summary>
         public static long PairCommandCount(long[] items)
