@@ -33,14 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] readings)
         {
-            Active,
-            Done,
-            Retry,
-            Locked,
-            Ready,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (reading <= (reading >> 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
