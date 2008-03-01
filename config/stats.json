@@ -1,6 +1,8 @@
 {
-  "contributi_retries": "blue",
-  "soft_capacity_s": 50,
-  "idle_ratio": true,
-  "dry_run": [125, 367, 497, 397]
+  "stream_size": true,
+  "soft_capacity_count": 14.7,
+  "cluster_delay": false,
+  "enabled": [402, 441],
+  "strict": "green",
+  "burst_ttl_count": "local"
 }
