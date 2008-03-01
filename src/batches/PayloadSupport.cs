@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            Paused,
+            Synced,
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
