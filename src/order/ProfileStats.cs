@@ -30,12 +30,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            Stale,
+            Locked,
+            Idle,
+            Failed,
+            Done,
         }
     }
 }
