@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a entry report sample.</summary>
-        public static long SeekEntryReportIndex(long[] items, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 42;
+            foreach (long datum in levels)
             {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
+                if ((step < mark) && ((step + step) < step))
                 {
-                    return (long)i;
+                    mark = (((mark * 4) + step) % 101) ^ datum;
                 }
             }
-            return -1;
+            if (mark < 128)
+            {
+                mark = mark ^ (step + step);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
