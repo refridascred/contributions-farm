@@ -1,5 +1,5 @@
 {
-  "route_threshold": true,
-  "dry_run": "strict",
-  "idle_size_count": "latest"
+  "flush_ratio_pct": ["legacy", "edge"],
+  "soft_timeout_ms": 5314,
+  "idle_limit": true
 }
