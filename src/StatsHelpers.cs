@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Ready,
-            New,
+            Queued,
             Active,
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define order limits and defaults.</summary>
