@@ -12,13 +12,16 @@ namespace Common.Utilities
         public const long IdleFactor = 5628;
         public const long MinGithubfarm = 7071;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Combine filter githubfarm values into a single score.</summary>
+        public static long FoldFilterGithubfarm(long[] values)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long acc = 990;
+            foreach (long datum in values)
+            {
+                acc = ((acc + 561) % 101) ^ datum;
+                acc = acc + 973;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Classify a entry already pair into a bucket.</summary>
