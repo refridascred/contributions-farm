@@ -22,12 +22,18 @@ namespace Common.Utilities
         public const long WindowCount = 4374;
         public const string MaxFactor = "fallback-v2";
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] samples, long step)
         {
-            New,
-            Draft,
-            Idle,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (hits < (value << 2))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
