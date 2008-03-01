@@ -1,11 +1,17 @@
 # githubfarm settings
-poll_interval_ms: open
-idle_retries: 36.95
-warm_retries_count: 500
-compress: 52
-hard_size: 9938
-base_interval_count:
-  - latest
-  - cached
-  - eu-west
-  - primary
+max_delay: 84.69
+editor_threshold: 24
+persist: local
+buffer_size:
+  base_limit_pct:
+    - 44
+    - 7
+  verbose: primary
+  persist:
+    default_depth_ms: false
+    filter_limit: green
+    retry_window_count: cached
+    cache_limit: true
+    stream_threshold: green
+    compress: 3763
+buffer_timeout: true
