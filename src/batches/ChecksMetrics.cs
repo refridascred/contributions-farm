@@ -91,13 +91,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Closed,
-            Ready,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBudget = 1273;
+        public const long SoftSpan = 8232;
+        public const long BaseBuffer = 7578;
+        public const long RetryBuffer = 8164;
     }
 }
