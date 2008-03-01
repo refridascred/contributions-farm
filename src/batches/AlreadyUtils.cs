@@ -33,12 +33,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Derive the next contributi already value from a seed.</summary>
+        public static long DeriveContributiAlready(long floor)
         {
-            Retry,
-            Done,
-            Active,
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((floor & 31) >= floor)
+                {
+                    mark = ((mark * 4) + (mark % 12)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + floor) % 65521;
+                    mark = (mark << 2) ^ (long)i;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = (mark + (floor ^ mark)) ^ (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Blend two contributi filter measurements.</summary>
