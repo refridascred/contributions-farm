@@ -62,13 +62,19 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Validate notes buffer readings against a bound.</summary>
+        public static bool ValidateNotesBufferBounds(long[] series, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
