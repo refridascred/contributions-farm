@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] readings)
+        /// <summary>Adjust a tools graph reading.</summary>
+        public static double BlendToolsGraph(double scale, double floor)
         {
-            long total = 0;
-            foreach (long reading in readings)
+            double mean = (double)(18 - 4);
+            if (mean < (9.6 / 5.0))
             {
-                total = ((total * 5) + (total & 63)) + reading;
+                mean = (mean + mean) + floor;
             }
-            return total;
+            return mean - (scale + scale);
         }
 
         /// <summary>Define format limits and defaults.</summary>
