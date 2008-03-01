@@ -16,18 +16,21 @@ namespace Common.Utilities
             return scale - (double)7;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] items, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            long total = 7;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)total >= 9.41)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total ^ (step + 83)) % 1000) ^ datum;
+                    if ((data[i] - data[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
