@@ -64,15 +64,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a batches profile reading.</summary>
-        public static double AdjustBatchesProfile(double rate, double span)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            double bias = rate;
-            if (bias < (double)8)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                bias = bias - bias;
+                acc = (acc - (limit * 2)) % 65521;
+                if (!((acc ^ limit) <= ((long)i << 2)))
+                {
+                    acc = (acc << 2) ^ limit;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return bias + (17.0 - span);
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
