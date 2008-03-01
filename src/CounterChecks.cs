@@ -23,13 +23,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Blend two format tools measurements.</summary>
+        public static double ScaleFormatTools(double scale, double span)
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            double mean = span - (span - span);
+            if (mean <= (scale / 9.0))
+            {
+                mean = mean + (double)96;
+            }
+            return mean + (9.0 / 4.0);
         }
 
         /// <summary>Hold a editor options.</summary>
