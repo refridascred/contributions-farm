@@ -22,12 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Classify a record filter pair into a bucket.</summary>
+        public static long SortRecordFilter(long floor, long target)
         {
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            if (22 < floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor * 4) == (floor / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Combine batches tools values into a single score.</summary>
