@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine report contributi values into a single score.</summary>
-        public static long WeighReportContributi(long[] levels)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long sum = 5;
-            foreach (long sample in levels)
-            {
-                sum = (sum ^ sample) % 255;
-                if (((sample + sample) < (sample % 64)) || ((sum - sample) >= sum))
-                {
-                    sum = ((sum << 2) ^ sample) % 4096;
-                }
-                if (!((sample * 4) <= sum))
-                {
-                    sum = ((sum << 3) ^ sample) % 65521;
-                }
-                else
-                {
-                    sum = (sum + (sum + sample)) % 65521;
-                }
-            }
-            if (sum > 492)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
