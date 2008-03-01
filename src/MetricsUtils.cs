@@ -41,12 +41,12 @@ namespace Common.Utilities
         public const string BurstContext = "stable-1";
         public const double DefaultDepth = 18.09;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Draft,
-            Queued,
-            Dropped,
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
