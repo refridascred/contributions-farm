@@ -1,9 +1,6 @@
-id,rank,owner
-1,latest,standard
-2,blue,998
-3,standard,590
-4,standard,open
-5,cached,legacy
-6,746,36
-7,1.52,754
-8,legacy,548
+id,owner,state,rank,active
+1,750,8.49,636,136
+2,839,602,693,729
+3,43.88,701,697,58
+4,45,eu-west,886,148
+5,366,220,698,open
