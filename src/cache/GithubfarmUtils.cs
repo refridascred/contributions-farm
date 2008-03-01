@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] readings, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (bound < (sample & 7))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Define session limits and defaults.</summary>
