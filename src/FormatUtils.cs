@@ -53,13 +53,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Done,
-            New,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinBudget = "staging-v2";
+        public const long CacheCount = 3646;
+        public const long WindowCount = 4620;
+        public const string StepGithubfarm = "staging";
+        public const long MinGithubfarm = 2261;
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
