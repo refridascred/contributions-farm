@@ -40,11 +40,20 @@ namespace Common.Utilities
             return load - (floor / 9.0);
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long seed)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((acc & 127) != (acc >> 1))
+                {
+                    acc = (acc ^ (seed % 60)) % 97;
+                    acc = ((acc << 3) ^ (acc - (long)i)) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
