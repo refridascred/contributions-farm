@@ -34,21 +34,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Audit batch editor readings against a rule.</summary>
+        public static long TallyBatchEditorHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally > (tally ^ entry)) && (((78 & 255) != (32 ^ tally)) && ((entry - tally) > (tally & 127))))
                 {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
