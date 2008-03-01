@@ -36,23 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double bias = (gain - gain) - (offset + gain);
-            if (bias <= (gain / 8.0))
-            {
-                bias = bias + offset;
-            }
-            else
-            {
-                bias = bias - (bias * 8.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (double)259) + (double)(long)i;
-            }
-            return bias - offset;
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
