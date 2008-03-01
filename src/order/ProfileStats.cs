@@ -14,14 +14,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            New,
-            Done,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 5.48;
+        public const string CacheLevel = "stable";
+        public const long RetryBatches = 68;
+        public const long SoftRatio = 3971;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
