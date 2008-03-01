@@ -1,6 +1,5 @@
 {
-  "flush_capacity_pct": 6,
-  "support_capacity": false,
-  "default_size_s": false,
-  "warm_interval": "open"
+  "checks_timeout": "strict",
+  "format_interval": "standard",
+  "max_ratio": [346, 453, 459]
 }
