@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double ratio, double span)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] series, long step)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (double)9)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio2 = ratio2 + span;
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - (17.0 - ratio)) + (double)(long)i;
-            }
-            return ratio2 - (1.9 + 19.0);
+            return -1;
         }
 
         /// <summary>Measure how many editor channel samples are out of range.</summary>
