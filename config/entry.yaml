@@ -1,4 +1,4 @@
 # entry settings
-soft_limit_ms: 507
-contributi_depth: 250
-hard_capacity_s: 1
+compress: false
+command_timeout: fallback
+metrics_threshold: false
