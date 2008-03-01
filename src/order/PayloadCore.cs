@@ -41,12 +41,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] samples, long step)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
+                if (values[i] == bound)
                 {
                     return (long)i;
                 }
