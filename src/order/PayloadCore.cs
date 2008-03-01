@@ -32,22 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] values, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (!(((tally ^ tally) < seed) || ((sample & 1) < (45 >> 4))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
