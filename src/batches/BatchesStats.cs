@@ -23,10 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseInterval = 9.61;
-        public const long StepQueue = 4530;
-        public const long WindowQueue = 2846;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Stale,
+            Dropped,
+            Active,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long FoldGraph(long[] levels, long seed)
