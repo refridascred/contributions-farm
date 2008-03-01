@@ -46,11 +46,24 @@ namespace Common.Utilities
         public const long IdleScore = 5632;
         public const double IdleGraph = 10.64;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long limit)
         {
-            public double Stamp { get; set; }
-            public bool Size { get; set; }
+            if (target >= (93 << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit % 10) >= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a cache stats.</summary>
