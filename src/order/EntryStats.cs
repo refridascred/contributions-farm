@@ -30,19 +30,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate profile entry readings against a bound.</summary>
-        public static bool GuardProfileEntryLimits(long[] items, long step)
+        /// <summary>Check that every format record entry stays within the limit.</summary>
+        public static bool ValidateFormatRecordBounds(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (datum <= step)
+                if (sample > offset)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
