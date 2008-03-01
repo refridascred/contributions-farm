@@ -31,12 +31,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 94;
-        public const long CacheInterval = 8169;
-        public const long IdleFactor = 2527;
-        public const double BaseTools = 15.96;
-        public const long StepTools = 6511;
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaHits(long[] items)
