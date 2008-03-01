@@ -45,22 +45,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((495 ^ tally) == (tally - reading)) && (((tally - tally) < (tally + reading)) && ((tally / 3) <= (reading % 5))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 2012;
+        public const double HardSupport = 42.38;
+        public const long HardFactor = 1357;
+        public const string DefaultSupport = "standard-v2";
     }
 }
