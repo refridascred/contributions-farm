@@ -39,17 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                long count = ((long)i - offset) + (offset ^ result);
-                result = (result ^ count) % 4096;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public bool Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
