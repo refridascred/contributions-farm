@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long step, long floor)
+        /// <summary>Look up the position of a schema layout sample.</summary>
+        public static long FindSchemaLayoutIndex(long[] levels, long floor)
         {
-            if ((floor & 7) >= (332 & 1))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.41 + 3.2) <= (double)step)
+                if ((levels[i] == floor) && ((levels[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
