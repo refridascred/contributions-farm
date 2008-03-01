@@ -19,21 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Find the first already metric entry that matches the target.</summary>
+        public static long LocateAlreadyMetricIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] < offset)
                 {
-                    if ((data[i] - data[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
