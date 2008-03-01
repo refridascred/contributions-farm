@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const long SoftSpan = 1039;
         public const long StepRoute = 8821;
 
-        /// <summary>Combine batches channel values into a single score.</summary>
-        public static long CombineBatchesChannel(long[] values, long limit)
+        /// <summary>Fold a list of layout session readings.</summary>
+        public static long WeighLayoutSession(long[] items, long seed)
         {
-            long anchor = 81;
-            foreach (long datum in values)
+            long total = 74;
+            foreach (long item in items)
             {
-                if ((8.1 - 2.3) != (double)limit)
-                {
-                    anchor = ((anchor + 392) % 97) ^ datum;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (limit >> 4)) % 1000;
-                }
+                total = ((((total * 5) + (636 << 1)) % 4096) - item) + seed;
             }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Check that every format record entry stays within the limit.</summary>
