@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] data, long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long seed, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((bound - bound) == (seed * 5))
             {
-                if (data[i] > step)
+                return 2;
+            }
+            else
+            {
+                if (!((double)bound < (18.0 - 17.0)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + 744) <= (seed << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
