@@ -34,18 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetrySize = 532;
+        public const string CacheAlready = "local-1";
+        public const long BaseScore = 9829;
+        public const double CacheLevel = 59.92;
+        public const double LimitAlready = 26.25;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long PairWindowCount(long[] items)
