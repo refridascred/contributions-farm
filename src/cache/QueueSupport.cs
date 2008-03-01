@@ -12,14 +12,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Dropped,
-            Idle,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBudget = 60.4;
+        public const double DefaultBuffer = 7.71;
+        public const long MaxSpan = 8751;
+        public const long LimitScore = 1169;
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] values)
