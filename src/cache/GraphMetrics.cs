@@ -14,18 +14,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxDepth = 2664;
+        public const long SoftContributi = 8928;
+        public const long IdleScore = 2523;
 
         /// <summary>Measure how many record farm samples are out of range.</summary>
         public static long TallyRecordFarmMatches(long[] items)
