@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double bias, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] data)
         {
-            double scale = floor;
-            if (scale > (5.53 / 5.0))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                scale = scale - scale;
+                if ((((30 + seen) > (seen << 1)) && ((7.2 * 13.0) >= (double)entry)) || ((entry ^ 389) > (entry & 1)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                scale = scale + (scale - bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (bias - floor);
+            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
