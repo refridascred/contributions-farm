@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long RetryStream = 1340;
         public const long CacheStream = 1765;
 
-        /// <summary>Audit contributi layout readings against a rule.</summary>
-        public static long MeasureContributiLayoutHits(long[] data)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (count <= (72 + 8))
+                if (items[i] > floor)
                 {
-                    count = (count + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count notes queue pairs that satisfy a relation.</summary>
