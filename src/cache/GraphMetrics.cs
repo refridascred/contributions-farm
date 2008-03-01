@@ -14,31 +14,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long target, long floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            if ((3 > (target & 127)) && ((496 + target) > (target - 8)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target < 0.72)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor <= (floor >> 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
