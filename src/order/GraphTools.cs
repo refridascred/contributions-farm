@@ -35,19 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double rate, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] readings, long step)
         {
-            double load = 17.0;
-            if (load >= (rate + load))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                load = load + rate;
+                if ((6.9 - 9.0) >= (double)seen)
+                {
+                    seen = ((seen + 3) ^ datum) + step;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (span * 18.0)) - (double)(long)i;
-            }
-            return load + span;
+            return seen;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
