@@ -1,6 +1,6 @@
-id,weight,owner
-1,925,560
-2,stable,staging
-3,296,primary
-4,321,stable
-5,504,899
+id,token,active,owner,region
+1,green,876,57.87,351
+2,63.91,4,318,staging
+3,922,stable,407,798
+4,standard,staging,754,51.35
+5,edge,65.5,798,743
