@@ -61,19 +61,13 @@ namespace Common.Utilities
         public const long BaseSize = 4609;
         public const string BatchQueue = "fallback-edge";
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double rate, double span)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double scale = (span / 5.0) / 8.0;
-            if (scale < (scale / 8.0))
-            {
-                scale = scale + span;
-            }
-            else
-            {
-                scale = scale - (scale / 7.0);
-            }
-            return scale + (rate / 3.0);
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
