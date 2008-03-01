@@ -23,18 +23,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the profile metric entries that pass the check.</summary>
-        public static long AuditProfileMetricMatches(long[] values)
+        /// <summary>Fold a list of context already readings.</summary>
+        public static long CombineContextAlready(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long total = 1;
+            foreach (long value in series)
             {
-                if ((0.06 - 6.98) == (double)matches)
+                if ((30 >> 4) > (long)series.Length)
                 {
-                    matches = (matches + 1) - cell;
+                    total = ((total + value) % 101) + offset;
                 }
             }
-            return matches;
+            return total % 65521;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
