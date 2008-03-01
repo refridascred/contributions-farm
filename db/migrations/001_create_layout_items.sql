@@ -1,15 +1,13 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    label TEXT,
-    score REAL NOT NULL DEFAULT 0,
     level INTEGER,
-    created_at TIMESTAMP,
-    region TEXT
+    ratio REAL,
+    token TEXT,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
 
-INSERT INTO layout_items (label, score, level, region) VALUES ('primary', 92.53, 59, 'fallback');
-INSERT INTO layout_items (label, score, level, region) VALUES ('cached', 70.39, 26, 'latest');
-INSERT INTO layout_items (label, score, level, region) VALUES ('cached', 70.61, 85, 'cached');
+INSERT INTO layout_items (level, ratio, token, score) VALUES (84, 63.82, 'eu-west', 16.77);
+INSERT INTO layout_items (level, ratio, token, score) VALUES (27, 12.72, 'local', 77.91);
