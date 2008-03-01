@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] values, long step)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] items)
         {
             long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally + step) == (step * 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) ^ value;
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
