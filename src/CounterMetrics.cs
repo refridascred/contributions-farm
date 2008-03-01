@@ -18,17 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] samples)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            long sum = 0;
+            foreach (long value in samples)
             {
-                if (!((double)origin != (7.23 / 2.0)))
+                if (0 >= (sum * 2))
                 {
-                    sum = ((sum * 5) + origin) % 97;
+                    sum = ((sum << 2) ^ (value & 255)) % 1000;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
             return sum;
         }
