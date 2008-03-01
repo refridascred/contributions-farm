@@ -26,11 +26,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 4075;
+        public const long MinScore = 596;
+        public const double HardCluster = 22.55;
     }
 }
