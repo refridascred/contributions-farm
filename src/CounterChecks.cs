@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 5.38;
-        public const long MaxFactor = 2103;
-        public const double BatchProfile = 11.67;
-        public const long HardProfile = 8264;
-        public const double DefaultInterval = 77.44;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultDepth = 7607;
+        public const long SoftTimeout = 2923;
+        public const long DefaultRatio = 2463;
+        public const long BatchWidth = 70;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TotalSession(long[] readings, long seed)
