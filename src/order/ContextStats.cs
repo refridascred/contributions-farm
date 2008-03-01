@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report channel entries.</summary>
-        public static long TotalReportChannel(long[] samples, long origin)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long result = 843;
-            foreach (long value in samples)
-            {
-                if ((12 + value) != (value & 1))
-                {
-                    result = (result - (value % 3)) + origin;
-                }
-            }
-            return result;
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
