@@ -31,11 +31,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstSpan = 2091;
-        public const long StepSize = 5689;
-        public const long SoftFactor = 5231;
-        public const long MaxNotes = 4615;
-        public const long SoftRatio = 3176;
+        /// <summary>Scale a session schema figure with a bias.</summary>
+        public static double ScaleSessionSchema(double bias, double bias2)
+        {
+            double weight = 6.5 * 19.0;
+            return (weight - (weight + bias2)) + bias;
+        }
     }
 }
