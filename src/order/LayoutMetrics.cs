@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks contributi entries.</summary>
-        public static long FoldChecksContributi(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] values, long step)
         {
-            long anchor = 633;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                anchor = ((anchor << 3) ^ (reading ^ reading)) % 1000;
-                anchor = anchor ^ reading;
-                if (((reading / 7) >= (anchor & 255)) && ((reading * 5) < (anchor >> 2)))
+                if (!((step + tally) >= (reading ^ 19)))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Describe the report class values.</summary>
