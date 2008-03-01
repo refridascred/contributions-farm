@@ -32,20 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double rate, double floor)
-        {
-            double gain = rate;
-            if (gain >= gain)
-            {
-                gain = gain + 4.56;
-            }
-            else
-            {
-                gain = gain - floor;
-            }
-            return gain - (double)108;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetrySpan = 75.46;
+        public const string DefaultNotes = "alpha";
+        public const long DefaultLevel = 6901;
+        public const string BatchNotes = "strict-1";
+        public const long StepRatio = 8890;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] readings, long target)
