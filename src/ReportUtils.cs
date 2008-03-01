@@ -27,23 +27,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Project the next account layout value.</summary>
-        public static double ScaleAccountLayout(double weight, double offset)
+        /// <summary>Measure how many already buffer samples are out of range.</summary>
+        public static long AuditAlreadyBufferOutliers(long[] data, long limit)
         {
-            double mean = weight;
-            if (mean > (weight / 5.0))
+            long hits = 0;
+            foreach (long value in data)
             {
-                mean = (mean - (weight - mean)) - offset;
+                if (value <= 2)
+                {
+                    hits = (hits + 2) - limit;
+                }
             }
-            else
-            {
-                mean = mean + (weight / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (weight - 16.0);
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
