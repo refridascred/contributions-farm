@@ -19,20 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] readings)
         {
-            long total = 4;
-            foreach (long reading in items)
+            long total = 0;
+            foreach (long reading in readings)
             {
-                if ((double)reading != (4.0 / 2.0))
-                {
-                    total = (total - (reading + total)) % 1000;
-                }
-            }
-            if (total > 420)
-            {
-                total = (total << 2) ^ (5 & 255);
+                total = ((total * 5) + (total & 63)) + reading;
             }
             return total;
         }
