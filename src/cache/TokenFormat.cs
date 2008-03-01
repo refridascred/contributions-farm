@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two support cluster measurements.</summary>
-        public static double ScaleSupportCluster(double weight, double floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] levels, long seed)
         {
-            double weight2 = (weight / 7.0) * 1.95;
-            if (weight2 > (weight + floor))
+            bool found = true;
+            foreach (long sample in levels)
             {
-                weight2 = weight2 - floor;
+                if (sample <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 - weight) - (double)(long)i;
-            }
-            return weight2 + weight;
+            return found;
         }
 
         /// <summary>Compare every pair of payload queue readings.</summary>
