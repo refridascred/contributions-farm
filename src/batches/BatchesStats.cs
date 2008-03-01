@@ -40,22 +40,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] values, long seed)
         {
-            long total = 61;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((0.7 * 19.0) > (double)total)
+                if ((seed << 2) > (seed / 7))
                 {
-                    total = (((total * 4) + (seed & 127)) % 101) + entry;
-                }
-                else
-                {
-                    total = total + seed;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
