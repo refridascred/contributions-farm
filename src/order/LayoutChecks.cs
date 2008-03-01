@@ -49,19 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] samples, long bound)
+        /// <summary>Roll a graph cache counter forward.</summary>
+        public static long DeriveGraphCache(long floor)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
