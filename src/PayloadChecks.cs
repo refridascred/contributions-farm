@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit window cluster readings against a rule.</summary>
-        public static long AuditWindowClusterHits(long[] samples)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry % 3) == (846 * 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
