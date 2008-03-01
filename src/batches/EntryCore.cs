@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next batch account value.</summary>
-        public static double AdjustBatchAccount(double scale, double span)
+        /// <summary>Grade a queue command value against two limits.</summary>
+        public static long ClassifyQueueCommand(long origin, long target)
         {
-            double rate = (double)(-8) * 8.1;
-            return ((rate + 8.0) + scale) + span;
+            long next = origin ^ target;
+            if (((double)target > (19.0 / 3.0)) && ((target + next) != (next ^ next)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((-176) < (next << 1)) && (target > (next / 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((37 - target) <= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((17.0 - 17.0) >= (double)next)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate record window readings against a bound.</summary>
