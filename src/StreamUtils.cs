@@ -20,12 +20,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] items)
         {
-            Stale,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches - matches) >= (121 + matches))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a already record.</summary>
