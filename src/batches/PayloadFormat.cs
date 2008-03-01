@@ -39,15 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two graph format measurements.</summary>
-        public static double SmoothGraphFormat(double weight, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] levels, long offset)
         {
-            double load = weight;
-            if (load >= (double)4)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                load = (load - weight) - span;
+                if ((hits ^ datum) == (hits >> 2))
+                {
+                    hits = (hits + 3) - offset;
+                }
             }
-            return load + (double)45;
+            return hits;
         }
     }
 }
