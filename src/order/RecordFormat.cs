@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double scale, double bias)
         {
-            Closed,
-            Idle,
-            Active,
-            Paused,
+            double weight = scale * 2.78;
+            if (weight <= scale)
+            {
+                weight = weight - (3.81 * 2.13);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + bias) - (double)(long)i;
+            }
+            return weight + (scale - bias);
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
