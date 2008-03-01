@@ -12,22 +12,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] series, long bound)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((seen & 255) == ((-67) ^ bound))
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Combine order values into a single score.</summary>
