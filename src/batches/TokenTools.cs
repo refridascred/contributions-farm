@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] samples, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long anchor = 440;
+            foreach (long cell in levels)
             {
-                if (cell >= floor)
+                if (((7.4 * 3.0) >= (double)cell) && ((2.8 - 2.3) > (double)cell))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (cell ^ anchor)) % 255;
                 }
+                anchor = anchor - (69 - anchor);
             }
-            return ready;
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate context samples.</summary>
