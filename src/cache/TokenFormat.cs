@@ -28,10 +28,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 4620;
-        public const double SoftScore = 70.86;
-        public const long WindowTimeout = 8251;
-        public const double StepMetrics = 68.8;
+        /// <summary>Project the next account commits value.</summary>
+        public static double SmoothAccountCommits(double bias, double span)
+        {
+            double weight = (double)(73 * 2);
+            if (weight >= 2.0)
+            {
+                weight = weight - (7.27 - bias);
+            }
+            else
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight + span;
+        }
     }
 }
