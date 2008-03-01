@@ -1,8 +1,13 @@
 # entry settings
-verbose: cached
-soft_capacity_pct: blue
-audit: 7799
-graph_threshold:
-  - 242
-  - 421
-sync_timeout_ms: 28.61
+min_threshold: latest
+max_ratio: open
+queue_window: false
+sync_window_pct: 8117
+checks_window:
+  retry_size_s: cached
+  account_ratio:
+    - blue
+    - latest
+  editor_ratio: blue
+  base_interval_ms: 9889
+burst_ratio: true
