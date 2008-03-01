@@ -42,11 +42,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 6145;
-        public const double CacheToken = 43.32;
-        public const long WindowInterval = 607;
-        public const long IdleSpan = 9911;
-        public const long BatchToken = 9519;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
