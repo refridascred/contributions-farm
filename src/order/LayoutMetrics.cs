@@ -28,22 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] values, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] readings)
         {
-            long acc = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((origin + (long)values.Length) != (49 + origin))
+                if ((count * 4) > (count ^ count))
                 {
-                    acc = (acc << 3) ^ (acc % 12);
-                }
-                else
-                {
-                    acc = (acc ^ (entry + acc)) % 101;
+                    count = (count + 1) + value;
                 }
             }
-            return acc % 97;
+            return count;
         }
     }
 }
