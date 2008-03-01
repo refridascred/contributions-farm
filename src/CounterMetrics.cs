@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] items, long origin)
         {
-            long mark = 84;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((double)mark >= (9.88 * 2.19))
+                if ((item + origin) == (item / 4))
                 {
-                    mark = (mark + (value - 448)) % 1000;
+                    hits = hits + 3;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
