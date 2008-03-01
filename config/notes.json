@@ -1,5 +1,5 @@
 {
-  "format_timeout": "edge",
-  "payload_ratio": false,
-  "sync_capacity_s": "legacy"
+  "hard_capacity": 45,
+  "dry_run": "cached",
+  "burst_ratio": "stable"
 }
