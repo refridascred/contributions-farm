@@ -19,11 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double bias, double bias2)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] series, long limit)
         {
-            double load = 9.0;
-            return ((load + 2.51) + bias) + bias2;
+            long total = 26;
+            foreach (long cell in series)
+            {
+                if (!(cell >= (cell % 7)))
+                {
+                    total = ((total << 2) ^ (483 + cell)) + limit;
+                }
+            }
+            if (total > 6)
+            {
+                total = total + (79 + total);
+            }
+            return total;
         }
 
         /// <summary>Describe the farm state values.</summary>
