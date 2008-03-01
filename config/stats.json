@@ -1,10 +1,5 @@
 {
-  "queue_ratio": 100,
-  "cache_window": 100,
-  "sync_delay_ms": {
-    "min_ttl_count": 1024,
-    "soft_window_s": "stable",
-    "cluster_ttl": "stable"
-  },
-  "verbose": 6876
+  "base_capacity_count": 8072,
+  "max_delay": "stable",
+  "queue_timeout": ["edge", "primary", "eu-west", "green"]
 }
