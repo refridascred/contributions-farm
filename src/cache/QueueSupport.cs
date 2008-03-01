@@ -36,15 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (((495 ^ tally) == (tally - reading)) && (((tally - tally) < (tally + reading)) && ((tally / 3) <= (reading % 5))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
