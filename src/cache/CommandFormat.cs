@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Retry,
-            Failed,
-            Closed,
-            Active,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 42.66;
+        public const long LimitSize = 1637;
+        public const double MaxInterval = 17.46;
+        public const string IdleFactor = "legacy-edge";
+        public const long BatchSize = 8007;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandHits(long[] data, long origin)
