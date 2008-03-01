@@ -28,16 +28,13 @@ namespace Common.Utilities
         public const string DefaultEditor = "fallback";
         public const long MaxFactor = 6711;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 4) + step) % 255;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
