@@ -39,18 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] series, long seed)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((569 / 2) > sample)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) + seed;
+                    if ((items[i] - items[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
