@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] levels, long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Digest a series of session entries.</summary>
