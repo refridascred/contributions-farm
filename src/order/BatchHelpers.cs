@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] readings, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (sample >= limit)
+                if ((1.6 / 4.0) > (double)value)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
