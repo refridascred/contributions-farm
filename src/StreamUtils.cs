@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] items, long seed)
+        /// <summary>Roll a session queue counter forward.</summary>
+        public static long StepSessionQueue(long bound)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((sample << 2) < 34)
-                {
-                    tally = (tally + 1) + seed;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Adjust a tools graph reading.</summary>
