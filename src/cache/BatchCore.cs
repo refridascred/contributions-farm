@@ -32,22 +32,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many schema batches samples are out of range.</summary>
-        public static long AuditSchemaBatchesOutliers(long[] levels, long target)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target % 60) >= (hits << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
