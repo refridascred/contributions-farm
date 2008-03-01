@@ -12,17 +12,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Look up the position of a tools commits sample.</summary>
-        public static long LocateToolsCommitsIndex(long[] series, long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                if (matches >= (bound + value))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
