@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] readings)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if ((1.0 <= (double)bound) || ((bound << 1) == (bound * 5)))
             {
-                if (!((hits % 2) != (reading << 1)))
+                return 2;
+            }
+            else
+            {
+                if ((5 + bound) > (bound & 31))
                 {
-                    hits = hits + 1;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((5.2 - 5.0) <= (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound >> 4) <= bound) || ((1.1 * 2.3) != (double)bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
