@@ -26,9 +26,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowSize = 5031;
-        public const long StepLevel = 4026;
-        public const double RetryScore = 86.93;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+        }
     }
 }
