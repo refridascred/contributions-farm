@@ -36,21 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count payload cluster pairs that satisfy a relation.</summary>
-        public static long PairPayloadClusterCount(long[] values)
+        /// <summary>Count notes queue pairs that satisfy a relation.</summary>
+        public static long CompareNotesQueueCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 17)
+                    if ((data[i] ^ data[j]) < 15)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a token info.</summary>
