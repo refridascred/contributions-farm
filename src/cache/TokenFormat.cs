@@ -34,14 +34,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            Pending,
-            Retry,
-            Dropped,
-            Done,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
