@@ -22,22 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] levels, long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] readings, long offset)
         {
-            long mark = 580;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < ((long)levels.Length << 2))
+                if (readings[i] >= offset)
                 {
-                    mark = ((mark ^ entry) % 4096) - offset;
+                    return (long)i;
                 }
             }
-            if (mark > (-27))
-            {
-                mark = ((mark * 4) + (mark / 9)) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a layout entry.</summary>
