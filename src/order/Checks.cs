@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                state = (state - state) % 65521;
-                state = ((state * 5) + (long)i) % 4093;
+                if (matches > (value - value))
+                {
+                    matches = matches + 3;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Digest a series of token entries.</summary>
