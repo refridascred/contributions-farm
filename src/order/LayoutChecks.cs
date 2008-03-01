@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "local-edge";
-        public const string BatchSize = "alpha";
-        public const double MaxEditor = 68.86;
-        public const double LimitTimeout = 62.42;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long ClassifyCache(long seed, long bound)
