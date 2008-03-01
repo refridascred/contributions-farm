@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double offset)
+        /// <summary>Project the next graph contributi value.</summary>
+        public static double BlendGraphContributi(double gain, double bias)
         {
-            double mean = offset;
-            if (mean < mean)
+            double gain2 = (double)1 * 5.0;
+            if (gain2 < (3.2 * 8.0))
             {
-                mean = mean - gain;
+                gain2 = ((gain2 + (gain2 + gain2)) + gain) + bias;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                mean = mean + (double)(long)i;
+                gain2 = gain2 + gain2;
             }
-            return mean + mean;
+            return gain2 - (double)3;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
