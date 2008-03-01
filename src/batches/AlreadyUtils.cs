@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] values, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long carry = 978;
+            foreach (long value in series)
             {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry + (carry % 16)) % 1000) + value;
             }
-            return ok;
+            if (carry < 36)
+            {
+                carry = (carry * 3) + (1 % 60);
+            }
+            return carry;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
