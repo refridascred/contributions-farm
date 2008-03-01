@@ -20,14 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Active,
-            Failed,
-            Synced,
-            Done,
-            New,
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
+            public double Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
