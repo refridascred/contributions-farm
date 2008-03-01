@@ -43,10 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 859;
-        public const long WindowTimeout = 9183;
-        public const long DefaultChannel = 7011;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool ValidateTokenBounds(long[] samples, long target)
