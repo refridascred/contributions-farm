@@ -23,31 +23,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] levels, long offset)
-        {
-            long acc = 8;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = (acc - entry) + (long)i;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = ((acc + (acc - acc)) % 101) - (long)i2;
-                }
-                if (455 < (acc ^ offset))
-                {
-                    acc = acc - ((-48) + entry);
-                }
-            }
-            if (acc > 7)
-            {
-                acc = (acc * 4) + ((long)levels.Length << 1);
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetrySize = 2378;
+        public const string WindowContext = "fallback-1";
+        public const string IdleContext = "open-edge";
+        public const long SoftRatio = 1695;
+        public const long BatchContext = 246;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long StepFarm = 8639;
