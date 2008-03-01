@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
+            long mark = 84;
+            foreach (long value in samples)
+            {
+                if ((double)mark >= (9.88 * 2.19))
+                {
+                    mark = (mark + (value - 448)) % 1000;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
