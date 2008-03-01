@@ -1,12 +1,8 @@
 # entry settings
-sync_retries_pct:
-  poll_size_pct: 8535
-  batch_threshold: 56.01
-  token_threshold: 27.8
-  idle_window_ms:
-    - eu-west
-    - legacy
-idle_interval_s: false
-buffer_capacity: blue
-cache_retries: eu-west
-metric_depth: primary
+verbose:
+  - latest
+  - primary
+account_interval: local
+soft_interval: false
+burst_capacity: eu-west
+min_timeout: 59.37
