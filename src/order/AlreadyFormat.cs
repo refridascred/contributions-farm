@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor channel samples are out of range.</summary>
-        public static long MeasureEditorChannelMatches(long[] data, long limit)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (((173 < value) || ((value << 2) > seen)) || ((limit ^ limit) != ((-56) & 31)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a commits summary.</summary>
