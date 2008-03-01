@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Look up the position of a command schema sample.</summary>
-        public static long LocateCommandSchemaIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 67.22;
+        public const long BatchProfile = 2089;
+        public const long RetryProfile = 9048;
+        public const double LimitProfile = 39.27;
+        public const double WindowProfile = 67.28;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TotalLayout(long[] data, long seed)
