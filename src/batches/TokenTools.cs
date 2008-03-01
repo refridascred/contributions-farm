@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long MinMetrics = 6771;
         public const long HardMetrics = 5126;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            New,
-            Idle,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 55;
+        public const string MaxChecks = "local-v2";
+        public const double BaseChecks = 29.9;
+        public const long BaseScore = 721;
 
         /// <summary>Fold a list of schema stream readings.</summary>
         public static long CombineSchemaStream(long[] data)
