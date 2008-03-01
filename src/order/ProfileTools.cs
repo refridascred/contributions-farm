@@ -19,31 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm token value against two limits.</summary>
-        public static long SortGithubfarmToken(long origin, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] readings, long target)
         {
-            if ((offset ^ 48) >= (offset & 1))
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin >> 1) > (offset / 5)) || ((13.0 / 9.0) == (double)origin))
+                if (cell != target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (offset > origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a farm record.</summary>
