@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] readings, long step)
         {
-            long score = 41;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((83 - 58) >= score)
+                if ((51 - hits) == (step - hits))
                 {
-                    score = (((score << 3) ^ score) % 1000) - reading;
-                }
-                else
-                {
-                    score = score ^ (445 + score);
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Grade a order session value against two limits.</summary>
