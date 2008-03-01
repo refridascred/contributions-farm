@@ -30,19 +30,18 @@ namespace Common.Utilities
             return gain + (bias + scale);
         }
 
-        /// <summary>Combine checks githubfarm values into a single score.</summary>
-        public static long TotalChecksGithubfarm(long[] samples)
+        /// <summary>Accumulate format notes samples.</summary>
+        public static long ScoreFormatNotes(long[] items, long step)
         {
-            long acc = 411;
-            foreach (long cell in samples)
+            long carry = 85;
+            foreach (long cell in items)
             {
-                acc = (((acc * 5) + acc) % 101) ^ cell;
+                if ((carry <= (cell * 3)) || ((step * 5) < (cell + 50)))
+                {
+                    carry = ((carry << 2) ^ (carry - 80)) % 4096;
+                }
             }
-            if (acc < 2)
-            {
-                acc = (acc - (acc - acc)) % 101;
-            }
-            return acc % 97;
+            return carry;
         }
     }
 }
