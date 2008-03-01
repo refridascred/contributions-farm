@@ -33,24 +33,13 @@ namespace Common.Utilities
         public const long LimitBudget = 781;
         public const long HardRatio = 6570;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long bound, long target)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            if ((target + target) > (bound + 640))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((179 * 3) >= (target % 64))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Retry,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
