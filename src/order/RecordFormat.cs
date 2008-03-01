@@ -41,19 +41,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double weight, double bias)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            double mean = (double)(75 + 11);
-            if (mean > (double)(-488))
-            {
-                mean = mean - weight;
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean + bias;
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
