@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long BaseSession = 9651;
         public const string SoftFactor = "legacy-1";
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long seed)
         {
-            public bool Region { get; set; }
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((double)seed != (5.5 - 1.54)))
+                {
+                    carry = (carry << 3) ^ (1 & 1);
+                }
+                if (!((carry + seed) <= (seed ^ seed)))
+                {
+                    carry = (carry - (seed - (long)i)) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metric header.</summary>
