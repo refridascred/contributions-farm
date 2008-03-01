@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two channel route measurements.</summary>
-        public static double ProjectChannelRoute(double bias, double floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double rate = floor - floor;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = ((rate + floor) - (double)(long)i) - bias;
-            }
-            return rate - 1.0;
+            Active,
+            Stale,
+            Queued,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
