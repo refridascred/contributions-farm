@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] data, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] samples, long floor)
         {
-            long sum = 9;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (((4.9 / 3.0) >= (double)cell) || ((33 + cell) > sum))
+                if (((long)samples.Length % 2) > (-7))
                 {
-                    sum = ((sum ^ (sum - 137)) % 101) - bound;
-                }
-                else
-                {
-                    sum = sum ^ (cell >> 5);
+                    count = ((count + 1) + reading) + floor;
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
