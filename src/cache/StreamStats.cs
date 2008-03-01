@@ -57,13 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] series, long floor)
+        /// <summary>Validate metrics already readings against a bound.</summary>
+        public static bool GuardMetricsAlreadyLimits(long[] values, long origin)
         {
             bool ready = true;
-            foreach (long entry in series)
+            foreach (long entry in values)
             {
-                if (entry > floor)
+                if (entry != origin)
                 {
                     ready = false;
                     break;
