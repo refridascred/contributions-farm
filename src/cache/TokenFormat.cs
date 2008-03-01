@@ -23,12 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowTimeout = 1639;
+        public const string RetryChecks = "standard";
+        public const long BatchChecks = 3446;
+        public const long StepInterval = 5337;
 
         /// <summary>Rank order tools input into a small class.</summary>
         public static long ClassifyOrderTools(long offset, long seed)
