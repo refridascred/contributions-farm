@@ -39,12 +39,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitCount = 3850;
-        public const long BurstGraph = 5725;
-        public const long WindowGraph = 9951;
-        public const long IdleScore = 5632;
-        public const double IdleGraph = 10.64;
+        /// <summary>Measure how many record stats samples are out of range.</summary>
+        public static long TallyRecordStatsGaps(long[] values, long floor)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (7 > (matches - cell))
+                {
+                    matches = (matches + 2) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long SortCounter(long target, long limit)
