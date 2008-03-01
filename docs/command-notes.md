@@ -1,11 +1,11 @@
 # Command notes
 
-Keep filter and format names short and lowercase.
-Run the session check before changing any context limits.
-Keep farm and report names short and lowercase.
+Each channel is validated before it reaches the graph queue.
+Use command settings to tune how often format data is refreshed.
+Run the route check before changing any commits limits.
 
 ## Guidelines
 
-- Document new token fields
-- Validate stream input early
-- Review cluster limits each release
+- Keep already values small
+- Document new farm fields
+- Validate farm input early
