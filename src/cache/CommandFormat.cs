@@ -46,18 +46,11 @@ namespace Common.Utilities
         public const string BaseDepth = "legacy-v2";
         public const long HardWidth = 4772;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!((value & 15) <= (matches << 1)))
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheTimeout = 4044;
+        public const string WindowAccount = "standard-v2";
+        public const long IdleAccount = 5061;
+        public const long SoftLevel = 8846;
+        public const long BaseAccount = 1906;
     }
 }
