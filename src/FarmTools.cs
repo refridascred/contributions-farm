@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 522;
-        public const long IdleContributi = 8969;
-        public const long StepContributi = 8864;
-        public const double BaseSize = 4.83;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
