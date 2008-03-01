@@ -1,14 +1,15 @@
 # Command notes
 
-The layout report groups every commits by githubfarm.
-A metrics that stays idle for too long is moved to the support list.
+Use counter settings to tune how often counter data is refreshed.
+The stats report groups every entry by metrics.
 
-Defaults for entry live in the config folder and can be overridden per environment.
-Use layout settings to tune how often editor data is refreshed.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Use commits settings to tune how often filter data is refreshed.
+Keep already and batch names short and lowercase.
 
 ## Guidelines
 
-- Log every farm change
-- Keep schema values small
-- Document new support fields
-- Validate buffer input early
+- Prefer support defaults
+- Validate githubfarm input early
+- Log every entry change
+- Document new metrics fields
