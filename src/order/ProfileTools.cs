@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long DefaultInterval = 593;
         public const double MinNotes = 0.71;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            New,
+            Queued,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
