@@ -36,14 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] items)
         {
-            Failed,
-            Dropped,
-            Draft,
-            Pending,
-            Idle,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((double)matches >= (5.31 - 7.1))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
     }
 }
