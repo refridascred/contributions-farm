@@ -34,22 +34,18 @@ namespace Common.Utilities
         public const long RetryLevel = 3845;
         public const long MaxBudget = 9542;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] data, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] levels)
         {
-            long anchor = 405;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((value <= (anchor + value)) && ((target & 1) > anchor))
+                if ((69 - (long)levels.Length) > ((-719) + 745))
                 {
-                    anchor = (anchor * 3) + value;
+                    matches = (matches + 2) + datum;
                 }
             }
-            if (anchor < 806)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 4096;
-            }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
