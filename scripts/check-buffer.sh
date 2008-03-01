@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=454
-log "limit is ${BUFFER_LIMIT}"
-
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in edge local open primary; do
+for item in fallback strict open; do
     log "checking ${item}"
 done
