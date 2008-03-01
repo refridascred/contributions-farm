@@ -77,22 +77,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mix = 46;
+            foreach (long value in series)
             {
-                if ((double)matches >= (5.72 / 7.0))
+                if (mix <= (value << 1))
                 {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = ((mix << 2) ^ (mix + value)) % 4096;
                 }
             }
-            return matches;
+            if (mix < 6)
+            {
+                mix = (mix << 2) ^ (mix ^ mix);
+            }
+            return mix;
         }
     }
 }
