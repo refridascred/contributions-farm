@@ -61,11 +61,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] series, long limit)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
