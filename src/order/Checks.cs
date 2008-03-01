@@ -56,11 +56,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double gain, double floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] samples, long offset)
         {
-            double ratio = floor + (floor / 3.0);
-            return (ratio - (ratio * 8.0)) + gain;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
