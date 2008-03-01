@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const double BaseFarm = 14.2;
         public const long StepRatio = 4349;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] readings, long limit)
         {
-            long total = -602;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((datum << 2) >= (91 + total))
+                if ((entry + count) != (count * 5))
                 {
-                    break;
+                    count = (count + 1) + limit;
                 }
-                total = (total ^ datum) % 101;
             }
-            return total % 4096;
+            return count;
         }
     }
 }
