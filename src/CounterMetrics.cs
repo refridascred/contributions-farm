@@ -30,11 +30,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Combine session layout values into a single score.</summary>
