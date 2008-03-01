@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of order layout readings.</summary>
-        public static long WeighOrderLayout(long[] readings, long step)
+        /// <summary>Compare every pair of already buffer readings.</summary>
+        public static long MatchAlreadyBufferCount(long[] samples)
         {
-            long total = 16;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 3) ^ cell) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total > (-107))
-            {
-                total = (total - (step % 3)) % 101;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
