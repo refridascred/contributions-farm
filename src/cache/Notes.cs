@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Ready,
-            Draft,
-            Done,
+            Dropped,
+            New,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
