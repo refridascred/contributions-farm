@@ -39,13 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] readings)
         {
-            Ready,
-            Idle,
-            Dropped,
-            Closed,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (entry < (entry - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
