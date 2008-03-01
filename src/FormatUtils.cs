@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long origin)
+        /// <summary>Measure how many metric report samples are out of range.</summary>
+        public static long AuditMetricReportGaps(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((origin + origin) == (state >> 5))
+                if ((((sample + sample) != (matches * 2)) && ((matches * 4) > sample)) && ((sample * 5) > sample))
                 {
-                    state = state ^ 19;
-                    state = (state + (long)i) % 101;
-                    continue;
+                    matches = matches + 3;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the notes mode values.</summary>
