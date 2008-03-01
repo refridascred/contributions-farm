@@ -81,11 +81,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardBudget = 68.47;
-        public const double BurstToken = 30.97;
-        public const long DefaultToken = 2848;
-        public const long BurstDepth = 112;
-        public const long StepToken = 224;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] readings, long limit)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
