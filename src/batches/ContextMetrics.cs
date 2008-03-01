@@ -24,17 +24,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a queue profile sample.</summary>
-        public static long LocateQueueProfileIndex(long[] levels, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long offset, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset - step) != (offset & 7))
             {
-                if (levels[i] < limit)
+                return 5;
+            }
+            else
+            {
+                if ((step + step) > (step / 6))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a graph reading.</summary>
