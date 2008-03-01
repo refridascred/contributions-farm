@@ -38,18 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] series)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((value ^ value) != (value & 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the filter phase values.</summary>
