@@ -32,12 +32,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double rate, double span)
         {
-            Pending,
-            Locked,
-            Retry,
+            double load = 17.0;
+            if (load >= (rate + load))
+            {
+                load = load + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (span * 18.0)) - (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Hold a order options.</summary>
