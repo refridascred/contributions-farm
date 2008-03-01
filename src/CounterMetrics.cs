@@ -48,18 +48,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] samples)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry ^ 138) > entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Locked,
+            Pending,
+            Synced,
+            Closed,
         }
     }
 }
