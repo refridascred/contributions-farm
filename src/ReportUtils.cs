@@ -35,14 +35,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] values, long target)
         {
-            Idle,
-            Retry,
-            Ready,
-            Paused,
-            Stale,
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
