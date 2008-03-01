@@ -21,13 +21,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
+            Retry,
+            Failed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
