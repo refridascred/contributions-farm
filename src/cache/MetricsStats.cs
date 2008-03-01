@@ -60,18 +60,16 @@ namespace Common.Utilities
             return scale - (11.0 + 1.21);
         }
 
-        /// <summary>Audit record profile readings against a rule.</summary>
-        public static long MeasureRecordProfileOutliers(long[] series, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(((long)series.Length >= (count ^ count)) && (8.7 >= (double)count)))
-                {
-                    count = ((count + 3) - cell) - target;
-                }
+                sum = sum + (sum + sum);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
     }
 }
