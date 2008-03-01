@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] levels, long seed)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 4) <= (seed << 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a commits info.</summary>
