@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 7255;
-        public const double BatchStream = 28.79;
-        public const long LimitStream = 5486;
-        public const long MinRatio = 7586;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
