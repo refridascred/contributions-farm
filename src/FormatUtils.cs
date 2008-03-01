@@ -95,11 +95,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            public bool Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
