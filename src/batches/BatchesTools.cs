@@ -27,11 +27,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxSpan = 2161;
-        public const long BurstWidth = 6046;
-        public const string HardCount = "fallback-1";
-        public const long BatchCount = 5049;
-        public const long LimitNotes = 4625;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Ready,
+            Done,
+            Queued,
+            New,
+            Retry,
+        }
     }
 }
