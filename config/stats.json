@@ -1,13 +1,10 @@
 {
-  "payload_window": [395, 142, 160],
-  "session_depth": "cached",
-  "default_capacity_ms": {
-    "default_threshold": 2373,
-    "idle_size": false,
-    "soft_window_s": "latest",
-    "batches_interval": 51.17,
-    "compress": 72.58
-  },
-  "base_size_s": "blue",
-  "readonly": 78.05
+  "sync_depth_count": "staging",
+  "min_window_pct": 60,
+  "hard_window": 100,
+  "tools_delay": {
+    "support_capacity": 78.32,
+    "warm_window_ms": "blue",
+    "tools_capacity": "standard"
+  }
 }
