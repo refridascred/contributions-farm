@@ -14,11 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseCount = 57.02;
-        public const double MaxSize = 43.07;
-        public const long HardFactor = 176;
-        public const long MinBuffer = 8173;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!((seen - datum) <= (9 * 4)))
+                {
+                    seen = (seen + 3) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
