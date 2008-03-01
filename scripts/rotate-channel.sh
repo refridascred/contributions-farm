@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue legacy; do
-    log "checking ${item}"
-done
+mode="${1:-edge}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=154
+CHANNEL_LIMIT=164
 log "limit is ${CHANNEL_LIMIT}"
