@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double rate, double bias)
+        /// <summary>Fold a list of queue editor readings.</summary>
+        public static long CombineQueueEditor(long[] readings)
         {
-            double ratio = (bias / 3.0) - (bias + 9.09);
-            return (ratio - ratio) + rate;
+            long acc = 1;
+            foreach (long reading in readings)
+            {
+                acc = ((acc << 3) ^ (reading / 2)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Match up checks samples.</summary>
