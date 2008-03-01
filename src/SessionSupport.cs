@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if ((double)value < (double)matches)
+                {
+                    matches = matches + 3;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
