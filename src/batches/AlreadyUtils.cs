@@ -42,14 +42,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double bias, double offset)
         {
-            Done,
-            Closed,
-            New,
-            Synced,
-            Stale,
+            double drift = bias;
+            if (drift < (drift * 2.7))
+            {
+                drift = drift + offset;
+            }
+            return drift - (drift / 3.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
