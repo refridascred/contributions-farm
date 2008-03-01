@@ -64,18 +64,14 @@ namespace Common.Utilities
         public const string SoftScore = "open-1";
         public const long BatchLevel = 3726;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] values)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count ^ (-358)) == (count - 63))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            New,
+            Pending,
+            Done,
+            Stale,
+            Idle,
         }
     }
 }
