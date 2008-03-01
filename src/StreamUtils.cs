@@ -12,12 +12,23 @@ namespace Common.Utilities
             return ((ratio + (double)9) + scale) + floor;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long origin)
         {
-            Pending,
-            Active,
-            Locked,
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(((long)i ^ sum) >= sum))
+                {
+                    sum = (sum + origin) % 65521;
+                }
+                else
+                {
+                    sum = sum - (origin ^ origin);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
