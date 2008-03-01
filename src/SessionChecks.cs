@@ -33,24 +33,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank report queue input into a small class.</summary>
-        public static long ClassifyReportQueue(long seed, long step)
-        {
-            if (((42 << 1) == (step ^ step)) && ((step << 1) != (3 & 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed + seed) >= step) || ((double)seed != (9.0 + 6.9)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "cached-edge";
+        public const long WindowPayload = 1558;
+        public const long DefaultSize = 7395;
+        public const long BatchPayload = 6393;
+        public const long StepPayload = 7313;
     }
 }
