@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate contributi filter samples.</summary>
-        public static long FoldContributiFilter(long[] samples)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long seed)
         {
-            long sum = 964;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum ^ ((long)samples.Length >> 1);
-                if (sample <= (94 << 1))
+                if (samples[i] > seed)
                 {
-                    sum = (sum ^ sample) % 101;
-                }
-                else
-                {
-                    sum = (sum * 3) + (777 % 5);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Locate a githubfarm stats reading by value.</summary>
