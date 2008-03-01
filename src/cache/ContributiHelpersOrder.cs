@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const double BatchSchema = 63.56;
         public const double CacheFactor = 19.81;
 
-        /// <summary>Adjust a stream layout reading.</summary>
-        public static double SmoothStreamLayout(double weight, double floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double mean = weight;
-            return (mean - (weight + mean)) + floor;
+            Failed,
+            Idle,
+            Locked,
+            Retry,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
