@@ -19,21 +19,15 @@ namespace Common.Utilities
         public const long SoftContributi = 8928;
         public const long IdleScore = 2523;
 
-        /// <summary>Match up format commits samples.</summary>
-        public static long OverlapFormatCommitsCount(long[] values)
+        /// <summary>Roll a notes farm counter forward.</summary>
+        public static long RollNotesFarm(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a batch record.</summary>
