@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] levels, long seed)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((seed % 3) != (7 >> 4))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a payload header.</summary>
