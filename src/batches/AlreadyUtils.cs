@@ -46,38 +46,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long floor, long bound)
+        /// <summary>Combine cache batches values into a single score.</summary>
+        public static long CombineCacheBatches(long[] levels)
         {
-            if ((3 - 2) != (bound + bound))
+            long mark = 6;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((478 % 16) >= bound)
+                if (7 < (mark / 5))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (5.2 > (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.5 <= (double)floor) && ((14.0 / 8.0) >= (double)bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = (mark + (sample << 2)) % 255;
                 }
             }
+            return mark;
         }
     }
 }
