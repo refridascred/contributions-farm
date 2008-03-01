@@ -50,21 +50,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Grade a stream checks value against two limits.</summary>
+        public static long ClassifyStreamChecks(long limit, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = limit ^ origin;
+            if (origin >= lane)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((origin + origin) < (39 + limit)) || ((origin + limit) < origin))
                 {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
