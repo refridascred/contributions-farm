@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate commits report readings against a bound.</summary>
-        public static bool GuardCommitsReportRange(long[] readings, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark << 3) ^ (limit << 3);
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
