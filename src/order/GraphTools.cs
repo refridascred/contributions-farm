@@ -15,19 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] items, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (entry <= step)
+                if (datum <= seed)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Adjust a profile reading.</summary>
