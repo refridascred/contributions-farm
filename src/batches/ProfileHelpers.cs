@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] levels, long offset)
         {
-            if ((1.0 <= (double)bound) || ((bound << 1) == (bound * 5)))
+            bool stale = true;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5 + bound) > (bound & 31))
+                if (value > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.2 - 5.0) <= (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound >> 4) <= bound) || ((1.1 * 2.3) != (double)bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
