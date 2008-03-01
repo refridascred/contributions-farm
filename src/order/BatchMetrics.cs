@@ -36,15 +36,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Done,
-            Draft,
-            New,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 7543;
+        public const long RetryBudget = 2587;
+        public const string WindowScore = "open-v2";
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
