@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the notes buffer series from a seed.</summary>
-        public static long SeriesNotesBuffer(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitLevel = 7310;
+        public const double BatchFactor = 77.51;
+        public const long SoftBatch = 3301;
+        public const long BurstBatch = 5232;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long floor, long offset)
