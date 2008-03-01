@@ -82,13 +82,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Pending,
-            Dropped,
-            Stale,
-            Paused,
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
