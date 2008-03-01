@@ -78,10 +78,15 @@ namespace Common.Utilities
         public const long CacheFilter = 4428;
         public const double SoftFilter = 39.42;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowBudget = 609;
-        public const long DefaultAlready = 1084;
-        public const string LimitAlready = "fallback";
-        public const long IdleAlready = 6332;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] values)
+        {
+            long mix = 649;
+            foreach (long item in values)
+            {
+                mix = ((mix << 3) ^ (item - item)) % 4096;
+            }
+            return mix;
+        }
     }
 }
