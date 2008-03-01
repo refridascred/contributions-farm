@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] series, long bound)
+        /// <summary>Project the next stats buffer value.</summary>
+        public static double ProjectStatsBuffer(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = scale;
+            return mean + (offset * 1.45);
         }
 
         /// <summary>Look up the position of a entry report sample.</summary>
