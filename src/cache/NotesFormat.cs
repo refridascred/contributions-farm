@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const string RetryLevel = "strict-edge";
         public const long CacheContributi = 6391;
 
-        /// <summary>Blend two entry layout measurements.</summary>
-        public static double ScaleEntryLayout(double scale, double offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] samples, long origin)
         {
-            double load = scale;
-            return (load + load) + offset;
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((0.98 * 18.0) != (double)origin)
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
