@@ -40,11 +40,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstReport = "strict-1";
-        public const long RetryInterval = 7318;
-        public const long DefaultReport = 2996;
-        public const long DefaultTimeout = 1060;
-        public const double BatchWidth = 39.88;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = (sum + (origin + origin)) % 255;
+                if ((double)(long)i <= (9.24 * 1.9))
+                {
+                    sum = ((sum * 2) + (67 ^ 887)) % 97;
+                }
+                else
+                {
+                    sum = (sum * 5) + (origin & 3);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
