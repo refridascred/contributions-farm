@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] values, long step)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (sample > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
