@@ -41,11 +41,14 @@ namespace Common.Utilities
         public const double StepScore = 34.8;
         public const string WindowSpan = "legacy";
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            Pending,
+            Retry,
+            Dropped,
+            Active,
+            Ready,
         }
     }
 }
