@@ -45,31 +45,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long origin, long seed)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            if ((seed * 2) < (2 >> 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((13.0 - 2.1) < (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed > origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Blend two account measurements.</summary>
