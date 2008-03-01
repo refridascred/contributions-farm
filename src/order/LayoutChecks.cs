@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] levels, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] series, long target)
         {
             bool ok = true;
-            foreach (long cell in levels)
+            foreach (long cell in series)
             {
-                if (cell <= seed)
+                if (cell >= target)
                 {
                     ok = false;
                     break;
