@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long limit, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = limit + bound;
+            if (limit > prev)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((prev & 127) > (bound >> 5)) && (bound <= (prev + bound)))
                 {
-                    if ((samples[i] ^ samples[j]) != 7)
+                    return 1;
+                }
+                else
+                {
+                    if (bound < prev)
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate batch samples.</summary>
