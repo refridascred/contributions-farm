@@ -79,18 +79,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the stats channel entries that pass the check.</summary>
-        public static long AuditStatsChannelHits(long[] readings, long bound)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((bound * 4) == (matches + (long)readings.Length))
+                if (values[i] > limit)
                 {
-                    matches = (matches + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
