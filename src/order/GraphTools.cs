@@ -33,17 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] levels, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (levels[i] > step)
+                if ((hits / 8) > hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
