@@ -19,11 +19,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two window report measurements.</summary>
-        public static double AdjustWindowReport(double scale, double span)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            double bias = (scale * 1.75) + span;
-            return bias + (bias / 9.0);
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
