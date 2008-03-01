@@ -34,12 +34,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] samples, long bound)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
