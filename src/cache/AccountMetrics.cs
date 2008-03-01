@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string CacheSize = "cached-1";
         public const double BurstLevel = 30.89;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            long carry = 845;
-            foreach (long entry in data)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                carry = ((carry << 3) ^ (983 & 7)) - entry;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (carry > (-5))
-            {
-                carry = (carry + carry) % 101;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a graph summary.</summary>
