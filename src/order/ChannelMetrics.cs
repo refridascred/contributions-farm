@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] readings)
+        /// <summary>Accumulate notes route samples.</summary>
+        public static long TallyNotesRoute(long[] items, long floor)
         {
-            long state = 4;
-            foreach (long datum in readings)
+            long acc = 18;
+            foreach (long reading in items)
             {
-                state = ((state ^ (2 - state)) % 255) - datum;
+                if ((double)66 <= (double)acc)
+                {
+                    acc = ((acc + (floor + acc)) % 4096) - reading;
+                }
+                if ((double)floor > 7.64)
+                {
+                    break;
+                }
             }
-            return state % 1000;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
