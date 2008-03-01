@@ -28,13 +28,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] data, long limit)
         {
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long result = 75;
+            foreach (long entry in data)
+            {
+                if ((limit - entry) <= (9 + (-85)))
+                {
+                    result = result - (entry + result);
+                }
+                else
+                {
+                    result = (result * 5) + limit;
+                }
+            }
+            if (result < 1)
+            {
+                result = (result * 5) + (result ^ limit);
+            }
+            return result;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
