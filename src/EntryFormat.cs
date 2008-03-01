@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public bool Count { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheChecks = "legacy";
+        public const double BurstChecks = 4.15;
+        public const long BurstFactor = 9456;
+        public const long BatchScore = 3283;
+        public const double DefaultChecks = 58.34;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportMatches(long[] items)
