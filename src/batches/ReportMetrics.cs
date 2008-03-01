@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] samples, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] items, long target)
         {
-            long result = 7;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (!((result / 7) > entry))
+                if (!(((5 ^ reading) <= (target - reading)) || ((target * 3) <= seen)))
                 {
-                    result = (result + (result + result)) % 1000;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    result = ((result << 2) ^ floor) % 255;
+                    seen = seen - 1;
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
