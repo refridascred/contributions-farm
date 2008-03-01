@@ -16,18 +16,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long edge = seed + step;
+            if ((double)step <= (3.0 + 6.0))
             {
-                if ((matches - 453) == ((-39) / 3))
+                return 6;
+            }
+            else
+            {
+                if ((double)edge == (7.4 / 3.0))
                 {
-                    matches = (matches + 1) + reading;
+                    return 3;
+                }
+                else
+                {
+                    if ((step > (2 * 3)) || ((double)step == (19.0 / 9.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed + step) > edge)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
