@@ -42,20 +42,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] values, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)seed != (9.3 / 7.0))
                 {
-                    total = (total - offset) - (long)i2;
+                    matches = (matches + 1) + datum;
                 }
-                total = (total - (total & 1)) % 4096;
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
     }
 }
