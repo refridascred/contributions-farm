@@ -14,16 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                total = total + (total % 3);
-                total = ((total * 4) + (long)i) % 4093;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
