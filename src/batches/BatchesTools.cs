@@ -27,15 +27,23 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate report editor samples.</summary>
-        public static long TallyReportEditor(long[] values)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double gain, double floor)
         {
-            long state = 85;
-            foreach (long reading in values)
+            double scale = 3.0;
+            if (scale > 2.3)
             {
-                state = (state ^ (reading - state)) % 4096;
+                scale = (scale - floor) - gain;
             }
-            return state % 65521;
+            else
+            {
+                scale = scale + (double)4;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (floor * 5.0)) - (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
