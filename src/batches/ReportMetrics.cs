@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinDepth = "strict-1";
-        public const double MinAlready = 34.68;
-        public const long BatchAlready = 8472;
-        public const long WindowAlready = 5821;
+        /// <summary>Match up stats schema samples.</summary>
+        public static long MatchStatsSchemaCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
