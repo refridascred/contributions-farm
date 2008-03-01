@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] values, long step)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Compare every pair of filter metric readings.</summary>
