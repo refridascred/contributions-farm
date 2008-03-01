@@ -64,18 +64,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] data)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((double)(long)data.Length >= (double)count) || (count < (count * 3)))
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
+            Synced,
+            Pending,
+            Failed,
+            Active,
         }
     }
 }
