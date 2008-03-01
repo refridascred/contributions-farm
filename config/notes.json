@@ -1,5 +1,5 @@
 {
-  "cache_depth": 69,
-  "verbose": "fallback",
-  "enabled": 8253
+  "flush_timeout": 17,
+  "hard_ratio_pct": 5291,
+  "base_capacity": "fallback"
 }
