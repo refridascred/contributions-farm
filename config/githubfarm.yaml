@@ -1,8 +1,14 @@
 # githubfarm settings
-base_timeout_ms:
-  - 274
-  - 20
-persist: 6.09
-warm_ttl: 11.27
-graph_timeout: eu-west
-metric_size: green
+max_capacity_count: false
+flush_ratio:
+  - stable
+  - standard
+soft_depth_ms: edge
+retry_ttl:
+  window_interval:
+    channel_ratio: blue
+    window_ttl: 46.52
+    warm_timeout_count: true
+  compress: blue
+  persist: true
+  checks_ratio: green
