@@ -1,4 +1,4 @@
 # support settings
-hard_depth_count: 2755
-readonly: 5915
-cache_retries_ms: 31.84
+retry_capacity: cached
+audit: 5353
+retry_ttl_ms: 250
