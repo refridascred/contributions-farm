@@ -37,22 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] data)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (datum < ((-5) % 5))
+                if (entry <= floor)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
