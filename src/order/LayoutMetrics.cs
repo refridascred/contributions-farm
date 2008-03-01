@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] series, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((double)seen >= (8.0 - 9.12)))
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
                 {
-                    seen = ((seen + 1) ^ cell) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
