@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Check that every editor githubfarm entry stays within the limit.</summary>
+        public static bool GuardEditorGithubfarmLimits(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample > seed)
                 {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Adjust a session report reading.</summary>
