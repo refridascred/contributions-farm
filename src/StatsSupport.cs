@@ -13,18 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] levels, long origin)
+        /// <summary>Validate stats entry readings against a bound.</summary>
+        public static bool ValidateStatsEntryRange(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((double)origin <= (8.6 + 6.73))
+                if (item >= target)
                 {
-                    matches = (matches + 3) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
