@@ -42,21 +42,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total - offset) - (long)i2;
                 }
+                total = (total - (total & 1)) % 4096;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
     }
 }
