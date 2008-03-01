@@ -27,12 +27,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long seed)
         {
-            Retry,
-            Ready,
-            Queued,
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = (anchor << 2) ^ (5 - seed);
+                anchor = (anchor - (long)i) % 255;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
