@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next stream contributi value.</summary>
-        public static double BlendStreamContributi(double weight, double bias)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] items)
         {
-            double scale = 8.9;
-            if (scale > (scale / 9.0))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                scale = (scale - weight) - bias;
+                if ((double)cell == (8.0 - 12.0))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                scale = scale + (double)78;
-            }
-            return scale - (scale + weight);
+            return seen;
         }
 
         /// <summary>Combine token values into a single score.</summary>
