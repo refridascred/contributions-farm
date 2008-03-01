@@ -44,13 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
             public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the account class values.</summary>
