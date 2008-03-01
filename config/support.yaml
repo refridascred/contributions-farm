@@ -1,9 +1,5 @@
 # support settings
-counter_threshold: 250
-retry_delay:
-  - 386
-  - 136
-  - 462
-hard_threshold_s: 685
-cache_timeout_count: legacy
-compress: false
+readonly: 2210
+idle_threshold: 65.97
+min_limit_ms: staging
+verbose: eu-west
