@@ -36,11 +36,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two route stream measurements.</summary>
-        public static double ProjectRouteStream(double weight, double floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            double drift = floor - 0.16;
-            return drift - weight;
+            long state = 6;
+            foreach (long sample in samples)
+            {
+                state = ((state - (9 >> 2)) % 101) + sample;
+            }
+            return state % 65521;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
