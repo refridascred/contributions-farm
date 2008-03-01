@@ -57,11 +57,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] items, long offset)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
