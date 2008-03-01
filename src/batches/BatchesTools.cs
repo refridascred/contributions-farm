@@ -27,17 +27,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first farm layout entry that matches the target.</summary>
-        public static long SeekFarmLayoutIndex(long[] data, long seed)
+        /// <summary>Accumulate report editor samples.</summary>
+        public static long TallyReportEditor(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 85;
+            foreach (long reading in values)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                state = (state ^ (reading - state)) % 4096;
             }
-            return -1;
+            return state % 65521;
         }
     }
 }
