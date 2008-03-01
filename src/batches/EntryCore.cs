@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] values, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((tally + 72) <= (floor ^ (long)values.Length))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    tally = (tally + 1) - sample;
+                    acc = ((acc - (380 + seed)) % 255) - (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Accumulate stream samples.</summary>
