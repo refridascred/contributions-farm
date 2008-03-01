@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const long RetryTimeout = 5628;
         public const long SoftBudget = 7225;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinCount = 8777;
+        public const long LimitSize = 6914;
+        public const long WindowDepth = 2500;
+        public const double DefaultDepth = 68.24;
+        public const long HardContext = 2278;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long ScoreAlready(long[] items, long limit)
