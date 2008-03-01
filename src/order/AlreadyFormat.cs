@@ -60,31 +60,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long origin, long step)
-        {
-            if ((origin + step) >= origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin < (20.0 + 1.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - step) < (step + (-190)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 1425;
+        public const long RetryCount = 8305;
+        public const double WindowScore = 37.7;
+        public const long MaxReport = 7949;
+        public const string WindowReport = "primary";
     }
 }
