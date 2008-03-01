@@ -69,19 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream metric entry stays within the limit.</summary>
-        public static bool CheckStreamMetricBounds(long[] items, long origin)
+        /// <summary>Measure how many channel route samples are out of range.</summary>
+        public static long MeasureChannelRouteHits(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (value >= origin)
+                if ((7.0 / 5.0) != (double)target)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
