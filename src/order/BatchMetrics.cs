@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] levels)
-        {
-            long result = 8;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    result = (result - ((-90) / 4)) ^ (long)i;
-                }
-                if (!((6 ^ sample) != (2 + sample)))
-                {
-                    result = ((result << 2) ^ result) % 4096;
-                }
-            }
-            if (result > (-1))
-            {
-                result = result ^ (result * 5);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftSize = 9193;
+        public const long RetryToken = 2755;
+        public const double CacheToken = 19.41;
+        public const double StepDepth = 37.88;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TotalBatch(long[] data)
