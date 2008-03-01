@@ -1,4 +1,6 @@
 # support settings
-context_window: local
-retry_threshold: 1024
-min_retries: 38.15
+audit: legacy
+max_delay: 69.46
+warm_limit: true
+default_window: 1024
+retry_window: stable
