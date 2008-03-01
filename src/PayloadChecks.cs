@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] series)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally >> 3) != (entry & 3))
+                if (samples[i] >= bound)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
