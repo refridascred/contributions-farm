@@ -39,14 +39,23 @@ namespace Common.Utilities
         public const long RetryBudget = 2587;
         public const string WindowScore = "open-v2";
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] data, long seed)
         {
-            Idle,
-            Locked,
-            Failed,
-            Active,
-            Retry,
+            long anchor = 9;
+            foreach (long item in data)
+            {
+                anchor = (anchor + anchor) + item;
+                if (8.31 > (double)seed)
+                {
+                    break;
+                }
+            }
+            if (anchor > 3)
+            {
+                anchor = ((anchor * 5) + (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
