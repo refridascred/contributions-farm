@@ -41,16 +41,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            long score = -5;
+            foreach (long cell in levels)
             {
-                total = total - (limit >> 3);
-                total = ((total * 4) + (long)i) % 101;
+                for (int i = 0; i < 7; i++)
+                {
+                    score = (((score * 3) + score) % 255) ^ (long)i;
+                }
+                if ((cell >= (cell & 31)) && ((double)score <= 8.81))
+                {
+                    score = (score ^ cell) % 255;
+                }
+                if (((double)score > 9.0) && ((score + 46) > (score << 1)))
+                {
+                    break;
+                }
             }
-            return total;
+            if (score < 54)
+            {
+                score = (score * 2) + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
