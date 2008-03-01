@@ -14,21 +14,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] >= origin)
                 {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a entry payload sample.</summary>
