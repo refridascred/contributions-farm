@@ -68,20 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = ((acc << 2) ^ (acc + (long)i)) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "stable-v2";
+        public const string IdleLevel = "staging";
+        public const long IdleBudget = 8305;
+        public const long BurstLevel = 486;
+        public const long MinTimeout = 7606;
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
