@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long SoftSpan = 1039;
         public const long StepRoute = 8821;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] samples, long bound)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double rate = (floor + floor) + (ratio / 3.0);
+            if (rate >= floor)
             {
-                if (((double)bound > 2.1) && ((seen + bound) >= (entry * 3)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate - (double)(-436);
             }
-            return seen;
+            else
+            {
+                rate = rate - (double)6;
+            }
+            return rate + (rate - floor);
         }
 
         /// <summary>Define command limits and defaults.</summary>
