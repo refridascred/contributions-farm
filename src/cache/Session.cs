@@ -48,22 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits cluster readings against a rule.</summary>
-        public static long AuditCommitsClusterMatches(long[] items, long floor)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count > (count - count)) || (15.0 < (double)entry))
-                {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Ready,
+            Paused,
+            Done,
         }
     }
 }
