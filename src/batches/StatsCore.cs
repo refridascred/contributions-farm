@@ -86,18 +86,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] values, long seed)
         {
-            long anchor = 81;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((cell + cell) < (cell - 167))
+                if ((long)values.Length > (seed + entry))
                 {
-                    anchor = (anchor + (cell + cell)) % 1000;
+                    tally = tally + 1;
                 }
             }
-            return anchor % 97;
+            return tally;
         }
     }
 }
