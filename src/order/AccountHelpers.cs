@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next graph contributi value.</summary>
-        public static double BlendGraphContributi(double gain, double bias)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double gain2 = (double)1 * 5.0;
-            if (gain2 < (3.2 * 8.0))
-            {
-                gain2 = ((gain2 + (gain2 + gain2)) + gain) + bias;
-            }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            return gain2 - (double)3;
+            Synced,
+            Queued,
+            Stale,
+            Paused,
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
