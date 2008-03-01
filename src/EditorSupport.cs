@@ -54,23 +54,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double ratio, double floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double rate = ratio - (ratio + floor);
-            if (rate > rate)
-            {
-                rate = rate - (rate - floor);
-            }
-            else
-            {
-                rate = rate - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - floor;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
