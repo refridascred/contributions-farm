@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next batches stats value.</summary>
-        public static double SmoothBatchesStats(double weight, double bias)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long step, long floor)
         {
-            double scale = weight * 6.96;
-            if (scale >= (bias + scale))
+            if ((floor & 7) >= (332 & 1))
             {
-                scale = scale - weight;
+                return 0;
             }
-            return scale - (9.34 + scale);
+            else
+            {
+                if ((8.41 + 3.2) <= (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the format state values.</summary>
