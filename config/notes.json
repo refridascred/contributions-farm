@@ -1,6 +1,14 @@
 {
-  "verbose": 1024,
-  "max_depth_s": "fallback",
-  "cache_limit": 250,
-  "graph_delay": 3241
+  "max_size": ["legacy", "staging", "fallback"],
+  "sync_delay_ms": {
+    "batch_window": 73.72,
+    "retry_ttl_s": ["cached", "strict", "blue"],
+    "flush_ttl": 1.65,
+    "dry_run": ["latest", "fallback", "green"],
+    "sync_limit_s": 13.02
+  },
+  "base_threshold_ms": "green",
+  "verbose": 250,
+  "graph_ttl": 96.23,
+  "commits_depth": 250
 }
