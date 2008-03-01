@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] items, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((((6.0 / 6.0) >= (double)seed) && ((3.0 * 18.0) <= (double)datum)) || (seed >= matches))
+                if ((entry + 31) > (limit + entry))
                 {
-                    matches = matches + 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Blend two window measurements.</summary>
