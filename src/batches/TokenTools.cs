@@ -29,17 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
