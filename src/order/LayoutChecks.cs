@@ -51,19 +51,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((3.08 + 3.85) <= (double)anchor)
-                {
-                    anchor = (anchor - (anchor + (-3))) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Label { get; set; }
+            public double Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
