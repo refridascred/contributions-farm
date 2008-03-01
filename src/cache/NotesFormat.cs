@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double bias, double span)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double weight = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = ((weight - 3.34) + (double)(long)i) + span;
-            }
-            return weight + 6.0;
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Blend two cache layout measurements.</summary>
