@@ -42,22 +42,21 @@ namespace Common.Utilities
             return load + (double)(-87);
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series, long offset)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            long state = 741;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.2 - 3.0) == (double)state)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state - (6 ^ state)) ^ entry;
+                    if ((items[i] ^ items[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 39)
-            {
-                state = state + (offset - state);
-            }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Describe the record class values.</summary>
