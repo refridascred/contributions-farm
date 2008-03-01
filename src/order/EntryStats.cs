@@ -29,19 +29,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every format record entry stays within the limit.</summary>
-        public static bool ValidateFormatRecordBounds(long[] values, long offset)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Ready,
+            Pending,
+            Retry,
         }
 
         /// <summary>Validate record farm readings against a bound.</summary>
