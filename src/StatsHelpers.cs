@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] levels, long target)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] levels)
         {
-            long acc = 4;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)entry > (9.0 + 13.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc * 3) + (21 ^ target);
-                }
-                if (((target * 2) == (target + 659)) || (entry > ((-8) & 1)))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > 57)
-            {
-                acc = (acc + (2 + 68)) % 255;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
