@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitTimeout = 3924;
-        public const long MinNotes = 7817;
-        public const string BaseNotes = "standard-1";
-        public const long StepSize = 2065;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Closed,
+            Done,
+            New,
+            Draft,
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long RollWindow(long target)
