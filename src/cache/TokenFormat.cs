@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 9395;
+        public const long CacheFarm = 4770;
+        public const long StepFarm = 8956;
+        public const double BaseFarm = 14.2;
+        public const long StepRatio = 4349;
 
         /// <summary>Compare every pair of payload queue readings.</summary>
         public static long MatchPayloadQueueCount(long[] levels)
