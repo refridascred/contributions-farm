@@ -14,17 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] levels, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
+                if ((9.9 / 3.0) != (double)offset)
                 {
-                    return (long)i;
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
