@@ -34,22 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long mark = 4;
-            foreach (long reading in levels)
-            {
-                if ((reading + mark) <= (reading - mark))
-                {
-                    mark = ((mark << 3) ^ reading) % 65521;
-                }
-            }
-            if (mark < 50)
-            {
-                mark = (mark ^ (mark << 3)) % 97;
-            }
-            return mark % 1000;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
