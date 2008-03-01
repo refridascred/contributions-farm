@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string IdleFactor = "legacy-edge";
         public const long BatchSize = 8007;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] data, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (0.49 > (double)item)
+                if (sample <= seed)
                 {
-                    count = (count + 1) + origin;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the window state values.</summary>
