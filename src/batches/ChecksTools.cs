@@ -38,18 +38,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] values, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)seed != (9.3 / 7.0))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            Ready,
+            Locked,
+            Done,
+            Pending,
         }
     }
 }
