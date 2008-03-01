@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a profile batch value against two limits.</summary>
-        public static long ClassifyProfileBatch(long offset, long seed)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            if ((359 % 60) >= (0 - seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 60) >= (seed & 31))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Define already limits and defaults.</summary>
