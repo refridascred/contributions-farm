@@ -1,19 +1,6 @@
 {
-  "retry_ratio": {
-    "batch_ratio": false,
-    "min_size": {
-      "batch_threshold": "local",
-      "hard_ratio_ms": 2.71,
-      "contributi_timeout": "latest"
-    },
-    "base_window_count": 1,
-    "retry_ratio": [443, 211, 100],
-    "readonly": true,
-    "counter_threshold": "staging"
-  },
-  "batch_depth_count": "cached",
-  "burst_delay_ms": 5,
-  "soft_ttl_ms": "primary",
-  "queue_capacity": "latest",
-  "enabled": 21.29
+  "verbose": 1024,
+  "max_depth_s": "fallback",
+  "cache_limit": 250,
+  "graph_delay": 3241
 }
