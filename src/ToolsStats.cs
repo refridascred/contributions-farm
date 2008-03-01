@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] items, long target)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((sample > ((-4) & 3)) && ((8.0 / 3.0) > (double)target)) && (((sample + target) < sample) && ((sample * 5) >= (target & 1))))
                 {
-                    if ((items[i] ^ items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
