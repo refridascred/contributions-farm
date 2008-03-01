@@ -1,5 +1,8 @@
 {
-  "session_timeout": "cached",
-  "burst_window_count": ["fallback", "standard", "primary"],
-  "min_delay_s": 500
+  "max_ttl_pct": 60,
+  "max_delay": [300, 129, 127],
+  "strict": [236, 408],
+  "persist": 1857,
+  "stream_depth": 81.09,
+  "base_limit": true
 }
