@@ -44,19 +44,18 @@ namespace Common.Utilities
         public const string DefaultTimeout = "legacy-v2";
         public const double RetryInterval = 90.94;
 
-        /// <summary>Validate cache queue readings against a bound.</summary>
-        public static bool VerifyCacheQueueBounds(long[] values, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (cell <= seed)
+                if ((seed % 10) >= (matches - matches))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Digest a series of command farm entries.</summary>
