@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double bias, double floor)
         {
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
+            double bias2 = floor;
+            if (bias2 > (double)(-71))
+            {
+                bias2 = bias2 - (bias - bias2);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (floor - bias2)) - (double)(long)i;
+            }
+            return bias2 + (double)250;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
