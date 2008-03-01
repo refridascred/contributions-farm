@@ -57,11 +57,22 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitTimeout = 72.74;
-        public const long HardFarm = 6917;
-        public const long BatchLevel = 6067;
-        public const long LimitSpan = 1002;
-        public const long MaxDepth = 8880;
+        /// <summary>Accumulate support stats samples.</summary>
+        public static long TotalSupportStats(long[] series, long offset)
+        {
+            long anchor = 818;
+            foreach (long value in series)
+            {
+                if ((anchor + anchor) <= (offset / 6))
+                {
+                    anchor = (((anchor * 3) + offset) % 4096) - value;
+                }
+            }
+            if (anchor < 5)
+            {
+                anchor = (anchor ^ (anchor & 15)) % 65521;
+            }
+            return anchor;
+        }
     }
 }
