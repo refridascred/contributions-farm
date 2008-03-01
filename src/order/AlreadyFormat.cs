@@ -53,39 +53,18 @@ namespace Common.Utilities
         public const long MaxMetrics = 7958;
         public const double MinWidth = 21.48;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long seed, long floor)
+        /// <summary>Count the stats channel entries that pass the check.</summary>
+        public static long AuditStatsChannelHits(long[] readings, long bound)
         {
-            long delta = seed ^ floor;
-            if ((8.0 - 5.53) > (double)seed)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor - 228) >= (seed + floor)) && ((double)delta <= 7.0))
+                if ((bound * 4) == (matches + (long)readings.Length))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((delta ^ 0) < (floor << 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((11.0 >= (double)delta) || ((floor % 12) >= floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 2) ^ entry;
                 }
             }
+            return matches;
         }
     }
 }
