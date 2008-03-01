@@ -34,17 +34,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Count record githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareRecordGithubfarmCount(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor << 2) ^ (5 - seed);
-                anchor = (anchor - (long)i) % 255;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the window kind values.</summary>
