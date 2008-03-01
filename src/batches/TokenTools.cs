@@ -19,9 +19,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxScore = 94.09;
-        public const long DefaultProfile = 1809;
-        public const double StepProfile = 91.29;
+        /// <summary>Fold a list of schema stream readings.</summary>
+        public static long CombineSchemaStream(long[] data)
+        {
+            long mark = 146;
+            foreach (long entry in data)
+            {
+                if (71 <= entry)
+                {
+                    mark = (mark - (mark << 1)) % 97;
+                }
+            }
+            if (mark > 77)
+            {
+                mark = (mark << 3) ^ (mark * 2);
+            }
+            return mark;
+        }
     }
 }
