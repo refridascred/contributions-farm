@@ -74,18 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (datum < count)
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBatches = "latest-1";
+        public const string LimitWidth = "staging-v2";
+        public const long SoftBatches = 8065;
+        public const long BatchBatches = 9475;
+        public const string SoftTimeout = "latest-v2";
     }
 }
