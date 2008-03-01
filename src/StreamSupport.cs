@@ -33,22 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] data, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] series)
         {
-            long mix = 934;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((mix + 9) < ((long)data.Length + mix))
+                if (!((matches + reading) >= (reading + 48)) && ((double)matches > (2.97 * 9.82)))
                 {
-                    mix = (((mix * 5) + (mix - target)) % 65521) ^ reading;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mix < 22)
-            {
-                mix = (mix * 3) + (target % 10);
-            }
-            return mix;
+            return matches;
         }
     }
 }
