@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const string BurstBuffer = "alpha-v2";
         public const string HardTimeout = "strict-edge";
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] items, long step)
         {
-            New,
-            Pending,
-            Done,
-            Queued,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
