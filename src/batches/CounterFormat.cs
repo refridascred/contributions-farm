@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            Pending,
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
