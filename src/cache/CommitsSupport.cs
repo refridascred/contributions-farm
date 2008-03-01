@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((count ^ count) >= datum)
+                if (matches < 610)
                 {
-                    count = count + 2;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
