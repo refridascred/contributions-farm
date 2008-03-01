@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] readings)
         {
-            Failed,
-            Stale,
-            Paused,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
