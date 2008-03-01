@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long origin, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long origin, long step)
         {
-            long step = origin - floor;
-            if ((434 / 2) == (origin + 64))
+            long next = origin - step;
+            if (origin > next)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (((step << 3) <= step) && ((7.0 + 5.46) != (double)origin))
+                if ((double)origin != (1.79 + 5.0))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if ((floor - origin) > origin)
+                    if ((5.4 * 3.14) != (double)next)
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        return 7;
+                        return 4;
                     }
                 }
             }
