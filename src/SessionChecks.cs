@@ -44,14 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] levels, long step)
         {
-            Done,
-            Dropped,
-            Synced,
-            Active,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
