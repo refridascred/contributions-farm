@@ -24,18 +24,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] readings)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((((195 - hits) == (sample - sample)) && (53 >= (sample - 199))) || ((sample % 7) >= (sample + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Closed,
+            Pending,
+            Active,
         }
     }
 }
