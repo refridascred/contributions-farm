@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxSize = 94.92;
+        public const double StepCount = 13.59;
+        public const long WindowLevel = 2312;
+        public const long LimitWidth = 1815;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double BlendPayload(double weight, double bias)
