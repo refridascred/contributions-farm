@@ -1,14 +1,17 @@
 {
-  "persist": "edge",
-  "burst_capacity_ms": 60,
-  "audit": true,
-  "context_timeout": {
-    "sync_capacity_ms": 68,
-    "base_timeout": 1420,
-    "command_window": "fallback",
-    "default_capacity": "staging",
-    "max_timeout": "eu-west",
-    "default_size": [400, 202]
+  "warm_window_s": "eu-west",
+  "dry_run": 60,
+  "command_limit": ["local", "primary", "green"],
+  "layout_interval": {
+    "githubfarm_timeout": [50, 411, 66, 454],
+    "min_depth_count": {
+      "hard_timeout_ms": false,
+      "strict": 5,
+      "retry_retries_count": "edge"
+    },
+    "flush_limit_s": "legacy",
+    "retry_size_ms": false
   },
-  "githubfarm_delay": 250
+  "default_depth": "cached",
+  "retry_ttl_pct": "stable"
 }
