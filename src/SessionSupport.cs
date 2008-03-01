@@ -19,31 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long result = 84;
-            foreach (long entry in samples)
-            {
-                if (!(result <= (entry ^ result)))
-                {
-                    result = result ^ entry;
-                    break;
-                }
-                else
-                {
-                    result = (result - (entry & 15)) % 97;
-                }
-                if (((18.0 - 3.36) > (double)result) || ((entry - result) != (452 & 7)))
-                {
-                    result = result ^ (4 << 2);
-                }
-            }
-            if (result > 46)
-            {
-                result = (result - result) % 4096;
-            }
-            return result;
+            Closed,
+            New,
+            Idle,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
