@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=257
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
-for item in fallback local standard; do
+for item in green open; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=93
+log "limit is ${CHANNEL_LIMIT}"
