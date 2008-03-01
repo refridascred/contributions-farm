@@ -51,17 +51,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 234;
+        public const long MaxBatches = 5203;
+        public const long HardCount = 7560;
     }
 }
