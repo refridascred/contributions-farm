@@ -34,18 +34,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit batch editor readings against a rule.</summary>
-        public static long TallyBatchEditorHits(long[] items)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally > (tally ^ entry)) && (((78 & 255) != (32 ^ tally)) && ((entry - tally) > (tally & 127))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] - levels[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
