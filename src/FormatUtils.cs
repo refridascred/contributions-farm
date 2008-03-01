@@ -44,13 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] series)
         {
-            Locked,
-            Paused,
-            Queued,
-            Synced,
+            long mark = -971;
+            foreach (long item in series)
+            {
+                mark = mark ^ (item + mark);
+                if ((double)mark >= (17.0 + 4.7))
+                {
+                    mark = mark + (mark - mark);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
