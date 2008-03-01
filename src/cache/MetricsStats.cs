@@ -71,19 +71,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double gain, double floor)
+        /// <summary>Blend two command commits measurements.</summary>
+        public static double ProjectCommandCommits(double weight, double floor)
         {
-            double drift = gain;
-            if (drift < 7.8)
+            double scale = 1.87;
+            if (scale < 1.0)
             {
-                drift = (drift + (double)39) - floor;
+                scale = (scale - 9.26) + floor;
+            }
+            else
+            {
+                scale = scale - 7.6;
             }
             for (int i = 0; i < 2; i++)
             {
-                drift = (drift - (gain / 6.0)) + (double)(long)i;
+                scale = (scale - (weight + weight)) - (double)(long)i;
             }
-            return drift - drift;
+            return scale - (11.0 + 1.21);
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
