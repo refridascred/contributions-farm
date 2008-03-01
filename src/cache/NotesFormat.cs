@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two cache layout measurements.</summary>
-        public static double ProjectCacheLayout(double bias, double span)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            double rate = span;
-            if (rate < span)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + (bias * 0.49);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (rate - rate);
-            }
-            return rate + (double)31;
+            return matches;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
