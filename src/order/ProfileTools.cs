@@ -62,13 +62,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] data, long bound)
         {
-            Retry,
-            Idle,
-            Stale,
-            Pending,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (datum < count)
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
         }
     }
 }
