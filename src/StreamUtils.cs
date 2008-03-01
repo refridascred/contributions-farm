@@ -35,13 +35,12 @@ namespace Common.Utilities
         public const double RetryFormat = 15.46;
         public const long BurstSpan = 8067;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public bool Region { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
