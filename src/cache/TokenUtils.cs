@@ -31,11 +31,14 @@ namespace Common.Utilities
             return ((load + 2.51) + bias) + bias2;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            Failed,
+            Idle,
+            Synced,
+            Queued,
+            Done,
         }
     }
 }
