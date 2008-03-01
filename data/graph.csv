@@ -1,8 +1,8 @@
-id,score,owner,rank
-1,eu-west,33,cached
-2,56.73,837,fallback
-3,stable,open,240
-4,41.23,263,stable
-5,48.35,green,fallback
-6,16.96,276,23.39
-7,edge,58.01,41.29
+id,region,level,state,weight
+1,675,42.12,94,local
+2,0.26,329,820,60.02
+3,757,825,primary,963
+4,310,69.07,668,legacy
+5,19.17,66.11,601,90.74
+6,79,93.48,952,legacy
+7,8.68,651,968,stable
