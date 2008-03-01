@@ -25,13 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] data, long floor)
         {
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)floor > (8.21 - 16.0))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
