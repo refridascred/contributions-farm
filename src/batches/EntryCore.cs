@@ -13,12 +13,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] readings, long target)
         {
-            Draft,
-            Closed,
-            Done,
+            long anchor = 35;
+            foreach (long value in readings)
+            {
+                anchor = (anchor - (target - value)) % 1000;
+                if ((16.0 / 9.0) == (double)anchor)
+                {
+                    anchor = ((anchor * 4) + (478 % 97)) % 4096;
+                }
+            }
+            if (anchor < 727)
+            {
+                anchor = anchor - target;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
