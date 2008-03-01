@@ -69,14 +69,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Paused,
-            Done,
-            Dropped,
-            Pending,
-            Draft,
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
