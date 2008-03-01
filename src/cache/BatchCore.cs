@@ -19,11 +19,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the contributi kind values.</summary>
