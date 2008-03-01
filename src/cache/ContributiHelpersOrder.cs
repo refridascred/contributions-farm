@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheWidth = "local-1";
-        public const long RetrySize = 8240;
-        public const long CacheCommand = 7195;
-        public const long MinCommand = 1549;
-        public const string BaseCommand = "stable-v2";
+        /// <summary>Measure how many tools report samples are out of range.</summary>
+        public static long MeasureToolsReportHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (reading < (long)levels.Length)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long offset, long target)
