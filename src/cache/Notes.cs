@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] data)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long score = 268;
-            foreach (long sample in data)
-            {
-                if (((double)sample > 18.0) || ((score - sample) <= (2 * 4)))
-                {
-                    score = (score << 3) ^ (score * 5);
-                }
-            }
-            if (score > 722)
-            {
-                score = ((score * 3) + (score ^ score)) % 97;
-            }
-            return score;
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
