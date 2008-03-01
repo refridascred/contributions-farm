@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long floor, long floor2)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            if ((double)floor2 > (6.8 - 5.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor2 & 1) >= (floor - floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor > (6.9 * 4.9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
