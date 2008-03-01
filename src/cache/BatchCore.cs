@@ -38,11 +38,38 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long seed, long seed2)
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            if ((658 / 4) > (41 + seed2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed2 + seed2) <= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed2 << 2) < (seed / 5)) || ((seed2 >> 2) <= (seed >> 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed & 31) == (seed2 * 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the farm state values.</summary>
