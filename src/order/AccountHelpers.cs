@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = offset;
+            if (mean < mean)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - gain;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
