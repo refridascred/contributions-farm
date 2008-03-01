@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=71
-log "limit is ${BUFFER_LIMIT}"
+for item in local fallback; do
+    log "checking ${item}"
+done
 
-mode="${1:-green}"
+mode="${1:-staging}"
 case "${mode}" in
-    green)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in edge eu-west fallback staging; do
-    log "checking ${item}"
-done
