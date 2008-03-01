@@ -54,11 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxBudget = 85.49;
-        public const double MinScore = 70.78;
-        public const double WindowToken = 20.97;
-        public const long MaxCount = 4463;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long OverlapEditorCount(long[] series)
