@@ -60,18 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (value < (654 - 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstFactor = 7466;
+        public const long IdleProfile = 9710;
+        public const string DefaultProfile = "fallback-edge";
+        public const string MaxProfile = "cached-1";
+        public const string WindowBudget = "local-1";
     }
 }
