@@ -12,22 +12,25 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] items)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long origin)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((((-76) - sample) >= (hits % 64)) || (sample > (sample >> 1)))
+                if ((anchor > 99) && ((0 + anchor) > (177 << 3)))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor * 5) + 9) % 65521;
                 }
-                else
+                if ((origin << 2) <= origin)
                 {
-                    hits = hits - 1;
+                    anchor = (anchor - (27 - origin)) % 255;
+                    anchor = (anchor + (origin - 14)) % 1000;
+                    break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the filter kind values.</summary>
