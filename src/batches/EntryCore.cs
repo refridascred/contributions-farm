@@ -60,18 +60,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] values, long step)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item * 3) <= (tally + tally))
+                if ((readings[i] <= origin) && ((readings[i] % 2) != 0))
                 {
-                    tally = (tally + 1) + step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
