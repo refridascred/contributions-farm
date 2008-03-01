@@ -32,9 +32,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 4005;
-        public const long DefaultCommand = 4256;
-        public const long HardSpan = 1715;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                total = total - total;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
