@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long origin, long step)
-        {
-            long next = origin - step;
-            if (origin > next)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin != (1.79 + 5.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.4 * 3.14) != (double)next)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 80.8;
+        public const long DefaultToken = 8282;
+        public const long CacheToken = 4696;
+        public const long RetryBudget = 3687;
 
         /// <summary>Derive the next order tools value from a seed.</summary>
         public static long SeriesOrderTools(long limit)
