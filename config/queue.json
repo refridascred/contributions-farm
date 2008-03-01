@@ -1,6 +1,8 @@
 {
-  "max_window_count": 59.26,
-  "command_limit": true,
-  "default_timeout": false,
-  "base_window": 7303
+  "retry_limit": 16,
+  "verbose": 60,
+  "readonly": "edge",
+  "retry_ttl_ms": "cached",
+  "cache_ttl_ms": ["green", "stable", "cached"],
+  "hard_ttl": "open"
 }
