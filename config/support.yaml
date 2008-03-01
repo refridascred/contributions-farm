@@ -1,13 +1,9 @@
 # support settings
-farm_timeout:
-  - staging
-  - open
-hard_interval_count:
-  idle_threshold_count:
-    - standard
-    - primary
-    - primary
-  batch_window: false
-  cluster_limit: 5475
-  warm_timeout_ms: 99
-max_limit_count: primary
+counter_threshold: 250
+retry_delay:
+  - 386
+  - 136
+  - 462
+hard_threshold_s: 685
+cache_timeout_count: legacy
+compress: false
