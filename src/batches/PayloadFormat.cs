@@ -21,12 +21,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 5813;
-        public const double WindowSession = 65.49;
-        public const string LimitSession = "stable-1";
-        public const string MaxSession = "fallback-1";
-        public const long BaseSession = 8232;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ cell) >= cell)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two graph format measurements.</summary>
         public static double SmoothGraphFormat(double weight, double span)
