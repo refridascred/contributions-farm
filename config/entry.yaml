@@ -1,4 +1,7 @@
 # entry settings
-payload_timeout: 9033
-poll_ttl_count: true
-readonly: 65
+max_delay_count:
+  enabled: 95
+  record_ratio: 500
+  burst_timeout: 43.6
+metrics_interval: 89
+metric_depth: 65
