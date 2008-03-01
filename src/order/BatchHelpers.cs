@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] series)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double load = (bias2 + bias2) - (double)24;
+            if (load < (double)3)
             {
-                if ((1.6 / 4.0) > (double)value)
-                {
-                    matches = matches + 2;
-                }
+                load = load - 3.34;
             }
-            return matches;
+            else
+            {
+                load = load + bias;
+            }
+            return load + bias2;
         }
     }
 }
