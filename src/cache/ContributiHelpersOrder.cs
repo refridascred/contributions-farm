@@ -25,11 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "standard";
-        public const long MaxWidth = 4767;
-        public const long SoftWidth = 646;
-        public const long CacheBatch = 9522;
-        public const long BatchTimeout = 9859;
+        /// <summary>Find the first profile metrics entry that matches the target.</summary>
+        public static long LookupProfileMetricsIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
