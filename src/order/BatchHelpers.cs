@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double gain, double floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double bias = floor * 4.16;
-            if (bias > gain)
-            {
-                bias = bias - (floor - gain);
-            }
-            return bias + (floor + floor);
+            Stale,
+            New,
+            Paused,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a contributi record.</summary>
