@@ -43,21 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Find the first batches session entry that matches the target.</summary>
+        public static long LocateBatchesSessionIndex(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (series[i] < seed)
                 {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
