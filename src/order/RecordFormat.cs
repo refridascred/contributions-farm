@@ -31,15 +31,32 @@ namespace Common.Utilities
             return rate + 1.0;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double rate, double offset)
+        /// <summary>Rank notes layout input into a small class.</summary>
+        public static long RankNotesLayout(long offset, long limit)
         {
-            double ratio = (double)347 / 4.0;
-            if (ratio < offset)
+            long step = offset - limit;
+            if (((step ^ offset) >= (step & 3)) || ((limit % 8) <= (274 & 15)))
             {
-                ratio = (ratio + 3.39) - rate;
+                return 1;
             }
-            return ratio - offset;
+            else
+            {
+                if (offset >= (limit - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((17 ^ offset) < (step - step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
