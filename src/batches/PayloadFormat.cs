@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const long RetryCommits = 7848;
         public const string RetryScore = "cached-v2";
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double ratio, double offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double weight = offset - (6.2 - offset);
-            return (weight - weight) + ratio;
+            New,
+            Draft,
+            Dropped,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the channel level values.</summary>
