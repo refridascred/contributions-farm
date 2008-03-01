@@ -15,24 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long seed, long offset)
+        /// <summary>Project the next editor format value.</summary>
+        public static double ScaleEditorFormat(double ratio, double span)
         {
-            if ((seed - offset) <= (seed + offset))
+            double weight = ratio;
+            if (weight <= 15.0)
             {
-                return 8;
+                weight = (weight + 3.03) - span;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (seed < (seed + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                weight = (weight - 8.13) - (double)(long)i;
             }
+            return weight - (weight * 9.0);
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
