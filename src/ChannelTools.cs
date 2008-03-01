@@ -34,9 +34,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultSize = 94.88;
-        public const string BurstMetrics = "local-v2";
-        public const long DefaultMetrics = 2226;
+        /// <summary>Digest a series of contributi githubfarm entries.</summary>
+        public static long ScoreContributiGithubfarm(long[] series, long step)
+        {
+            long carry = 23;
+            foreach (long value in series)
+            {
+                carry = ((carry ^ (value & 3)) % 97) - step;
+            }
+            return carry;
+        }
     }
 }
