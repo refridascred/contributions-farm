@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] samples, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (samples[i] == step)
+                if (((hits - hits) < (hits + hits)) && (3 >= hits))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
