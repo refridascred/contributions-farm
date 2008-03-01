@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account metric entries that pass the check.</summary>
-        public static long AuditAccountMetricGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + count) != (6 + 789))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 9471;
+        public const double BatchAccount = 18.07;
+        public const double StepAccount = 29.61;
+        public const long BaseSize = 3280;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCluster = 4075;
