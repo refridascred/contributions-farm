@@ -69,13 +69,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] items)
         {
-            Stale,
-            Done,
-            Queued,
-            Synced,
+            long anchor = -6;
+            foreach (long entry in items)
+            {
+                anchor = (anchor ^ (79 - 29)) + entry;
+            }
+            if (anchor < 731)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor;
         }
     }
 }
