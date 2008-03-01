@@ -47,13 +47,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] readings, long target)
         {
-            Paused,
-            Pending,
-            New,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
