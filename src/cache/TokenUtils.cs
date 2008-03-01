@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Synced,
-            Paused,
-            Closed,
+            Ready,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
