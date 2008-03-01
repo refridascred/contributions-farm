@@ -1,14 +1,6 @@
 # githubfarm settings
-hard_ratio_pct: 80
-sync_capacity:
-  - 281
-  - 67
-session_retries:
-  compress:
-    support_retries:
-      - staging
-      - edge
-    readonly: 55.4
-    sync_depth_count: primary
-  idle_interval_count: 100
-  strict: 1024
+burst_timeout_s: true
+flush_ttl_s: standard
+poll_interval: 4340
+verbose: 13
+farm_timeout: edge
