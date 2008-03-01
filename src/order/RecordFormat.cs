@@ -44,12 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Blend two commits payload measurements.</summary>
+        public static double BlendCommitsPayload(double ratio, double bias)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            double scale = (9.4 * 0.75) + ratio;
+            if (scale >= scale)
+            {
+                scale = scale - (double)48;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - 14.0) - (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
