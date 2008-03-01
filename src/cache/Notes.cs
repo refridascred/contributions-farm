@@ -38,20 +38,16 @@ namespace Common.Utilities
             return load - (floor / 9.0);
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long score = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((acc & 127) != (acc >> 1))
-                {
-                    acc = (acc ^ (seed % 60)) % 97;
-                    acc = ((acc << 3) ^ (acc - (long)i)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                score = ((score << 2) ^ ((long)i & 1)) % 255;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
