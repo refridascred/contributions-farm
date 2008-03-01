@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchWidth = 1389;
-        public const double BatchCount = 19.53;
-        public const long MaxProfile = 5712;
-        public const long WindowProfile = 4589;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Retry,
+            Failed,
+            Closed,
+            Active,
+            Idle,
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
