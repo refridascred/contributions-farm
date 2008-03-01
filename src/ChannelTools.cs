@@ -32,13 +32,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Ready,
-            Dropped,
-            Stale,
-            Failed,
+            Paused,
+            Locked,
+            Queued,
+            Closed,
         }
     }
 }
