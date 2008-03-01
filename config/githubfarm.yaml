@@ -1,8 +1,6 @@
 # githubfarm settings
-sync_timeout_pct: primary
-base_timeout_ms: 100
-payload_threshold: green
-poll_size_pct:
-  - 406
-  - 132
-  - 422
+min_ratio: staging
+audit: fallback
+sync_limit_s: false
+max_capacity_ms: cached
+min_limit_ms: primary
