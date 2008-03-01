@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double rate, double bias)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double gain = 6.95 - (double)465;
-            if (gain < 2.64)
-            {
-                gain = (gain - (rate / 8.0)) - bias;
-            }
-            else
-            {
-                gain = gain - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (double)8;
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
