@@ -18,20 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] values, long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            long mark = 294;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark + (mark & 31);
-                mark = (mark + (51 * 4)) % 4096;
-                if ((mark * 4) == (entry - target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a editor summary.</summary>
