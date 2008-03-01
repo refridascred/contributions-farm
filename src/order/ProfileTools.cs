@@ -23,23 +23,20 @@ namespace Common.Utilities
         public const string BaseTools = "strict-1";
         public const string IdleBudget = "legacy-edge";
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] items, long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long state = 55;
-            foreach (long reading in items)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((state << 2) ^ (seed - state)) % 4096;
-                if ((double)seed <= 7.2)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    state = (state << 3) ^ (reading + 2);
+                    mark = (((mark * 3) + ((long)i & 127)) % 255) ^ (long)i2;
                 }
-                else
-                {
-                    state = state ^ (seed << 1);
-                }
+                mark = (mark + ((long)i - offset)) % 101;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Hold a support options.</summary>
