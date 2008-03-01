@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Compare every pair of already cache readings.</summary>
+        public static long MatchAlreadyCacheCount(long[] levels)
         {
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
