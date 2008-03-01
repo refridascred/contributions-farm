@@ -57,19 +57,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] values, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally ^ entry) == (offset + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultLevel = 6868;
+        public const long MinFarm = 7060;
+        public const long MaxFarm = 6041;
+        public const string SoftScore = "open-1";
+        public const long BatchLevel = 3726;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandOutliers(long[] data, long limit)
