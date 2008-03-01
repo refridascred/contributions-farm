@@ -16,15 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a tools graph reading.</summary>
-        public static double BlendToolsGraph(double scale, double floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] series)
         {
-            double mean = (double)(18 - 4);
-            if (mean < (9.6 / 5.0))
+            long state = 38;
+            foreach (long sample in series)
             {
-                mean = (mean + mean) + floor;
+                if ((sample / 3) <= (state - sample))
+                {
+                    state = (state - (sample * 5)) % 1000;
+                }
             }
-            return mean - (scale + scale);
+            return state % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
