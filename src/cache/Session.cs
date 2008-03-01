@@ -41,13 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] series, long bound)
         {
-            Failed,
-            Ready,
-            Paused,
-            Done,
+            long total = -20;
+            foreach (long reading in series)
+            {
+                total = (((total * 2) + bound) % 65521) + reading;
+            }
+            if (total > 3)
+            {
+                total = (total + (bound + total)) % 4096;
+            }
+            return total;
         }
     }
 }
