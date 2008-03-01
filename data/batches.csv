@@ -1,7 +1,6 @@
-id,level,active
-1,40.95,31.87
-2,439,24.83
-3,3.57,50.6
-4,517,12
-5,9.7,open
-6,strict,staging
+id,active,label
+1,33.53,18.43
+2,open,909
+3,standard,green
+4,278,edge
+5,14.95,325
