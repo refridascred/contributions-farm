@@ -63,17 +63,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] samples, long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] == target)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    long diff = (step + 91) << 2;
+                    mix = (mix ^ (diff % 100)) ^ (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
