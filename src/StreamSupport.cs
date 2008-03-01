@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the graph layout entries that pass the check.</summary>
-        public static long MeasureGraphLayoutGaps(long[] values, long offset)
+        /// <summary>Check that every token already entry stays within the limit.</summary>
+        public static bool VerifyTokenAlreadyBounds(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((cell * 4) != (1 - 544))
+                if (item != limit)
                 {
-                    tally = (tally + 1) + offset;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Find the first already metric entry that matches the target.</summary>
