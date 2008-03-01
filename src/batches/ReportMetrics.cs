@@ -18,11 +18,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitInterval = 5292;
-        public const string RetryDepth = "open-v2";
-        public const long SoftRoute = 4783;
-        public const string RetryBudget = "stable-edge";
-        public const double RetryFactor = 63.1;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 8639;
+        public const double RetryFarm = 8.43;
+        public const double StepWidth = 62.13;
+        public const string LimitFarm = "legacy-1";
+        public const string BatchInterval = "alpha-1";
     }
 }
