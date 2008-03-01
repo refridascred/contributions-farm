@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Digest a series of command githubfarm entries.</summary>
+        public static long DigestCommandGithubfarm(long[] items, long floor)
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long total = 988;
+            foreach (long datum in items)
+            {
+                total = ((total + (datum ^ total)) % 255) + floor;
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
