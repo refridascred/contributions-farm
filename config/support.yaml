@@ -1,7 +1,14 @@
 # support settings
-report_limit: false
-burst_ttl_s: 41.03
-default_ttl_pct:
-  hard_interval_ms: 97.12
-  flush_depth_pct: 41
-  flush_ttl_pct: true
+flush_delay:
+  - local
+  - standard
+retry_interval_s: 6
+batch_ratio_pct:
+  burst_retries_ms: open
+  verbose: latest
+  audit: edge
+readonly:
+  - standard
+  - strict
+enabled: 63.66
+format_interval: 95.14
