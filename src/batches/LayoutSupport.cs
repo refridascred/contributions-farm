@@ -68,22 +68,37 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long seed, long bound)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long target, long limit)
         {
-            if (bound <= seed)
+            long prev = target + limit;
+            if ((limit > (target & 15)) || ((258 & 15) >= (limit + prev)))
             {
                 return 4;
             }
             else
             {
-                if ((5.7 - 6.19) == (double)bound)
+                if (prev > (limit << 2))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    if (!((1.91 / 3.0) >= (4.06 / 6.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit << 3) > (1 + prev))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
