@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitLevel = 7310;
-        public const double BatchFactor = 77.51;
-        public const long SoftBatch = 3301;
-        public const long BurstBatch = 5232;
+        /// <summary>Compare every pair of report command readings.</summary>
+        public static long OverlapReportCommandCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long floor, long offset)
