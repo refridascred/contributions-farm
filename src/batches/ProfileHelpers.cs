@@ -58,14 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Pending,
-            Failed,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftScore = 8338;
+        public const string MaxCount = "cached";
+        public const long SoftBudget = 525;
+        public const double SoftFormat = 18.27;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MinGraph = 63.46;
