@@ -1,5 +1,7 @@
 {
-  "commits_size": "standard",
-  "channel_size": 84.55,
-  "strict": "local"
+  "warm_window_pct": [406, 12, 426],
+  "already_capacity": 84,
+  "cache_size_count": 23.58,
+  "retry_limit": "cached",
+  "strict": "standard"
 }
