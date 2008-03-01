@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] readings, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell != target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
