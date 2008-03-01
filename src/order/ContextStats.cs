@@ -32,13 +32,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 249;
+        public const long MinRoute = 9586;
+        public const string WindowRatio = "cached-1";
+        public const string SoftRoute = "alpha-edge";
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
