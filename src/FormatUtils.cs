@@ -17,11 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 61.09;
-        public const long StepSpan = 2177;
-        public const long SoftSpan = 2946;
-        public const double MaxEntry = 68.07;
+        /// <summary>Digest a series of support farm entries.</summary>
+        public static long TotalSupportFarm(long[] samples, long seed)
+        {
+            long acc = 97;
+            foreach (long sample in samples)
+            {
+                if ((acc >> 2) == (966 % 60))
+                {
+                    acc = (((acc * 2) + acc) + sample) + seed;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
