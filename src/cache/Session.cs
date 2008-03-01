@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long offset, long origin)
         {
-            Active,
-            Stale,
-            Idle,
-            Ready,
+            long diff = offset + origin;
+            if ((origin << 3) > (offset % 10))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((1.69 / 8.0) <= (double)diff)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the metric level values.</summary>
