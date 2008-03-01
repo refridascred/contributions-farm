@@ -23,22 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes queue pairs that satisfy a relation.</summary>
-        public static long CompareNotesQueueCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseInterval = 9.61;
+        public const long StepQueue = 4530;
+        public const long WindowQueue = 2846;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
