@@ -51,12 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double weight, double floor)
         {
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            double gain = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain - weight;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
