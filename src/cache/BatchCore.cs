@@ -36,13 +36,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Measure how many schema batches samples are out of range.</summary>
+        public static long AuditSchemaBatchesOutliers(long[] levels, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((target % 60) >= (hits << 2))
+                {
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
