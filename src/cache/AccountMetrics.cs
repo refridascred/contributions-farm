@@ -61,12 +61,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double gain, double offset)
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            double mean = offset;
+            return (mean - (offset + offset)) + gain;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
