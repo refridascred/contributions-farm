@@ -1,7 +1,18 @@
 {
-  "warm_window_pct": [406, 12, 426],
-  "already_capacity": 84,
-  "cache_size_count": 23.58,
-  "retry_limit": "cached",
-  "strict": "standard"
+  "batch_capacity_s": {
+    "route_limit": 6225,
+    "buffer_capacity": true,
+    "default_ttl_count": true,
+    "idle_threshold_count": "eu-west",
+    "flush_depth_s": 30.18,
+    "max_delay": true
+  },
+  "default_window": "legacy",
+  "soft_size_count": {
+    "hard_capacity_count": "legacy",
+    "sync_interval_s": 2,
+    "hard_delay_ms": true
+  },
+  "flush_window_s": 9888,
+  "dry_run": false
 }
