@@ -53,15 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi metrics figure with a bias.</summary>
-        public static double ScaleContributiMetrics(double scale, double offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] items, long offset)
         {
-            double load = scale / 7.0;
-            if (load > 7.12)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                load = load + (offset - load);
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - (load * 0.1);
+            return flag;
         }
     }
 }
