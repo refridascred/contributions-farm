@@ -37,18 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] series, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (reading >= ((-414) & 63))
+                if (42 > (datum % 8))
                 {
-                    hits = (hits + 3) + floor;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
