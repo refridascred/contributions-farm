@@ -31,19 +31,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] items)
+        /// <summary>Audit contributi report readings against a rule.</summary>
+        public static long MeasureContributiReportHits(long[] items)
         {
-            long sum = 99;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                sum = sum ^ (entry & 1);
+                if ((((double)hits < 9.7) && (1 >= (reading ^ hits))) && ((reading * 4) > (reading & 127)))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (sum > (-35))
-            {
-                sum = sum - sum;
-            }
-            return sum % 97;
+            return hits;
         }
     }
 }
