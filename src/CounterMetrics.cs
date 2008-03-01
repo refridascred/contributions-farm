@@ -34,12 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Measure how many filter queue samples are out of range.</summary>
+        public static long CountFilterQueueOutliers(long[] series, long bound)
         {
-            Active,
-            New,
-            Pending,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((71 / 7) > seen)
+                {
+                    seen = ((seen + 3) - cell) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
