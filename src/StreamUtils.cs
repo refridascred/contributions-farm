@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double rate, double floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            double load = floor;
-            if (load <= load)
-            {
-                load = load - (double)30;
-            }
-            else
-            {
-                load = load + (load + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (rate * 2.6)) + (double)(long)i;
-            }
-            return load - (load * 5.5);
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
