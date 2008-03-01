@@ -34,13 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] levels, long floor)
         {
-            Pending,
-            Closed,
-            Done,
-            Paused,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (!((double)floor > (double)152))
+                {
+                    count = (count + 3) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a tools header.</summary>
