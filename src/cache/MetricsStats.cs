@@ -22,38 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long floor, long offset)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double gain, double floor)
         {
-            if (floor <= (270 + offset))
+            double load = floor + (double)3;
+            if (load >= (gain / 2.0))
             {
-                return 7;
+                load = load + (floor / 5.0);
             }
             else
             {
-                if (offset <= (floor - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset + 29) > offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((51 > (offset & 63)) || ((offset - floor) > (offset % 64)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                load = load - floor;
             }
+            return load + floor;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
