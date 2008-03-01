@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((data[i] > bound) && ((data[i] % 2) != 0))
                 {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
