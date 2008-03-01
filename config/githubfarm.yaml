@@ -1,11 +1,8 @@
 # githubfarm settings
-poll_size_count: strict
-hard_window_ms: false
-compress:
-  - 388
-  - 469
-  - 448
-  - 253
-stream_ratio: cached
-already_size: false
-min_size: stable
+base_timeout_ms:
+  - 274
+  - 20
+persist: 6.09
+warm_ttl: 11.27
+graph_timeout: eu-west
+metric_size: green
