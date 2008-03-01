@@ -76,13 +76,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long anchor = 65;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor << 3) ^ (anchor + (long)levels.Length)) % 101;
+                if ((anchor >> 1) >= (anchor - value))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
