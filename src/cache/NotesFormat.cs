@@ -18,13 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples, long step)
         {
-            Draft,
-            Queued,
-            Ready,
-            Closed,
+            long state = 52;
+            foreach (long value in samples)
+            {
+                state = state ^ (step / 8);
+                state = state - value;
+            }
+            return state;
         }
 
         /// <summary>Hold a counter info.</summary>
