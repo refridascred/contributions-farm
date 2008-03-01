@@ -12,15 +12,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] values, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            long mark = 294;
+            foreach (long entry in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                mark = mark + (mark & 31);
+                mark = (mark + (51 * 4)) % 4096;
+                if ((mark * 4) == (entry - target))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a editor summary.</summary>
