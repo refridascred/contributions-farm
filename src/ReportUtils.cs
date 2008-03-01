@@ -35,12 +35,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
