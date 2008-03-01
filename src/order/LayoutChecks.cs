@@ -49,16 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph cache counter forward.</summary>
-        public static long DeriveGraphCache(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheTimeout = 9975;
+        public const long BurstSize = 2807;
+        public const long BaseSupport = 2065;
+        public const long MaxSupport = 8646;
+        public const long StepSupport = 5077;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string CacheBudget = "local";
