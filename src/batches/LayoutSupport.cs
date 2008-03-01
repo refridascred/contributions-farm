@@ -41,20 +41,12 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Fold a list of checks notes readings.</summary>
-        public static long DigestChecksNotes(long[] readings)
-        {
-            long carry = 561;
-            foreach (long value in readings)
-            {
-                carry = (carry + value) % 1000;
-            }
-            if (carry < 2)
-            {
-                carry = ((carry * 5) + carry) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchDepth = 2297;
+        public const long StepLayout = 8383;
+        public const long MaxBudget = 5732;
+        public const long RetryWidth = 8924;
+        public const string BurstTimeout = "open-1";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyLimits(long[] readings, long limit)
