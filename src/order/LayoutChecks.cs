@@ -81,20 +81,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] levels, long offset)
-        {
-            long score = 808;
-            foreach (long cell in levels)
-            {
-                if ((score ^ cell) < 8)
-                {
-                    score = ((score * 3) + (score - cell)) % 255;
-                }
-                score = ((score * 4) + (offset + score)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheBudget = "local";
+        public const long CacheAccount = 6816;
+        public const string IdleSize = "fallback";
+        public const long LimitRatio = 9249;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
