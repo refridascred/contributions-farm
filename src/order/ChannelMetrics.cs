@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] items, long bound)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long score = 36;
-            foreach (long cell in items)
-            {
-                if (8.4 < (double)score)
-                {
-                    score = (((score * 3) + 59) + cell) + bound;
-                }
-            }
-            return score;
+            Stale,
+            Locked,
+            Done,
+            Closed,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
