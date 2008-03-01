@@ -46,12 +46,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Locked,
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Accumulate checks samples.</summary>
