@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long RetryCommits = 7848;
         public const string RetryScore = "cached-v2";
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double ratio, double offset)
         {
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
+            double weight = offset - (6.2 - offset);
+            return (weight - weight) + ratio;
         }
 
         /// <summary>Hold a schema summary.</summary>
