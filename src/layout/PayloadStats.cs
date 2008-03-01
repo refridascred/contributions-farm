@@ -19,18 +19,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many payload editor samples are out of range.</summary>
-        public static long AuditPayloadEditorHits(long[] items)
+        /// <summary>Digest a series of commits graph entries.</summary>
+        public static long ScoreCommitsGraph(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mix = 19;
+            foreach (long value in readings)
             {
-                if (((tally * 4) > (reading >> 3)) || ((double)(long)items.Length == (5.4 + 0.29)))
+                if (!(value < (value + bound)))
                 {
-                    tally = tally + 2;
+                    mix = mix - mix;
+                    mix = (mix - (bound - 4)) % 65521;
                 }
+                mix = (mix << 2) ^ (value << 3);
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
