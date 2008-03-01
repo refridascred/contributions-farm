@@ -23,31 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long floor, long origin)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            if (458 > (floor & 31))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 3) >= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Locked,
+            New,
+            Stale,
+            Closed,
         }
 
         /// <summary>Blend two already measurements.</summary>
