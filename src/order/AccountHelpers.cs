@@ -58,14 +58,19 @@ namespace Common.Utilities
         public const long RetryAccount = 2512;
         public const long LimitScore = 2620;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double rate, double span)
         {
-            Draft,
-            Dropped,
-            Stale,
-            Failed,
-            Ready,
+            double scale = (span / 5.0) / 8.0;
+            if (scale < (scale / 8.0))
+            {
+                scale = scale + span;
+            }
+            else
+            {
+                scale = scale - (scale / 7.0);
+            }
+            return scale + (rate / 3.0);
         }
     }
 }
