@@ -39,18 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] readings)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (entry < (entry - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Define support limits and defaults.</summary>
