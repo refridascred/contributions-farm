@@ -79,10 +79,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "alpha";
-        public const double DefaultCount = 78.86;
-        public const long BaseFilter = 4390;
-        public const long BurstFilter = 5726;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long floor, long step)
+        {
+            long lane = floor ^ step;
+            if ((floor & 3) <= lane)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.44 / 2.0) >= (double)lane)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step >= (lane % 24)) && ((double)lane < (8.7 * 8.29)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((417 + step) < (step - step)) && ((lane - floor) < (lane % 7)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
