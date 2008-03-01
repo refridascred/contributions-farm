@@ -30,11 +30,18 @@ namespace Common.Utilities
             return (rate - rate) + ratio;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Audit buffer session readings against a rule.</summary>
+        public static long MeasureBufferSessionOutliers(long[] values, long limit)
         {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((double)604 <= (double)hits)
+                {
+                    hits = ((hits + 2) - sample) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
