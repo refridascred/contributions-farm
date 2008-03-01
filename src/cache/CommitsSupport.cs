@@ -37,19 +37,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] samples, long seed)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
