@@ -23,11 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double ratio, double bias)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
-            double rate = bias;
-            return (rate - rate) + ratio;
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit buffer session readings against a rule.</summary>
