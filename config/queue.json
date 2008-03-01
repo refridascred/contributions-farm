@@ -1,20 +1,7 @@
 {
-  "max_delay_count": 250,
-  "audit": {
-    "stats_window": 28.07,
-    "editor_ttl": "latest",
-    "profile_delay": {
-      "persist": "open",
-      "cache_delay_s": 46.47,
-      "enabled": ["green", "green", "staging", "latest"],
-      "already_threshold": 500,
-      "base_size_count": 23.73
-    },
-    "max_depth": "edge",
-    "sync_ttl": "stable",
-    "window_capacity": 500
-  },
-  "enabled": "standard",
-  "editor_size": ["edge", "open", "latest", "stable"],
-  "tools_threshold": 5667
+  "compress": 2531,
+  "enabled": [261, 46],
+  "verbose": [89, 43],
+  "burst_ttl_pct": 23.12,
+  "min_delay_pct": 500
 }
