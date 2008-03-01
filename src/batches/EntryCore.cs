@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] items, long limit)
         {
-            Stale,
-            Retry,
-            Failed,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((long)items.Length + 3) != (reading ^ tally))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
