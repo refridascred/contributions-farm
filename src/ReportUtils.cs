@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitRatio = 68.27;
+        public const double RetryCount = 91.67;
+        public const long MinSession = 3332;
+        public const long BaseSession = 9651;
+        public const string SoftFactor = "legacy-1";
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
