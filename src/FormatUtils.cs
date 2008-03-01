@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a stream commits counter forward.</summary>
-        public static long RollStreamCommits(long target)
+        /// <summary>Count the channel account entries that pass the check.</summary>
+        public static long TallyChannelAccountGaps(long[] series, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                anchor = (anchor - (target - target)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((1.0 + 5.43) <= (double)sample)
+                {
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Digest a series of support farm entries.</summary>
