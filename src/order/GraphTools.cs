@@ -61,13 +61,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Synced,
-            Pending,
-            Failed,
-            Active,
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
