@@ -36,20 +36,10 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-v2";
         public const double HardProfile = 93.73;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultCount = 1561;
+        public const long MaxSpan = 185;
+        public const string StepFilter = "cached-1";
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
