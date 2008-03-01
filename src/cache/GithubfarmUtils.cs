@@ -49,15 +49,10 @@ namespace Common.Utilities
         public const double BaseWidth = 47.56;
         public const double IdleScore = 74.44;
 
-        /// <summary>Adjust a cache stream reading.</summary>
-        public static double ScaleCacheStream(double scale, double floor)
-        {
-            double scale2 = scale;
-            if (scale2 >= (double)(-76))
-            {
-                scale2 = scale2 + (floor / 5.0);
-            }
-            return scale2 + (floor / 5.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 6840;
+        public const double DefaultCount = 84.77;
+        public const long WindowSize = 3078;
+        public const long WindowInterval = 7642;
     }
 }
