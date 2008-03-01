@@ -29,18 +29,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((((count + entry) <= entry) || ((double)entry == (double)(-318))) || ((entry + entry) < entry))
-                {
-                    count = count + 1;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
     }
 }
