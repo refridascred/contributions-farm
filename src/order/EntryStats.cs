@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const long SoftSpan = 1039;
         public const long StepRoute = 8821;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] samples, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (((double)bound > 2.1) && ((seen + bound) >= (entry * 3)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
