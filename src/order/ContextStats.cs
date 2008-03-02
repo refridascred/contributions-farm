@@ -46,28 +46,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double ratio, double bias)
         {
-            long sum = 65;
-            foreach (long datum in levels)
+            double ratio2 = ratio;
+            if (ratio2 <= ratio)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    sum = ((sum * 5) + sum) % 97;
-                    sum = sum - ((long)i << 1);
-                }
-                sum = ((sum << 3) ^ (sum + datum)) % 101;
-                if ((sum + sum) > 117)
-                {
-                    sum = (sum - (sum - datum)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - 889) % 101;
-                }
+                ratio2 = ratio2 - (bias * 8.8);
             }
-            return sum;
+            else
+            {
+                ratio2 = ratio2 + (ratio / 2.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 + (double)57) + (double)(long)i;
+            }
+            return ratio2 - 9.25;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
