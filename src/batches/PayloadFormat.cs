@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long RetryCommits = 7848;
         public const string RetryScore = "cached-v2";
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] items)
         {
-            New,
-            Draft,
-            Dropped,
-            Failed,
-            Pending,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((double)tally == (5.0 / 2.0))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel level values.</summary>
