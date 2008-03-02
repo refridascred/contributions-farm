@@ -55,13 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double scale, double bias)
         {
-            Retry,
-            Done,
-            Failed,
-            Idle,
+            double ratio = bias;
+            if (ratio < bias)
+            {
+                ratio = ratio - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (bias / 7.0)) + (double)(long)i;
+            }
+            return ratio - (bias * 6.65);
         }
     }
 }
