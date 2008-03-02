@@ -35,22 +35,19 @@ namespace Common.Utilities
         public const double BatchBudget = 40.98;
         public const long IdleBudget = 2778;
 
-        /// <summary>Fold a list of route metric readings.</summary>
-        public static long CombineRouteMetric(long[] readings)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            long sum = 1;
-            foreach (long item in readings)
+            double rate = 4.84 + (weight - weight);
+            if (rate < (double)993)
             {
-                if (((9.7 - 8.0) > (double)item) || ((5.5 + 6.0) <= (double)item))
-                {
-                    sum = ((sum << 3) ^ item) % 101;
-                }
-                else
-                {
-                    sum = (sum - (9 - item)) % 65521;
-                }
+                rate = (rate + (weight / 4.0)) - offset;
             }
-            return sum % 65521;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (2.0 + rate)) + (double)(long)i;
+            }
+            return rate - (double)584;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
