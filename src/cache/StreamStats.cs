@@ -20,18 +20,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long score = 23;
-            foreach (long datum in readings)
-            {
-                if (((38 + datum) <= 6) || (datum > 600))
-                {
-                    score = score + (score + 462);
-                }
-            }
-            return score;
+            Closed,
+            Pending,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
