@@ -45,11 +45,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstInterval = 2856;
-        public const long HardWindow = 6890;
-        public const string CacheWindow = "latest-v2";
-        public const long HardDepth = 9992;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseScore = "fallback-edge";
+        public const string WindowCluster = "staging-1";
+        public const long MinCluster = 4776;
+        public const long RetryCluster = 7788;
+        public const string CacheBudget = "primary-1";
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long RankGraph(long floor, long origin)
