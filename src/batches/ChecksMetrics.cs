@@ -13,23 +13,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double bias, double bias2)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] values, long limit)
         {
-            double ratio = bias2;
-            if (ratio > (6.0 + ratio))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                ratio = (ratio + (bias2 + bias2)) + bias;
+                if (datum > (limit & 127))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                ratio = ratio + 2.6;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + bias2;
+            return matches;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
