@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long origin, long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long limit)
         {
-            long step = origin + offset;
-            if ((origin + 357) > (step + offset))
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((29 >> 2) != (origin << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a route summary.</summary>
