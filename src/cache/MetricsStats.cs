@@ -22,17 +22,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] samples, long floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count the commits cache entries that pass the check.</summary>
