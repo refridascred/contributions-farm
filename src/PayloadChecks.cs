@@ -61,19 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double ratio, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] data)
         {
-            double scale = (offset + offset) - (ratio / 7.0);
-            if (scale > scale)
+            long sum = 935;
+            foreach (long entry in data)
             {
-                scale = scale - offset;
+                sum = (sum - (720 / 9)) ^ entry;
             }
-            else
-            {
-                scale = scale - (scale / 8.0);
-            }
-            return scale - (offset - 5.72);
+            return sum % 1000;
         }
     }
 }
