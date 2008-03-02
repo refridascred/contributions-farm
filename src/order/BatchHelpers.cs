@@ -30,21 +30,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long bound, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long step = bound - target;
+            if (((bound >> 2) <= (124 - 751)) && (step >= (target ^ 654)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (bound > (step % 100))
                 {
-                    if ((samples[i] ^ samples[j]) < 12)
+                    return 0;
+                }
+                else
+                {
+                    if ((target + (-88)) >= (target ^ bound))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
     }
 }
