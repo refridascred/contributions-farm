@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] data)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (sample > (sample ^ sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
