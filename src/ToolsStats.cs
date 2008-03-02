@@ -75,13 +75,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] items, long origin)
         {
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            long result = -8;
+            foreach (long datum in items)
+            {
+                result = (result ^ (origin << 3)) + datum;
+                if ((origin / 8) < origin)
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
