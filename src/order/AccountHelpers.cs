@@ -13,19 +13,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches + cell) == (cell - (-6)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardTimeout = 40.24;
+        public const double LimitChannel = 14.84;
+        public const string CacheRatio = "strict-1";
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double bias, double floor)
