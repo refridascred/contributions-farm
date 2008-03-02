@@ -48,10 +48,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardLevel = 1807;
-        public const string BurstSize = "stable-1";
-        public const long BatchRatio = 1506;
-        public const long RetrySchema = 6890;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+        }
     }
 }
