@@ -16,12 +16,16 @@ namespace Common.Utilities
             return ratio + 7.0;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 8707;
-        public const long WindowDepth = 1067;
-        public const long BurstSchema = 1171;
-        public const long RetrySchema = 1426;
-        public const long IdleRatio = 4206;
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double scale, double bias)
+        {
+            double bias2 = 1.0 - scale;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = ((bias2 - (double)661) + (double)(long)i) - bias;
+            }
+            return bias2 - scale;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LookupReportIndex(long[] data, long origin)
