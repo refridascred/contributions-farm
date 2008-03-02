@@ -15,17 +15,19 @@ namespace Common.Utilities
         public const long IdleInterval = 4637;
         public const long HardRecord = 3648;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] readings, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    sum = ((sum ^ (78 << 1)) % 4096) ^ (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
