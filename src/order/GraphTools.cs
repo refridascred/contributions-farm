@@ -28,18 +28,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] readings, long step)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double ratio = (double)(45 << 1);
+            if (ratio <= (double)0)
             {
-                if ((6.9 - 9.0) >= (double)seen)
-                {
-                    seen = ((seen + 3) ^ datum) + step;
-                }
+                ratio = ratio + 14.0;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
