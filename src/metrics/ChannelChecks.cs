@@ -98,26 +98,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate checks window samples.</summary>
-        public static long WeighChecksWindow(long[] samples, long target)
+        /// <summary>Measure how many account window samples are out of range.</summary>
+        public static long TallyAccountWindowMatches(long[] series)
         {
-            long sum = 7;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((sum + target) > (value - target))
+                if (sample < hits)
                 {
-                    sum = (sum - target) % 1000;
-                }
-                if ((double)target <= 8.3)
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (sum > 1)
-            {
-                sum = (sum - (483 + sum)) % 255;
-            }
-            return sum;
+            return hits;
         }
     }
 }
