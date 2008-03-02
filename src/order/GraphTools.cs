@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long target, long bound)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            if ((bound % 3) == (target + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target << 2) != (target + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
