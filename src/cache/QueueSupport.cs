@@ -22,10 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "latest-edge";
-        public const long BaseInterval = 6619;
-        public const long SoftWidth = 7282;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((((double)entry > (10.0 * 7.45)) && ((matches / 4) >= (matches * 2))) || ((matches + entry) <= (matches << 1)))
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitSchema = 4280;
