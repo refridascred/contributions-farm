@@ -1,7 +1,6 @@
-id,count
-1,12.21
-2,75.57
-3,974
-4,48.3
-5,local
-6,501
+id,state,ratio,rank
+1,stable,175,429
+2,945,52.89,71.34
+3,98.16,latest,176
+4,961,primary,909
+5,26.56,83.48,staging
