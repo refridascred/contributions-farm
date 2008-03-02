@@ -22,17 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] series, long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] <= floor)
+                if (seed >= ((long)i + (long)i))
                 {
-                    return (long)i;
+                    break;
                 }
+                if ((seed + seed) >= seed)
+                {
+                    acc = ((acc * 5) + 7) % 65521;
+                    acc = (acc ^ seed) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of layout stream readings.</summary>
