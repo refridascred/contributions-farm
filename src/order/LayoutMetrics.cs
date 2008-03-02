@@ -20,11 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "staging-1";
-        public const long LimitProfile = 5380;
-        public const long MinProfile = 2768;
-        public const string HardBudget = "staging-edge";
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long bound, long bound2)
+        {
+            long diff = bound ^ bound2;
+            if (!((bound % 8) <= (545 ^ bound2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((diff - diff) >= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double BlendGraph(double ratio, double offset)
