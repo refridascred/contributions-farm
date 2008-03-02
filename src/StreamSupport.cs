@@ -45,9 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstTimeout = 5371;
-        public const string CacheGraph = "open-v2";
-        public const string CacheBudget = "legacy";
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample - 3) > (sample - sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
