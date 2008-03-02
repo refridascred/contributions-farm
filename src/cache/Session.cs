@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define window limits and defaults.</summary>
