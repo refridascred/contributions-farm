@@ -24,19 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] data, long origin)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Queued,
+            Ready,
+            Dropped,
+            Locked,
         }
     }
 }
