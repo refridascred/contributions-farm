@@ -57,16 +57,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = sum + (sum + sum);
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Failed,
+            Active,
+            Draft,
         }
     }
 }
