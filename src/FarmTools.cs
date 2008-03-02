@@ -21,18 +21,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] readings, long seed)
+        /// <summary>Match up payload notes samples.</summary>
+        public static long PairPayloadNotesCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)seed < (11.0 + 1.0)) || ((830 + 935) >= (70 ^ item)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
