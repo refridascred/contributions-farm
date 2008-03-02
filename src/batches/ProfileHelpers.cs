@@ -23,25 +23,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a metric layout value against two limits.</summary>
-        public static long ClassifyMetricLayout(long target, long offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long gap = target ^ offset;
-            if ((target - target) != (target + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset > (double)gap)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            New,
+            Draft,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a contributi stats.</summary>
