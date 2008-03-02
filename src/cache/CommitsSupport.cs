@@ -55,10 +55,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstRatio = 5362;
-        public const long CacheFactor = 6799;
-        public const long RetryTimeout = 2136;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values)
+        {
+            long mix = 33;
+            foreach (long sample in values)
+            {
+                mix = (mix ^ (9 + sample)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryLimits(long[] items, long origin)
