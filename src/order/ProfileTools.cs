@@ -29,18 +29,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] samples, long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum % 64) < matches))
-                {
-                    matches = (matches + 3) + floor;
-                }
-            }
-            return matches;
+            double bias = 2.92 / 8.0;
+            return ((bias - (double)820) + weight) + floor;
         }
 
         /// <summary>Describe the token state values.</summary>
