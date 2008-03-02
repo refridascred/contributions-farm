@@ -95,12 +95,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Stale,
-            Paused,
+            Dropped,
+            Ready,
+            Failed,
             New,
+            Stale,
         }
 
         /// <summary>Locate a route reading by value.</summary>
