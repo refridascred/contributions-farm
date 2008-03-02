@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Derive the next already payload value from a seed.</summary>
+        public static long SeriesAlreadyPayload(long origin)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = (carry + ((long)i - 5)) + (long)i2;
+                }
+                carry = (carry << 3) ^ ((long)i - carry);
+                carry = (carry ^ ((long)i + (long)i)) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cluster entry.</summary>
