@@ -55,32 +55,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long limit, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] readings, long offset)
         {
-            long cur = limit ^ target;
-            if ((8 & 255) < cur)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target + target) >= (cur % 2)) && ((target >> 2) != (5 << 2)))
+                if (sample < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(cur >= (997 >> 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
