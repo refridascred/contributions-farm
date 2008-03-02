@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public bool Level { get; set; }
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 1407;
+        public const string BaseToken = "fallback-1";
+        public const long BurstToken = 7554;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] samples, long limit)
