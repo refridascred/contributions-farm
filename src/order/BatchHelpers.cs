@@ -24,13 +24,18 @@ namespace Common.Utilities
         public const double BatchSpan = 88.06;
         public const long DefaultOrder = 9819;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            long total = 7;
+            foreach (long sample in items)
+            {
+                if (((double)total == (double)sample) || ((14.0 / 6.0) > (double)total))
+                {
+                    total = ((total * 5) + (4 ^ sample)) % 4096;
+                }
+            }
+            return total;
         }
     }
 }
