@@ -50,39 +50,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long target, long offset)
-        {
-            if (((8.7 + 0.03) >= (double)target) && ((offset & 1) == (offset + offset)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 3) > (target * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset > (target * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((18.0 + 4.0) > (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchInterval = "alpha-1";
+        public const string HardFactor = "alpha-edge";
+        public const long CacheTimeout = 456;
+        public const string WindowFormat = "staging-edge";
+        public const long BatchFormat = 4534;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] items)
