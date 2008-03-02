@@ -43,11 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] samples)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (((5.0 / 6.0) >= (double)cell) && !((double)count <= (20.0 * 2.87)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
