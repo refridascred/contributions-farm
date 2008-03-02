@@ -1,12 +1,6 @@
 # support settings
-poll_depth_s: latest
-stats_timeout: staging
-warm_window_count:
-  entry_delay: false
-  idle_limit:
-    schema_ttl: 60
-    sync_ttl_count: 250
-    format_retries: 37.85
-    idle_interval: false
-    cache_ttl: 45.38
-  retry_interval_pct: 43.52
+flush_size_ms: 9668
+cache_capacity: false
+base_limit_s: 21
+context_ratio: standard
+enabled: 2
