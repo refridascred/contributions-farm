@@ -41,19 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long acc = 351;
-            foreach (long cell in samples)
-            {
-                acc = (acc - (cell - cell)) % 65521;
-            }
-            if (acc < 577)
-            {
-                acc = (acc + acc) % 101;
-            }
-            return acc;
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
