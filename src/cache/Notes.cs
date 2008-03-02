@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a graph buffer figure with a bias.</summary>
-        public static double SmoothGraphBuffer(double bias, double span)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double scale = bias;
-            if (scale <= (double)0)
-            {
-                scale = scale + bias;
-            }
-            else
-            {
-                scale = scale + (double)5;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale + (double)913;
+            Failed,
+            Stale,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
