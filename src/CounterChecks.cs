@@ -36,14 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Locate a context queue reading by value.</summary>
+        public static long LocateContextQueueIndex(long[] series, long floor)
         {
-            Synced,
-            Active,
-            Dropped,
-            Closed,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
