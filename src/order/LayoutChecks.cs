@@ -64,16 +64,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] samples, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 3) + ((long)i ^ 11)) % 101;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
     }
 }
