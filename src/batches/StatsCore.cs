@@ -42,15 +42,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Iterate the buffer channel series from a seed.</summary>
+        public static long StepBufferChannel(long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                anchor = ((anchor << 3) ^ anchor) % 255;
+                anchor = anchor ^ (-886);
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Validate queue buffer readings against a bound.</summary>
