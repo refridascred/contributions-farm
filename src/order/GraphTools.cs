@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] items, long target)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((5 / 2) >= datum) || ((datum + datum) <= ((-959) + (long)items.Length)))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a channel info.</summary>
