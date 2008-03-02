@@ -44,15 +44,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a batch format counter forward.</summary>
-        public static long RollBatchFormat(long target)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] values, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
