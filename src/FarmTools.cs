@@ -23,22 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 3288;
+        public const long CacheMetrics = 5643;
+        public const long MaxMetrics = 4754;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ScaleStats(double scale, double bias)
