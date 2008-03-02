@@ -52,19 +52,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine layout queue values into a single score.</summary>
-        public static long FoldLayoutQueue(long[] items, long seed)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long acc = 8;
-            foreach (long item in items)
-            {
-                acc = ((acc + (seed >> 3)) % 4096) + item;
-            }
-            if (acc > 483)
-            {
-                acc = (acc ^ (986 << 3)) % 65521;
-            }
-            return acc;
+            Ready,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Adjust a batches counter reading.</summary>
