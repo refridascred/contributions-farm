@@ -37,16 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 4) + (result >> 4)) % 97;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two command commits measurements.</summary>
