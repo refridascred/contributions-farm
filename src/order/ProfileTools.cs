@@ -20,11 +20,19 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Check that every stream token entry stays within the limit.</summary>
+        public static bool GuardStreamTokenRange(long[] series, long step)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
