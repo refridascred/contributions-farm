@@ -53,11 +53,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxCount = 153;
-        public const string RetryWidth = "legacy-1";
-        public const string IdleTimeout = "standard-v2";
-        public const double LimitFactor = 72.76;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 2967;
+        public const long WindowContext = 4884;
+        public const double LimitContext = 57.2;
+        public const string IdleInterval = "staging-edge";
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] levels, long step)
