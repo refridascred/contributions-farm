@@ -1,8 +1,4 @@
 # githubfarm settings
-min_delay: staging
-warm_size_ms:
-  - 470
-  - 86
-  - 161
-  - 469
-idle_delay_count: false
+min_timeout: primary
+batch_limit: 4130
+base_threshold: 82.06
