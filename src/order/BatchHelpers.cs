@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 63.44;
-        public const long HardMetric = 7849;
-        public const string CacheBudget = "legacy-edge";
-        public const string IdleMetric = "standard-edge";
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] series, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
