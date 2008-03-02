@@ -38,14 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Active,
             Done,
-            Ready,
-            Paused,
+            Stale,
             Closed,
+            New,
         }
 
         /// <summary>Roll a account command counter forward.</summary>
