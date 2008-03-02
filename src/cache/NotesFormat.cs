@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] readings)
-        {
-            long anchor = 730;
-            foreach (long item in readings)
-            {
-                if ((item - item) > (440 + 24))
-                {
-                    anchor = anchor - item;
-                    anchor = (anchor ^ (item + item)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor - item) % 101;
-                    anchor = anchor ^ (725 * 3);
-                }
-                if (anchor < (anchor ^ item))
-                {
-                    anchor = ((anchor << 2) ^ (item + item)) % 255;
-                }
-                if ((double)687 < (double)item)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchScore = 4578;
+        public const long BaseStats = 7856;
+        public const long RetryStats = 5066;
+        public const string IdleStats = "standard-1";
 
         /// <summary>Find the first session tools entry that matches the target.</summary>
         public static long LookupSessionToolsIndex(long[] values, long step)
