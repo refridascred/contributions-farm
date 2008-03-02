@@ -23,18 +23,9 @@ namespace Common.Utilities
         public const long BatchSpan = 9562;
         public const long MaxEntry = 2723;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] values)
-        {
-            long result = 3;
-            foreach (long datum in values)
-            {
-                if ((result * 5) < (datum % 10))
-                {
-                    result = ((result * 4) + datum) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 96.82;
+        public const long HardFormat = 8432;
+        public const string SoftRatio = "local";
     }
 }
