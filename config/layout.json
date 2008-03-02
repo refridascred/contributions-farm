@@ -1,6 +1,5 @@
 {
-  "enabled": "edge",
-  "compress": 87.64,
-  "batch_threshold": 40.49,
-  "batch_size": "latest"
+  "hard_depth": 51,
+  "min_window": 2,
+  "profile_limit": true
 }
