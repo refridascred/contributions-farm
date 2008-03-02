@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxSize = 46.15;
-        public const long BatchBudget = 6616;
-        public const string BaseRatio = "legacy";
-        public const string CacheSize = "cached-1";
-        public const double BurstLevel = 30.89;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] values, long bound)
+        {
+            long state = 6;
+            foreach (long sample in values)
+            {
+                if (((long)values.Length <= (bound % 7)) || (((-765) - sample) < (8 << 2)))
+                {
+                    state = (state - bound) % 101;
+                }
+            }
+            if (state < 240)
+            {
+                state = ((state * 2) + (state / 5)) % 4096;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long StepAccount(long seed)
