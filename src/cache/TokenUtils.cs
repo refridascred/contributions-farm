@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] levels)
         {
-            Ready,
-            Active,
-            Locked,
-            Retry,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((603 & 127) != (datum + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
