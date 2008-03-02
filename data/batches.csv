@@ -1,6 +1,6 @@
-id,score,rank,count,region
-1,525,blue,61.81,75
-2,14.57,686,blue,79.47
-3,166,34.79,15.51,57.69
-4,fallback,795,985,233
-5,blue,271,stable,25.93
+id,region,token
+1,998,26.52
+2,26.53,primary
+3,890,blue
+4,916,278
+5,blue,206
