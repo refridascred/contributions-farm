@@ -20,19 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] items, long seed)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long total = 915;
-            foreach (long item in items)
-            {
-                total = (total << 2) ^ (item % 16);
-                if ((seed > (78 + total)) || ((item - total) >= (706 + seed)))
-                {
-                    total = (total * 3) + (total + seed);
-                }
-            }
-            return total % 4096;
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a record reading by value.</summary>
