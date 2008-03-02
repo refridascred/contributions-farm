@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long origin, long offset)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            if ((6.0 + 6.82) > (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin << 3) > (offset << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
