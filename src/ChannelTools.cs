@@ -13,10 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryContext = "latest-v2";
-        public const double IdleRatio = 38.28;
-        public const long MinContext = 2887;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 5834;
