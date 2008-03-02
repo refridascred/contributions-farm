@@ -13,12 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
             Stale,
-            Active,
-            Paused,
+            Done,
+            Retry,
             New,
         }
 
