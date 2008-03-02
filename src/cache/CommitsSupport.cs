@@ -26,13 +26,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Active,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 6016;
+        public const long BurstCounter = 7133;
+        public const long MinFactor = 8889;
+        public const long LimitCounter = 7295;
+        public const string BatchDepth = "staging-edge";
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaLimits(long[] data, long bound)
