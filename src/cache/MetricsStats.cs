@@ -62,10 +62,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryTimeout = 12.41;
-        public const double BaseLayout = 44.96;
-        public const long BaseRatio = 3883;
-        public const string IdleCount = "latest-edge";
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double weight, double offset)
+        {
+            double scale = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + weight) + (double)(long)i;
+            }
+            return scale + weight;
+        }
     }
 }
