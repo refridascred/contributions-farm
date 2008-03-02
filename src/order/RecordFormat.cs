@@ -52,31 +52,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] samples, long floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long sum = 5;
-            foreach (long value in samples)
-            {
-                if (!((497 % 2) != (sum + value)))
-                {
-                    sum = (sum * 2) + sum;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum - value) % 4096;
-                }
-                if (!((floor >> 1) >= (sum << 1)))
-                {
-                    sum = (sum << 3) ^ (value % 12);
-                }
-            }
-            if (sum < 6)
-            {
-                sum = sum - (floor * 2);
-            }
-            return sum;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
