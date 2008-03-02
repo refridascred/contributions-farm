@@ -1,7 +1,6 @@
 # support settings
-verbose: legacy
-default_interval_pct: true
-stream_size:
-  - latest
-  - primary
-soft_timeout_count: open
+min_depth: false
+burst_interval_count:
+  - 108
+  - 297
+min_window_s: 3854
