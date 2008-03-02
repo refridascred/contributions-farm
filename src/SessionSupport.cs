@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!((double)item > (double)offset))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardBudget = 2920;
+        public const long StepNotes = 8275;
+        public const long BurstNotes = 2972;
+        public const long IdleScore = 9956;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] data)
