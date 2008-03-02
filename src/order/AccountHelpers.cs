@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double ratio, double floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            double drift = (double)(566 - 529);
-            if (drift >= floor)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + floor) - ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)513) + (double)(long)i;
-            }
-            return drift + floor;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
