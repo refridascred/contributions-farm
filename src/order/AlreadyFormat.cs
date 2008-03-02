@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 8428;
-        public const string BatchCounter = "strict";
-        public const long LimitRatio = 5672;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "latest-1";
+        public const double BurstSpan = 11.37;
+        public const string CacheTimeout = "stable";
+        public const long BurstTimeout = 6802;
+        public const string MaxCache = "alpha-1";
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryHits(long[] items)
