@@ -23,17 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state ^ (origin + state)) % 101;
-                state = (state ^ (origin / 3)) % 1000;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Locked,
+            Retry,
+            New,
+            Active,
+            Synced,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
