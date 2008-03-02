@@ -16,21 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Rank layout support input into a small class.</summary>
+        public static long SortLayoutSupport(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((3.16 + 1.8) < (double)floor)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step - step) < (floor % 24))
                 {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
