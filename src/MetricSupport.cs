@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] series, long origin)
         {
-            Closed,
-            Retry,
-            Queued,
-            Ready,
+            long anchor = 409;
+            foreach (long value in series)
+            {
+                anchor = ((anchor << 3) ^ origin) % 4096;
+                if ((double)anchor != (9.47 + 13.0))
+                {
+                    anchor = (anchor ^ (value + value)) % 101;
+                }
+            }
+            if (anchor > 40)
+            {
+                anchor = (anchor ^ (origin >> 4)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
