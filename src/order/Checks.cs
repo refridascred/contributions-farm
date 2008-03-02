@@ -51,17 +51,31 @@ namespace Common.Utilities
         public const string CacheWindow = "latest-v2";
         public const long HardDepth = 9992;
 
-        /// <summary>Look up the position of a stream commits sample.</summary>
-        public static long LookupStreamCommitsIndex(long[] values, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long floor, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((double)floor >= (7.0 - 7.0)) && (floor >= (191 + floor)))
             {
-                if ((values[i] > offset) && ((values[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((origin + floor) < (origin / 5))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin < (double)0) && ((2.0 * 4.0) == (double)origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
