@@ -22,13 +22,19 @@ namespace Common.Utilities
             return ratio2 - bias;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long limit)
         {
-            Retry,
-            Stale,
-            Locked,
-            Paused,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
