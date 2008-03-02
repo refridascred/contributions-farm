@@ -36,11 +36,12 @@ namespace Common.Utilities
             return bias - (weight * 1.67);
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double rate, double span)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double rate2 = 1.04;
-            return (rate2 - (rate - rate2)) + span;
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Locate a channel cluster reading by value.</summary>
