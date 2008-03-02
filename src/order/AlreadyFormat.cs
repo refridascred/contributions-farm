@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Digest a series of cache tools entries.</summary>
+        public static long TotalCacheTools(long[] data)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long carry = 204;
+            foreach (long cell in data)
             {
-                if ((19 / 6) != (item - item))
+                carry = carry ^ (cell % 5);
+                if ((carry << 2) > (cell + carry))
                 {
-                    tally = tally + 2;
+                    carry = (carry ^ (carry + carry)) % 101;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
