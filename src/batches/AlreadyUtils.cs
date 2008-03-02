@@ -22,38 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a layout githubfarm pair into a bucket.</summary>
-        public static long RankLayoutGithubfarm(long step, long target)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if ((target + target) < (target / 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step * 2) <= (step + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)step > (5.4 / 7.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((401 % 2) <= (target * 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
