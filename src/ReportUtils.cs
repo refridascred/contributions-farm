@@ -42,18 +42,22 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (!!((44 / 9) > (hits * 4)))
+                if (sample >= (count / 5))
                 {
-                    hits = (hits + 3) ^ entry;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank metric cache input into a small class.</summary>
