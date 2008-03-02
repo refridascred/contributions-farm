@@ -27,11 +27,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleRatio = 3675;
-        public const long BurstCounter = 2967;
-        public const string BatchCounter = "primary";
-        public const string SoftInterval = "open-edge";
+        /// <summary>Roll a tools buffer counter forward.</summary>
+        public static long IterateToolsBuffer(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((state % 7) > (floor % 5))
+                {
+                    state = (state << 3) ^ (floor + (long)i);
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long IterateSchema(long limit)
