@@ -71,12 +71,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinCount = 8777;
-        public const long LimitSize = 6914;
-        public const long WindowDepth = 2500;
-        public const double DefaultDepth = 68.24;
-        public const long HardContext = 2278;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] readings, long floor)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long ScoreAlready(long[] items, long limit)
