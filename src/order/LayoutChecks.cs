@@ -47,11 +47,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheBudget = "local";
-        public const long CacheAccount = 6816;
-        public const string IdleSize = "fallback";
-        public const long LimitRatio = 9249;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] values, long limit)
+        {
+            long sum = 267;
+            foreach (long entry in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    sum = (((sum << 3) ^ sum) % 1000) - (long)i;
+                }
+                sum = sum ^ (entry * 3);
+            }
+            if (sum > 6)
+            {
+                sum = (sum ^ (limit << 2)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string WindowLevel = "primary-1";
