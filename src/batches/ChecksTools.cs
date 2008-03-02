@@ -23,21 +23,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Combine token queue values into a single score.</summary>
+        public static long TallyTokenQueue(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 67;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)limit > (double)carry)
                 {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry ^ (limit >> 3)) % 255) ^ cell;
                 }
             }
-            return tally;
+            if (carry > 7)
+            {
+                carry = (carry ^ 9) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Blend two profile tools measurements.</summary>
