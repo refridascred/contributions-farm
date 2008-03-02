@@ -33,19 +33,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardTimeout = "open-edge";
+        public const double HardOrder = 16.81;
+        public const long IdleLevel = 4492;
     }
 }
