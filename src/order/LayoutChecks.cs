@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long bound, long offset)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            if (!(10.0 <= (double)bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)offset < (5.0 * 9.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next metric value.</summary>
