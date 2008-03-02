@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 7298;
-        public const long LimitFilter = 8706;
-        public const long CacheTimeout = 3746;
-        public const long RetryCount = 5821;
-        public const double SoftInterval = 79.86;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long OverlapRouteCount(long[] levels)
