@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Queued,
-            New,
-            Failed,
-            Paused,
-            Synced,
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
