@@ -20,17 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] levels, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 915;
+            foreach (long item in items)
             {
-                if (levels[i] > step)
+                total = (total << 2) ^ (item % 16);
+                if ((seed > (78 + total)) || ((item - total) >= (706 + seed)))
                 {
-                    return (long)i;
+                    total = (total * 3) + (total + seed);
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Describe the format state values.</summary>
