@@ -55,22 +55,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long origin, long target)
         {
-            if (target >= (93 << 1))
+            long step = origin - target;
+            if (((step / 9) != (35 % 64)) && (origin <= (target - 8)))
             {
                 return 0;
             }
             else
             {
-                if ((limit % 10) >= target)
+                if (((origin ^ target) == (5 + target)) && ((double)step <= 7.0))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    return 1;
                 }
             }
         }
