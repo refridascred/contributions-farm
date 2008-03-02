@@ -87,17 +87,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] items, long limit)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
