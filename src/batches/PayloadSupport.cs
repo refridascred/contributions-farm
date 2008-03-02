@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheBudget = 7451;
-        public const long MinDepth = 2591;
-        public const long StepSchema = 3187;
-        public const string MinRatio = "strict-v2";
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double weight, double bias)
+        {
+            double mean = bias;
+            if (mean <= (6.7 / 9.0))
+            {
+                mean = mean + 0.4;
+            }
+            else
+            {
+                mean = mean - (weight / 8.0);
+            }
+            return mean - (4.0 - 0.8);
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
