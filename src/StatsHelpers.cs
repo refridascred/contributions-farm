@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
