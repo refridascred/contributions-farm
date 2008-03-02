@@ -14,19 +14,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] items, long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mark = -414;
-            foreach (long datum in items)
-            {
-                mark = (mark + (datum / 3)) % 97;
-                if ((double)datum > 0.1)
-                {
-                    mark = ((mark * 4) + (datum + seed)) % 255;
-                }
-            }
-            return mark;
+            Dropped,
+            Done,
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
