@@ -62,19 +62,13 @@ namespace Common.Utilities
             return mean - (6.0 + scale);
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] items, long origin)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
