@@ -22,11 +22,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two stats contributi measurements.</summary>
-        public static double ScaleStatsContributi(double bias, double span)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] items)
         {
-            double load = span / 5.0;
-            return load + (bias + 3.1);
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!!((count << 2) < (count - 317)))
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the account status values.</summary>
