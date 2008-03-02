@@ -36,10 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryRatio = 7978;
-        public const long MaxQueue = 4995;
-        public const string IdleLevel = "alpha-v2";
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (count < (count << 2))
+                {
+                    count = ((count + 3) + datum) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double SoftProfile = 67.85;
