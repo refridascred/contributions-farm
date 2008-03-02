@@ -46,15 +46,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Retry,
-            Active,
-            Pending,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 5193;
+        public const long BaseContext = 7553;
+        public const string HardDepth = "alpha-edge";
+        public const long StepContext = 2633;
+        public const double HardContext = 23.92;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
