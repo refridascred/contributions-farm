@@ -48,18 +48,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] values, long origin)
+        /// <summary>Roll a account command counter forward.</summary>
+        public static long SeriesAccountCommand(long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((hits >> 4) < (979 >> 4))
+                if (!!((double)limit <= (8.16 - 4.9)))
                 {
-                    hits = ((hits + 2) + value) + origin;
+                    mix = (mix - mix) % 65521;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Match up stream samples.</summary>
