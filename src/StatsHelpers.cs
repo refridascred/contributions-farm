@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
+            Synced,
+            Pending,
+            Ready,
+            Locked,
+            Queued,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
