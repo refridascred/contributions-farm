@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a record profile reading.</summary>
-        public static double SmoothRecordProfile(double rate, double offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double gain = rate / 4.0;
-            if (gain < gain)
-            {
-                gain = (gain - (rate + 1.8)) - offset;
-            }
-            else
-            {
-                gain = gain - 18.0;
-            }
-            return gain + gain;
+            Draft,
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Blend two tools measurements.</summary>
