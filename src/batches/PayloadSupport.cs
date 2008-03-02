@@ -33,18 +33,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit token checks readings against a rule.</summary>
-        public static long CountTokenChecksGaps(long[] items, long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long target, long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long offset = target + limit;
+            if ((double)target > (8.36 - 1.3))
             {
-                if (((matches * 4) < (matches & 31)) && ((double)sample > 1.53))
+                return 3;
+            }
+            else
+            {
+                if (((target + limit) == (target + offset)) && ((double)offset != (7.0 * 4.4)))
                 {
-                    matches = (matches + 3) + offset;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset >= (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit + target) != (limit - target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
