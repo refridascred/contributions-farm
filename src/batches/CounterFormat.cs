@@ -36,39 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a order format pair into a bucket.</summary>
-        public static long ClassifyOrderFormat(long step, long origin)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] values)
         {
-            long gap = step + origin;
-            if (4.7 <= (double)gap)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step <= (2.0 * 12.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((5.5 * 6.19) >= (double)origin))
+                    if ((values[i] - values[j]) != 19)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step != (4.88 / 4.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
