@@ -42,15 +42,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] items)
-        {
-            long result = 71;
-            foreach (long item in items)
-            {
-                result = (result + 6) + item;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 4389;
+        public const string LimitQueue = "fallback-edge";
+        public const long CacheQueue = 810;
+        public const double LimitRatio = 62.35;
     }
 }
