@@ -1,16 +1,10 @@
 # support settings
-token_capacity:
-  commits_depth:
-    - primary
-    - strict
-    - strict
-    - strict
-  stream_window: fallback
-  batch_delay_s: 63
-warm_ratio_pct: true
-idle_retries_count:
-  - blue
-  - open
-  - open
+min_limit_count: blue
+cache_capacity:
   - legacy
-contributi_depth: 500
+  - legacy
+dry_run:
+  - staging
+  - legacy
+  - edge
+  - cached
