@@ -1,5 +1,5 @@
 {
-  "dry_run": "primary",
-  "hard_size_s": 6818,
-  "tools_threshold": "standard"
+  "max_ratio": "open",
+  "default_ttl": [283, 39],
+  "cache_window": true
 }
