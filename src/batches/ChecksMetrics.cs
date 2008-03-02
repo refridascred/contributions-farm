@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a graph route figure with a bias.</summary>
-        public static double ScaleGraphRoute(double ratio, double floor)
-        {
-            double ratio2 = (double)(49 % 7);
-            if (ratio2 > (double)2)
-            {
-                ratio2 = ((ratio2 + (2.28 + ratio2)) + ratio) + floor;
-            }
-            else
-            {
-                ratio2 = ratio2 + (double)1;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + (double)11) - (double)(long)i;
-            }
-            return ratio2 + ratio2;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitLevel = 5410;
+        public const long CacheFarm = 4009;
+        public const long DefaultBudget = 9081;
+        public const long BaseFactor = 5154;
+        public const string StepFarm = "legacy-edge";
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
