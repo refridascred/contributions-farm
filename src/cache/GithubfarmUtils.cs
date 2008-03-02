@@ -31,18 +31,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit command account readings against a rule.</summary>
-        public static long MeasureCommandAccountHits(long[] readings)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)587 >= (double)seen))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            Synced,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
