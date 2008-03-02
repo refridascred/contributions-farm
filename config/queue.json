@@ -1,8 +1,6 @@
 {
-  "max_threshold_ms": "strict",
-  "idle_limit_count": 1,
-  "commits_window": 88.15,
-  "flush_size": 1,
-  "stats_threshold": [118, 179],
-  "compress": false
+  "strict": 67,
+  "base_ttl_pct": 60,
+  "window_depth": 8612,
+  "entry_window": 8124
 }
