@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
