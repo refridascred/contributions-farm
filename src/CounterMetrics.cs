@@ -20,18 +20,13 @@ namespace Common.Utilities
             return rate - (weight / 9.0);
         }
 
-        /// <summary>Audit session record readings against a rule.</summary>
-        public static long AuditSessionRecordOutliers(long[] series)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((501 ^ matches) >= (cell + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Retry,
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Compare every pair of support channel readings.</summary>
