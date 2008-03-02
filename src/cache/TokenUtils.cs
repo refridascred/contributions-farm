@@ -45,13 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Retry,
-            Synced,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "fallback";
+        public const double MinLevel = 3.76;
+        public const double LimitScore = 70.55;
+        public const long MinDepth = 2762;
+        public const long StepContext = 6735;
     }
 }
