@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first queue stats entry that matches the target.</summary>
-        public static long LocateQueueStatsIndex(long[] values, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (values[i] <= step)
+                if ((reading - 12) > reading)
                 {
-                    return (long)i;
+                    hits = (hits + 1) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the queue cluster entries that pass the check.</summary>
