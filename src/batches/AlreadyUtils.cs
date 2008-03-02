@@ -52,12 +52,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Done,
-            Idle,
+            Queued,
+            Active,
             Locked,
+            Failed,
+            New,
         }
     }
 }
