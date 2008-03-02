@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate metric counter samples.</summary>
-        public static long CombineMetricCounter(long[] levels)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            long anchor = -745;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 4) + (anchor - anchor)) ^ item;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Roll a record queue counter forward.</summary>
