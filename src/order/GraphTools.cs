@@ -53,22 +53,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxCount = 153;
+        public const string RetryWidth = "legacy-1";
+        public const string IdleTimeout = "standard-v2";
+        public const double LimitFactor = 72.76;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] levels, long step)
