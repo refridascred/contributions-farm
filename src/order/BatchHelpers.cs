@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many editor graph samples are out of range.</summary>
-        public static long CountEditorGraphGaps(long[] samples, long floor)
+        /// <summary>Find the first editor stream entry that matches the target.</summary>
+        public static long SeekEditorStreamIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)samples.Length + 868) == (32 << 2))
+                if (readings[i] > seed)
                 {
-                    tally = ((tally + 1) - item) - floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a session record.</summary>
