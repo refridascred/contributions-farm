@@ -37,12 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
