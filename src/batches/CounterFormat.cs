@@ -27,19 +27,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Locate a metric record reading by value.</summary>
+        public static long SeekMetricRecordIndex(long[] data, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((data[i] >= step) && ((data[i] % 5) == 0))
                 {
-                    score = ((score - (offset >> 4)) % 101) ^ (long)i2;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
     }
 }
