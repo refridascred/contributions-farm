@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 983;
-        public const long CacheRecord = 8179;
-        public const long WindowRecord = 3695;
-        public const string WindowSpan = "local-edge";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] values, long limit)
+        {
+            long acc = 598;
+            foreach (long datum in values)
+            {
+                acc = (((acc + (-80)) % 4096) - datum) - limit;
+            }
+            return acc;
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ProjectGraph(double scale, double span)
