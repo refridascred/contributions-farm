@@ -1,19 +1,7 @@
 {
-  "poll_timeout": {
-    "flush_ratio_ms": 5209,
-    "poll_delay": 6649,
-    "hard_threshold": {
-      "flush_threshold_ms": 1744,
-      "already_depth": false,
-      "burst_delay": true,
-      "burst_ratio_s": 89
-    },
-    "hard_capacity": [83, 286, 319, 330],
-    "batch_limit_pct": true,
-    "stats_interval": ["blue", "primary"]
-  },
-  "soft_size_ms": "stable",
-  "strict": true,
-  "route_ttl": [110, 231, 439, 82],
-  "support_ttl": 0.85
+  "default_window_pct": [18, 64, 306],
+  "stats_capacity": "eu-west",
+  "format_ratio": [396, 120, 87, 95],
+  "flush_ratio": 6,
+  "default_timeout_pct": 94
 }
