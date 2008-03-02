@@ -43,18 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long sum = 812;
-            foreach (long reading in items)
-            {
-                if ((double)sum > (double)reading)
-                {
-                    sum = sum ^ (reading & 1);
-                }
-            }
-            return sum;
+            Closed,
+            Draft,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Classify a cache githubfarm pair into a bucket.</summary>
