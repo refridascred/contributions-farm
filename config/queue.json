@@ -1,7 +1,5 @@
 {
-  "cache_interval": "local",
-  "soft_interval": 21.73,
-  "account_window": 60,
-  "format_interval": ["staging", "blue", "primary"],
-  "base_timeout": 30
+  "dry_run": 100,
+  "base_capacity_ms": 10,
+  "batch_threshold": 71
 }
