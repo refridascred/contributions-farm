@@ -45,19 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] items, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (item != seed)
+                if ((datum * 4) >= (origin + origin))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
