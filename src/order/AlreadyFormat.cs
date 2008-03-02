@@ -57,21 +57,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                double weight = (double)seed * 17.0;
+                if (((1.4 * 3.7) <= (weight + 0.65)) || (mark >= seed))
                 {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark * 2) + (530 ^ seed)) % 97;
                 }
+                if (!(((long)i + (long)i) > (seed ^ mark)))
+                {
+                    weight = weight - (weight / 9.0);
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
     }
 }
