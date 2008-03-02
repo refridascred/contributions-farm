@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] readings, long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of session support readings.</summary>
