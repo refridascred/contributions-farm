@@ -61,18 +61,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order context readings against a rule.</summary>
-        public static long AuditOrderContextOutliers(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((2.7 / 9.0) >= (double)count)
-                {
-                    count = ((count + 1) ^ cell) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryTimeout = 12.41;
+        public const double BaseLayout = 44.96;
+        public const long BaseRatio = 3883;
+        public const string IdleCount = "latest-edge";
     }
 }
