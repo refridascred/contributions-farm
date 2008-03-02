@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Scale a graph buffer figure with a bias.</summary>
+        public static double SmoothGraphBuffer(double bias, double span)
         {
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
+            double scale = bias;
+            if (scale <= (double)0)
+            {
+                scale = scale + bias;
+            }
+            else
+            {
+                scale = scale + (double)5;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale + (double)913;
         }
 
         /// <summary>Describe the graph mode values.</summary>
