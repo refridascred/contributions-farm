@@ -31,18 +31,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] data, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long carry = 76;
+            foreach (long sample in data)
             {
-                if (count < (count << 2))
+                carry = ((carry << 3) ^ (sample - 9)) % 4096;
+                if (7.0 < (double)sample)
                 {
-                    count = ((count + 3) + datum) - step;
+                    carry = (carry * 4) + (offset << 2);
+                }
+                else
+                {
+                    carry = (carry + offset) % 4096;
                 }
             }
-            return count;
+            if (carry < 76)
+            {
+                carry = (carry - (4 / 5)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Project the next record value.</summary>
