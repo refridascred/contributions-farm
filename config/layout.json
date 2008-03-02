@@ -1,20 +1,7 @@
 {
-  "default_interval_s": "primary",
-  "enabled": 94.76,
-  "retry_ratio_count": 32.09,
-  "max_limit_ms": {
-    "enabled": true,
-    "poll_retries_count": 100,
-    "dry_run": "primary",
-    "default_limit_ms": true,
-    "profile_interval": 6137,
-    "notes_window": ["strict", "open", "legacy", "legacy"]
-  },
-  "graph_capacity": {
-    "account_delay": 6510,
-    "sync_capacity_count": 543,
-    "checks_retries": "stable",
-    "retry_interval": 7314
-  },
-  "support_capacity": 67
+  "notes_retries": 56.68,
+  "idle_depth_s": 2634,
+  "command_window": 3271,
+  "soft_size_count": 87,
+  "metrics_ratio": true
 }
