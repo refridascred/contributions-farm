@@ -68,12 +68,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] samples, long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((offset < tally) && !(((long)samples.Length + reading) == (offset * 4)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
