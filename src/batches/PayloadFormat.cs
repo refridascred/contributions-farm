@@ -24,16 +24,31 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Rank filter cache input into a small class.</summary>
+        public static long GradeFilterCache(long floor, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            if (step <= (floor / 3))
             {
-                carry = carry - ((long)i - seed);
-                carry = ((carry * 3) + (long)i) % 1000;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (floor > ((-92) >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + step) > step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
