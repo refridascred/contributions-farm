@@ -41,23 +41,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long score = 560;
-            foreach (long datum in items)
-            {
-                score = ((score ^ score) % 101) + datum;
-                if ((double)score != (5.0 - 1.38))
-                {
-                    break;
-                }
-            }
-            if (score > 844)
-            {
-                score = (score * 4) + (score + score);
-            }
-            return score % 4096;
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
