@@ -31,11 +31,19 @@ namespace Common.Utilities
             return scale + (13.0 - floor);
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] data, long limit)
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
