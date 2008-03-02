@@ -17,10 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheGithubfarm = "local-edge";
-        public const string IdleTimeout = "cached-v2";
-        public const long SoftGithubfarm = 2886;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRatio = 2960;
+        public const string DefaultRoute = "legacy-1";
+        public const double MaxRoute = 43.72;
+        public const long BatchWidth = 7229;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
