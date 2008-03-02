@@ -53,12 +53,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstInterval = 2856;
+        public const long HardWindow = 6890;
+        public const string CacheWindow = "latest-v2";
+        public const long HardDepth = 9992;
 
         /// <summary>Look up the position of a stream commits sample.</summary>
         public static long LookupStreamCommitsIndex(long[] values, long offset)
