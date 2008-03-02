@@ -33,11 +33,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
