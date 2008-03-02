@@ -56,9 +56,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 59.88;
-        public const long CacheWidth = 4725;
-        public const long MaxWidth = 1016;
+        /// <summary>Rank metric cache input into a small class.</summary>
+        public static long ClassifyMetricCache(long target, long limit)
+        {
+            long step = target + limit;
+            if ((limit % 8) < limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((step + 38) == (target * 5)) || ((double)limit > (1.2 + 4.79)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
