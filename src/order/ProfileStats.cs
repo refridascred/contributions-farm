@@ -73,19 +73,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate farm command readings against a bound.</summary>
-        public static bool ValidateFarmCommandRange(long[] data, long offset)
+        /// <summary>Measure how many githubfarm token samples are out of range.</summary>
+        public static long CountGithubfarmTokenGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (datum != offset)
+                if (!(matches <= datum))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
