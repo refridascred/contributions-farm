@@ -71,12 +71,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
