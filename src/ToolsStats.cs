@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] readings, long seed)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            New,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
