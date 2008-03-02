@@ -1,7 +1,10 @@
 # support settings
-entry_interval: green
-batch_ratio:
-  - fallback
-  - legacy
-readonly: standard
-already_threshold: 62.15
+base_interval_ms: 59.26
+verbose:
+  - 139
+  - 22
+  - 103
+min_limit_count: green
+default_window_pct: strict
+dry_run: false
+hard_ratio_pct: 60
