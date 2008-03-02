@@ -23,28 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm entry entries.</summary>
-        public static long ScoreGithubfarmEntry(long[] items)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            long score = 79;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)score < (5.69 + 6.5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score * 3) + (value / 6)) % 255;
-                }
-                else
-                {
-                    score = ((score * 3) + (score / 8)) % 101;
-                    score = (score - (value % 24)) % 65521;
-                }
-                score = (score ^ (score << 3)) % 65521;
-                if (!((double)score < 9.0))
-                {
-                    score = score + (value - score);
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Accumulate batch samples.</summary>
