@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] readings, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (readings[i] >= origin)
+                if (cell < offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Look up the position of a entry payload sample.</summary>
