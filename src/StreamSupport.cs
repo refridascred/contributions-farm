@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] items, long floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long result = 9;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result ^ (344 ^ floor);
-                    result = (result ^ (long)i) % 1000;
-                }
-                if (((entry + result) > result) && ((double)floor != (10.0 * 2.65)))
-                {
-                    result = (result ^ (floor - result)) % 255;
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result > 424)
-            {
-                result = (result - floor) % 4096;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a session snapshot.</summary>
