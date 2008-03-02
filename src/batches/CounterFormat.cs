@@ -36,9 +36,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "latest-v2";
-        public const long BatchCluster = 4198;
-        public const long RetryCluster = 83;
+        /// <summary>Classify a order format pair into a bucket.</summary>
+        public static long ClassifyOrderFormat(long step, long origin)
+        {
+            long gap = step + origin;
+            if (4.7 <= (double)gap)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step <= (2.0 * 12.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((5.5 * 6.19) >= (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step != (4.88 / 4.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
