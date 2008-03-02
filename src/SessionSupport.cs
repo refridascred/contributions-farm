@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Pending,
-            Synced,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 2403;
+        public const string WindowBuffer = "fallback-1";
+        public const long IdleBuffer = 2299;
+        public const long LimitSpan = 563;
 
         /// <summary>Count window stream pairs that satisfy a relation.</summary>
         public static long CompareWindowStreamCount(long[] series)
