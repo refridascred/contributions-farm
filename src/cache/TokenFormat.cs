@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] readings, long floor)
+        /// <summary>Check that every token counter entry stays within the limit.</summary>
+        public static bool CheckTokenCounterRange(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (61 < (matches + matches))
+                if (cell > floor)
                 {
-                    matches = ((matches + 1) - reading) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Combine metric counter values into a single score.</summary>
