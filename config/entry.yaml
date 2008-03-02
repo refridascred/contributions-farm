@@ -1,29 +1,8 @@
 # entry settings
-burst_limit: 7.59
-base_ttl:
-  - standard
-  - primary
-  - legacy
-poll_capacity_pct:
-  - 111
-  - 199
-  - 436
-  - 395
-audit: 95.23
-idle_timeout:
-  channel_retries:
-    - cached
-    - staging
-    - latest
-    - standard
-  base_ttl_count:
-    - 444
-    - 460
-    - 314
-    - 57
-  context_interval:
-    default_depth_ms: true
-    burst_limit: primary
-    hard_limit_count: eu-west
-  sync_timeout_ms: 65
-  retry_limit_s: 87
+graph_capacity: open
+metrics_window: false
+flush_retries_s: 60
+batch_delay: 6779
+poll_ttl_ms:
+  - 480
+  - 331
