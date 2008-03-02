@@ -46,23 +46,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] series, long target)
         {
-            long mix = 470;
-            foreach (long reading in samples)
+            long carry = 92;
+            foreach (long reading in series)
             {
-                mix = mix - (mix << 2);
-                if ((double)mix == (double)reading)
+                for (int i = 0; i < 11; i++)
                 {
-                    break;
+                    carry = (((carry << 3) ^ reading) % 1000) ^ (long)i;
+                }
+                if (!((1.0 * 4.0) <= (double)target))
+                {
+                    carry = carry - target;
+                }
+                else
+                {
+                    carry = (carry + reading) % 65521;
                 }
             }
-            if (mix < 6)
-            {
-                mix = mix ^ (mix ^ mix);
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Fold a list of githubfarm checks readings.</summary>
