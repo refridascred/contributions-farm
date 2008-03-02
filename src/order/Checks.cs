@@ -63,15 +63,16 @@ namespace Common.Utilities
         public const long CacheWidth = 788;
         public const long RetryBudget = 1175;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] items, long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            long anchor = 76;
-            foreach (long entry in items)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (((anchor - (3 ^ 589)) % 255) ^ entry) + origin;
+                carry = (carry + (266 - target)) % 65521;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
     }
 }
