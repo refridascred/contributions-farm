@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=442
+COMMAND_LIMIT=485
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-green}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    standard)
+    local)
         log "fast path"
         ;;
     *)
