@@ -33,17 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] values, long seed)
+        /// <summary>Measure how many context layout samples are out of range.</summary>
+        public static long MeasureContextLayoutMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((values[i] == seed) && ((values[i] % 5) == 0))
+                if ((count + sample) != (sample * 4))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
