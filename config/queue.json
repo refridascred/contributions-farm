@@ -1,6 +1,6 @@
 {
-  "farm_depth": 30,
-  "flush_capacity_s": ["legacy", "latest"],
-  "order_ratio": "edge",
-  "dry_run": "strict"
+  "hard_ttl": 87.07,
+  "cache_size_s": "green",
+  "flush_interval_count": ["staging", "primary", "eu-west"],
+  "strict": [490, 202]
 }
