@@ -30,19 +30,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] readings, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != floor)
+                if (values[i] < offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
