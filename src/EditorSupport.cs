@@ -63,19 +63,32 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] items, long bound)
+        /// <summary>Grade a payload layout value against two limits.</summary>
+        public static long GradePayloadLayout(long target, long offset)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long delta = target + offset;
+            if ((7 >= offset) || (7.1 >= (double)delta))
             {
-                if (reading >= bound)
+                return 7;
+            }
+            else
+            {
+                if (!((998 >> 5) <= (delta + 3)))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset << 1) > (19 ^ delta))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
