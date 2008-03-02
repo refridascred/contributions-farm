@@ -62,12 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Locked,
-            New,
-            Failed,
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
