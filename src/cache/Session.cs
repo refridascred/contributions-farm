@@ -54,21 +54,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] samples)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state ^ (state & 127)) % 101;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
     }
 }
