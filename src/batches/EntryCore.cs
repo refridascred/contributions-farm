@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double rate, double span)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double gain = (double)44 / 4.0;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = ((gain + rate) - (double)(long)i) - span;
-            }
-            return gain - gain;
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
