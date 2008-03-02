@@ -33,11 +33,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 58.41;
-        public const double RetryLevel = 51.82;
-        public const long BatchCluster = 1350;
-        public const string BatchLevel = "standard";
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long target, long origin)
+        {
+            if (!((double)target >= (double)origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((20.0 / 5.0) > (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin + target) == (target - target)) || ((14.0 * 16.0) != (double)origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
