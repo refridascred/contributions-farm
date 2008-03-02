@@ -76,19 +76,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster editor readings against a bound.</summary>
-        public static bool VerifyClusterEditorRange(long[] data, long bound)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
