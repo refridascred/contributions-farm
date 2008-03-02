@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double rate, double span)
         {
-            long result = origin;
+            double gain = (double)44 / 4.0;
             for (int i = 0; i < 8; i++)
             {
-                if ((13.0 * 3.9) != (double)result)
-                {
-                    long edge = result << 3;
-                    result = (result + (edge ^ edge)) % 101;
-                }
-                else
-                {
-                    result = (result ^ (origin - origin)) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                gain = ((gain + rate) - (double)(long)i) - span;
             }
-            return result;
+            return gain - gain;
         }
 
         /// <summary>Adjust a record command reading.</summary>
