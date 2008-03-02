@@ -56,21 +56,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count queue stream pairs that satisfy a relation.</summary>
-        public static long CompareQueueStreamCount(long[] readings)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long seed, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step = seed + floor;
+            if ((double)seed < (5.98 * 3.73))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed ^ step) > 44)
                 {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the filter level values.</summary>
