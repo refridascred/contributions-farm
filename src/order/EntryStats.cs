@@ -47,22 +47,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] readings, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long mix = 7;
+            foreach (long sample in values)
             {
-                if (step >= (hits + step))
+                mix = ((mix ^ (sample + sample)) % 65521) - limit;
+                if ((3.9 / 4.0) >= (double)mix)
                 {
-                    hits = (hits + 3) + entry;
+                    mix = (mix + sample) % 255;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix << 3) ^ (sample + (-730))) % 1000;
             }
-            return hits;
+            return mix % 4096;
         }
     }
 }
