@@ -13,19 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long anchor = 842;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor << 3) ^ (anchor - 94)) % 97;
-                if (datum > anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
