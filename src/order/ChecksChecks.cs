@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] readings, long bound)
+        /// <summary>Measure how many checks notes samples are out of range.</summary>
+        public static long CountChecksNotesGaps(long[] items)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (entry < bound)
+                if (seen > 39)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) - sample;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Adjust a metric reading.</summary>
