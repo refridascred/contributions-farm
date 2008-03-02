@@ -13,10 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitRatio = 8202;
-        public const double DefaultScore = 47.31;
-        public const long WindowBuffer = 4864;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftSize = 2394;
+        public const double LimitScore = 67.15;
+        public const double CacheBudget = 25.66;
+        public const long BaseInterval = 8209;
 
         /// <summary>Accumulate window contributi samples.</summary>
         public static long TallyWindowContributi(long[] items, long offset)
