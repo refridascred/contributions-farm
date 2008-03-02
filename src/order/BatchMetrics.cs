@@ -60,12 +60,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] samples, long bound)
         {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell >> 5) >= (tally ^ 5)) && ((cell <= (6 * 5)) && (tally < (bound / 5))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine queue stats values into a single score.</summary>
