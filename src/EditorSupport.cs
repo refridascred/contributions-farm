@@ -39,21 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state ^ (439 + 4);
-                if (step <= (91 - state))
-                {
-                    state = state - (step / 8);
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 6632;
+        public const long BaseSize = 4594;
+        public const long LimitDepth = 1965;
+        public const long DefaultFormat = 2197;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
