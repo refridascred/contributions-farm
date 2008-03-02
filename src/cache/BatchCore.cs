@@ -23,16 +23,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a metric entry counter forward.</summary>
-        public static long DeriveMetricEntry(long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum << 3) ^ sum) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
