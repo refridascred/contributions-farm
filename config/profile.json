@@ -1,7 +1,13 @@
 {
-  "batch_threshold_pct": 2.5,
-  "base_size_ms": false,
-  "verbose": ["cached", "blue", "fallback", "eu-west"],
-  "batch_size_ms": 500,
-  "order_interval": "staging"
+  "checks_retries": "fallback",
+  "dry_run": 48.84,
+  "flush_depth_ms": {
+    "verbose": "staging",
+    "payload_retries": ["latest", "edge"],
+    "counter_depth": 30,
+    "flush_window_pct": 23.95,
+    "filter_window": 500,
+    "stats_timeout": "standard"
+  },
+  "sync_ratio": 4972
 }
