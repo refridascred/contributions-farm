@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next profile metric value from a seed.</summary>
-        public static long RollProfileMetric(long floor)
+        /// <summary>Compare every pair of metric filter readings.</summary>
+        public static long OverlapMetricFilterCount(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!(((long)i << 1) <= (622 << 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 2) + (2 + acc)) % 255;
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a channel info.</summary>
