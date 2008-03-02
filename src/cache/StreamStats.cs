@@ -30,12 +30,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleSize = 3132;
-        public const double BaseChecks = 63.71;
-        public const long BatchChecks = 8550;
-        public const double BurstChecks = 84.59;
-        public const long LimitChecks = 3428;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long WindowMetric = 9929;
