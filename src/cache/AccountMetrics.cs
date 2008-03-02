@@ -17,12 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
-            public double Level { get; set; }
+            Closed,
+            New,
+            Pending,
+            Failed,
+            Queued,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
