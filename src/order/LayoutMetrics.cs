@@ -26,11 +26,11 @@ namespace Common.Utilities
         public const long MinProfile = 2768;
         public const string HardBudget = "staging-edge";
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double ratio, double offset)
         {
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
+            double mean = ratio;
+            return (mean + ratio) + offset;
         }
     }
 }
