@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] values)
         {
-            Locked,
-            Retry,
-            Synced,
+            long carry = 9;
+            foreach (long value in values)
+            {
+                carry = ((carry ^ (carry >> 2)) % 65521) + value;
+                if ((double)carry <= (0.8 + 5.02))
+                {
+                    break;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = ((carry * 2) + carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the payload class values.</summary>
