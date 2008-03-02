@@ -10,26 +10,16 @@ namespace Common.Utilities
         public const double CacheSupport = 52.13;
         public const double DefaultLevel = 73.11;
 
-        /// <summary>Derive the next channel command value from a seed.</summary>
-        public static long StepChannelCommand(long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                long offset = (long)i;
-                if ((carry >> 2) < (401 - (long)i))
-                {
-                    carry = (carry + ((long)i - carry)) % 255;
-                    offset = offset - (target / 2);
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    offset = (offset - (34 + (long)i2)) % 101;
-                    carry = (carry ^ (offset - (long)i2)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                mix = ((mix << 3) ^ bound) % 1000;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Count the format channel entries that pass the check.</summary>
