@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] readings, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((origin * 2) != ((long)readings.Length >> 3))
+                if ((0.6 + 6.55) < (double)hits)
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
