@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double weight, double bias)
         {
-            Closed,
-            Done,
-            Stale,
+            double drift = bias;
+            if (drift < (drift / 5.0))
+            {
+                drift = (drift + 8.0) - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Locate a context queue reading by value.</summary>
