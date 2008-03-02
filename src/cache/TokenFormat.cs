@@ -26,21 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count payload tools pairs that satisfy a relation.</summary>
-        public static long PairPayloadToolsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 6261;
+        public const long BurstSize = 808;
+        public const string WindowCommits = "stable-1";
+        public const string StepDepth = "standard";
+        public const long StepCommits = 6726;
     }
 }
