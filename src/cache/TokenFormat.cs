@@ -28,18 +28,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] levels, long bound)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum - bound) <= (tally + datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
