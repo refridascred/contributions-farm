@@ -1,12 +1,13 @@
 # githubfarm settings
-githubfarm_limit: 30
-hard_capacity_ms:
-  - 109
-  - 276
-cache_delay_pct:
-  - 187
-  - 287
-  - 299
-burst_ttl_pct:
-  - 387
-  - 463
+sync_ratio_pct:
+  - 189
+  - 20
+  - 231
+hard_depth: 1523
+report_ttl:
+  - legacy
+  - local
+  - staging
+verbose: 22.05
+idle_size_pct: 60
+base_retries_pct: local
