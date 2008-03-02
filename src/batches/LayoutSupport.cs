@@ -60,11 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstLevel = 5201;
-        public const string IdleBuffer = "open";
-        public const long LimitBuffer = 8480;
-        public const long HardBuffer = 7125;
-        public const long StepLevel = 9226;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
