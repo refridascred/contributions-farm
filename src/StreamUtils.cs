@@ -13,32 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long origin, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long span = origin + step;
-            if ((8.3 - 1.9) == (double)step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((span + origin) <= (origin * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + step) < (origin & 255))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count already metric pairs that satisfy a relation.</summary>
