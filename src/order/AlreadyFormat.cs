@@ -50,13 +50,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] series)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up session samples.</summary>
