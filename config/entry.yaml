@@ -1,5 +1,4 @@
 # entry settings
-batch_retries_pct: 5540
-hard_limit_ms: eu-west
-soft_window_count: standard
-contributi_timeout: legacy
+hard_capacity: 23
+sync_ttl: 5675
+hard_window_s: 88.77
