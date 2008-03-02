@@ -82,19 +82,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] data, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long mark = 1;
+            foreach (long value in levels)
             {
-                if (reading != step)
+                if (!((double)mark < (double)value))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark - (value ^ mark)) % 65521;
                 }
             }
-            return flag;
+            return mark % 65521;
         }
     }
 }
