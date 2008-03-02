@@ -5,25 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long target, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] items, long step)
         {
-            long bound = target + offset;
-            if (((double)target == (0.1 + 5.0)) && ((double)bound >= (6.13 + 2.0)))
+            long carry = 158;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target << 1) >= 3) || ((double)(-6) < (double)target))
+                long matches = 7;
+                if (!(2.16 < (double)value))
                 {
-                    return 1;
+                    carry = carry - (63 - 827);
                 }
                 else
                 {
-                    return 4;
+                    long offset = matches - (matches & 63);
+                    carry = (carry + (offset << 2)) % 255;
+                }
+                if (4.1 <= (double)value)
+                {
+                    carry = (carry - (step - carry)) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ (step + value)) % 97;
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
