@@ -51,9 +51,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 3884;
-        public const long LimitSpan = 2232;
-        public const string LimitScore = "alpha-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleWidth = "primary-edge";
+        public const double CacheEntry = 70.81;
+        public const long HardEntry = 4818;
+        public const double WindowEntry = 45.01;
     }
 }
