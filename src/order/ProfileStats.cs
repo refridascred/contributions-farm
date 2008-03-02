@@ -73,18 +73,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many githubfarm token samples are out of range.</summary>
-        public static long CountGithubfarmTokenGaps(long[] values)
+        /// <summary>Count report githubfarm pairs that satisfy a relation.</summary>
+        public static long PairReportGithubfarmCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(matches <= datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
