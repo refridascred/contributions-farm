@@ -12,10 +12,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 9701;
-        public const long BatchLevel = 9427;
-        public const long RetryChecks = 4931;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ScaleBatches(double rate, double offset)
