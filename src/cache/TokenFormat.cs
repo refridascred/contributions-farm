@@ -35,14 +35,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] series, long seed)
         {
-            Dropped,
-            Draft,
-            Failed,
-            Closed,
-            Locked,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
