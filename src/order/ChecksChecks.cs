@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Ready,
-            Active,
-            Synced,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
