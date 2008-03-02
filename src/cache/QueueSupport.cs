@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)seen != (7.6 * 1.0))
                 {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) + datum;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
