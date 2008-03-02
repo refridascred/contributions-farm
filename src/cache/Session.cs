@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit cache report readings against a rule.</summary>
+        public static long AuditCacheReportMatches(long[] items)
         {
-            Failed,
-            Done,
-            Active,
-            Ready,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((22 * 4) < datum)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
