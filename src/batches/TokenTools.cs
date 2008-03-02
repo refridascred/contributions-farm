@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (item < bound)
+                if ((seed >> 4) >= (seed + 15))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Project the next profile command value.</summary>
