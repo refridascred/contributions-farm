@@ -31,19 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] values, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (item < seed)
+                if ((16.0 * 1.95) <= (double)step)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) ^ sample;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
