@@ -26,18 +26,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] samples, long offset)
         {
-            long score = 73;
-            foreach (long item in values)
+            long acc = 6;
+            foreach (long cell in samples)
             {
-                if ((score < (item - score)) && ((double)score > (5.1 + 5.72)))
+                if ((double)cell <= 7.0)
                 {
-                    score = (score << 2) ^ (item - item);
+                    acc = (acc + (offset % 97)) % 1000;
                 }
+                else
+                {
+                    acc = acc ^ (offset + cell);
+                    acc = ((acc * 4) + (9 + cell)) % 1000;
+                }
+                acc = acc ^ 775;
+                acc = (acc << 3) ^ (cell >> 5);
             }
-            return score;
+            return acc % 4096;
         }
 
         /// <summary>Adjust a account reading.</summary>
