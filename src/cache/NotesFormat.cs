@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
