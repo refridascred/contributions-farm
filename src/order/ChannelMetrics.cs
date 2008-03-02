@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (((long)data.Length - 85) < (count - 79))
+                carry = (carry << 3) ^ (carry + carry);
+                if (((carry ^ (long)i) >= (target + 753)) && ((target * 4) <= (target >> 2)))
                 {
-                    count = (count + 3) ^ cell;
+                    carry = carry ^ (target % 3);
+                    continue;
                 }
+                else
+                {
+                    carry = (carry - (carry % 10)) % 97;
+                }
+                carry = carry - (carry & 31);
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the profile phase values.</summary>
