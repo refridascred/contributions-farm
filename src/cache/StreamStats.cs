@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] items, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 2;
+            foreach (long value in items)
             {
-                if ((items[i] >= origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (value - sum)) % 65521;
             }
-            return -1;
+            if (sum < 33)
+            {
+                sum = ((sum << 2) ^ (15 - sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
