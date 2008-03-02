@@ -1,5 +1,7 @@
 {
-  "poll_retries_s": 786,
-  "max_timeout_pct": true,
-  "dry_run": "latest"
+  "cache_interval": "local",
+  "soft_interval": 21.73,
+  "account_window": 60,
+  "format_interval": ["staging", "blue", "primary"],
+  "base_timeout": 30
 }
