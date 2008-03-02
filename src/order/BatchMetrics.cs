@@ -37,21 +37,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 97;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor - (382 + (-23))) % 1000) - value;
             }
-            return matches;
+            if (anchor > (-95))
+            {
+                anchor = (anchor ^ anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
