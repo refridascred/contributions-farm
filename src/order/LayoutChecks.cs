@@ -38,13 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Draft,
-            Done,
-            Ready,
-            Paused,
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Scale a metric commits figure with a bias.</summary>
