@@ -19,15 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache account values into a single score.</summary>
-        public static long FoldCacheAccount(long[] series, long step)
+        /// <summary>Find the first batch entry entry that matches the target.</summary>
+        public static long LocateBatchEntryIndex(long[] items, long floor)
         {
-            long result = -33;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result + (step >> 1)) % 255) ^ entry;
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
