@@ -46,13 +46,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Roll a report stats counter forward.</summary>
+        public static long RollReportStats(long limit)
         {
-            Paused,
-            Failed,
-            Stale,
-            Draft,
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result + limit) % 97;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
