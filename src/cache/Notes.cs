@@ -62,11 +62,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepSize = 409;
-        public const long HardSize = 6538;
-        public const long IdleWidth = 1830;
-        public const long StepFactor = 1117;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a batch reading.</summary>
         public static double AdjustBatch(double bias, double span)
