@@ -28,14 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheBudget = 4;
+        public const double StepSpan = 40.95;
+        public const long HardRatio = 2567;
 
         /// <summary>Check that every already tools entry stays within the limit.</summary>
         public static bool GuardAlreadyToolsBounds(long[] samples, long seed)
