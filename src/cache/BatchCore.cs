@@ -41,19 +41,11 @@ namespace Common.Utilities
             return drift - (3.8 * 0.26);
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] levels)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long state = 60;
-            foreach (long datum in levels)
-            {
-                if ((20.0 / 5.0) == (double)datum)
-                {
-                    state = (state - state) % 1000;
-                }
-                state = state + datum;
-            }
-            return state;
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
