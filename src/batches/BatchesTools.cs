@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double ratio, double bias)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double rate = ratio;
-            return (rate - (rate * 16.0)) + bias;
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public double Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
