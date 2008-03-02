@@ -1,8 +1,8 @@
 {
-  "strict": "legacy",
-  "flush_threshold_ms": "blue",
-  "contributi_depth": "fallback",
-  "metric_ttl": "latest",
-  "command_capacity": ["local", "blue", "stable", "staging"],
-  "warm_interval_pct": "standard"
+  "max_depth_pct": 72.44,
+  "retry_depth_count": true,
+  "cache_size_pct": 5980,
+  "entry_size": "latest",
+  "default_retries_pct": "legacy",
+  "verbose": ["green", "standard"]
 }
