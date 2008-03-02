@@ -73,11 +73,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "strict-1";
+        public const long HardStream = 5318;
+        public const long LimitStream = 5966;
     }
 }
