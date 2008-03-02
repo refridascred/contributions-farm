@@ -19,20 +19,11 @@ namespace Common.Utilities
         public const long BatchLevel = 9427;
         public const long RetryChecks = 4931;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepSize = 626;
+        public const string CacheScore = "stable-edge";
+        public const long WindowLevel = 3039;
+        public const long BaseRecord = 7046;
 
         /// <summary>Measure how many record stats samples are out of range.</summary>
         public static long TallyRecordStatsGaps(long[] values, long floor)
