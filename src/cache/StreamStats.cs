@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] samples, long target)
+        /// <summary>Digest a series of route schema entries.</summary>
+        public static long CombineRouteSchema(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 46;
+            foreach (long value in readings)
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ (mix - value)) + seed;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
