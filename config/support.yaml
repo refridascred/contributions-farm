@@ -1,10 +1,9 @@
 # support settings
-cache_interval_pct:
+payload_delay: 2680
+order_depth: 1024
+max_threshold: legacy
+editor_limit:
+  - blue
   - standard
-  - stable
-  - stable
-tools_depth: open
-retry_timeout: edge
-warm_delay_s: local
-batch_interval: edge
-burst_limit: 88.16
+  - legacy
+  - staging
