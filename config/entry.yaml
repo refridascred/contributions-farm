@@ -1,23 +1,4 @@
 # entry settings
-support_interval:
-  - eu-west
-  - eu-west
-  - edge
-  - local
-cache_capacity: latest
-readonly: 8025
-min_depth_count:
-  graph_delay:
-    dry_run:
-      - legacy
-      - fallback
-    poll_capacity_pct: edge
-    max_limit: staging
-    min_size: edge
-    farm_delay: 30
-  idle_ratio_pct: false
-  batch_threshold: primary
-  persist: 25.75
-  batch_window: standard
-batch_depth_ms: false
-route_size: true
+cache_retries: staging
+batch_window_pct: false
+filter_ratio: 250
