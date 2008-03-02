@@ -38,38 +38,23 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long seed, long seed2)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings, long floor)
         {
-            if ((658 / 4) > (41 + seed2))
+            long result = 533;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 + seed2) <= seed)
+                if (!((-8) >= (result & 3)))
                 {
-                    return 1;
+                    result = (result - result) % 1000;
+                    result = result ^ item;
                 }
-                else
+                if (((floor >> 5) <= (item - item)) || ((double)result == (double)(long)readings.Length))
                 {
-                    if (((seed2 << 2) < (seed / 5)) || ((seed2 >> 2) <= (seed >> 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed & 31) == (seed2 * 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    result = (result + (result + floor)) % 101;
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
