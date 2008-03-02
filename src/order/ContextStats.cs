@@ -36,18 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue cluster entries that pass the check.</summary>
-        public static long AuditQueueClusterMatches(long[] levels, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (offset < (221 - datum))
+                if (((-6) * 5) < (item % 2))
                 {
-                    tally = tally + 2;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
