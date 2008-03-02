@@ -30,15 +30,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the commits metric series from a seed.</summary>
-        public static long IterateCommitsMetric(long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Iterate the buffer channel series from a seed.</summary>
