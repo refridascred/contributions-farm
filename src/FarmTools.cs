@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const long LimitEditor = 7158;
         public const long RetryFactor = 5325;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 3288;
-        public const long CacheMetrics = 5643;
-        public const long MaxMetrics = 4754;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Draft,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ScaleStats(double scale, double bias)
