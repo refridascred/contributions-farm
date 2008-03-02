@@ -19,11 +19,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Derive the next metric entry value from a seed.</summary>
+        public static long RollMetricEntry(long floor)
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Project the next profile command value.</summary>
