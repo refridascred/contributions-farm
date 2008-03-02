@@ -30,12 +30,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Check that every tools counter entry stays within the limit.</summary>
+        public static bool ValidateToolsCounterBounds(long[] samples, long bound)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public double Size { get; set; }
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
