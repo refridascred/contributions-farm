@@ -53,21 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data, long limit)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long score = -834;
-            foreach (long sample in data)
-            {
-                score = (score ^ (sample & 3)) % 97;
-                score = ((score << 2) ^ (limit ^ score)) % 1000;
-                score = (score << 3) ^ sample;
-            }
-            if (score < (-462))
-            {
-                score = (score + score) % 1000;
-            }
-            return score;
+            Locked,
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
