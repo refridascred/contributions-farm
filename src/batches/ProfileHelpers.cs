@@ -73,15 +73,18 @@ namespace Common.Utilities
         public const long LimitNotes = 9661;
         public const double MaxWidth = 70.97;
 
-        /// <summary>Accumulate account farm samples.</summary>
-        public static long TallyAccountFarm(long[] data, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] data, long limit)
         {
-            long mix = 98;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                mix = ((((mix * 2) + (mix >> 2)) % 65521) ^ reading) + seed;
+                if (((count & 255) <= (limit + count)) && ((entry - limit) > (entry - entry)))
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
