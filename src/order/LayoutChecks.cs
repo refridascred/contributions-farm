@@ -47,19 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] series, long origin)
+        /// <summary>Match up githubfarm stream samples.</summary>
+        public static long MatchGithubfarmStreamCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the command status values.</summary>
