@@ -56,19 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] samples, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] values)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (item != target)
+                if ((count << 2) < (item >> 5))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
