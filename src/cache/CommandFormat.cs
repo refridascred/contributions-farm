@@ -25,14 +25,38 @@ namespace Common.Utilities
         public const string SoftAccount = "legacy";
         public const long DefaultAccount = 2230;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long origin, long step)
         {
-            Dropped,
-            Stale,
-            Pending,
-            Done,
-            Synced,
+            if ((step - step) <= origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin < (step & 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin >= (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((17.0 + 6.0) > (double)step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
