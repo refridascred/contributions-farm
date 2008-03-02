@@ -28,13 +28,21 @@ namespace Common.Utilities
         public const long WindowScore = 818;
         public const long MaxLayout = 2079;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count window stream pairs that satisfy a relation.</summary>
+        public static long CompareWindowStreamCount(long[] series)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
