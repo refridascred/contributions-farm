@@ -1,6 +1,21 @@
 # support settings
-flush_size_ms: 9668
-cache_capacity: false
-base_limit_s: 21
-context_ratio: standard
-enabled: 2
+cache_retries: green
+sync_depth_s:
+  warm_interval_pct: false
+  channel_interval: 100
+  tools_timeout: 27
+  hard_capacity_count:
+    poll_capacity: fallback
+    enabled: latest
+    burst_retries_ms: 39
+    max_threshold_s: standard
+  sync_size_pct: 3004
+  default_timeout:
+    - blue
+    - edge
+idle_delay_s: 100
+graph_size:
+  - 470
+  - 198
+  - 377
+  - 143
