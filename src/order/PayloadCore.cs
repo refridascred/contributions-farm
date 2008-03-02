@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a context already reading by value.</summary>
-        public static long LocateContextAlreadyIndex(long[] items, long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 37;
+            foreach (long value in data)
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark + mark) % 65521) - value;
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
