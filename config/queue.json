@@ -1,12 +1,5 @@
 {
-  "poll_ratio": 36,
-  "order_timeout": 37.37,
-  "verbose": {
-    "poll_ratio_count": "cached",
-    "strict": 20.87,
-    "readonly": 100,
-    "compress": ["standard", "local", "latest", "fallback"],
-    "sync_capacity_ms": false,
-    "filter_ttl": "blue"
-  }
+  "cache_retries": "cached",
+  "notes_limit": [25, 355, 70],
+  "flush_ratio": true
 }
