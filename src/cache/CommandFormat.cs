@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] levels, long step)
+        /// <summary>Check that every window token entry stays within the limit.</summary>
+        public static bool ValidateWindowTokenRange(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (((38 + sample) < (step / 2)) && (count < step))
+                if (cell > bound)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
