@@ -31,31 +31,11 @@ namespace Common.Utilities
             return scale + (13.0 - floor);
         }
 
-        /// <summary>Rank order cluster input into a small class.</summary>
-        public static long BucketOrderCluster(long step, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if (((3.05 + 1.07) > (double)seed) && ((step - step) <= (61 & 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step == (double)419)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed & 31) != (630 >> 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
