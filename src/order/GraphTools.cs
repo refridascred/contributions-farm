@@ -17,14 +17,18 @@ namespace Common.Utilities
         public const long BatchFactor = 2119;
         public const string RetryInterval = "latest-1";
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit profile account readings against a rule.</summary>
+        public static long TallyProfileAccountMatches(long[] items)
         {
-            Dropped,
-            Paused,
-            Queued,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((2.5 / 2.0) == (double)entry)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
