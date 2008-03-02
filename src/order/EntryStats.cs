@@ -42,12 +42,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 8018;
-        public const double SoftSpan = 72.63;
-        public const long BatchPayload = 3845;
-        public const long WindowFactor = 6540;
-        public const long BatchBudget = 548;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterGaps(long[] readings, long step)
