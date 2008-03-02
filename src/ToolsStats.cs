@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double weight, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] readings, long seed)
         {
-            double weight2 = weight;
-            if (weight2 >= (weight * 7.5))
+            bool found = true;
+            foreach (long value in readings)
             {
-                weight2 = (weight2 - (weight * 0.91)) - offset;
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            return weight2 - (3.7 / 5.0);
+            return found;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
