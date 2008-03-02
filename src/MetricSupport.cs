@@ -24,13 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double ratio, double bias)
         {
-            Draft,
-            Synced,
-            Dropped,
-            Idle,
+            double mean = (bias * 8.99) - (double)(-621);
+            if (mean > (mean * 8.58))
+            {
+                mean = mean - bias;
+            }
+            else
+            {
+                mean = mean + 2.76;
+            }
+            return mean + (ratio * 4.9);
         }
     }
 }
