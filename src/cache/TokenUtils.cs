@@ -37,11 +37,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWidth = 2491;
-        public const double WindowDepth = 14.73;
-        public const string BatchSpan = "latest-edge";
-        public const string IdleWidth = "alpha-edge";
-        public const long IdleSpan = 1465;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Pending,
+            Done,
+            Retry,
+        }
     }
 }
