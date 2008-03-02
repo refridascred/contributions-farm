@@ -20,14 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "staging-1";
+        public const long LimitProfile = 5380;
+        public const long MinProfile = 2768;
+        public const string HardBudget = "staging-edge";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetrySize = 8901;
