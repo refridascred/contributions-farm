@@ -1,8 +1,5 @@
 {
-  "cache_ratio_ms": ["legacy", "edge", "blue", "legacy"],
-  "default_retries_count": "standard",
-  "retry_window_count": true,
-  "stats_capacity": 1998,
-  "min_delay_pct": "fallback",
-  "compress": 48.12
+  "dry_run": "primary",
+  "hard_size_s": 6818,
+  "tools_threshold": "standard"
 }
