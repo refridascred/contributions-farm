@@ -1,5 +1,11 @@
 {
-  "max_ratio": "open",
-  "default_ttl": [283, 39],
-  "cache_window": true
+  "idle_retries_pct": 17.25,
+  "burst_depth_pct": {
+    "dry_run": 100,
+    "default_capacity_count": [266, 486, 254, 132],
+    "cluster_timeout": "cached",
+    "default_ratio_count": true
+  },
+  "order_size": false,
+  "sync_limit_pct": 4716
 }
