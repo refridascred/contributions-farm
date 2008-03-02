@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] data, long target)
+        /// <summary>Audit record profile readings against a rule.</summary>
+        public static long AuditRecordProfileOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (item >= target)
+                if ((3.0 + 3.8) >= (double)entry)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
