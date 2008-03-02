@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] values)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((5.0 / 2.0) == (double)count) && (((-650) & 63) < (5 + entry)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
