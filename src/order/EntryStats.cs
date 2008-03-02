@@ -31,16 +31,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of report metrics readings.</summary>
-        public static long WeighReportMetrics(long[] values, long offset)
-        {
-            long state = 50;
-            foreach (long reading in values)
-            {
-                state = (((state << 2) ^ (offset - 5)) % 4096) - reading;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleDepth = 3993;
+        public const long BurstWidth = 9071;
+        public const long SoftProfile = 9071;
+        public const long IdleProfile = 2808;
+        public const string BatchFactor = "open-edge";
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
