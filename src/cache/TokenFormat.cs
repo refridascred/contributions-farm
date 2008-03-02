@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every token counter entry stays within the limit.</summary>
-        public static bool CheckTokenCounterRange(long[] data, long floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Stale,
+            Queued,
         }
 
         /// <summary>Combine metric counter values into a single score.</summary>
