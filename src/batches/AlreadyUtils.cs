@@ -38,31 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long offset, long seed)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if (seed > offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed <= (seed ^ seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((-159) > (offset + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Done,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
