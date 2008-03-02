@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long origin, long seed)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            if ((origin & 15) >= (seed % 24))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.8 - 9.75) < (double)origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a channel info.</summary>
