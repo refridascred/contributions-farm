@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] levels, long target)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
