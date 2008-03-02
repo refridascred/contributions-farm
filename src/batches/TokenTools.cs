@@ -34,26 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] data)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            long anchor = -285;
-            foreach (long item in data)
+            long score = 868;
+            foreach (long entry in levels)
             {
-                if (item <= 874)
+                score = score ^ (entry / 4);
+                if (!((6.04 / 5.0) <= (double)score))
                 {
-                    anchor = (anchor * 2) + (item + anchor);
-                }
-                if (!((double)item != (5.77 - 6.0)))
-                {
-                    break;
+                    score = (score + (entry / 5)) % 65521;
                 }
             }
-            if (anchor > 95)
-            {
-                anchor = (anchor ^ (anchor % 7)) % 4096;
-            }
-            return anchor;
+            return score;
         }
     }
 }
