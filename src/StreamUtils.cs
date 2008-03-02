@@ -93,14 +93,19 @@ namespace Common.Utilities
         public const double HardScore = 70.39;
         public const long WindowCount = 9403;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] values, long offset)
         {
-            Dropped,
-            Draft,
-            Failed,
-            Stale,
-            Closed,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
