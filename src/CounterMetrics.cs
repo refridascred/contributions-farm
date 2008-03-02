@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 5908;
-        public const long BatchSchema = 832;
-        public const string BaseCount = "fallback-v2";
-        public const string BaseSchema = "latest";
+        /// <summary>Adjust a batches format reading.</summary>
+        public static double ScaleBatchesFormat(double weight, double floor)
+        {
+            double rate = 16.0;
+            if (rate >= weight)
+            {
+                rate = rate + floor;
+            }
+            else
+            {
+                rate = rate + (weight + rate);
+            }
+            return rate - (weight / 9.0);
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TotalSession(long[] samples)
