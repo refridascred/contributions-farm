@@ -1,11 +1,6 @@
-id,rank,active,score
-1,23.92,48,125
-2,106,682,217
-3,853,latest,standard
-4,417,47.79,9.86
-5,latest,338,8.66
-6,23,1.77,fallback
-7,latest,819,292
-8,518,39.31,795
-9,staging,84.78,legacy
-10,standard,686,285
+id,state,count,rank,region
+1,edge,688,stable,71
+2,28.14,legacy,cached,local
+3,63.84,98.61,standard,standard
+4,98.94,542,194,local
+5,381,fallback,743,28.87
