@@ -1,10 +1,12 @@
 {
-  "enabled": {
-    "dry_run": 100,
-    "sync_depth_count": 73,
-    "flush_limit_pct": [495, 489, 431, 330],
-    "sync_limit_pct": "fallback"
+  "hard_interval": {
+    "max_size": "eu-west",
+    "dry_run": "eu-west",
+    "max_interval_count": true,
+    "format_timeout": "standard",
+    "cache_window_ms": false
   },
-  "compress": "strict",
-  "schema_capacity": 8306
+  "cluster_retries": [302, 462, 308, 25],
+  "audit": false,
+  "order_timeout": false
 }
