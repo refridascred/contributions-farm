@@ -68,24 +68,14 @@ namespace Common.Utilities
             return gain - (double)3;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                double weight = (double)seed * 17.0;
-                if (((1.4 * 3.7) <= (weight + 0.65)) || (mark >= seed))
-                {
-                    mark = ((mark * 2) + (530 ^ seed)) % 97;
-                }
-                if (!(((long)i + (long)i) > (seed ^ mark)))
-                {
-                    weight = weight - (weight / 9.0);
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Pending,
+            Done,
+            Dropped,
+            Closed,
+            Queued,
         }
     }
 }
