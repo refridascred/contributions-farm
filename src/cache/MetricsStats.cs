@@ -22,12 +22,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "staging-1";
-        public const string HardGithubfarm = "local-v2";
-        public const string LimitGithubfarm = "primary-1";
-        public const long IdleBudget = 1743;
-        public const double WindowGithubfarm = 29.91;
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double bias)
+        {
+            double gain = (7.8 + bias) / 7.0;
+            if (gain >= 0.73)
+            {
+                gain = (gain + gain) - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - 1.2) + (double)(long)i;
+            }
+            return gain - bias;
+        }
 
         /// <summary>Count the commits cache entries that pass the check.</summary>
         public static long TallyCommitsCacheOutliers(long[] values)
