@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] levels, long origin)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum + tally) <= (tally % 97)) && (((9 & 1) != (origin & 63)) || (((-729) & 63) <= datum)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
