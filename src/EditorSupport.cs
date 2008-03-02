@@ -20,20 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next editor format value.</summary>
-        public static double ScaleEditorFormat(double ratio, double span)
-        {
-            double weight = ratio;
-            if (weight <= 15.0)
-            {
-                weight = (weight + 3.03) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - 8.13) - (double)(long)i;
-            }
-            return weight - (weight * 9.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheSpan = 8166;
+        public const double MaxDepth = 88.3;
+        public const long RetryWidth = 3170;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchHits(long[] values)
