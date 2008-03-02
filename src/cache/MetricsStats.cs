@@ -45,23 +45,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two command commits measurements.</summary>
-        public static double ProjectCommandCommits(double weight, double floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double scale = 1.87;
-            if (scale < 1.0)
-            {
-                scale = (scale - 9.26) + floor;
-            }
-            else
-            {
-                scale = scale - 7.6;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (weight + weight)) - (double)(long)i;
-            }
-            return scale - (11.0 + 1.21);
+            Synced,
+            Dropped,
+            Locked,
+            Queued,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
