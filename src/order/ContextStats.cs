@@ -49,19 +49,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double scale, double bias)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            double ratio = bias;
-            if (ratio < bias)
-            {
-                ratio = ratio - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (bias / 7.0)) + (double)(long)i;
-            }
-            return ratio - (bias * 6.65);
+            Done,
+            Ready,
+            Draft,
+            Stale,
         }
     }
 }
