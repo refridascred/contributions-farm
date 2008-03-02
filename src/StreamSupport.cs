@@ -45,18 +45,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (294 >= (seen + (long)series.Length))
-                {
-                    seen = ((seen + 3) - datum) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowTimeout = 16.65;
+        public const double SoftChecks = 82.7;
+        public const double StepChecks = 95.42;
+        public const double WindowChecks = 94.67;
     }
 }
