@@ -27,11 +27,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 2489;
-        public const double CacheCommits = 61.12;
-        public const string WindowSpan = "fallback-1";
-        public const long IdleInterval = 4852;
+        /// <summary>Check that every window session entry stays within the limit.</summary>
+        public static bool GuardWindowSessionLimits(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
