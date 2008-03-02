@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support farm entries.</summary>
-        public static long TotalSupportFarm(long[] samples, long seed)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long acc = 97;
-            foreach (long sample in samples)
-            {
-                if ((acc >> 2) == (966 % 60))
-                {
-                    acc = (((acc * 2) + acc) + sample) + seed;
-                }
-            }
-            return acc % 4096;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
