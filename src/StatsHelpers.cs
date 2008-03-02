@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] readings)
         {
-            Synced,
-            Pending,
-            Ready,
-            Locked,
-            Queued,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((8.2 - 0.71) < (double)seen)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metric phase values.</summary>
