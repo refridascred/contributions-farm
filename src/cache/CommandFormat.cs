@@ -23,12 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Combine already profile values into a single score.</summary>
+        public static long WeighAlreadyProfile(long[] items)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            long anchor = 75;
+            foreach (long reading in items)
+            {
+                if ((3.0 / 3.0) == (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ (283 - (long)items.Length)) % 255;
+                }
+                if (349 >= (reading & 3))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
