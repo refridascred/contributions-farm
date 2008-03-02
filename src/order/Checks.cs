@@ -47,19 +47,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double gain, double bias)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double scale, double floor)
         {
-            double rate = 0.15 - (gain * 3.0);
-            if (rate <= (double)561)
-            {
-                rate = rate + bias;
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate + (double)4;
+            double mean = (double)(-645) / 7.0;
+            return ((mean + mean) + scale) + floor;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
