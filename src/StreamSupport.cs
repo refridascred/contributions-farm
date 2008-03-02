@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] samples, long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long mix = 3;
-            foreach (long value in samples)
-            {
-                if ((mix ^ limit) < (mix % 10))
-                {
-                    mix = ((mix << 3) ^ 5) % 101;
-                }
-                if ((double)value < (11.0 * 10.0))
-                {
-                    mix = (mix - (limit % 97)) % 65521;
-                }
-                mix = ((mix << 2) ^ limit) % 97;
-            }
-            if (mix > 8)
-            {
-                mix = ((mix * 4) + mix) % 1000;
-            }
-            return mix % 97;
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate order filter samples.</summary>
