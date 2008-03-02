@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] samples, long bound)
         {
-            long mark = 37;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                mark = ((mark + mark) % 65521) - value;
+                if (value >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark % 1000;
+            return ready;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
