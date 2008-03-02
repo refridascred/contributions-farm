@@ -50,13 +50,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Closed,
-            New,
-            Ready,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheWidth = 1474;
+        public const long BaseInterval = 339;
+        public const long IdleScore = 1151;
+        public const double DefaultSize = 24.65;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] items)
