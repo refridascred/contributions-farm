@@ -1,6 +1,11 @@
 {
-  "hard_ttl": 87.07,
-  "cache_size_s": "green",
-  "flush_interval_count": ["staging", "primary", "eu-west"],
-  "strict": [490, 202]
+  "default_size_s": 4269,
+  "poll_delay": {
+    "dry_run": "primary",
+    "flush_depth_s": "staging",
+    "idle_size_pct": "staging",
+    "queue_ttl": true,
+    "enabled": [418, 405, 98]
+  },
+  "min_size_pct": 60
 }
