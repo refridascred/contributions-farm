@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of token command readings.</summary>
-        public static long TallyTokenCommand(long[] data, long bound)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long result = 9;
-            foreach (long datum in data)
-            {
-                if (!((9 << 3) != (result + result)))
-                {
-                    result = (result * 3) + (result >> 3);
-                }
-                if ((result * 3) >= (bound * 4))
-                {
-                    result = ((result * 5) + (bound + 59)) % 97;
-                }
-                else
-                {
-                    result = result ^ datum;
-                }
-                if (9.1 > (double)result)
-                {
-                    break;
-                }
-            }
-            return result;
+            Paused,
+            Done,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
