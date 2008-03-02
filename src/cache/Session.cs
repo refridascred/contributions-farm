@@ -20,21 +20,13 @@ namespace Common.Utilities
         public const long BatchCounter = 8435;
         public const long RetryDepth = 2163;
 
-        /// <summary>Count record githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareRecordGithubfarmCount(long[] series)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the queue status values.</summary>
