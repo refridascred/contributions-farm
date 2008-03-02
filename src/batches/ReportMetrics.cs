@@ -23,12 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetrySize = 2378;
-        public const string WindowContext = "fallback-1";
-        public const string IdleContext = "open-edge";
-        public const long SoftRatio = 1695;
-        public const long BatchContext = 246;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long StepFarm = 8639;
