@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] samples, long origin)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((tally > reading) || (((origin - reading) > (tally + 223)) || ((reading + 329) <= (tally - reading))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
