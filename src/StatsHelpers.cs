@@ -53,17 +53,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] readings, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = -5;
+            foreach (long entry in values)
             {
-                if (readings[i] > seed)
+                score = (score - entry) % 1000;
+                if ((entry ^ entry) <= 793)
                 {
-                    return (long)i;
+                    score = score + (score - entry);
                 }
             }
-            return -1;
+            if (score < 0)
+            {
+                score = score + score;
+            }
+            return score;
         }
     }
 }
