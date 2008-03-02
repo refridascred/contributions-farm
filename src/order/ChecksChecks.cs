@@ -13,15 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] series, long offset)
         {
-            long mark = 672;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long cell in series)
             {
-                mark = ((mark << 2) ^ (mark << 1)) - entry;
+                if (cell <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return found;
         }
 
         /// <summary>Hold a graph options.</summary>
