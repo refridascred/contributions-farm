@@ -13,11 +13,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
