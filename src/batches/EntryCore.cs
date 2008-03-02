@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric context readings against a rule.</summary>
-        public static long CountMetricContextMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally - (long)data.Length) <= (value & 7))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstWidth = 3.72;
+        public const long CacheContributi = 8910;
+        public const double MinSize = 47.69;
+        public const long WindowContributi = 6152;
+        public const double DefaultContributi = 89.57;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long RollCommits(long seed)
