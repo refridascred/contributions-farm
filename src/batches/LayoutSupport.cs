@@ -25,28 +25,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the session tools series from a seed.</summary>
-        public static long IterateSessionTools(long step)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)step == (7.92 + 7.53))
-                {
-                    anchor = ((anchor << 2) ^ ((long)i - step)) % 255;
-                    break;
-                }
-                if (anchor >= (anchor - anchor))
-                {
-                    anchor = (anchor - (anchor - 618)) % 4096;
-                }
-                if ((double)854 < (double)(long)i)
-                {
-                    anchor = anchor - (anchor ^ step);
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Retry,
+            Locked,
+            Synced,
         }
 
         /// <summary>Adjust a token reading.</summary>
