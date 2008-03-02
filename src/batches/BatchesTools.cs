@@ -16,24 +16,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank layout support input into a small class.</summary>
-        public static long SortLayoutSupport(long floor, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] levels, long origin)
         {
-            if ((3.16 + 1.8) < (double)floor)
+            long total = 88;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - step) < (floor % 24))
+                if (((item / 2) < (total + total)) || (7.3 < (9.1 - 4.0)))
                 {
-                    return 7;
+                    total = (total + total) % 1000;
                 }
                 else
                 {
-                    return 5;
+                    total = total ^ item;
+                }
+                if (((item * 4) <= origin) && (total <= (total >> 2)))
+                {
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
