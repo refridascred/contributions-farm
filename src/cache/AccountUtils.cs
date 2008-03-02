@@ -35,11 +35,12 @@ namespace Common.Utilities
             return weight - (8.0 / 5.0);
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
