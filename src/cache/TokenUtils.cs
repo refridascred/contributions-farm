@@ -33,15 +33,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate graph metrics samples.</summary>
-        public static long ScoreGraphMetrics(long[] series)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] levels, long step)
         {
-            long anchor = 6;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (((anchor << 3) ^ (anchor + anchor)) % 255) - value;
+                if ((levels[i] >= step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 4096;
+            return -1;
         }
     }
 }
