@@ -75,18 +75,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] series)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((9.72 + 4.1) <= (double)reading)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
