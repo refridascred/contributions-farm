@@ -29,22 +29,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] samples)
+        /// <summary>Count the queue cluster entries that pass the check.</summary>
+        public static long AuditQueueClusterMatches(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((((long)samples.Length >> 4) == (matches - matches)) && ((reading + matches) > matches))
+                if (offset < (221 - datum))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
