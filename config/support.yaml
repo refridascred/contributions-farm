@@ -1,22 +1,12 @@
 # support settings
-verbose:
-  batch_window_count:
-    - edge
-    - blue
-  soft_timeout:
-    compress: stable
-    cache_limit_count: true
-    hard_ratio: primary
-    commits_delay: false
-  flush_ratio_s: 30
-  soft_limit: green
-  idle_window_ms: open
-  command_depth: 25.9
-context_delay: 7751
-cache_depth: 30
-retry_threshold: green
-soft_window_pct: 780
-retry_size_s:
-  - cached
-  - latest
-  - latest
+sync_threshold_ms: 88
+default_threshold_count: green
+soft_capacity_ms:
+  graph_timeout: 88
+  burst_capacity_ms: local
+  hard_timeout_s: true
+  stats_timeout: cached
+hard_window_ms: 64
+retry_limit_count:
+  - eu-west
+  - fallback
