@@ -26,15 +26,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a context notes reading.</summary>
-        public static double ScaleContextNotes(double scale, double offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            double rate = 1.0;
-            for (int i = 0; i < 4; i++)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                rate = (rate + offset) - (double)(long)i;
+                score = (score + score) % 101;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return rate - (scale / 9.0);
+            return score;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
