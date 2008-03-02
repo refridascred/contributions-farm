@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultDepth = 672;
-        public const double CacheWidth = 49.61;
-        public const long BatchInterval = 2656;
-        public const long RetryGithubfarm = 2765;
-        public const long HardGithubfarm = 8620;
+        /// <summary>Classify a schema tools pair into a bucket.</summary>
+        public static long ClassifySchemaTools(long bound, long step)
+        {
+            if (!(((-32) << 1) < bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((3.4 * 6.5) < (double)bound) && ((step + step) <= bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutGaps(long[] samples, long seed)
