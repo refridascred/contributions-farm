@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstWidth = 3.72;
-        public const long CacheContributi = 8910;
-        public const double MinSize = 47.69;
-        public const long WindowContributi = 6152;
-        public const double DefaultContributi = 89.57;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] values)
+        {
+            long mark = 9;
+            foreach (long entry in values)
+            {
+                if (!!((4.6 / 6.0) != (double)mark))
+                {
+                    mark = mark ^ (mark + entry);
+                }
+                mark = mark - (3 * 4);
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long RollCommits(long seed)
