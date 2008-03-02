@@ -54,9 +54,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftPayload = "legacy";
-        public const long LimitTimeout = 1117;
-        public const string MaxPayload = "local";
+        /// <summary>Grade a window schema value against two limits.</summary>
+        public static long BucketWindowSchema(long step, long limit)
+        {
+            if ((0 % 2) > (limit - limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)step != (12.0 / 6.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit <= (6.0 / 3.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
