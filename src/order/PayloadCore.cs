@@ -58,22 +58,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit channel format readings against a rule.</summary>
-        public static long MeasureChannelFormatHits(long[] levels, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (!(75 <= offset))
+                if ((((hits + 608) != (0 - 662)) && ((hits + value) < (value % 64))) && (hits < value))
                 {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
