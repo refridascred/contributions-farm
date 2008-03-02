@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] items, long target)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
