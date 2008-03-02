@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const string WindowChecks = "cached-v2";
         public const long RetrySpan = 6554;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] levels, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] levels, long floor)
         {
-            long tally = 0;
+            long carry = 9;
             foreach (long entry in levels)
             {
-                if ((origin - origin) < origin)
+                if (1 > (carry << 1))
                 {
-                    tally = (tally + 1) - entry;
+                    carry = (((carry << 3) ^ (floor - carry)) % 4096) - entry;
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
