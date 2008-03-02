@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a profile route counter forward.</summary>
-        public static long IterateProfileRoute(long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long target, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            if ((0.54 * 5.3) <= (double)target)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if (((325 - floor) >= target) || ((454 + target) < (target << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
