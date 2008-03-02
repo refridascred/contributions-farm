@@ -60,14 +60,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a schema format counter forward.</summary>
-        public static long SeriesSchemaFormat(long floor)
+        /// <summary>Iterate the stream command series from a seed.</summary>
+        public static long IterateStreamCommand(long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                carry = carry ^ (-60);
-                carry = ((carry * 2) + (long)i) % 1000;
+                carry = ((carry << 2) ^ limit) % 101;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
             return carry;
         }
