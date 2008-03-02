@@ -1,9 +1,10 @@
 # githubfarm settings
-format_limit: 653
-tools_ratio:
-  - 481
-  - 278
-retry_size:
-  - 343
+hard_limit_s:
+  - 150
   - 214
-  - 347
+  - 478
+stream_ttl: 100
+strict: staging
+readonly: 91.34
+min_window_ms: 100
+notes_size: 75
