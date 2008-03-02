@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a command channel pair into a bucket.</summary>
-        public static long BucketCommandChannel(long floor, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items)
         {
-            if (((80 / 8) != (origin - floor)) || (((-63) - 3) > floor))
+            long acc = 8;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0.7 * 1.05) != (double)floor)
+                if ((51 - acc) >= (0 + reading))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    acc = acc ^ acc;
                 }
             }
+            if (acc < 7)
+            {
+                acc = ((acc * 5) + (acc + acc)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
