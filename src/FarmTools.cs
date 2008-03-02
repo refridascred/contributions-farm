@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long floor, long seed)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long seed, long origin)
         {
-            if ((floor & 15) > seed)
+            if ((seed > 8) && ((seed - origin) <= (origin + origin)))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((seed >> 4) > floor)
+                if ((origin + origin) >= (seed + 387))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    return 0;
+                    return 1;
                 }
             }
         }
