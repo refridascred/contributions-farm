@@ -1,11 +1,14 @@
 # Command notes
 
-When a cluster fails, the report handler retries a few times before giving up.
-Keep editor and contributi names short and lowercase.
-The window helpers are pure functions, so they are safe to call from any thread.
+The checks report groups every contributi by cache.
+Each report is validated before it reaches the counter queue.
+
+Run the notes check before changing any order limits.
+Keep context and schema names short and lowercase.
 
 ## Guidelines
 
-- Log every report change
-- Keep format values small
-- Prefer checks defaults
+- Review batch limits each release
+- Log every layout change
+- Prefer batches defaults
+- Keep layout values small
