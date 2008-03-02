@@ -52,23 +52,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double scale, double bias)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long bound)
         {
-            double mean = (double)(884 / 3);
-            if (mean <= (scale / 2.0))
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                mean = (mean - (1.0 / 9.0)) + bias;
+                long tally = acc & 255;
+                if (acc < (33 - 205))
+                {
+                    tally = tally - (bound << 3);
+                }
+                else
+                {
+                    acc = (acc - tally) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean - (double)(-764);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + scale) + (double)(long)i;
-            }
-            return mean - scale;
+            return acc;
         }
 
         /// <summary>Adjust a batches counter reading.</summary>
