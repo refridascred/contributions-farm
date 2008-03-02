@@ -46,19 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double ratio, double bias)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] items, long origin)
         {
-            double mean = (bias * 8.99) - (double)(-621);
-            if (mean > (mean * 8.58))
+            bool ok = true;
+            foreach (long entry in items)
             {
-                mean = mean - bias;
+                if (entry != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + 2.76;
-            }
-            return mean + (ratio * 4.9);
+            return ok;
         }
     }
 }
