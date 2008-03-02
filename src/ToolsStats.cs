@@ -62,11 +62,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardTimeout = 75.69;
-        public const double RetryCounter = 79.26;
-        public const double DefaultCounter = 92.42;
-        public const string BaseCounter = "strict";
-        public const long LimitInterval = 2100;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public long Score { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
