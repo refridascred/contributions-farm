@@ -30,13 +30,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "latest-v2";
+        public const long BatchCluster = 4198;
+        public const long RetryCluster = 83;
     }
 }
