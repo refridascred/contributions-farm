@@ -32,38 +32,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a filter schema value against two limits.</summary>
-        public static long GradeFilterSchema(long step, long target)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            if ((double)step < (9.2 + 0.9))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target >= step) || ((double)step >= (double)target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((294 ^ 244) >= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target - target) < target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
