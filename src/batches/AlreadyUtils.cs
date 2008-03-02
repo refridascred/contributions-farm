@@ -32,13 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Done,
-            Stale,
-            Closed,
-            New,
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a account command counter forward.</summary>
