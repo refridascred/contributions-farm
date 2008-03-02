@@ -48,11 +48,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double rate, double offset)
-        {
-            double rate2 = rate;
-            return (rate2 + (rate * 13.0)) + offset;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardLevel = "cached-v2";
+        public const long StepCache = 7512;
+        public const long SoftCache = 1925;
     }
 }
