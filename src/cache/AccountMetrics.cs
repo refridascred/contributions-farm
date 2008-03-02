@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "strict-v2";
+        public const long WindowCluster = 5267;
+        public const long CacheFactor = 1475;
+        public const long HardCluster = 8728;
+        public const double IdleCount = 86.56;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportOutliers(long[] values)
