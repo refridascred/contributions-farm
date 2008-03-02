@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] readings, long seed)
+        /// <summary>Locate a support commits reading by value.</summary>
+        public static long LocateSupportCommitsIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed >> 4) >= (seed + 15))
+                if (readings[i] >= offset)
                 {
-                    tally = (tally + 1) + datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Project the next profile command value.</summary>
