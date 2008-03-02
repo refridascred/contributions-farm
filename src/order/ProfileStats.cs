@@ -54,23 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] items)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] levels, long offset)
         {
-            long state = 3;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = state + (31 / 4);
-                if (!(state >= (datum ^ state)))
+                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
                 {
-                    state = (state ^ ((long)items.Length >> 5)) % 4096;
+                    return (long)i;
                 }
             }
-            if (state > 66)
-            {
-                state = (state + state) % 4096;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Count report githubfarm pairs that satisfy a relation.</summary>
