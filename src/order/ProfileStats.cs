@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] items)
         {
-            Locked,
-            New,
-            Idle,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((sample + hits) > (sample + (long)items.Length)) && !(hits <= (13 - sample)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
