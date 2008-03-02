@@ -24,19 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] data, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (sample <= bound)
+                if (!((tally << 2) >= (tally / 3)))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
