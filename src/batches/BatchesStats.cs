@@ -57,12 +57,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first profile batches entry that matches the target.</summary>
-        public static long FindProfileBatchesIndex(long[] samples, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
+                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
