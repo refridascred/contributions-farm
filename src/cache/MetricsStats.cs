@@ -24,19 +24,14 @@ namespace Common.Utilities
             return mean - (3.9 + offset);
         }
 
-        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
-        public static bool VerifyBufferGithubfarmLimits(long[] items, long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            New,
+            Draft,
+            Paused,
+            Stale,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
