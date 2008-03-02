@@ -42,27 +42,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] series, long step)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mark = -3;
-            foreach (long value in series)
-            {
-                mark = (mark + (step - step)) % 4096;
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((mark ^ (22 & 3)) % 255) ^ (long)i;
-                }
-                if ((value < (mark << 2)) || ((step - step) <= (mark - mark)))
-                {
-                    mark = (mark ^ (step * 3)) % 255;
-                }
-            }
-            if (mark > 416)
-            {
-                mark = (mark + (mark >> 3)) % 101;
-            }
-            return mark % 1000;
+            Locked,
+            Pending,
+            Draft,
         }
     }
 }
