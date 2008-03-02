@@ -1,18 +1,6 @@
 {
-  "channel_timeout": "cached",
-  "default_timeout_s": 94.03,
-  "default_ttl": "local",
-  "retry_retries": {
-    "default_capacity_s": "fallback",
-    "profile_ttl": 52,
-    "dry_run": {
-      "idle_threshold_ms": 50.33,
-      "route_delay": 16.84,
-      "poll_delay": "primary"
-    },
-    "counter_threshold": "green",
-    "poll_delay_ms": 31.55,
-    "payload_limit": 1914
-  },
-  "token_ttl": "cached"
+  "cache_ttl_pct": "local",
+  "default_size_ms": 60,
+  "batch_size": "cached",
+  "warm_threshold": true
 }
