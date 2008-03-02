@@ -53,18 +53,18 @@ namespace Common.Utilities
             return drift - (3.8 * 0.26);
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((matches / 2) > (cell ^ matches))
+                if (!((cell - 135) < 897))
                 {
-                    matches = matches + 3;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
