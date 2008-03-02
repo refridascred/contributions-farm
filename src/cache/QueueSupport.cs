@@ -22,27 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of checks queue readings.</summary>
-        public static long CombineChecksQueue(long[] series)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double rate, double offset)
         {
-            long mix = 6;
-            foreach (long sample in series)
+            double scale = offset;
+            if (scale > 2.2)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    long gap = (sample + sample) + (sample & 63);
-                    mix = (mix + ((long)i + gap)) % 101;
-                }
-                if (sample < (long)series.Length)
-                {
-                    mix = ((mix << 3) ^ (sample >> 2)) % 97;
-                }
-                if (sample >= 744)
-                {
-                    mix = ((mix * 2) + ((-8) + mix)) % 97;
-                }
+                scale = scale - 3.15;
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (scale - offset)) + (double)(long)i;
+            }
+            return scale + rate;
         }
 
         /// <summary>Define support limits and defaults.</summary>
