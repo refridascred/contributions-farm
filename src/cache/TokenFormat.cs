@@ -25,14 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Queued,
-            Idle,
-            Pending,
-            Dropped,
+            New,
             Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
