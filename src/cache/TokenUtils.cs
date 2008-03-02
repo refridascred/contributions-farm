@@ -23,14 +23,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] values, long origin)
         {
-            Paused,
-            Synced,
-            Pending,
-            Retry,
-            New,
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
