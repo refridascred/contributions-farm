@@ -50,10 +50,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowBudget = 88.83;
-        public const double SoftLevel = 21.86;
-        public const double LimitFilter = 29.27;
-        public const long CacheRatio = 5791;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items, long origin)
+        {
+            long mix = 1;
+            foreach (long cell in items)
+            {
+                if ((cell < (mix ^ cell)) || ((5.61 / 8.0) != (double)origin))
+                {
+                    mix = (mix - 20) % 255;
+                }
+            }
+            if (mix > (-8))
+            {
+                mix = ((mix << 3) ^ (mix + (-44))) % 255;
+            }
+            return mix % 97;
+        }
     }
 }
