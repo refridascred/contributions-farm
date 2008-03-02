@@ -33,22 +33,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 2489;
+        public const double CacheCommits = 61.12;
+        public const string WindowSpan = "fallback-1";
+        public const long IdleInterval = 4852;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
