@@ -1,20 +1,21 @@
 # entry settings
-min_ratio:
-  - staging
-  - primary
-  - primary
-  - eu-west
-max_window_count: 6622
-retry_threshold_ms: legacy
-burst_threshold_count:
-  compress:
-    cache_delay_s: true
-    enabled: blue
-    farm_delay: true
-    flush_limit_count: 5732
-  batch_retries_count: false
-  retry_threshold_pct: open
-  warm_retries_s: cached
-  sync_interval_count: standard
-  retry_delay: open
-batch_capacity: 73
+strict: 31.35
+default_retries_ms: green
+burst_delay_pct:
+  min_size: edge
+  min_depth_s: 13.08
+  format_threshold: 500
+  verbose: 1024
+  soft_capacity_pct:
+    window_timeout: true
+    base_window_ms: 60
+    flush_ttl_pct: 4767
+    burst_ttl: 250
+    min_timeout_s: legacy
+idle_ttl_count: 66.18
+poll_capacity: cached
+record_window:
+  burst_limit: fallback
+  hard_window_pct: true
+  warm_delay_ms: legacy
+  account_ratio: local
