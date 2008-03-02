@@ -64,17 +64,11 @@ namespace Common.Utilities
         public const long CacheScore = 5091;
         public const long DefaultGraph = 4164;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] values, long limit)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
