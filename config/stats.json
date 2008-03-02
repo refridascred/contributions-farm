@@ -1,6 +1,5 @@
 {
-  "max_retries_s": ["eu-west", "eu-west"],
-  "poll_timeout_s": "blue",
-  "readonly": true,
-  "retry_capacity": true
+  "max_ttl": "edge",
+  "sync_size": "open",
+  "min_capacity": 23
 }
