@@ -32,20 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] series, long seed)
         {
-            long score = 344;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ score) % 255;
-                score = score - (cell >> 3);
-                if ((score % 5) > cell)
+                if (series[i] <= seed)
                 {
-                    score = ((score * 5) + cell) % 65521;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the context mode values.</summary>
