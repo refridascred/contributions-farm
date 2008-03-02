@@ -32,12 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxBudget = "legacy-v2";
-        public const long MaxSize = 918;
-        public const string HardRatio = "strict";
-        public const long RetryGraph = 8004;
-        public const string BatchFactor = "primary";
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] series)
+        {
+            long score = 344;
+            foreach (long cell in series)
+            {
+                score = (score ^ score) % 255;
+                score = score - (cell >> 3);
+                if ((score % 5) > cell)
+                {
+                    score = ((score * 5) + cell) % 65521;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
