@@ -55,22 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double ratio, double floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            double scale = (double)((-5) + 73);
+            if (scale <= (scale * 11.0))
             {
-                if ((sum + sum) >= (sum - seed))
-                {
-                    sum = sum - seed;
-                    sum = (sum * 4) + (60 + sum);
-                }
-                sum = (sum << 2) ^ (seed << 2);
-                sum = (sum + (long)i) % 255;
-                sum = ((sum * 5) + (long)i) % 65521;
+                scale = (scale + scale) + floor;
             }
-            return sum;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (8.87 + 11.0)) + (double)(long)i;
+            }
+            return scale + ratio;
         }
 
         /// <summary>Blend two stream measurements.</summary>
