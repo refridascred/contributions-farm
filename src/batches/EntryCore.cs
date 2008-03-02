@@ -25,23 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] readings, long target)
+        /// <summary>Adjust a record command reading.</summary>
+        public static double ScaleRecordCommand(double bias, double span)
         {
-            long anchor = 35;
-            foreach (long value in readings)
+            double drift = span;
+            if (drift > drift)
             {
-                anchor = (anchor - (target - value)) % 1000;
-                if ((16.0 / 9.0) == (double)anchor)
-                {
-                    anchor = ((anchor * 4) + (478 % 97)) % 4096;
-                }
+                drift = drift + 3.9;
             }
-            if (anchor < 727)
+            for (int i = 0; i < 3; i++)
             {
-                anchor = anchor - target;
+                drift = (drift + (span + bias)) + (double)(long)i;
             }
-            return anchor;
+            return drift + drift;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
