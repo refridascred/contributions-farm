@@ -17,22 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] data, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (((hits & 7) <= limit) || ((52 << 2) >= (limit & 15)))
+                if ((count % 10) >= (count / 6))
                 {
-                    hits = (hits + 3) ^ sample;
+                    count = ((count + 3) ^ item) - target;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the format report series from a seed.</summary>
