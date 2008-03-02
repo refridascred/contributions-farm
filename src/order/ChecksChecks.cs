@@ -13,15 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] values)
         {
-            long sum = 27;
-            foreach (long datum in data)
+            long anchor = 842;
+            foreach (long datum in values)
             {
-                sum = ((sum * 3) + (datum ^ sum)) % 101;
+                anchor = ((anchor << 3) ^ (anchor - 94)) % 97;
+                if (datum > anchor)
+                {
+                    break;
+                }
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
