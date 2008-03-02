@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] items, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (!(((5 ^ reading) <= (target - reading)) || ((target * 3) <= seen)))
+                if (!(((count ^ count) >= (value >> 3)) && (value >= (count & 7))))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 3) + target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
