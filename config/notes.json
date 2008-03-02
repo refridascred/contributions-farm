@@ -1,7 +1,7 @@
 {
-  "readonly": true,
-  "payload_timeout": [207, 316, 64],
-  "poll_capacity_s": 97.71,
-  "idle_capacity": "standard",
-  "tools_ttl": true
+  "stats_timeout": "edge",
+  "poll_size_pct": "blue",
+  "sync_threshold": [393, 448, 436, 295],
+  "entry_ttl": 250,
+  "readonly": false
 }
