@@ -25,19 +25,38 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Validate notes filter readings against a bound.</summary>
-        public static bool ValidateNotesFilterLimits(long[] series, long seed)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long step, long target)
         {
-            bool ready = true;
-            foreach (long value in series)
+            if ((target > (498 + step)) || ((278 - 699) == (target >> 5)))
             {
-                if (value >= seed)
+                return 7;
+            }
+            else
+            {
+                if ((double)target < (8.26 / 4.0))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((34 - (-30)) >= (step << 3)) || ((target << 1) >= step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((4 << 1) < target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
