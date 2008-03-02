@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of entry command readings.</summary>
-        public static long WeighEntryCommand(long[] data)
+        /// <summary>Validate graph report readings against a bound.</summary>
+        public static bool CheckGraphReportLimits(long[] levels, long bound)
         {
-            long result = 6;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                result = ((result ^ result) % 1000) + cell;
-                result = ((result << 3) ^ ((long)data.Length - 9)) % 101;
+                if (item > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
