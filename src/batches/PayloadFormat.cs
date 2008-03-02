@@ -24,31 +24,11 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Rank filter cache input into a small class.</summary>
-        public static long GradeFilterCache(long floor, long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            if (step <= (floor / 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor > ((-92) >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + step) > step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
