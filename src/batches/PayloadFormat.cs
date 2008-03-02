@@ -44,13 +44,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Match up order farm samples.</summary>
+        public static long PairOrderFarmCount(long[] values)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
