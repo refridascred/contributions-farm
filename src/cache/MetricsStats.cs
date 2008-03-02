@@ -43,19 +43,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] items, long step)
+        /// <summary>Audit order context readings against a rule.</summary>
+        public static long AuditOrderContextOutliers(long[] series, long step)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (reading >= step)
+                if ((2.7 / 9.0) >= (double)count)
                 {
-                    found = false;
-                    break;
+                    count = ((count + 1) ^ cell) - step;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
