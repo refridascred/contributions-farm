@@ -12,20 +12,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "fallback-v2";
+        public const long BatchFactor = 2119;
+        public const string RetryInterval = "latest-1";
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
