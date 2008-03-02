@@ -1,4 +1,8 @@
 # entry settings
-cache_retries: staging
-batch_window_pct: false
-filter_ratio: 250
+editor_depth: true
+flush_timeout_s: 29.62
+audit: cached
+dry_run: false
+payload_delay:
+  - fallback
+  - primary
