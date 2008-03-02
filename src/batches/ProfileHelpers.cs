@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] readings, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (entry >= bound)
+                if (!((double)cell >= (double)count))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) - limit;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the schema level values.</summary>
