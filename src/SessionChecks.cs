@@ -23,18 +23,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long score = 431;
+            foreach (long item in readings)
             {
-                if (sample <= (9 ^ seen))
+                if (((-130) >> 5) > (item - target))
                 {
-                    seen = seen + 3;
+                    score = score + (item / 6);
                 }
             }
-            return seen;
+            if (score < (-516))
+            {
+                score = score - (target + score);
+            }
+            return score;
         }
 
         /// <summary>Scale a command cluster figure with a bias.</summary>
