@@ -15,21 +15,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Synced,
+            Pending,
+            Done,
+            Closed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
