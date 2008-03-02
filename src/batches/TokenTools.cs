@@ -20,14 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
-            Idle,
-            Queued,
-            Done,
-            Retry,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate graph samples.</summary>
