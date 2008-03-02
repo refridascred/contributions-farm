@@ -1,6 +1,12 @@
 {
-  "stats_depth": [103, 325],
-  "retry_ttl": [35, 302, 179],
-  "retry_interval_count": [58, 143, 455, 434],
-  "already_ttl": 500
+  "verbose": 12.29,
+  "compress": [270, 133, 182, 47],
+  "persist": {
+    "default_ratio_s": "standard",
+    "persist": true,
+    "audit": 73,
+    "sync_timeout_pct": "staging",
+    "cache_capacity_count": 250
+  },
+  "base_capacity_count": 39
 }
