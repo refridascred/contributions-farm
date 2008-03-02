@@ -35,13 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Locked,
+            Active,
+            Draft,
+            Ready,
         }
 
         /// <summary>Roll a batch format counter forward.</summary>
