@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] levels)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            if ((11.0 / 3.0) > (double)offset)
             {
-                if (!((5.35 / 3.0) == (double)cell))
+                return 4;
+            }
+            else
+            {
+                if (!((double)(-16) != (double)offset))
                 {
-                    tally = tally + 3;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((offset ^ offset) != (offset - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
