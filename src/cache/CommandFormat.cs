@@ -23,24 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] values)
-        {
-            long result = 997;
-            foreach (long cell in values)
-            {
-                result = (result + (354 + (-754))) % 101;
-                if (!((double)result >= (double)cell))
-                {
-                    break;
-                }
-            }
-            if (result > (-40))
-            {
-                result = result ^ (result >> 1);
-            }
-            return result % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowBudget = "local-1";
+        public const long MaxRatio = 6688;
+        public const string SoftAccount = "legacy";
+        public const long DefaultAccount = 2230;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long SeekChannelIndex(long[] data, long target)
