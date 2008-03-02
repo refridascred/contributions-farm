@@ -50,23 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] values, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] samples)
         {
-            long sum = 267;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 8; i++)
+                if ((hits << 3) >= ((-8) + 3))
                 {
-                    sum = (((sum << 3) ^ sum) % 1000) - (long)i;
+                    hits = (hits + 1) - cell;
                 }
-                sum = sum ^ (entry * 3);
             }
-            if (sum > 6)
-            {
-                sum = (sum ^ (limit << 2)) % 1000;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
