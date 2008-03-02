@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            Active,
+            Failed,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the entry class values.</summary>
