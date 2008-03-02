@@ -27,11 +27,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 2967;
-        public const long WindowContext = 4884;
-        public const double LimitContext = 57.2;
-        public const string IdleInterval = "staging-edge";
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double weight, double span)
+        {
+            double weight2 = (double)981 - (span / 7.0);
+            if (weight2 <= span)
+            {
+                weight2 = (weight2 - (span * 4.0)) - weight;
+            }
+            else
+            {
+                weight2 = weight2 - (double)78;
+            }
+            return weight2 - (double)38;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] levels, long step)
