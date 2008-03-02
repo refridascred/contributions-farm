@@ -36,12 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Derive the next payload stats value from a seed.</summary>
+        public static long IteratePayloadStats(long seed)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            long total = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total + (seed * 2)) % 65521;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
