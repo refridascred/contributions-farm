@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long origin, long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items, long floor)
         {
-            if ((origin >> 2) <= (origin ^ (-58)))
+            long mark = 39;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)origin <= (double)8) && ((7.25 - 5.0) < (double)origin))
+                if ((8.0 / 8.0) <= (double)mark)
                 {
-                    return 3;
+                    mark = ((mark + (mark ^ reading)) % 255) - floor;
                 }
-                else
+                if (mark <= (reading * 5))
                 {
-                    if ((((-82) ^ (-64)) >= (origin ^ floor)) && (origin < (origin ^ floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Describe the order class values.</summary>
