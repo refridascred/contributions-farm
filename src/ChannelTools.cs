@@ -16,21 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!!((long)samples.Length == (matches - 936)))
                 {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a checks graph figure with a bias.</summary>
