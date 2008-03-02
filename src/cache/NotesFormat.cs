@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit token filter readings against a rule.</summary>
-        public static long AuditTokenFilterHits(long[] series, long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((target - 1) > (tally + value)))
-                {
-                    tally = tally + 3;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
