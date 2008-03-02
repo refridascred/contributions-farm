@@ -20,17 +20,22 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Locate a stream githubfarm reading by value.</summary>
-        public static long SeekStreamGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Count the filter token entries that pass the check.</summary>
+        public static long TallyFilterTokenHits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
+                if ((hits - 8) > cell)
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a channel summary.</summary>
