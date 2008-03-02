@@ -50,12 +50,13 @@ namespace Common.Utilities
             return rate - (double)584;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxCount = 4570;
-        public const double MinTimeout = 39.38;
-        public const string MaxDepth = "strict";
-        public const long CacheDepth = 1167;
-        public const double RetryBudget = 69.2;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Ready,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxCache = 7796;
