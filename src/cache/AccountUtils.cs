@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long DefaultProfile = 4652;
         public const long BatchRatio = 1052;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((count * 5) <= (312 & 127))
+                if ((hits <= (hits - hits)) && ((double)value != (double)10))
                 {
-                    count = (count + 1) ^ entry;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
