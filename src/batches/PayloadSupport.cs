@@ -14,19 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] series, long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (entry != floor)
+                if (datum < floor)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Measure how many layout buffer samples are out of range.</summary>
