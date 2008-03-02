@@ -64,12 +64,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultLevel = 6868;
-        public const long MinFarm = 7060;
-        public const long MaxFarm = 6041;
-        public const string SoftScore = "open-1";
-        public const long BatchLevel = 3726;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterMatches(long[] readings)
