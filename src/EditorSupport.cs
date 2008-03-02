@@ -39,32 +39,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long step, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long step)
         {
-            long slot = step ^ target;
-            if ((double)slot < (5.5 + 9.3))
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(step > (slot + 320)))
+                state = state ^ (439 + 4);
+                if (step <= (91 - state))
                 {
-                    return 4;
+                    state = state - (step / 8);
                 }
-                else
-                {
-                    if ((18.0 * 6.0) >= (double)slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Describe the support class values.</summary>
