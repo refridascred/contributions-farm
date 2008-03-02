@@ -53,19 +53,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double rate, double span)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long limit)
         {
-            double scale = (double)1 - (double)81;
-            if (scale < span)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                scale = scale + (double)8;
+                anchor = (anchor << 2) ^ (limit % 97);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (9.87 * 9.5)) + (double)(long)i;
-            }
-            return scale - (rate / 6.0);
+            return anchor;
         }
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
