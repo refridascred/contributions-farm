@@ -37,19 +37,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] data, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
