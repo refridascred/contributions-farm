@@ -2,13 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    ratio REAL,
-    score REAL NOT NULL DEFAULT 0,
-    token TEXT,
-    weight REAL
+    weight REAL,
+    state TEXT NOT NULL DEFAULT 'new',
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
 
-INSERT INTO stats_logs (owner, ratio, score, token, weight) VALUES ('stable', 36.75, 74.5, 'fallback', 48.16);
-INSERT INTO stats_logs (owner, ratio, score, token, weight) VALUES ('primary', 92.89, 81.56, 'staging', 64.04);
+INSERT INTO stats_logs (owner, weight, state, active) VALUES ('legacy', 78.5, 'blue', 87);
+INSERT INTO stats_logs (owner, weight, state, active) VALUES ('local', 16.18, 'eu-west', 84);
