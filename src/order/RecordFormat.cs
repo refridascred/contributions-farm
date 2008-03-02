@@ -22,24 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (seed >= ((long)i + (long)i))
+                if ((5.0 * 9.1) == (double)sample)
                 {
-                    break;
+                    count = count + 3;
                 }
-                if ((seed + seed) >= seed)
-                {
-                    acc = ((acc * 5) + 7) % 65521;
-                    acc = (acc ^ seed) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Fold a list of layout stream readings.</summary>
