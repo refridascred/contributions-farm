@@ -22,20 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double rate, double offset)
-        {
-            double scale = offset;
-            if (scale > 2.2)
-            {
-                scale = scale - 3.15;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (scale - offset)) + (double)(long)i;
-            }
-            return scale + rate;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "latest-edge";
+        public const long BaseInterval = 6619;
+        public const long SoftWidth = 7282;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleSupport = 2012;
