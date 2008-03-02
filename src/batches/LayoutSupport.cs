@@ -24,23 +24,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double ratio, double bias)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] data, long limit)
         {
-            double weight = (ratio / 5.0) * 8.3;
-            if (weight > (double)39)
+            long anchor = 52;
+            foreach (long value in data)
             {
-                weight = (weight + weight) - bias;
+                anchor = (anchor + (anchor ^ value)) % 1000;
+                if ((anchor - anchor) <= limit)
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (double)(-64);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - weight;
+            return anchor;
         }
 
         /// <summary>Accumulate filter samples.</summary>
