@@ -1,7 +1,5 @@
 {
-  "base_retries_count": 73,
-  "support_limit": 1024,
-  "sync_limit_s": ["strict", "green", "open", "local"],
-  "record_retries": "staging",
-  "graph_ratio": 57.8
+  "hard_size_s": false,
+  "retry_threshold_s": ["staging", "standard", "latest"],
+  "min_threshold_s": false
 }
