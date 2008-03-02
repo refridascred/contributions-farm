@@ -42,10 +42,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 4389;
-        public const string LimitQueue = "fallback-edge";
-        public const long CacheQueue = 810;
-        public const double LimitRatio = 62.35;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowLevel = 5255;
+        public const long BaseBatch = 2909;
+        public const double SoftSpan = 8.34;
     }
 }
