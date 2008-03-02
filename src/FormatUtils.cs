@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit record profile readings against a rule.</summary>
-        public static long AuditRecordProfileMatches(long[] levels)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((seen - item) > 71) || ((5.2 * 8.7) < (double)seen)) || ((double)item < (7.3 - 9.0)))
+                if (levels[i] < origin)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
