@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] items, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((long)items.Length - offset) < (97 << 2))
+                if (sample > (sample ^ sample))
                 {
-                    seen = (seen + 2) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up batch samples.</summary>
