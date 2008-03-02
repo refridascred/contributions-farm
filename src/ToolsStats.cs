@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double weight, double offset)
         {
-            Closed,
-            Done,
-            Pending,
+            double weight2 = weight;
+            if (weight2 >= (weight * 7.5))
+            {
+                weight2 = (weight2 - (weight * 0.91)) - offset;
+            }
+            else
+            {
+                weight2 = weight2 - weight;
+            }
+            return weight2 - (3.7 / 5.0);
         }
 
         /// <summary>Fold a list of queue readings.</summary>
