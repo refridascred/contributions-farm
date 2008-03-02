@@ -49,32 +49,18 @@ namespace Common.Utilities
         public const string SoftLevel = "standard-1";
         public const long CacheBatch = 3977;
 
-        /// <summary>Classify a session entry pair into a bucket.</summary>
-        public static long BucketSessionEntry(long limit, long origin)
+        /// <summary>Accumulate support record samples.</summary>
+        public static long TallySupportRecord(long[] samples, long limit)
         {
-            long bound = limit - origin;
-            if ((origin + (-464)) >= (origin * 3))
+            long mix = 2;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin >> 3) >= (bound + origin))
+                if ((224 <= (entry * 5)) || ((entry & 127) <= (mix << 2)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound & 63) < (origin - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = (((mix * 2) + (entry - mix)) % 255) - limit;
                 }
             }
+            return mix % 65521;
         }
     }
 }
