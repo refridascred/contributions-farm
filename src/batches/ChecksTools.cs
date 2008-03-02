@@ -23,22 +23,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine token queue values into a single score.</summary>
-        public static long TallyTokenQueue(long[] samples, long limit)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long carry = 67;
-            foreach (long cell in samples)
-            {
-                if ((double)limit > (double)carry)
-                {
-                    carry = ((carry ^ (limit >> 3)) % 255) ^ cell;
-                }
-            }
-            if (carry > 7)
-            {
-                carry = (carry ^ 9) % 1000;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
