@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 1253;
+        public const string BurstMetrics = "open-1";
+        public const string DefaultCount = "staging-v2";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double RetryProfile = 62.3;
