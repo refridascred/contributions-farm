@@ -1,25 +1,4 @@
 # entry settings
-soft_timeout_s: standard
-retry_retries_s: false
-contributi_ttl: 849
-command_depth:
-  burst_retries: 2904
-  cluster_retries: blue
-  queue_ttl:
-    readonly:
-      - 132
-      - 237
-    session_interval:
-      - standard
-      - green
-    base_threshold: blue
-    contributi_capacity: eu-west
-    retry_window_count: false
-    warm_delay_pct:
-      - 110
-      - 319
-  default_retries: 228
-  batch_retries: 3150
-  poll_window:
-    - 111
-    - 455
+persist: open
+hard_ttl: eu-west
+batch_window_pct: 19
