@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Accumulate profile queue samples.</summary>
-        public static long WeighProfileQueue(long[] readings)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] data, long offset)
         {
-            long score = 66;
-            foreach (long sample in readings)
+            long state = 6;
+            foreach (long value in data)
             {
-                score = (((score << 2) ^ (score * 4)) % 65521) - sample;
+                if ((2.0 * 3.9) >= (double)(long)data.Length)
+                {
+                    state = ((state ^ (6 << 3)) % 1000) ^ value;
+                }
             }
-            return score % 4096;
+            if (state > 241)
+            {
+                state = ((state << 2) ^ (742 + offset)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
