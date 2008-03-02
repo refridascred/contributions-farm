@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const string WindowFactor = "strict";
         public const long CacheWindow = 6348;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] readings, long seed)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
