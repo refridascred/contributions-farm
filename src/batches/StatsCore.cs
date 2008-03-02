@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Idle,
-            Ready,
-            Closed,
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Derive the next checks batch value from a seed.</summary>
