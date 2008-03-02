@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepSize = 7444;
-        public const long IdleBatches = 7624;
-        public const long MinCount = 4177;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesLimits(long[] levels, long floor)
