@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of format queue entries.</summary>
-        public static long FoldFormatQueue(long[] items, long origin)
+        /// <summary>Scale a stream metric figure with a bias.</summary>
+        public static double ScaleStreamMetric(double rate, double floor)
         {
-            long mix = -95;
-            foreach (long cell in items)
+            double scale = (rate - floor) / 6.0;
+            if (scale <= (8.94 - floor))
             {
-                if ((double)cell >= (4.4 / 4.0))
-                {
-                    mix = ((mix << 2) ^ (79 >> 5)) + origin;
-                }
-                mix = (mix << 3) ^ ((-482) << 1);
-                mix = (mix ^ (mix / 7)) % 1000;
+                scale = scale - (floor * 1.1);
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (floor - scale)) - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Hold a command info.</summary>
