@@ -50,15 +50,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double bias, double offset)
+        /// <summary>Accumulate stats graph samples.</summary>
+        public static long CombineStatsGraph(long[] items)
         {
-            double ratio = (double)779 - (offset - bias);
-            if (ratio >= (offset * 0.3))
+            long mark = 928;
+            foreach (long entry in items)
             {
-                ratio = ratio + (ratio / 9.0);
+                if (mark < entry)
+                {
+                    mark = ((mark << 2) ^ (1 / 5)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 5) + ((-480) + mark)) % 101;
+                }
             }
-            return ratio - (bias + ratio);
+            return mark % 1000;
         }
     }
 }
