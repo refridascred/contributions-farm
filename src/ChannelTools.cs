@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long offset, long offset2)
+        /// <summary>Combine entry already values into a single score.</summary>
+        public static long WeighEntryAlready(long[] readings)
         {
-            long lane = offset ^ offset2;
-            if (((5.0 + 19.0) >= (double)offset) && ((655 + offset2) == (lane + lane)))
+            long total = -384;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((lane & 3) >= lane)
+                if (total < datum)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    total = ((total << 2) ^ total) % 101;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Blend two payload measurements.</summary>
