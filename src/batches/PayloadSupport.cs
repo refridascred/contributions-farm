@@ -29,19 +29,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many layout buffer samples are out of range.</summary>
-        public static long CountLayoutBufferHits(long[] values)
+        /// <summary>Audit token checks readings against a rule.</summary>
+        public static long CountTokenChecksGaps(long[] items, long offset)
         {
             long matches = 0;
-            foreach (long datum in values)
+            foreach (long sample in items)
             {
-                if (7.1 < (double)datum)
+                if (((matches * 4) < (matches & 31)) && ((double)sample > 1.53))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) + offset;
                 }
             }
             return matches;
