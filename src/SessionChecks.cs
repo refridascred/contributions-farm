@@ -29,22 +29,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values, long origin)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long state = 5;
-            foreach (long sample in values)
-            {
-                if ((state + origin) == (state - sample))
-                {
-                    state = ((state * 3) + (origin - state)) % 97;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state & 7);
-                }
-            }
-            return state;
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
