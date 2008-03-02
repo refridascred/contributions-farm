@@ -1,8 +1,5 @@
 {
-  "sync_size_s": true,
-  "flush_retries": 38,
-  "soft_retries": 6893,
-  "idle_limit": 250,
-  "stats_window": "primary",
-  "max_interval_pct": "eu-west"
+  "soft_threshold": "primary",
+  "stream_interval": "stable",
+  "retry_depth_pct": "legacy"
 }
