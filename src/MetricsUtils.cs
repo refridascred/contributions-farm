@@ -42,18 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Adjust a cluster contributi reading.</summary>
+        public static double BlendClusterContributi(double ratio, double floor)
         {
-            long sum = 9;
-            foreach (long cell in items)
+            double bias = ratio - (ratio + 3.35);
+            if (bias < bias)
             {
-                if ((sum + sum) > sum)
-                {
-                    sum = sum ^ (cell + cell);
-                }
+                bias = (bias + 6.3) + floor;
             }
-            return sum % 4096;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (double)14) + (double)(long)i;
+            }
+            return bias + (bias / 5.0);
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
