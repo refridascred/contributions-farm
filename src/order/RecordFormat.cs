@@ -39,25 +39,22 @@ namespace Common.Utilities
         public const long StepEditor = 3231;
         public const long BaseTimeout = 5664;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            long offset = target - step;
-            if ((offset + step) == (step << 3))
+            long score = 92;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (step > (step * 5))
+                if ((score - sample) != (score * 4))
                 {
-                    return 6;
+                    score = (score << 3) ^ (score << 3);
                 }
                 else
                 {
-                    return 5;
+                    score = (score ^ (sample - 704)) % 255;
                 }
             }
+            return score;
         }
     }
 }
