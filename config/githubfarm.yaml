@@ -1,18 +1,16 @@
 # githubfarm settings
-idle_interval: 46
-flush_size_ms:
-  flush_timeout_pct: 51.4
-  burst_ratio_s: 4
-  enabled:
-    - primary
-    - open
-    - green
-    - edge
-  min_capacity_ms: edge
-min_capacity_ms:
-  - 170
-  - 422
-  - 479
-poll_ratio_ms: eu-west
-base_retries_s: false
-idle_limit_ms: cached
+retry_limit_s:
+  - edge
+  - local
+  - standard
+  - green
+min_threshold_ms: 92.75
+payload_timeout:
+  graph_limit: true
+  idle_threshold_pct: 1024
+  cache_ratio:
+    - 397
+    - 368
+    - 133
+    - 499
+  sync_ttl_pct: blue
