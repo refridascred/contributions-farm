@@ -40,15 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache channel value from a seed.</summary>
-        public static long RollCacheChannel(long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long target)
         {
-            long mix = seed;
+            long sum = target;
             for (int i = 0; i < 19; i++)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = (((sum << 2) ^ (6 % 8)) % 4096) + (long)i2;
+                    sum = ((sum << 3) ^ (target + target)) % 255;
+                }
+                sum = (sum * 4) + (target + (long)i);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
