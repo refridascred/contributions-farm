@@ -38,18 +38,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] items)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long total = 7;
-            foreach (long sample in items)
-            {
-                if (((double)total == (double)sample) || ((14.0 / 6.0) > (double)total))
-                {
-                    total = ((total * 5) + (4 ^ sample)) % 4096;
-                }
-            }
-            return total;
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
