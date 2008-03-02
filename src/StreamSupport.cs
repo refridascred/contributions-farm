@@ -28,19 +28,20 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] data, long limit)
+        /// <summary>Accumulate order filter samples.</summary>
+        public static long FoldOrderFilter(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long item in data)
+            long carry = 479;
+            foreach (long value in levels)
             {
-                if (item != limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry ^ (value + 2)) % 101;
+                carry = (carry ^ (9 ^ carry)) % 65521;
             }
-            return found;
+            if (carry > 685)
+            {
+                carry = (carry + (carry ^ target)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
