@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long target, long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            if ((0.54 * 5.3) <= (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((325 - floor) >= target) || ((454 + target) < (target << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Retry,
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Roll a already counter forward.</summary>
