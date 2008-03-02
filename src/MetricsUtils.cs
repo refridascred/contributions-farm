@@ -45,15 +45,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Pending,
-            Dropped,
-            Closed,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 4980;
+        public const long IdleDepth = 5037;
+        public const double StepCount = 40.93;
+        public const string BaseStream = "cached-1";
 
         /// <summary>Blend two contributi checks measurements.</summary>
         public static double AdjustContributiChecks(double scale, double floor)
