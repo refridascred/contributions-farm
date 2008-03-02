@@ -39,18 +39,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] values, long origin)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double weight = (double)(170 ^ 443);
+            for (int i = 0; i < 6; i++)
             {
-                if ((3 + tally) >= (tally >> 2))
-                {
-                    tally = ((tally + 3) - value) - origin;
-                }
+                weight = (((weight + weight) + (double)(long)i) + rate) + floor;
             }
-            return tally;
+            return weight - (double)8;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
