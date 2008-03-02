@@ -30,32 +30,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long bound, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] values, long floor)
         {
-            long step = bound - target;
-            if (((bound >> 2) <= (124 - 751)) && (step >= (target ^ 654)))
+            long state = 38;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound > (step % 100))
+                if ((8 ^ 426) == (item * 5))
                 {
-                    return 0;
+                    state = ((state << 3) ^ floor) % 101;
                 }
                 else
                 {
-                    if ((target + (-88)) >= (target ^ bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = (state ^ (state ^ state)) % 255;
+                    state = (state << 3) ^ (item + floor);
+                }
+                if ((item >> 1) == (floor + item))
+                {
+                    state = state ^ (item + item);
+                }
+                if ((item + state) == (item & 63))
+                {
+                    break;
                 }
             }
+            return state % 1000;
         }
     }
 }
