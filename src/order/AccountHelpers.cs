@@ -13,10 +13,26 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardTimeout = 40.24;
-        public const double LimitChannel = 14.84;
-        public const string CacheRatio = "strict-1";
+        /// <summary>Classify a batches commits pair into a bucket.</summary>
+        public static long ClassifyBatchesCommits(long offset, long bound)
+        {
+            long diff = offset + bound;
+            if ((diff * 3) <= (diff + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)bound > (7.4 * 7.0)) && (bound <= (bound + diff)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double bias, double floor)
