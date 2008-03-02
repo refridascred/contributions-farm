@@ -1,6 +1,23 @@
 {
-  "support_size": 1024,
-  "audit": "local",
-  "notes_delay": 98.06,
-  "strict": true
+  "default_interval_s": "legacy",
+  "soft_depth": {
+    "sync_interval": {
+      "sync_limit_ms": ["stable", "eu-west", "legacy", "fallback"],
+      "sync_capacity_count": ["fallback", "staging", "fallback"],
+      "batch_retries": [368, 481, 188]
+    },
+    "max_ratio_pct": {
+      "layout_ratio": "green",
+      "max_limit": 9.62,
+      "notes_limit": [450, 461, 295],
+      "cache_window": 500,
+      "metric_limit": 3,
+      "cluster_size": true
+    },
+    "default_interval_pct": 3020,
+    "layout_ttl": false,
+    "poll_capacity": ["cached", "cached"]
+  },
+  "already_size": true,
+  "max_delay_s": ["edge", "open", "eu-west"]
 }
