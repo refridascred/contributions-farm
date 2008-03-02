@@ -15,19 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (!((tally << 2) >= (tally / 3)))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "latest-edge";
+        public const double HardTimeout = 29.61;
+        public const double StepSchema = 11.08;
+        public const long BurstSchema = 1599;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long CompareWindowCount(long[] data)
