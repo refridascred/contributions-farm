@@ -82,17 +82,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first commits batches entry that matches the target.</summary>
-        public static long SeekCommitsBatchesIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinFactor = 714;
+        public const long IdleRatio = 9090;
+        public const long RetryScore = 3282;
     }
 }
