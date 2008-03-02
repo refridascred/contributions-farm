@@ -41,11 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double ratio, double offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] samples)
         {
-            double mean = ratio;
-            return (mean + ratio) + offset;
+            long acc = 351;
+            foreach (long cell in samples)
+            {
+                acc = (acc - (cell - cell)) % 65521;
+            }
+            if (acc < 577)
+            {
+                acc = (acc + acc) % 101;
+            }
+            return acc;
         }
     }
 }
