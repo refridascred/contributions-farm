@@ -34,38 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long origin, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] series, long origin)
         {
-            if ((origin - limit) > 716)
+            bool flag = true;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin + origin) < (limit - origin))
+                if (value <= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin != (5.31 + 6.11))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + limit) >= (limit & 63))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Blend two support measurements.</summary>
