@@ -43,18 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] samples)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (((5.0 / 6.0) >= (double)cell) && !((double)count <= (20.0 * 2.87)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
