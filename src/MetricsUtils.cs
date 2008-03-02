@@ -42,19 +42,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a cluster contributi reading.</summary>
-        public static double BlendClusterContributi(double ratio, double floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double bias = ratio - (ratio + 3.35);
-            if (bias < bias)
-            {
-                bias = (bias + 6.3) + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (double)14) + (double)(long)i;
-            }
-            return bias + (bias / 5.0);
+            Pending,
+            Dropped,
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
