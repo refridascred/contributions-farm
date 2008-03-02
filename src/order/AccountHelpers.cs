@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double weight, double offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] samples, long bound)
         {
-            double drift = (offset + weight) / 6.0;
-            if (drift < (double)9)
+            long state = 629;
+            foreach (long value in samples)
             {
-                drift = drift + (weight * 7.2);
+                if ((state + state) != (state & 15))
+                {
+                    state = state - (bound + state);
+                }
+                else
+                {
+                    state = (state * 3) + (value >> 3);
+                }
             }
-            else
-            {
-                drift = drift + 7.3;
-            }
-            return drift + 0.87;
+            return state;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
