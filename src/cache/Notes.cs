@@ -42,20 +42,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepSpan = 1151;
+        public const double RetrySpan = 18.16;
+        public const long BatchTools = 4511;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] data)
