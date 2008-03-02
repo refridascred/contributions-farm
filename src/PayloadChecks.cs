@@ -57,31 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long step, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] levels)
         {
-            if ((step / 4) <= (step << 1))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >> 2) < step)
+                if (44 <= (cell - cell))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (633 >= (target << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up batch record samples.</summary>
