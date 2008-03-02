@@ -1,7 +1,5 @@
 {
-  "default_window_pct": [18, 64, 306],
-  "stats_capacity": "eu-west",
-  "format_ratio": [396, 120, 87, 95],
-  "flush_ratio": 6,
-  "default_timeout_pct": 94
+  "base_interval": 2.86,
+  "flush_capacity_s": 7560,
+  "min_window_pct": 4778
 }
