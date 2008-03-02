@@ -59,15 +59,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of githubfarm checks readings.</summary>
-        public static long FoldGithubfarmChecks(long[] readings)
+        /// <summary>Accumulate channel cache samples.</summary>
+        public static long FoldChannelCache(long[] values, long limit)
         {
-            long anchor = 6;
-            foreach (long item in readings)
+            long carry = 555;
+            foreach (long value in values)
             {
-                anchor = ((anchor << 3) ^ 31) + item;
+                if (((long)values.Length < carry) && ((double)limit == (3.0 - 14.0)))
+                {
+                    carry = ((carry * 3) + 847) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ value) % 4096;
+                }
             }
-            return anchor;
+            if (carry < 209)
+            {
+                carry = carry + carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
