@@ -34,17 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a session counter reading by value.</summary>
-        public static long FindSessionCounterIndex(long[] data, long target)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = (span / 6.0) * 8.87;
+            if (bias < scale)
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                bias = bias - bias;
             }
-            return -1;
+            return bias + 8.71;
         }
     }
 }
