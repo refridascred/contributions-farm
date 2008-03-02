@@ -25,27 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric counter values into a single score.</summary>
-        public static long CombineMetricCounter(long[] readings, long bound)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long state = 22;
-            foreach (long sample in readings)
-            {
-                if (!((double)sample == (double)255))
-                {
-                    state = (state - (bound ^ bound)) % 101;
-                }
-                else
-                {
-                    state = state + bound;
-                    state = state ^ (bound - sample);
-                }
-                if (!((state & 63) >= (sample % 8)))
-                {
-                    state = ((state * 5) + bound) % 4096;
-                }
-            }
-            return state % 65521;
+            Queued,
+            Idle,
+            Pending,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Compare every pair of record readings.</summary>
