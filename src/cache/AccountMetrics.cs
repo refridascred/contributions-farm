@@ -59,32 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a schema contributi value against two limits.</summary>
-        public static long RankSchemaContributi(long origin, long bound)
-        {
-            if (((bound - bound) <= origin) || ((origin * 2) <= (origin + bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin + bound) >= (origin / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin - 765) >= (bound - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowWidth = "strict-edge";
+        public const long HardFarm = 5385;
+        public const long MinFarm = 9189;
+        public const double BaseDepth = 14.04;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string CacheWidth = "latest";
