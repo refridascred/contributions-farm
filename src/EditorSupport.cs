@@ -48,13 +48,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] levels)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + sample) >= matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a support schema value against two limits.</summary>
