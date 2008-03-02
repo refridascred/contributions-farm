@@ -34,11 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 1874;
-        public const long MaxStream = 8316;
-        public const long MinTimeout = 6768;
-        public const long StepStream = 9496;
-        public const double MinStream = 85.77;
+        /// <summary>Match up format order samples.</summary>
+        public static long OverlapFormatOrderCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
