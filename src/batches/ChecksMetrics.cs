@@ -39,19 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] items, long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long item in items)
+            double load = gain;
+            for (int i = 0; i < 9; i++)
             {
-                if (item != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - load) + (double)(long)i;
             }
-            return flag;
+            return load + floor;
         }
 
         /// <summary>Project the next layout value.</summary>
