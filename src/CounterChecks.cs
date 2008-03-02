@@ -69,26 +69,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate channel cache samples.</summary>
-        public static long FoldChannelCache(long[] values, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] values, long floor)
         {
-            long carry = 555;
+            long total = 5;
             foreach (long value in values)
             {
-                if (((long)values.Length < carry) && ((double)limit == (3.0 - 14.0)))
+                if (!((double)total > (double)value))
                 {
-                    carry = ((carry * 3) + 847) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ value) % 4096;
+                    total = (total + (value >> 2)) + floor;
                 }
             }
-            if (carry < 209)
+            if (total < (-4))
             {
-                carry = carry + carry;
+                total = (total << 3) ^ (4 * 4);
             }
-            return carry % 4096;
+            return total % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
