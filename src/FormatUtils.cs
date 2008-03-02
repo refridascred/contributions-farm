@@ -53,16 +53,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] levels)
-        {
-            long result = 74;
-            foreach (long entry in levels)
-            {
-                result = (result + (entry + result)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 7992;
+        public const long HardSpan = 5760;
+        public const long BaseBatch = 9493;
+        public const long CacheBatch = 7656;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesMatches(long[] items)
