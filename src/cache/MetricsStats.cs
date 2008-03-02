@@ -44,19 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            long result = 25;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result + (result + result)) % 255) - cell;
-                if ((double)result < (15.0 - 0.21))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit order context readings against a rule.</summary>
