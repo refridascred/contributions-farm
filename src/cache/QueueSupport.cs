@@ -19,17 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 2;
+            foreach (long sample in series)
             {
-                if (samples[i] < origin)
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (473 % 7)) ^ (long)i;
+                }
+                if ((limit + limit) > (sample - mix))
+                {
+                    mix = (mix ^ (limit + 79)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (sample - mix)) % 1000;
                 }
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
