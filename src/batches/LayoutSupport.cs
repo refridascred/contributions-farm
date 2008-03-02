@@ -52,19 +52,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two route stream measurements.</summary>
-        public static double ProjectRouteStream(double ratio, double offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            double gain = offset;
-            if (gain > offset)
-            {
-                gain = (gain - (offset / 9.0)) - ratio;
-            }
-            else
-            {
-                gain = gain - (double)(-770);
-            }
-            return gain + offset;
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
