@@ -35,22 +35,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] series)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((double)hits == (double)entry)
+                if (sample <= limit)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
