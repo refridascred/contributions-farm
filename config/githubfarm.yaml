@@ -1,24 +1,18 @@
 # githubfarm settings
-hard_delay_s:
-  - stable
-  - legacy
-  - cached
-burst_ttl_ms: 250
-soft_limit_s:
-  - green
-  - open
-  - edge
-  - edge
-warm_retries: 42.15
-hard_depth: 60
-base_delay_ms:
-  warm_depth_s: 3839
-  burst_delay: staging
-  audit: 25
-  retry_size: cached
-  default_delay: 7.75
-  cache_window_pct:
-    - cached
-    - legacy
-    - strict
+idle_interval: 46
+flush_size_ms:
+  flush_timeout_pct: 51.4
+  burst_ratio_s: 4
+  enabled:
+    - primary
+    - open
     - green
+    - edge
+  min_capacity_ms: edge
+min_capacity_ms:
+  - 170
+  - 422
+  - 479
+poll_ratio_ms: eu-west
+base_retries_s: false
+idle_limit_ms: cached
