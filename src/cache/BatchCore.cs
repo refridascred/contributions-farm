@@ -31,13 +31,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Idle,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 6335;
+        public const long BatchChannel = 6970;
+        public const long RetryChannel = 6902;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BurstOrder = 9236;
