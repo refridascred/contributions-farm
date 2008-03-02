@@ -20,24 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double ratio, double floor)
-        {
-            double rate = 5.38;
-            if (rate >= (floor + ratio))
-            {
-                rate = rate - (double)(-8);
-            }
-            else
-            {
-                rate = rate - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (ratio - floor)) + (double)(long)i;
-            }
-            return rate + (double)8;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 2101;
+        public const double MaxWindow = 31.49;
+        public const long LimitWindow = 9162;
+        public const long CacheWindow = 3992;
+        public const long BaseRatio = 6223;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
