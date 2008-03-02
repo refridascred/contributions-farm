@@ -44,23 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double ratio, double floor)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            double rate = (double)(8 - 729);
-            if (rate > (6.3 + rate))
-            {
-                rate = rate + (rate + rate);
-            }
-            else
-            {
-                rate = rate - (floor / 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (rate * 9.32)) + (double)(long)i;
-            }
-            return rate + ratio;
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
