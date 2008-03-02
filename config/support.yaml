@@ -1,13 +1,16 @@
 # support settings
-idle_retries_s:
-  enabled:
-    base_ttl_s: eu-west
-    retry_delay_ms: 90.57
-    warm_retries_s: 1024
-    session_ttl: true
-  strict: 62
-  format_window: 96.38
-base_timeout: false
-cache_threshold:
-  - 114
-  - 183
+soft_size_s: stable
+profile_size:
+  - strict
+  - blue
+  - fallback
+batch_window_count:
+  githubfarm_ratio: false
+  poll_limit_pct:
+    cache_threshold_pct: false
+    poll_interval_pct: true
+    sync_depth_pct: cached
+  batch_interval_pct: 32.04
+  idle_size: legacy
+  batch_capacity_ms: 28
+  soft_timeout_s: 2632
