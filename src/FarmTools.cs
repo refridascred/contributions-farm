@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] data)
-        {
-            long score = 91;
-            foreach (long datum in data)
-            {
-                if (!((score - 0) <= (datum ^ 8)))
-                {
-                    score = score ^ (score & 127);
-                }
-            }
-            if (score < 227)
-            {
-                score = (score + 5) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "primary-edge";
+        public const string BurstSpan = "strict-v2";
+        public const string IdleLevel = "fallback-v2";
+        public const long BaseAlready = 5765;
+        public const string MinBudget = "open-edge";
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterOutliers(long[] data, long target)
