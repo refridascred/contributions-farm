@@ -62,15 +62,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Scale a metric commits figure with a bias.</summary>
+        public static double ScaleMetricCommits(double bias, double floor)
         {
-            long score = 618;
-            foreach (long entry in series)
+            double drift = bias - (floor - floor);
+            if (drift > (double)65)
             {
-                score = (((score * 5) + score) % 97) ^ entry;
+                drift = drift - (drift + drift);
             }
-            return score;
+            else
+            {
+                drift = drift + 15.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (floor + drift)) + (double)(long)i;
+            }
+            return drift + 19.0;
         }
 
         /// <summary>Describe the command status values.</summary>
