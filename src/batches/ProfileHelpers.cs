@@ -35,14 +35,31 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long step, long step2)
         {
-            Ready,
-            Paused,
-            Failed,
-            Queued,
-            Dropped,
+            if (((-7) + 0) > step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step2 << 2) <= 3)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step * 3) < step2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every session channel entry stays within the limit.</summary>
