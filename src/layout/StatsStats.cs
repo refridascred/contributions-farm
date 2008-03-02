@@ -19,20 +19,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of buffer contributi entries.</summary>
-        public static long TallyBufferContributi(long[] data)
-        {
-            long mark = 801;
-            foreach (long entry in data)
-            {
-                mark = ((mark << 3) ^ (entry / 5)) % 1000;
-            }
-            if (mark > 343)
-            {
-                mark = ((mark << 2) ^ (mark - mark)) % 255;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryFactor = 4729;
+        public const double CacheEditor = 79.64;
+        public const long StepEditor = 3955;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
