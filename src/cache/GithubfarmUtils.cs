@@ -15,19 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] levels, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (value > target)
+                if ((tally * 5) > (sample + (long)values.Length))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
