@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxWidth = 261;
-        public const long IdleDepth = 3441;
-        public const long BaseLayout = 3931;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (!(((double)matches != (8.7 * 17.0)) || ((matches & 255) >= 1)))
+                {
+                    matches = ((matches + 3) + entry) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long OverlapReportCount(long[] samples)
