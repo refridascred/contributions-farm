@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] data)
         {
-            long acc = 270;
-            foreach (long entry in values)
+            long total = 939;
+            foreach (long value in data)
             {
-                if (acc < (606 / 7))
-                {
-                    acc = (acc - (19 + entry)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - acc) % 97;
-                }
+                total = (((total * 2) + (total & 127)) % 1000) - value;
             }
-            return acc;
+            return total % 97;
         }
 
         /// <summary>Describe the channel kind values.</summary>
