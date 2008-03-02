@@ -20,17 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a support commits reading by value.</summary>
-        public static long LocateSupportCommitsIndex(long[] readings, long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Queued,
+            Done,
+            Retry,
+            Synced,
         }
 
         /// <summary>Accumulate graph samples.</summary>
