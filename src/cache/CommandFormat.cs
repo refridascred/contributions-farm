@@ -40,26 +40,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of session channel readings.</summary>
-        public static long WeighSessionChannel(long[] series, long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long mix = -605;
-            foreach (long item in series)
-            {
-                if (!((item - item) <= item))
-                {
-                    mix = ((mix << 3) ^ (limit & 3)) % 97;
-                }
-                if (!((item + mix) <= limit))
-                {
-                    mix = (mix ^ (mix >> 4)) % 255;
-                }
-                else
-                {
-                    mix = mix + (item - (long)series.Length);
-                }
-            }
-            return mix;
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
