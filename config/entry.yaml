@@ -1,7 +1,16 @@
 # entry settings
-sync_retries_pct: 42
-base_capacity: 97.23
-cache_ttl: 97.41
-retry_limit_pct: 98.19
-persist: 9
-commits_ratio: edge
+enabled:
+  metric_timeout: 9006
+  readonly: blue
+  notes_ttl: 9399
+  compress: true
+  burst_window_count: 500
+  report_capacity:
+    - strict
+    - cached
+support_ttl: 63
+default_timeout_count:
+  - 352
+  - 327
+min_ttl: staging
+default_capacity_ms: 3868
