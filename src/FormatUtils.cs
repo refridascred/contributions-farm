@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((-744) + hits) < 0)
                 {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + sample;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a commits record.</summary>
