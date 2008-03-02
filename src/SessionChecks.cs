@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 2452;
-        public const double SoftScore = 3.86;
-        public const string MinSupport = "staging-v2";
-        public const long MinDepth = 5993;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((-3) > (datum - tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
