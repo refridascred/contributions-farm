@@ -22,18 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] data)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((5.0 * 9.1) == (double)sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Fold a list of layout stream readings.</summary>
