@@ -59,22 +59,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] data, long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long floor, long limit)
         {
-            long anchor = 83;
-            foreach (long sample in data)
+            if ((3 / 9) == (limit + floor))
             {
-                if (limit >= (592 / 9))
+                return 4;
+            }
+            else
+            {
+                if (!((floor >> 1) < floor))
                 {
-                    anchor = (anchor + (sample - limit)) % 255;
+                    return 2;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ (limit << 1)) % 97;
+                    if ((double)limit <= (7.8 / 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor >= (floor & 127))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return anchor % 1000;
         }
     }
 }
