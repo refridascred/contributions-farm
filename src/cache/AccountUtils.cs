@@ -34,18 +34,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] data, long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((limit > ((-527) / 6)) || (hits < cell))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Closed,
+            Idle,
+            Failed,
+            Draft,
+            Dropped,
         }
     }
 }
