@@ -57,19 +57,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] data, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long origin)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc * 4) + (acc - acc);
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return stale;
+            return acc;
         }
     }
 }
