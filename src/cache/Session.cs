@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit cache report readings against a rule.</summary>
-        public static long AuditCacheReportMatches(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long score = 484;
+            foreach (long item in data)
             {
-                if ((22 * 4) < datum)
-                {
-                    seen = seen + 2;
-                }
+                score = ((score + (item / 6)) % 1000) + target;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
