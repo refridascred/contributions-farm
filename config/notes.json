@@ -1,17 +1,16 @@
 {
-  "audit": 85.53,
-  "sync_interval_count": {
-    "soft_ttl": 500,
-    "soft_ratio": {
-      "min_size": 49,
-      "default_ratio_pct": 60,
-      "warm_depth_count": false,
-      "hard_window": 60
-    },
-    "persist": "staging",
-    "soft_depth": ["fallback", "blue", "cached", "eu-west"],
-    "poll_capacity_count": 5147,
-    "min_delay_s": true
+  "compress": 16.72,
+  "base_capacity_ms": {
+    "flush_interval": 74.63,
+    "cache_size": 26,
+    "metric_threshold": false,
+    "sync_ttl_ms": {
+      "tools_threshold": ["strict", "open", "cached"],
+      "flush_ttl_pct": [271, 3, 2],
+      "commits_depth": 67.51
+    }
   },
-  "min_timeout": 500
+  "hard_delay_ms": "strict",
+  "flush_limit_s": "edge",
+  "readonly": 42.1
 }
