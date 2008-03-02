@@ -54,20 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] values, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (origin <= (origin & 255))
+                if (entry >= step)
                 {
-                    total = total ^ (origin / 6);
+                    flag = false;
                     break;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return flag;
         }
     }
 }
