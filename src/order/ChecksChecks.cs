@@ -13,12 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            long mark = 672;
+            foreach (long entry in samples)
+            {
+                mark = ((mark << 2) ^ (mark << 1)) - entry;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a graph options.</summary>
