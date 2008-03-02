@@ -54,18 +54,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window commits readings.</summary>
-        public static long FoldWindowCommits(long[] levels)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data)
         {
-            long score = 5;
-            foreach (long reading in levels)
+            long mark = 4;
+            foreach (long sample in data)
             {
-                if (874 <= (score ^ score))
-                {
-                    score = (score * 3) + (reading - reading);
-                }
+                mark = ((mark + (mark / 2)) % 255) - sample;
+                mark = (mark + (mark + mark)) % 101;
             }
-            return score;
+            return mark;
         }
     }
 }
