@@ -54,21 +54,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up queue channel samples.</summary>
-        public static long OverlapQueueChannelCount(long[] levels)
+        /// <summary>Count the support report entries that pass the check.</summary>
+        public static long AuditSupportReportHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((74 % 60) < (tally - tally)) || ((3.1 / 6.0) > (double)tally)))
                 {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) - entry;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
