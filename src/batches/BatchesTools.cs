@@ -39,12 +39,17 @@ namespace Common.Utilities
             return (rate - (rate * 16.0)) + bias;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] samples, long target)
         {
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
