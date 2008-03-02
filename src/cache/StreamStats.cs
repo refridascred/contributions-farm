@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchFactor = 1760;
+        public const double CacheSupport = 52.13;
+        public const double DefaultLevel = 73.11;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long StepSupport(long limit)
