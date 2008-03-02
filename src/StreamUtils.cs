@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] values, long origin)
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the session state values.</summary>
