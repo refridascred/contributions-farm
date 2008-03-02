@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] levels, long origin)
         {
-            Locked,
-            New,
-            Failed,
-            Active,
-            Ready,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((tally + 8) < tally) || ((double)value == (0.9 - 19.0)))
+                {
+                    tally = (tally + 2) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
