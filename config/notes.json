@@ -1,6 +1,8 @@
 {
-  "sync_delay_ms": 22.24,
-  "cache_window_count": false,
-  "retry_timeout": "open",
-  "checks_ratio": "legacy"
+  "idle_ttl": "open",
+  "batch_window_ms": "cached",
+  "dry_run": 250,
+  "base_delay_ms": "latest",
+  "cache_capacity_pct": 48,
+  "poll_delay_count": 250
 }
