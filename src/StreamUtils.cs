@@ -54,12 +54,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstWidth = 8165;
-        public const double DefaultSession = 87.5;
-        public const long StepSpan = 4412;
-        public const double CacheInterval = 42.82;
-        public const string BaseRatio = "strict";
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long seed, long target)
+        {
+            long delta = seed - target;
+            if ((delta % 5) <= (target + seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8.69 > (double)seed) && ((delta % 24) > target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed / 8) < (delta + 946))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
