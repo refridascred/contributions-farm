@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a format notes reading by value.</summary>
-        public static long LookupFormatNotesIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 8324;
+        public const string BatchSchema = "local-edge";
+        public const long CacheSchema = 5263;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
