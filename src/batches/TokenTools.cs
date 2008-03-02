@@ -20,21 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Roll a stats counter counter forward.</summary>
+        public static long SeriesStatsCounter(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(8.0 < (double)step))
                 {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score - (long)i) % 65521;
+                    score = (score * 5) + (score ^ 0);
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Accumulate graph samples.</summary>
