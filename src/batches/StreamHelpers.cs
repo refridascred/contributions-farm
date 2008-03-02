@@ -68,21 +68,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 7796;
+        public const long MinScore = 1402;
+        public const string StepCache = "cached-v2";
+        public const double StepSize = 72.46;
     }
 }
