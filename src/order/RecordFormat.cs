@@ -21,18 +21,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of layout stream readings.</summary>
-        public static long WeighLayoutStream(long[] samples, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            long sum = 0;
-            foreach (long item in samples)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((item + (long)samples.Length) <= (item - item))
-                {
-                    sum = (sum - origin) % 65521;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
