@@ -41,16 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stream command series from a seed.</summary>
-        public static long IterateStreamCommand(long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] samples)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                carry = ((carry << 2) ^ limit) % 101;
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((double)count == (0.43 * 5.5))
+                {
+                    count = (count + 3) ^ item;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
