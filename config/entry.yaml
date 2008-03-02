@@ -1,22 +1,25 @@
 # entry settings
-poll_size_s: 250
-strict:
-  hard_ratio_pct:
-    max_interval_pct: eu-west
-    filter_threshold:
-      - 419
-      - 459
-    dry_run: 83.32
-    min_limit_pct:
-      - primary
+soft_timeout_s: standard
+retry_retries_s: false
+contributi_ttl: 849
+command_depth:
+  burst_retries: 2904
+  cluster_retries: blue
+  queue_ttl:
+    readonly:
+      - 132
+      - 237
+    session_interval:
       - standard
-      - cached
-      - strict
-    batch_ratio: 48.65
-    cache_limit_pct: 3383
-  sync_interval_s: false
-  flush_interval_count: blue
-  compress: 1024
-  audit: true
-  soft_threshold_pct: cached
-min_window: 30
+      - green
+    base_threshold: blue
+    contributi_capacity: eu-west
+    retry_window_count: false
+    warm_delay_pct:
+      - 110
+      - 319
+  default_retries: 228
+  batch_retries: 3150
+  poll_window:
+    - 111
+    - 455
