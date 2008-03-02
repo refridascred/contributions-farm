@@ -40,21 +40,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Grade a schema contributi value against two limits.</summary>
+        public static long RankSchemaContributi(long origin, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            if (((bound - bound) <= origin) || ((origin * 2) <= (origin + bound)))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = (((sum << 2) ^ (6 % 8)) % 4096) + (long)i2;
-                    sum = ((sum << 3) ^ (target + target)) % 255;
-                }
-                sum = (sum * 4) + (target + (long)i);
-                sum = ((sum * 2) + (long)i) % 97;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((origin + bound) >= (origin / 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin - 765) >= (bound - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
