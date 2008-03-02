@@ -13,20 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] samples)
-        {
-            long state = -453;
-            foreach (long cell in samples)
-            {
-                state = (state - state) ^ cell;
-            }
-            if (state > 194)
-            {
-                state = ((state * 2) + state) % 101;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryContext = "latest-v2";
+        public const double IdleRatio = 38.28;
+        public const long MinContext = 2887;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 5834;
