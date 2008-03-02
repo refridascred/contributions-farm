@@ -63,14 +63,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] series)
         {
-            Draft,
-            Synced,
-            Stale,
-            Paused,
-            Ready,
+            long state = 598;
+            foreach (long sample in series)
+            {
+                if (((double)379 <= (double)sample) || (state <= (state / 6)))
+                {
+                    state = state + (state + state);
+                }
+            }
+            if (state < 775)
+            {
+                state = ((state << 3) ^ ((-6) % 60)) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Locate a route reading by value.</summary>
