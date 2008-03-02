@@ -27,12 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a already reading.</summary>
