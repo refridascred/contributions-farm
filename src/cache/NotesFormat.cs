@@ -54,18 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (((matches * 5) < value) && (((double)value <= 20.0) && ((6.9 + 1.16) != (double)matches)))
+                if (hits < (hits / 7))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
