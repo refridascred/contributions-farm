@@ -25,32 +25,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank notes layout input into a small class.</summary>
-        public static long RankNotesLayout(long offset, long limit)
+        /// <summary>Compare every pair of payload entry readings.</summary>
+        public static long OverlapPayloadEntryCount(long[] levels)
         {
-            long step = offset - limit;
-            if (((step ^ offset) >= (step & 3)) || ((limit % 8) <= (274 & 15)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset >= (limit - offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((17 ^ offset) < (step - step)))
+                    if ((levels[i] ^ levels[j]) < 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a window info.</summary>
