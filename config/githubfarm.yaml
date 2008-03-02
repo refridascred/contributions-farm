@@ -1,14 +1,9 @@
 # githubfarm settings
-base_window_ms: 20
-batch_capacity_ms: 23.3
-poll_interval_pct:
-  batch_threshold:
-    max_ratio:
-      - 331
-      - 83
-    batch_delay: legacy
-    audit: false
-    idle_ttl: legacy
-  poll_threshold: blue
-  persist: 27
-  warm_depth_pct: 30
+counter_window: false
+readonly:
+  - legacy
+  - primary
+  - latest
+audit: cached
+support_timeout: 80.1
+account_ttl: edge
