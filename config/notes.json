@@ -1,18 +1,5 @@
 {
-  "batch_window": 1024,
-  "enabled": "edge",
-  "retry_delay_pct": 31.46,
-  "min_interval_s": {
-    "editor_window": "cached",
-    "hard_timeout_ms": {
-      "warm_delay_s": 98,
-      "warm_window_count": 49.67,
-      "poll_capacity_pct": "staging",
-      "poll_window_count": 1024,
-      "cluster_size": 5527,
-      "batch_threshold_pct": true
-    },
-    "warm_interval": 544,
-    "dry_run": "stable"
-  }
+  "format_size": [88, 147, 22, 176],
+  "report_delay": 75.07,
+  "compress": 65.86
 }
