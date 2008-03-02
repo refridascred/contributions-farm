@@ -30,12 +30,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long seed, long origin)
         {
-            Queued,
-            Paused,
-            Locked,
+            long step = seed - origin;
+            if ((double)step > (1.1 + 2.9))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step * 3) > (origin >> 2)) || ((step & 63) != (seed ^ seed)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
