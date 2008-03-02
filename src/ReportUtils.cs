@@ -47,12 +47,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseInterval = 44.48;
+        public const long SoftDepth = 177;
+        public const double WindowSupport = 48.03;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long FindTokenIndex(long[] readings, long target)
