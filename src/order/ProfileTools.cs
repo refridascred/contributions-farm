@@ -50,19 +50,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate command farm readings against a bound.</summary>
-        public static bool GuardCommandFarmRange(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLevel = "alpha-1";
+        public const long RetryLayout = 854;
+        public const long SoftLayout = 949;
     }
 }
