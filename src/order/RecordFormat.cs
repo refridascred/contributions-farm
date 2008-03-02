@@ -30,22 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of payload entry readings.</summary>
-        public static long OverlapPayloadEntryCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "open-edge";
+        public const long DefaultCounter = 4705;
+        public const long CacheSize = 7892;
+        public const long WindowRatio = 6546;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
