@@ -1,5 +1,30 @@
 {
-  "metric_depth": 49,
-  "idle_ttl_count": "legacy",
-  "flush_size": false
+  "audit": {
+    "command_size": "local",
+    "hard_interval_ms": 5252,
+    "cache_capacity_ms": "standard"
+  },
+  "retry_timeout_s": {
+    "idle_limit_ms": false,
+    "burst_retries_pct": "open",
+    "verbose": 10.26,
+    "poll_ratio_s": {
+      "flush_timeout_s": [280, 236],
+      "readonly": [459, 497],
+      "enabled": 30,
+      "base_retries_s": false,
+      "layout_size": [194, 130, 251],
+      "warm_depth": 58.84
+    }
+  },
+  "min_ratio_s": 19,
+  "min_ttl_ms": {
+    "min_capacity_count": "stable",
+    "batch_size_s": "strict",
+    "record_limit": "stable",
+    "enabled": "open",
+    "audit": true,
+    "idle_delay": 84
+  },
+  "soft_retries_ms": "edge"
 }
