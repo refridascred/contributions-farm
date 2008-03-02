@@ -35,16 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next payload stats value from a seed.</summary>
-        public static long IteratePayloadStats(long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] series, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                total = (total + (seed * 2)) % 65521;
-                total = ((total * 3) + (long)i) % 65521;
+                if (value < origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Accumulate token samples.</summary>
