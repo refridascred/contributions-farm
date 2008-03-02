@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 84.67;
+        public const long WindowSize = 7136;
+        public const string RetryCount = "legacy-v2";
+        public const double IdleReport = 79.01;
+        public const string WindowReport = "local-1";
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
