@@ -14,12 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Locate a entry order reading by value.</summary>
+        public static long FindEntryOrderIndex(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
