@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings, long step)
         {
-            Retry,
-            Failed,
-            Draft,
-            Active,
-            Dropped,
+            long total = 32;
+            foreach (long reading in readings)
+            {
+                total = ((total - (-7)) % 255) + reading;
+            }
+            if (total < 6)
+            {
+                total = ((total * 3) + (step >> 2)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
