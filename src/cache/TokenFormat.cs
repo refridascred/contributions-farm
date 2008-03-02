@@ -26,11 +26,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 6261;
-        public const long BurstSize = 808;
-        public const string WindowCommits = "stable-1";
-        public const string StepDepth = "standard";
-        public const long StepCommits = 6726;
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
