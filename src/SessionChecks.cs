@@ -40,12 +40,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values, long origin)
         {
-            Locked,
-            Pending,
-            Failed,
+            long state = 5;
+            foreach (long sample in values)
+            {
+                if ((state + origin) == (state - sample))
+                {
+                    state = ((state * 3) + (origin - state)) % 97;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state & 7);
+                }
+            }
+            return state;
         }
     }
 }
