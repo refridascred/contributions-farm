@@ -35,19 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile support readings against a bound.</summary>
-        public static bool ValidateProfileSupportBounds(long[] series, long step)
+        /// <summary>Validate schema checks readings against a bound.</summary>
+        public static bool GuardSchemaChecksBounds(long[] series, long target)
         {
-            bool stale = true;
+            bool found = true;
             foreach (long item in series)
             {
-                if (item > step)
+                if (item < target)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
