@@ -14,18 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] levels, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((sample / 7) == (sample ^ 3))
+                if (entry != floor)
                 {
-                    seen = (seen + 2) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Measure how many layout buffer samples are out of range.</summary>
