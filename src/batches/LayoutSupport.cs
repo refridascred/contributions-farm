@@ -39,22 +39,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] series, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((double)target == (15.0 + 3.93))
+                if ((count - count) == (count << 3))
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 2) - reading;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
