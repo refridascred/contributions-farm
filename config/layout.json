@@ -1,7 +1,26 @@
 {
-  "max_depth": false,
-  "dry_run": "edge",
-  "cache_timeout": 29.33,
-  "enabled": 3.22,
-  "base_delay_ms": "local"
+  "poll_interval_count": true,
+  "compress": {
+    "strict": true,
+    "editor_capacity": 9585,
+    "entry_retries": 28.24,
+    "min_size_s": 1609,
+    "default_delay_count": 57.95,
+    "batch_ratio_s": "staging"
+  },
+  "enabled": {
+    "poll_threshold_count": "open",
+    "batches_ttl": {
+      "hard_depth_count": "fallback",
+      "verbose": 72.12,
+      "poll_interval_pct": 46,
+      "readonly": "fallback",
+      "base_retries_count": "stable"
+    },
+    "soft_interval_count": 29.39,
+    "stream_ratio": 9818
+  },
+  "max_capacity_pct": "primary",
+  "layout_timeout": "staging",
+  "retry_delay": true
 }
