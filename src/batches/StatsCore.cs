@@ -38,18 +38,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the buffer channel series from a seed.</summary>
-        public static long StepBufferChannel(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 255;
-                anchor = anchor ^ (-886);
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 84.59;
+        public const double IdlePayload = 56.26;
+        public const long CachePayload = 359;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordLimits(long[] values, long step)
