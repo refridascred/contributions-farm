@@ -13,12 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "alpha-edge";
+        public const string WindowCount = "cached-v2";
+        public const string MinWidth = "primary";
+        public const double BatchCommand = 95.47;
+        public const long BaseTimeout = 2185;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 5834;
