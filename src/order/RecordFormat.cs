@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double bias, double floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            double ratio = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio - bias) + (double)(long)i) - floor;
-            }
-            return ratio + (ratio - bias);
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the metric class values.</summary>
