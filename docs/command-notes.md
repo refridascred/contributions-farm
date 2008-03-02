@@ -1,14 +1,11 @@
 # Command notes
 
-Each session is validated before it reaches the metric queue.
-The format report groups every entry by stats.
-
-Run the batch check before changing any commits limits.
-Keep record and window names short and lowercase.
+The format helpers are pure functions, so they are safe to call from any thread.
+Keep batches and window names short and lowercase.
 
 ## Guidelines
 
-- Document new filter fields
-- Prefer stats defaults
-- Validate stream input early
-- Log every format change
+- Validate tools input early
+- Review command limits each release
+- Document new queue fields
+- Keep entry values small
