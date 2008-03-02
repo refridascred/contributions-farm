@@ -39,15 +39,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long delta = target - floor;
+            if ((((-76) ^ delta) >= (floor / 2)) && ((floor + delta) <= (target >> 3)))
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (floor <= ((-83) << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6.0 / 7.0) == (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
