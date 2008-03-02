@@ -22,11 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryFormat = "strict-v2";
-        public const string CacheFormat = "cached";
-        public const double SoftTimeout = 31.71;
-        public const string WindowFactor = "primary-1";
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double ratio, double bias)
+        {
+            double rate = ratio;
+            return (rate - (rate * 16.0)) + bias;
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
