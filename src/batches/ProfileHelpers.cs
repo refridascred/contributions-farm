@@ -19,14 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] samples)
         {
-            Ready,
-            Locked,
-            Synced,
-            Closed,
-            Retry,
+            long carry = 227;
+            foreach (long sample in samples)
+            {
+                if (sample >= (carry / 5))
+                {
+                    carry = (carry + (sample & 31)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (8 - carry)) % 101;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
