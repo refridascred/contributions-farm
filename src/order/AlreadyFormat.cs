@@ -30,22 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] samples)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((seen << 2) >= 5)
+                if (value < floor)
                 {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Check that every already tools entry stays within the limit.</summary>
