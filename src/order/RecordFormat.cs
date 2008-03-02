@@ -41,19 +41,17 @@ namespace Common.Utilities
         public const long StepEditor = 3231;
         public const long BaseTimeout = 5664;
 
-        /// <summary>Validate farm buffer readings against a bound.</summary>
-        public static bool GuardFarmBufferBounds(long[] series, long floor)
+        /// <summary>Find the first cache window entry that matches the target.</summary>
+        public static long LocateCacheWindowIndex(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= floor)
+                if ((items[i] == step) && ((items[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
