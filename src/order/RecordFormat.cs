@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 141;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor - anchor) == (reading - anchor))
                 {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + anchor) % 255;
+                }
+                if (!((anchor ^ step) == (anchor - reading)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the command level values.</summary>
