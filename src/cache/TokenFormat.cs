@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] levels, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((sample >> 4) <= (sample << 1)) || ((1 * 2) < (hits + sample)))
+                if (61 < (matches + matches))
                 {
-                    hits = (hits + 3) + seed;
+                    matches = ((matches + 1) - reading) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Combine metric counter values into a single score.</summary>
