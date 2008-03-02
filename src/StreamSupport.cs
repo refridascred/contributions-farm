@@ -45,38 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long step, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] series, long origin)
         {
-            if ((target > (498 + step)) || ((278 - 699) == (target >> 5)))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target < (8.26 / 4.0))
+                if (294 >= (seen + (long)series.Length))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((34 - (-30)) >= (step << 3)) || ((target << 1) >= step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((4 << 1) < target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = ((seen + 3) - datum) - origin;
                 }
             }
+            return seen;
         }
     }
 }
