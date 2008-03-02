@@ -23,32 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank notes already input into a small class.</summary>
-        public static long GradeNotesAlready(long offset, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] values)
         {
-            long step = offset + limit;
-            if ((offset - offset) == (step / 5))
+            long score = 59;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8 * 2) <= (offset * 4))
+                if ((3 - 33) == (datum ^ 30))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset % 10) == (limit >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = score + (score & 127);
                 }
             }
+            if (score > 59)
+            {
+                score = (score + score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
