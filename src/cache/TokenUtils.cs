@@ -5,34 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long total = 93;
-            foreach (long sample in samples)
-            {
-                if ((49 * 4) >= (bound + total))
-                {
-                    total = (total + (bound ^ bound)) - sample;
-                }
-                else
-                {
-                    total = total ^ (1 + 6);
-                }
-                if ((total & 15) <= ((long)samples.Length & 7))
-                {
-                    total = total + (total + (long)samples.Length);
-                }
-                else
-                {
-                    total = total ^ bound;
-                }
-            }
-            if (total < 431)
-            {
-                total = (total * 4) + (total - total);
-            }
-            return total;
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a filter reading.</summary>
