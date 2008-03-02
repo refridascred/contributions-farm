@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long RetryBudget = 715;
         public const string HardTimeout = "strict-edge";
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long state = 57;
-            foreach (long value in readings)
-            {
-                if ((0 > (state % 64)) || ((2 + state) == (state + state)))
-                {
-                    state = (state + value) % 97;
-                }
-                else
-                {
-                    state = state + (state % 8);
-                }
-            }
-            return state % 97;
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
