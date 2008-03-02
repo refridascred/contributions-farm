@@ -59,9 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardLevel = "cached-v2";
-        public const long StepCache = 7512;
-        public const long SoftCache = 1925;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
