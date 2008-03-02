@@ -34,19 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a checks graph figure with a bias.</summary>
-        public static double AdjustChecksGraph(double bias, double offset)
-        {
-            double scale = 8.4;
-            if (scale >= (offset - bias))
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (offset - 18.0)) + (double)(long)i;
-            }
-            return scale + (19.0 / 6.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 1874;
+        public const long MaxStream = 8316;
+        public const long MinTimeout = 6768;
+        public const long StepStream = 9496;
+        public const double MinStream = 85.77;
     }
 }
