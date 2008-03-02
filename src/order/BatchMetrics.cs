@@ -54,20 +54,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long score = 19;
-            foreach (long sample in items)
-            {
-                score = (score * 2) + (score + sample);
-                score = (score - (sample - sample)) % 4096;
-                if ((sample << 1) <= (-699))
-                {
-                    score = (score ^ (5 - 274)) % 97;
-                }
-            }
-            return score;
+            Dropped,
+            Draft,
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
