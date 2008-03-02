@@ -30,12 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first counter report entry that matches the target.</summary>
-        public static long FindCounterReportIndex(long[] levels, long target)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] == target)
+                if ((items[i] <= origin) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
