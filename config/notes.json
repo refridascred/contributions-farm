@@ -1,7 +1,8 @@
 {
-  "support_ratio": [62, 414],
-  "order_retries": 94,
-  "audit": "standard",
-  "hard_threshold_ms": 80,
-  "base_threshold_ms": "open"
+  "cache_ratio_ms": ["legacy", "edge", "blue", "legacy"],
+  "default_retries_count": "standard",
+  "retry_window_count": true,
+  "stats_capacity": 1998,
+  "min_delay_pct": "fallback",
+  "compress": 48.12
 }
