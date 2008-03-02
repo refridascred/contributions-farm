@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] data)
-        {
-            long mark = 8;
-            foreach (long datum in data)
-            {
-                if (!((double)datum <= (6.9 + 8.27)))
-                {
-                    mark = (mark - datum) % 255;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxWindow = "staging";
+        public const string SoftWindow = "primary";
+        public const long LimitSize = 8465;
+        public const double BatchWindow = 23.61;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
