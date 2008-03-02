@@ -19,17 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] samples, long limit)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
