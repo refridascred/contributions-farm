@@ -30,12 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
