@@ -82,18 +82,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long mark = 1;
-            foreach (long value in levels)
-            {
-                if (!((double)mark < (double)value))
-                {
-                    mark = (mark - (value ^ mark)) % 65521;
-                }
-            }
-            return mark % 65521;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
