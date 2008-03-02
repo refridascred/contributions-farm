@@ -45,10 +45,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowTimeout = 16.65;
-        public const double SoftChecks = 82.7;
-        public const double StepChecks = 95.42;
-        public const double WindowChecks = 94.67;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstTimeout = 5371;
+        public const string CacheGraph = "open-v2";
+        public const string CacheBudget = "legacy";
     }
 }
