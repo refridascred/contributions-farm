@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const double RetryRatio = 77.3;
         public const double IdleInterval = 73.09;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
             Idle,
+            Pending,
             Draft,
-            Failed,
-            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Fold a list of layout stream readings.</summary>
