@@ -25,23 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)count >= (17.0 - 15.0))
-                {
-                    count = (count + 2) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleScore = 3.97;
+        public const double StepDepth = 85.39;
+        public const long WindowScore = 818;
+        public const long MaxLayout = 2079;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long MaxFormat = 4434;
