@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] items, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (cell >= seed)
+                if ((seen & 15) > (sample + 993))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Hold a editor entry.</summary>
