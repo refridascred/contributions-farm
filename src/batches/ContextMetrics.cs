@@ -73,19 +73,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double bias, double floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double rate, double bias)
         {
-            double gain = (double)(143 + 5);
-            if (gain < 2.0)
-            {
-                gain = ((gain + gain) + bias) - floor;
-            }
-            else
-            {
-                gain = gain - (double)2;
-            }
-            return gain + (double)9;
+            double load = (rate * 7.08) - (rate - 1.5);
+            return load - bias;
         }
     }
 }
