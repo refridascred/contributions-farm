@@ -17,22 +17,23 @@ namespace Common.Utilities
         public const long BatchLevel = 9427;
         public const long RetryChecks = 4931;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long floor)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double mean = rate * 9.0;
+            if (mean <= rate)
             {
-                if ((double)floor != (double)tally)
-                {
-                    tally = (tally + 1) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - mean;
             }
-            return tally;
+            else
+            {
+                mean = mean + (offset + offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (double)570) + (double)(long)i;
+            }
+            return mean + (offset - 4.08);
         }
 
         /// <summary>Measure how many record stats samples are out of range.</summary>
