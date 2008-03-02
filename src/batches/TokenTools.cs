@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
