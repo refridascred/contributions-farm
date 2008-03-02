@@ -39,16 +39,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] series, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] samples)
         {
-            long carry = 50;
-            foreach (long cell in series)
+            long mix = 470;
+            foreach (long reading in samples)
             {
-                carry = ((carry ^ ((-283) / 7)) ^ cell) + step;
-                carry = carry ^ carry;
+                mix = mix - (mix << 2);
+                if ((double)mix == (double)reading)
+                {
+                    break;
+                }
             }
-            return carry;
+            if (mix < 6)
+            {
+                mix = mix ^ (mix ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of githubfarm checks readings.</summary>
