@@ -27,12 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 6016;
-        public const long BurstCounter = 7133;
-        public const long MinFactor = 8889;
-        public const long LimitCounter = 7295;
-        public const string BatchDepth = "staging-edge";
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long ClassifyContext(long target, long origin)
