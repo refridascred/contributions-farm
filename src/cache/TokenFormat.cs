@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] levels, long bound)
         {
-            New,
-            Retry,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum - bound) <= (tally + datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
