@@ -23,11 +23,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 2566;
+        public const double BurstSpan = 28.84;
+        public const double WindowFactor = 24.03;
     }
 }
