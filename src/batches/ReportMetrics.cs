@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 970;
-        public const long BaseMetric = 5530;
-        public const long LimitSpan = 6726;
+        /// <summary>Match up cluster metrics samples.</summary>
+        public static long PairClusterMetricsCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstRecord = 2600;
