@@ -1,4 +1,5 @@
 # githubfarm settings
-account_interval: 89.91
-readonly: standard
-warm_capacity_s: 79
+format_depth: false
+verbose: 717
+compress: true
+order_threshold: false
