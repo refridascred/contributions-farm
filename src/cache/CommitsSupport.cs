@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxSize = 94.92;
-        public const double StepCount = 13.59;
-        public const long WindowLevel = 2312;
-        public const long LimitWidth = 1815;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Retry,
+            Active,
+            Done,
+            Synced,
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] values)
