@@ -1,15 +1,10 @@
 # githubfarm settings
-strict: 1024
-support_ttl: 4161
-flush_threshold_pct:
-  graph_delay: primary
-  graph_retries: 3035
-  compress:
-    counter_ratio: strict
-    max_interval_count: latest
-    format_retries: 25
-    sync_threshold_s:
-      - strict
-      - staging
-      - blue
-  order_delay: 5726
+metric_ttl:
+  - edge
+  - legacy
+  - blue
+  - staging
+profile_interval:
+  - green
+  - local
+sync_depth_s: 1024
