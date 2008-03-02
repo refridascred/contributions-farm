@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long origin, long seed)
+        /// <summary>Count metrics contributi pairs that satisfy a relation.</summary>
+        public static long PairMetricsContributiCount(long[] samples)
         {
-            long diff = origin - seed;
-            if (((seed - origin) <= (28 * 2)) && (seed < diff))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((743 - seed) >= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed < 6.4)
+                    if ((samples[i] - samples[j]) > 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a token options.</summary>
