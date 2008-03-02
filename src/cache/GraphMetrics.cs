@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Active,
-            Failed,
-            Done,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchRatio = 6065;
+        public const string BurstCount = "strict-v2";
+        public const long IdleAccount = 6487;
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
