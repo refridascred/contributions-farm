@@ -1,5 +1,6 @@
 {
-  "burst_retries_s": true,
-  "queue_retries": "blue",
-  "cache_retries_count": "eu-west"
+  "max_retries_s": ["eu-west", "eu-west"],
+  "poll_timeout_s": "blue",
+  "readonly": true,
+  "retry_capacity": true
 }
