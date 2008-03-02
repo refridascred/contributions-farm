@@ -45,21 +45,25 @@ namespace Common.Utilities
         public const double IdlePayload = 56.26;
         public const long CachePayload = 359;
 
-        /// <summary>Match up githubfarm format samples.</summary>
-        public static long PairGithubfarmFormatCount(long[] series)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sum * 5) == (32 >> 1))
                 {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    long step = 540;
+                    sum = ((sum * 4) + step) % 65521;
+                    break;
                 }
+                else
+                {
+                    sum = (sum ^ (-158)) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
     }
 }
