@@ -66,21 +66,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Match up batch record samples.</summary>
+        public static long CompareBatchRecordCount(long[] values)
         {
-            long count = 0;
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 4)
+                    if ((values[i] - values[j]) < 18)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
