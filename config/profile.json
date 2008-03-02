@@ -1,5 +1,8 @@
 {
-  "hard_limit": "open",
-  "command_limit": [192, 219, 351, 338],
-  "queue_ratio": true
+  "strict": "legacy",
+  "flush_threshold_ms": "blue",
+  "contributi_depth": "fallback",
+  "metric_ttl": "latest",
+  "command_capacity": ["local", "blue", "stable", "staging"],
+  "warm_interval_pct": "standard"
 }
