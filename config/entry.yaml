@@ -1,20 +1,7 @@
 # entry settings
-record_ttl: 500
-flush_size:
-  batch_threshold:
-    - legacy
-    - standard
-  retry_window:
-    cache_window: 281
-    account_retries: 78.12
-    compress: 5942
-    idle_ratio: 38.79
-  enabled: standard
-  min_interval_pct: edge
-  notes_ttl:
-    batch_delay: 7147
-    default_threshold: true
-    schema_limit: green
-    default_capacity_ms: true
-  record_depth: blue
-persist: true
+sync_retries_pct: 42
+base_capacity: 97.23
+cache_ttl: 97.41
+retry_limit_pct: 98.19
+persist: 9
+commits_ratio: edge
