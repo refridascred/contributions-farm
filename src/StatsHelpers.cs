@@ -63,18 +63,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support report entries that pass the check.</summary>
-        public static long AuditSupportReportHits(long[] series)
+        /// <summary>Combine channel batch values into a single score.</summary>
+        public static long WeighChannelBatch(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mix = 386;
+            foreach (long reading in samples)
             {
-                if (!(((74 % 60) < (tally - tally)) || ((3.1 / 6.0) > (double)tally)))
+                if ((mix <= ((long)samples.Length - reading)) && (reading > (target >> 5)))
                 {
-                    tally = (tally + 1) - entry;
+                    mix = mix - 47;
                 }
             }
-            return tally;
+            if (mix < 52)
+            {
+                mix = (mix + (5 - target)) % 97;
+            }
+            return mix;
         }
     }
 }
