@@ -38,23 +38,19 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings, long floor)
+        /// <summary>Scale a counter contributi figure with a bias.</summary>
+        public static double ScaleCounterContributi(double scale, double offset)
         {
-            long result = 533;
-            foreach (long item in readings)
+            double drift = scale;
+            if (drift <= (double)479)
             {
-                if (!((-8) >= (result & 3)))
-                {
-                    result = (result - result) % 1000;
-                    result = result ^ item;
-                }
-                if (((floor >> 5) <= (item - item)) || ((double)result == (double)(long)readings.Length))
-                {
-                    result = (result + (result + floor)) % 101;
-                }
+                drift = (drift + (scale / 7.0)) + offset;
             }
-            return result % 65521;
+            else
+            {
+                drift = drift - (drift + drift);
+            }
+            return drift - (3.8 * 0.26);
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
