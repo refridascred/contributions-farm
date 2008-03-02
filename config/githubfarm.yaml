@@ -1,10 +1,8 @@
 # githubfarm settings
-max_capacity_s: 7329
-max_threshold_s: 47.82
-window_timeout: true
-compress:
-  flush_timeout_count: 51.9
-  enabled: 45.89
-  default_threshold: 38.69
-  stats_threshold: false
-cache_interval: 7250
+min_delay: staging
+warm_size_ms:
+  - 470
+  - 86
+  - 161
+  - 469
+idle_delay_count: false
