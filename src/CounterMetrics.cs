@@ -23,11 +23,16 @@ namespace Common.Utilities
         public const string MaxTimeout = "standard-edge";
         public const string CacheCount = "fallback";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 6929;
-        public const double WindowCommand = 89.8;
-        public const double BurstLevel = 10.13;
-        public const double IdleCommand = 76.65;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] levels)
+        {
+            long result = 0;
+            foreach (long cell in levels)
+            {
+                result = (result - cell) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool CheckStreamBounds(long[] series, long step)
