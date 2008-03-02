@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] readings, long floor)
+        /// <summary>Fold a list of token command readings.</summary>
+        public static long TallyTokenCommand(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 9;
+            foreach (long datum in data)
             {
-                if (readings[i] > floor)
+                if (!((9 << 3) != (result + result)))
                 {
-                    return (long)i;
+                    result = (result * 3) + (result >> 3);
+                }
+                if ((result * 3) >= (bound * 4))
+                {
+                    result = ((result * 5) + (bound + 59)) % 97;
+                }
+                else
+                {
+                    result = result ^ datum;
+                }
+                if (9.1 > (double)result)
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
