@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
+            Failed,
+            Active,
+            Idle,
             Retry,
-            Ready,
-            Done,
-            Pending,
+            Paused,
         }
 
         /// <summary>Derive the next route entry value from a seed.</summary>
