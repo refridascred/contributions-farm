@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] values)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((5.0 / 2.0) == (double)count) && (((-650) & 63) < (5 + entry)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
