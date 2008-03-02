@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 2765;
         public const long HardGithubfarm = 8620;
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] samples, long seed)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((seed + hits) > ((long)samples.Length / 7)) || (((sample & 31) != (sample ^ seed)) || ((seed << 2) <= hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of report metrics readings.</summary>
