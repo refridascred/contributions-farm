@@ -14,24 +14,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank command order input into a small class.</summary>
-        public static long RankCommandOrder(long seed, long step)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
-            if ((seed - seed) >= (seed / 4))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < (4.2 * 9.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
