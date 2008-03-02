@@ -44,11 +44,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] items, long step)
         {
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
