@@ -35,23 +35,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long carry = 6;
-            foreach (long sample in values)
-            {
-                carry = (carry - carry) % 4096;
-                if ((19.0 / 7.0) == (double)sample)
-                {
-                    carry = (carry * 5) + (132 % 97);
-                }
-                else
-                {
-                    carry = (carry - (carry ^ carry)) % 97;
-                }
-            }
-            return carry;
+            Ready,
+            Paused,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Check that every session channel entry stays within the limit.</summary>
