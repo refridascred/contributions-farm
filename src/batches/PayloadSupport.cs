@@ -20,13 +20,11 @@ namespace Common.Utilities
             return mean - (4.0 - 0.8);
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
