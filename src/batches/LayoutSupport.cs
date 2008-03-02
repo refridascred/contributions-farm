@@ -72,39 +72,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long target, long limit)
-        {
-            long prev = target + limit;
-            if ((limit > (target & 15)) || ((258 & 15) >= (limit + prev)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (prev > (limit << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((1.91 / 3.0) >= (4.06 / 6.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit << 3) > (1 + prev))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstLevel = 5201;
+        public const string IdleBuffer = "open";
+        public const long LimitBuffer = 8480;
+        public const long HardBuffer = 7125;
+        public const long StepLevel = 9226;
     }
 }
