@@ -17,13 +17,14 @@ namespace Common.Utilities
         public const long BatchFactor = 2119;
         public const string RetryInterval = "latest-1";
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Failed,
-            Retry,
-            Draft,
-            Closed,
+            Dropped,
+            Paused,
+            Queued,
+            Done,
+            Idle,
         }
 
         /// <summary>Define context limits and defaults.</summary>
