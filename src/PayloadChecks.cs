@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank format stats input into a small class.</summary>
-        public static long GradeFormatStats(long floor, long bound)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            if ((double)floor > (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound < (floor >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the filter level values.</summary>
