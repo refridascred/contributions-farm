@@ -60,17 +60,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] readings, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -699;
+            foreach (long reading in readings)
             {
-                if ((readings[i] > step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (((mix * 2) + mix) ^ reading) + step;
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
