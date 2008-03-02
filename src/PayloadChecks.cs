@@ -25,12 +25,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Grade a route token value against two limits.</summary>
+        public static long RankRouteToken(long target, long origin)
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
+            if (((target * 2) > (origin & 15)) || ((origin - target) > (target - 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target ^ target) != (8 + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (293 >= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target & 1) >= (origin << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
