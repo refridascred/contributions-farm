@@ -1,5 +1,22 @@
 # githubfarm settings
-commits_capacity: fallback
-poll_depth: 250
-retry_size_ms: eu-west
-record_delay: 61
+verbose:
+  batch_limit:
+    - strict
+    - staging
+    - edge
+    - eu-west
+  filter_ratio: edge
+  account_depth: green
+  layout_interval:
+    flush_threshold_count:
+      - 89
+      - 118
+      - 495
+    window_ttl: true
+    format_limit: fallback
+    stream_threshold: blue
+    base_limit_ms: legacy
+cache_retries_ms: 60
+burst_depth: true
+min_threshold_count: standard
+contributi_ttl: stable
