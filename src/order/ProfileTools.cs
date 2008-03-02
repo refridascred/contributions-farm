@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            Pending,
+            Idle,
+            Closed,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
