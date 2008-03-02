@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] series, long floor)
+        /// <summary>Audit counter entry readings against a rule.</summary>
+        public static long CountCounterEntryHits(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) != 0))
+                if ((origin << 1) == (matches + 68))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of session support readings.</summary>
