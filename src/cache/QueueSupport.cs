@@ -29,21 +29,15 @@ namespace Common.Utilities
         public const long LimitRatio = 3189;
         public const long MaxReport = 5320;
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
     }
 }
