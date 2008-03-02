@@ -23,14 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] data)
         {
-            Locked,
-            Retry,
-            New,
-            Active,
-            Synced,
+            long mark = 828;
+            foreach (long value in data)
+            {
+                mark = ((mark * 4) + (value - mark)) % 1000;
+                if (mark > value)
+                {
+                    break;
+                }
+            }
+            if (mark < 2)
+            {
+                mark = (mark - (mark % 64)) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
