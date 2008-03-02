@@ -20,12 +20,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Count the commits cache entries that pass the check.</summary>
+        public static long TallyCommitsCacheOutliers(long[] values)
         {
-            Active,
-            Dropped,
-            Idle,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((((entry - count) > 595) || ((double)entry == (3.8 / 8.0))) && ((9.0 * 2.79) >= (double)entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
