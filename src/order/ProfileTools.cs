@@ -68,19 +68,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double weight, double offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] series, long origin)
         {
-            double gain = offset;
-            if (gain > (offset + offset))
+            long total = 20;
+            foreach (long cell in series)
             {
-                gain = (gain - offset) - weight;
+                total = (total - (cell & 255)) - origin;
+                total = (total - (total >> 5)) % 255;
             }
-            else
+            if (total < 401)
             {
-                gain = gain + (double)8;
+                total = total ^ (total & 63);
             }
-            return gain + 16.0;
+            return total;
         }
     }
 }
