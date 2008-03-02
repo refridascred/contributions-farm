@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Find the first commits buffer entry that matches the target.</summary>
+        public static long LookupCommitsBufferIndex(long[] data, long origin)
         {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit counter batch readings against a rule.</summary>
