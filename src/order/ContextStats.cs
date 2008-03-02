@@ -51,24 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] values, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                long cur = ((long)i & 1) ^ (long)i;
-                if ((step + cur) >= (cur + carry))
+                if (cell >= offset)
                 {
-                    carry = (carry * 5) + (carry >> 2);
+                    ok = false;
+                    break;
                 }
-                if (((double)(long)i != (1.6 + 8.9)) || ((83 - step) < 5))
-                {
-                    cur = (cur + (cur + carry)) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return ok;
         }
     }
 }
