@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const long DefaultProfile = 4652;
         public const long BatchRatio = 1052;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] readings, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] items)
         {
             long count = 0;
-            foreach (long value in readings)
+            foreach (long entry in items)
             {
-                if ((double)count <= 5.62)
+                if ((count * 5) <= (312 & 127))
                 {
-                    count = ((count + 2) ^ value) - bound;
+                    count = (count + 1) ^ entry;
                 }
             }
             return count;
