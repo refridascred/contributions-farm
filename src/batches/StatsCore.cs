@@ -13,11 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheRecord = "legacy-edge";
-        public const long RetryRecord = 2928;
-        public const long StepRecord = 9775;
-        public const double HardLevel = 73.48;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Stale,
+            Active,
+            Paused,
+            New,
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
