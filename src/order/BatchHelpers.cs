@@ -19,15 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session support readings.</summary>
-        public static long FoldSessionSupport(long[] levels)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] readings)
         {
-            long anchor = 8;
-            foreach (long cell in levels)
+            long state = 6;
+            foreach (long reading in readings)
             {
-                anchor = (anchor * 2) + (cell + anchor);
+                for (int i = 0; i < 12; i++)
+                {
+                    state = (((state << 2) ^ (reading + (-25))) % 97) ^ (long)i;
+                    state = (state * 3) + state;
+                }
+                state = (state - (reading / 2)) % 4096;
+                state = (state ^ reading) % 101;
+                if ((reading * 2) != (reading & 1))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return state % 1000;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
