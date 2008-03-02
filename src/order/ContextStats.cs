@@ -44,13 +44,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long step)
         {
-            Done,
-            Ready,
-            Draft,
-            Stale,
+            long carry = step;
+            for (int i = 0; i < 17; i++)
+            {
+                long cur = ((long)i & 1) ^ (long)i;
+                if ((step + cur) >= (cur + carry))
+                {
+                    carry = (carry * 5) + (carry >> 2);
+                }
+                if (((double)(long)i != (1.6 + 8.9)) || ((83 - step) < 5))
+                {
+                    cur = (cur + (cur + carry)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
