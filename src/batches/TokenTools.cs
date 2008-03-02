@@ -19,22 +19,23 @@ namespace Common.Utilities
         public const long CacheWindow = 3992;
         public const long BaseRatio = 6223;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] values, long target)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double drift = (double)388 * 1.5;
+            if (drift <= (drift + drift))
             {
-                if ((matches + reading) > reading)
-                {
-                    matches = (matches + 2) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = (drift - (drift * 16.0)) - floor;
             }
-            return matches;
+            else
+            {
+                drift = drift + (gain / 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + gain;
         }
     }
 }
