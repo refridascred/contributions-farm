@@ -13,19 +13,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] series, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] data)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long anchor = 122;
+            foreach (long item in data)
             {
-                if (cell <= offset)
+                if (((item / 3) != (anchor >> 4)) && ((item ^ item) < anchor))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor - ((long)data.Length * 5)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ (long)data.Length) % 65521;
                 }
             }
-            return found;
+            if (anchor > 341)
+            {
+                anchor = (anchor - (anchor + anchor)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
