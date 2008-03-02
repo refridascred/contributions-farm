@@ -1,5 +1,16 @@
 # support settings
-soft_capacity_count: false
-min_threshold_s: 37
-contributi_window: true
-persist: 8179
+token_capacity:
+  commits_depth:
+    - primary
+    - strict
+    - strict
+    - strict
+  stream_window: fallback
+  batch_delay_s: 63
+warm_ratio_pct: true
+idle_retries_count:
+  - blue
+  - open
+  - open
+  - legacy
+contributi_depth: 500
