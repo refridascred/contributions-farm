@@ -43,16 +43,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a channel stream counter forward.</summary>
-        public static long StepChannelStream(long seed)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                result = (result + result) % 97;
-                result = ((result * 2) + (long)i) % 4093;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return result;
+            return anchor;
         }
     }
 }
