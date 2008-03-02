@@ -17,18 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] samples)
+        /// <summary>Look up the position of a stream counter sample.</summary>
+        public static long LocateStreamCounterIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (count < (1 * 3))
+                if (readings[i] < floor)
                 {
-                    count = (count + 3) + datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the graph mode values.</summary>
