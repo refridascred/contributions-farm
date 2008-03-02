@@ -27,18 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] samples, long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((step + tally) <= 563)
-                {
-                    tally = (tally + 2) - cell;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Match up stats samples.</summary>
