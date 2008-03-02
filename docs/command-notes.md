@@ -1,12 +1,15 @@
 # Command notes
 
-The profile module keeps commits values in sync with the batch cache.
-The buffer module keeps context values in sync with the schema cache.
-Defaults for session live in the config folder and can be overridden per environment.
+Keep cache and queue names short and lowercase.
+Use batches settings to tune how often queue data is refreshed.
+
+Defaults for notes live in the config folder and can be overridden per environment.
+The record report groups every support by layout.
+The notes module keeps support values in sync with the report cache.
 
 ## Guidelines
 
-- Document new contributi fields
-- Log every cluster change
-- Keep session values small
-- Review batch limits each release
+- Prefer counter defaults
+- Keep filter values small
+- Log every layout change
+- Validate account input early
