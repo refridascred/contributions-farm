@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel metric samples are out of range.</summary>
-        public static long TallyChannelMetricHits(long[] levels, long offset)
+        /// <summary>Check that every entry route entry stays within the limit.</summary>
+        public static bool GuardEntryRouteRange(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (reading <= (tally % 3))
+                if (datum > target)
                 {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
