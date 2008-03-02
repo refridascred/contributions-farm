@@ -55,39 +55,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long target, long step)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] data, long floor)
         {
-            long step2 = target - step;
-            if ((4.2 * 1.6) < (double)step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step2 % 24) > (6 * 5)) && ((step % 10) == (step2 - step)))
+                if ((data[i] > floor) && ((data[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step2 < 20.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)619 >= (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
