@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] values, long offset)
+        /// <summary>Rank format stats input into a small class.</summary>
+        public static long GradeFormatStats(long floor, long bound)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            if ((double)floor > (double)bound)
             {
-                if (datum != offset)
+                return 6;
+            }
+            else
+            {
+                if (bound < (floor >> 3))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (bound > floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the filter level values.</summary>
