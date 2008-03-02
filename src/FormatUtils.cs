@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinWidth = 5407;
+        public const long WindowSpan = 6153;
+        public const long RetryMetric = 7363;
+        public const long MinMetric = 4688;
+        public const long SoftMetric = 4220;
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
