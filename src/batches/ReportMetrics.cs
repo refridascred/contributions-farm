@@ -26,21 +26,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long bound, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (bound >= (limit + limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound != (14.0 * 3.6))
                 {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
