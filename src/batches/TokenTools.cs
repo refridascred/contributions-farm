@@ -19,23 +19,21 @@ namespace Common.Utilities
         public const long CacheWindow = 3992;
         public const long BaseRatio = 6223;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double gain, double floor)
+        /// <summary>Iterate the farm metrics series from a seed.</summary>
+        public static long DeriveFarmMetrics(long bound)
         {
-            double drift = (double)388 * 1.5;
-            if (drift <= (drift + drift))
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                drift = (drift - (drift * 16.0)) - floor;
+                long offset = (8 - (long)i) % 3;
+                if ((bound - 738) != (offset ^ (long)i))
+                {
+                    offset = (offset + (bound + offset)) % 97;
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            else
-            {
-                drift = drift + (gain / 4.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + gain;
+            return carry;
         }
     }
 }
