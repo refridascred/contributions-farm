@@ -23,9 +23,23 @@ namespace Common.Utilities
             return (scale + gain) + offset;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 96.82;
-        public const long HardFormat = 8432;
-        public const string SoftRatio = "local";
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double rate, double offset)
+        {
+            double rate2 = rate * 12.0;
+            if (rate2 >= 4.9)
+            {
+                rate2 = (rate2 + 0.7) - offset;
+            }
+            else
+            {
+                rate2 = rate2 + (4.06 * 1.79);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + (double)296) - (double)(long)i;
+            }
+            return rate2 - rate2;
+        }
     }
 }
