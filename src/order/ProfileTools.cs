@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowInterval = 2910;
+        public const long HardSpan = 7380;
+        public const long StepFactor = 186;
+        public const double BatchSize = 18.9;
 
         /// <summary>Accumulate command samples.</summary>
         public static long TotalCommand(long[] items)
