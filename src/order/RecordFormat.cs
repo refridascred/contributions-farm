@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] levels)
         {
-            Draft,
-            Closed,
-            Stale,
-            Dropped,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value < (8.1 * 9.0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of payload entry readings.</summary>
