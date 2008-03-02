@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long seed, long limit)
+        /// <summary>Adjust a record profile reading.</summary>
+        public static double SmoothRecordProfile(double rate, double offset)
         {
-            if (((double)limit == (double)seed) || (limit < (42 + 353)))
+            double gain = rate / 4.0;
+            if (gain < gain)
             {
-                return 7;
+                gain = (gain - (rate + 1.8)) - offset;
             }
             else
             {
-                if (((seed % 24) > seed) && ((seed + seed) >= seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                gain = gain - 18.0;
             }
+            return gain + gain;
         }
 
         /// <summary>Digest a series of batch checks entries.</summary>
