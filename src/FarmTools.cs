@@ -40,12 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double scale, double bias)
         {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            double rate = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = ((rate + 8.6) - (double)(long)i) + scale;
+            }
+            return rate - rate;
         }
     }
 }
