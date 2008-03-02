@@ -68,24 +68,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long origin, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] values, long seed)
         {
-            if (((origin ^ origin) > (target - target)) && (371 >= (origin * 4)))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((target % 10) <= (origin + origin)))
+                if ((datum + (-16)) != (seed + 103))
                 {
-                    return 5;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
