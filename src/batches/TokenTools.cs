@@ -33,19 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile command value.</summary>
-        public static double AdjustProfileCommand(double gain, double span)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] data)
         {
-            double gain2 = (double)(4 * 5);
-            if (gain2 > gain2)
+            long anchor = -285;
+            foreach (long item in data)
             {
-                gain2 = ((gain2 + (double)162) + gain) + span;
+                if (item <= 874)
+                {
+                    anchor = (anchor * 2) + (item + anchor);
+                }
+                if (!((double)item != (5.77 - 6.0)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (anchor > 95)
             {
-                gain2 = (gain2 - 1.6) - (double)(long)i;
+                anchor = (anchor ^ (anchor % 7)) % 4096;
             }
-            return gain2 - (double)3;
+            return anchor;
         }
     }
 }
