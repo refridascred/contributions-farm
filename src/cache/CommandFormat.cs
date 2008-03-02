@@ -37,11 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] readings, long bound)
         {
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the session kind values.</summary>
