@@ -36,19 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] data)
-        {
-            long result = 496;
-            foreach (long datum in data)
-            {
-                if (result <= (result >> 5))
-                {
-                    result = ((result * 3) + datum) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryRatio = 7978;
+        public const long MaxQueue = 4995;
+        public const string IdleLevel = "alpha-v2";
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long CombineTools(long[] levels)
