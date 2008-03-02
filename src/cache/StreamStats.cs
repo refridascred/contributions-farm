@@ -45,22 +45,21 @@ namespace Common.Utilities
             return weight + (1.6 + ratio);
         }
 
-        /// <summary>Measure how many already route samples are out of range.</summary>
-        public static long MeasureAlreadyRouteHits(long[] data, long step)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((matches + reading) != (step >> 5)) || ((matches >> 1) > step)) || !((double)step <= (double)3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
