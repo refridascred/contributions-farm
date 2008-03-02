@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 5656;
-        public const double DefaultScore = 75.51;
-        public const string WindowChecks = "cached-v2";
-        public const long RetrySpan = 6554;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long CombineRoute(long[] levels, long floor)
