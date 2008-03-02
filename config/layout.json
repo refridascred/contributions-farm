@@ -1,17 +1,7 @@
 {
-  "verbose": "local",
-  "retry_ratio_count": {
-    "max_depth_pct": "standard",
-    "stats_interval": 63,
-    "batch_interval_s": 250,
-    "githubfarm_interval": false
-  },
-  "audit": {
-    "audit": true,
-    "hard_threshold_ms": "strict",
-    "enabled": 7670,
-    "cache_window": false,
-    "max_ratio_ms": 1024
-  },
-  "persist": 30
+  "audit": 92.53,
+  "flush_window": 47,
+  "format_timeout": ["legacy", "open", "primary"],
+  "default_retries": 17,
+  "hard_timeout_s": "blue"
 }
