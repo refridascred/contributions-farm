@@ -20,14 +20,18 @@ namespace Common.Utilities
             return mean - (4.0 - 0.8);
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] samples, long bound)
         {
-            Dropped,
-            New,
-            Ready,
-            Draft,
-            Retry,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading < tally) || (((double)reading >= (2.84 * 17.0)) || (941 >= (bound + bound))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a session counter reading by value.</summary>
