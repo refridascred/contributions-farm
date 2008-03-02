@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-Run the metrics check before changing any session limits.
+Each commits is validated before it reaches the batches queue.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every payload change
-- Document new report fields
-- Validate schema input early
+- Document new contributi fields
+- Review stats limits each release
+- Keep account values small
