@@ -54,16 +54,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            long mark = 4;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark + (mark / 2)) % 255) - sample;
-                mark = (mark + (mark + mark)) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
