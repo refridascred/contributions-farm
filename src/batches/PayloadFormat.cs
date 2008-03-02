@@ -51,18 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] items, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] series, long seed)
         {
-            long carry = 399;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (!(origin > ((long)items.Length - origin)))
+                if (seed >= (sample - seed))
                 {
-                    carry = (carry - (origin + 0)) + entry;
+                    matches = matches + 2;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
