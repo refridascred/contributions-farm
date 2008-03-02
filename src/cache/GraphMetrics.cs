@@ -53,22 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((limit - limit) != (tally ^ limit))
-                {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 876;
+        public const long MinRatio = 6082;
+        public const long CacheChannel = 1737;
+        public const long WindowSize = 7520;
+        public const long StepSpan = 8511;
     }
 }
