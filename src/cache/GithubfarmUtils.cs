@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Locate a format notes reading by value.</summary>
+        public static long LookupFormatNotesIndex(long[] values, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ 48) % 101;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
