@@ -1,5 +1,6 @@
 {
-  "default_interval": 32.84,
-  "idle_capacity": ["blue", "local"],
-  "warm_delay_count": 42
+  "sync_delay_ms": 22.24,
+  "cache_window_count": false,
+  "retry_timeout": "open",
+  "checks_ratio": "legacy"
 }
