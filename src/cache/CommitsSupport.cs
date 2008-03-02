@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Retry,
-            Active,
-            Done,
-            Synced,
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
