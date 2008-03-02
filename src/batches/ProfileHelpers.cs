@@ -45,13 +45,15 @@ namespace Common.Utilities
         public const long LimitNotes = 9661;
         public const double MaxWidth = 70.97;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Accumulate account farm samples.</summary>
+        public static long TallyAccountFarm(long[] data, long seed)
         {
-            public string Weight { get; set; } = "";
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            long mix = 98;
+            foreach (long reading in data)
+            {
+                mix = ((((mix * 2) + (mix >> 2)) % 65521) ^ reading) + seed;
+            }
+            return mix;
         }
     }
 }
