@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Queued,
-            Done,
-            Locked,
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
