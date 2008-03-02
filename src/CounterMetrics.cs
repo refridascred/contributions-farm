@@ -20,18 +20,21 @@ namespace Common.Utilities
             return rate - (weight / 9.0);
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            long sum = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (0 >= (sum * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (value & 255)) % 1000;
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a buffer header.</summary>
