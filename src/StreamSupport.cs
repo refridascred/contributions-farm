@@ -45,17 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] samples, long limit)
+        /// <summary>Adjust a tools route reading.</summary>
+        public static double SmoothToolsRoute(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = 3.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                drift = ((drift - (drift - weight)) + (double)(long)i) + floor;
             }
-            return -1;
+            return drift + drift;
         }
     }
 }
