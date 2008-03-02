@@ -54,11 +54,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double weight, double span)
+        /// <summary>Fold a list of session channel readings.</summary>
+        public static long WeighSessionChannel(long[] series, long limit)
         {
-            double rate = (double)(4 + 931);
-            return (rate + weight) + span;
+            long mix = -605;
+            foreach (long item in series)
+            {
+                if (!((item - item) <= item))
+                {
+                    mix = ((mix << 3) ^ (limit & 3)) % 97;
+                }
+                if (!((item + mix) <= limit))
+                {
+                    mix = (mix ^ (mix >> 4)) % 255;
+                }
+                else
+                {
+                    mix = mix + (item - (long)series.Length);
+                }
+            }
+            return mix;
         }
     }
 }
