@@ -29,19 +29,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] series, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (value <= origin)
+                if ((((long)samples.Length >> 4) == (matches - matches)) && ((reading + matches) > matches))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
