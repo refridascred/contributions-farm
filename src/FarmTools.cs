@@ -28,12 +28,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] readings, long seed)
         {
-            public double Level { get; set; }
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (((double)seed < (11.0 + 1.0)) || ((830 + 935) >= (70 ^ item)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
