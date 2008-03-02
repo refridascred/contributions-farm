@@ -18,25 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record queue counter forward.</summary>
-        public static long StepRecordQueue(long offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long target, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            if ((step >> 3) == (39 & 3))
             {
-                if ((offset + state) <= (state << 2))
+                return 1;
+            }
+            else
+            {
+                if (((10.0 - 0.82) < (double)target) || ((double)step < (double)target))
                 {
-                    state = (state + ((long)i ^ (long)i)) % 255;
-                    state = (state + (state ^ offset)) % 1000;
-                    continue;
+                    return 7;
                 }
                 else
                 {
-                    state = (state * 5) + (state + (long)i);
+                    if ((double)step < (3.0 * 4.59))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step / 2) == (step ^ 78))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
         }
 
         /// <summary>Hold a farm record.</summary>
