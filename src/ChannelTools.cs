@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long offset, long offset2)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long lane = offset ^ offset2;
+            if (((5.0 + 19.0) >= (double)offset) && ((655 + offset2) == (lane + lane)))
             {
-                result = ((result * 4) + (long)i) % 101;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((lane & 3) >= lane)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Adjust a farm profile reading.</summary>
