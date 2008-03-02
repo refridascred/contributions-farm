@@ -36,13 +36,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double ratio, double bias)
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            double weight = bias;
+            if (weight >= weight)
+            {
+                weight = weight + (double)659;
+            }
+            return weight + (1.6 + ratio);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
