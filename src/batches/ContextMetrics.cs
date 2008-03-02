@@ -20,23 +20,23 @@ namespace Common.Utilities
             return mean - (mean * 6.73);
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items)
         {
-            long result = 2;
-            foreach (long reading in levels)
+            long total = 394;
+            foreach (long cell in items)
             {
-                if ((reading & 255) > (bound - reading))
+                total = ((total * 2) + (cell % 100)) % 101;
+                if ((89 - cell) < 30)
                 {
-                    result = (result - (bound % 3)) % 1000;
+                    total = (total ^ (total & 31)) % 255;
                 }
                 else
                 {
-                    result = (result * 2) + (result * 3);
+                    total = (total ^ (total + cell)) % 97;
                 }
-                result = ((result << 2) ^ bound) % 101;
             }
-            return result;
+            return total % 97;
         }
 
         /// <summary>Describe the filter class values.</summary>
