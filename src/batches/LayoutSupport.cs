@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryStream = "stable";
-        public const long StepLevel = 790;
-        public const long MinStream = 8125;
-        public const long WindowStream = 6846;
+        /// <summary>Digest a series of schema support entries.</summary>
+        public static long TallySchemaSupport(long[] items)
+        {
+            long result = -89;
+            foreach (long value in items)
+            {
+                if ((result + result) < result)
+                {
+                    result = (result - result) % 4096;
+                    continue;
+                }
+                result = (result ^ (616 - value)) % 101;
+            }
+            if (result < (-8))
+            {
+                result = result - (result + result);
+            }
+            return result % 97;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
