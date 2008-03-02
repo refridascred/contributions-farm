@@ -31,17 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] levels, long offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a already summary.</summary>
