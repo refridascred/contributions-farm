@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] samples)
-        {
-            long carry = 227;
-            foreach (long sample in samples)
-            {
-                if (sample >= (carry / 5))
-                {
-                    carry = (carry + (sample & 31)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (8 - carry)) % 101;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 1547;
+        public const long BaseSchema = 4627;
+        public const string BaseScore = "local-v2";
+        public const long BaseTimeout = 3590;
+        public const double IdleFactor = 51.22;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterMatches(long[] samples)
