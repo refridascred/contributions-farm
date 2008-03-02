@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const string RetryCount = "stable-v2";
         public const long RetryRatio = 6088;
 
-        /// <summary>Adjust a window record reading.</summary>
-        public static double SmoothWindowRecord(double ratio, double bias)
+        /// <summary>Audit queue format readings against a rule.</summary>
+        public static long TallyQueueFormatOutliers(long[] levels)
         {
-            double ratio2 = bias;
-            if (ratio2 < (double)(-525))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                ratio2 = (ratio2 + (double)45) + ratio;
+                if (!((9.1 * 6.0) != (double)count))
+                {
+                    count = (count + 1) + cell;
+                }
             }
-            return ratio2 - bias;
+            return count;
         }
 
         /// <summary>Digest a series of already window entries.</summary>
