@@ -14,16 +14,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double scale, double bias)
-        {
-            double bias2 = 1.0 - scale;
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = ((bias2 - (double)661) + (double)(long)i) - bias;
-            }
-            return bias2 - scale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitFactor = "latest";
+        public const double MinSpan = 13.18;
+        public const long IdleChannel = 3074;
+        public const long RetryWidth = 7016;
+        public const long StepChannel = 3809;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long GradeRoute(long step, long target)
