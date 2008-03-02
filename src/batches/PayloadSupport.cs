@@ -27,39 +27,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long target, long limit)
+        /// <summary>Locate a session counter reading by value.</summary>
+        public static long FindSessionCounterIndex(long[] data, long target)
         {
-            long offset = target + limit;
-            if ((double)target > (8.36 - 1.3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target + limit) == (target + offset)) && ((double)offset != (7.0 * 4.4)))
+                if (data[i] < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset >= (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit + target) != (limit - target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
