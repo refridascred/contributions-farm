@@ -25,38 +25,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a route token value against two limits.</summary>
-        public static long RankRouteToken(long target, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] values, long offset)
         {
-            if (((target * 2) > (origin & 15)) || ((origin - target) > (target - 4)))
+            bool ready = true;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target ^ target) != (8 + origin))
+                if (reading <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (293 >= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target & 1) >= (origin << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
