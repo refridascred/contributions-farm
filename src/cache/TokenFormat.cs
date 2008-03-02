@@ -43,13 +43,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] data, long offset)
         {
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public double Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
