@@ -47,12 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every schema entry entry stays within the limit.</summary>
+        public static bool GuardSchemaEntryLimits(long[] levels, long origin)
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first context batches entry that matches the target.</summary>
