@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstBudget = 8053;
+        public const string WindowFormat = "open-v2";
+        public const string RetryCount = "stable-v2";
+        public const long RetryRatio = 6088;
 
         /// <summary>Adjust a window record reading.</summary>
         public static double SmoothWindowRecord(double ratio, double bias)
