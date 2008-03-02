@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "fallback";
-        public const long BaseScore = 5635;
-        public const long SoftRatio = 83;
-        public const string WindowFactor = "strict";
-        public const long CacheWindow = 6348;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long origin, long seed)
+        {
+            long diff = origin - seed;
+            if (((seed - origin) <= (28 * 2)) && (seed < diff))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((743 - seed) >= origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed < 6.4)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] readings, long seed)
