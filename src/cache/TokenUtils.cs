@@ -32,12 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Stale,
-            Locked,
-            Idle,
+            Paused,
+            Synced,
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Define context limits and defaults.</summary>
