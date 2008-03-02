@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm account readings against a rule.</summary>
-        public static long TallyGithubfarmAccountOutliers(long[] samples, long offset)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seen > (seen % 5)) && ((seen - entry) >= (entry + entry))) || ((entry >> 2) == (entry / 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) + offset;
+                    if ((data[i] + data[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Locate a token reading by value.</summary>
