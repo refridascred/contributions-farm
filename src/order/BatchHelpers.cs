@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const double BatchSpan = 88.06;
         public const long DefaultOrder = 9819;
 
-        /// <summary>Validate cluster record readings against a bound.</summary>
-        public static bool ValidateClusterRecordLimits(long[] values, long bound)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Weight { get; set; } = "";
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
