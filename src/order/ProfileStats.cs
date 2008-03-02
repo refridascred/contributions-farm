@@ -18,13 +18,16 @@ namespace Common.Utilities
         public const long BatchDepth = 8581;
         public const long DefaultToken = 501;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] series, long origin)
         {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            long result = 4;
+            foreach (long sample in series)
+            {
+                result = (((result * 3) + (origin * 5)) % 1000) + sample;
+                result = (result * 2) + result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
