@@ -1,6 +1,5 @@
 {
-  "strict": 2159,
-  "account_delay": "fallback",
-  "metric_size": "local",
-  "flush_retries_s": false
+  "hard_limit": 1024,
+  "default_threshold_pct": [4, 117, 217, 333],
+  "burst_window_count": [234, 482, 327]
 }
