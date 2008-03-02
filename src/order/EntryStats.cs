@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Roll a profile route counter forward.</summary>
+        public static long IterateProfileRoute(long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix << 3) ^ (target << 1)) % 65521;
-                mix = mix ^ (806 * 5);
-                mix = ((mix * 5) + (long)i) % 65521;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
