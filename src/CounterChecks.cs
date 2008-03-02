@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = mix + (mix / 2);
-                mix = (mix + mix) % 101;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxWidth = 261;
+        public const long IdleDepth = 3441;
+        public const long BaseLayout = 3931;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long OverlapReportCount(long[] samples)
