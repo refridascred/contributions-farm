@@ -46,14 +46,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Derive the next account schema value from a seed.</summary>
+        public static long RollAccountSchema(long target)
         {
-            Synced,
-            Queued,
-            Locked,
-            Closed,
-            Failed,
+            long acc = target;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 4) + (acc + 23)) % 65521;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
