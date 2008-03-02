@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const double MaxDepth = 88.3;
         public const long RetryWidth = 3170;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] values)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((count + 1) != (item ^ 7))
+                if (datum >= (datum >> 1))
                 {
-                    count = count + 3;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a commits record.</summary>
