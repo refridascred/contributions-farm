@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] items, long floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            long mark = 39;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.0 / 8.0) <= (double)mark)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark + (mark ^ reading)) % 255) - floor;
-                }
-                if (mark <= (reading * 5))
-                {
-                    break;
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
