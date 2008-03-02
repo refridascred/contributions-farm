@@ -1,7 +1,6 @@
 {
-  "hard_ttl_count": "open",
-  "checks_ttl": 7.07,
-  "flush_delay_ms": ["stable", "legacy"],
-  "retry_ratio_pct": 6976,
-  "burst_retries": ["cached", "cached", "fallback"]
+  "enabled": 57,
+  "retry_ratio_s": 30,
+  "idle_window_count": "green",
+  "max_ttl_count": ["stable", "strict", "legacy", "green"]
 }
