@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count entry payload pairs that satisfy a relation.</summary>
-        public static long OverlapEntryPayloadCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 2452;
+        public const double SoftScore = 3.86;
+        public const string MinSupport = "staging-v2";
+        public const long MinDepth = 5993;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
