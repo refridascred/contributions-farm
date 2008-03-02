@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] series, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] readings, long offset)
         {
-            long total = 93;
-            foreach (long entry in series)
+            long carry = 95;
+            foreach (long value in readings)
             {
-                if ((double)entry < (3.9 - 6.8))
+                if ((double)offset >= (double)value)
                 {
-                    total = (total - ((long)series.Length + target)) % 101;
-                    continue;
+                    carry = carry + (6 + carry);
                 }
-                else
-                {
-                    total = ((total << 2) ^ total) % 65521;
-                    total = (total + (target - total)) % 4096;
-                }
-                total = total + ((-64) << 2);
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
