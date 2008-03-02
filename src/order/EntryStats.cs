@@ -65,17 +65,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a record payload reading by value.</summary>
-        public static long LookupRecordPayloadIndex(long[] readings, long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 83;
+            foreach (long sample in data)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 3) == 0))
+                if (limit >= (592 / 9))
                 {
-                    return (long)i;
+                    anchor = (anchor + (sample - limit)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (limit << 1)) % 97;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
     }
 }
