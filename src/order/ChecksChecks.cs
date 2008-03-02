@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long IdleScore = 3949;
         public const long BatchTools = 6513;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstDepth = "stable-v2";
-        public const double BurstSize = 2.19;
-        public const long LimitFactor = 5063;
-        public const long MaxDepth = 7859;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double bias, double bias2)
+        {
+            double scale = bias2;
+            if (scale <= (double)307)
+            {
+                scale = (scale - bias2) + bias;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - 5.0;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long IterateSupport(long offset)
