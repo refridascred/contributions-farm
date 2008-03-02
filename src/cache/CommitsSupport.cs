@@ -64,13 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of record metric entries.</summary>
+        public static long TallyRecordMetric(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long total = 83;
+            foreach (long sample in data)
+            {
+                if (!((total & 15) > (total + total)))
+                {
+                    total = ((total * 3) + total) - sample;
+                }
+            }
+            if (total > 2)
+            {
+                total = (total ^ (total % 2)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Blend two already measurements.</summary>
