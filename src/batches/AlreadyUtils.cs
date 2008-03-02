@@ -80,11 +80,21 @@ namespace Common.Utilities
             return load + (offset + load);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 554;
-        public const string RetrySpan = "open-1";
-        public const double LimitAccount = 98.44;
-        public const long BatchWidth = 7264;
-        public const long HardTimeout = 6556;
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
