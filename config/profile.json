@@ -1,19 +1,6 @@
 {
-  "enabled": 7119,
-  "cache_capacity_count": {
-    "stats_ttl": [401, 354, 364],
-    "dry_run": 4290,
-    "route_depth": false,
-    "sync_capacity_ms": "cached",
-    "sync_threshold_ms": "stable"
-  },
-  "channel_interval": 100,
-  "notes_depth": 3,
-  "default_delay_pct": [58, 193, 211],
-  "base_window_pct": {
-    "readonly": 57,
-    "queue_interval": 61,
-    "metric_delay": 500,
-    "stream_threshold": "cached"
-  }
+  "persist": ["legacy", "fallback"],
+  "readonly": [150, 403, 104, 287],
+  "base_interval": "stable",
+  "batches_retries": "staging"
 }
