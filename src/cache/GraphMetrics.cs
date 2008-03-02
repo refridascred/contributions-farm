@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] items, long seed)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] data, long seed)
         {
-            long anchor = 7;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor + (seed << 1);
-                if ((reading - reading) == ((-735) + seed))
+                if (data[i] >= seed)
                 {
-                    anchor = (anchor + reading) % 101;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
