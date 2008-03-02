@@ -14,32 +14,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long target, long origin)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] values)
         {
-            long slot = target ^ origin;
-            if ((origin ^ slot) >= (target - origin))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (0.24 < (double)target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((slot / 3) != (target / 8)) && (origin < (origin >> 4)))
+                    if ((values[i] + values[j]) == 17)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
