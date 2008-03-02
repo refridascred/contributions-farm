@@ -72,13 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] data)
         {
-            Paused,
-            Draft,
-            Retry,
-            Failed,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches / 2) > (cell ^ matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
