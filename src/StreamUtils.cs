@@ -86,13 +86,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Find the first session cache entry that matches the target.</summary>
+        public static long LookupSessionCacheIndex(long[] values, long bound)
         {
-            Queued,
-            Stale,
-            Pending,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
