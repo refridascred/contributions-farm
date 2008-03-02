@@ -34,21 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item != bound)
                 {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Project the next layout value.</summary>
