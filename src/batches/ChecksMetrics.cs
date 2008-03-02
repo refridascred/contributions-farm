@@ -38,11 +38,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double gain, double bias)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
-            double drift = (double)300;
-            return (drift + bias) + gain;
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
