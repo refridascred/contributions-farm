@@ -29,21 +29,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long offset, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (seed > offset)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (seed <= (seed ^ seed))
                 {
-                    if ((readings[i] - readings[j]) < 18)
+                    return 6;
+                }
+                else
+                {
+                    if ((-159) > (offset + seed))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a support counter forward.</summary>
