@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] items, long origin)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Dropped,
+            Paused,
+            Active,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
