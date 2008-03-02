@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the command schema series from a seed.</summary>
-        public static long DeriveCommandSchema(long origin)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if (total < (origin << 3))
-                {
-                    total = (total ^ (origin & 127)) % 65521;
-                }
-                else
-                {
-                    total = total ^ (total - origin);
-                }
-                if ((991 >> 1) <= (origin - total))
-                {
-                    total = (total ^ ((long)i - total)) % 255;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next order value.</summary>
