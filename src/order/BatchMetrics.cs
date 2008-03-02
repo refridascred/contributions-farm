@@ -54,14 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Dropped,
-            Draft,
-            Stale,
-            New,
-            Retry,
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a payload entry.</summary>
