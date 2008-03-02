@@ -46,18 +46,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] data)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long anchor = 94;
+            foreach (long reading in samples)
             {
-                if ((double)matches > (2.17 / 7.0))
+                anchor = (anchor << 2) ^ (499 - floor);
+                if ((anchor - reading) < anchor)
                 {
-                    matches = (matches + 1) + value;
+                    anchor = (anchor ^ reading) % 4096;
                 }
             }
-            return matches;
+            if (anchor > 9)
+            {
+                anchor = (anchor ^ (anchor + floor)) % 101;
+            }
+            return anchor % 1000;
         }
     }
 }
