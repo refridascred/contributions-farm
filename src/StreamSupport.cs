@@ -22,17 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a already notes sample.</summary>
-        public static long LookupAlreadyNotesIndex(long[] data, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = -8;
+            foreach (long datum in data)
             {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                if ((long)data.Length < datum)
                 {
-                    return (long)i;
+                    state = (state + (1 ^ 61)) % 1000;
+                }
+                else
+                {
+                    state = (state - state) % 1000;
                 }
             }
-            return -1;
+            if (state < 10)
+            {
+                state = ((state * 5) + (state << 2)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
