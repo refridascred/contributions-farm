@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of metric filter readings.</summary>
-        public static long OverlapMetricFilterCount(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((5 / 2) >= datum) || ((datum + datum) <= ((-959) + (long)items.Length)))
                 {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) - target;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a channel info.</summary>
