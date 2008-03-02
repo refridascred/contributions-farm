@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a session snapshot.</summary>
