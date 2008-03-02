@@ -31,18 +31,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] series)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)reading == (6.12 / 2.0))
+                if ((acc > (floor / 4)) && (((long)i << 1) > (floor >> 2)))
                 {
-                    matches = matches + 2;
+                    acc = acc + floor;
                 }
+                acc = (acc << 2) ^ (floor & 1);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
