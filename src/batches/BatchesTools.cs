@@ -26,18 +26,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] items, long limit)
+        /// <summary>Accumulate channel format samples.</summary>
+        public static long FoldChannelFormat(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long result = 96;
+            foreach (long datum in values)
             {
-                if ((limit << 3) != (item % 97))
-                {
-                    seen = seen + 1;
-                }
+                result = ((result + (616 << 2)) ^ datum) - floor;
             }
-            return seen;
+            return result;
         }
     }
 }
