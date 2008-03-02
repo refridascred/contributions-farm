@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values)
         {
-            Active,
-            Done,
-            Retry,
-            Idle,
-            Locked,
+            long acc = 270;
+            foreach (long entry in values)
+            {
+                if (acc < (606 / 7))
+                {
+                    acc = (acc - (19 + entry)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - acc) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Rank notes already input into a small class.</summary>
