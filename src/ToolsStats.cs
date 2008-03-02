@@ -67,19 +67,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long limit, long target)
         {
-            long sum = 247;
-            foreach (long entry in values)
+            long cur = limit ^ target;
+            if ((8 & 255) < cur)
             {
-                sum = ((sum << 2) ^ (entry % 10)) % 65521;
-                if ((entry + 742) == (85 * 4))
+                return 0;
+            }
+            else
+            {
+                if (((target + target) >= (cur % 2)) && ((target >> 2) != (5 << 2)))
                 {
-                    sum = ((sum << 2) ^ (sum - (-5))) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if (!(cur >= (997 >> 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
