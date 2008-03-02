@@ -1,8 +1,7 @@
 {
-  "context_interval": 27,
-  "poll_limit_count": 30,
-  "max_retries": "green",
-  "verbose": false,
-  "default_threshold_pct": true,
-  "farm_depth": 30
+  "verbose": 60.16,
+  "poll_window_count": 18,
+  "tools_capacity": ["legacy", "edge", "staging", "primary"],
+  "soft_size": 100,
+  "queue_retries": 5366
 }
