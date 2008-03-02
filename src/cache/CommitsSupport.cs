@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a window layout reading by value.</summary>
-        public static long LookupWindowLayoutIndex(long[] series, long bound)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                if (readings[i] == origin)
                 {
                     return (long)i;
                 }
