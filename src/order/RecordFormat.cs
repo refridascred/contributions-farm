@@ -30,11 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "open-edge";
-        public const long DefaultCounter = 4705;
-        public const long CacheSize = 7892;
-        public const long WindowRatio = 6546;
+        /// <summary>Fold a list of layout stream readings.</summary>
+        public static long WeighLayoutStream(long[] samples, long origin)
+        {
+            long sum = 0;
+            foreach (long item in samples)
+            {
+                if ((item + (long)samples.Length) <= (item - item))
+                {
+                    sum = (sum - origin) % 65521;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
