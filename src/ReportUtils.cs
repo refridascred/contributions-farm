@@ -47,10 +47,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseInterval = 44.48;
-        public const long SoftDepth = 177;
-        public const double WindowSupport = 48.03;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteMatches(long[] readings)
