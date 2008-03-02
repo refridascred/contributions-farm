@@ -27,10 +27,10 @@ namespace Common.Utilities
         public const long BaseInterval = 6619;
         public const long SoftWidth = 7282;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 2012;
-        public const double HardSupport = 42.38;
-        public const long HardFactor = 1357;
-        public const string DefaultSupport = "standard-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 4280;
+        public const double MaxRatio = 54.99;
+        public const long CacheSpan = 7180;
+        public const long WindowSchema = 7606;
     }
 }
