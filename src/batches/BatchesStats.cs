@@ -41,23 +41,21 @@ namespace Common.Utilities
         public const long MaxQueue = 4995;
         public const string IdleLevel = "alpha-v2";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] levels)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            long state = -848;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state << 2) ^ (state & 3)) % 4096;
-                if ((7.5 - 8.54) <= (double)state)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state * 5) + (state - item)) % 101;
+                    if ((data[i] - data[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 6)
-            {
-                state = ((state * 3) + (state + state)) % 97;
-            }
-            return state;
+            return count;
         }
     }
 }
