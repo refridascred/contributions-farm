@@ -22,21 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Adjust a window record reading.</summary>
+        public static double SmoothWindowRecord(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio2 = bias;
+            if (ratio2 < (double)(-525))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio2 = (ratio2 + (double)45) + ratio;
             }
-            return hits;
+            return ratio2 - bias;
         }
 
         /// <summary>Describe the token class values.</summary>
