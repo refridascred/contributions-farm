@@ -38,12 +38,18 @@ namespace Common.Utilities
         public const string WindowChecks = "cached-v2";
         public const long RetrySpan = 6554;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] levels, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((origin - origin) < origin)
+                {
+                    tally = (tally + 1) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two layout measurements.</summary>
