@@ -32,21 +32,19 @@ namespace Common.Utilities
             return ratio + (scale * 7.91);
         }
 
-        /// <summary>Match up order batches samples.</summary>
-        public static long OverlapOrderBatchesCount(long[] data)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample < bound)
                 {
-                    if ((data[i] ^ data[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
