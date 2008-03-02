@@ -55,18 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi cache entries that pass the check.</summary>
-        public static long TallyContributiCacheOutliers(long[] samples, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (583 > (cell - 7))
-                {
-                    count = (count + 3) - floor;
-                }
-            }
-            return count;
+            Retry,
+            Done,
+            Failed,
+            Idle,
         }
     }
 }
