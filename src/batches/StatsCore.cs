@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((double)hits >= 11.0)
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
