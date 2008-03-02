@@ -64,13 +64,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] items)
         {
-            New,
-            Active,
-            Dropped,
-            Paused,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits > (value & 63)) && ((double)hits < (1.0 * 7.0)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
