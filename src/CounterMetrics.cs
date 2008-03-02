@@ -29,21 +29,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of support channel readings.</summary>
-        public static long CompareSupportChannelCount(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 196;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((datum - acc) <= (acc - limit)) || ((double)acc == (18.0 + 7.2)))
                 {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
+                }
+                if (((acc ^ 251) < (55 >> 5)) && (1.9 < (double)acc))
+                {
+                    acc = (acc + (datum + 37)) % 101;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
