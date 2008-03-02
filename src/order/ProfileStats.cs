@@ -20,11 +20,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long limit)
         {
-            public double Score { get; set; }
-            public double Stamp { get; set; }
+            if ((double)bound < (1.69 * 12.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (3 < limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9.0 + 4.56) == (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((8.0 - 6.7) == (double)limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
