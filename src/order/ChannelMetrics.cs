@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] values, long limit)
+        /// <summary>Digest a series of commits session entries.</summary>
+        public static long TotalCommitsSession(long[] levels, long floor)
         {
-            long acc = 598;
-            foreach (long datum in values)
+            long acc = 3;
+            foreach (long sample in levels)
             {
-                acc = (((acc + (-80)) % 4096) - datum) - limit;
+                acc = (((acc * 2) + sample) % 1000) - floor;
             }
             return acc;
         }
