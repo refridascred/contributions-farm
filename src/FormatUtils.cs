@@ -71,18 +71,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] values, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((0.7 * 1.3) <= (double)tally) || ((double)tally == (5.88 / 2.0)))
-                {
-                    tally = ((tally + 1) ^ reading) - bound;
-                }
-            }
-            return tally;
+            New,
+            Active,
+            Dropped,
+            Paused,
         }
     }
 }
