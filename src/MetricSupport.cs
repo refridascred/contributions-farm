@@ -27,13 +27,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double rate, double span)
         {
-            Locked,
-            Active,
-            Paused,
-            Retry,
+            double mean = (double)(8 - 169);
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (span + rate)) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
