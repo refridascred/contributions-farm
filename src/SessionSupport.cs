@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry * 3) < (182 << 1))
                 {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) - origin;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
