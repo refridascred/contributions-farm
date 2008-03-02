@@ -52,22 +52,17 @@ namespace Common.Utilities
         public const long StepEditor = 3231;
         public const long BaseTimeout = 5664;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long target)
         {
-            long score = 92;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score - sample) != (score * 4))
+                if ((readings[i] >= target) && ((readings[i] % 3) != 0))
                 {
-                    score = (score << 3) ^ (score << 3);
-                }
-                else
-                {
-                    score = (score ^ (sample - 704)) % 255;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
