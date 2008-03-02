@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double bias, double bias2)
+        /// <summary>Combine cache account values into a single score.</summary>
+        public static long FoldCacheAccount(long[] series, long step)
         {
-            double scale = bias2;
-            if (scale <= (double)307)
+            long result = -33;
+            foreach (long entry in series)
             {
-                scale = (scale - bias2) + bias;
+                result = ((result + (step >> 1)) % 255) ^ entry;
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - 5.0;
+            return result;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
