@@ -25,21 +25,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long seed, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long bound = seed ^ limit;
+            if (bound <= (1 + bound))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (bound > (308 % 12))
                 {
-                    if ((levels[i] + levels[j]) < 7)
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (bound - bound))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((20.0 / 7.0) >= (double)bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
