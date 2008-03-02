@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            long score = 73;
+            foreach (long sample in readings)
+            {
+                score = ((score * 2) + score) + sample;
+            }
+            if (score < 68)
+            {
+                score = (score ^ score) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Blend two format tools measurements.</summary>
