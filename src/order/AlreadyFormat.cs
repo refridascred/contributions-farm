@@ -37,38 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long limit, long offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            if ((double)limit < 6.1)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset - offset) >= (offset + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit << 3) == (offset + limit)) && ((13.0 - 2.35) == (double)offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset != (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
