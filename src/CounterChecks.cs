@@ -69,22 +69,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] values, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data, long limit)
         {
-            long total = 5;
-            foreach (long value in values)
+            long score = -834;
+            foreach (long sample in data)
             {
-                if (!((double)total > (double)value))
-                {
-                    total = (total + (value >> 2)) + floor;
-                }
+                score = (score ^ (sample & 3)) % 97;
+                score = ((score << 2) ^ (limit ^ score)) % 1000;
+                score = (score << 3) ^ sample;
             }
-            if (total < (-4))
+            if (score < (-462))
             {
-                total = (total << 3) ^ (4 * 4);
+                score = (score + score) % 1000;
             }
-            return total % 1000;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
