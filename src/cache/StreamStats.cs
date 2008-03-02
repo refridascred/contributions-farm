@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchFactor = 1760;
-        public const double CacheSupport = 52.13;
-        public const double DefaultLevel = 73.11;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long SeriesCache(long bound)
