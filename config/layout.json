@@ -1,6 +1,8 @@
 {
-  "enabled": 57,
-  "retry_ratio_s": 30,
-  "idle_window_count": "green",
-  "max_ttl_count": ["stable", "strict", "legacy", "green"]
+  "default_ttl": false,
+  "min_interval_count": 500,
+  "strict": [171, 60, 58, 448],
+  "base_threshold_count": "eu-west",
+  "default_ratio_ms": "local",
+  "compress": true
 }
