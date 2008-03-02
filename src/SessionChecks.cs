@@ -22,32 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token queue input into a small class.</summary>
-        public static long SortTokenQueue(long step, long seed)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double weight, double offset)
         {
-            long prev = step + seed;
-            if (((step << 2) == (prev - seed)) && (348 > (419 ^ seed)))
+            double drift = weight / 4.0;
+            if (drift <= offset)
             {
-                return 3;
+                drift = drift - (offset - offset);
             }
             else
             {
-                if (((0.3 + 9.7) <= (double)seed) && ((step ^ seed) == (seed * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed >> 5) > 11)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                drift = drift - (drift + 4.9);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift * 6.0)) + (double)(long)i;
+            }
+            return drift + (6.0 - 9.0);
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
