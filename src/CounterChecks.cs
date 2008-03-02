@@ -29,15 +29,14 @@ namespace Common.Utilities
         public const string RetryScore = "strict-1";
         public const double IdleRoute = 81.65;
 
-        /// <summary>Blend two format tools measurements.</summary>
-        public static double ScaleFormatTools(double scale, double span)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double mean = span - (span - span);
-            if (mean <= (scale / 9.0))
-            {
-                mean = mean + (double)96;
-            }
-            return mean + (9.0 / 4.0);
+            Synced,
+            Active,
+            Dropped,
+            Closed,
+            New,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
