@@ -15,19 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] levels, long seed)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
