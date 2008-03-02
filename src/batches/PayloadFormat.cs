@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long RetryCommits = 7848;
         public const string RetryScore = "cached-v2";
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((double)tally == (5.0 / 2.0))
+                if (item != limit)
                 {
-                    tally = (tally + 3) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
