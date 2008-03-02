@@ -60,12 +60,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchCount = 47.28;
-        public const long IdleBudget = 9498;
-        public const long CacheContext = 442;
-        public const string LimitTimeout = "stable-edge";
-        public const long BatchContext = 6013;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a stream commits sample.</summary>
         public static long LookupStreamCommitsIndex(long[] values, long offset)
