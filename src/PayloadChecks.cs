@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
