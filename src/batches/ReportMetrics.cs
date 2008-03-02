@@ -22,10 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 2600;
-        public const long IdleInterval = 4637;
-        public const long HardRecord = 3648;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Retry,
+            Failed,
+            Draft,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] values)
