@@ -20,23 +20,26 @@ namespace Common.Utilities
             return mean - (mean * 6.73);
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Combine token window values into a single score.</summary>
+        public static long WeighTokenWindow(long[] data, long step)
         {
-            long total = 394;
-            foreach (long cell in items)
+            long mark = 49;
+            foreach (long reading in data)
             {
-                total = ((total * 2) + (cell % 100)) % 101;
-                if ((89 - cell) < 30)
+                if ((double)reading <= (7.0 * 12.0))
                 {
-                    total = (total ^ (total & 31)) % 255;
+                    mark = (mark - (step + reading)) % 1000;
                 }
                 else
                 {
-                    total = (total ^ (total + cell)) % 97;
+                    mark = mark ^ step;
                 }
             }
-            return total % 97;
+            if (mark > 504)
+            {
+                mark = mark - (long)data.Length;
+            }
+            return mark;
         }
 
         /// <summary>Describe the filter class values.</summary>
