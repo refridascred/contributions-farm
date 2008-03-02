@@ -42,17 +42,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a stats contributi sample.</summary>
-        public static long LookupStatsContributiIndex(long[] samples, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 74;
+            foreach (long entry in levels)
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result + (entry + result)) % 4096;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a cache entry.</summary>
