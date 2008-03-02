@@ -15,15 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Closed,
-            Pending,
-            Retry,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 1316;
+        public const double MaxEditor = 65.17;
+        public const string BaseEditor = "strict-edge";
+        public const double MinDepth = 53.46;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long IterateProfile(long floor)
