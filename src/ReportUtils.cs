@@ -46,14 +46,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] data)
         {
-            Stale,
-            Synced,
-            Idle,
-            Draft,
-            Failed,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)matches > (2.17 / 7.0))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
     }
 }
