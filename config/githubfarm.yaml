@@ -1,5 +1,9 @@
 # githubfarm settings
-format_depth: false
-verbose: 717
-compress: true
-order_threshold: false
+format_limit: 653
+tools_ratio:
+  - 481
+  - 278
+retry_size:
+  - 343
+  - 214
+  - 347
