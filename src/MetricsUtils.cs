@@ -29,17 +29,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] readings, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 671;
+            foreach (long item in readings)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                sum = ((sum * 3) + item) % 101;
+                if (((double)item <= 6.4) || ((double)sum > (double)34))
                 {
-                    return (long)i;
+                    sum = sum ^ (24 % 16);
+                }
+                else
+                {
+                    sum = (sum ^ (item << 1)) % 97;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Adjust a cluster contributi reading.</summary>
