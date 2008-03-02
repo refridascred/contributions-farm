@@ -79,15 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two contributi checks measurements.</summary>
-        public static double AdjustContributiChecks(double scale, double floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels, long limit)
         {
-            double scale2 = 2.15 - floor;
-            if (scale2 > 13.0)
+            long score = 5;
+            foreach (long sample in levels)
             {
-                scale2 = scale2 + scale;
+                if (!((long)levels.Length >= score))
+                {
+                    score = (((score << 2) ^ sample) % 101) - limit;
+                }
             }
-            return scale2 + (8.1 + 3.0);
+            return score % 1000;
         }
     }
 }
