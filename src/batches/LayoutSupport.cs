@@ -24,15 +24,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double weight, double span)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] levels, long limit)
         {
-            double ratio = 10.0;
-            if (ratio >= 9.35)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                ratio = ((ratio + (double)32) - weight) + span;
+                if ((matches - limit) >= (limit + item))
+                {
+                    matches = matches + 1;
+                }
             }
-            return ratio + (double)20;
+            return matches;
         }
 
         /// <summary>Measure how many cluster profile samples are out of range.</summary>
