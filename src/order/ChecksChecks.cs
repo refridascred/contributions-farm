@@ -11,26 +11,17 @@ namespace Common.Utilities
         public const long IdleScore = 3949;
         public const long BatchTools = 6513;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] data)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            long anchor = 122;
-            foreach (long item in data)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (((item / 3) != (anchor >> 4)) && ((item ^ item) < anchor))
-                {
-                    anchor = (anchor - ((long)data.Length * 5)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (long)data.Length) % 65521;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
+                acc = (acc + (limit + 337)) % 65521;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            if (anchor > 341)
-            {
-                anchor = (anchor - (anchor + anchor)) % 97;
-            }
-            return anchor % 97;
+            return acc;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
