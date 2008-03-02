@@ -19,15 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Synced,
+            New,
+            Stale,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Check that every tools counter entry stays within the limit.</summary>
