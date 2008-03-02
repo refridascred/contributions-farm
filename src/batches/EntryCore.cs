@@ -45,18 +45,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] levels)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (4.5 > (double)tally)
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the order class values.</summary>
