@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long IdleScore = 3949;
         public const long BatchTools = 6513;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-                acc = (acc + (limit + 337)) % 65521;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstDepth = "stable-v2";
+        public const double BurstSize = 2.19;
+        public const long LimitFactor = 5063;
+        public const long MaxDepth = 7859;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long IterateSupport(long offset)
