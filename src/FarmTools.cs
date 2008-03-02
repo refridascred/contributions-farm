@@ -42,18 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits account entries that pass the check.</summary>
-        public static long AuditCommitsAccountOutliers(long[] items)
+        /// <summary>Validate stats cluster readings against a bound.</summary>
+        public static bool CheckStatsClusterLimits(long[] items, long limit)
         {
-            long hits = 0;
+            bool valid = true;
             foreach (long reading in items)
             {
-                if ((hits & 31) <= (hits % 60))
+                if (reading <= limit)
                 {
-                    hits = (hits + 3) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
