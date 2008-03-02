@@ -1,5 +1,8 @@
 {
-  "soft_size": 7109,
-  "warm_capacity": "latest",
-  "farm_timeout": 7826
+  "sync_timeout_ms": "local",
+  "min_limit": "edge",
+  "warm_timeout_s": 51.69,
+  "verbose": 1673,
+  "enabled": "local",
+  "soft_capacity_pct": true
 }
