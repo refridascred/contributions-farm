@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up cluster metrics samples.</summary>
-        public static long PairClusterMetricsCount(long[] items)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = offset * 4.3;
+            if (drift > offset)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - scale;
             }
-            return count;
+            return drift + drift;
         }
 
         /// <summary>Describe the notes mode values.</summary>
