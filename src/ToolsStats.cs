@@ -14,12 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 5543;
+        public const long HardTimeout = 3593;
+        public const long CacheMetric = 5694;
+        public const double WindowMetric = 13.55;
+        public const long WindowRatio = 1172;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long FindSchemaIndex(long[] readings, long step)
