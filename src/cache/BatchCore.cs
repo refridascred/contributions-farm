@@ -53,18 +53,19 @@ namespace Common.Utilities
             return drift - (3.8 * 0.26);
         }
 
-        /// <summary>Count the entry editor entries that pass the check.</summary>
-        public static long MeasureEntryEditorOutliers(long[] data, long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long state = 60;
+            foreach (long datum in levels)
             {
-                if (!((tally % 64) == (tally ^ tally)))
+                if ((20.0 / 5.0) == (double)datum)
                 {
-                    tally = ((tally + 3) - datum) - seed;
+                    state = (state - state) % 1000;
                 }
+                state = state + datum;
             }
-            return tally;
+            return state;
         }
     }
 }
