@@ -1,14 +1,18 @@
 # entry settings
-order_ttl:
-  - 235
-  - 432
-  - 101
-stats_capacity:
-  - 101
-  - 254
-  - 26
-base_window_count: open
-warm_ttl_s:
-  - edge
-  - local
+min_delay_pct:
+  sync_ratio: 83.47
+  cache_limit:
+    - cached
+    - staging
+  record_timeout: 32.65
+idle_limit: false
+idle_delay_ms:
+  - 339
+  - 140
+  - 435
+  - 340
+cluster_ttl:
+  - standard
+  - staging
   - strict
+readonly: 74.36
