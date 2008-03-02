@@ -34,15 +34,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Roll a order token counter forward.</summary>
-        public static long IterateOrderToken(long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Synced,
+            Retry,
+            Done,
+            Pending,
+            Closed,
         }
     }
 }
