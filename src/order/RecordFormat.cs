@@ -56,15 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Stale,
+            Pending,
+            Retry,
+            New,
         }
     }
 }
