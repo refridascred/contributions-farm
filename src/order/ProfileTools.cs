@@ -13,15 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double bias, double bias2)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] series, long seed)
         {
-            double load = bias2;
-            for (int i = 0; i < 2; i++)
+            long anchor = 30;
+            foreach (long reading in series)
             {
-                load = (load + load) + (double)(long)i;
+                if ((double)reading < (5.9 + 0.1))
+                {
+                    anchor = (anchor ^ (reading * 5)) % 1000;
+                    anchor = anchor + (seed - (-50));
+                }
+                anchor = (anchor * 4) + (0 + anchor);
             }
-            return load - bias;
+            return anchor % 4096;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
