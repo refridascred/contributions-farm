@@ -19,22 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] samples, long target)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            long carry = 574;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((reading - target) == (target / 4)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
-                }
-                if (target >= carry)
-                {
-                    carry = ((carry << 3) ^ (reading / 7)) % 65521;
+                    if ((levels[i] - levels[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
