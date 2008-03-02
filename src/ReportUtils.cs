@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long step, long floor)
-        {
-            if ((double)step != (5.0 + 20.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + step) < (floor % 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((step - 9) >= (floor + step)) && ((floor - floor) > floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 1657;
+        public const double SoftRatio = 47.97;
+        public const long BaseRecord = 857;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterBounds(long[] levels, long offset)
