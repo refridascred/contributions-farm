@@ -18,12 +18,13 @@ namespace Common.Utilities
         public const long LimitSize = 8465;
         public const double BatchWindow = 23.61;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryScore = 8194;
-        public const double BaseEditor = 63.33;
-        public const long StepScore = 8792;
-        public const string MaxScore = "open";
-        public const string DefaultEditor = "local-1";
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Closed,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long CombineCluster(long[] values)
