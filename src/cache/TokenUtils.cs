@@ -24,16 +24,13 @@ namespace Common.Utilities
             return mean + (mean + mean);
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = acc + (acc / 6);
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Retry,
+            Synced,
+            Locked,
+            Paused,
         }
     }
 }
