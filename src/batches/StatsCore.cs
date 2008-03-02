@@ -13,13 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Derive the next checks batch value from a seed.</summary>
+        public static long SeriesChecksBatch(long step)
         {
-            Stale,
-            Done,
-            Retry,
-            New,
+            long sum = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if (sum < (step + 6))
+                {
+                    sum = (sum ^ (sum * 2)) % 1000;
+                    sum = ((sum << 3) ^ (step % 12)) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
