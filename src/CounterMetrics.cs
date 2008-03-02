@@ -23,15 +23,19 @@ namespace Common.Utilities
         public const string MaxTimeout = "standard-edge";
         public const string CacheCount = "fallback";
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] items, long bound)
         {
-            long result = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                result = (result - cell) % 4096;
+                if (sample > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
