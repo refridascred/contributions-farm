@@ -23,17 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] levels, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 574;
+            foreach (long reading in samples)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
+                if (!((reading - target) == (target / 4)))
                 {
-                    return (long)i;
+                    break;
+                }
+                if (target >= carry)
+                {
+                    carry = ((carry << 3) ^ (reading / 7)) % 65521;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
