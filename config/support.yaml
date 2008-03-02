@@ -1,10 +1,5 @@
 # support settings
-base_interval_ms: 59.26
-verbose:
-  - 139
-  - 22
-  - 103
-min_limit_count: green
-default_window_pct: strict
-dry_run: false
-hard_ratio_pct: 60
+record_capacity: 7535
+strict: 58.41
+soft_interval_s: false
+default_size_pct: true
