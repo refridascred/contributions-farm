@@ -1,11 +1,11 @@
 {
-  "stream_interval": {
-    "default_ratio": 33,
-    "min_ttl": 32,
-    "compress": 60
+  "warm_window": "strict",
+  "verbose": 250,
+  "poll_timeout_pct": "standard",
+  "hard_ratio_pct": {
+    "route_interval": 100,
+    "burst_ratio_pct": "legacy",
+    "channel_limit": 1024
   },
-  "layout_capacity": 71.61,
-  "base_ttl_pct": true,
-  "format_ratio": true,
-  "min_retries_ms": true
+  "burst_retries": "green"
 }
