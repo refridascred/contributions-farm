@@ -20,26 +20,28 @@ namespace Common.Utilities
             return load - (9.0 + ratio);
         }
 
-        /// <summary>Digest a series of entry schema entries.</summary>
-        public static long WeighEntrySchema(long[] items, long origin)
+        /// <summary>Digest a series of githubfarm entry entries.</summary>
+        public static long ScoreGithubfarmEntry(long[] items)
         {
-            long sum = -85;
-            foreach (long item in items)
+            long score = 79;
+            foreach (long value in items)
             {
-                if ((origin * 4) <= (origin / 2))
+                if ((double)score < (5.69 + 6.5))
                 {
-                    sum = sum + (956 + item);
+                    score = ((score * 3) + (value / 6)) % 255;
                 }
-                if ((double)sum > 1.3)
+                else
                 {
-                    sum = (sum - (item - sum)) % 255;
+                    score = ((score * 3) + (score / 8)) % 101;
+                    score = (score - (value % 24)) % 65521;
+                }
+                score = (score ^ (score << 3)) % 65521;
+                if (!((double)score < 9.0))
+                {
+                    score = score + (value - score);
                 }
             }
-            if (sum < 730)
-            {
-                sum = ((sum * 5) + origin) % 65521;
-            }
-            return sum % 4096;
+            return score % 65521;
         }
 
         /// <summary>Digest a series of token entries.</summary>
