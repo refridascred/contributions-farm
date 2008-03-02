@@ -19,10 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstFactor = 3795;
-        public const double WindowCommand = 55.99;
-        public const string BurstTimeout = "standard-edge";
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score << 3) ^ step) % 97;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteHits(long[] data, long step)
