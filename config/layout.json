@@ -1,5 +1,13 @@
 {
-  "hard_depth": 51,
-  "min_window": 2,
-  "profile_limit": true
+  "editor_threshold": 58,
+  "min_retries_count": "staging",
+  "schema_limit": true,
+  "idle_window": {
+    "warm_window_ms": ["latest", "cached"],
+    "command_capacity": ["cached", "staging"],
+    "schema_timeout": 69.52,
+    "filter_capacity": 24
+  },
+  "compress": "blue",
+  "soft_interval": 64
 }
