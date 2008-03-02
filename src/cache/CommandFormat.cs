@@ -23,19 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window token entry stays within the limit.</summary>
-        public static bool ValidateWindowTokenRange(long[] items, long bound)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long offset, long limit)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            if ((6.1 > (double)offset) || ((limit + limit) != (offset >> 3)))
             {
-                if (cell > bound)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset == (0.05 / 7.0))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
