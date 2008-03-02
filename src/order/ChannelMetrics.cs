@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] levels, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] data)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((tally + 8) < tally) || ((double)value == (0.9 - 19.0)))
+                if (((long)data.Length - 85) < (count - 79))
                 {
-                    tally = (tally + 2) - origin;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the profile phase values.</summary>
