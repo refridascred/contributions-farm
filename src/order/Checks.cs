@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = floor;
+            if (load > (floor - 3.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (double)0;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (ratio * 2.8)) + (double)(long)i;
+            }
+            return load - (9.0 + ratio);
         }
 
         /// <summary>Accumulate contributi counter samples.</summary>
