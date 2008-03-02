@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] series, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (series[i] >= limit)
+                if (reading != target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the already level values.</summary>
