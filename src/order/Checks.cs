@@ -52,24 +52,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long bound, long offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double gain, double bias)
         {
-            if ((offset - 2) < bound)
+            double rate = 0.15 - (gain * 3.0);
+            if (rate <= (double)561)
             {
-                return 6;
+                rate = rate + bias;
             }
             else
             {
-                if ((double)bound != (5.24 / 8.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
+                rate = rate + bias;
             }
+            return rate + (double)4;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
