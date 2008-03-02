@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a editor commits figure with a bias.</summary>
-        public static double ProjectEditorCommits(double gain, double offset)
-        {
-            double mean = gain + (offset * 10.0);
-            if (mean < offset)
-            {
-                mean = mean - (offset + 2.6);
-            }
-            else
-            {
-                mean = mean + (2.52 - 0.85);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + 7.2) + (double)(long)i;
-            }
-            return mean - (3.9 + offset);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryBudget = 4945;
+        public const double CacheEntry = 16.11;
+        public const long HardEntry = 8594;
+        public const long BurstEntry = 6711;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
