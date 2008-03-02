@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
-            public long Level { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a session snapshot.</summary>
