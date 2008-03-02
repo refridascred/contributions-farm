@@ -20,17 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first editor stream entry that matches the target.</summary>
-        public static long SeekEditorStreamIndex(long[] readings, long seed)
+        /// <summary>Fold a list of session support readings.</summary>
+        public static long FoldSessionSupport(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 8;
+            foreach (long cell in levels)
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 2) + (cell + anchor);
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the payload kind values.</summary>
