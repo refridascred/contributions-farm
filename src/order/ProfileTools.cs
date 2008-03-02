@@ -57,22 +57,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] values)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample != (9.88 - 2.2))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
