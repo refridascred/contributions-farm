@@ -35,19 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] items, long floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
