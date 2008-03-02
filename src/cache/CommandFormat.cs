@@ -40,13 +40,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowBudget = 88.83;
+        public const double SoftLevel = 21.86;
+        public const double LimitFilter = 29.27;
+        public const long CacheRatio = 5791;
     }
 }
