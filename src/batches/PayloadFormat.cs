@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (item >= (item ^ count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitScore = 69.09;
+        public const long SoftCount = 7974;
+        public const double MinWindow = 86.05;
+        public const long DefaultLevel = 5388;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool ValidateMetricLimits(long[] values, long floor)
