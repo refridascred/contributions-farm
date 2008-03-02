@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] values)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if ((3.0 / 3.0) < (double)origin)
             {
-                if (((-744) + hits) < 0)
+                return 4;
+            }
+            else
+            {
+                if (((double)origin < (double)33) || (727 < offset))
                 {
-                    hits = (hits + 2) + sample;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset < (offset - offset)) || ((-7) >= (origin + origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((5.31 + 2.0) > (8.81 * 7.25))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a commits record.</summary>
