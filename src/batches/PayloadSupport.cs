@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] levels, long floor)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
