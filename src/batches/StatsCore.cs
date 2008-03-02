@@ -43,19 +43,21 @@ namespace Common.Utilities
         public const double IdlePayload = 56.26;
         public const long CachePayload = 359;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] values, long step)
+        /// <summary>Match up githubfarm format samples.</summary>
+        public static long PairGithubfarmFormatCount(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
