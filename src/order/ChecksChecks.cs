@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "stable-1";
-        public const double RetryAccount = 79.56;
-        public const long BaseAccount = 3396;
-        public const double StepAccount = 87.31;
-        public const long HardAccount = 8555;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyBounds(long[] readings, long target)
