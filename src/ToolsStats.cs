@@ -57,19 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] items, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long result = -8;
-            foreach (long datum in items)
-            {
-                result = (result ^ (origin << 3)) + datum;
-                if ((origin / 8) < origin)
-                {
-                    break;
-                }
-            }
-            return result;
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
