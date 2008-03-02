@@ -1,12 +1,13 @@
 # support settings
-sync_threshold_ms: 88
-default_threshold_count: green
-soft_capacity_ms:
-  graph_timeout: 88
-  burst_capacity_ms: local
-  hard_timeout_s: true
-  stats_timeout: cached
-hard_window_ms: 64
-retry_limit_count:
-  - eu-west
-  - fallback
+idle_retries_s:
+  enabled:
+    base_ttl_s: eu-west
+    retry_delay_ms: 90.57
+    warm_retries_s: 1024
+    session_ttl: true
+  strict: 62
+  format_window: 96.38
+base_timeout: false
+cache_threshold:
+  - 114
+  - 183
