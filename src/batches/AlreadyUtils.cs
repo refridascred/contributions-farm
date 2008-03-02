@@ -65,19 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stats farm figure with a bias.</summary>
-        public static double ScaleStatsFarm(double weight, double offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] values, long origin)
         {
-            double load = 11.0;
-            if (load <= offset)
+            long hits = 0;
+            foreach (long value in values)
             {
-                load = (load - 9.0) + weight;
+                if ((hits >> 4) < (979 >> 4))
+                {
+                    hits = ((hits + 2) + value) + origin;
+                }
             }
-            else
-            {
-                load = load - (load - offset);
-            }
-            return load + (offset + load);
+            return hits;
         }
 
         /// <summary>Match up stream samples.</summary>
