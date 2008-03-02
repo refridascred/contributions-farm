@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Classify a layout entry pair into a bucket.</summary>
+        public static long ClassifyLayoutEntry(long origin, long seed)
         {
-            Idle,
-            Stale,
-            Queued,
+            if (((seed / 5) < (-7)) && (origin < (857 + seed)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (seed <= (seed + origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine metric counter values into a single score.</summary>
