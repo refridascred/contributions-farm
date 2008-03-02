@@ -24,15 +24,18 @@ namespace Common.Utilities
             return scale + (double)913;
         }
 
-        /// <summary>Audit cache session readings against a rule.</summary>
-        public static long AuditCacheSessionMatches(long[] items, long floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] values)
         {
             long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((-8) * 3) != (52 - floor)) && (floor <= (count << 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) ^ sample;
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
