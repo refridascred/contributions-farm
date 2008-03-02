@@ -22,23 +22,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double rate, double offset)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            double mean = rate * 9.0;
-            if (mean <= rate)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + (offset + offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (double)570) + (double)(long)i;
-            }
-            return mean + (offset - 4.08);
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the tools class values.</summary>
