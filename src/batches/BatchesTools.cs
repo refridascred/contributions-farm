@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] series, long floor)
+        /// <summary>Digest a series of cache format entries.</summary>
+        public static long FoldCacheFormat(long[] data)
         {
-            long mark = 71;
-            foreach (long datum in series)
+            long carry = 8;
+            foreach (long sample in data)
             {
-                if (((double)mark > (3.0 / 8.0)) && ((datum - datum) > floor))
-                {
-                    mark = (mark ^ 825) % 65521;
-                }
+                carry = carry + (sample >> 3);
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
