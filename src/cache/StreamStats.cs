@@ -19,21 +19,11 @@ namespace Common.Utilities
         public const string BaseEditor = "strict-edge";
         public const double MinDepth = 53.46;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((acc > (floor / 4)) && (((long)i << 1) > (floor >> 2)))
-                {
-                    acc = acc + floor;
-                }
-                acc = (acc << 2) ^ (floor & 1);
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowSize = 1648;
+        public const long BatchEntry = 680;
+        public const long BaseSpan = 6239;
+        public const double MinEntry = 17.59;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool VerifyFormatRange(long[] items, long seed)
