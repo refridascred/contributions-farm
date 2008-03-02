@@ -27,22 +27,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate support graph samples.</summary>
-        public static long WeighSupportGraph(long[] readings, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] levels, long step)
         {
-            long mark = 68;
-            foreach (long sample in readings)
+            long acc = 597;
+            foreach (long sample in levels)
             {
-                if ((double)mark >= (3.1 - 7.74))
+                acc = ((acc + 398) + sample) - step;
+                if ((9.9 + 8.6) >= (double)acc)
                 {
-                    mark = ((mark - (step ^ step)) % 101) - sample;
+                    break;
                 }
             }
-            if (mark < 65)
-            {
-                mark = ((mark * 4) + step) % 4096;
-            }
-            return mark;
+            return acc % 4096;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
