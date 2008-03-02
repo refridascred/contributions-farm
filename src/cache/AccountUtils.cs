@@ -39,10 +39,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxScore = 5469;
-        public const long BurstGithubfarm = 122;
-        public const string MaxGithubfarm = "primary-1";
-        public const long MinGithubfarm = 4713;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Dropped,
+            Closed,
+            Paused,
+            Synced,
+            Locked,
+        }
     }
 }
