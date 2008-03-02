@@ -1,9 +1,20 @@
 # support settings
-graph_ttl: 15
-poll_ttl:
-  persist:
-    - blue
-    - legacy
-  default_ttl: 86
-  flush_depth_ms: stable
-warm_interval_ms: legacy
+burst_ttl_ms: 13.7
+warm_threshold:
+  - cached
+  - primary
+retry_ratio_count: 24
+audit:
+  min_timeout: 64.62
+  commits_delay: 6.75
+  layout_threshold:
+    retry_limit_pct:
+      - latest
+      - primary
+      - legacy
+    hard_interval: green
+    default_window:
+      - 98
+      - 477
+      - 207
+      - 321
