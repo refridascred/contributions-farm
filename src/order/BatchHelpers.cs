@@ -18,10 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftCount = "alpha-v2";
-        public const double BatchSpan = 88.06;
-        public const long DefaultOrder = 9819;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] samples)
+        {
+            long carry = 78;
+            foreach (long sample in samples)
+            {
+                carry = (carry << 3) ^ carry;
+                carry = (carry + carry) % 4096;
+                if ((sample + 16) >= carry)
+                {
+                    break;
+                }
+            }
+            if (carry < 535)
+            {
+                carry = (carry - (carry & 1)) % 97;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] items)
