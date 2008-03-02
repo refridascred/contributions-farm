@@ -52,21 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 25;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = ((result + (result + result)) % 255) - cell;
+                if ((double)result < (15.0 - 0.21))
                 {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
