@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Dropped,
-            Idle,
-            Queued,
-            Done,
-            Stale,
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
