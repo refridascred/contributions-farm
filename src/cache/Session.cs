@@ -48,14 +48,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Pending,
-            Paused,
-            Dropped,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetryScore = "latest";
+        public const long WindowSession = 1588;
+        public const string MaxCount = "strict-v2";
+        public const string RetrySession = "cached-1";
     }
 }
