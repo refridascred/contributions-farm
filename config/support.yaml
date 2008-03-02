@@ -1,30 +1,7 @@
 # support settings
-tools_depth:
-  - blue
-  - fallback
-strict:
-  cache_capacity_ms: staging
-  retry_window_s: 7747
-  layout_interval: 9056
-  verbose: false
-  readonly:
-    idle_size_pct: false
-    poll_timeout: 21.93
-    enabled: true
-    min_timeout_count:
-      - legacy
-      - local
-      - local
-    soft_threshold: 7176
-  compress:
-    - stable
-    - green
-    - stable
-    - standard
-retry_delay: 57.77
-channel_window: stable
-graph_threshold:
-  min_size_s: 500
-  context_capacity: true
-  hard_limit: 75.54
-stats_limit: 68
+verbose: legacy
+default_interval_pct: true
+stream_size:
+  - latest
+  - primary
+soft_timeout_count: open
