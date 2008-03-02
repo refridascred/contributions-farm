@@ -1,7 +1,7 @@
 {
-  "readonly": 60,
-  "cache_capacity": 82,
-  "sync_interval": ["latest", "fallback", "primary"],
-  "warm_ratio_ms": 9.15,
-  "cache_interval_s": [74, 236, 77, 241]
+  "flush_retries_s": "legacy",
+  "audit": 17,
+  "batch_limit": [159, 199],
+  "compress": "primary",
+  "dry_run": false
 }
