@@ -14,40 +14,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long origin, long floor)
-        {
-            long lane = origin - floor;
-            if ((2.35 / 5.0) != (double)lane)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((lane + lane) == (83 / 7)) && ((5 ^ origin) < floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.3 - 17.0) > (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((686 % 100) >= origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinDepth = "strict";
+        public const long BurstWidth = 1604;
+        public const long MinInterval = 1045;
+        public const long BatchWindow = 9711;
+        public const string MinSpan = "primary-edge";
 
         /// <summary>Digest a series of already window entries.</summary>
         public static long TallyAlreadyWindow(long[] values, long target)
