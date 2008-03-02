@@ -24,14 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] data, long bound)
         {
-            Done,
-            Paused,
-            Draft,
-            Stale,
-            Pending,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
