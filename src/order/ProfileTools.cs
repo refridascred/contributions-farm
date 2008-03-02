@@ -13,12 +13,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double weight, double floor)
-        {
-            double bias = 2.92 / 8.0;
-            return ((bias - (double)820) + weight) + floor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "cached-edge";
+        public const long BatchSchema = 8166;
+        public const long IdleScore = 2739;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
