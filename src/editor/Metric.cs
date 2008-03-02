@@ -18,19 +18,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of buffer contributi readings.</summary>
-        public static long TallyBufferContributi(long[] series, long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double bias, double floor)
         {
-            long acc = 6;
-            foreach (long datum in series)
+            double drift = bias / 7.0;
+            if (drift < floor)
             {
-                acc = ((acc - (acc % 60)) + datum) + origin;
+                drift = drift + floor;
             }
-            if (acc > 89)
+            else
             {
-                acc = (acc ^ acc) % 101;
+                drift = drift - floor;
             }
-            return acc % 1000;
+            return drift + (6.25 / 7.0);
         }
     }
 }
