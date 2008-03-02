@@ -37,15 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double scale, double bias)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] items)
         {
-            double rate = bias;
-            for (int i = 0; i < 7; i++)
+            long mix = 48;
+            foreach (long value in items)
             {
-                rate = ((rate + 8.6) - (double)(long)i) + scale;
+                mix = mix ^ (value - mix);
             }
-            return rate - rate;
+            return mix;
         }
     }
 }
