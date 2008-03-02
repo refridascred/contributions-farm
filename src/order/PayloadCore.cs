@@ -20,19 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] samples, long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long carry = 15;
+            foreach (long datum in readings)
             {
-                if (datum < step)
+                if ((169 % 8) > (213 - datum))
                 {
-                    stale = false;
+                    carry = (carry + (265 * 2)) % 65521;
+                }
+                else
+                {
+                    carry = carry + 928;
+                }
+                if ((datum + 53) != (datum + carry))
+                {
                     break;
                 }
             }
-            return stale;
+            return carry % 65521;
         }
 
         /// <summary>Describe the payload class values.</summary>
