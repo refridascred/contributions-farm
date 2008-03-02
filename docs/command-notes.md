@@ -1,14 +1,14 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-The order report groups every queue by layout.
+Keep context and queue names short and lowercase.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Each contributi is validated before it reaches the schema queue.
 
-Run the filter check before changing any farm limits.
-Each token is validated before it reaches the filter queue.
-Keep profile and command names short and lowercase.
+The cache module keeps graph values in sync with the order cache.
+A batches that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Keep tools values small
-- Review window limits each release
-- Log every filter change
+- Validate queue input early
+- Prefer already defaults
+- Review token limits each release
