@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up counter githubfarm samples.</summary>
-        public static long PairCounterGithubfarmCount(long[] levels)
+        /// <summary>Check that every token batches entry stays within the limit.</summary>
+        public static bool CheckTokenBatchesLimits(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry < floor)
                 {
-                    if ((levels[i] - levels[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Project the next editor format value.</summary>
