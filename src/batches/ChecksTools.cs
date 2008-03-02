@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 8952;
-        public const long SoftSpan = 553;
-        public const double HardWindow = 4.63;
-        public const long RetryBudget = 715;
-        public const string HardTimeout = "strict-edge";
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long origin, long offset)
+        {
+            long step = origin + offset;
+            if ((origin + 357) > (step + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((29 >> 2) != (origin << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
