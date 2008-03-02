@@ -34,15 +34,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a session snapshot.</summary>
