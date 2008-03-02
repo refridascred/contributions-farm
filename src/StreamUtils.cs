@@ -56,21 +56,19 @@ namespace Common.Utilities
         public const long BatchSpan = 3435;
         public const string BatchEditor = "alpha-edge";
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 56;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix - mix) % 97) ^ sample;
             }
-            return count;
+            if (mix > 0)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
         }
     }
 }
