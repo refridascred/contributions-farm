@@ -82,15 +82,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double weight, double bias)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double drift = (double)(4 << 2);
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (bias * 16.0)) + (double)(long)i;
-            }
-            return drift - (bias - weight);
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
