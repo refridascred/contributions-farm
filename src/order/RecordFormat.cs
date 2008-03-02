@@ -44,11 +44,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] readings)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally - tally) < (381 + datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
