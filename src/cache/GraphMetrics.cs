@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 7;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = anchor + (seed << 1);
+                if ((reading - reading) == ((-735) + seed))
                 {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor + reading) % 101;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
