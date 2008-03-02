@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (sample < bound)
+                if ((((double)offset >= (double)(-443)) || ((seen + (long)items.Length) != ((long)items.Length + (long)items.Length))) || (offset >= (seen - value)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
