@@ -31,21 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value < target)
                 {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Project the next record value.</summary>
