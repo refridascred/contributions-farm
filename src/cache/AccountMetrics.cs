@@ -66,12 +66,19 @@ namespace Common.Utilities
             return load + (rate / 2.0);
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] series, long offset)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a layout info.</summary>
