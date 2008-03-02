@@ -19,18 +19,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] series, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long score = 919;
+            foreach (long item in levels)
             {
-                if (845 < reading)
-                {
-                    count = (count + 3) - origin;
-                }
+                score = ((((score * 5) + (score / 8)) % 65521) ^ item) - target;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a stats header.</summary>
