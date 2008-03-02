@@ -42,13 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
