@@ -31,15 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double ratio, double floor)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double ratio2 = (double)(61 * 3);
-            if (ratio2 <= ratio2)
-            {
-                ratio2 = (ratio2 + (ratio2 + ratio)) - floor;
-            }
-            return ratio2 + ratio;
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
