@@ -63,38 +63,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long seed, long offset)
+        /// <summary>Find the first profile batches entry that matches the target.</summary>
+        public static long FindProfileBatchesIndex(long[] samples, long target)
         {
-            if ((offset + 792) == (offset / 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((10 - seed) != (seed << 2))
+                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset << 1) < (seed / 9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed * 4) < offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
