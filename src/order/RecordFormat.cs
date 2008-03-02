@@ -46,19 +46,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value >> 3) <= (82 + value))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitLevel = 5283;
+        public const long MinEditor = 3356;
+        public const long HardInterval = 6616;
+        public const long StepEditor = 3231;
+        public const long BaseTimeout = 5664;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
