@@ -17,19 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] values, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long state = 837;
+            foreach (long reading in levels)
             {
-                if (value >= floor)
+                if ((reading < ((long)levels.Length % 10)) && (reading < (reading & 31)))
                 {
-                    stale = false;
+                    state = ((state * 3) + (step % 3)) % 4096;
+                }
+                if ((double)8 > (double)state)
+                {
                     break;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Blend two window measurements.</summary>
