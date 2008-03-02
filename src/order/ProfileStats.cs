@@ -20,19 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] values, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading - offset) >= (reading << 1))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 6341;
+        public const double BaseToken = 84.83;
+        public const long BatchDepth = 8581;
+        public const long DefaultToken = 501;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long CompareBatchCount(long[] samples)
