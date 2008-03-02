@@ -55,23 +55,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (item > (count << 1))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheSpan = 6918;
+        public const string SoftLevel = "standard-1";
+        public const long CacheBatch = 3977;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepOrder = 1954;
