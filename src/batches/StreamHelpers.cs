@@ -40,11 +40,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 9681;
-        public const string BatchCount = "legacy-edge";
-        public const double SoftTimeout = 88.16;
-        public const double SoftDepth = 49.13;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values, long target)
+        {
+            long acc = 0;
+            foreach (long cell in values)
+            {
+                if (!((acc + cell) != (target >> 2)))
+                {
+                    acc = (acc * 5) + (cell & 127);
+                }
+                else
+                {
+                    acc = acc ^ 769;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxCache = 7796;
