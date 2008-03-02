@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=159
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-primary}"
+mode="${1:-blue}"
 case "${mode}" in
-    eu-west)
+    fallback)
         log "fast path"
         ;;
     *)
