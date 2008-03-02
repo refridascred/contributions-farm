@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 1407;
-        public const string BaseToken = "fallback-1";
-        public const long BurstToken = 7554;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Stale,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long BucketCommits(long offset, long step)
