@@ -40,18 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer session readings against a rule.</summary>
-        public static long MeasureBufferSessionOutliers(long[] values, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long result = 496;
+            foreach (long datum in data)
             {
-                if ((double)604 <= (double)hits)
+                if (result <= (result >> 5))
                 {
-                    hits = ((hits + 2) - sample) - limit;
+                    result = ((result * 3) + datum) % 65521;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
