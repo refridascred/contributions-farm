@@ -68,19 +68,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every token batches entry stays within the limit.</summary>
-        public static bool ValidateTokenBatchesRange(long[] values, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Paused,
+            Queued,
+            Synced,
+            Idle,
         }
     }
 }
