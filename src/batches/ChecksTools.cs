@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Combine route values into a single score.</summary>
