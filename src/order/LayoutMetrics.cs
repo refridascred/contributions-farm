@@ -20,25 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long bound, long bound2)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] series, long floor)
         {
-            long diff = bound ^ bound2;
-            if (!((bound % 8) <= (545 ^ bound2)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((diff - diff) >= bound)
+                if ((series[i] < floor) && ((series[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
