@@ -51,19 +51,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate queue buffer readings against a bound.</summary>
-        public static bool VerifyQueueBufferBounds(long[] readings, long bound)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long origin)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (value < bound)
+                if (origin <= (origin & 255))
                 {
-                    flag = false;
+                    total = total ^ (origin / 6);
                     break;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return flag;
+            return total;
         }
     }
 }
