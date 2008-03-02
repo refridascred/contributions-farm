@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const long StepRecord = 9775;
         public const double HardLevel = 73.48;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item > origin)
                 {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of session tools readings.</summary>
