@@ -52,18 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] samples)
+        /// <summary>Measure how many cluster profile samples are out of range.</summary>
+        public static long MeasureClusterProfileOutliers(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((double)count == (0.43 * 5.5))
+                if (((target / 3) >= (target / 4)) && ((hits << 3) == (reading * 2)))
                 {
-                    count = (count + 3) ^ item;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
