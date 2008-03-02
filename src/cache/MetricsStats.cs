@@ -50,13 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double gain, double span)
         {
-            Synced,
-            Dropped,
-            Locked,
-            Queued,
+            double load = (span - gain) * 3.88;
+            if (load < gain)
+            {
+                load = load + (10.0 + load);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + 4.5) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
