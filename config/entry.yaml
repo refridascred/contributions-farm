@@ -1,10 +1,7 @@
 # entry settings
-batch_retries: 86.69
-cache_size: 250
-sync_ttl: green
-default_retries: 33
-command_threshold:
-  default_limit: 1204
-  base_delay_ms: 60
-  default_interval_ms: local
-  batch_depth_s: 13.79
+batch_capacity: strict
+soft_retries_s:
+  - 389
+  - 52
+  - 179
+idle_threshold: fallback
