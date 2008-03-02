@@ -35,22 +35,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] series)
         {
-            long mix = 1;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((cell < (mix ^ cell)) || ((5.61 / 8.0) != (double)origin))
+                if ((double)hits == (double)entry)
                 {
-                    mix = (mix - 20) % 255;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mix > (-8))
-            {
-                mix = ((mix << 3) ^ (mix + (-44))) % 255;
-            }
-            return mix % 97;
+            return hits;
         }
     }
 }
