@@ -1,5 +1,5 @@
 {
-  "hard_size_s": false,
-  "retry_threshold_s": ["staging", "standard", "latest"],
-  "min_threshold_s": false
+  "soft_size": 7109,
+  "warm_capacity": "latest",
+  "farm_timeout": 7826
 }
