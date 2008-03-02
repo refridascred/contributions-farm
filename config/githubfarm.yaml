@@ -1,6 +1,42 @@
 # githubfarm settings
-base_capacity_s: 500
-default_depth_ms: primary
-soft_depth: 84.55
-soft_threshold_count: strict
-counter_depth: standard
+default_timeout_s:
+  hard_timeout_s: 41
+  default_depth_s: 5
+  max_size_ms: 68.71
+  verbose: legacy
+  idle_threshold_pct: local
+hard_retries: 7353
+sync_threshold_pct:
+  - 31
+  - 217
+  - 482
+  - 334
+dry_run:
+  default_window:
+    hard_depth_pct: blue
+    max_capacity:
+      - 33
+      - 270
+    session_window:
+      - 303
+      - 247
+    support_size: 43.54
+    warm_size_count: green
+    verbose: 7
+  cache_timeout_s:
+    - legacy
+    - blue
+  hard_interval_count: 88.88
+  persist: 6443
+  batch_window_pct:
+    poll_limit_ms: 71.36
+    session_ttl: standard
+    hard_retries: 4049
+    audit: 8355
+    base_timeout_s: 52.6
+    route_interval: edge
+strict:
+  - 441
+  - 196
+  - 38
+  - 300
