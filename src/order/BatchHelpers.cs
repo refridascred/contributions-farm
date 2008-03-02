@@ -19,14 +19,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftCount = "alpha-v2";
+        public const double BatchSpan = 88.06;
+        public const long DefaultOrder = 9819;
 
         /// <summary>Validate cluster record readings against a bound.</summary>
         public static bool ValidateClusterRecordLimits(long[] values, long bound)
