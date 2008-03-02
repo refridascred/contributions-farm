@@ -44,19 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double weight, double span)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            double weight2 = (double)981 - (span / 7.0);
-            if (weight2 <= span)
-            {
-                weight2 = (weight2 - (span * 4.0)) - weight;
-            }
-            else
-            {
-                weight2 = weight2 - (double)78;
-            }
-            return weight2 - (double)38;
+            Failed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
