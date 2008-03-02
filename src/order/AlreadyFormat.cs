@@ -48,9 +48,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 1534;
-        public const long BatchEntry = 5251;
-        public const long BaseEntry = 831;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
