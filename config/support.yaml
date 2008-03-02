@@ -1,5 +1,25 @@
 # support settings
-record_capacity: 7535
-strict: 58.41
-soft_interval_s: false
-default_size_pct: true
+flush_delay_count: true
+cluster_ttl:
+  - 449
+  - 252
+record_depth:
+  - latest
+  - staging
+  - cached
+poll_capacity_count:
+  contributi_depth:
+    max_depth_ms: false
+    verbose: latest
+    command_capacity: false
+    retry_depth_s: 1024
+    batch_size_s: primary
+  batches_timeout: standard
+  idle_delay_s: 59
+  dry_run: blue
+  strict:
+    dry_run: staging
+    contributi_delay: 562
+    sync_depth_pct: 92.13
+    strict: 64.12
+  soft_delay: 250
