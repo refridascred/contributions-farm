@@ -19,15 +19,12 @@ namespace Common.Utilities
         public const long StepRecord = 9775;
         public const double HardLevel = 73.48;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Accumulate support graph samples.</summary>
