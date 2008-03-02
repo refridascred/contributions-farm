@@ -59,11 +59,16 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Iterate the order farm series from a seed.</summary>
+        public static long StepOrderFarm(long bound)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry ^ carry) % 101;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
