@@ -47,20 +47,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] values, long limit)
+        /// <summary>Locate a record payload reading by value.</summary>
+        public static long LookupRecordPayloadIndex(long[] readings, long origin)
         {
-            long mix = 7;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix ^ (sample + sample)) % 65521) - limit;
-                if ((3.9 / 4.0) >= (double)mix)
+                if ((readings[i] <= origin) && ((readings[i] % 3) == 0))
                 {
-                    mix = (mix + sample) % 255;
+                    return (long)i;
                 }
-                mix = ((mix << 3) ^ (sample + (-730))) % 1000;
             }
-            return mix % 4096;
+            return -1;
         }
     }
 }
