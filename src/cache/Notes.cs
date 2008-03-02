@@ -68,13 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            Draft,
+            Paused,
+            Active,
+            New,
+            Idle,
         }
 
         /// <summary>Check that every token batches entry stays within the limit.</summary>
