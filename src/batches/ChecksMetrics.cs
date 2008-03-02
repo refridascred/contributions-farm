@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitLevel = 5410;
-        public const long CacheFarm = 4009;
-        public const long DefaultBudget = 9081;
-        public const long BaseFactor = 5154;
-        public const string StepFarm = "legacy-edge";
+        /// <summary>Look up the position of a route channel sample.</summary>
+        public static long LookupRouteChannelIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
