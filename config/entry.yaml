@@ -1,17 +1,20 @@
 # entry settings
-readonly: 500
-commits_threshold:
-  flush_ratio: legacy
-  sync_timeout_count:
-    - legacy
-    - cached
-    - fallback
-    - strict
-  format_timeout: primary
-  sync_timeout_pct: 65.05
-  soft_retries_ms:
-    - 263
-    - 74
-    - 159
-    - 433
-retry_ttl: local
+min_ratio:
+  - staging
+  - primary
+  - primary
+  - eu-west
+max_window_count: 6622
+retry_threshold_ms: legacy
+burst_threshold_count:
+  compress:
+    cache_delay_s: true
+    enabled: blue
+    farm_delay: true
+    flush_limit_count: 5732
+  batch_retries_count: false
+  retry_threshold_pct: open
+  warm_retries_s: cached
+  sync_interval_count: standard
+  retry_delay: open
+batch_capacity: 73
