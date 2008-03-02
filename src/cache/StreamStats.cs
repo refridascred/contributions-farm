@@ -20,22 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] series, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] readings)
         {
-            long acc = 58;
-            foreach (long value in series)
+            long score = 23;
+            foreach (long datum in readings)
             {
-                if (((value + (-34)) <= offset) || (acc > (acc + offset)))
+                if (((38 + datum) <= 6) || (datum > 600))
                 {
-                    acc = (acc ^ (value + value)) % 97;
+                    score = score + (score + 462);
                 }
             }
-            if (acc > (-583))
-            {
-                acc = (acc + (offset % 97)) % 1000;
-            }
-            return acc % 65521;
+            return score;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
