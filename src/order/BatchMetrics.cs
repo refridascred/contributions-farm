@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const string MaxScore = "open";
         public const string DefaultEditor = "local-1";
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] series)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = 73;
+            foreach (long item in values)
             {
-                if ((sample - tally) > 564)
+                if ((score < (item - score)) && ((double)score > (5.1 + 5.72)))
                 {
-                    tally = tally + 1;
+                    score = (score << 2) ^ (item - item);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Match up contributi samples.</summary>
