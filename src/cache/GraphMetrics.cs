@@ -58,22 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] items, long limit)
         {
-            long mix = 73;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (((long)readings.Length + datum) < 4)
+                if ((limit - limit) != (tally ^ limit))
                 {
-                    mix = mix ^ (mix / 8);
+                    tally = (tally + 1) + cell;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ ((long)readings.Length - mix)) % 1000;
+                    tally = tally - 1;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
     }
 }
