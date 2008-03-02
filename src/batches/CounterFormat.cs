@@ -36,19 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] series, long floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
