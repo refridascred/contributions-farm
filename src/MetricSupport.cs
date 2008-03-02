@@ -17,33 +17,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)(long)i < 6.0)
-                {
-                    state = state + (319 & 15);
-                    break;
-                }
-                if ((step - step) < state)
-                {
-                    state = (state << 3) ^ (step * 5);
-                }
-                else
-                {
-                    state = state + (state / 2);
-                }
-                if (step < (state << 1))
-                {
-                    state = ((state * 4) + (-853)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheGithubfarm = "local-edge";
+        public const string IdleTimeout = "cached-v2";
+        public const long SoftGithubfarm = 2886;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
