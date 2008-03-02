@@ -41,11 +41,22 @@ namespace Common.Utilities
             return drift - (3.8 * 0.26);
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] levels)
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen + seen) < (950 + value))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
