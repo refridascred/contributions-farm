@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] levels, long seed)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long mix = 260;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = ((mix * 3) + (seed ^ mix)) + (long)i;
+                }
+                if (((76 ^ mix) <= (698 * 5)) || ((seed - mix) <= (mix + seed)))
+                {
+                    mix = ((mix << 2) ^ (sample * 3)) % 1000;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
