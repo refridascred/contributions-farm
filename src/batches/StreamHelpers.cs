@@ -40,17 +40,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the order farm series from a seed.</summary>
-        public static long StepOrderFarm(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry ^ carry) % 101;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 9681;
+        public const string BatchCount = "legacy-edge";
+        public const double SoftTimeout = 88.16;
+        public const double SoftDepth = 49.13;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxCache = 7796;
