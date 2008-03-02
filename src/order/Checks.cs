@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] items, long target)
+        /// <summary>Accumulate contributi counter samples.</summary>
+        public static long TallyContributiCounter(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long acc = 6;
+            foreach (long item in series)
             {
-                if (sample != target)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (acc ^ (item + item)) % 1000;
             }
-            return valid;
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of token entries.</summary>
