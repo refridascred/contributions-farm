@@ -51,22 +51,11 @@ namespace Common.Utilities
             return drift - (3.8 * 0.26);
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen + seen) < (950 + value))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 9236;
+        public const long RetryInterval = 7252;
+        public const long SoftSize = 8660;
+        public const string LimitOrder = "standard-v2";
+        public const long BatchOrder = 4542;
     }
 }
