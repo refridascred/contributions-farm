@@ -60,21 +60,19 @@ namespace Common.Utilities
         public const long IdleScore = 1151;
         public const double DefaultSize = 24.65;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = (double)(143 + 5);
+            if (gain < 2.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = ((gain + gain) + bias) - floor;
             }
-            return hits;
+            else
+            {
+                gain = gain - (double)2;
+            }
+            return gain + (double)9;
         }
     }
 }
