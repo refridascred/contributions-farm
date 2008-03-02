@@ -46,20 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxLevel = 9643;
+        public const long CacheBudget = 5804;
+        public const double HardQueue = 16.41;
+        public const long SoftLevel = 1963;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
