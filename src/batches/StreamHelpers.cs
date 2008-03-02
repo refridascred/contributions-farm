@@ -50,13 +50,11 @@ namespace Common.Utilities
             return rate - (double)584;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Ready,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 1007;
+        public const long HardWidth = 7954;
+        public const long CacheScore = 5091;
+        public const long DefaultGraph = 4164;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long ScoreBuffer(long[] values)
