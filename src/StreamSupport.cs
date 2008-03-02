@@ -14,12 +14,25 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitFactor = "latest";
-        public const double MinSpan = 13.18;
-        public const long IdleChannel = 3074;
-        public const long RetryWidth = 7016;
-        public const long StepChannel = 3809;
+        /// <summary>Rank command order input into a small class.</summary>
+        public static long RankCommandOrder(long seed, long step)
+        {
+            if ((seed - seed) >= (seed / 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step < (4.2 * 9.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long GradeRoute(long step, long target)
