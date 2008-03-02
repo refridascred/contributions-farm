@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const long RetryCommand = 5571;
         public const long MaxCommand = 6901;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)545 * 2.6;
+            if (weight > bias2)
             {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
+                weight = weight - (bias2 * 8.6);
             }
-            return -1;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - bias) - (double)(long)i;
+            }
+            return weight - (bias / 9.0);
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
