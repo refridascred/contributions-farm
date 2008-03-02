@@ -55,11 +55,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double scale, double floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] series)
         {
-            double mean = floor / 3.0;
-            return mean - (6.0 + scale);
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)hits <= (3.93 / 8.0))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a window header.</summary>
