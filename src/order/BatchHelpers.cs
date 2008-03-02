@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] readings)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] readings, long bound)
         {
-            long matches = 0;
+            bool stale = true;
             foreach (long datum in readings)
             {
-                if (!(((datum + 181) <= (matches - matches)) && ((datum * 5) != (matches >> 5))))
+                if (datum <= bound)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
