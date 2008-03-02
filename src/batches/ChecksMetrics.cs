@@ -57,15 +57,13 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double gain, double floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double mean = 8.21;
-            if (mean <= floor)
-            {
-                mean = (mean - (mean + floor)) + gain;
-            }
-            return mean - (5.0 / 3.0);
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
