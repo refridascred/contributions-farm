@@ -47,11 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a session options.</summary>
