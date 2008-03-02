@@ -1,5 +1,24 @@
 # githubfarm settings
-max_delay_ms: 29
-poll_limit: 84.43
-warm_depth_ms: false
-farm_retries: standard
+hard_delay_s:
+  - stable
+  - legacy
+  - cached
+burst_ttl_ms: 250
+soft_limit_s:
+  - green
+  - open
+  - edge
+  - edge
+warm_retries: 42.15
+hard_depth: 60
+base_delay_ms:
+  warm_depth_s: 3839
+  burst_delay: staging
+  audit: 25
+  retry_size: cached
+  default_delay: 7.75
+  cache_window_pct:
+    - cached
+    - legacy
+    - strict
+    - green
