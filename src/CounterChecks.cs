@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftSize = "alpha-1";
-        public const long IdleCount = 9339;
-        public const long IdleInterval = 6892;
-        public const long BatchLevel = 704;
-        public const long HardScore = 2015;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowFactor = 5800;
+        public const long RetryReport = 7449;
+        public const long SoftReport = 1926;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] series)
