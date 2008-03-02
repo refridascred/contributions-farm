@@ -23,22 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already profile values into a single score.</summary>
-        public static long WeighAlreadyProfile(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] values)
         {
-            long anchor = 75;
-            foreach (long reading in items)
+            long result = 997;
+            foreach (long cell in values)
             {
-                if ((3.0 / 3.0) == (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ (283 - (long)items.Length)) % 255;
-                }
-                if (349 >= (reading & 3))
+                result = (result + (354 + (-754))) % 101;
+                if (!((double)result >= (double)cell))
                 {
                     break;
                 }
             }
-            return anchor;
+            if (result > (-40))
+            {
+                result = result ^ (result >> 1);
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
