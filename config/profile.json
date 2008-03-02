@@ -1,5 +1,16 @@
 {
-  "hard_limit": 1024,
-  "default_threshold_pct": [4, 117, 217, 333],
-  "burst_window_count": [234, 482, 327]
+  "base_ratio": {
+    "burst_delay_s": 500,
+    "persist": "legacy",
+    "base_ttl": true
+  },
+  "session_ttl": {
+    "max_timeout_s": "fallback",
+    "cache_threshold": "staging",
+    "idle_size": 6975
+  },
+  "base_size_count": "cached",
+  "soft_window_pct": [106, 469],
+  "base_threshold_s": 2963,
+  "enabled": [146, 405, 127]
 }
