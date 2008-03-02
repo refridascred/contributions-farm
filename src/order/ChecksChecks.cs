@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowDepth = 50.29;
-        public const long DefaultTools = 8372;
-        public const long IdleScore = 3949;
-        public const long BatchTools = 6513;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Adjust a metric reading.</summary>
         public static double ScaleMetric(double bias, double bias2)
