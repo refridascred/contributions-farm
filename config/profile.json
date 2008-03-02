@@ -1,8 +1,7 @@
 {
-  "strict": false,
-  "default_window": true,
-  "verbose": false,
-  "readonly": 92.07,
-  "persist": 34.92,
-  "dry_run": 60
+  "batch_threshold_pct": 2.5,
+  "base_size_ms": false,
+  "verbose": ["cached", "blue", "fallback", "eu-west"],
+  "batch_size_ms": 500,
+  "order_interval": "staging"
 }
