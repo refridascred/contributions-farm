@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long BurstTimeout = 6802;
         public const string MaxCache = "alpha-1";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] items)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double load = (floor * 4.7) / 9.0;
+            if (load <= (ratio / 3.0))
             {
-                if (sample >= (6 ^ sample))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = load - load;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (2.45 + floor);
         }
 
         /// <summary>Validate route readings against a bound.</summary>
