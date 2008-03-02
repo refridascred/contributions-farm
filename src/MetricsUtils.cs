@@ -74,17 +74,38 @@ namespace Common.Utilities
             return bias + (bias / 5.0);
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] values, long origin)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long origin, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (264 >= (254 + step))
             {
-                if ((values[i] >= origin) && ((values[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((origin % 2) < (step >> 5))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!(7 <= step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((origin ^ step) >= step) && ((9.73 / 5.0) == (double)origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
