@@ -19,11 +19,23 @@ namespace Common.Utilities
         public const long BatchLevel = 9427;
         public const long RetryChecks = 4931;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepSize = 626;
-        public const string CacheScore = "stable-edge";
-        public const long WindowLevel = 3039;
-        public const long BaseRecord = 7046;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((double)floor != (double)tally)
+                {
+                    tally = (tally + 1) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many record stats samples are out of range.</summary>
         public static long TallyRecordStatsGaps(long[] values, long floor)
