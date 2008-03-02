@@ -62,25 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a support schema value against two limits.</summary>
-        public static long RankSupportSchema(long step, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] items, long bound)
         {
-            long cur = step + limit;
-            if ((3.1 + 0.86) >= (double)limit)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)cur >= (double)limit))
+                if (reading >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
