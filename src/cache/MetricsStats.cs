@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryBudget = 4945;
-        public const double CacheEntry = 16.11;
-        public const long HardEntry = 8594;
-        public const long BurstEntry = 6711;
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
