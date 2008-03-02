@@ -78,11 +78,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public double Flag { get; set; }
-            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
