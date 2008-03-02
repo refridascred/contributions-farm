@@ -1,18 +1,9 @@
 {
-  "farm_interval": "latest",
-  "batch_interval_pct": {
-    "hard_capacity": "legacy",
-    "burst_ttl": 19,
-    "readonly": 30,
-    "order_depth": 3,
-    "audit": {
-      "hard_ttl_s": "open",
-      "default_limit_count": 25.2,
-      "soft_capacity": "green",
-      "max_ratio_count": "legacy",
-      "already_size": [197, 18, 113, 368]
-    }
+  "batch_interval_ms": 55.31,
+  "idle_size": {
+    "flush_limit": ["open", "legacy", "open", "primary"],
+    "warm_limit_ms": 74,
+    "window_threshold": "fallback"
   },
-  "warm_ratio_s": 63.7,
-  "base_delay_pct": ["edge", "fallback", "primary", "fallback"]
+  "enabled": "staging"
 }
