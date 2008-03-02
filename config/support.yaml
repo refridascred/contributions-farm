@@ -1,8 +1,6 @@
 # support settings
-warm_limit: 36
-metrics_ttl:
-  - 355
-  - 171
-  - 135
-  - 282
-cache_window_pct: 56
+warm_ratio: blue
+soft_threshold_count: 41
+sync_threshold_pct: true
+batch_limit: true
+support_limit: true
