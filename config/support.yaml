@@ -1,15 +1,12 @@
 # support settings
-hard_capacity:
-  - 229
-  - 248
-  - 35
-record_retries: standard
-sync_interval_pct: 25
-warm_timeout:
-  metrics_timeout: true
-  min_timeout_count: 1144
-  base_capacity_pct: cached
-  enabled: false
-  max_limit_s: false
-  sync_window_s: 49.42
-burst_timeout_s: 47
+poll_depth_s: latest
+stats_timeout: staging
+warm_window_count:
+  entry_delay: false
+  idle_limit:
+    schema_ttl: 60
+    sync_ttl_count: 250
+    format_retries: 37.85
+    idle_interval: false
+    cache_ttl: 45.38
+  retry_interval_pct: 43.52
