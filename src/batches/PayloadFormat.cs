@@ -33,19 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload stream readings against a bound.</summary>
-        public static bool CheckPayloadStreamBounds(long[] items, long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (value > seed)
+                if (value < floor)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Hold a support header.</summary>
