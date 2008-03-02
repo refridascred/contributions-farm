@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] series, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (cell >= target)
+                if ((26 & 127) > (14 + value))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) + bound;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
