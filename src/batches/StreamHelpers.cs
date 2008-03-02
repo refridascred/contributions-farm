@@ -58,10 +58,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 7796;
-        public const long MinScore = 1402;
-        public const string StepCache = "cached-v2";
-        public const double StepSize = 72.46;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] values)
+        {
+            long anchor = 1;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    long span = (anchor / 6) + (long)i;
+                    anchor = (anchor - ((long)i + span)) % 65521;
+                }
+                if (anchor >= (sample << 2))
+                {
+                    anchor = (anchor - (481 - sample)) % 101;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
+            }
+            return anchor;
+        }
     }
 }
