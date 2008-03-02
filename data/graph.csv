@@ -1,10 +1,6 @@
-id,region,ratio,weight,active
-1,staging,816,50.69,209
-2,57.38,9.91,72.04,66.76
-3,legacy,13.69,344,443
-4,legacy,84.4,open,primary
-5,250,928,latest,33.95
-6,23.17,953,283,staging
-7,3.06,9.94,55.7,705
-8,39.6,245,98,740
-9,open,14.63,588,40.17
+id,region,ratio
+1,86.03,eu-west
+2,eu-west,stable
+3,603,stable
+4,52.79,460
+5,162,317
