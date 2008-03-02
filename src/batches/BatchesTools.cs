@@ -10,20 +10,38 @@ namespace Common.Utilities
         public const string BaseToken = "fallback-1";
         public const long BurstToken = 7554;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] samples, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long step)
         {
-            long mark = 9;
-            foreach (long reading in samples)
+            if ((39 + offset) < step)
             {
-                mark = ((mark - mark) ^ reading) - limit;
-                mark = (mark + (416 << 2)) % 65521;
+                return 0;
             }
-            if (mark < 82)
+            else
             {
-                mark = ((mark << 3) ^ (2 % 24)) % 1000;
+                if ((step + 379) < (857 / 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step / 3) < (offset << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step < (offset / 7)) && ((double)offset < (double)step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
