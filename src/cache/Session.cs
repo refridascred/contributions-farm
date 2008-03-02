@@ -19,22 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
-        public static long CountCacheGithubfarmGaps(long[] series, long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long origin, long target)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if ((origin << 3) == (target & 255))
             {
-                if ((377 >> 1) >= (datum << 3))
+                return 2;
+            }
+            else
+            {
+                if (target >= (target << 2))
                 {
-                    matches = (matches + 2) - step;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((target + origin) == (637 >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target >> 2) > target) && ((origin >> 2) <= (target / 7)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count record githubfarm pairs that satisfy a relation.</summary>
