@@ -1,6 +1,20 @@
 # entry settings
-retry_timeout_s: 68.78
-hard_delay_count: local
-burst_window: legacy
-burst_size_ms: true
-burst_timeout_count: 500
+record_ttl: 500
+flush_size:
+  batch_threshold:
+    - legacy
+    - standard
+  retry_window:
+    cache_window: 281
+    account_retries: 78.12
+    compress: 5942
+    idle_ratio: 38.79
+  enabled: standard
+  min_interval_pct: edge
+  notes_ttl:
+    batch_delay: 7147
+    default_threshold: true
+    schema_limit: green
+    default_capacity_ms: true
+  record_depth: blue
+persist: true
