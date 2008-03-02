@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] levels, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] readings, long bound)
         {
-            long mix = 260;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 7; i++)
+                if (entry >= bound)
                 {
-                    mix = ((mix * 3) + (seed ^ mix)) + (long)i;
-                }
-                if (((76 ^ mix) <= (698 * 5)) || ((seed - mix) <= (mix + seed)))
-                {
-                    mix = ((mix << 2) ^ (sample * 3)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return ready;
         }
 
         /// <summary>Describe the schema level values.</summary>
