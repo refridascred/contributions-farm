@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] readings, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
+                if (((target + seen) == (seen + 87)) || ((double)seen > (7.2 * 20.0)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
