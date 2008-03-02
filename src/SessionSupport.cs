@@ -25,12 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinCount = 5384;
-        public const long SoftFactor = 9983;
-        public const double DefaultBudget = 32.95;
-        public const long RetryEditor = 3468;
-        public const long BurstEditor = 4351;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)count >= (17.0 - 15.0))
+                {
+                    count = (count + 2) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long MaxFormat = 4434;
