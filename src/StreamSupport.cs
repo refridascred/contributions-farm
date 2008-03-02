@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double ratio = 11.0;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio + (double)(long)i) - weight) - offset;
-            }
-            return ratio + 7.0;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Blend two session measurements.</summary>
