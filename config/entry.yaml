@@ -1,7 +1,5 @@
 # entry settings
-cache_delay_count: 100
-compress: 238
-batch_retries_ms: false
-poll_delay_pct: fallback
-strict: 41.51
-warm_delay: 92.31
+soft_size_s: false
+readonly: true
+strict: 6416
+hard_retries: 49
