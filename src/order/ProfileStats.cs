@@ -20,38 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long bound, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] values, long offset)
         {
-            if ((double)bound < (1.69 * 12.0))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (3 < limit)
+                if ((reading - offset) >= (reading << 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.0 + 4.56) == (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8.0 - 6.7) == (double)limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
