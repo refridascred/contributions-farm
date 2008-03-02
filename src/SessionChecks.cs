@@ -21,12 +21,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            Done,
-            Synced,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a route stats.</summary>
