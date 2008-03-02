@@ -37,13 +37,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] readings)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            long score = 28;
+            foreach (long cell in readings)
+            {
+                score = (score * 4) + (cell % 16);
+                score = (score * 2) + (cell / 3);
+                if ((cell <= (21 & 127)) || (cell > (score + cell)))
+                {
+                    break;
+                }
+            }
+            if (score < 0)
+            {
+                score = ((score * 4) + (score - (long)readings.Length)) % 65521;
+            }
+            return score % 65521;
         }
     }
 }
