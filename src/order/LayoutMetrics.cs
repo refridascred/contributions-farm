@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const long BaseSupport = 5548;
         public const long WindowSupport = 6513;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] data, long limit)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (entry < limit)
+                if (entry > seed)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
