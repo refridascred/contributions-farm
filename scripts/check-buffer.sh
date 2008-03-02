@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=438
+BUFFER_LIMIT=197
 log "limit is ${BUFFER_LIMIT}"
 
-for item in fallback strict; do
+for item in local legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
+mode="${1:-strict}"
 case "${mode}" in
-    green)
+    fallback)
         log "fast path"
         ;;
     *)
