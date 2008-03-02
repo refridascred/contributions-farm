@@ -19,10 +19,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardCluster = "fallback-1";
-        public const string LimitFactor = "cached-edge";
-        public const long DefaultCluster = 8560;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LookupGraphIndex(long[] samples, long offset)
