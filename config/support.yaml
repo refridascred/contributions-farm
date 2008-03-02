@@ -1,14 +1,10 @@
 # support settings
-max_capacity_ms: strict
-audit:
-  - cached
+persist: strict
+retry_limit: staging
+compress: 55.75
+strict: true
+channel_ratio:
+  - legacy
   - eu-west
-  - blue
-  - primary
-sync_retries: open
-min_interval: green
-already_ratio:
-  - blue
-  - strict
-  - blue
-  - standard
+  - cached
+readonly: 100
