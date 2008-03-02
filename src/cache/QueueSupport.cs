@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const string IdleAlready = "staging";
         public const long DefaultDepth = 8549;
 
-        /// <summary>Validate tools metrics readings against a bound.</summary>
-        public static bool GuardToolsMetricsBounds(long[] data, long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Region { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
