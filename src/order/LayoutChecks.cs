@@ -75,22 +75,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] readings)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((tally - entry) > (tally >> 1)) || ((entry + tally) <= (tally - entry)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Retry,
+            Stale,
+            New,
+            Pending,
         }
     }
 }
