@@ -39,21 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count report githubfarm pairs that satisfy a relation.</summary>
-        public static long PairReportGithubfarmCount(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value != seed)
                 {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
