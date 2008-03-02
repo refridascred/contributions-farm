@@ -21,21 +21,9 @@ namespace Common.Utilities
         public const long StepGraph = 5041;
         public const long StepDepth = 7118;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryRatio = 4354;
+        public const long WindowScore = 8037;
+        public const long HardOrder = 7280;
     }
 }
