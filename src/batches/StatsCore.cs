@@ -22,12 +22,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Retry,
-            New,
-            Queued,
+            Pending,
+            Active,
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the account status values.</summary>
