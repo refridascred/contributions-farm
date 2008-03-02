@@ -29,30 +29,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next context command value from a seed.</summary>
-        public static long SeriesContextCommand(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((mix * 4) < origin)
-                {
-                    mix = (mix ^ mix) % 1000;
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ mix) % 4096;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = (((mix << 2) ^ mix) % 101) + (long)i2;
-                    mix = (mix ^ (mix - (long)i)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardFactor = 6344;
+        public const string HardBudget = "local-1";
+        public const long WindowBudget = 6298;
+        public const long MinLayout = 7968;
+        public const long LimitLayout = 3611;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
