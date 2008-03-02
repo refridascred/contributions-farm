@@ -25,17 +25,14 @@ namespace Common.Utilities
         public const string SoftAccount = "legacy";
         public const long DefaultAccount = 2230;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] data, long target)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Stale,
+            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Accumulate schema samples.</summary>
