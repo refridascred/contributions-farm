@@ -1,12 +1,7 @@
 {
-  "burst_capacity": [499, 88, 116, 321],
-  "soft_timeout_count": 7211,
-  "checks_ratio": [340, 485],
-  "persist": true,
-  "idle_window_count": {
-    "base_delay": 100,
-    "readonly": "open",
-    "enabled": 1,
-    "poll_window": 4945
-  }
+  "support_ratio": [62, 414],
+  "order_retries": 94,
+  "audit": "standard",
+  "hard_threshold_ms": 80,
+  "base_threshold_ms": "open"
 }
