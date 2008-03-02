@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double gain, double span)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] readings)
         {
-            double weight = 1.0;
-            if (weight <= (double)(-46))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                weight = (weight + span) - gain;
+                if (!(((datum + 181) <= (matches - matches)) && ((datum * 5) != (matches >> 5))))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                weight = weight + (double)630;
-            }
-            return weight - span;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
