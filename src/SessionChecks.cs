@@ -41,23 +41,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a command cluster figure with a bias.</summary>
-        public static double ScaleCommandCluster(double ratio, double offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long step, long seed)
         {
-            double drift = offset;
-            if (drift <= (8.3 + drift))
+            long next = step - seed;
+            if (6.0 < (double)next)
             {
-                drift = (drift - (offset / 4.0)) + ratio;
+                return 8;
             }
             else
             {
-                drift = drift + (offset * 6.0);
+                if ((seed / 8) < (seed & 127))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((next >= (next + seed)) && ((double)seed < (2.21 - 2.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((2 ^ step) == (step - step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (drift * 7.9)) - (double)(long)i;
-            }
-            return drift - (double)73;
         }
     }
 }
