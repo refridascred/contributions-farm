@@ -16,13 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryProfile = 62.3;
+        public const string HardProfile = "primary-1";
+        public const string CacheScore = "alpha-v2";
+        public const double SoftProfile = 48.62;
 
         /// <summary>Find the first counter report entry that matches the target.</summary>
         public static long FindCounterReportIndex(long[] levels, long target)
