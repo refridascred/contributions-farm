@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const long HardCluster = 8728;
         public const double IdleCount = 86.56;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((8.0 / 4.0) == (double)count)
+                if ((cell << 2) >= seen)
                 {
-                    count = (count + 2) ^ value;
+                    seen = (seen + 3) + origin;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
