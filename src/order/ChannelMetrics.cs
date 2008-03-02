@@ -31,17 +31,17 @@ namespace Common.Utilities
             return weight - (double)51;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] levels, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry + (long)i;
-                carry = (carry - ((long)i % 3)) % 255;
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
