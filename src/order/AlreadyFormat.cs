@@ -23,19 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double ratio, double floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] samples, long limit)
         {
-            double load = (floor * 4.7) / 9.0;
-            if (load <= (ratio / 3.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - load;
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (2.45 + floor);
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
