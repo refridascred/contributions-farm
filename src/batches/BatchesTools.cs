@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((4.05 + 17.0) <= 1.0)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((7 - 685) <= step)
                 {
-                    if ((readings[i] + readings[j]) > 14)
+                    return 8;
+                }
+                else
+                {
+                    if ((floor & 3) == (floor - 646))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two route measurements.</summary>
