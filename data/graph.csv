@@ -1,7 +1,7 @@
-id,ratio,label,rank
-1,cached,55,eu-west
-2,345,36.07,75.08
-3,89.88,179,68.82
-4,latest,52.29,blue
-5,810,70.24,green
-6,67.87,747,strict
+id,region,weight,ratio,token
+1,562,12.21,699,787
+2,44.27,77.93,12,70.96
+3,stable,2.59,105,329
+4,822,30.21,73.62,52.72
+5,932,open,135,36.55
+6,310,48.31,edge,fallback
