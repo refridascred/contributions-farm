@@ -41,13 +41,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
+            long result = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
