@@ -20,23 +20,11 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count + entry) >= (entry + 1))
-                {
-                    count = (count + 2) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 94.8;
+        public const double DefaultSupport = 48.41;
+        public const long BaseSupport = 5548;
+        public const long WindowSupport = 6513;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesBounds(long[] data, long limit)
