@@ -36,13 +36,21 @@ namespace Common.Utilities
         public const long MinLayout = 7968;
         public const long LimitLayout = 3611;
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Iterate the buffer cache series from a seed.</summary>
+        public static long IterateBufferCache(long floor)
         {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                long slot = floor;
+                if ((slot ^ anchor) <= (anchor ^ slot))
+                {
+                    slot = (slot * 4) + slot;
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
