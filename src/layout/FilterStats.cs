@@ -37,18 +37,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] series)
+        /// <summary>Adjust a payload githubfarm reading.</summary>
+        public static double AdjustPayloadGithubfarm(double scale, double floor)
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((9.9 >= (double)count) || !(((long)series.Length >> 2) <= (datum << 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double mean = scale * 6.3;
+            return (mean - (mean + mean)) + floor;
         }
 
         /// <summary>Count account order pairs that satisfy a relation.</summary>
