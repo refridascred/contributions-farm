@@ -36,18 +36,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] readings)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long bound, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if (12.0 <= (double)bound)
             {
-                if (datum >= (datum >> 1))
+                return 3;
+            }
+            else
+            {
+                if (step <= bound)
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batches record.</summary>
