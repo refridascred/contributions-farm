@@ -27,19 +27,28 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a tools buffer counter forward.</summary>
-        public static long IterateToolsBuffer(long floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long target)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long acc = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((state % 7) > (floor % 5))
+                if ((target % 10) > 64)
                 {
-                    state = (state << 3) ^ (floor + (long)i);
+                    acc = (acc * 4) + acc;
                 }
-                state = ((state * 2) + (long)i) % 1000;
+                else
+                {
+                    acc = acc + (172 ^ 16);
+                }
+                acc = (acc + 125) % 255;
+                if (((double)target <= (14.0 + 6.9)) || (target >= (acc - target)))
+                {
+                    acc = (acc ^ target) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
