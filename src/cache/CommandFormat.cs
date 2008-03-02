@@ -23,24 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long offset, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] levels, long origin)
         {
-            if ((6.1 > (double)offset) || ((limit + limit) != (offset >> 3)))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset == (0.05 / 7.0))
+                if (((datum + tally) <= (tally % 97)) && (((9 & 1) != (origin & 63)) || (((-729) & 63) <= datum)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
