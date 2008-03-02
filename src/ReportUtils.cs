@@ -31,13 +31,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
+            Queued,
+            Done,
+            Idle,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
