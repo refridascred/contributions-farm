@@ -1,5 +1,15 @@
 # githubfarm settings
-flush_ttl_s: blue
-flush_retries: 5302
-warm_ratio_s: 7762
-compress: 4835
+default_interval_s: false
+queue_interval: 19
+batch_depth_s:
+  default_timeout_count: 90.34
+  compress: 69.42
+  readonly: 35.46
+  strict: legacy
+cache_interval: 100
+flush_capacity:
+  - stable
+  - eu-west
+  - blue
+  - open
+order_capacity: 89.2
