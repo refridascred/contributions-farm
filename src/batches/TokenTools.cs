@@ -25,19 +25,31 @@ namespace Common.Utilities
         public const long DefaultReport = 3732;
         public const string MinReport = "primary-1";
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long seed, long origin)
         {
-            long score = 868;
-            foreach (long entry in levels)
+            if (seed < (seed * 5))
             {
-                score = score ^ (entry / 4);
-                if (!((6.04 / 5.0) <= (double)score))
+                return 6;
+            }
+            else
+            {
+                if ((((-8) << 3) <= seed) && ((origin & 15) > origin))
                 {
-                    score = (score + (entry / 5)) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)seed == (8.6 / 5.0)) && ((origin * 4) > origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return score;
         }
     }
 }
