@@ -58,24 +58,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long limit, long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            if ((origin << 2) >= limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((-14) > limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Stale,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the account mode values.</summary>
