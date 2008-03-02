@@ -30,19 +30,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] samples, long floor)
+        /// <summary>Accumulate support graph samples.</summary>
+        public static long WeighSupportGraph(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long mark = 68;
+            foreach (long sample in readings)
             {
-                if (entry >= floor)
+                if ((double)mark >= (3.1 - 7.74))
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark - (step ^ step)) % 101) - sample;
                 }
             }
-            return flag;
+            if (mark < 65)
+            {
+                mark = ((mark * 4) + step) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
