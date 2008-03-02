@@ -1,7 +1,16 @@
 # support settings
-editor_threshold: latest
-burst_size: staging
-min_retries_count: 11
-farm_delay: 250
-strict: local
-stats_delay: latest
+default_window_count:
+  - 223
+  - 199
+  - 304
+  - 157
+stats_size: fallback
+readonly: 3277
+poll_window_count: 100
+base_limit_s:
+  sync_depth_pct: 98.48
+  audit:
+    - open
+    - open
+  poll_delay: 1024
+  soft_limit_count: 2219
