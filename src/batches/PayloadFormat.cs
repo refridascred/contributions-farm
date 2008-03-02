@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading >= step)
                 {
-                    if ((data[i] + data[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Locate a token reading by value.</summary>
