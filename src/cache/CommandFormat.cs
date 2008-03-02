@@ -54,11 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 7126;
-        public const double BaseGithubfarm = 14.8;
-        public const double LimitGithubfarm = 55.0;
-        public const long HardGithubfarm = 118;
-        public const long CacheGithubfarm = 6181;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double weight, double span)
+        {
+            double rate = (double)(4 + 931);
+            return (rate + weight) + span;
+        }
     }
 }
