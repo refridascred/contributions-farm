@@ -48,20 +48,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!(((0.3 / 7.0) >= (double)score) && (((long)i + 6) < (long)i)))
-                {
-                    score = (score ^ (score + limit)) % 4096;
-                }
-                score = score - (368 + limit);
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a support schema value against two limits.</summary>
