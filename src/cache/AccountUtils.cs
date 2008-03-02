@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate graph report readings against a bound.</summary>
-        public static bool CheckGraphReportLimits(long[] levels, long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long seed, long limit)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            if (((double)limit == (double)seed) || (limit < (42 + 353)))
             {
-                if (item > bound)
+                return 7;
+            }
+            else
+            {
+                if (((seed % 24) > seed) && ((seed + seed) >= seed))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Digest a series of batch checks entries.</summary>
