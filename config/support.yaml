@@ -1,25 +1,4 @@
 # support settings
-schema_interval: edge
-base_ratio_ms:
-  - primary
-  - blue
-  - strict
-channel_delay:
-  - 245
-  - 462
-  - 59
-  - 233
-sync_threshold:
-  editor_delay:
-    - staging
-    - legacy
-  retry_interval: 72
-  report_delay:
-    - 125
-    - 114
-    - 143
-  hard_size: open
-soft_depth:
-  - edge
-  - open
-strict: strict
+burst_delay: 11.61
+stats_limit: 13
+cache_depth: primary
