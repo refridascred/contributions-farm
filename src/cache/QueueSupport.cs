@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((((double)entry > (10.0 * 7.45)) && ((matches / 4) >= (matches * 2))) || ((matches + entry) <= (matches << 1)))
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 7936;
+        public const long MinInterval = 1166;
+        public const double DefaultReport = 44.38;
+        public const long LimitRatio = 3189;
+        public const long MaxReport = 5320;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] samples)
