@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseGraph = "latest-1";
-        public const double BatchGraph = 19.03;
-        public const long RetryFactor = 2165;
-        public const long MaxCount = 8355;
-        public const double LimitGraph = 62.85;
+        /// <summary>Iterate the batches notes series from a seed.</summary>
+        public static long RollBatchesNotes(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum << 3) ^ (target + target)) % 255;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderMatches(long[] levels, long bound)
