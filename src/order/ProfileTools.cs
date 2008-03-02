@@ -57,17 +57,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] items, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                if ((double)sample != (9.88 - 2.2))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a layout info.</summary>
