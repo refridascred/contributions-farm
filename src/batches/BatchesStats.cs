@@ -31,27 +31,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data, long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            long carry = 76;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 3) ^ (sample - 9)) % 4096;
-                if (7.0 < (double)sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry * 4) + (offset << 2);
-                }
-                else
-                {
-                    carry = (carry + offset) % 4096;
+                    if ((series[i] + series[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < 76)
-            {
-                carry = (carry - (4 / 5)) % 97;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Project the next record value.</summary>
