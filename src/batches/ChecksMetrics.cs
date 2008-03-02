@@ -19,10 +19,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 1059;
-        public const long DefaultSpan = 6552;
-        public const long RetryLevel = 6284;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] values, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] samples)
