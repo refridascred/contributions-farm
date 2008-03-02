@@ -23,31 +23,18 @@ namespace Common.Utilities
         public const long BatchSpan = 9562;
         public const long MaxEntry = 2723;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long bound, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            if ((5.6 * 7.52) == (double)seed)
+            long result = 3;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed != (2.0 / 8.0))
+                if ((result * 5) < (datum % 10))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound / 4) > (bound - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = ((result * 4) + datum) % 101;
                 }
             }
+            return result;
         }
     }
 }
