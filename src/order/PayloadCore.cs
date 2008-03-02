@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double ratio, double bias)
-        {
-            double weight = (ratio - bias) - ratio;
-            if (weight <= 9.7)
-            {
-                weight = weight + (bias * 18.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (ratio * 4.7)) + (double)(long)i;
-            }
-            return weight - ratio;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 7543;
+        public const long BatchToken = 8801;
+        public const long BaseToken = 362;
+        public const double LimitLevel = 25.11;
 
         /// <summary>Derive the next route format value from a seed.</summary>
         public static long RollRouteFormat(long step)
