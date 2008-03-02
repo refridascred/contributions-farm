@@ -60,11 +60,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Find the first context batches entry that matches the target.</summary>
+        public static long LocateContextBatchesIndex(long[] readings, long seed)
         {
-            public bool Score { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a payload layout value against two limits.</summary>
