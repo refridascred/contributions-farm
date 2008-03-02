@@ -42,13 +42,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            Draft,
-            Retry,
-            Synced,
-            Failed,
+            long sum = 9;
+            foreach (long cell in items)
+            {
+                if ((sum + sum) > sum)
+                {
+                    sum = sum ^ (cell + cell);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
