@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseGraph = "latest-1";
+        public const double BatchGraph = 19.03;
+        public const long RetryFactor = 2165;
+        public const long MaxCount = 8355;
+        public const double LimitGraph = 62.85;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderMatches(long[] levels, long bound)
