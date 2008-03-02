@@ -44,19 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long bound)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Adjust a cluster contributi reading.</summary>
