@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 8936;
-        public const long CacheDepth = 9513;
-        public const long LimitLevel = 7591;
-        public const double WindowToken = 93.76;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of layout stream readings.</summary>
         public static long WeighLayoutStream(long[] samples, long origin)
