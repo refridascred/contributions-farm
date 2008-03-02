@@ -58,12 +58,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double scale, double floor)
-        {
-            double mean = (double)(-645) / 7.0;
-            return ((mean + mean) + scale) + floor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxRatio = 8317;
+        public const long CacheWidth = 788;
+        public const long RetryBudget = 1175;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] items, long origin)
