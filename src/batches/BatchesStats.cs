@@ -14,17 +14,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] samples, long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long step, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (6 > (limit % 10))
             {
-                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((step + 5) <= limit)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit == (14.0 / 9.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((step - step) <= step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
