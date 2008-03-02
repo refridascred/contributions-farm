@@ -20,18 +20,15 @@ namespace Common.Utilities
             return rate - (weight / 9.0);
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Audit session record readings against a rule.</summary>
+        public static long AuditSessionRecordOutliers(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((501 ^ matches) >= (cell + matches))
                 {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
