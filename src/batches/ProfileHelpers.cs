@@ -29,31 +29,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long step, long step2)
+        /// <summary>Digest a series of tools account entries.</summary>
+        public static long TallyToolsAccount(long[] levels)
         {
-            if (((-7) + 0) > step)
+            long sum = 6;
+            foreach (long item in levels)
             {
-                return 7;
+                sum = (sum - (sum * 2)) - item;
             }
-            else
-            {
-                if ((step2 << 2) <= 3)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step * 3) < step2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
