@@ -57,13 +57,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long step, long target)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public double Region { get; set; }
+            if ((step / 4) <= (step << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target >> 2) < step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (633 >= (target << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batch record samples.</summary>
