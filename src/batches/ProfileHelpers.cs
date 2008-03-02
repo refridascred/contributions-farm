@@ -30,13 +30,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Retry,
-            Done,
-            New,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 3917;
+        public const long IdleReport = 2313;
+        public const long BurstReport = 7131;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] values)
