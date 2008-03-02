@@ -1,8 +1,5 @@
 {
-  "cluster_ttl": [9, 453, 35, 203],
-  "compress": 11.2,
-  "audit": 1851,
-  "burst_retries_ms": "blue",
-  "idle_limit_count": "strict",
-  "session_ttl": "blue"
+  "default_retries_s": "local",
+  "window_delay": ["staging", "cached", "blue"],
+  "retry_threshold_s": 100
 }
