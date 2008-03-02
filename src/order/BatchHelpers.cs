@@ -33,11 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            Synced,
+            Dropped,
+            Done,
+            Ready,
+            Locked,
         }
     }
 }
