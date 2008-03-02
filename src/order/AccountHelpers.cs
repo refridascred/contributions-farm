@@ -67,13 +67,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] levels, long offset)
         {
-            Retry,
-            Dropped,
-            Active,
-            Idle,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((offset * 3) < count) && !((88 + (-80)) > (count + value)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a route reading by value.</summary>
