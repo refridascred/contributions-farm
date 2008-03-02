@@ -1,7 +1,21 @@
 # support settings
-warm_capacity: eu-west
-warm_delay_pct: 30.15
-default_size_ms: 1949
-compress: eu-west
-readonly: 26
-editor_interval: primary
+min_window_ms:
+  batch_ratio_pct:
+    warm_delay_ms: 250
+    already_ratio: false
+    command_delay: 92.46
+    graph_threshold: false
+  audit: staging
+  min_threshold:
+    - standard
+    - blue
+    - cached
+  compress: local
+  batch_threshold: open
+  default_timeout_ms:
+    - green
+    - primary
+min_ttl_count: 4650
+persist: stable
+token_limit: staging
+batch_delay_pct: 22
