@@ -26,21 +26,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Project the next profile command value.</summary>
+        public static double AdjustProfileCommand(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = (double)(4 * 5);
+            if (gain2 > gain2)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain2 = ((gain2 + (double)162) + gain) + span;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - 1.6) - (double)(long)i;
+            }
+            return gain2 - (double)3;
         }
     }
 }
