@@ -27,17 +27,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a checks report sample.</summary>
-        public static long LocateChecksReportIndex(long[] data, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (data[i] < origin)
+                if (cell != origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
