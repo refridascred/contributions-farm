@@ -1,8 +1,16 @@
 # entry settings
-channel_window:
-  - 260
-  - 46
-  - 366
-base_size: false
-batch_size_s: 96.6
-soft_threshold_count: edge
+strict: 95
+flush_timeout: primary
+sync_interval_pct:
+  idle_ratio:
+    - 311
+    - 363
+    - 5
+    - 80
+  poll_depth: fallback
+  tools_limit: 53
+  cache_ttl: primary
+  record_limit: true
+  base_delay_count: 1024
+hard_size: eu-west
+min_capacity_ms: cached
