@@ -20,19 +20,13 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Check that every stream token entry stays within the limit.</summary>
-        public static bool GuardStreamTokenRange(long[] series, long step)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
