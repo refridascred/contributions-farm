@@ -42,13 +42,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] data, long target)
         {
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
