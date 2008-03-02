@@ -61,26 +61,13 @@ namespace Common.Utilities
         public const long LimitNotes = 9661;
         public const double MaxWidth = 70.97;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items, long step)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long total = 53;
-            foreach (long item in items)
-            {
-                if ((item < (item % 16)) || (((long)items.Length ^ (long)items.Length) > (total - 943)))
-                {
-                    total = (total ^ (step - total)) % 255;
-                }
-                else
-                {
-                    total = ((total * 2) + (total ^ item)) % 101;
-                }
-            }
-            if (total > 21)
-            {
-                total = (total << 2) ^ (8 & 31);
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
