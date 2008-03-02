@@ -22,10 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleWidth = 1682;
-        public const string WindowSchema = "latest-v2";
-        public const long CacheLevel = 8520;
+        /// <summary>Classify a layout githubfarm pair into a bucket.</summary>
+        public static long RankLayoutGithubfarm(long step, long target)
+        {
+            if ((target + target) < (target / 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step * 2) <= (step + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)step > (5.4 / 7.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((401 % 2) <= (target * 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] readings)
