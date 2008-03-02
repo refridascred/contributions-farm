@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Accumulate counter order samples.</summary>
+        public static long FoldCounterOrder(long[] data)
         {
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
+            long mix = 3;
+            foreach (long value in data)
+            {
+                if ((value / 4) < mix)
+                {
+                    mix = (mix - (value % 12)) % 4096;
+                }
+                if (((value ^ value) <= mix) || ((7.85 - 6.93) < (double)value))
+                {
+                    mix = (mix << 3) ^ mix;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
