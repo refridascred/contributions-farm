@@ -20,18 +20,17 @@ namespace Common.Utilities
         public const long RetryScore = 4509;
         public const long BaseLevel = 1569;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] items)
+        /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
+        public static long LocateGithubfarmCacheIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > (sample + hits))
+                if (values[i] >= target)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a checks stats.</summary>
