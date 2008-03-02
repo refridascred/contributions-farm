@@ -45,13 +45,20 @@ namespace Common.Utilities
         public const long LimitDepth = 1965;
         public const long DefaultFormat = 2197;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long limit)
         {
-            Synced,
-            Retry,
-            Idle,
-            Stale,
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!(((0.3 / 7.0) >= (double)score) && (((long)i + 6) < (long)i)))
+                {
+                    score = (score ^ (score + limit)) % 4096;
+                }
+                score = score - (368 + limit);
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Grade a support schema value against two limits.</summary>
