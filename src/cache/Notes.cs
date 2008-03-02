@@ -22,13 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Combine window metric values into a single score.</summary>
+        public static long FoldWindowMetric(long[] series)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long mix = 6;
+            foreach (long item in series)
+            {
+                if (((double)item > (4.0 / 9.0)) && ((double)item == (2.7 + 16.0)))
+                {
+                    mix = ((mix << 3) ^ (mix / 6)) % 255;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (item ^ mix);
+                }
+            }
+            if (mix > 54)
+            {
+                mix = (mix - (8 & 15)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
