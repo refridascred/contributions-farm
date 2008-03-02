@@ -42,19 +42,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mix = 72;
-            foreach (long cell in series)
-            {
-                mix = ((mix << 3) ^ (0 + cell)) % 101;
-                if ((mix & 31) >= (mix ^ mix))
-                {
-                    mix = (mix << 2) ^ (0 & 127);
-                }
-            }
-            return mix;
+            Draft,
+            Retry,
+            Synced,
+            Failed,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
