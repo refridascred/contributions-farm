@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] readings, long origin)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((((seen << 1) >= (seen - origin)) || ((value + 1) != (78 & 127))) || (value > (seen + origin)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a route info.</summary>
