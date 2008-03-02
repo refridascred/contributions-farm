@@ -72,22 +72,30 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] readings)
+        /// <summary>Combine queue stats values into a single score.</summary>
+        public static long CombineQueueStats(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = 294;
+            foreach (long entry in values)
             {
-                if (((sample ^ count) <= count) && !(count <= sample))
+                if ((bound - sum) <= (sum ^ entry))
                 {
-                    count = count + 3;
+                    sum = sum ^ (sum ^ 23);
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = sum - (bound / 7);
+                }
+                if ((entry << 1) > ((-4) % 100))
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum > 61)
+            {
+                sum = (sum * 3) + (2 - bound);
+            }
+            return sum;
         }
     }
 }
