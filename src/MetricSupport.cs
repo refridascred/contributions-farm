@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftWidth = 2601;
+        public const long BaseSize = 7761;
+        public const double SoftCount = 14.18;
+        public const long BatchMetric = 1178;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long SeekMetricIndex(long[] data, long step)
