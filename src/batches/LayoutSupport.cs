@@ -23,21 +23,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 10.0;
+            if (ratio >= 9.35)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ((ratio + (double)32) - weight) + span;
             }
-            return count;
+            return ratio + (double)20;
         }
 
         /// <summary>Measure how many cluster profile samples are out of range.</summary>
