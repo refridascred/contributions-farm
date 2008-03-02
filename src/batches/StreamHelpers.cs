@@ -37,25 +37,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double scale, double bias)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            double mean = (double)(884 / 3);
+            if (mean <= (scale / 2.0))
             {
-                long count = (result ^ offset) - offset;
-                if ((result - count) < ((long)i - (long)i))
-                {
-                    count = count - (result - result);
-                }
-                else
-                {
-                    count = count + ((long)i * 3);
-                    count = (count - (result + offset)) % 255;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                mean = (mean - (1.0 / 9.0)) + bias;
             }
-            return result;
+            else
+            {
+                mean = mean - (double)(-764);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + scale) + (double)(long)i;
+            }
+            return mean - scale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
