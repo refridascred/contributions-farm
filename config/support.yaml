@@ -1,10 +1,4 @@
 # support settings
-min_limit_count: blue
-cache_capacity:
-  - legacy
-  - legacy
-dry_run:
-  - staging
-  - legacy
-  - edge
-  - cached
+farm_ratio: 2843
+default_limit: true
+batch_size_count: staging
