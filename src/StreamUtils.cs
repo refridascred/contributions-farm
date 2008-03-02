@@ -52,14 +52,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] series, long offset)
         {
-            Active,
-            Queued,
-            Stale,
-            Idle,
-            Ready,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((4 & 127) != (offset >> 3))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
