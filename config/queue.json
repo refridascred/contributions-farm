@@ -1,5 +1,8 @@
 {
-  "persist": true,
-  "tools_timeout": false,
-  "soft_retries_pct": true
+  "max_threshold_ms": "strict",
+  "idle_limit_count": 1,
+  "commits_window": 88.15,
+  "flush_size": 1,
+  "stats_threshold": [118, 179],
+  "compress": false
 }
