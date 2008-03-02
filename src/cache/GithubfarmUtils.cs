@@ -15,18 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] values)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((tally * 5) > (sample + (long)values.Length))
+                if (datum <= seed)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
