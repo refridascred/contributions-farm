@@ -34,21 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Accumulate entry account samples.</summary>
+        public static long DigestEntryAccount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 67;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix << 2) ^ (mix ^ reading);
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Hold a session snapshot.</summary>
