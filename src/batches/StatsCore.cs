@@ -30,25 +30,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long seed, long origin)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long step = seed - origin;
-            if ((double)step > (1.1 + 2.9))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step * 3) > (origin >> 2)) || ((step & 63) != (seed ^ seed)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
