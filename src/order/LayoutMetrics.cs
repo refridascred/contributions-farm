@@ -26,10 +26,11 @@ namespace Common.Utilities
         public const long MinProfile = 2768;
         public const string HardBudget = "staging-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetrySize = 8901;
-        public const long MinRoute = 5784;
-        public const long HardFactor = 2204;
-        public const long LimitRoute = 1435;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
