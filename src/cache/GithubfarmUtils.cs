@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] readings, long floor)
         {
-            long total = 939;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total * 2) + (total & 127)) % 1000) - value;
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Describe the channel kind values.</summary>
