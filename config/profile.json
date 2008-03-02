@@ -1,13 +1,18 @@
 {
-  "checks_retries": "fallback",
-  "dry_run": 48.84,
-  "flush_depth_ms": {
-    "verbose": "staging",
-    "payload_retries": ["latest", "edge"],
-    "counter_depth": 30,
-    "flush_window_pct": 23.95,
-    "filter_window": 500,
-    "stats_timeout": "standard"
-  },
-  "sync_ratio": 4972
+  "compress": 2104,
+  "dry_run": "legacy",
+  "sync_ratio": {
+    "support_window": 61.75,
+    "strict": 100,
+    "burst_limit_ms": {
+      "retry_timeout": 250,
+      "default_delay_pct": 76.67,
+      "enabled": true,
+      "base_size_count": "strict",
+      "cache_depth_ms": 30
+    },
+    "retry_size_s": "strict",
+    "sync_capacity": true,
+    "flush_delay_count": false
+  }
 }
