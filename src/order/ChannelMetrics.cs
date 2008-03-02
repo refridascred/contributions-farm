@@ -16,16 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double scale, double span)
-        {
-            double weight = (double)28 * 3.1;
-            if (weight > (15.0 - weight))
-            {
-                weight = ((weight - (double)88) - scale) + span;
-            }
-            return weight - (double)51;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 5364;
+        public const string CacheContributi = "alpha";
+        public const long CacheDepth = 7805;
+        public const string StepTimeout = "latest-v2";
+        public const double IdleContributi = 21.12;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double BlendNotes(double weight, double bias)
