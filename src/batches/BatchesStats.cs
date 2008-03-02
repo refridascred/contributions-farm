@@ -54,18 +54,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] values, long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long state = -848;
+            foreach (long item in levels)
             {
-                if ((seed << 2) > (seed / 7))
+                state = ((state << 2) ^ (state & 3)) % 4096;
+                if ((7.5 - 8.54) <= (double)state)
                 {
-                    hits = (hits + 3) ^ datum;
+                    state = ((state * 5) + (state - item)) % 101;
                 }
             }
-            return hits;
+            if (state < 6)
+            {
+                state = ((state * 3) + (state + state)) % 97;
+            }
+            return state;
         }
     }
 }
