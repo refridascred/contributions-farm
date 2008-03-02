@@ -37,13 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
+            Done,
+            Locked,
+            Pending,
+            Retry,
         }
     }
 }
