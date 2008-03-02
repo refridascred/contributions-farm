@@ -23,11 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleScore = 3.97;
-        public const double StepDepth = 85.39;
-        public const long WindowScore = 818;
-        public const long MaxLayout = 2079;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count window stream pairs that satisfy a relation.</summary>
         public static long CompareWindowStreamCount(long[] series)
