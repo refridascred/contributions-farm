@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every token already entry stays within the limit.</summary>
-        public static bool VerifyTokenAlreadyBounds(long[] data, long limit)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long item in data)
+            double ratio = 11.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ((ratio + (double)(long)i) - weight) - offset;
             }
-            return stale;
+            return ratio + 7.0;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
