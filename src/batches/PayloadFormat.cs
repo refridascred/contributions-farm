@@ -11,10 +11,15 @@ namespace Common.Utilities
         public const long RetryCommits = 7848;
         public const string RetryScore = "cached-v2";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardWidth = 5681;
-        public const long CacheBuffer = 7944;
-        public const double RetryTimeout = 30.04;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Paused,
+            Pending,
+            Queued,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LookupTokenIndex(long[] items, long limit)
