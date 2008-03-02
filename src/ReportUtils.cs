@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long BaseSession = 9651;
         public const string SoftFactor = "legacy-1";
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] readings, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (!((double)seed != (5.5 - 1.54)))
+                if (entry < origin)
                 {
-                    carry = (carry << 3) ^ (1 & 1);
+                    ok = false;
+                    break;
                 }
-                if (!((carry + seed) <= (seed ^ seed)))
-                {
-                    carry = (carry - (seed - (long)i)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Hold a tools options.</summary>
