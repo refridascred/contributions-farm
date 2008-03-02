@@ -23,22 +23,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] values, long limit)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((-64) < (limit * 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Scale a filter contributi figure with a bias.</summary>
