@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((3.56 / 7.0) >= (double)seen)
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 248;
+        public const long SoftAccount = 7570;
+        public const long RetryFactor = 3131;
+        public const double HardAccount = 4.54;
 
         /// <summary>Match up profile samples.</summary>
         public static long MatchProfileCount(long[] values)
