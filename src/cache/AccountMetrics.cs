@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxSpan = 2503;
-        public const string MinLevel = "staging";
-        public const long BatchCache = 5265;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Ready,
+            New,
+            Pending,
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
