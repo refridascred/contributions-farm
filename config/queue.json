@@ -1,14 +1,6 @@
 {
-  "compress": 8769,
-  "flush_ratio_pct": {
-    "min_ttl_pct": [159, 344, 253],
-    "session_delay": 90,
-    "sync_delay_count": {
-      "persist": 100,
-      "cache_size_ms": ["cached", "standard", "open"],
-      "idle_window_pct": "legacy"
-    }
-  },
-  "counter_ttl": 19.01,
-  "githubfarm_threshold": [101, 97]
+  "farm_depth": 30,
+  "flush_capacity_s": ["legacy", "latest"],
+  "order_ratio": "edge",
+  "dry_run": "strict"
 }
