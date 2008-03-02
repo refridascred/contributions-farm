@@ -87,14 +87,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Synced,
-            Failed,
-            Idle,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 554;
+        public const string RetrySpan = "open-1";
+        public const double LimitAccount = 98.44;
+        public const long BatchWidth = 7264;
+        public const long HardTimeout = 6556;
     }
 }
