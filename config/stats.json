@@ -1,8 +1,24 @@
 {
-  "default_interval": [460, 100],
-  "batch_delay_ms": 60,
-  "max_delay_s": "legacy",
-  "layout_window": 22,
-  "default_threshold_pct": "staging",
-  "idle_limit_ms": "standard"
+  "verbose": {
+    "min_limit_s": 3.24,
+    "window_size": 1024,
+    "idle_interval_count": "eu-west",
+    "max_capacity": "local",
+    "max_retries": 30
+  },
+  "strict": "green",
+  "flush_delay_count": {
+    "batch_timeout": {
+      "warm_limit_count": "legacy",
+      "counter_size": false,
+      "cache_capacity_pct": true,
+      "tools_ttl": "strict",
+      "max_capacity_count": 500,
+      "schema_retries": 1
+    },
+    "flush_ratio": false,
+    "token_threshold": [1, 167, 258]
+  },
+  "format_window": false,
+  "audit": 7.24
 }
