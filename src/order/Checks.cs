@@ -73,16 +73,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Digest a series of format queue entries.</summary>
+        public static long DigestFormatQueue(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long total = -55;
+            foreach (long sample in items)
             {
-                carry = (carry + (266 - target)) % 65521;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((5.0 * 7.18) > (double)total)
+                {
+                    total = total - 16;
+                }
+                else
+                {
+                    total = (total * 4) + (sample + total);
+                }
             }
-            return carry;
+            if (total < (-530))
+            {
+                total = (total ^ (total - 4)) % 65521;
+            }
+            return total % 65521;
         }
     }
 }
