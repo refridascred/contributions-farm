@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=159
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-mode="${1:-blue}"
+for item in primary strict stable blue; do
+    log "checking ${item}"
+done
+
+mode="${1:-strict}"
 case "${mode}" in
-    fallback)
+    standard)
         log "fast path"
         ;;
     *)
