@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] series, long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!!((entry - matches) == (matches / 9)))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
+            Failed,
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
