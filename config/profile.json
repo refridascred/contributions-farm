@@ -1,6 +1,10 @@
 {
-  "cache_limit_ms": 89.32,
-  "batch_delay": "eu-west",
-  "max_interval_count": 31.54,
-  "enabled": 69
+  "min_delay_ms": false,
+  "burst_interval": "green",
+  "soft_capacity_count": {
+    "profile_window": 50.16,
+    "record_threshold": "open",
+    "max_ratio": 71,
+    "tools_ttl": 15.97
+  }
 }
