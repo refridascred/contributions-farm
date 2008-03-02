@@ -1,18 +1,6 @@
 {
-  "verbose": 30,
-  "sync_interval": "latest",
-  "audit": {
-    "batch_size": 500,
-    "idle_threshold": 70.6,
-    "batch_delay": 63.31
-  },
-  "batch_ratio_s": {
-    "editor_limit": 30,
-    "account_depth": [33, 320, 471],
-    "channel_ttl": 2.44,
-    "default_interval_pct": [18, 374],
-    "compress": [188, 422, 214]
-  },
-  "burst_depth": 31,
-  "cache_retries_pct": "legacy"
+  "support_size": 1024,
+  "audit": "local",
+  "notes_delay": 98.06,
+  "strict": true
 }
