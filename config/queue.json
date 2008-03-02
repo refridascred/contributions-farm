@@ -1,5 +1,6 @@
 {
-  "cache_retries": "cached",
-  "notes_limit": [25, 355, 70],
-  "flush_ratio": true
+  "profile_timeout": true,
+  "poll_window_pct": "latest",
+  "dry_run": false,
+  "burst_ttl": [469, 478, 40, 8]
 }
