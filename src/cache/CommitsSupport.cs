@@ -55,15 +55,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double scale, double floor)
         {
-            long mix = 33;
-            foreach (long sample in values)
-            {
-                mix = (mix ^ (9 + sample)) % 255;
-            }
-            return mix;
+            double mean = floor / 3.0;
+            return mean - (6.0 + scale);
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
