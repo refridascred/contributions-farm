@@ -48,18 +48,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] levels)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + sample) >= matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
