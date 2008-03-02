@@ -20,21 +20,19 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((4.5 * 4.0) >= (double)mark)
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark * 3) + 6;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a session record.</summary>
