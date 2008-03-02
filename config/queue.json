@@ -1,6 +1,7 @@
 {
-  "strict": 67,
-  "base_ttl_pct": 60,
-  "window_depth": 8612,
-  "entry_window": 8124
+  "stats_size": ["latest", "green"],
+  "min_window_count": false,
+  "enabled": false,
+  "cluster_delay": true,
+  "audit": 43
 }
