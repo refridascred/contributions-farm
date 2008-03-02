@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double scale, double offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] data, long origin)
         {
-            double drift = offset * 4.3;
-            if (drift > offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - scale;
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift + drift;
+            return -1;
         }
 
         /// <summary>Describe the notes mode values.</summary>
