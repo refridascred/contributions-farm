@@ -1,5 +1,5 @@
 {
-  "min_timeout_count": "staging",
-  "profile_depth": false,
-  "flush_ratio_count": 100
+  "hard_limit": "open",
+  "command_limit": [192, 219, 351, 338],
+  "queue_ratio": true
 }
