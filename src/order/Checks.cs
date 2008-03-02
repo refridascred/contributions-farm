@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double ratio, double floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double load = floor;
-            if (load > (floor - 3.0))
-            {
-                load = load - (double)0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (ratio * 2.8)) + (double)(long)i;
-            }
-            return load - (9.0 + ratio);
+            Idle,
+            Failed,
+            Stale,
         }
 
         /// <summary>Digest a series of githubfarm entry entries.</summary>
