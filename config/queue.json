@@ -1,20 +1,8 @@
 {
-  "batch_retries_pct": {
-    "compress": 40.41,
-    "max_limit_count": "local",
-    "persist": 100,
-    "poll_threshold_ms": ["standard", "primary", "green", "cached"],
-    "soft_size_count": ["blue", "green", "green"],
-    "default_limit": 6064
-  },
-  "cache_ratio": {
-    "cluster_ttl": 5,
-    "compress": 49.28,
-    "cache_delay": ["legacy", "local", "legacy"],
-    "already_timeout": "legacy"
-  },
-  "hard_limit": 60,
-  "default_size_ms": 22.61,
-  "idle_delay": 10.96,
-  "dry_run": 6069
+  "strict": 30,
+  "record_delay": "primary",
+  "batches_depth": 54,
+  "hard_timeout_pct": 3402,
+  "channel_timeout": 49,
+  "already_limit": "green"
 }
