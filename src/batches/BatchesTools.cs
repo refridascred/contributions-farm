@@ -13,38 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] levels)
         {
-            if ((39 + offset) < step)
+            long state = 448;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step + 379) < (857 / 2))
+                if ((double)state != (6.2 - 2.0))
                 {
-                    return 6;
+                    state = (state ^ state) % 97;
+                    state = (state * 3) + item;
                 }
-                else
+                if ((double)state >= (4.3 - 2.7))
                 {
-                    if ((step / 3) < (offset << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step < (offset / 7)) && ((double)offset < (double)step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = ((state * 5) + (state & 127)) % 101;
                 }
             }
+            return state;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
