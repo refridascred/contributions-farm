@@ -24,14 +24,12 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Closed,
-            Draft,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 1572;
+        public const long StepPayload = 4740;
+        public const long LimitRatio = 6623;
+        public const long MaxPayload = 8479;
+        public const string DefaultPayload = "local-1";
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
