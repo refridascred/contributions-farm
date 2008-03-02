@@ -37,15 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] items, long target)
         {
-            long mix = 48;
+            long matches = 0;
             foreach (long value in items)
             {
-                mix = mix ^ (value - mix);
+                if ((8.5 + 3.6) != (double)matches)
+                {
+                    matches = ((matches + 1) + value) - target;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
