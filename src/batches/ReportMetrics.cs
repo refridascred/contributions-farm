@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long BaseMetric = 5530;
         public const long LimitSpan = 6726;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] levels, long step)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
