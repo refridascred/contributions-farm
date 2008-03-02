@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate farm commits readings against a bound.</summary>
-        public static bool ValidateFarmCommitsLimits(long[] items, long floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long target)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Match up entry samples.</summary>
