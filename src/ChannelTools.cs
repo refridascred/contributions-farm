@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine entry already values into a single score.</summary>
-        public static long WeighEntryAlready(long[] readings)
+        /// <summary>Audit profile tools readings against a rule.</summary>
+        public static long TallyProfileToolsGaps(long[] levels, long limit)
         {
-            long total = -384;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (total < datum)
+                if (!(tally > 54))
                 {
-                    total = ((total << 2) ^ total) % 101;
+                    tally = ((tally + 1) ^ reading) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Blend two payload measurements.</summary>
