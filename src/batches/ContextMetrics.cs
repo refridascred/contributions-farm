@@ -73,11 +73,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double rate, double bias)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double load = (rate * 7.08) - (rate - 1.5);
-            return load - bias;
+            Dropped,
+            Pending,
+            Locked,
         }
     }
 }
