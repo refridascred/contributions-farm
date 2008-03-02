@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] readings, long offset)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the session kind values.</summary>
