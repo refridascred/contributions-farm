@@ -52,13 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] series, long step)
         {
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
