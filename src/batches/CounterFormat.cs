@@ -33,21 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
