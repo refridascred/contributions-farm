@@ -57,12 +57,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Failed,
-            Active,
-            Draft,
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
