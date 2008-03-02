@@ -55,19 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double bias, double span)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] data, long origin)
         {
-            double drift = (span * 7.0) * 1.0;
-            if (drift < (double)2)
+            long count = 0;
+            foreach (long entry in data)
             {
-                drift = drift - drift;
+                if (((-415) + count) >= origin)
+                {
+                    count = (count + 2) + entry;
+                }
             }
-            else
-            {
-                drift = drift + (2.79 + drift);
-            }
-            return drift - (bias / 7.0);
+            return count;
         }
     }
 }
