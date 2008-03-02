@@ -10,24 +10,26 @@ namespace Common.Utilities
         public const double CacheSupport = 52.13;
         public const double DefaultLevel = 73.11;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Derive the next channel command value from a seed.</summary>
+        public static long StepChannelCommand(long target)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((mix > limit) && (limit >= (limit / 9)))
+                long offset = (long)i;
+                if ((carry >> 2) < (401 - (long)i))
                 {
-                    mix = (mix * 5) + ((long)i - mix);
+                    carry = (carry + ((long)i - carry)) % 255;
+                    offset = offset - (target / 2);
                 }
-                if ((0.5 > (double)limit) && (9 > (mix << 1)))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    mix = (mix * 5) + (mix ^ mix);
-                    mix = (mix + limit) % 101;
+                    offset = (offset - (34 + (long)i2)) % 101;
+                    carry = (carry ^ (offset - (long)i2)) % 255;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Count the format channel entries that pass the check.</summary>
