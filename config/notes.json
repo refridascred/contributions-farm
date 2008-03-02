@@ -1,7 +1,5 @@
 {
-  "stats_timeout": "edge",
-  "poll_size_pct": "blue",
-  "sync_threshold": [393, 448, 436, 295],
-  "entry_ttl": 250,
-  "readonly": false
+  "entry_retries": 20.02,
+  "idle_delay": [423, 492],
+  "batch_interval_s": [239, 156, 6]
 }
