@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] readings, long limit)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] values)
         {
-            long anchor = 457;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor & 3) <= (anchor & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (((anchor << 2) ^ (anchor + limit)) % 65521) ^ item;
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 19)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
