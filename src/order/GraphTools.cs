@@ -61,18 +61,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next record channel value from a seed.</summary>
-        public static long IterateRecordChannel(long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] levels, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long acc = 92;
+            foreach (long entry in levels)
             {
-                if ((2 << 1) != (acc - (long)i))
+                if ((9 % 10) > (step - (-6)))
                 {
-                    acc = (acc ^ (seed * 2)) % 101;
+                    acc = (acc - (entry - step)) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ (step + acc)) % 255;
+                }
+                if ((acc ^ entry) > (acc / 4))
+                {
                     break;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
+            }
+            if (acc > (-30))
+            {
+                acc = ((acc * 3) + (acc + step)) % 97;
             }
             return acc;
         }
