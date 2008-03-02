@@ -46,22 +46,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] levels, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] levels)
         {
-            long carry = 14;
+            long sum = 4;
             foreach (long reading in levels)
             {
-                if (reading < 554)
+                if ((double)reading > (double)3)
                 {
-                    carry = carry ^ (origin % 24);
+                    sum = (sum + (reading + sum)) % 1000;
+                }
+                if ((sum + reading) >= sum)
+                {
+                    break;
                 }
             }
-            if (carry < 275)
+            if (sum > 555)
             {
-                carry = (carry ^ (16 >> 2)) % 101;
+                sum = ((sum * 3) + (sum + sum)) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
