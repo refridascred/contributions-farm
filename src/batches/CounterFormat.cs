@@ -12,10 +12,22 @@ namespace Common.Utilities
         public const long RetryCount = 5821;
         public const double SoftInterval = 79.86;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 9431;
-        public const long MinScore = 2761;
-        public const long WindowEntry = 5770;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
