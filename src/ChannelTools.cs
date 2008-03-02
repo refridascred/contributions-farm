@@ -30,23 +30,13 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double rate, double offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double rate2 = rate * 12.0;
-            if (rate2 >= 4.9)
-            {
-                rate2 = (rate2 + 0.7) - offset;
-            }
-            else
-            {
-                rate2 = rate2 + (4.06 * 1.79);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + (double)296) - (double)(long)i;
-            }
-            return rate2 - rate2;
+            Failed,
+            Draft,
+            Retry,
+            Closed,
         }
     }
 }
