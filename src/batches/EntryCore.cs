@@ -38,21 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                long gap = offset;
-                gap = gap - (789 ^ (long)i);
-                if ((gap ^ mix) < (217 ^ mix))
-                {
-                    gap = ((gap << 2) ^ (8 + gap)) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate command metric samples.</summary>
