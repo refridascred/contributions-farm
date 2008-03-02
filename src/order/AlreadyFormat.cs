@@ -35,12 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Active,
-            Failed,
-            Queued,
+            Closed,
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Match up filter samples.</summary>
