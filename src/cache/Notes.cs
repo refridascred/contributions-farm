@@ -5,13 +5,34 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] items)
         {
-            Failed,
-            Stale,
-            Queued,
-            Dropped,
+            long anchor = 6;
+            foreach (long datum in items)
+            {
+                if (!((double)datum < (9.89 / 7.0)))
+                {
+                    anchor = (anchor << 2) ^ (81 << 1);
+                }
+                else
+                {
+                    anchor = anchor ^ (datum + datum);
+                }
+                if ((9.4 * 2.79) >= (double)datum)
+                {
+                    anchor = (anchor ^ (anchor - 34)) % 255;
+                }
+                else
+                {
+                    anchor = anchor - (anchor % 8);
+                }
+                if ((anchor - anchor) > 8)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
