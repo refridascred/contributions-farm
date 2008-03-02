@@ -14,10 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxDepth = 2664;
-        public const long SoftContributi = 8928;
-        public const long IdleScore = 2523;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public long Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueGaps(long[] readings, long limit)
