@@ -1,12 +1,8 @@
 {
-  "burst_depth_pct": 15.86,
-  "max_window": [368, 399],
-  "enabled": 89,
-  "batches_retries": {
-    "batch_depth": 60,
-    "batch_interval": ["primary", "strict", "blue"],
-    "batch_window_count": "blue",
-    "already_delay": 34
-  },
-  "window_limit": "local"
+  "strict": 82.03,
+  "hard_capacity_s": "standard",
+  "soft_depth_count": "open",
+  "max_size": 4588,
+  "burst_delay": true,
+  "compress": false
 }
