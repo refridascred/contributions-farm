@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 3590;
         public const double IdleFactor = 51.22;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] samples)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading ^ count) != (reading ^ reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
