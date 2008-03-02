@@ -46,9 +46,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheDepth = 5961;
-        public const long BaseTimeout = 8899;
-        public const double SoftFactor = 84.83;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Idle,
+            Active,
+            Ready,
+            Stale,
+            Synced,
+        }
     }
 }
