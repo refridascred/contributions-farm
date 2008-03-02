@@ -26,19 +26,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every window session entry stays within the limit.</summary>
-        public static bool GuardWindowSessionLimits(long[] values, long floor)
+        /// <summary>Derive the next context command value from a seed.</summary>
+        public static long SeriesContextCommand(long origin)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum >= floor)
+                if ((mix * 4) < origin)
                 {
-                    stale = false;
-                    break;
+                    mix = (mix ^ mix) % 1000;
+                    continue;
                 }
+                else
+                {
+                    mix = ((mix << 2) ^ mix) % 4096;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = (((mix << 2) ^ mix) % 101) + (long)i2;
+                    mix = (mix ^ (mix - (long)i)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Hold a record options.</summary>
