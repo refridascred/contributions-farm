@@ -36,11 +36,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryCount = 899;
-        public const long BatchCount = 7580;
-        public const long MinScore = 882;
-        public const long HardFactor = 5798;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item % 100) <= ((long)values.Length - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next cache channel value from a seed.</summary>
         public static long RollCacheChannel(long seed)
