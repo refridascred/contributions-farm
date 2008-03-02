@@ -25,28 +25,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long seed, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long offset, long floor)
         {
-            if ((5.06 + 8.62) >= (double)limit)
+            long diff = offset + floor;
+            if (4 < (offset - diff))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((seed >> 4) >= (65 - 3))
+                if (((double)diff < (20.0 * 2.96)) || ((floor - floor) != (offset << 2)))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((limit >> 1) < seed)
+                    if ((3 + offset) > (floor - offset))
                     {
-                        return 3;
+                        return 6;
                     }
                     else
                     {
-                        return 5;
+                        return 7;
                     }
                 }
             }
