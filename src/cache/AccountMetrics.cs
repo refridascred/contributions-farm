@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the queue metric series from a seed.</summary>
-        public static long RollQueueMetric(long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] readings, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                state = (state ^ (state + step)) % 97;
-                state = ((state * 3) + (long)i) % 4093;
+                if (sample > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Hold a command summary.</summary>
