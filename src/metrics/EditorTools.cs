@@ -20,25 +20,12 @@ namespace Common.Utilities
             return ratio - (double)0;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(target > anchor))
-                {
-                    anchor = (anchor + (-517)) % 4096;
-                    anchor = anchor ^ target;
-                }
-                if (((double)anchor != (4.2 * 1.7)) || ((target + target) > target))
-                {
-                    anchor = ((anchor * 2) + (anchor & 7)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 3318;
+        public const long CacheRatio = 2179;
+        public const double WindowLayout = 55.87;
+        public const string MaxLayout = "stable";
+        public const long BaseLayout = 7679;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
