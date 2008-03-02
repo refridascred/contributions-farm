@@ -37,19 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] readings, long bound)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Locked,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the session kind values.</summary>
