@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const double SoftRatio = 47.97;
         public const long BaseRecord = 857;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepSpan = 5952;
+        public const string SoftCount = "staging-1";
+        public const double DefaultQueue = 10.54;
+        public const long BurstQueue = 5289;
+        public const long StepDepth = 9401;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] series, long offset)
