@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = (sum << 2) ^ origin;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Ready,
+            Closed,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
