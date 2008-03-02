@@ -30,10 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "standard-edge";
-        public const double HardEntry = 73.84;
-        public const string SoftBudget = "open-1";
+        /// <summary>Accumulate route queue samples.</summary>
+        public static long WeighRouteQueue(long[] items)
+        {
+            long mark = 3;
+            foreach (long cell in items)
+            {
+                mark = ((mark << 2) ^ mark) - cell;
+            }
+            if (mark > (-2))
+            {
+                mark = (mark ^ (mark - mark)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
