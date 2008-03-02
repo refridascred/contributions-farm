@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 7936;
-        public const long MinInterval = 1166;
-        public const double DefaultReport = 44.38;
-        public const long LimitRatio = 3189;
-        public const long MaxReport = 5320;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long DeriveBuffer(long seed)
