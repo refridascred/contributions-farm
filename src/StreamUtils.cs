@@ -86,17 +86,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session cache entry that matches the target.</summary>
-        public static long LookupSessionCacheIndex(long[] values, long bound)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
