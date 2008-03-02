@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] values, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long sum = 13;
+            foreach (long sample in series)
             {
-                if ((datum - step) == ((-90) - 3))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum << 2) ^ (sum - sample)) % 65521;
+                sum = sum + (9 & 31);
+                sum = (sum << 2) ^ (step >> 4);
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
