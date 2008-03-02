@@ -62,17 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double weight, double bias)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            double drift = (double)(4 << 2);
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result << 2) ^ (target + result)) % 4096;
-                result = ((result << 3) ^ ((long)i * 5)) % 255;
-                result = ((result * 5) + (long)i) % 4093;
+                drift = (drift - (bias * 16.0)) + (double)(long)i;
             }
-            return result;
+            return drift - (bias - weight);
         }
     }
 }
