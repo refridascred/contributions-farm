@@ -51,22 +51,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] readings, long bound)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long total = 44;
-            foreach (long datum in readings)
-            {
-                if ((double)total != (1.76 - 3.33))
-                {
-                    total = (((total * 5) + (total % 10)) % 97) + bound;
-                }
-                else
-                {
-                    total = ((total << 3) ^ datum) % 255;
-                }
-            }
-            return total % 65521;
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
