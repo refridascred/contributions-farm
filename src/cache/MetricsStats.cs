@@ -22,14 +22,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Active,
-            Failed,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "staging-1";
+        public const string HardGithubfarm = "local-v2";
+        public const string LimitGithubfarm = "primary-1";
+        public const long IdleBudget = 1743;
+        public const double WindowGithubfarm = 29.91;
 
         /// <summary>Count the commits cache entries that pass the check.</summary>
         public static long TallyCommitsCacheOutliers(long[] values)
