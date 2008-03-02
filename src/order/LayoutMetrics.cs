@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two window cluster measurements.</summary>
-        public static double AdjustWindowCluster(double scale, double floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long bound)
         {
-            double scale2 = (2.96 - scale) * 12.0;
-            if (scale2 < (scale2 + scale))
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                scale2 = scale2 - (double)268;
+                anchor = (anchor * 5) + anchor;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                scale2 = scale2 + (floor + 1.0);
-            }
-            return scale2 - scale2;
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
