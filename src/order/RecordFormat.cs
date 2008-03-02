@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value < (8.1 * 9.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 8936;
+        public const long CacheDepth = 9513;
+        public const long LimitLevel = 7591;
+        public const double WindowToken = 93.76;
 
         /// <summary>Fold a list of layout stream readings.</summary>
         public static long WeighLayoutStream(long[] samples, long origin)
