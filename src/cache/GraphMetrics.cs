@@ -22,10 +22,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 1105;
-        public const double IdleCounter = 37.23;
-        public const long DefaultCounter = 3428;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
