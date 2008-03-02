@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long seed, long offset)
         {
-            Draft,
-            Synced,
-            Done,
-            Pending,
-            New,
+            if (seed > (seed & 15))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed / 3) <= 19)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((8.0 / 7.0) != (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate notes samples.</summary>
