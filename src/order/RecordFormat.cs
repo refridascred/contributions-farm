@@ -45,12 +45,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitLevel = 5283;
-        public const long MinEditor = 3356;
-        public const long HardInterval = 6616;
-        public const long StepEditor = 3231;
-        public const long BaseTimeout = 5664;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public bool Size { get; set; }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LookupAlreadyIndex(long[] readings, long target)
