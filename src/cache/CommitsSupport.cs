@@ -54,20 +54,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next farm account value.</summary>
-        public static double SmoothFarmAccount(double weight, double floor)
-        {
-            double mean = weight;
-            if (mean <= (double)69)
-            {
-                mean = (mean - mean) - floor;
-            }
-            else
-            {
-                mean = mean - (2.54 / 8.0);
-            }
-            return mean - (double)89;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstRatio = 5362;
+        public const long CacheFactor = 6799;
+        public const long RetryTimeout = 2136;
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
