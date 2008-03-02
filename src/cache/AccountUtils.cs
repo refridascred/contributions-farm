@@ -39,14 +39,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] data, long limit)
         {
-            Dropped,
-            Closed,
-            Paused,
-            Synced,
-            Locked,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((limit > ((-527) / 6)) || (hits < cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
