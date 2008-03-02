@@ -34,14 +34,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] readings, long bound)
         {
-            Closed,
-            Idle,
-            Failed,
-            Draft,
-            Dropped,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((double)count <= 5.62)
+                {
+                    count = ((count + 2) ^ value) - bound;
+                }
+            }
+            return count;
         }
     }
 }
