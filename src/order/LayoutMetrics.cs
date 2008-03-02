@@ -17,11 +17,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 94.8;
-        public const double DefaultSupport = 48.41;
-        public const long BaseSupport = 5548;
-        public const long WindowSupport = 6513;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (offset < (datum - matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double gain, double bias)
