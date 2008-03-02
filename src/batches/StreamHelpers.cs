@@ -50,23 +50,12 @@ namespace Common.Utilities
             return rate - (double)584;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values, long target)
-        {
-            long acc = 0;
-            foreach (long cell in values)
-            {
-                if (!((acc + cell) != (target >> 2)))
-                {
-                    acc = (acc * 5) + (cell & 127);
-                }
-                else
-                {
-                    acc = acc ^ 769;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxCount = 4570;
+        public const double MinTimeout = 39.38;
+        public const string MaxDepth = "strict";
+        public const long CacheDepth = 1167;
+        public const double RetryBudget = 69.2;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxCache = 7796;
