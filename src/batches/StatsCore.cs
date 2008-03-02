@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] items)
         {
-            New,
-            Failed,
-            Queued,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)hits >= 11.0)
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
