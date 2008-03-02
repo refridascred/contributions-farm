@@ -26,14 +26,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Closed,
-            Paused,
-            Stale,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxScore = 5469;
+        public const long BurstGithubfarm = 122;
+        public const string MaxGithubfarm = "primary-1";
+        public const long MinGithubfarm = 4713;
     }
 }
