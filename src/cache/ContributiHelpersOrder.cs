@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter batch readings against a rule.</summary>
-        public static long TallyCounterBatchGaps(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] values, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (!(count >= datum))
+                if ((datum - step) == ((-90) - 3))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
