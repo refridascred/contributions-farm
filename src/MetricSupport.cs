@@ -46,19 +46,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetryInterval = "staging-1";
+        public const long RetryLevel = 557;
+        public const long BaseSupport = 7303;
     }
 }
