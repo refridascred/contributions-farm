@@ -73,18 +73,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] readings, long step)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((0 % 16) != (tally + (long)readings.Length))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    tally = ((tally + 3) + sample) - step;
+                    sum = ((sum * 5) + (long)i) ^ (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
