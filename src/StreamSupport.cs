@@ -29,17 +29,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] samples, long floor)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
     }
 }
