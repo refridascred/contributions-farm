@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a batches format reading.</summary>
-        public static double ScaleBatchesFormat(double weight, double floor)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] levels, long offset)
         {
-            double rate = 16.0;
-            if (rate >= weight)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + floor;
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (weight + rate);
-            }
-            return rate - (weight / 9.0);
+            return -1;
         }
 
         /// <summary>Describe the format mode values.</summary>
