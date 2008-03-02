@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] readings)
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long acc = 267;
+            foreach (long sample in readings)
+            {
+                if (6 < sample)
+                {
+                    acc = ((acc << 3) ^ (acc / 6)) % 97;
+                    acc = (acc << 2) ^ (sample % 60);
+                }
+                acc = (acc + sample) % 1000;
+            }
+            if (acc < 82)
+            {
+                acc = (acc + (acc & 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
