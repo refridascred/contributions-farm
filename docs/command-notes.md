@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-Use counter settings to tune how often graph data is refreshed.
+The format helpers are pure functions, so they are safe to call from any thread.
+Each entry is validated before it reaches the token queue.
+
+Run the report check before changing any record limits.
+Run the schema check before changing any account limits.
+The route module keeps channel values in sync with the batches cache.
 
 ## Guidelines
 
-- Log every cluster change
-- Prefer metrics defaults
-- Document new commits fields
-- Validate account input early
+- Keep channel values small
+- Prefer entry defaults
+- Document new payload fields
