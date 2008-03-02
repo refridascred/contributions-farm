@@ -1,18 +1,5 @@
 {
-  "max_timeout_ms": 93,
-  "max_timeout": "edge",
-  "flush_limit_s": 100,
-  "contributi_depth": "cached",
-  "compress": {
-    "verbose": 86.97,
-    "retry_window_ms": ["fallback", "staging", "blue"],
-    "cache_ratio_pct": 62,
-    "min_limit_ms": {
-      "strict": 4843,
-      "editor_depth": ["cached", "legacy", "edge", "green"],
-      "dry_run": 26.22,
-      "persist": [411, 166, 450, 423]
-    }
-  },
-  "min_capacity_ms": "blue"
+  "warm_capacity_count": false,
+  "audit": 78.32,
+  "command_timeout": [340, 213]
 }
