@@ -1,5 +1,5 @@
 {
-  "format_size": [88, 147, 22, 176],
-  "report_delay": 75.07,
-  "compress": 65.86
+  "strict": 5522,
+  "order_retries": 75.02,
+  "default_limit_count": "blue"
 }
