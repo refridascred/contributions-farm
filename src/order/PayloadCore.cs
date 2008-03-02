@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 7543;
-        public const long BatchToken = 8801;
-        public const long BaseToken = 362;
-        public const double LimitLevel = 25.11;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Draft,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Derive the next route format value from a seed.</summary>
         public static long RollRouteFormat(long step)
