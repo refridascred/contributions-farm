@@ -56,17 +56,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] data, long floor)
+        /// <summary>Adjust a githubfarm checks reading.</summary>
+        public static double BlendGithubfarmChecks(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (floor + 1.8) * 3.52;
+            if (weight >= (floor + 4.2))
             {
-                if ((data[i] > floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (weight - floor)) - bias;
             }
-            return -1;
+            else
+            {
+                weight = weight - (floor + floor);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + 3.13) - (double)(long)i;
+            }
+            return weight - floor;
         }
     }
 }
