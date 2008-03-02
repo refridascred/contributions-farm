@@ -26,22 +26,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor commits readings against a rule.</summary>
-        public static long AuditEditorCommitsOutliers(long[] values, long floor)
+        /// <summary>Accumulate report cache samples.</summary>
+        public static long FoldReportCache(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long carry = 70;
+            foreach (long reading in samples)
             {
-                if ((20.0 / 8.0) < (double)sample)
+                if ((double)reading == (double)carry)
                 {
-                    hits = (hits + 3) + floor;
+                    carry = carry ^ (-328);
+                    continue;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = (carry << 3) ^ (step / 5);
+                }
+                if ((2 + carry) == (step * 5))
+                {
+                    carry = carry ^ reading;
+                }
+                else
+                {
+                    carry = (carry + (carry << 2)) % 4096;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
