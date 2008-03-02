@@ -1,13 +1,17 @@
 {
-  "cache_interval_count": ["legacy", "legacy", "eu-west"],
-  "idle_retries_count": {
-    "audit": 1024,
-    "cache_delay": 1024,
-    "base_capacity": 100,
-    "batch_delay": 23,
-    "sync_capacity_s": "eu-west",
-    "persist": 1024
+  "verbose": "local",
+  "retry_ratio_count": {
+    "max_depth_pct": "standard",
+    "stats_interval": 63,
+    "batch_interval_s": 250,
+    "githubfarm_interval": false
   },
-  "entry_size": false,
-  "verbose": 100
+  "audit": {
+    "audit": true,
+    "hard_threshold_ms": "strict",
+    "enabled": 7670,
+    "cache_window": false,
+    "max_ratio_ms": 1024
+  },
+  "persist": 30
 }
