@@ -20,20 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a stats counter counter forward.</summary>
-        public static long SeriesStatsCounter(long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] series, long step)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (!(8.0 < (double)step))
+                if (!(seen < (step & 15)))
                 {
-                    score = (score - (long)i) % 65521;
-                    score = (score * 5) + (score ^ 0);
+                    seen = (seen + 2) ^ reading;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Accumulate graph samples.</summary>
