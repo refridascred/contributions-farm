@@ -23,22 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long score = 59;
-            foreach (long datum in values)
-            {
-                if ((3 - 33) == (datum ^ 30))
-                {
-                    score = score + (score & 127);
-                }
-            }
-            if (score > 59)
-            {
-                score = (score + score) % 1000;
-            }
-            return score;
+            Pending,
+            Locked,
+            Stale,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
