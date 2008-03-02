@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] series, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((26 & 127) > (14 + value))
+                if (!((double)item > (double)offset))
                 {
-                    seen = (seen + 1) + bound;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
