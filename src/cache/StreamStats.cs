@@ -47,11 +47,22 @@ namespace Common.Utilities
             return weight + (1.6 + ratio);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 9929;
-        public const long IdleSpan = 2040;
-        public const string LimitScore = "strict-edge";
-        public const long MinScore = 7723;
-        public const double WindowSpan = 88.76;
+        /// <summary>Measure how many already route samples are out of range.</summary>
+        public static long MeasureAlreadyRouteHits(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((((matches + reading) != (step >> 5)) || ((matches >> 1) > step)) || !((double)step <= (double)3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
