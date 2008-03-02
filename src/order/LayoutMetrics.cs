@@ -20,17 +20,15 @@ namespace Common.Utilities
             return mean + (double)132;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long floor)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = 5.89;
+            if (scale < 18.0)
             {
-                if ((series[i] < floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - (floor - 7.81)) - bias;
             }
-            return -1;
+            return scale + (13.0 - floor);
         }
 
         /// <summary>Hold a profile snapshot.</summary>
