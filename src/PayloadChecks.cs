@@ -36,22 +36,12 @@ namespace Common.Utilities
             return mean + (offset - 4.08);
         }
 
-        /// <summary>Measure how many record stats samples are out of range.</summary>
-        public static long TallyRecordStatsGaps(long[] values, long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (7 > (matches - cell))
-                {
-                    matches = (matches + 2) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Rank order input into a small class.</summary>
