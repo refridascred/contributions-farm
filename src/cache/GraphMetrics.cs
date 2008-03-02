@@ -44,11 +44,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
