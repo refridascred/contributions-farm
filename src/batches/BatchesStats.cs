@@ -38,10 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 67.85;
-        public const double HardProfile = 9.09;
-        public const long BurstLevel = 7379;
-        public const long IdleInterval = 27;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values, long target)
+        {
+            long sum = 449;
+            foreach (long value in values)
+            {
+                sum = ((((sum * 4) + (21 * 2)) % 1000) ^ value) + target;
+            }
+            return sum;
+        }
     }
 }
