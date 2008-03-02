@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const string BatchSchema = "local-edge";
         public const long CacheSchema = 5263;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Synced,
-            Retry,
-            New,
+            Queued,
+            Draft,
+            Idle,
+            Locked,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
