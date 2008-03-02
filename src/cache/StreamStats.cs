@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] items)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long sum = 2;
-            foreach (long value in items)
-            {
-                sum = (sum ^ (value - sum)) % 65521;
-            }
-            if (sum < 33)
-            {
-                sum = ((sum << 2) ^ (15 - sum)) % 101;
-            }
-            return sum;
+            Stale,
+            Retry,
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the contributi class values.</summary>
