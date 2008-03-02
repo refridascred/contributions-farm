@@ -13,12 +13,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 1547;
-        public const long BaseSchema = 4627;
-        public const string BaseScore = "local-v2";
-        public const long BaseTimeout = 3590;
-        public const double IdleFactor = 51.22;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Synced,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
