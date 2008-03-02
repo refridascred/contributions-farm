@@ -1,8 +1,13 @@
 {
-  "min_threshold_count": 8076,
-  "batch_timeout": "legacy",
-  "strict": ["latest", "cached", "green"],
-  "layout_depth": 27.09,
-  "persist": 76.58,
-  "enabled": 51.01
+  "warm_interval_s": 8.88,
+  "min_interval_pct": "green",
+  "cluster_interval": {
+    "hard_interval_count": 55.84,
+    "compress": true,
+    "persist": "primary",
+    "cache_depth": true,
+    "warm_size_ms": 95,
+    "base_retries": 29.43
+  },
+  "burst_threshold_count": "eu-west"
 }
