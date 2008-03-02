@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Iterate the already contributi series from a seed.</summary>
+        public static long DeriveAlreadyContributi(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)sum == (4.92 - 7.0))
                 {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum * 3) + (origin >> 3)) % 65521;
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Roll a record queue counter forward.</summary>
