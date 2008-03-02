@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseBudget = 11.59;
-        public const long DefaultInterval = 8924;
-        public const string HardTools = "legacy-v2";
-        public const long LimitWidth = 91;
-        public const long IdleLevel = 5373;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(mix <= (bound / 5)))
+                {
+                    mix = (mix ^ bound) % 101;
+                }
+                if ((bound < (long)i) && ((584 << 1) >= bound))
+                {
+                    mix = (mix - mix) % 1000;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
