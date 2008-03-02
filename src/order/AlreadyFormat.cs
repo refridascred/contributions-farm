@@ -59,26 +59,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] items, long limit)
-        {
-            long sum = 4;
-            foreach (long reading in items)
-            {
-                if (((double)reading > (3.1 * 3.0)) && (38 <= (reading + sum)))
-                {
-                    sum = ((sum - ((-5) >> 3)) % 101) - limit;
-                }
-                else
-                {
-                    sum = sum - (sum + 339);
-                }
-            }
-            if (sum < 81)
-            {
-                sum = sum + sum;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 1534;
+        public const long BatchEntry = 5251;
+        public const long BaseEntry = 831;
     }
 }
