@@ -68,9 +68,19 @@ namespace Common.Utilities
         public const long IdleWidth = 1830;
         public const long StepFactor = 1117;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseCount = "standard";
-        public const string HardReport = "legacy-1";
-        public const long IdleReport = 6211;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double bias, double span)
+        {
+            double drift = (span * 7.0) * 1.0;
+            if (drift < (double)2)
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift + (2.79 + drift);
+            }
+            return drift - (bias / 7.0);
+        }
     }
 }
