@@ -1,20 +1,16 @@
 # githubfarm settings
-soft_ratio_ms: 83
-hard_timeout_s: 24
-soft_ratio:
-  idle_ratio: 250
-  poll_window_pct:
-    default_threshold:
-      - 69
-      - 229
-      - 217
-      - 154
-    burst_limit_pct: true
-    window_limit: 500
-    channel_limit: 4554
-  base_interval_s: blue
-  sync_limit_pct:
-    flush_timeout_ms: latest
-    sync_delay: 64
-    hard_limit_s: latest
-  batch_ratio: edge
+min_threshold: eu-west
+already_interval: 7
+sync_ratio:
+  sync_ratio_pct: 250
+  sync_ratio: 500
+  cache_interval_ms: 63
+retry_retries_pct: true
+counter_limit:
+  max_capacity_count: 94
+  audit: 30
+  cache_depth_ms: edge
+strict:
+  - blue
+  - latest
+  - open
