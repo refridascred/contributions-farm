@@ -65,11 +65,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinSpan = "local-edge";
-        public const string BaseCommits = "legacy-1";
-        public const string MinFactor = "alpha-1";
-        public const long IdleLevel = 2429;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] items, long limit)
