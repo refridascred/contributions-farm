@@ -1,5 +1,8 @@
 {
-  "hard_depth_ms": 30,
-  "hard_ttl": 83.74,
-  "payload_ttl": [122, 342]
+  "strict": false,
+  "default_window": true,
+  "verbose": false,
+  "readonly": 92.07,
+  "persist": 34.92,
+  "dry_run": 60
 }
