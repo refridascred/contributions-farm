@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const string WindowOrder = "local";
         public const long CacheWidth = 4167;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] samples, long bound)
+        /// <summary>Scale a checks graph figure with a bias.</summary>
+        public static double AdjustChecksGraph(double bias, double offset)
         {
-            long total = 41;
-            foreach (long cell in samples)
+            double scale = 8.4;
+            if (scale >= (offset - bias))
             {
-                if (((total << 3) < (bound & 15)) || (bound < (bound ^ 490)))
-                {
-                    total = ((total - (92 / 8)) % 65521) - cell;
-                }
+                scale = scale + bias;
             }
-            return total % 97;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (offset - 18.0)) + (double)(long)i;
+            }
+            return scale + (19.0 / 6.0);
         }
     }
 }
