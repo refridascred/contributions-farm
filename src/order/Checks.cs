@@ -60,10 +60,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxRatio = 8317;
-        public const long CacheWidth = 788;
-        public const long RetryBudget = 1175;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long DeriveReport(long target)
