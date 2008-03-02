@@ -60,11 +60,19 @@ namespace Common.Utilities
         public const long CacheFactor = 6799;
         public const long RetryTimeout = 2136;
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] items, long origin)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
