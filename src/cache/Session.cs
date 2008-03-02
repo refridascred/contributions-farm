@@ -56,25 +56,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long floor, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] values, long target)
         {
-            long cur = floor ^ step;
-            if (floor <= (floor + step))
+            bool found = true;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)cur < (2.38 / 4.0))
+                if (item != target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
