@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] samples, long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (tally < (sample / 9))
+                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
                 {
-                    tally = (tally + 3) + limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
