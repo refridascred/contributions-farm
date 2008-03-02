@@ -17,14 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 78.31;
+        public const double CacheSupport = 35.4;
+        public const long RetryFactor = 1085;
+        public const long DefaultCount = 3234;
+        public const long BaseSupport = 2489;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] values, long seed)
