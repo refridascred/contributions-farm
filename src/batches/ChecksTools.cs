@@ -14,21 +14,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] series)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Active,
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a context snapshot.</summary>
