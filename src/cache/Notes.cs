@@ -43,31 +43,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long target, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] values, long limit)
         {
-            if (!((double)target >= (double)origin))
+            bool stale = true;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((20.0 / 5.0) > (double)origin)
+                if (reading > limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin + target) == (target - target)) || ((14.0 * 16.0) != (double)origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
