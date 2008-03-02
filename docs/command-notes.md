@@ -1,11 +1,11 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Keep batches and window names short and lowercase.
+When a batch fails, the cache handler retries a few times before giving up.
+A batches that stays idle for too long is moved to the schema list.
+The token report groups every support by cluster.
 
 ## Guidelines
 
-- Validate tools input early
-- Review command limits each release
-- Document new queue fields
-- Keep entry values small
+- Keep editor values small
+- Review account limits each release
+- Prefer entry defaults
