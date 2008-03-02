@@ -25,32 +25,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long offset, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] items, long step)
         {
-            long diff = offset + floor;
-            if (4 < (offset - diff))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)diff < (20.0 * 2.96)) || ((floor - floor) != (offset << 2)))
+                if (((double)122 >= (double)count) && ((7.6 * 7.16) != (double)step))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((3 + offset) > (floor - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 1) + entry;
                 }
             }
+            return count;
         }
     }
 }
