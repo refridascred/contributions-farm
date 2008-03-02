@@ -1,12 +1,11 @@
 # Command notes
 
-Keep notes and graph names short and lowercase.
-Keep batches and profile names short and lowercase.
-The window module keeps order values in sync with the graph cache.
+Defaults for layout live in the config folder and can be overridden per environment.
+Use counter settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Keep contributi values small
-- Document new notes fields
-- Prefer entry defaults
-- Review counter limits each release
+- Log every cluster change
+- Prefer metrics defaults
+- Document new commits fields
+- Validate account input early
