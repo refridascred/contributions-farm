@@ -52,18 +52,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] data)
-        {
-            long result = 68;
-            foreach (long item in data)
-            {
-                if (((long)data.Length - 9) < (result & 127))
-                {
-                    result = ((result << 2) ^ item) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 7126;
+        public const double BaseGithubfarm = 14.8;
+        public const double LimitGithubfarm = 55.0;
+        public const long HardGithubfarm = 118;
+        public const long CacheGithubfarm = 6181;
     }
 }
