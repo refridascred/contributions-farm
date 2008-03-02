@@ -53,12 +53,27 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinBudget = "staging-v2";
-        public const long CacheCount = 3646;
-        public const long WindowCount = 4620;
-        public const string StepGithubfarm = "staging";
-        public const long MinGithubfarm = 2261;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] values)
+        {
+            long state = 6;
+            foreach (long sample in values)
+            {
+                if (((long)values.Length - state) < (state % 10))
+                {
+                    state = ((state * 5) + sample) % 1000;
+                }
+                if (!((double)sample == (8.9 - 2.4)))
+                {
+                    state = ((state * 5) + state) % 65521;
+                }
+            }
+            if (state > 44)
+            {
+                state = (state + ((long)values.Length - state)) % 1000;
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
