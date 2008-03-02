@@ -35,21 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up account contributi samples.</summary>
-        public static long OverlapAccountContributiCount(long[] levels)
+        /// <summary>Validate profile support readings against a bound.</summary>
+        public static bool ValidateProfileSupportBounds(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item > step)
                 {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
