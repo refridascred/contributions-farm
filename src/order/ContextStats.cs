@@ -22,15 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
