@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=241
+COMMAND_LIMIT=142
 log "limit is ${COMMAND_LIMIT}"
 
-for item in blue cached local stable; do
+for item in standard green; do
     log "checking ${item}"
 done
