@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double scale, double floor)
+        /// <summary>Measure how many token report samples are out of range.</summary>
+        public static long TallyTokenReportGaps(long[] readings, long origin)
         {
-            double ratio = scale * 6.0;
-            if (ratio <= (scale + 0.38))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                ratio = ratio - floor;
+                if ((202 ^ (-5)) != (origin + tally))
+                {
+                    tally = (tally + 2) - sample;
+                }
             }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            return ratio - scale;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
