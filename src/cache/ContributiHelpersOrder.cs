@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long origin)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a record queue counter forward.</summary>
