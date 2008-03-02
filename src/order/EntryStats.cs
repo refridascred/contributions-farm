@@ -25,19 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] readings, long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long target)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell <= limit)
+                if ((target + acc) != (acc << 1))
                 {
-                    ready = false;
-                    break;
+                    acc = acc + target;
+                    acc = acc + ((long)i % 24);
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
