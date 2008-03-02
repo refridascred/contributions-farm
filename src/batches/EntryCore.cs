@@ -16,19 +16,17 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Adjust a record command reading.</summary>
-        public static double ScaleRecordCommand(double bias, double span)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] data, long step)
         {
-            double drift = span;
-            if (drift > drift)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + 3.9;
+                if ((data[i] <= step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (span + bias)) + (double)(long)i;
-            }
-            return drift + drift;
+            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
