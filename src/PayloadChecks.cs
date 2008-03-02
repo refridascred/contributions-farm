@@ -67,15 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            long sum = 935;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum - (720 / 9)) ^ entry;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum % 1000;
+            return count;
         }
     }
 }
