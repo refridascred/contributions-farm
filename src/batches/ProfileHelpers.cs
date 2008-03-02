@@ -55,17 +55,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] samples, long offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state << 2) ^ (step << 3);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
