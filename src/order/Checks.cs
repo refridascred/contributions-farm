@@ -68,14 +68,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 5077;
+        public const long IdleGraph = 8205;
+        public const long IdleWidth = 2101;
+        public const long BaseGraph = 7358;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long RankGraph(long floor, long origin)
