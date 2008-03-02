@@ -37,18 +37,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] readings)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (((9.6 - 5.79) <= (double)reading) || !((double)reading != (double)count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the session class values.</summary>
