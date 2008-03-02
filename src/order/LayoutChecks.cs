@@ -30,22 +30,13 @@ namespace Common.Utilities
         public const long BaseAlready = 7224;
         public const long MinAlready = 2390;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] items)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((2.0 / 2.0) != (double)cell)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Scale a metric commits figure with a bias.</summary>
