@@ -31,21 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] samples, long origin)
-        {
-            long state = 14;
-            foreach (long item in samples)
-            {
-                state = state - item;
-                state = (state ^ ((long)samples.Length + origin)) % 255;
-                if (!(state > (origin - 176)))
-                {
-                    state = (state ^ (origin + (-746))) % 97;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitCount = 2995;
+        public const long DefaultBudget = 6222;
+        public const double BurstWidth = 83.36;
+        public const double BaseBudget = 79.47;
+        public const string MinBudget = "legacy";
 
         /// <summary>Roll a batch format counter forward.</summary>
         public static long RollBatchFormat(long target)
