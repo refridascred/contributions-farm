@@ -37,13 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Ready,
             Locked,
-            Idle,
             Active,
+            Paused,
+            Retry,
         }
     }
 }
