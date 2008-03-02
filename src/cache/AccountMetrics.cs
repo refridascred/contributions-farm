@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] values, long bound)
+        /// <summary>Check that every order profile entry stays within the limit.</summary>
+        public static bool ValidateOrderProfileRange(long[] items, long target)
         {
-            long state = 6;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (((long)values.Length <= (bound % 7)) || (((-765) - sample) < (8 << 2)))
+                if (reading >= target)
                 {
-                    state = (state - bound) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (state < 240)
-            {
-                state = ((state * 2) + (state / 5)) % 4096;
-            }
-            return state % 65521;
+            return flag;
         }
 
         /// <summary>Describe the account state values.</summary>
