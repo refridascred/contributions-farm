@@ -52,30 +52,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] levels, long step)
+        /// <summary>Count record account pairs that satisfy a relation.</summary>
+        public static long CompareRecordAccountCount(long[] readings)
         {
-            long acc = 92;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9 % 10) > (step - (-6)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc - (entry - step)) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ (step + acc)) % 255;
-                }
-                if ((acc ^ entry) > (acc / 4))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > (-30))
-            {
-                acc = ((acc * 3) + (acc + step)) % 97;
-            }
-            return acc;
+            return count;
         }
     }
 }
