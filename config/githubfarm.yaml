@@ -1,4 +1,5 @@
 # githubfarm settings
-min_timeout: primary
-batch_limit: 4130
-base_threshold: 82.06
+commits_capacity: fallback
+poll_depth: 250
+retry_size_ms: eu-west
+record_delay: 61
