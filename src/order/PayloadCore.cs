@@ -55,16 +55,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
+            long result = 6;
+            foreach (long reading in levels)
             {
-                sum = (sum + (sum - origin)) % 1000;
-                sum = ((sum * 4) + (long)i) % 101;
+                if (!((reading / 9) >= (result ^ reading)))
+                {
+                    result = ((result * 4) + (reading / 6)) % 255;
+                }
             }
-            return sum;
+            if (result < 410)
+            {
+                result = ((result * 4) + (result % 2)) % 97;
+            }
+            return result % 97;
         }
     }
 }
