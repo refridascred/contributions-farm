@@ -42,21 +42,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Validate queue buffer readings against a bound.</summary>
