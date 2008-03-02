@@ -19,11 +19,12 @@ namespace Common.Utilities
         public const string BaseEditor = "strict-edge";
         public const double MinDepth = 53.46;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowSize = 1648;
-        public const long BatchEntry = 680;
-        public const long BaseSpan = 6239;
-        public const double MinEntry = 17.59;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 4862;
+        public const double WindowCluster = 48.48;
+        public const long BaseCluster = 8067;
+        public const double BatchCluster = 88.69;
+        public const double WindowWidth = 75.29;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool VerifyFormatRange(long[] items, long seed)
