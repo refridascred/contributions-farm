@@ -1,6 +1,11 @@
 # support settings
-warm_ratio: blue
-soft_threshold_count: 41
-sync_threshold_pct: true
-batch_limit: true
-support_limit: true
+hard_depth: false
+batch_timeout_ms:
+  - cached
+  - edge
+  - blue
+  - latest
+default_retries_pct: 1024
+dry_run: green
+context_interval: cached
+queue_interval: edge
