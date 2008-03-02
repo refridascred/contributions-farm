@@ -1,7 +1,7 @@
-id,level,rank,weight
-1,743,48.82,staging
-2,cached,eu-west,315
-3,fallback,184,local
-4,10.49,505,519
-5,fallback,standard,eu-west
-6,563,stable,latest
+id,count
+1,12.21
+2,75.57
+3,974
+4,48.3
+5,local
+6,501
