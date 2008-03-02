@@ -42,19 +42,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every already tools entry stays within the limit.</summary>
-        public static bool GuardAlreadyToolsBounds(long[] samples, long seed)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            double gain = (ratio + ratio) / 7.0;
+            if (gain > 18.0)
             {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain - ratio) + floor;
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (double)(-5)) + (double)(long)i;
+            }
+            return gain - (double)3;
         }
 
         /// <summary>Roll a support counter forward.</summary>
