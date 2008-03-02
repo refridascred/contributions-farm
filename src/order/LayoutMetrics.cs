@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two checks support measurements.</summary>
-        public static double ScaleChecksSupport(double rate, double floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long limit)
         {
-            double mean = floor + rate;
-            if (mean < (double)68)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                mean = mean - rate;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean + (double)132;
+            return anchor;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
