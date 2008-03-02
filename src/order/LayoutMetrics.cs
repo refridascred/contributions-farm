@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Blend two window cluster measurements.</summary>
+        public static double AdjustWindowCluster(double scale, double floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            double scale2 = (2.96 - scale) * 12.0;
+            if (scale2 < (scale2 + scale))
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                scale2 = scale2 - (double)268;
             }
-            return anchor;
+            else
+            {
+                scale2 = scale2 + (floor + 1.0);
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
