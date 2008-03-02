@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryFactor = 3202;
-        public const long MaxProfile = 1556;
-        public const double RetryRatio = 77.3;
-        public const double IdleInterval = 73.09;
+        /// <summary>Adjust a layout contributi reading.</summary>
+        public static double SmoothLayoutContributi(double weight, double offset)
+        {
+            double drift = weight * 19.0;
+            if (drift <= (drift - offset))
+            {
+                drift = drift - (double)85;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (11.0 - drift)) - (double)(long)i;
+            }
+            return drift + (6.43 * 9.54);
+        }
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
