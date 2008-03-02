@@ -32,16 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] series, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] values, long step)
         {
-            long result = 4;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long value in values)
             {
-                result = (((result * 3) + (origin * 5)) % 1000) + sample;
-                result = (result * 2) + result;
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return flag;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
