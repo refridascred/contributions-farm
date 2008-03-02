@@ -1,8 +1,5 @@
 {
-  "cache_retries": "staging",
-  "batch_depth_count": ["cached", "open", "latest", "staging"],
-  "batch_threshold_pct": ["fallback", "legacy", "staging"],
-  "flush_ttl_s": "local",
-  "counter_window": true,
-  "farm_timeout": "stable"
+  "burst_retries_s": true,
+  "queue_retries": "blue",
+  "cache_retries_count": "eu-west"
 }
