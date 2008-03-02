@@ -19,13 +19,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public double Flag { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
