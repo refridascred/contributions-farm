@@ -1,10 +1,14 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the batch list.
-Keep tools and queue names short and lowercase.
+Each session is validated before it reaches the metric queue.
+The format report groups every entry by stats.
+
+Run the batch check before changing any commits limits.
+Keep record and window names short and lowercase.
 
 ## Guidelines
 
-- Keep payload values small
-- Log every checks change
-- Prefer window defaults
+- Document new filter fields
+- Prefer stats defaults
+- Validate stream input early
+- Log every format change
