@@ -43,19 +43,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] series, long step)
+        /// <summary>Audit command cluster readings against a rule.</summary>
+        public static long TallyCommandClusterOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (sample != step)
+                if ((tally + tally) != (tally >> 2))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
