@@ -60,12 +60,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a payload layout value against two limits.</summary>
