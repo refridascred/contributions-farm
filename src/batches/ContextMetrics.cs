@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] items, long step)
+        /// <summary>Match up profile entry samples.</summary>
+        public static long CompareProfileEntryCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step - entry) == (entry / 9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up account contributi samples.</summary>
