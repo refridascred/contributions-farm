@@ -1,7 +1,15 @@
 {
-  "queue_interval": "cached",
-  "dry_run": 65.14,
-  "max_interval": 250,
-  "sync_threshold_count": false,
-  "idle_capacity_pct": "standard"
+  "compress": 23.71,
+  "max_size_ms": "open",
+  "min_size": 12.95,
+  "soft_delay_s": "latest",
+  "poll_timeout_count": {
+    "soft_delay_ms": 58.45,
+    "audit": 0.98,
+    "retry_depth_count": true,
+    "min_threshold_ms": "staging",
+    "poll_limit_count": 94.79,
+    "burst_size": 8982
+  },
+  "flush_ratio_count": "cached"
 }
