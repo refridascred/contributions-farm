@@ -1,20 +1,14 @@
 # support settings
-burst_ttl_ms: 13.7
-warm_threshold:
-  - cached
-  - primary
-retry_ratio_count: 24
+max_capacity_ms: strict
 audit:
-  min_timeout: 64.62
-  commits_delay: 6.75
-  layout_threshold:
-    retry_limit_pct:
-      - latest
-      - primary
-      - legacy
-    hard_interval: green
-    default_window:
-      - 98
-      - 477
-      - 207
-      - 321
+  - cached
+  - eu-west
+  - blue
+  - primary
+sync_retries: open
+min_interval: green
+already_ratio:
+  - blue
+  - strict
+  - blue
+  - standard
