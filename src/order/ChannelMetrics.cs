@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Closed,
-            Done,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 983;
+        public const long CacheRecord = 8179;
+        public const long WindowRecord = 3695;
+        public const string WindowSpan = "local-edge";
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ProjectGraph(double scale, double span)
