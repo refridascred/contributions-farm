@@ -27,12 +27,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepFactor = 8116;
-        public const double RetryLayout = 84.96;
-        public const string WindowSize = "legacy-edge";
-        public const long HardLayout = 2728;
-        public const string BurstLayout = "legacy";
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksHits(long[] levels)
