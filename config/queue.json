@@ -1,19 +1,5 @@
 {
-  "soft_limit_ms": {
-    "warm_ttl": ["strict", "standard"],
-    "audit": {
-      "tools_window": 2.48,
-      "flush_timeout_count": 250,
-      "persist": ["local", "primary"],
-      "enabled": "edge",
-      "idle_window_count": "green"
-    },
-    "batch_timeout_pct": 38,
-    "warm_retries_s": 1466
-  },
-  "readonly": 1024,
-  "strict": "latest",
-  "already_timeout": "blue",
-  "layout_timeout": 500,
-  "session_ttl": "open"
+  "persist": true,
+  "tools_timeout": false,
+  "soft_retries_pct": true
 }
