@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] items, long floor)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long sample in items)
             {
-                if (((target + seen) == (seen + 87)) || ((double)seen > (7.2 * 20.0)))
+                if (((sample + 15) >= sample) || (sample > (floor << 2)))
                 {
-                    seen = (seen + 3) + entry;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
