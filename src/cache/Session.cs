@@ -54,31 +54,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank editor counter input into a small class.</summary>
-        public static long BucketEditorCounter(long target, long target2)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            if (8.5 > (double)target2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target + target2) >= target2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((target % 24) < (target2 + target2)) && ((5.51 + 2.1) != (double)target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Dropped,
+            Closed,
+            Queued,
         }
     }
 }
