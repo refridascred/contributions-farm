@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Dropped,
-            Closed,
-            Ready,
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
