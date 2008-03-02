@@ -19,23 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double weight, double offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double drift = weight / 4.0;
-            if (drift <= offset)
-            {
-                drift = drift - (offset - offset);
-            }
-            else
-            {
-                drift = drift - (drift + 4.9);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (drift * 6.0)) + (double)(long)i;
-            }
-            return drift + (6.0 - 9.0);
+            Ready,
+            Active,
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
