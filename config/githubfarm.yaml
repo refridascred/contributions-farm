@@ -1,39 +1,20 @@
 # githubfarm settings
-burst_ttl: true
-max_delay_s:
-  flush_timeout:
-    base_retries_pct: green
-    soft_window_ms: false
-    cache_retries_s: standard
-    idle_ttl_s:
-      - 198
-      - 349
-      - 93
-      - 245
-    idle_size_pct:
-      - legacy
-      - cached
-  graph_capacity:
-    - strict
-    - open
-    - standard
-    - latest
-  idle_retries_count:
-    - 396
-    - 368
-    - 364
-    - 479
-retry_timeout:
-  burst_threshold_s: 2827
-  soft_ttl_pct:
-    - 92
-    - 147
-    - 23
-    - 90
-  warm_threshold_ms: 95.81
-  stats_depth: true
-  flush_delay_pct:
-    - 275
-    - 54
-  record_capacity: fallback
-account_window: blue
+burst_window: eu-west
+hard_interval_count:
+  poll_capacity: 4
+  layout_capacity:
+    - 39
+    - 128
+  max_capacity_s: legacy
+  strict: 36
+burst_depth_pct: open
+soft_size_s: false
+token_size:
+  base_ttl_count: open
+  compress: false
+  retry_threshold_ms: green
+  channel_threshold: 37.08
+  retry_size_s:
+    - edge
+    - green
+command_size: 51
