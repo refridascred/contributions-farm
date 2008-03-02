@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Paused,
-            Active,
-            Closed,
-            Synced,
-            New,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryStream = "stable";
+        public const long StepLevel = 790;
+        public const long MinStream = 8125;
+        public const long WindowStream = 6846;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
