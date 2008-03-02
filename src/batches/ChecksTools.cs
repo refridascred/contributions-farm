@@ -41,15 +41,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two profile tools measurements.</summary>
-        public static double ScaleProfileTools(double rate, double bias)
-        {
-            double weight = rate;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - bias) - (double)(long)i;
-            }
-            return weight + (double)(-184);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 6455;
+        public const long DefaultTools = 7093;
+        public const long CacheTools = 5452;
     }
 }
