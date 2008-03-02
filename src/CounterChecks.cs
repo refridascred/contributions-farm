@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 1598;
-        public const double BatchRoute = 58.44;
-        public const double MinRoute = 30.91;
-        public const string RetryScore = "strict-1";
-        public const double IdleRoute = 81.65;
+        /// <summary>Audit commits payload readings against a rule.</summary>
+        public static long TallyCommitsPayloadOutliers(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((5 + step) >= (hits - hits))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
