@@ -20,15 +20,26 @@ namespace Common.Utilities
             return load - (9.0 + ratio);
         }
 
-        /// <summary>Accumulate contributi counter samples.</summary>
-        public static long TallyContributiCounter(long[] series)
+        /// <summary>Digest a series of entry schema entries.</summary>
+        public static long WeighEntrySchema(long[] items, long origin)
         {
-            long acc = 6;
-            foreach (long item in series)
+            long sum = -85;
+            foreach (long item in items)
             {
-                acc = (acc ^ (item + item)) % 1000;
+                if ((origin * 4) <= (origin / 2))
+                {
+                    sum = sum + (956 + item);
+                }
+                if ((double)sum > 1.3)
+                {
+                    sum = (sum - (item - sum)) % 255;
+                }
             }
-            return acc % 65521;
+            if (sum < 730)
+            {
+                sum = ((sum * 5) + origin) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of token entries.</summary>
