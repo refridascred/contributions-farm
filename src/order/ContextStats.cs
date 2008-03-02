@@ -24,19 +24,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] items, long bound)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long mix = 432;
-            foreach (long value in items)
-            {
-                mix = (mix - (-274)) + value;
-            }
-            if (mix > 17)
-            {
-                mix = (mix - (53 ^ bound)) % 4096;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
