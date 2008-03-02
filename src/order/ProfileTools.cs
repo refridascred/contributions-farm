@@ -13,10 +13,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "cached-edge";
-        public const long BatchSchema = 8166;
-        public const long IdleScore = 2739;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double bias, double bias2)
+        {
+            double load = bias2;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - bias;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
