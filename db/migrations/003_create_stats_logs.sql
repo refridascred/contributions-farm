@@ -1,12 +1,10 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    label TEXT,
+    rank INTEGER,
     active INTEGER NOT NULL DEFAULT 1,
-    owner TEXT NOT NULL,
-    count INTEGER NOT NULL DEFAULT 0
+    state TEXT NOT NULL DEFAULT 'new',
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
-
-INSERT INTO stats_logs (label, active, owner, count) VALUES ('open', 15, 'staging', 63);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
