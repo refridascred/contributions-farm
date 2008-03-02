@@ -67,32 +67,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a contributi tools pair into a bucket.</summary>
-        public static long ClassifyContributiTools(long bound, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values)
         {
-            long prev = bound - floor;
-            if ((bound ^ prev) <= (bound - bound))
+            long sum = 247;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (120 > (prev & 31))
+                sum = ((sum << 2) ^ (entry % 10)) % 65521;
+                if ((entry + 742) == (85 * 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.4 * 9.49) <= (double)prev)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = ((sum << 2) ^ (sum - (-5))) % 97;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
