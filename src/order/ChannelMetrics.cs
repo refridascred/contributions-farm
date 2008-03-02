@@ -22,18 +22,19 @@ namespace Common.Utilities
             return weight - (double)51;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] readings)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double bias2 = weight;
+            if (bias2 >= (5.1 - weight))
             {
-                if ((entry >> 1) >= (entry >> 5))
-                {
-                    seen = seen + 3;
-                }
+                bias2 = (bias2 - (double)0) + bias;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - 3.0) + (double)(long)i;
+            }
+            return bias2 - (double)85;
         }
     }
 }
