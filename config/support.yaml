@@ -1,6 +1,8 @@
 # support settings
-min_depth: false
-burst_interval_count:
-  - 108
-  - 297
-min_window_s: 3854
+warm_limit: 36
+metrics_ttl:
+  - 355
+  - 171
+  - 135
+  - 282
+cache_window_pct: 56
