@@ -40,15 +40,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double ratio, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] series)
         {
-            double weight = bias;
-            if (weight >= weight)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                weight = weight + (double)659;
+                if ((double)reading == (6.12 / 2.0))
+                {
+                    matches = matches + 2;
+                }
             }
-            return weight + (1.6 + ratio);
+            return matches;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
