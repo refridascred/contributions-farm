@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] data, long origin)
+        /// <summary>Classify a cache command pair into a bucket.</summary>
+        public static long BucketCacheCommand(long origin, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!((8.35 / 2.0) <= (double)origin))
             {
-                if (data[i] <= origin)
+                return 3;
+            }
+            else
+            {
+                if (!((6.1 + 17.0) >= (double)origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
