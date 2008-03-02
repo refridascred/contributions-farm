@@ -1,6 +1,12 @@
 # githubfarm settings
-burst_interval: 250
-profile_interval: local
-sync_threshold: 66.41
-retry_capacity: green
-burst_delay_count: blue
+githubfarm_limit: 30
+hard_capacity_ms:
+  - 109
+  - 276
+cache_delay_pct:
+  - 187
+  - 287
+  - 299
+burst_ttl_pct:
+  - 387
+  - 463
