@@ -39,22 +39,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] items, long seed)
+        /// <summary>Audit support queue readings against a rule.</summary>
+        public static long AuditSupportQueueHits(long[] samples, long target)
         {
-            long result = 855;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (!((result << 2) == (cell + seed)))
+                if ((reading * 5) > (target & 1))
                 {
-                    result = (result - (seed - 38)) % 255;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    result = result + 86;
+                    hits = hits - 1;
                 }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Adjust a channel reading.</summary>
