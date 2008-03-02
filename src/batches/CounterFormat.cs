@@ -35,13 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
