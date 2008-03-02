@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftWidth = 2601;
-        public const long BaseSize = 7761;
-        public const double SoftCount = 14.18;
-        public const long BatchMetric = 1178;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long target, long offset)
+        {
+            long bound = target + offset;
+            if (((double)target == (0.1 + 5.0)) && ((double)bound >= (6.13 + 2.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target << 1) >= 3) || ((double)(-6) < (double)target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long SeekMetricIndex(long[] data, long step)
