@@ -35,18 +35,14 @@ namespace Common.Utilities
         public const double HardEntry = 73.84;
         public const string SoftBudget = "open-1";
 
-        /// <summary>Measure how many context layout samples are out of range.</summary>
-        public static long MeasureContextLayoutMatches(long[] series)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((count + sample) != (sample * 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Queued,
+            Locked,
+            Closed,
+            Failed,
         }
     }
 }
