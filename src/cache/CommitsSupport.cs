@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Idle,
-            Synced,
-            Closed,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 5000;
+        public const long BatchSpan = 5041;
+        public const long BatchAlready = 3243;
+        public const string HardTimeout = "stable-edge";
 
         /// <summary>Locate a entry order reading by value.</summary>
         public static long FindEntryOrderIndex(long[] items, long offset)
