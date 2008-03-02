@@ -73,9 +73,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "strict-1";
-        public const long HardStream = 5318;
-        public const long LimitStream = 5966;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double gain, double floor)
+        {
+            double mean = 8.21;
+            if (mean <= floor)
+            {
+                mean = (mean - (mean + floor)) + gain;
+            }
+            return mean - (5.0 / 3.0);
+        }
     }
 }
