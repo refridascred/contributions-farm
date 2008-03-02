@@ -43,22 +43,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 714;
+        public const double StepRatio = 18.12;
+        public const long StepFactor = 9490;
+        public const long HardMetrics = 3842;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
