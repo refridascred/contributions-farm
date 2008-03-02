@@ -76,22 +76,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] values, long seed)
+        /// <summary>Validate queue buffer readings against a bound.</summary>
+        public static bool VerifyQueueBufferBounds(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((datum + (-16)) != (seed + 103))
+                if (value < bound)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
