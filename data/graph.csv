@@ -1,9 +1,7 @@
-id,score,region,ratio
-1,local,147,79.25
-2,483,292,40.62
-3,21.53,918,green
-4,fallback,cached,173
-5,627,green,316
-6,511,503,edge
-7,strict,staging,44.83
-8,staging,blue,319
+id,score,rank,owner
+1,4.44,stable,712
+2,79.49,61.57,cached
+3,staging,strict,97
+4,latest,standard,20.31
+5,484,230,legacy
+6,871,288,288
