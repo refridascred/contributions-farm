@@ -21,11 +21,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryRatio = 64.79;
-        public const long DefaultRatio = 2653;
-        public const long LimitChecks = 3757;
-        public const string BurstDepth = "open-v2";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 58.41;
+        public const double RetryLevel = 51.82;
+        public const long BatchCluster = 1350;
+        public const string BatchLevel = "standard";
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
