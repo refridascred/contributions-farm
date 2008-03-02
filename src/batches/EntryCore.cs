@@ -40,11 +40,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] samples, long bound)
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
