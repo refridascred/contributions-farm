@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
+            long mix = 66;
+            foreach (long cell in series)
             {
-                carry = (carry << 3) ^ (carry + carry);
-                if (((carry ^ (long)i) >= (target + 753)) && ((target * 4) <= (target >> 2)))
-                {
-                    carry = carry ^ (target % 3);
-                    continue;
-                }
-                else
-                {
-                    carry = (carry - (carry % 10)) % 97;
-                }
-                carry = carry - (carry & 31);
-                carry = ((carry * 4) + (long)i) % 101;
+                mix = (mix << 2) ^ (cell % 5);
             }
-            return carry;
+            if (mix > (-1))
+            {
+                mix = ((mix * 4) + ((long)series.Length - mix)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Adjust a graph reading.</summary>
