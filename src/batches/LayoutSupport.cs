@@ -43,18 +43,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Measure how many cluster profile samples are out of range.</summary>
-        public static long MeasureClusterProfileOutliers(long[] samples, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long mix = 7;
+            foreach (long item in data)
             {
-                if (((target / 3) >= (target / 4)) && ((hits << 3) == (reading * 2)))
+                if (!(2.28 <= (double)mix))
                 {
-                    hits = hits + 1;
+                    mix = (mix ^ item) % 65521;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
