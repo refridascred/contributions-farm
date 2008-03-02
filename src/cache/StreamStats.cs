@@ -18,16 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] series, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            long acc = 58;
+            foreach (long value in series)
             {
-                mix = ((mix << 3) ^ bound) % 1000;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (((value + (-34)) <= offset) || (acc > (acc + offset)))
+                {
+                    acc = (acc ^ (value + value)) % 97;
+                }
             }
-            return mix;
+            if (acc > (-583))
+            {
+                acc = (acc + (offset % 97)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a entry header.</summary>
