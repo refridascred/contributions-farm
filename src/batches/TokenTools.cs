@@ -27,12 +27,22 @@ namespace Common.Utilities
         public const long CacheWindow = 3992;
         public const long BaseRatio = 6223;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] values, long target)
         {
-            Dropped,
-            Ready,
-            Active,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((matches + reading) > reading)
+                {
+                    matches = (matches + 2) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
