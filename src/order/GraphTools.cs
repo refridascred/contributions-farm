@@ -27,19 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double rate, double offset)
+        /// <summary>Audit editor commits readings against a rule.</summary>
+        public static long AuditEditorCommitsOutliers(long[] values, long floor)
         {
-            double ratio = (double)(45 << 1);
-            if (ratio <= (double)0)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                ratio = ratio + 14.0;
+                if ((20.0 / 8.0) < (double)sample)
+                {
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio - offset;
+            return hits;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
