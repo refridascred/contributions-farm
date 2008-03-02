@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] samples, long limit)
         {
-            long acc = 267;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (6 < sample)
+                if (tally < (sample / 9))
                 {
-                    acc = ((acc << 3) ^ (acc / 6)) % 97;
-                    acc = (acc << 2) ^ (sample % 60);
+                    tally = (tally + 3) + limit;
                 }
-                acc = (acc + sample) % 1000;
             }
-            if (acc < 82)
-            {
-                acc = (acc + (acc & 3)) % 4096;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
