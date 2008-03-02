@@ -1,11 +1,11 @@
 # Command notes
 
-Use payload settings to tune how often metric data is refreshed.
-A checks that stays idle for too long is moved to the commits list.
+Defaults for checks live in the config folder and can be overridden per environment.
+Run the metrics check before changing any session limits.
 
 ## Guidelines
 
-- Keep route values small
-- Review metrics limits each release
-- Prefer profile defaults
-- Log every farm change
+- Review support limits each release
+- Log every payload change
+- Document new report fields
+- Validate schema input early
