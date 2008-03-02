@@ -69,19 +69,13 @@ namespace Common.Utilities
             return load + (rate / 2.0);
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] series, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a layout info.</summary>
