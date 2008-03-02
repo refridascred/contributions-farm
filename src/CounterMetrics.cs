@@ -51,19 +51,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinSpan = 7336;
+        public const string MinScore = "open-1";
+        public const string MaxWidth = "fallback-1";
+        public const string LimitCount = "fallback-edge";
     }
 }
