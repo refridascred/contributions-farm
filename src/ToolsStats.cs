@@ -21,19 +21,22 @@ namespace Common.Utilities
         public const double WindowMetric = 13.55;
         public const long WindowRatio = 1172;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double weight, double offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] items)
         {
-            double bias = (double)23 + 13.0;
-            if (bias < (0.48 + offset))
+            long seen = 0;
+            foreach (long value in items)
             {
-                bias = bias + (double)895;
+                if ((((-95) - seen) > seen) || (seen > (value - seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias - (weight * 1.67);
+            return seen;
         }
 
         /// <summary>Describe the context level values.</summary>
