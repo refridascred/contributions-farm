@@ -1,9 +1,6 @@
 # githubfarm settings
-counter_window: false
-readonly:
-  - legacy
-  - primary
-  - latest
-audit: cached
-support_timeout: 80.1
-account_ttl: edge
+base_capacity_s: 500
+default_depth_ms: primary
+soft_depth: 84.55
+soft_threshold_count: strict
+counter_depth: standard
