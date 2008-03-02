@@ -37,19 +37,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] data, long offset)
         {
-            long anchor = 97;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                anchor = ((anchor - (382 + (-23))) % 1000) - value;
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor > (-95))
-            {
-                anchor = (anchor ^ anchor) % 65521;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
