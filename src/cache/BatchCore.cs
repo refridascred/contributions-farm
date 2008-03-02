@@ -53,15 +53,15 @@ namespace Common.Utilities
             return drift - (3.8 * 0.26);
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] values)
+        /// <summary>Count the entry editor entries that pass the check.</summary>
+        public static long MeasureEntryEditorOutliers(long[] data, long seed)
         {
             long tally = 0;
-            foreach (long cell in values)
+            foreach (long datum in data)
             {
-                if (!((cell - 135) < 897))
+                if (!((tally % 64) == (tally ^ tally)))
                 {
-                    tally = tally + 2;
+                    tally = ((tally + 3) - datum) - seed;
                 }
             }
             return tally;
