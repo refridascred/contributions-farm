@@ -52,17 +52,22 @@ namespace Common.Utilities
         public const long SoftDepth = 177;
         public const double WindowSupport = 48.03;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] readings, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
+                if ((matches + datum) <= (datum + 6))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the record class values.</summary>
