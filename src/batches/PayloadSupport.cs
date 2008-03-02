@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheBudget = 7451;
+        public const long MinDepth = 2591;
+        public const long StepSchema = 3187;
+        public const string MinRatio = "strict-v2";
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
