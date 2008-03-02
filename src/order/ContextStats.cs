@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] series)
         {
-            if (!(63 >= target))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((13.0 / 5.0) == (double)target)
+                if (tally < (tally % 97))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target - target) >= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target <= (820 + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = (tally + 3) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a cache summary.</summary>
