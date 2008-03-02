@@ -1,8 +1,8 @@
 {
-  "counter_depth": "eu-west",
-  "contributi_window": [278, 39],
-  "batch_window_pct": 63.51,
-  "enabled": false,
-  "payload_timeout": 72.43,
-  "soft_depth_count": "primary"
+  "base_depth": 96,
+  "batch_delay_pct": 1024,
+  "base_capacity": true,
+  "burst_ttl_ms": 30.49,
+  "audit": true,
+  "cache_capacity": 63.42
 }
