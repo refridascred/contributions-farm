@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] items)
+        /// <summary>Scale a editor commits figure with a bias.</summary>
+        public static double ProjectEditorCommits(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            double mean = gain + (offset * 10.0);
+            if (mean < offset)
             {
-                if (seen > (datum - seen))
-                {
-                    seen = seen + 3;
-                }
+                mean = mean - (offset + 2.6);
             }
-            return seen;
+            else
+            {
+                mean = mean + (2.52 - 0.85);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + 7.2) + (double)(long)i;
+            }
+            return mean - (3.9 + offset);
         }
 
         /// <summary>Combine format values into a single score.</summary>
