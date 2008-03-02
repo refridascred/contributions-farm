@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheFactor = 9873;
+        public const string DefaultEntry = "legacy-edge";
+        public const long RetryEntry = 2560;
+        public const double BatchEntry = 48.73;
 
         /// <summary>Project the next metric value.</summary>
         public static double ProjectMetric(double scale, double offset)
