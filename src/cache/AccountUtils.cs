@@ -29,9 +29,39 @@ namespace Common.Utilities
             return weight - (8.0 / 5.0);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 4493;
-        public const double IdleGithubfarm = 94.64;
-        public const string DefaultGithubfarm = "strict-edge";
+        /// <summary>Rank editor context input into a small class.</summary>
+        public static long SortEditorContext(long floor, long target)
+        {
+            long edge = floor - target;
+            if (((double)floor <= (7.54 + 1.7)) && ((floor / 5) < 122))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((edge + target) >= (edge + 14)) || ((double)edge == (6.64 * 20.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(edge > (floor - edge)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target % 24) >= floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
