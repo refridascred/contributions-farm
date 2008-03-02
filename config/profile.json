@@ -1,6 +1,10 @@
 {
-  "persist": ["legacy", "fallback"],
-  "readonly": [150, 403, 104, 287],
-  "base_interval": "stable",
-  "batches_retries": "staging"
+  "enabled": "strict",
+  "max_capacity": ["local", "open", "primary", "edge"],
+  "soft_capacity": {
+    "dry_run": 100,
+    "verbose": "local",
+    "soft_ttl": "standard"
+  },
+  "soft_timeout": false
 }
