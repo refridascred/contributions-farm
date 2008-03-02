@@ -16,23 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!!((long)samples.Length == (matches - 936)))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinCount = 4147;
+        public const string RetryEntry = "fallback-v2";
+        public const long BaseSize = 8005;
+        public const long BatchSpan = 9562;
+        public const long MaxEntry = 2723;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long RankEditor(long bound, long seed)
