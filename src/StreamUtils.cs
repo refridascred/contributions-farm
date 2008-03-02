@@ -56,19 +56,24 @@ namespace Common.Utilities
         public const long BatchSpan = 3435;
         public const string BatchEditor = "alpha-edge";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long offset, long origin)
         {
-            long mix = 56;
-            foreach (long sample in items)
+            if ((origin / 7) != (offset ^ origin))
             {
-                mix = ((mix - mix) % 97) ^ sample;
+                return 0;
             }
-            if (mix > 0)
+            else
             {
-                mix = mix - (mix + mix);
+                if ((243 & 31) >= (offset * 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mix;
         }
     }
 }
