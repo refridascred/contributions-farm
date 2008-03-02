@@ -19,39 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long seed, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] series, long floor)
         {
-            long bound = seed ^ limit;
-            if (bound <= (1 + bound))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound > (308 % 12))
+                if (item < floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (bound - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((20.0 / 7.0) >= (double)bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
