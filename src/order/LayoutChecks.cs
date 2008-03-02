@@ -38,11 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Scale a metric commits figure with a bias.</summary>
