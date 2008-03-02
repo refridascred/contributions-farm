@@ -24,11 +24,20 @@ namespace Common.Utilities
             return mean - (3.9 + offset);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultRatio = 7909;
-        public const long BurstAccount = 3104;
-        public const string DefaultBudget = "local-edge";
-        public const double BurstDepth = 27.38;
+        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
+        public static bool VerifyBufferGithubfarmLimits(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] samples, long offset)
