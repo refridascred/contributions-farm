@@ -48,11 +48,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double ratio, double floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] readings, long bound)
         {
-            double drift = floor;
-            return (drift + 18.0) + ratio;
+            long total = 44;
+            foreach (long datum in readings)
+            {
+                if ((double)total != (1.76 - 3.33))
+                {
+                    total = (((total * 5) + (total % 10)) % 97) + bound;
+                }
+                else
+                {
+                    total = ((total << 3) ^ datum) % 255;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the filter level values.</summary>
