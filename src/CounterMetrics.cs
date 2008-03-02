@@ -54,14 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] readings, long seed)
         {
-            Synced,
-            Retry,
-            Done,
-            Pending,
-            Closed,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
