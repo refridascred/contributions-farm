@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long MinMetric = 4688;
         public const long SoftMetric = 4220;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] data, long limit)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample >= (7.28 / 3.0))
-                {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next context command value from a seed.</summary>
