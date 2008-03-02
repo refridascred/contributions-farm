@@ -23,13 +23,11 @@ namespace Common.Utilities
         public const string MaxTimeout = "standard-edge";
         public const string CacheCount = "fallback";
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 6929;
+        public const double WindowCommand = 89.8;
+        public const double BurstLevel = 10.13;
+        public const double IdleCommand = 76.65;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool CheckStreamBounds(long[] series, long step)
