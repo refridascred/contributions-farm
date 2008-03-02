@@ -50,12 +50,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchInterval = "alpha-1";
-        public const string HardFactor = "alpha-edge";
-        public const long CacheTimeout = 456;
-        public const string WindowFormat = "staging-edge";
-        public const long BatchFormat = 4534;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Closed,
+            New,
+            Ready,
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] items)
