@@ -1,6 +1,9 @@
-id,region,token
-1,998,26.52
-2,26.53,primary
-3,890,blue
-4,916,278
-5,blue,206
+id,score,token,level
+1,6.69,69.74,60.36
+2,547,875,72.27
+3,blue,local,40.51
+4,edge,edge,21.14
+5,789,local,67.2
+6,91.18,727,cached
+7,405,777,64.61
+8,817,523,local
