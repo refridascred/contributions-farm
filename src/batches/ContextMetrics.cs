@@ -50,11 +50,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long target, long offset)
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            if (((8.7 + 0.03) >= (double)target) && ((offset & 1) == (offset + offset)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset << 3) > (target * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset > (target * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((18.0 + 4.0) > (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
