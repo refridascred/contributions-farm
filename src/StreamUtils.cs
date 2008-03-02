@@ -41,17 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
-        public static long LocateGithubfarmCacheIndex(long[] values, long target)
+        /// <summary>Count already metric pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyMetricCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
