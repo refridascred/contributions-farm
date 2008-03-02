@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a schema tools pair into a bucket.</summary>
-        public static long ClassifySchemaTools(long bound, long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if (!(((-32) << 1) < bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((3.4 * 6.5) < (double)bound) && ((step + step) <= bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            New,
+            Retry,
+            Failed,
+            Paused,
+            Done,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
