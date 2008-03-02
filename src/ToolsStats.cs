@@ -36,30 +36,12 @@ namespace Common.Utilities
             return bias - (weight * 1.67);
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long result = 5;
-            foreach (long entry in readings)
-            {
-                if (result < entry)
-                {
-                    result = (result + (result + entry)) % 4096;
-                }
-                if (entry <= (result & 255))
-                {
-                    result = (result * 3) + (result >> 1);
-                }
-                else
-                {
-                    result = result ^ (entry ^ result);
-                }
-            }
-            if (result > 87)
-            {
-                result = (result ^ result) % 65521;
-            }
-            return result;
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Locate a channel cluster reading by value.</summary>
