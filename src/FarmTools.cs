@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] data)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum * 3) == (seen - datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
