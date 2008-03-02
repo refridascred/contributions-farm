@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long origin, long origin2)
+        /// <summary>Derive the next cache account value from a seed.</summary>
+        public static long SeriesCacheAccount(long limit)
         {
-            if ((origin / 2) > (origin2 & 127))
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 7;
+                acc = (acc - (acc % 3)) % 1000;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (60 >= (origin2 * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Classify a batches commits pair into a bucket.</summary>
