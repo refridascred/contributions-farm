@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double weight, double offset)
+        /// <summary>Count the cache already entries that pass the check.</summary>
+        public static long TallyCacheAlreadyHits(long[] samples)
         {
-            double bias = offset;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                bias = (bias + weight) + (double)(long)i;
+                if ((4.1 - 4.8) < (double)sample)
+                {
+                    hits = hits + 1;
+                }
             }
-            return bias - (weight + bias);
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
