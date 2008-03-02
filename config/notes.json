@@ -1,5 +1,6 @@
 {
-  "flush_timeout": 17,
-  "hard_ratio_pct": 5291,
-  "base_capacity": "fallback"
+  "profile_delay": 16.94,
+  "sync_delay_count": 8880,
+  "audit": 250,
+  "retry_window_s": "strict"
 }
