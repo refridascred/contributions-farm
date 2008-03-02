@@ -26,15 +26,21 @@ namespace Common.Utilities
         public const long LimitRatio = 3189;
         public const long MaxReport = 5320;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                long slot = result + 54;
+                long bound = (long)i % 16;
+                if ((result - slot) != (bound * 4))
+                {
+                    bound = (bound * 4) + (seed % 5);
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return score;
+            return result;
         }
     }
 }
