@@ -42,12 +42,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] levels)
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((value >> 3) <= (82 + value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
