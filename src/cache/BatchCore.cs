@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] series)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((((1.49 - 1.3) < (double)(long)series.Length) && ((18.0 * 13.0) < (double)tally)) || !((entry ^ tally) > (tally ^ entry)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            Idle,
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Blend two counter measurements.</summary>
