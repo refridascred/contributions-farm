@@ -1,8 +1,19 @@
 {
-  "route_threshold": 39.77,
-  "soft_ratio_ms": 39.24,
-  "readonly": 88,
-  "verbose": ["stable", "blue"],
-  "sync_threshold_pct": "staging",
-  "min_window_count": "eu-west"
+  "batch_interval_ms": 250,
+  "cache_ratio": {
+    "persist": 60,
+    "poll_capacity": "primary",
+    "hard_timeout": {
+      "hard_timeout_ms": [91, 265, 317, 280],
+      "cache_limit_s": "fallback",
+      "cache_limit": ["standard", "eu-west", "fallback", "green"],
+      "base_limit_pct": "stable",
+      "enabled": "strict",
+      "account_interval": "legacy"
+    },
+    "tools_interval": false
+  },
+  "idle_ttl_pct": true,
+  "token_delay": 5776,
+  "default_threshold_pct": ["standard", "stable", "green", "standard"]
 }
