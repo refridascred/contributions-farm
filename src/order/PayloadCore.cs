@@ -46,16 +46,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next account schema value from a seed.</summary>
-        public static long RollAccountSchema(long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
             {
-                acc = ((acc * 4) + (acc + 23)) % 65521;
-                acc = ((acc * 3) + (long)i) % 97;
+                sum = (sum + (sum - origin)) % 1000;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return acc;
+            return sum;
         }
     }
 }
