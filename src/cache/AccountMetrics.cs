@@ -13,22 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many editor layout samples are out of range.</summary>
-        public static long CountEditorLayoutGaps(long[] data, long offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + hits) == (6 << 2))
-                {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
