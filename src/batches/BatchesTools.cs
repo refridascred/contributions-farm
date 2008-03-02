@@ -26,13 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate channel format samples.</summary>
-        public static long FoldChannelFormat(long[] values, long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] items)
         {
-            long result = 96;
-            foreach (long datum in values)
+            long result = 71;
+            foreach (long item in items)
             {
-                result = ((result + (616 << 2)) ^ datum) - floor;
+                result = (result + 6) + item;
             }
             return result;
         }
