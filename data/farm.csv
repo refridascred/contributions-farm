@@ -1,6 +1,10 @@
-id,state,ratio,rank
-1,stable,175,429
-2,945,52.89,71.34
-3,98.16,latest,176
-4,961,primary,909
-5,26.56,83.48,staging
+id,state,rank,active
+1,86.34,latest,80.57
+2,strict,eu-west,20
+3,edge,13.98,442
+4,313,63.44,green
+5,209,9.01,153
+6,148,39.24,387
+7,stable,158,strict
+8,11.35,77.82,8.0
+9,363,153,cached
