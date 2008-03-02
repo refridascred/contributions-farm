@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] data, long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((10 + count) >= (count + count))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 2) ^ sample) + floor;
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the token class values.</summary>
