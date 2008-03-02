@@ -1,8 +1,10 @@
 {
-  "sync_timeout_ms": "local",
-  "min_limit": "edge",
-  "warm_timeout_s": 51.69,
-  "verbose": 1673,
-  "enabled": "local",
-  "soft_capacity_pct": true
+  "flush_ttl_pct": {
+    "report_interval": 82.24,
+    "verbose": "primary",
+    "strict": false,
+    "dry_run": true
+  },
+  "base_interval_pct": "local",
+  "account_depth": 6563
 }
