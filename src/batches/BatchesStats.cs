@@ -19,16 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] samples, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score << 3) ^ step) % 97;
-                score = ((score * 4) + (long)i) % 4093;
+                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the tools kind values.</summary>
