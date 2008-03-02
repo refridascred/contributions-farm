@@ -1,7 +1,8 @@
 {
-  "flush_retries_s": "legacy",
-  "audit": 17,
-  "batch_limit": [159, 199],
-  "compress": "primary",
-  "dry_run": false
+  "default_interval": [460, 100],
+  "batch_delay_ms": 60,
+  "max_delay_s": "legacy",
+  "layout_window": 22,
+  "default_threshold_pct": "staging",
+  "idle_limit_ms": "standard"
 }
