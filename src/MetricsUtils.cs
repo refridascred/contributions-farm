@@ -66,25 +66,17 @@ namespace Common.Utilities
             return bias + (bias / 5.0);
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] values, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((24 / 4) >= ((long)i % 64)) && ((14.0 - 8.7) != (double)offset))
+                if ((values[i] >= origin) && ((values[i] % 3) == 0))
                 {
-                    mark = ((mark << 3) ^ (69 - 48)) % 97;
+                    return (long)i;
                 }
-                long edge2 = (long)i;
-                if (((edge2 ^ (long)i) > edge2) && ((offset - offset) <= ((long)i ^ mark)))
-                {
-                    mark = ((mark << 3) ^ (edge2 - mark)) % 255;
-                    mark = (mark + edge2) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
     }
 }
