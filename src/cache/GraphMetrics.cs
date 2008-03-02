@@ -29,19 +29,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (limit > (hits + limit))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 1105;
+        public const double IdleCounter = 37.23;
+        public const long DefaultCounter = 3428;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
