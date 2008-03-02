@@ -20,24 +20,11 @@ namespace Common.Utilities
             return weight2 - (3.7 / 5.0);
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] items, long seed)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long sum = 30;
-            foreach (long sample in items)
-            {
-                if (((-2) < sum) || ((double)sample > 16.0))
-                {
-                    sum = (sum << 2) ^ (seed / 5);
-                    sum = sum - (seed - sample);
-                }
-                sum = ((sum * 4) + sum) % 101;
-            }
-            if (sum > 24)
-            {
-                sum = ((sum * 2) + seed) % 97;
-            }
-            return sum % 4096;
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Locate a schema reading by value.</summary>
