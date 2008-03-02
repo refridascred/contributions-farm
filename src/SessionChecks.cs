@@ -32,18 +32,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] values, long seed)
+        /// <summary>Match up editor profile samples.</summary>
+        public static long MatchEditorProfileCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed < (seed << 3)) && ((23 + count) < value))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
