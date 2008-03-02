@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double weight, double span)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            double scale = 15.0;
-            if (scale < weight)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - scale) + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale - (scale * 0.2);
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
