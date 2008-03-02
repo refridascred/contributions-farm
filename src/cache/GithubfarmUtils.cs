@@ -39,10 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 9998;
-        public const string IdleInterval = "strict-edge";
-        public const double RetryLevel = 52.33;
-        public const double RetryGithubfarm = 98.35;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((long)readings.Length >= (27 & 31)) && (hits < (hits - hits))))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
+        }
     }
 }
