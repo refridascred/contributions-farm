@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] series, long step)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen & 15) > (sample + 993))
-                {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
