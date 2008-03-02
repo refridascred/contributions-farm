@@ -35,17 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a entry payload sample.</summary>
-        public static long LocateEntryPayloadIndex(long[] samples, long target)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
