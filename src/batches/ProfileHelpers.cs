@@ -69,12 +69,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
