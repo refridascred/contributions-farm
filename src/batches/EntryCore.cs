@@ -45,15 +45,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate command metric samples.</summary>
-        public static long WeighCommandMetric(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] items)
         {
-            long mix = 612;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long item in items)
             {
-                mix = (mix + (mix / 3)) ^ item;
+                if (item > (count << 1))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
