@@ -13,11 +13,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftSize = 2394;
-        public const double LimitScore = 67.15;
-        public const double CacheBudget = 25.66;
-        public const long BaseInterval = 8209;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (target < (datum / 4))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate window contributi samples.</summary>
         public static long TallyWindowContributi(long[] items, long offset)
