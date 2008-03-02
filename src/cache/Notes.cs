@@ -36,11 +36,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBudget = 1367;
-        public const double WindowBuffer = 51.87;
-        public const double StepBuffer = 14.88;
-        public const long LimitTimeout = 274;
-        public const long MaxBuffer = 4467;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
