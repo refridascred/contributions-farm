@@ -1,9 +1,18 @@
 {
-  "batch_interval_ms": 55.31,
-  "idle_size": {
-    "flush_limit": ["open", "legacy", "open", "primary"],
-    "warm_limit_ms": 74,
-    "window_threshold": "fallback"
+  "max_delay": {
+    "poll_retries": 40,
+    "contributi_capacity": 71,
+    "batch_size": 31,
+    "max_capacity": false,
+    "retry_threshold_pct": 79.08
   },
-  "enabled": "staging"
+  "enabled": "fallback",
+  "compress": {
+    "compress": 500,
+    "batch_depth": 250,
+    "channel_depth": 30,
+    "farm_timeout": 1233
+  },
+  "strict": "stable",
+  "default_ttl_ms": 86.13
 }
