@@ -1,7 +1,6 @@
-id,token,level,weight
-1,236,stable,17.12
-2,614,62.33,326
-3,13,897,959
-4,703,fallback,45
-5,133,561,50.6
-6,strict,primary,primary
+id,rank,weight,level
+1,24.04,868,383
+2,950,615,9.89
+3,87.7,eu-west,303
+4,123,35.33,10.22
+5,legacy,566,43.52
