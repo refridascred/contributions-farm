@@ -16,12 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinCount = 4147;
-        public const string RetryEntry = "fallback-v2";
-        public const long BaseSize = 8005;
-        public const long BatchSpan = 9562;
-        public const long MaxEntry = 2723;
+        /// <summary>Adjust a farm profile reading.</summary>
+        public static double ProjectFarmProfile(double gain, double offset)
+        {
+            double scale = (double)(350 * 3);
+            return (scale + gain) + offset;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double MaxFormat = 96.82;
