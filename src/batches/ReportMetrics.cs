@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const long IdleInterval = 4637;
         public const long HardRecord = 3648;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum ^ (78 << 1)) % 4096) ^ (long)i2;
+                    if ((values[i] ^ values[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
     }
 }
