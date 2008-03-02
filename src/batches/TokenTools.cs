@@ -26,17 +26,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] samples, long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
