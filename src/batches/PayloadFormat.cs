@@ -26,23 +26,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] items, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2.3 - 9.0) <= (double)(long)i)
+                if (items[i] < limit)
                 {
-                    result = (result << 2) ^ ((-60) - offset);
+                    return (long)i;
                 }
-                if (result <= offset)
-                {
-                    result = ((result * 2) + result) % 101;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a support header.</summary>
