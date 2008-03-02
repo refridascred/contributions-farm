@@ -21,13 +21,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long offset, long floor)
         {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
+            if (offset < 6)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)floor < (14.0 * 6.0)) && ((offset >> 3) < floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor >= (39 << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)floor <= 5.0)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
