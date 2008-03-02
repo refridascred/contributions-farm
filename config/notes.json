@@ -1,13 +1,7 @@
 {
-  "retry_delay_pct": {
-    "strict": "open",
-    "batches_capacity": "open",
-    "poll_delay": 61,
-    "min_window_pct": ["blue", "standard", "local"]
-  },
-  "metric_depth": 8070,
-  "retry_timeout_s": [323, 162, 341],
-  "editor_interval": 1613,
-  "default_depth_count": 98.4,
-  "soft_retries": ["latest", "staging", "staging"]
+  "max_window_count": false,
+  "context_window": "local",
+  "burst_interval": "blue",
+  "sync_capacity": 58.28,
+  "commits_size": 45.48
 }
