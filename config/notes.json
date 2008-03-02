@@ -1,5 +1,9 @@
 {
-  "entry_retries": 20.02,
-  "idle_delay": [423, 492],
-  "batch_interval_s": [239, 156, 6]
+  "buffer_retries": [33, 167, 343, 138],
+  "idle_window": 9542,
+  "batch_interval": {
+    "hard_ttl": 1106,
+    "sync_ttl_ms": 47.79,
+    "sync_threshold_ms": ["latest", "primary", "local"]
+  }
 }
