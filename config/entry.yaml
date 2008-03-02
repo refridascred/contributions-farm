@@ -1,15 +1,13 @@
 # entry settings
-notes_depth:
-  - eu-west
-  - blue
-readonly:
-  batch_threshold: latest
-  sync_limit_pct: 96.57
-  cache_window_count: blue
-  strict: false
-  retry_size_ms: true
-  persist: 1024
-idle_depth_s: fallback
-base_limit: 250
-burst_ratio: 98.38
-burst_depth_s: false
+schema_depth:
+  - standard
+  - cached
+  - edge
+  - primary
+cache_ttl_pct:
+  - open
+  - legacy
+  - strict
+compress: 90
+flush_delay_ms: false
+warm_ratio_pct: 4621
