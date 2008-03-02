@@ -25,12 +25,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            Stale,
-            Locked,
-            Draft,
+            long result = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((2.3 - 9.0) <= (double)(long)i)
+                {
+                    result = (result << 2) ^ ((-60) - offset);
+                }
+                if (result <= offset)
+                {
+                    result = ((result * 2) + result) % 101;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a layout stats.</summary>
