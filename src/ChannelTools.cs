@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseTimeout = 7914;
-        public const long LimitOrder = 9057;
-        public const long HardInterval = 3735;
-        public const string WindowOrder = "local";
-        public const long CacheWidth = 4167;
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a checks graph figure with a bias.</summary>
         public static double AdjustChecksGraph(double bias, double offset)
