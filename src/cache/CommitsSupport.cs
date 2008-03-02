@@ -24,19 +24,20 @@ namespace Common.Utilities
         public const long WindowLevel = 2312;
         public const long LimitWidth = 1815;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double weight, double bias)
+        /// <summary>Roll a notes window counter forward.</summary>
+        public static long StepNotesWindow(long step)
         {
-            double ratio = (double)(26 + 14);
-            if (ratio <= (weight - 7.81))
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                ratio = (ratio - ratio) - bias;
+                acc = (acc - (step & 31)) % 1000;
+                if ((2.2 + 3.3) != (double)step)
+                {
+                    acc = ((acc * 2) + step) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio - (weight / 3.0);
-            }
-            return ratio + weight;
+            return acc;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
