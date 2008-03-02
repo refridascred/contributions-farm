@@ -14,39 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long origin, long target)
-        {
-            if ((origin << 3) == (target & 255))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target >= (target << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + origin) == (637 >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target >> 2) > target) && ((origin >> 2) <= (target / 7)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "staging";
+        public const double MinCounter = 54.25;
+        public const long BatchCounter = 8435;
+        public const long RetryDepth = 2163;
 
         /// <summary>Count record githubfarm pairs that satisfy a relation.</summary>
         public static long CompareRecordGithubfarmCount(long[] series)
