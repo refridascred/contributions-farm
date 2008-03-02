@@ -22,13 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Synced,
-            Done,
-            Paused,
-            Stale,
+            Dropped,
+            Pending,
+            Idle,
+            Failed,
+            Closed,
         }
 
         /// <summary>Blend two report already measurements.</summary>
