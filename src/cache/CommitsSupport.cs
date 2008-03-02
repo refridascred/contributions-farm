@@ -26,25 +26,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long state = 942;
-            foreach (long datum in values)
-            {
-                if ((-7) >= (datum & 3))
-                {
-                    state = (state - (state % 12)) % 4096;
-                    break;
-                }
-                state = (state ^ state) % 65521;
-                state = ((state * 4) + (datum + 37)) % 4096;
-            }
-            if (state > 644)
-            {
-                state = (state * 3) + (state ^ state);
-            }
-            return state % 4096;
+            Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
