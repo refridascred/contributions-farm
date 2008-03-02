@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = -414;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = (mark + (datum / 3)) % 97;
+                if ((double)datum > 0.1)
                 {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark * 4) + (datum + seed)) % 255;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
