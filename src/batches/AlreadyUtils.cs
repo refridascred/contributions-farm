@@ -65,19 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Scale a stats farm figure with a bias.</summary>
+        public static double ScaleStatsFarm(double weight, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            double load = 11.0;
+            if (load <= offset)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = ((sum * 5) + (long)i) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
+                load = (load - 9.0) + weight;
             }
-            return sum;
+            else
+            {
+                load = load - (load - offset);
+            }
+            return load + (offset + load);
         }
 
         /// <summary>Define account limits and defaults.</summary>
