@@ -25,31 +25,12 @@ namespace Common.Utilities
         public const long DefaultReport = 3732;
         public const string MinReport = "primary-1";
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long seed, long origin)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if (seed < (seed * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((((-8) << 3) <= seed) && ((origin & 15) > origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)seed == (8.6 / 5.0)) && ((origin * 4) > origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Active,
         }
     }
 }
