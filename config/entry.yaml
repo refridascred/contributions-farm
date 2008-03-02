@@ -1,7 +1,6 @@
 # entry settings
-dry_run: primary
-base_ttl: 73.0
-base_capacity_count: true
-sync_window_ms: strict
-max_ttl_s: standard
-cache_timeout: 1024
+retry_timeout_s: 68.78
+hard_delay_count: local
+burst_window: legacy
+burst_size_ms: true
+burst_timeout_count: 500
