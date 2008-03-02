@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 84.67;
-        public const long WindowSize = 7136;
-        public const string RetryCount = "legacy-v2";
-        public const double IdleReport = 79.01;
-        public const string WindowReport = "local-1";
+        /// <summary>Scale a graph route figure with a bias.</summary>
+        public static double ScaleGraphRoute(double ratio, double floor)
+        {
+            double ratio2 = (double)(49 % 7);
+            if (ratio2 > (double)2)
+            {
+                ratio2 = ((ratio2 + (2.28 + ratio2)) + ratio) + floor;
+            }
+            else
+            {
+                ratio2 = ratio2 + (double)1;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (double)11) - (double)(long)i;
+            }
+            return ratio2 + ratio2;
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
