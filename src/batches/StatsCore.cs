@@ -40,18 +40,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of session tools readings.</summary>
-        public static long WeighSessionTools(long[] levels, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] samples, long floor)
         {
-            long acc = 260;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((acc / 5) == (item + acc))
+                if (entry >= floor)
                 {
-                    acc = ((acc - item) % 1000) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return flag;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
