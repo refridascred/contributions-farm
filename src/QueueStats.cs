@@ -39,18 +39,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of already support entries.</summary>
-        public static long DigestAlreadySupport(long[] samples, long limit)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long sum = 0;
-            foreach (long value in samples)
-            {
-                if (((value * 5) <= (sum ^ sum)) || ((2.38 + 8.87) != (double)limit))
-                {
-                    sum = (sum << 3) ^ limit;
-                }
-            }
-            return sum;
+            Dropped,
+            Synced,
+            Closed,
+            Locked,
         }
     }
 }
