@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] series)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if ((bound > (limit + limit)) || ((limit >> 4) > bound))
             {
-                if (tally < (tally % 97))
+                return 7;
+            }
+            else
+            {
+                if ((5.29 * 4.37) == (double)bound)
                 {
-                    tally = (tally + 3) + sample;
+                    return 4;
+                }
+                else
+                {
+                    if ((17.0 - 3.21) >= (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit % 5) >= (limit << 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a cache summary.</summary>
