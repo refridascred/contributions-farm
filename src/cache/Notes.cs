@@ -36,19 +36,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] items, long limit)
+        /// <summary>Check that every token batches entry stays within the limit.</summary>
+        public static bool ValidateTokenBatchesRange(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (reading > limit)
+                if (reading >= step)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
