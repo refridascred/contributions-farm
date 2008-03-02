@@ -23,26 +23,25 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] values, long offset)
+        /// <summary>Grade a context record value against two limits.</summary>
+        public static long RankContextRecord(long seed, long step)
         {
-            long mark = 85;
-            foreach (long datum in values)
+            long next = seed + step;
+            if ((step ^ next) >= (seed + next))
             {
-                if ((offset ^ mark) <= (mark / 5))
+                return 3;
+            }
+            else
+            {
+                if (9.0 > (double)step)
                 {
-                    mark = (mark << 3) ^ (offset - datum);
+                    return 2;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (datum / 8)) % 97;
+                    return 0;
                 }
             }
-            if (mark > 503)
-            {
-                mark = (mark + (534 / 2)) % 255;
-            }
-            return mark % 97;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
