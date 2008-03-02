@@ -1,11 +1,10 @@
 # Command notes
 
-When a batch fails, the cache handler retries a few times before giving up.
-A batches that stays idle for too long is moved to the schema list.
-The token report groups every support by cluster.
+Run the record check before changing any command limits.
+Keep schema and command names short and lowercase.
 
 ## Guidelines
 
-- Keep editor values small
-- Review account limits each release
-- Prefer entry defaults
+- Prefer route defaults
+- Log every counter change
+- Document new schema fields
