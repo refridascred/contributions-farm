@@ -34,13 +34,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            Paused,
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
