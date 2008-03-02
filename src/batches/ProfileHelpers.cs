@@ -29,10 +29,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 3917;
-        public const long IdleReport = 2313;
-        public const long BurstReport = 7131;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading ^ count) != (reading ^ reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] values)
