@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] series, long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((entry * 3) < (182 << 1))
+                if (cell >= target)
                 {
-                    seen = (seen + 3) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
