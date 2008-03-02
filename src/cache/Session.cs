@@ -43,17 +43,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] series, long step)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
