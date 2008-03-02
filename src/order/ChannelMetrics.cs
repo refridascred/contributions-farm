@@ -15,15 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] values, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            long total = 619;
+            foreach (long sample in values)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                total = (((total - 700) % 101) ^ sample) + seed;
             }
-            return mix;
+            if (total > 22)
+            {
+                total = (total - (987 - total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the report level values.</summary>
