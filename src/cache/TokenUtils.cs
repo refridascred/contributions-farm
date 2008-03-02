@@ -50,11 +50,16 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultSpan = 5070;
-        public const double LimitStream = 74.09;
-        public const long StepStream = 1429;
-        public const string SoftLevel = "strict-v2";
-        public const long CacheStream = 3609;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = acc + (acc / 6);
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
