@@ -35,12 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitCount = 2995;
-        public const long DefaultBudget = 6222;
-        public const double BurstWidth = 83.36;
-        public const double BaseBudget = 79.47;
-        public const string MinBudget = "legacy";
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Roll a batch format counter forward.</summary>
         public static long RollBatchFormat(long target)
