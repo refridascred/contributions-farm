@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const long LimitCounter = 7295;
         public const string BatchDepth = "staging-edge";
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] data, long bound)
+        /// <summary>Check that every support account entry stays within the limit.</summary>
+        public static bool GuardSupportAccountRange(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (item < bound)
+                if (value < bound)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
