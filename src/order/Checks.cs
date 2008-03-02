@@ -56,12 +56,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseScore = "fallback-edge";
-        public const string WindowCluster = "staging-1";
-        public const long MinCluster = 4776;
-        public const long RetryCluster = 7788;
-        public const string CacheBudget = "primary-1";
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long RankGraph(long floor, long origin)
