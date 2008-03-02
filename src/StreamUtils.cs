@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] values, long bound)
         {
-            New,
-            Synced,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
