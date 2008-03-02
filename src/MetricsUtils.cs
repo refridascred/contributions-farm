@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Check that every format editor entry stays within the limit.</summary>
+        public static bool ValidateFormatEditorLimits(long[] data, long bound)
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
