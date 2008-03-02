@@ -78,12 +78,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
