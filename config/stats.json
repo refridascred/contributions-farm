@@ -1,16 +1,7 @@
 {
-  "persist": "latest",
-  "hard_threshold_count": {
-    "soft_window_pct": ["fallback", "eu-west", "strict"],
-    "poll_capacity_pct": 59,
-    "poll_ttl": "primary",
-    "sync_limit": 100
-  },
-  "batch_ratio_s": "local",
-  "editor_window": "stable",
-  "cache_delay_ms": {
-    "command_retries": 9,
-    "idle_capacity_s": ["stable", "open", "standard"],
-    "order_delay": 1
-  }
+  "base_retries_count": 73,
+  "support_limit": 1024,
+  "sync_limit_s": ["strict", "green", "open", "local"],
+  "record_retries": "staging",
+  "graph_ratio": 57.8
 }
