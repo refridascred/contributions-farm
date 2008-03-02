@@ -17,25 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a batches commits pair into a bucket.</summary>
-        public static long ClassifyBatchesCommits(long offset, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] data, long limit)
         {
-            long diff = offset + bound;
-            if ((diff * 3) <= (diff + offset))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)bound > (7.4 * 7.0)) && (bound <= (bound + diff)))
+                if (((hits & 7) <= limit) || ((52 << 2) >= (limit & 15)))
                 {
-                    return 7;
+                    hits = (hits + 3) ^ sample;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of format readings.</summary>
