@@ -19,16 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score + score) % 101;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
