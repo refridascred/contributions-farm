@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Dropped,
-            Locked,
-            Pending,
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit metric context readings against a rule.</summary>
