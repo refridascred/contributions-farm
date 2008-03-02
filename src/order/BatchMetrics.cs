@@ -37,12 +37,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] series)
         {
-            Paused,
-            Ready,
-            Closed,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample - tally) > 564)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
