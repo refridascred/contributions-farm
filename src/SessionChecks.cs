@@ -32,22 +32,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] series, long step)
         {
-            long score = 431;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (((-130) >> 5) > (item - target))
+                if ((hits - hits) > (step / 5))
                 {
-                    score = score + (item / 6);
+                    hits = (hits + 1) + reading;
                 }
             }
-            if (score < (-516))
-            {
-                score = score - (target + score);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
