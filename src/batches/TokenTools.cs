@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!(seen < (step & 15)))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardSize = 71.48;
+        public const long DefaultReport = 3732;
+        public const string MinReport = "primary-1";
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] levels)
