@@ -31,31 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long origin, long limit)
+        /// <summary>Count command filter pairs that satisfy a relation.</summary>
+        public static long CompareCommandFilterCount(long[] data)
         {
-            if ((origin + origin) != (limit + origin))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 2) < (origin - limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit <= origin) || ((limit >> 2) < limit))
+                    if ((data[i] ^ data[j]) != 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
