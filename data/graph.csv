@@ -1,8 +1,7 @@
-id,count,active,level
-1,46.93,94,96.61
-2,586,34.6,87.62
-3,legacy,126,cached
-4,67.01,standard,68
-5,687,strict,628
-6,66.97,486,8.44
-7,711,634,24.2
+id,token,level,weight
+1,236,stable,17.12
+2,614,62.33,326
+3,13,897,959
+4,703,fallback,45
+5,133,561,50.6
+6,strict,primary,primary
