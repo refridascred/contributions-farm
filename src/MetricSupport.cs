@@ -14,11 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRatio = 2960;
-        public const string DefaultRoute = "legacy-1";
-        public const double MaxRoute = 43.72;
-        public const long BatchWidth = 7229;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
