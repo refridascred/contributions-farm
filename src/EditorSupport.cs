@@ -22,10 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheSpan = 8166;
-        public const double MaxDepth = 88.3;
-        public const long RetryWidth = 3170;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double gain, double span)
+        {
+            double mean = (span / 6.0) * 0.2;
+            if (mean < gain)
+            {
+                mean = mean + (double)(-51);
+            }
+            return mean + (span - gain);
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryMatches(long[] readings)
