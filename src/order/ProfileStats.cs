@@ -47,18 +47,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] samples)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((count * 5) >= count)
+                if (value >= limit)
                 {
-                    count = (count + 2) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
