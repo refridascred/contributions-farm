@@ -16,10 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 4147;
-        public const long StepGraph = 5041;
-        public const long StepDepth = 7118;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] samples, long limit)
+        {
+            long mark = 9;
+            foreach (long reading in samples)
+            {
+                mark = ((mark - mark) ^ reading) - limit;
+                mark = (mark + (416 << 2)) % 65521;
+            }
+            if (mark < 82)
+            {
+                mark = ((mark << 3) ^ (2 % 24)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long CacheDepth = 8640;
