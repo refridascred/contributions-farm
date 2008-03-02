@@ -37,9 +37,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardTimeout = "open-edge";
-        public const double HardOrder = 16.81;
-        public const long IdleLevel = 4492;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
