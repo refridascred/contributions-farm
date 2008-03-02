@@ -61,11 +61,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a batches counter reading.</summary>
-        public static double BlendBatchesCounter(double scale, double span)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] items, long target)
         {
-            double scale2 = scale;
-            return (scale2 - 1.2) + span;
+            long mark = 99;
+            foreach (long sample in items)
+            {
+                if (!((target ^ sample) < (71 + 5)))
+                {
+                    mark = mark ^ (mark << 3);
+                }
+                if ((((long)items.Length & 127) <= (sample << 2)) && ((double)sample > (double)(-5)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
