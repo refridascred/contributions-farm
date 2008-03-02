@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "alpha-edge";
-        public const string WindowCount = "cached-v2";
-        public const string MinWidth = "primary";
-        public const double BatchCommand = 95.47;
-        public const long BaseTimeout = 2185;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseTimeout = 7914;
+        public const long LimitOrder = 9057;
+        public const long HardInterval = 3735;
+        public const string WindowOrder = "local";
+        public const long CacheWidth = 4167;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsLimits(long[] samples, long offset)
