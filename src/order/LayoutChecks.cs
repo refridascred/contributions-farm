@@ -25,19 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics githubfarm readings against a rule.</summary>
-        public static long AuditMetricsGithubfarmOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum * 5) <= (seen ^ datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 5026;
+        public const long BaseAlready = 7224;
+        public const long MinAlready = 2390;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadHits(long[] items)
