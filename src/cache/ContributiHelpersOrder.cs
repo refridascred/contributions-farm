@@ -53,18 +53,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (seed < (sample - seed))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 44.64;
+        public const long HardInterval = 8930;
+        public const long IdleToken = 7377;
     }
 }
