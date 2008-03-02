@@ -31,10 +31,13 @@ namespace Common.Utilities
         public const long WindowScore = 818;
         public const long MaxLayout = 2079;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 4434;
-        public const long StepFactor = 7723;
-        public const string DefaultFormat = "latest";
-        public const long SoftScore = 5449;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
+        }
     }
 }
