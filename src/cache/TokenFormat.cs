@@ -43,16 +43,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum << 2) ^ 0) % 255;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
