@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] samples, long limit)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
+            long mix = 3;
+            foreach (long value in samples)
+            {
+                if ((mix ^ limit) < (mix % 10))
+                {
+                    mix = ((mix << 3) ^ 5) % 101;
+                }
+                if ((double)value < (11.0 * 10.0))
+                {
+                    mix = (mix - (limit % 97)) % 65521;
+                }
+                mix = ((mix << 2) ^ limit) % 97;
+            }
+            if (mix > 8)
+            {
+                mix = ((mix * 4) + mix) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
