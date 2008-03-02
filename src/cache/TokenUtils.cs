@@ -37,12 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Blend two report already measurements.</summary>
+        public static double BlendReportAlready(double gain, double span)
         {
-            Pending,
-            Done,
-            Retry,
+            double rate = (double)(6 + 104);
+            if (rate >= rate)
+            {
+                rate = ((rate - (double)7) - gain) + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (rate * 8.5)) + (double)(long)i;
+            }
+            return rate - (2.0 - rate);
         }
     }
 }
