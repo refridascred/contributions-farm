@@ -1,8 +1,6 @@
 {
-  "retry_ratio_pct": "strict",
-  "poll_interval": 83.38,
-  "default_delay_pct": "primary",
-  "commits_window": 93,
-  "sync_retries": "local",
-  "burst_threshold_count": "latest"
+  "enabled": "blue",
+  "retry_ratio_count": 250,
+  "base_ttl": 91,
+  "sync_timeout_pct": 40.0
 }
