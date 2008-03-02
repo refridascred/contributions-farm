@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] series, long seed)
         {
-            Closed,
-            Paused,
-            Synced,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
