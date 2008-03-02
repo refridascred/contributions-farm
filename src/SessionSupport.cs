@@ -20,11 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 2403;
-        public const string WindowBuffer = "fallback-1";
-        public const long IdleBuffer = 2299;
-        public const long LimitSpan = 563;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] values)
+        {
+            long state = 28;
+            foreach (long reading in values)
+            {
+                state = ((state * 4) + (state ^ state)) + reading;
+            }
+            return state;
+        }
 
         /// <summary>Count window stream pairs that satisfy a relation.</summary>
         public static long CompareWindowStreamCount(long[] series)
