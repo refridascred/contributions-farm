@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepLevel = 6261;
-        public const double DefaultScore = 21.44;
-        public const double DefaultRoute = 34.39;
-        public const long RetryScore = 4509;
-        public const long BaseLevel = 1569;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] readings, long limit)
+        {
+            long anchor = -433;
+            foreach (long datum in readings)
+            {
+                anchor = (anchor + anchor) + datum;
+            }
+            if (anchor > (-8))
+            {
+                anchor = ((anchor << 2) ^ (limit + (long)readings.Length)) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
         public static long LocateGithubfarmCacheIndex(long[] values, long target)
