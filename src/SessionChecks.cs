@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] series)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((-3) > (datum - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the cache level values.</summary>
