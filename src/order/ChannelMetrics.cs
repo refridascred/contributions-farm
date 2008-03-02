@@ -30,14 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Idle,
-            Active,
-            Ready,
-            Stale,
-            Synced,
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
