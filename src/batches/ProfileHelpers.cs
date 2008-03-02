@@ -23,12 +23,25 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Grade a metric layout value against two limits.</summary>
+        public static long ClassifyMetricLayout(long target, long offset)
         {
-            Draft,
-            Active,
-            Retry,
+            long gap = target ^ offset;
+            if ((target - target) != (target + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset > (double)gap)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a contributi stats.</summary>
