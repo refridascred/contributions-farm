@@ -43,17 +43,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] samples, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 560;
+            foreach (long datum in items)
             {
-                if (samples[i] < limit)
+                score = ((score ^ score) % 101) + datum;
+                if ((double)score != (5.0 - 1.38))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (score > 844)
+            {
+                score = (score * 4) + (score + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
