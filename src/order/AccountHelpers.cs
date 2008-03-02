@@ -38,19 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] samples, long offset)
         {
-            double mean = (double)(3 - 89);
-            if (mean <= (13.0 + 3.0))
+            long score = -4;
+            foreach (long reading in samples)
             {
-                mean = mean - (bias / 3.0);
+                score = (((score << 2) ^ (-141)) ^ reading) - offset;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (5.42 + floor)) + (double)(long)i;
-            }
-            return mean + mean;
+            return score % 4096;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
