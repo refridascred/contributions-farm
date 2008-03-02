@@ -1,13 +1,5 @@
 # githubfarm settings
-sync_ratio_pct:
-  - 189
-  - 20
-  - 231
-hard_depth: 1523
-report_ttl:
-  - legacy
-  - local
-  - staging
-verbose: 22.05
-idle_size_pct: 60
-base_retries_pct: local
+flush_ttl_s: blue
+flush_retries: 5302
+warm_ratio_s: 7762
+compress: 4835
