@@ -38,17 +38,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWidth = 2491;
+        public const double WindowDepth = 14.73;
+        public const string BatchSpan = "latest-edge";
+        public const string IdleWidth = "alpha-edge";
+        public const long IdleSpan = 1465;
     }
 }
