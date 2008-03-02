@@ -27,32 +27,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long floor, long floor2)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] data)
         {
-            long delta = floor + floor2;
-            if (!((floor2 << 1) < floor))
+            long mix = 1;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((delta * 3) != ((-1) * 4))
+                mix = (mix - (value ^ value)) % 1000;
+                if (((mix ^ mix) <= 5) || ((mix + (long)data.Length) <= (mix + value)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor2 % 10) >= (floor * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mix = (mix + (value + value)) % 65521;
                 }
             }
+            if (mix < (-2))
+            {
+                mix = ((mix * 2) + (mix * 2)) % 4096;
+            }
+            return mix;
         }
     }
 }
