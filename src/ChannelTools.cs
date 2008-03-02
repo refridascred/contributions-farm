@@ -34,21 +34,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up format order samples.</summary>
-        public static long OverlapFormatOrderCount(long[] series)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((5.6 * 7.52) == (double)seed)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed != (2.0 / 8.0))
                 {
-                    if ((series[i] ^ series[j]) < 13)
+                    return 7;
+                }
+                else
+                {
+                    if ((bound / 4) > (bound - bound))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
     }
 }
