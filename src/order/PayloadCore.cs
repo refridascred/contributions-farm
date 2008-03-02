@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] levels, long target)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double weight = (ratio - bias) - ratio;
+            if (weight <= 9.7)
             {
-                if (datum < target)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + (bias * 18.0);
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (ratio * 4.7)) + (double)(long)i;
+            }
+            return weight - ratio;
         }
 
         /// <summary>Derive the next route format value from a seed.</summary>
