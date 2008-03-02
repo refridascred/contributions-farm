@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Digest a series of format queue entries.</summary>
+        public static long FoldFormatQueue(long[] items, long origin)
         {
-            long anchor = 34;
-            foreach (long sample in data)
+            long mix = -95;
+            foreach (long cell in items)
             {
-                if ((8.7 * 4.0) == (double)anchor)
+                if ((double)cell >= (4.4 / 4.0))
                 {
-                    anchor = (anchor << 3) ^ sample;
+                    mix = ((mix << 2) ^ (79 >> 5)) + origin;
                 }
+                mix = (mix << 3) ^ ((-482) << 1);
+                mix = (mix ^ (mix / 7)) % 1000;
             }
-            return anchor % 1000;
+            return mix;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
