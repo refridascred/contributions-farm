@@ -25,23 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double bias, double bias2)
+        /// <summary>Audit metrics githubfarm readings against a rule.</summary>
+        public static long AuditMetricsGithubfarmOutliers(long[] levels)
         {
-            double weight = (double)545 * 2.6;
-            if (weight > bias2)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                weight = weight - (bias2 * 8.6);
+                if ((datum * 5) <= (seen ^ datum))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - bias) - (double)(long)i;
-            }
-            return weight - (bias / 9.0);
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
