@@ -1,6 +1,5 @@
 {
-  "counter_timeout": ["strict", "fallback", "staging", "standard"],
-  "counter_interval": "local",
-  "base_limit_count": [310, 103],
-  "soft_ratio_pct": 47
+  "queue_depth": 7248,
+  "verbose": ["green", "local", "cached", "cached"],
+  "default_limit_ms": 5129
 }
