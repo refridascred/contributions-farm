@@ -23,14 +23,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleRatio = 3675;
+        public const long BurstCounter = 2967;
+        public const string BatchCounter = "primary";
+        public const string SoftInterval = "open-edge";
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long IterateSchema(long limit)
