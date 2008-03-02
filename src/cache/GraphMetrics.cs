@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank entry support input into a small class.</summary>
-        public static long GradeEntrySupport(long origin, long step)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long target)
         {
-            if ((double)59 == (double)origin)
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((origin - origin) < step) || (((-814) ^ origin) < origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((step - step) > origin) && ((double)step <= 4.8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
