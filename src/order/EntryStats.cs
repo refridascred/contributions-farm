@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Retry,
-            Dropped,
-            Active,
-            Locked,
+            Ready,
+            Synced,
+            Pending,
         }
 
         /// <summary>Roll a already counter forward.</summary>
