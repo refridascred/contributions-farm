@@ -37,20 +37,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] items)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long result = 44;
-            foreach (long sample in items)
-            {
-                result = ((result * 3) + (sample / 3)) % 1000;
-                result = ((result * 4) + (result - result)) % 101;
-            }
-            if (result > 79)
-            {
-                result = (result * 5) + (665 - 562);
-            }
-            return result;
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
