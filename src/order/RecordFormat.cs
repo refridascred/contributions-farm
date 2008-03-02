@@ -22,14 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Failed,
-            New,
+            Idle,
             Draft,
-            Locked,
-            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Fold a list of layout stream readings.</summary>
