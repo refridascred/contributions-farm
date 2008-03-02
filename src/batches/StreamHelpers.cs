@@ -35,19 +35,25 @@ namespace Common.Utilities
         public const double BatchBudget = 40.98;
         public const long IdleBudget = 2778;
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long offset)
         {
-            double rate = 4.84 + (weight - weight);
-            if (rate < (double)993)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                rate = (rate + (weight / 4.0)) - offset;
+                long count = (result ^ offset) - offset;
+                if ((result - count) < ((long)i - (long)i))
+                {
+                    count = count - (result - result);
+                }
+                else
+                {
+                    count = count + ((long)i * 3);
+                    count = (count - (result + offset)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (2.0 + rate)) + (double)(long)i;
-            }
-            return rate - (double)584;
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
