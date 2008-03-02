@@ -27,23 +27,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] samples)
         {
-            long mix = 1;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mix = (mix - (value ^ value)) % 1000;
-                if (((mix ^ mix) <= 5) || ((mix + (long)data.Length) <= (mix + value)))
+                if ((count * 5) >= count)
                 {
-                    mix = (mix + (value + value)) % 65521;
+                    count = (count + 2) + datum;
                 }
             }
-            if (mix < (-2))
-            {
-                mix = ((mix * 2) + (mix * 2)) % 4096;
-            }
-            return mix;
+            return count;
         }
     }
 }
