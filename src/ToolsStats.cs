@@ -48,12 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Roll a record support counter forward.</summary>
+        public static long SeriesRecordSupport(long target)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long state = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((1.5 / 6.0) < (double)target))
+                {
+                    state = (state + (state >> 5)) % 97;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
