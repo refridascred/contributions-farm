@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+mode="${1:-staging}"
 case "${mode}" in
-    latest)
+    blue)
         log "fast path"
         ;;
     *)
@@ -18,6 +18,10 @@ esac
 
 total=0
 for i in $(seq 1 7); do
-    total=$((total + i * 4))
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+for item in eu-west local latest; do
+    log "checking ${item}"
+done
