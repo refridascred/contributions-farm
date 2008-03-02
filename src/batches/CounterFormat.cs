@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
-            public double Total { get; set; }
+            long anchor = 34;
+            foreach (long sample in data)
+            {
+                if ((8.7 * 4.0) == (double)anchor)
+                {
+                    anchor = (anchor << 3) ^ sample;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
