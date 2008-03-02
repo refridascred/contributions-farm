@@ -44,18 +44,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] series)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)hits <= (3.93 / 8.0))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two already measurements.</summary>
