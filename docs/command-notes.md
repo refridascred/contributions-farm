@@ -1,14 +1,13 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Each entry is validated before it reaches the token queue.
+The context helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the cache list.
 
-Run the report check before changing any record limits.
-Run the schema check before changing any account limits.
-The route module keeps channel values in sync with the batches cache.
+The metrics module keeps already values in sync with the command cache.
+When a buffer fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep channel values small
-- Prefer entry defaults
-- Document new payload fields
+- Validate editor input early
+- Log every format change
+- Review githubfarm limits each release
