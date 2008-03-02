@@ -34,19 +34,24 @@ namespace Common.Utilities
         public const long LimitCounter = 7295;
         public const string BatchDepth = "staging-edge";
 
-        /// <summary>Check that every support account entry stays within the limit.</summary>
-        public static bool GuardSupportAccountRange(long[] items, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long target, long origin)
         {
-            bool flag = true;
-            foreach (long value in items)
+            if (861 < origin)
             {
-                if (value < bound)
+                return 1;
+            }
+            else
+            {
+                if ((target >> 4) <= (target % 16))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a buffer options.</summary>
