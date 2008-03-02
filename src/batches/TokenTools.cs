@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next metric entry value from a seed.</summary>
-        public static long RollMetricEntry(long floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (item < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Project the next profile command value.</summary>
