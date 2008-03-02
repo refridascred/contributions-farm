@@ -1,16 +1,23 @@
 # support settings
-default_window_count:
-  - 223
-  - 199
-  - 304
-  - 157
-stats_size: fallback
-readonly: 3277
-poll_window_count: 100
-base_limit_s:
-  sync_depth_pct: 98.48
-  audit:
-    - open
-    - open
-  poll_delay: 1024
-  soft_limit_count: 2219
+base_capacity_pct: 95
+warm_interval_ms: 4438
+strict:
+  warm_retries: 14.29
+  batch_depth: false
+  checks_depth: 211
+  sync_interval_pct: true
+  payload_ttl: 60
+  retry_retries_ms: stable
+readonly: 68.88
+flush_delay_pct:
+  default_threshold_ms:
+    max_ttl_s: false
+    retry_depth: fallback
+    format_limit: 53.78
+    order_threshold: local
+    idle_capacity_s: staging
+  dry_run: staging
+  poll_window:
+    - 150
+    - 209
+  retry_limit: primary
