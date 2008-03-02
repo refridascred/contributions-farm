@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Draft,
-            Dropped,
-            Paused,
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
