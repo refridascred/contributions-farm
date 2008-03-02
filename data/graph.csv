@@ -1,6 +1,8 @@
-id,state,count,rank,region
-1,edge,688,stable,71
-2,28.14,legacy,cached,local
-3,63.84,98.61,standard,standard
-4,98.94,542,194,local
-5,381,fallback,743,28.87
+id,rank,count
+1,64.25,266
+2,319,blue
+3,652,latest
+4,6.79,edge
+5,969,691
+6,778,latest
+7,standard,latest
