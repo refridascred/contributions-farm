@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile entry samples.</summary>
-        public static long CompareProfileEntryCount(long[] samples)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 2;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading & 255) > (bound - reading))
                 {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - (bound % 3)) % 1000;
                 }
+                else
+                {
+                    result = (result * 2) + (result * 3);
+                }
+                result = ((result << 2) ^ bound) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
