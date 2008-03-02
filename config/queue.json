@@ -1,7 +1,15 @@
 {
-  "support_timeout": [474, 193, 115],
-  "window_ttl": "strict",
-  "batch_ttl_s": 1024,
-  "retry_ttl_ms": ["eu-west", "green", "open", "standard"],
-  "verbose": 95
+  "verbose": 60,
+  "persist": "fallback",
+  "contributi_depth": {
+    "warm_limit_count": {
+      "enabled": 28,
+      "base_timeout_ms": "blue",
+      "layout_ratio": [431, 267, 188],
+      "idle_limit_s": "legacy"
+    },
+    "profile_capacity": "local",
+    "verbose": 76.64
+  },
+  "enabled": 8886
 }
