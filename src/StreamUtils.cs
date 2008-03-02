@@ -65,12 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 57.65;
-        public const long SoftPayload = 797;
-        public const string BurstPayload = "local-1";
-        public const double HardScore = 70.39;
-        public const long WindowCount = 9403;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Active,
+            Queued,
+            Stale,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteRange(long[] values, long offset)
