@@ -43,18 +43,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit command cluster readings against a rule.</summary>
-        public static long TallyCommandClusterOutliers(long[] levels)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally + tally) != (tally >> 2))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
