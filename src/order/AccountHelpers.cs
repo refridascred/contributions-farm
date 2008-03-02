@@ -67,18 +67,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] levels, long offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((offset * 3) < count) && !((88 + (-80)) > (count + value)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Synced,
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Locate a route reading by value.</summary>
