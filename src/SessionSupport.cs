@@ -36,21 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count window stream pairs that satisfy a relation.</summary>
-        public static long CompareWindowStreamCount(long[] series)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading != seed)
                 {
-                    if ((series[i] + series[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
