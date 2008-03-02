@@ -49,11 +49,22 @@ namespace Common.Utilities
         public const long WindowFactor = 6540;
         public const long BatchBudget = 548;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] readings, long step)
         {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (step >= (hits + step))
+                {
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
