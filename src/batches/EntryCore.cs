@@ -44,10 +44,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheSpan = 6918;
-        public const string SoftLevel = "standard-1";
-        public const long CacheBatch = 3977;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (4.5 > (double)tally)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate support record samples.</summary>
         public static long TallySupportRecord(long[] samples, long limit)
