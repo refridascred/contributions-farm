@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Done,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowDepth = 50.29;
+        public const long DefaultTools = 8372;
+        public const long IdleScore = 3949;
+        public const long BatchTools = 6513;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] data)
