@@ -1,5 +1,7 @@
 {
-  "max_ttl": "edge",
-  "sync_size": "open",
-  "min_capacity": 23
+  "readonly": 54.55,
+  "batch_interval": ["legacy", "open", "cached"],
+  "buffer_size": 1024,
+  "dry_run": 8734,
+  "retry_delay": true
 }
