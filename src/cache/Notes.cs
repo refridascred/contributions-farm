@@ -5,35 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] items)
-        {
-            long anchor = 6;
-            foreach (long datum in items)
-            {
-                if (!((double)datum < (9.89 / 7.0)))
-                {
-                    anchor = (anchor << 2) ^ (81 << 1);
-                }
-                else
-                {
-                    anchor = anchor ^ (datum + datum);
-                }
-                if ((9.4 * 2.79) >= (double)datum)
-                {
-                    anchor = (anchor ^ (anchor - 34)) % 255;
-                }
-                else
-                {
-                    anchor = anchor - (anchor % 8);
-                }
-                if ((anchor - anchor) > 8)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "fallback";
+        public const long BaseScore = 5635;
+        public const long SoftRatio = 83;
+        public const string WindowFactor = "strict";
+        public const long CacheWindow = 6348;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
