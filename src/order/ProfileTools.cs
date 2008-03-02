@@ -33,31 +33,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a cache githubfarm pair into a bucket.</summary>
-        public static long ClassifyCacheGithubfarm(long limit, long step)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            if (3 >= (step + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (5.8 > (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit * 2) >= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a layout info.</summary>
