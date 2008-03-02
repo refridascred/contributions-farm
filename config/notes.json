@@ -1,8 +1,7 @@
 {
-  "base_depth": 96,
-  "batch_delay_pct": 1024,
-  "base_capacity": true,
-  "burst_ttl_ms": 30.49,
-  "audit": true,
-  "cache_capacity": 63.42
+  "readonly": true,
+  "payload_timeout": [207, 316, 64],
+  "poll_capacity_s": 97.71,
+  "idle_capacity": "standard",
+  "tools_ttl": true
 }
