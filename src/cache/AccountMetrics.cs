@@ -31,11 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] values)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((8.0 / 4.0) == (double)count)
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
