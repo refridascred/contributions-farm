@@ -90,11 +90,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 889;
-        public const double BurstTools = 94.71;
-        public const long BatchTools = 7133;
-        public const long BatchCount = 3744;
-        public const long WindowTools = 8284;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseTimeout = 39.63;
+        public const double BatchToken = 10.41;
+        public const string StepToken = "local-v2";
+        public const double StepSpan = 39.88;
     }
 }
