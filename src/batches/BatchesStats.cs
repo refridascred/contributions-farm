@@ -14,35 +14,29 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long step, long limit)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long target, long origin)
         {
-            if (6 > (limit % 10))
+            long slot = target ^ origin;
+            if ((origin ^ slot) >= (target - origin))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((step + 5) <= limit)
+                if (0.24 < (double)target)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)limit == (14.0 / 9.0))
+                    if (((slot / 3) != (target / 8)) && (origin < (origin >> 4)))
                     {
                         return 7;
                     }
                     else
                     {
-                        if (!((step - step) <= step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 6;
                     }
                 }
             }
