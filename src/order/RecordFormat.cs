@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] series, long step)
-        {
-            long anchor = 141;
-            foreach (long reading in series)
-            {
-                if ((anchor - anchor) == (reading - anchor))
-                {
-                    anchor = (anchor + anchor) % 255;
-                }
-                if (!((anchor ^ step) == (anchor - reading)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryFactor = 3202;
+        public const long MaxProfile = 1556;
+        public const double RetryRatio = 77.3;
+        public const double IdleInterval = 73.09;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
