@@ -22,12 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double rate, double offset)
-        {
-            double weight = 0.82;
-            return (weight - rate) + offset;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleWidth = 1682;
+        public const string WindowSchema = "latest-v2";
+        public const long CacheLevel = 8520;
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] readings)
