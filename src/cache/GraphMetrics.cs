@@ -50,21 +50,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                long diff = (result + 28) + (long)i;
-                if ((9 + limit) != (long)i)
-                {
-                    result = (result << 2) ^ (diff ^ limit);
-                    diff = (diff + result) % 101;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
