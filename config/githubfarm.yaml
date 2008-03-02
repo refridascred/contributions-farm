@@ -1,9 +1,33 @@
 # githubfarm settings
-retry_capacity_s:
-  - fallback
-  - cached
-  - edge
-session_ttl: 69.98
-default_size_s: latest
-hard_retries_s: 100
-persist: true
+enabled: green
+warm_depth_ms: 9389
+poll_timeout: 13
+base_limit_s:
+  filter_capacity: 3777
+  batch_size: 60.21
+  compress: 250
+  strict: 4895
+  retry_depth_count:
+    editor_threshold:
+      - 470
+      - 389
+      - 55
+      - 115
+    sync_timeout_s:
+      - latest
+      - local
+      - eu-west
+      - primary
+    enabled: local
+route_depth:
+  batch_depth: 61.74
+  base_limit_ms:
+    - eu-west
+    - cached
+  dry_run: 250
+  command_delay: legacy
+  payload_timeout:
+    - open
+    - strict
+    - eu-west
+idle_threshold_ms: green
