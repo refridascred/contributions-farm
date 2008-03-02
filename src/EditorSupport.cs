@@ -76,22 +76,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] data, long bound)
+        /// <summary>Grade a support schema value against two limits.</summary>
+        public static long RankSupportSchema(long step, long limit)
         {
-            long sum = -95;
-            foreach (long value in data)
+            long cur = step + limit;
+            if ((3.1 + 0.86) >= (double)limit)
             {
-                if ((double)bound >= (6.1 - 1.1))
+                return 8;
+            }
+            else
+            {
+                if (!((double)cur >= (double)limit))
                 {
-                    sum = (sum - (value >> 4)) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (sum < 28)
-            {
-                sum = (sum + (bound >> 4)) % 1000;
-            }
-            return sum % 65521;
         }
     }
 }
