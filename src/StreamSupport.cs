@@ -25,21 +25,17 @@ namespace Common.Utilities
         public const string WindowSize = "latest-1";
         public const string HardProfile = "open-v2";
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] < origin) && ((data[i] % 3) == 0))
                 {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
