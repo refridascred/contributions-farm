@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count session githubfarm pairs that satisfy a relation.</summary>
-        public static long PairSessionGithubfarmCount(long[] levels)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double weight = (double)(36 - 538);
+            return (weight + (20.0 - ratio)) + bias;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
