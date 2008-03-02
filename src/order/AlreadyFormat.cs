@@ -37,12 +37,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 9402;
-        public const long IdleAccount = 8237;
-        public const string StepLevel = "open";
-        public const long RetryTimeout = 5628;
-        public const long SoftBudget = 7225;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long limit, long offset)
+        {
+            if ((double)limit < 6.1)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset - offset) >= (offset + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((limit << 3) == (offset + limit)) && ((13.0 - 2.35) == (double)offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset != (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinCount = 8777;
