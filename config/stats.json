@@ -1,5 +1,5 @@
 {
-  "poll_depth": false,
-  "cache_retries": "local",
-  "audit": 500
+  "flush_interval": "blue",
+  "verbose": 90,
+  "dry_run": "strict"
 }
