@@ -1,30 +1,17 @@
 # entry settings
-compress:
-  compress: green
-  cache_delay_ms: stable
-  idle_interval: 60
-  channel_capacity:
-    - standard
-    - open
+readonly: 500
+commits_threshold:
+  flush_ratio: legacy
+  sync_timeout_count:
+    - legacy
+    - cached
+    - fallback
     - strict
-    - eu-west
-  dry_run:
-    - 354
-    - 171
-    - 128
-min_depth_pct: false
-strict:
-  default_threshold_count:
-    persist: 1024
-    compress: 73.52
-    max_timeout_pct: 75
-    metric_ratio: eu-west
-  default_ratio: false
-  strict: 23.64
-  compress: stable
-hard_ttl_ms:
-  max_window: strict
-  dry_run: false
-  strict: 49.23
-  audit: 47.17
-  soft_window_count: false
+  format_timeout: primary
+  sync_timeout_pct: 65.05
+  soft_retries_ms:
+    - 263
+    - 74
+    - 159
+    - 433
+retry_ttl: local
