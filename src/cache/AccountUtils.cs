@@ -33,12 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public double Owner { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
