@@ -1,5 +1,16 @@
 # entry settings
-soft_size_s: false
-readonly: true
-strict: 6416
-hard_retries: 49
+flush_ratio: false
+poll_ttl:
+  - local
+  - stable
+default_limit_pct: 60
+cache_window_s:
+  - 498
+  - 26
+  - 295
+  - 443
+cache_depth:
+  idle_interval_ms: 12.89
+  soft_interval_s: eu-west
+  tools_interval: stable
+  already_limit: 250
