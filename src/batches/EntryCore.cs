@@ -29,20 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepFactor = 8116;
+        public const double RetryLayout = 84.96;
+        public const string WindowSize = "legacy-edge";
+        public const long HardLayout = 2728;
+        public const string BurstLayout = "legacy";
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksHits(long[] levels)
