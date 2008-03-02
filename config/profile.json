@@ -1,23 +1,5 @@
 {
-  "flush_interval_s": 24.6,
-  "already_depth": 56,
-  "hard_limit_pct": "standard",
-  "route_depth": {
-    "readonly": {
-      "flush_interval_ms": "fallback",
-      "default_limit": 3405,
-      "metrics_ttl": "latest",
-      "hard_timeout_s": ["legacy", "eu-west"]
-    },
-    "soft_threshold_s": {
-      "batch_ratio": 100,
-      "poll_threshold": "open",
-      "audit": 43.18,
-      "hard_retries_pct": 81
-    },
-    "queue_retries": "cached",
-    "soft_delay_ms": 96.28
-  },
-  "soft_interval_ms": 68,
-  "notes_ttl": 50
+  "min_timeout_count": "staging",
+  "profile_depth": false,
+  "flush_ratio_count": 100
 }
