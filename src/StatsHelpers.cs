@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] readings, long bound)
+        /// <summary>Look up the position of a order cluster sample.</summary>
+        public static long SeekOrderClusterIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((7.6 - 12.0) == (double)(long)readings.Length))
+                if ((data[i] >= origin) && ((data[i] % 3) != 0))
                 {
-                    tally = ((tally + 2) + value) - bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
