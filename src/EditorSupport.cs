@@ -41,11 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 6632;
-        public const long BaseSize = 4594;
-        public const long LimitDepth = 1965;
-        public const long DefaultFormat = 2197;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long DeriveFormat(long limit)
