@@ -19,15 +19,18 @@ namespace Common.Utilities
         public const long SoftContributi = 8928;
         public const long IdleScore = 2523;
 
-        /// <summary>Roll a notes farm counter forward.</summary>
-        public static long RollNotesFarm(long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] readings, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (limit > (hits + limit))
+                {
+                    hits = (hits + 2) + reading;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a batch record.</summary>
