@@ -43,13 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Closed,
-            Locked,
-            Active,
-            Pending,
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
