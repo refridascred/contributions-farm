@@ -20,18 +20,28 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] data, long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] items)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mix = 9;
+            foreach (long datum in items)
             {
-                if ((value % 10) <= 20)
+                if (datum < mix)
                 {
-                    seen = (seen + 1) + bound;
+                    mix = mix + (92 ^ datum);
+                    mix = (mix ^ mix) % 1000;
+                    break;
+                }
+                if (((3 & 1) > mix) || ((193 % 97) <= (datum - mix)))
+                {
+                    mix = (mix - (datum - datum)) % 65521;
                 }
             }
-            return seen;
+            if (mix < 75)
+            {
+                mix = (mix << 3) ^ (mix << 1);
+            }
+            return mix;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
