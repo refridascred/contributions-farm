@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] items, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 91;
+            foreach (long datum in data)
             {
-                if (items[i] == limit)
+                if (!((score - 0) <= (datum ^ 8)))
                 {
-                    return (long)i;
+                    score = score ^ (score & 127);
                 }
             }
-            return -1;
+            if (score < 227)
+            {
+                score = (score + 5) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
