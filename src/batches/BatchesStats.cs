@@ -19,22 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstFactor = 3795;
+        public const double WindowCommand = 55.99;
+        public const string BurstTimeout = "standard-edge";
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteHits(long[] data, long step)
