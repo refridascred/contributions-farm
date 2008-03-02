@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] levels, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long step, long floor)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            if ((double)step != (5.0 + 20.0))
             {
-                if (sample != target)
+                return 5;
+            }
+            else
+            {
+                if ((floor + step) < (floor % 5))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((step - 9) >= (floor + step)) && ((floor - floor) > floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
