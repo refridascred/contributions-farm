@@ -59,26 +59,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] values)
+        /// <summary>Look up the position of a stats contributi sample.</summary>
+        public static long LookupStatsContributiIndex(long[] samples, long limit)
         {
-            long state = 6;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)values.Length - state) < (state % 10))
+                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
                 {
-                    state = ((state * 5) + sample) % 1000;
-                }
-                if (!((double)sample == (8.9 - 2.4)))
-                {
-                    state = ((state * 5) + state) % 65521;
+                    return (long)i;
                 }
             }
-            if (state > 44)
-            {
-                state = (state + ((long)values.Length - state)) % 1000;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Hold a cache entry.</summary>
