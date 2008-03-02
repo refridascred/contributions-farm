@@ -52,19 +52,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] data, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long score = 949;
+            foreach (long cell in data)
             {
-                if (entry >= floor)
+                if ((5.0 - 3.71) >= (double)score)
                 {
-                    flag = false;
-                    break;
+                    score = (score ^ (cell - (-22))) % 101;
+                }
+                else
+                {
+                    score = score + (score - cell);
                 }
             }
-            return flag;
+            if (score < 25)
+            {
+                score = ((score * 3) + (score & 3)) % 4096;
+            }
+            return score % 1000;
         }
     }
 }
