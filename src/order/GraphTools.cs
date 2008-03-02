@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Paused,
-            Locked,
-            Done,
-            Stale,
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a channel info.</summary>
