@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] series, long limit)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)cell >= (double)count))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
