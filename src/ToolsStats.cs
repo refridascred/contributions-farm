@@ -34,17 +34,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] series, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 5;
+            foreach (long entry in readings)
             {
-                if ((series[i] <= bound) && ((series[i] % 5) != 0))
+                if (result < entry)
                 {
-                    return (long)i;
+                    result = (result + (result + entry)) % 4096;
+                }
+                if (entry <= (result & 255))
+                {
+                    result = (result * 3) + (result >> 1);
+                }
+                else
+                {
+                    result = result ^ (entry ^ result);
                 }
             }
-            return -1;
+            if (result > 87)
+            {
+                result = (result ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Roll a record support counter forward.</summary>
