@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "fallback";
-        public const long RetryCommand = 5571;
-        public const long MaxCommand = 6901;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ScalePayload(double bias, double bias2)
