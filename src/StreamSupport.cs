@@ -13,14 +13,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Paused,
-            Pending,
-            Failed,
-            Active,
-            Ready,
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
