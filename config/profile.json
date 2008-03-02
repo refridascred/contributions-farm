@@ -1,6 +1,6 @@
 {
-  "channel_delay": "standard",
-  "payload_delay": "staging",
-  "sync_depth_s": "primary",
-  "default_limit_ms": 60
+  "cache_limit_ms": 89.32,
+  "batch_delay": "eu-west",
+  "max_interval_count": 31.54,
+  "enabled": 69
 }
