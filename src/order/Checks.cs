@@ -60,18 +60,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchCount = 47.28;
+        public const long IdleBudget = 9498;
+        public const long CacheContext = 442;
+        public const string LimitTimeout = "stable-edge";
+        public const long BatchContext = 6013;
 
         /// <summary>Digest a series of format queue entries.</summary>
         public static long DigestFormatQueue(long[] items)
