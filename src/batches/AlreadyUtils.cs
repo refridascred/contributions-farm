@@ -20,13 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] levels, long origin)
         {
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (2.0 > (double)datum)
+                {
+                    hits = (hits + 1) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
