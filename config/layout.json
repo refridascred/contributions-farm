@@ -1,5 +1,15 @@
 {
-  "base_interval": 2.86,
-  "flush_capacity_s": 7560,
-  "min_window_pct": 4778
+  "poll_threshold_ms": 63,
+  "batch_delay_pct": ["eu-west", "standard"],
+  "persist": {
+    "record_timeout": 64,
+    "min_limit_ms": "staging",
+    "soft_window": [176, 454],
+    "hard_limit": 3835,
+    "min_capacity_count": 30,
+    "base_depth": true
+  },
+  "base_capacity": true,
+  "default_ttl": true,
+  "strict": "edge"
 }
