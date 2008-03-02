@@ -65,18 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] readings)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading / 8) != (6 + 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
