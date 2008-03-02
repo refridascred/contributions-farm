@@ -20,11 +20,21 @@ namespace Common.Utilities
         public const long StepRecord = 9775;
         public const double HardLevel = 73.48;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of session tools readings.</summary>
