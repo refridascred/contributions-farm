@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] levels)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((0.6 + 6.55) < (double)hits)
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            New,
+            Pending,
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Define account limits and defaults.</summary>
