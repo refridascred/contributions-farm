@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] series, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] data)
         {
-            long anchor = 409;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                anchor = ((anchor << 3) ^ origin) % 4096;
-                if ((double)anchor != (9.47 + 13.0))
+                if (((tally + (long)data.Length) < (entry ^ tally)) && ((tally ^ 638) >= (entry + 38)))
                 {
-                    anchor = (anchor ^ (value + value)) % 101;
+                    tally = tally + 3;
                 }
             }
-            if (anchor > 40)
-            {
-                anchor = (anchor ^ (origin >> 4)) % 1000;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
