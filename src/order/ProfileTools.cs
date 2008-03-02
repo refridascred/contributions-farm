@@ -57,13 +57,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Classify a cache githubfarm pair into a bucket.</summary>
+        public static long ClassifyCacheGithubfarm(long limit, long step)
         {
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
+            if (3 >= (step + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (5.8 > (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit * 2) >= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout info.</summary>
