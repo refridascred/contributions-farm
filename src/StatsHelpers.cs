@@ -54,23 +54,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Match up queue channel samples.</summary>
+        public static long OverlapQueueChannelCount(long[] levels)
         {
-            long score = -5;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score - entry) % 1000;
-                if ((entry ^ entry) <= 793)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score + (score - entry);
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score < 0)
-            {
-                score = score + score;
-            }
-            return score;
+            return matches;
         }
     }
 }
