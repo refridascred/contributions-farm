@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] values)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long carry = 9;
-            foreach (long value in values)
-            {
-                carry = ((carry ^ (carry >> 2)) % 65521) + value;
-                if ((double)carry <= (0.8 + 5.02))
-                {
-                    break;
-                }
-            }
-            if (carry < 7)
-            {
-                carry = ((carry * 2) + carry) % 1000;
-            }
-            return carry;
+            Paused,
+            Active,
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
