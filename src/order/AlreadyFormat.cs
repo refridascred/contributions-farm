@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const long BaseWidth = 1927;
         public const long LimitCache = 3769;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] readings, long floor)
+        /// <summary>Check that every already tools entry stays within the limit.</summary>
+        public static bool GuardAlreadyToolsBounds(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (sample != floor)
+                if (item > seed)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
