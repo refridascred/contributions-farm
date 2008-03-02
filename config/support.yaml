@@ -1,4 +1,7 @@
 # support settings
-farm_ratio: 2843
-default_limit: true
-batch_size_count: staging
+entry_interval: green
+batch_ratio:
+  - fallback
+  - legacy
+readonly: standard
+already_threshold: 62.15
