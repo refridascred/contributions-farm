@@ -20,19 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] data, long seed)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
