@@ -24,13 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Draft,
+            Synced,
+            Dropped,
+            Idle,
         }
     }
 }
