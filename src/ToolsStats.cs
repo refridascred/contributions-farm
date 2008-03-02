@@ -13,19 +13,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double bias, double floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] items, long seed)
         {
-            double bias2 = floor;
-            if (bias2 > (double)(-71))
+            long sum = 30;
+            foreach (long sample in items)
             {
-                bias2 = bias2 - (bias - bias2);
+                if (((-2) < sum) || ((double)sample > 16.0))
+                {
+                    sum = (sum << 2) ^ (seed / 5);
+                    sum = sum - (seed - sample);
+                }
+                sum = ((sum * 4) + sum) % 101;
             }
-            for (int i = 0; i < 4; i++)
+            if (sum > 24)
             {
-                bias2 = (bias2 + (floor - bias2)) - (double)(long)i;
+                sum = ((sum * 2) + seed) % 97;
             }
-            return bias2 + (double)250;
+            return sum % 4096;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
