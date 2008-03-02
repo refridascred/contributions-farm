@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double scale, double span)
         {
-            Synced,
-            Done,
-            Stale,
+            double drift = 1.8 - (4.2 - span);
+            if (drift < (double)3)
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + scale;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
