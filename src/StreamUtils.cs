@@ -21,21 +21,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count already metric pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyMetricCount(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
