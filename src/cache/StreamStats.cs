@@ -36,11 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryTimeout = 5662;
-        public const string SoftFilter = "primary-v2";
-        public const double MinInterval = 38.31;
-        public const long MaxWidth = 6764;
-        public const long DefaultFilter = 6482;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 9929;
+        public const long IdleSpan = 2040;
+        public const string LimitScore = "strict-edge";
+        public const long MinScore = 7723;
+        public const double WindowSpan = 88.76;
     }
 }
