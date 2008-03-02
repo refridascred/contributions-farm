@@ -41,13 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstWidth = 8165;
+        public const double DefaultSession = 87.5;
+        public const long StepSpan = 4412;
+        public const double CacheInterval = 42.82;
+        public const string BaseRatio = "strict";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long HardEditor = 1889;
