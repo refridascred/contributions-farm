@@ -72,18 +72,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] samples, long origin)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!(matches > (origin / 5)))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
