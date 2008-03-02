@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryDepth = 29.44;
-        public const long MaxLevel = 8214;
-        public const long LimitEditor = 7158;
-        public const long RetryFactor = 5325;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum * 3) == (seen - datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
