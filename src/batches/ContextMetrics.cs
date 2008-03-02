@@ -48,25 +48,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long seed, long floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double ratio, double floor)
         {
-            long step = seed + floor;
-            if ((double)seed < (5.98 * 3.73))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed ^ step) > 44)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double drift = floor;
+            return (drift + 18.0) + ratio;
         }
 
         /// <summary>Describe the filter level values.</summary>
