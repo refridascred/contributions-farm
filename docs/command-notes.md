@@ -1,10 +1,10 @@
 # Command notes
 
-When a profile fails, the checks handler retries a few times before giving up.
-The cluster module keeps metrics values in sync with the batch cache.
+A contributi that stays idle for too long is moved to the batch list.
+Keep tools and queue names short and lowercase.
 
 ## Guidelines
 
+- Keep payload values small
 - Log every checks change
-- Prefer tools defaults
-- Validate githubfarm input early
+- Prefer window defaults
