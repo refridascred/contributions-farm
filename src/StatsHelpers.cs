@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a order cluster sample.</summary>
-        public static long SeekOrderClusterIndex(long[] data, long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
