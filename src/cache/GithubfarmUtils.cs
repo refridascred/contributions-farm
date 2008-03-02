@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 78.31;
-        public const double CacheSupport = 35.4;
-        public const long RetryFactor = 1085;
-        public const long DefaultCount = 3234;
-        public const long BaseSupport = 2489;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Synced,
+            Retry,
+            New,
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] values, long seed)
