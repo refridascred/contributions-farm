@@ -1,5 +1,5 @@
 {
-  "min_limit_ms": "green",
-  "entry_size": 1024,
-  "base_retries": [426, 479, 359]
+  "metric_depth": 49,
+  "idle_ttl_count": "legacy",
+  "flush_size": false
 }
