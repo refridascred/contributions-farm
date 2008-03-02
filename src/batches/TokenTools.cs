@@ -20,10 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardSize = 71.48;
-        public const long DefaultReport = 3732;
-        public const string MinReport = "primary-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxRatio = "primary-v2";
+        public const double BaseBatch = 34.92;
+        public const double StepBatch = 21.96;
+        public const long HardBatch = 2111;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
