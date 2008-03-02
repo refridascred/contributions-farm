@@ -35,19 +35,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double scale, double floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double bias, double offset)
         {
-            double mean = scale;
-            if (mean < (floor / 6.0))
-            {
-                mean = mean - scale;
-            }
+            double mean = (double)629 / 4.0;
             for (int i = 0; i < 3; i++)
             {
-                mean = (mean - (scale / 8.0)) + (double)(long)i;
+                mean = ((mean - (offset - mean)) + (double)(long)i) - bias;
             }
-            return mean - mean;
+            return mean + (mean + mean);
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
