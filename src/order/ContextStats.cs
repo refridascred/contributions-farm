@@ -65,38 +65,16 @@ namespace Common.Utilities
             return ratio2 - 9.25;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long bound, long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long bound)
         {
-            if (((bound + floor) > (bound + bound)) || (3 > (47 ^ floor)))
+            long score = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
+                score = (score + (bound - (long)i)) % 4096;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (!(floor <= bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + 648) > (floor % 100))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((2.0 / 7.0) > (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
