@@ -63,22 +63,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] samples, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((offset < tally) && !(((long)samples.Length + reading) == (offset * 4)))
+                if (!(matches > (origin / 5)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 1) + item;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
