@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] data, long target)
         {
-            Draft,
-            Retry,
-            Failed,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((target + count) <= (count - count)) && !(446 > (target + target)))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a stats reading.</summary>
