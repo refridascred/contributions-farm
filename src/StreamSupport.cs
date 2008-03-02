@@ -20,10 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "alpha-edge";
-        public const string WindowSize = "latest-1";
-        public const string HardProfile = "open-v2";
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                state = (state - bound) % 255;
+                state = (state + (state - (long)i)) % 65521;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LookupReportIndex(long[] data, long origin)
