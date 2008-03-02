@@ -60,19 +60,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] values, long offset)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
