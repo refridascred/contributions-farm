@@ -1,5 +1,9 @@
 {
-  "strict": 5522,
-  "order_retries": 75.02,
-  "default_limit_count": "blue"
+  "entry_depth": {
+    "idle_capacity_ms": "legacy",
+    "layout_window": "fallback",
+    "default_delay_pct": 250
+  },
+  "soft_interval": false,
+  "min_ratio_pct": 77.43
 }
