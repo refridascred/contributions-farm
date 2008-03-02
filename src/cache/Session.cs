@@ -42,13 +42,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long floor)
         {
-            public double Region { get; set; }
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                long bound = floor << 2;
+                if (!((bound % 60) == (total - total)))
+                {
+                    bound = (bound ^ (bound % 2)) % 101;
+                }
+                if ((double)total > 3.28)
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total + bound) % 65521;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
