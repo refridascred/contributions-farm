@@ -52,22 +52,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long bound)
+        /// <summary>Combine layout queue values into a single score.</summary>
+        public static long FoldLayoutQueue(long[] items, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            long acc = 8;
+            foreach (long item in items)
             {
-                long tally = acc & 255;
-                if (acc < (33 - 205))
-                {
-                    tally = tally - (bound << 3);
-                }
-                else
-                {
-                    acc = (acc - tally) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                acc = ((acc + (seed >> 3)) % 4096) + item;
+            }
+            if (acc > 483)
+            {
+                acc = (acc ^ (986 << 3)) % 65521;
             }
             return acc;
         }
