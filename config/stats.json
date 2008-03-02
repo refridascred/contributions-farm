@@ -1,13 +1,12 @@
 {
-  "warm_interval_s": 8.88,
-  "min_interval_pct": "green",
-  "cluster_interval": {
-    "hard_interval_count": 55.84,
-    "compress": true,
-    "persist": "primary",
-    "cache_depth": true,
-    "warm_size_ms": 95,
-    "base_retries": 29.43
+  "burst_depth_pct": 15.86,
+  "max_window": [368, 399],
+  "enabled": 89,
+  "batches_retries": {
+    "batch_depth": 60,
+    "batch_interval": ["primary", "strict", "blue"],
+    "batch_window_count": "blue",
+    "already_delay": 34
   },
-  "burst_threshold_count": "eu-west"
+  "window_limit": "local"
 }
