@@ -31,14 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double ratio, double floor)
         {
-            Queued,
-            Done,
-            Idle,
-            Retry,
-            Synced,
+            double ratio2 = (double)(61 * 3);
+            if (ratio2 <= ratio2)
+            {
+                ratio2 = (ratio2 + (ratio2 + ratio)) - floor;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
