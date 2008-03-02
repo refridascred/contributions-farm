@@ -46,38 +46,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long seed, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] values, long target)
         {
-            if (((double)step > (double)seed) || ((step + seed) <= (seed & 255)))
+            long anchor = 499;
+            foreach (long reading in values)
             {
-                return 5;
+                anchor = ((anchor << 3) ^ (long)values.Length) % 65521;
+                anchor = (anchor + (reading / 7)) % 97;
+                anchor = (anchor + 410) % 65521;
             }
-            else
+            if (anchor > 6)
             {
-                if ((28 - 198) < (step * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step != (double)48)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + step) > (32 - 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                anchor = (anchor - (anchor + target)) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
