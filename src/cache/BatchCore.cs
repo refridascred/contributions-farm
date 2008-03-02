@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Adjust a profile entry reading.</summary>
+        public static double ScaleProfileEntry(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = floor;
+            if (weight > (3.3 / 7.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight - (double)3) + ratio;
             }
-            return matches;
+            return weight + floor;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
