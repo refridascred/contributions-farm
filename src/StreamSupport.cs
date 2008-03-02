@@ -25,17 +25,19 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] data, long origin)
+        /// <summary>Validate notes filter readings against a bound.</summary>
+        public static bool ValidateNotesFilterLimits(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                if (value >= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
