@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] values)
-        {
-            long mark = 9;
-            foreach (long entry in values)
-            {
-                if (!!((4.6 / 6.0) != (double)mark))
-                {
-                    mark = mark ^ (mark + entry);
-                }
-                mark = mark - (3 * 4);
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitTimeout = 8.67;
+        public const string RetrySpan = "legacy-edge";
+        public const string CacheTools = "standard-edge";
+        public const long StepTools = 8576;
+        public const double BaseBudget = 72.98;
 
         /// <summary>Accumulate entry account samples.</summary>
         public static long DigestEntryAccount(long[] values)
