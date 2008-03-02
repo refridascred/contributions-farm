@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] data, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long step, long limit)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long next = step - limit;
+            if (((4.9 - 3.0) > (double)next) || ((double)658 >= (double)limit))
             {
-                if (reading < origin)
+                return 7;
+            }
+            else
+            {
+                if ((next >> 4) < next)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((step << 1) < (next * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((701 * 4) < (957 - limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Accumulate filter samples.</summary>
