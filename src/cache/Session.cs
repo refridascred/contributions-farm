@@ -56,16 +56,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long floor, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            long cur = floor ^ step;
+            if (floor <= (floor + step))
             {
-                state = (state ^ (state & 127)) % 101;
-                state = ((state * 5) + (long)i) % 1000;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((double)cur < (2.38 / 4.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
