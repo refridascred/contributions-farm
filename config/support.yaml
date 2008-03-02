@@ -1,21 +1,25 @@
 # support settings
-min_window_ms:
-  batch_ratio_pct:
-    warm_delay_ms: 250
-    already_ratio: false
-    command_delay: 92.46
-    graph_threshold: false
-  audit: staging
-  min_threshold:
-    - standard
-    - blue
-    - cached
-  compress: local
-  batch_threshold: open
-  default_timeout_ms:
-    - green
-    - primary
-min_ttl_count: 4650
-persist: stable
-token_limit: staging
-batch_delay_pct: 22
+schema_interval: edge
+base_ratio_ms:
+  - primary
+  - blue
+  - strict
+channel_delay:
+  - 245
+  - 462
+  - 59
+  - 233
+sync_threshold:
+  editor_delay:
+    - staging
+    - legacy
+  retry_interval: 72
+  report_delay:
+    - 125
+    - 114
+    - 143
+  hard_size: open
+soft_depth:
+  - edge
+  - open
+strict: strict
