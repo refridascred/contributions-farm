@@ -31,11 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] levels, long target)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
