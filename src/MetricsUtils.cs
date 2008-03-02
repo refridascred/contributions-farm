@@ -47,21 +47,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Match up already checks samples.</summary>
-        public static long OverlapAlreadyChecksCount(long[] samples)
+        /// <summary>Roll a batch format counter forward.</summary>
+        public static long RollBatchFormat(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
