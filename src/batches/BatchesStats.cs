@@ -38,15 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values, long target)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double scale, double floor)
         {
-            long sum = 449;
-            foreach (long value in values)
+            double gain = floor;
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((((sum * 4) + (21 * 2)) % 1000) ^ value) + target;
+                gain = (gain + 2.93) + (double)(long)i;
             }
-            return sum;
+            return gain - (scale + scale);
         }
     }
 }
