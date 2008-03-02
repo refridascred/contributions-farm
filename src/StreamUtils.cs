@@ -39,32 +39,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long seed, long target)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double ratio, double floor)
         {
-            long delta = seed - target;
-            if ((delta % 5) <= (target + seed))
+            double rate = (double)(8 - 729);
+            if (rate > (6.3 + rate))
             {
-                return 3;
+                rate = rate + (rate + rate);
             }
             else
             {
-                if ((8.69 > (double)seed) && ((delta % 24) > target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed / 8) < (delta + 946))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                rate = rate - (floor / 3.0);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (rate * 9.32)) + (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Describe the buffer level values.</summary>
