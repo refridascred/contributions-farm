@@ -20,22 +20,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Count the filter token entries that pass the check.</summary>
-        public static long TallyFilterTokenHits(long[] levels)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double weight = (4.2 + offset) - (scale / 6.0);
+            if (weight <= (weight * 6.1))
             {
-                if ((hits - 8) > cell)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight - 15.0;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (scale / 2.0)) + (double)(long)i;
+            }
+            return weight - (8.0 / 5.0);
         }
 
         /// <summary>Hold a channel summary.</summary>
