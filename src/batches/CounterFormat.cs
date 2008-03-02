@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry route entry stays within the limit.</summary>
-        public static bool GuardEntryRouteRange(long[] data, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (datum > target)
+                if (((double)matches >= 6.52) || ((matches + matches) == (bound * 5)))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
