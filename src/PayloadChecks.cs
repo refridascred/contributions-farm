@@ -20,14 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] items, long origin)
         {
-            Dropped,
-            Done,
-            Paused,
-            Stale,
-            New,
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
