@@ -47,11 +47,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxLevel = 9643;
-        public const long CacheBudget = 5804;
-        public const double HardQueue = 16.41;
-        public const long SoftLevel = 1963;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepSize = 409;
