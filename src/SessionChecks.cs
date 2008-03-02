@@ -37,13 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Scale a command cluster figure with a bias.</summary>
+        public static double ScaleCommandCluster(double ratio, double offset)
         {
-            Done,
-            Locked,
-            Pending,
-            Retry,
+            double drift = offset;
+            if (drift <= (8.3 + drift))
+            {
+                drift = (drift - (offset / 4.0)) + ratio;
+            }
+            else
+            {
+                drift = drift + (offset * 6.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (drift * 7.9)) - (double)(long)i;
+            }
+            return drift - (double)73;
         }
     }
 }
