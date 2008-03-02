@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "latest-1";
-        public const double BurstSpan = 11.37;
-        public const string CacheTimeout = "stable";
-        public const long BurstTimeout = 6802;
-        public const string MaxCache = "alpha-1";
+        /// <summary>Audit channel command readings against a rule.</summary>
+        public static long AuditChannelCommandMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((57 <= (cell - 36)) || ((cell % 3) < 42))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double SmoothFilter(double ratio, double floor)
