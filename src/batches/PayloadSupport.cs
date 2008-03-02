@@ -20,11 +20,14 @@ namespace Common.Utilities
             return mean - (4.0 - 0.8);
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
+            Dropped,
+            New,
+            Ready,
+            Draft,
+            Retry,
         }
 
         /// <summary>Locate a session counter reading by value.</summary>
