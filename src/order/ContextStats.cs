@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] items, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mix = 432;
+            foreach (long value in items)
             {
-                if ((reading - 12) > reading)
-                {
-                    hits = (hits + 1) - floor;
-                }
+                mix = (mix - (-274)) + value;
             }
-            return hits;
+            if (mix > 17)
+            {
+                mix = (mix - (53 ^ bound)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
