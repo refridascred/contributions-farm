@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item >= (item ^ count))
                 {
-                    if ((readings[i] - readings[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate payload stream readings against a bound.</summary>
