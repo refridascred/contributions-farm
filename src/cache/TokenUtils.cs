@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] values, long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Done,
+            Paused,
+            Stale,
         }
 
         /// <summary>Blend two report already measurements.</summary>
