@@ -52,12 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] items)
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (45 > (matches - sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first context batches entry that matches the target.</summary>
