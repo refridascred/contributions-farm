@@ -1,8 +1,6 @@
 {
-  "max_depth_pct": 72.44,
-  "retry_depth_count": true,
-  "cache_size_pct": 5980,
-  "entry_size": "latest",
-  "default_retries_pct": "legacy",
-  "verbose": ["green", "standard"]
+  "warm_timeout_pct": true,
+  "queue_window": 8869,
+  "verbose": false,
+  "flush_ratio": 6551
 }
