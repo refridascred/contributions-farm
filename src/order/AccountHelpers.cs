@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next cache account value from a seed.</summary>
-        public static long SeriesCacheAccount(long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double weight, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            double drift = (offset + weight) / 6.0;
+            if (drift < (double)9)
             {
-                acc = (acc - (acc % 3)) % 1000;
-                acc = ((acc * 4) + (long)i) % 65521;
+                drift = drift + (weight * 7.2);
             }
-            return acc;
+            else
+            {
+                drift = drift + 7.3;
+            }
+            return drift + 0.87;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
