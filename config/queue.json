@@ -1,6 +1,7 @@
 {
-  "profile_timeout": true,
-  "poll_window_pct": "latest",
-  "dry_run": false,
-  "burst_ttl": [469, 478, 40, 8]
+  "support_timeout": [474, 193, 115],
+  "window_ttl": "strict",
+  "batch_ttl_s": 1024,
+  "retry_ttl_ms": ["eu-west", "green", "open", "standard"],
+  "verbose": 95
 }
