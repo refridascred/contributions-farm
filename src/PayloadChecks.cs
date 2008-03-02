@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Compare every pair of route token readings.</summary>
+        public static long MatchRouteTokenCount(long[] readings)
         {
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a session snapshot.</summary>
