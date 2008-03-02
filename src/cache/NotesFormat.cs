@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] items, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long anchor = 730;
+            foreach (long item in readings)
             {
-                if (((sample + 15) >= sample) || (sample > (floor << 2)))
+                if ((item - item) > (440 + 24))
                 {
-                    seen = seen + 1;
+                    anchor = anchor - item;
+                    anchor = (anchor ^ (item + item)) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = (anchor - item) % 101;
+                    anchor = anchor ^ (725 * 3);
+                }
+                if (anchor < (anchor ^ item))
+                {
+                    anchor = ((anchor << 2) ^ (item + item)) % 255;
+                }
+                if ((double)687 < (double)item)
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Find the first session tools entry that matches the target.</summary>
