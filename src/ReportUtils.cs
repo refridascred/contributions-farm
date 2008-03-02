@@ -60,22 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] readings)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((matches + datum) <= (datum + 6))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the record class values.</summary>
