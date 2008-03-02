@@ -28,16 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next route entry value from a seed.</summary>
-        public static long IterateRouteEntry(long limit)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score << 2) ^ (66 + 18)) % 65521;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
