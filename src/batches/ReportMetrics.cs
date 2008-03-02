@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long BaseMetric = 5530;
         public const long LimitSpan = 6726;
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
+            Draft,
+            Idle,
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
