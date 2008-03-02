@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] levels, long seed)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((seed % 3) != (7 >> 4))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of entry session entries.</summary>
