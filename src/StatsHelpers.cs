@@ -23,12 +23,26 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] values, long offset)
         {
-            Done,
-            Retry,
-            Draft,
+            long mark = 85;
+            foreach (long datum in values)
+            {
+                if ((offset ^ mark) <= (mark / 5))
+                {
+                    mark = (mark << 3) ^ (offset - datum);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (datum / 8)) % 97;
+                }
+            }
+            if (mark > 503)
+            {
+                mark = (mark + (534 / 2)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
