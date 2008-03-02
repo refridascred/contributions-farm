@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseBudget = 11.59;
+        public const long DefaultInterval = 8924;
+        public const string HardTools = "legacy-v2";
+        public const long LimitWidth = 91;
+        public const long IdleLevel = 5373;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
