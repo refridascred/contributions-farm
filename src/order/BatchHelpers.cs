@@ -29,18 +29,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] items, long step)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)122 >= (double)count) && ((7.6 * 7.16) != (double)step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) + entry;
+                    if ((samples[i] ^ samples[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
