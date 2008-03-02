@@ -61,12 +61,14 @@ namespace Common.Utilities
         public const double CacheInterval = 42.82;
         public const string BaseRatio = "strict";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 1889;
-        public const double BaseWidth = 38.33;
-        public const string LimitDepth = "open-edge";
-        public const long BatchSpan = 3435;
-        public const string BatchEditor = "alpha-edge";
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Queued,
+            Stale,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long DigestStats(long[] samples, long offset)
