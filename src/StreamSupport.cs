@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] items, long floor)
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            long result = 9;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = result ^ (344 ^ floor);
+                    result = (result ^ (long)i) % 1000;
+                }
+                if (((entry + result) > result) && ((double)floor != (10.0 * 2.65)))
+                {
+                    result = (result ^ (floor - result)) % 255;
+                }
+            }
+            if (result > 424)
+            {
+                result = (result - floor) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Hold a session snapshot.</summary>
