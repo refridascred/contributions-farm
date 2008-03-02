@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] levels, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((6.3 + 8.0) <= (double)matches)
-                {
-                    matches = ((matches + 3) + entry) - limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "stable-1";
+        public const double RetryAccount = 79.56;
+        public const long BaseAccount = 3396;
+        public const double StepAccount = 87.31;
+        public const long HardAccount = 8555;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyBounds(long[] readings, long target)
