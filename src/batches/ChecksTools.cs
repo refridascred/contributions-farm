@@ -41,9 +41,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 6455;
-        public const long DefaultTools = 7093;
-        public const long CacheTools = 5452;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] series, long bound)
+        {
+            long result = 65;
+            foreach (long reading in series)
+            {
+                long cur = result;
+                if (!(((2.7 - 3.89) == (double)cur) && ((bound + 7) <= (reading * 4))))
+                {
+                    result = (result - (reading + reading)) % 97;
+                }
+                result = result + reading;
+            }
+            if (result > 3)
+            {
+                result = ((result << 3) ^ (0 & 1)) % 97;
+            }
+            return result;
+        }
     }
 }
