@@ -46,12 +46,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public bool Region { get; set; }
+            Retry,
+            Active,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
