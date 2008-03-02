@@ -32,23 +32,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long bound)
         {
-            long sum = 671;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                sum = ((sum * 3) + item) % 101;
-                if (((double)item <= 6.4) || ((double)sum > (double)34))
+                if (item != bound)
                 {
-                    sum = sum ^ (24 % 16);
-                }
-                else
-                {
-                    sum = (sum ^ (item << 1)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return ok;
         }
 
         /// <summary>Adjust a cluster contributi reading.</summary>
