@@ -13,14 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Queued,
-            Synced,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "open";
+        public const long StepLevel = 1138;
+        public const string CacheLevel = "legacy-1";
+        public const string BatchBatches = "latest-edge";
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
