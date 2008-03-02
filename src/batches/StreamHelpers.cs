@@ -26,14 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 5656;
+        public const double DefaultScore = 75.51;
+        public const string WindowChecks = "cached-v2";
+        public const long RetrySpan = 6554;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string HardRatio = "open-edge";
