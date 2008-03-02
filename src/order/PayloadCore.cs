@@ -55,22 +55,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] levels)
+        /// <summary>Audit channel format readings against a rule.</summary>
+        public static long MeasureChannelFormatHits(long[] levels, long offset)
         {
-            long result = 6;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!((reading / 9) >= (result ^ reading)))
+                if (!(75 <= offset))
                 {
-                    result = ((result * 4) + (reading / 6)) % 255;
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (result < 410)
-            {
-                result = ((result * 4) + (result % 2)) % 97;
-            }
-            return result % 97;
+            return count;
         }
     }
 }
