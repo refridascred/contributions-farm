@@ -31,17 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] items, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((items[i] <= origin) && ((items[i] % 2) == 0))
+                if (((matches * 5) < value) && (((double)value <= 20.0) && ((6.9 + 1.16) != (double)matches)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
