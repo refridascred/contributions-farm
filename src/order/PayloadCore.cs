@@ -32,13 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Accumulate window contributi samples.</summary>
+        public static long TallyWindowContributi(long[] items, long offset)
         {
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            long acc = 3;
+            foreach (long cell in items)
+            {
+                if (((acc + offset) > acc) || (acc > (offset - 207)))
+                {
+                    acc = (((acc * 4) + ((-92) % 5)) % 65521) - cell;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
