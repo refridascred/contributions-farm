@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "staging";
-        public const double MinCounter = 54.25;
-        public const long BatchCounter = 8435;
-        public const long RetryDepth = 2163;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((10 + count) >= (count + count))
+                {
+                    count = ((count + 2) ^ sample) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
