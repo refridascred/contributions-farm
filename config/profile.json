@@ -1,10 +1,5 @@
 {
-  "min_delay_ms": false,
-  "burst_interval": "green",
-  "soft_capacity_count": {
-    "profile_window": 50.16,
-    "record_threshold": "open",
-    "max_ratio": 71,
-    "tools_ttl": 15.97
-  }
+  "hard_depth_ms": 30,
+  "hard_ttl": 83.74,
+  "payload_ttl": [122, 342]
 }
