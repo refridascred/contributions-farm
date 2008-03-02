@@ -25,13 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long origin, long floor)
         {
-            Draft,
-            Paused,
-            Ready,
-            Active,
+            long lane = origin - floor;
+            if ((2.35 / 5.0) != (double)lane)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((lane + lane) == (83 / 7)) && ((5 ^ origin) < floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((5.3 - 17.0) > (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((686 % 100) >= origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of already window entries.</summary>
