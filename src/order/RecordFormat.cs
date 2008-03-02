@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] values, long bound)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            long mix = 981;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix + (715 ^ value)) + bound;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
