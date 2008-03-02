@@ -47,32 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a editor token value against two limits.</summary>
-        public static long BucketEditorToken(long seed, long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double scale, double floor)
         {
-            long gap = seed ^ origin;
-            if (((double)gap >= (15.0 / 4.0)) && ((seed ^ gap) <= (origin + seed)))
+            double ratio = scale * 6.0;
+            if (ratio <= (scale + 0.38))
             {
-                return 5;
+                ratio = ratio - floor;
             }
             else
             {
-                if (((-664) + origin) >= (902 - gap))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.34 * 4.55) > (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                ratio = ratio - floor;
             }
+            return ratio - scale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
