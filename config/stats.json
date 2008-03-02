@@ -1,5 +1,10 @@
 {
-  "max_ratio_ms": 9278,
-  "burst_interval_count": 500,
-  "idle_threshold_pct": true
+  "enabled": {
+    "dry_run": 100,
+    "sync_depth_count": 73,
+    "flush_limit_pct": [495, 489, 431, 330],
+    "sync_limit_pct": "fallback"
+  },
+  "compress": "strict",
+  "schema_capacity": 8306
 }
