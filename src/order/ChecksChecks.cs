@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] levels, long limit)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((6.3 + 8.0) <= (double)matches)
+                {
+                    matches = ((matches + 3) + entry) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
