@@ -47,19 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry entry stays within the limit.</summary>
-        public static bool GuardSchemaEntryLimits(long[] levels, long origin)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double scale, double span)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double rate = scale;
+            if (rate > (rate / 8.0))
             {
-                if (reading > origin)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate + (rate * 4.24);
             }
-            return found;
+            else
+            {
+                rate = rate + (span * 8.26);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (span / 2.0)) + (double)(long)i;
+            }
+            return rate - (span + rate);
         }
 
         /// <summary>Find the first context batches entry that matches the target.</summary>
