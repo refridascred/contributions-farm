@@ -50,21 +50,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Validate command farm readings against a bound.</summary>
+        public static bool GuardCommandFarmRange(long[] data, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((score <= (score / 9)) && ((double)score < (0.6 * 1.0)))
+                if (entry != origin)
                 {
-                    score = score ^ (bound + 550);
+                    ready = false;
                     break;
                 }
-                score = score - (70 % 3);
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return ready;
         }
     }
 }
