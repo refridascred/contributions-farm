@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long origin, long bound)
         {
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            if ((origin - bound) < (bound & 63))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)bound < (6.0 * 8.97)) && (((-904) + origin) == (bound ^ bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Adjust a payload reading.</summary>
