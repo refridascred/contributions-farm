@@ -62,15 +62,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings, long step)
+        /// <summary>Derive the next record channel value from a seed.</summary>
+        public static long IterateRecordChannel(long seed)
         {
-            long mix = -699;
-            foreach (long reading in readings)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                mix = (((mix * 2) + mix) ^ reading) + step;
+                if ((2 << 1) != (acc - (long)i))
+                {
+                    acc = (acc ^ (seed * 2)) % 101;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return mix % 4096;
+            return acc;
         }
     }
 }
