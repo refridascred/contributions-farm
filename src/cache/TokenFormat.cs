@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a layout entry pair into a bucket.</summary>
-        public static long ClassifyLayoutEntry(long origin, long seed)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            if (((seed / 5) < (-7)) && (origin < (857 + seed)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed <= (seed + origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Queued,
+            New,
+            Failed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the already level values.</summary>
