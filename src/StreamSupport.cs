@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                state = (state - bound) % 255;
-                state = (state + (state - (long)i)) % 65521;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 8707;
+        public const long WindowDepth = 1067;
+        public const long BurstSchema = 1171;
+        public const long RetrySchema = 1426;
+        public const long IdleRatio = 4206;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LookupReportIndex(long[] data, long origin)
