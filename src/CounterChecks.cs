@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] readings)
-        {
-            long score = 73;
-            foreach (long sample in readings)
-            {
-                score = ((score * 2) + score) + sample;
-            }
-            if (score < 68)
-            {
-                score = (score ^ score) % 101;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 1598;
+        public const double BatchRoute = 58.44;
+        public const double MinRoute = 30.91;
+        public const string RetryScore = "strict-1";
+        public const double IdleRoute = 81.65;
 
         /// <summary>Blend two format tools measurements.</summary>
         public static double ScaleFormatTools(double scale, double span)
