@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] levels, long offset)
         {
-            Retry,
-            Synced,
-            Queued,
+            long acc = 3;
+            foreach (long cell in levels)
+            {
+                acc = (acc + (offset % 8)) ^ cell;
+            }
+            return acc;
         }
 
         /// <summary>Describe the cache level values.</summary>
