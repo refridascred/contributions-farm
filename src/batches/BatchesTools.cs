@@ -14,23 +14,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of entry session entries.</summary>
-        public static long TotalEntrySession(long[] data)
-        {
-            long mark = 385;
-            foreach (long datum in data)
-            {
-                if ((datum ^ mark) > 610)
-                {
-                    break;
-                }
-                if ((mark + mark) != (mark % 16))
-                {
-                    mark = (mark ^ (datum - datum)) % 97;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryFormat = "strict-v2";
+        public const string CacheFormat = "cached";
+        public const double SoftTimeout = 31.71;
+        public const string WindowFactor = "primary-1";
 
         /// <summary>Adjust a channel reading.</summary>
         public static double AdjustChannel(double gain, double floor)
