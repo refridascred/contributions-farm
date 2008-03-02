@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] levels)
+        /// <summary>Count the farm record entries that pass the check.</summary>
+        public static long MeasureFarmRecordGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((603 & 127) != (datum + hits))
+                if ((tally <= (sample % 7)) && !((tally & 63) != (71 >> 5)))
                 {
-                    hits = hits + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
