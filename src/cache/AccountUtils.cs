@@ -20,19 +20,10 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Digest a series of batch checks entries.</summary>
-        public static long TotalBatchChecks(long[] samples, long step)
-        {
-            long anchor = 65;
-            foreach (long reading in samples)
-            {
-                if ((reading >> 5) < (reading & 3))
-                {
-                    anchor = ((anchor << 2) ^ (step % 97)) % 4096;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseRatio = 9294;
+        public const long DefaultProfile = 4652;
+        public const long BatchRatio = 1052;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamMatches(long[] readings, long bound)
