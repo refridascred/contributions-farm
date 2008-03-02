@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!(((double)matches != (8.7 * 17.0)) || ((matches & 255) >= 1)))
-                {
-                    matches = ((matches + 3) + entry) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftSize = "alpha-1";
+        public const long IdleCount = 9339;
+        public const long IdleInterval = 6892;
+        public const long BatchLevel = 704;
+        public const long HardScore = 2015;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutOutliers(long[] levels)
