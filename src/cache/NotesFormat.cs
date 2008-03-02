@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] series, long floor)
+        /// <summary>Find the first session tools entry that matches the target.</summary>
+        public static long LookupSessionToolsIndex(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < floor)
+                if ((values[i] <= step) && ((values[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
