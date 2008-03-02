@@ -41,17 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] series, long limit)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = span;
+            if (load > (double)790)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                load = load - (double)(-716);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load + (rate / 2.0);
         }
 
         /// <summary>Hold a schema record.</summary>
