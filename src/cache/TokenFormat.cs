@@ -43,17 +43,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] data, long offset)
+        /// <summary>Roll a channel stream counter forward.</summary>
+        public static long StepChannelStream(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result + result) % 97;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
