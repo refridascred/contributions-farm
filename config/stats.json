@@ -1,8 +1,5 @@
 {
-  "strict": 82.03,
-  "hard_capacity_s": "standard",
-  "soft_depth_count": "open",
-  "max_size": 4588,
-  "burst_delay": true,
-  "compress": false
+  "poll_depth": false,
+  "cache_retries": "local",
+  "audit": 500
 }
