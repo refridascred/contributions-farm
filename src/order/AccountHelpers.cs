@@ -49,20 +49,38 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long seed, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            if (((double)step > (double)seed) || ((step + seed) <= (seed & 255)))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = ((result << 3) ^ (result / 2)) ^ (long)i2;
-                    result = result - (result >> 2);
-                }
-                result = ((result * 4) + (long)i) % 97;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((28 - 198) < (step * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step != (double)48)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + step) > (32 - 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter stats.</summary>
