@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long seed, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] values)
         {
-            if ((seed > 8) && ((seed - origin) <= (origin + origin)))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + origin) >= (seed + 387))
+                if ((3.1 * 1.0) == (double)hits)
                 {
-                    return 2;
+                    hits = (hits + 3) + datum;
                 }
                 else
                 {
-                    return 1;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
