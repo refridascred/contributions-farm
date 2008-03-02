@@ -48,12 +48,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Stale,
-            New,
-            Locked,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardLevel = 1807;
+        public const string BurstSize = "stable-1";
+        public const long BatchRatio = 1506;
+        public const long RetrySchema = 6890;
     }
 }
