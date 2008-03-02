@@ -1,16 +1,10 @@
 # githubfarm settings
-min_threshold: eu-west
-already_interval: 7
-sync_ratio:
-  sync_ratio_pct: 250
-  sync_ratio: 500
-  cache_interval_ms: 63
-retry_retries_pct: true
-counter_limit:
-  max_capacity_count: 94
-  audit: 30
-  cache_depth_ms: edge
-strict:
-  - blue
-  - latest
-  - open
+max_capacity_s: 7329
+max_threshold_s: 47.82
+window_timeout: true
+compress:
+  flush_timeout_count: 51.9
+  enabled: 45.89
+  default_threshold: 38.69
+  stats_threshold: false
+cache_interval: 7250
