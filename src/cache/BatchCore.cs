@@ -15,15 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double bias, double span)
+        /// <summary>Audit commits farm readings against a rule.</summary>
+        public static long AuditCommitsFarmOutliers(long[] samples, long seed)
         {
-            double drift = span;
-            if (drift <= span)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                drift = drift + bias;
+                if ((seed + value) == (seed & 1))
+                {
+                    hits = hits + 2;
+                }
             }
-            return drift - span;
+            return hits;
         }
 
         /// <summary>Scale a counter contributi figure with a bias.</summary>
