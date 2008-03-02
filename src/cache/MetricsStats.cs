@@ -62,15 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double weight, double offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] series, long seed)
         {
-            double scale = offset;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                scale = (scale + weight) + (double)(long)i;
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale + weight;
+            return flag;
         }
     }
 }
