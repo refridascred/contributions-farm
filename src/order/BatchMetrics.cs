@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
