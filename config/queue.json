@@ -1,17 +1,6 @@
 {
-  "channel_ttl": "staging",
-  "poll_limit_count": 219,
-  "sync_retries_ms": {
-    "profile_window": false,
-    "soft_delay_ms": 52.66,
-    "batch_ttl": 30,
-    "graph_threshold": {
-      "max_retries_ms": 73,
-      "enabled": "blue",
-      "max_retries_s": false,
-      "burst_ttl_ms": ["blue", "edge", "legacy", "primary"],
-      "soft_retries_pct": ["local", "standard", "green"],
-      "compress": "stable"
-    }
-  }
+  "max_timeout": 30,
+  "hard_ttl": "green",
+  "batch_ratio_s": "cached",
+  "min_ratio_ms": ["eu-west", "stable", "eu-west", "eu-west"]
 }
