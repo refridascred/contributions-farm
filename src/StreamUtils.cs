@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
+            New,
+            Synced,
+            Pending,
         }
 
         /// <summary>Count already metric pairs that satisfy a relation.</summary>
