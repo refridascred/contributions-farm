@@ -25,14 +25,14 @@ namespace Common.Utilities
         public const string SoftAccount = "legacy";
         public const long DefaultAccount = 2230;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Draft,
+            Dropped,
             Stale,
+            Pending,
+            Done,
             Synced,
-            New,
-            Locked,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
