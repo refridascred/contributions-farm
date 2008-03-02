@@ -51,19 +51,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double floor)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double gain = (ratio + ratio) / 7.0;
-            if (gain > 18.0)
-            {
-                gain = (gain - ratio) + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (double)(-5)) + (double)(long)i;
-            }
-            return gain - (double)3;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
