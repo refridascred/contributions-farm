@@ -1,20 +1,6 @@
 # githubfarm settings
-burst_window: eu-west
-hard_interval_count:
-  poll_capacity: 4
-  layout_capacity:
-    - 39
-    - 128
-  max_capacity_s: legacy
-  strict: 36
-burst_depth_pct: open
-soft_size_s: false
-token_size:
-  base_ttl_count: open
-  compress: false
-  retry_threshold_ms: green
-  channel_threshold: 37.08
-  retry_size_s:
-    - edge
-    - green
-command_size: 51
+burst_interval: 250
+profile_interval: local
+sync_threshold: 66.41
+retry_capacity: green
+burst_delay_count: blue
