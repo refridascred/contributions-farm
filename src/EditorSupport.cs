@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] items)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((long)items.Length >= matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
