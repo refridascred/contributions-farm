@@ -24,12 +24,18 @@ namespace Common.Utilities
             return scale + (double)913;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Audit cache session readings against a rule.</summary>
+        public static long AuditCacheSessionMatches(long[] items, long floor)
         {
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((((-8) * 3) != (52 - floor)) && (floor <= (count << 3)))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
