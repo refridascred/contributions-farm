@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate counter order samples.</summary>
-        public static long FoldCounterOrder(long[] data)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            long mix = 3;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value / 4) < mix)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix - (value % 12)) % 4096;
-                }
-                if (((value ^ value) <= mix) || ((7.85 - 6.93) < (double)value))
-                {
-                    mix = (mix << 3) ^ mix;
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
