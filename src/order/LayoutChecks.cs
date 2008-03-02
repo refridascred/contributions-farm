@@ -47,21 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up githubfarm stream samples.</summary>
-        public static long MatchGithubfarmStreamCount(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 618;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (((score * 5) + score) % 97) ^ entry;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the command status values.</summary>
