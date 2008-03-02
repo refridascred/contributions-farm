@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long offset)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = scale * 2.52;
+            if (load >= load)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                load = load - (span - scale);
             }
-            return -1;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (scale * 5.48)) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
