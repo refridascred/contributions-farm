@@ -27,15 +27,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double rate, double span)
+        /// <summary>Look up the position of a checks report sample.</summary>
+        public static long LocateChecksReportIndex(long[] data, long origin)
         {
-            double mean = (double)(8 - 169);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (span + rate)) + (double)(long)i;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mean + mean;
+            return -1;
         }
     }
 }
