@@ -1,14 +1,13 @@
 {
-  "poll_retries_s": true,
-  "batch_timeout_pct": "eu-west",
-  "strict": 100,
-  "burst_timeout_count": {
-    "dry_run": [406, 354],
-    "persist": true,
-    "verbose": [91, 229, 207],
-    "counter_size": 28,
-    "sync_limit_pct": "legacy",
-    "strict": ["stable", "cached"]
+  "warm_depth_ms": ["local", "fallback", "latest"],
+  "strict": {
+    "command_retries": "fallback",
+    "warm_capacity_count": "cached",
+    "audit": ["latest", "local"],
+    "soft_limit": 4906,
+    "sync_ttl_count": 100,
+    "cache_size_ms": 87.73
   },
-  "soft_interval": "local"
+  "buffer_depth": 500,
+  "retry_retries_count": true
 }
