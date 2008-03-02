@@ -77,13 +77,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 1180;
+        public const double MinFarm = 76.64;
+        public const double StepFactor = 26.37;
     }
 }
