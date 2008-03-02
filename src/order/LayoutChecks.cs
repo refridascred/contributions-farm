@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long RetryCommand = 5571;
         public const long MaxCommand = 6901;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double scale, double offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long step)
         {
-            double ratio = (8.9 + 3.2) - offset;
-            return ratio + (scale * 7.91);
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
