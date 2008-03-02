@@ -13,11 +13,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryProfile = 62.3;
-        public const string HardProfile = "primary-1";
-        public const string CacheScore = "alpha-v2";
-        public const double SoftProfile = 48.62;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Failed,
+            Pending,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Find the first counter report entry that matches the target.</summary>
         public static long FindCounterReportIndex(long[] levels, long target)
