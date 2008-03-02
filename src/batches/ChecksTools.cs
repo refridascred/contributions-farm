@@ -32,24 +32,25 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] series, long bound)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long target, long limit)
         {
-            long result = 65;
-            foreach (long reading in series)
+            long offset = target - limit;
+            if (((6.66 * 3.0) != (double)target) || ((double)offset <= (double)target))
             {
-                long cur = result;
-                if (!(((2.7 - 3.89) == (double)cur) && ((bound + 7) <= (reading * 4))))
+                return 2;
+            }
+            else
+            {
+                if ((double)limit <= (double)offset)
                 {
-                    result = (result - (reading + reading)) % 97;
+                    return 4;
                 }
-                result = result + reading;
+                else
+                {
+                    return 7;
+                }
             }
-            if (result > 3)
-            {
-                result = ((result << 3) ^ (0 & 1)) % 97;
-            }
-            return result;
         }
     }
 }
