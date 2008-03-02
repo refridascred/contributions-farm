@@ -20,11 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxRatio = "primary-v2";
-        public const double BaseBatch = 34.92;
-        public const double StepBatch = 21.96;
-        public const long HardBatch = 2111;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double ratio, double floor)
+        {
+            double rate = 5.38;
+            if (rate >= (floor + ratio))
+            {
+                rate = rate - (double)(-8);
+            }
+            else
+            {
+                rate = rate - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (ratio - floor)) + (double)(long)i;
+            }
+            return rate + (double)8;
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
