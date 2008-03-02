@@ -22,16 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                sum = ((sum << 2) ^ (limit * 4)) % 97;
-                sum = ((sum * 5) + (long)i) % 97;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
