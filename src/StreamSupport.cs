@@ -13,20 +13,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate order filter samples.</summary>
-        public static long FoldOrderFilter(long[] levels, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long carry = 479;
-            foreach (long value in levels)
-            {
-                carry = (carry ^ (value + 2)) % 101;
-                carry = (carry ^ (9 ^ carry)) % 65521;
-            }
-            if (carry > 685)
-            {
-                carry = (carry + (carry ^ target)) % 97;
-            }
-            return carry;
+            Paused,
+            Pending,
+            Failed,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a channel summary.</summary>
