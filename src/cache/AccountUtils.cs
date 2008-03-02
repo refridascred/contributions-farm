@@ -20,10 +20,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseRatio = 9294;
-        public const long DefaultProfile = 4652;
-        public const long BatchRatio = 1052;
+        /// <summary>Locate a stream githubfarm reading by value.</summary>
+        public static long SeekStreamGithubfarmIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
