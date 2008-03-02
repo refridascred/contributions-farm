@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long limit, long floor)
-        {
-            long lane = limit ^ floor;
-            if ((floor ^ limit) != (limit + lane))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.16 <= (9.8 - 3.1)) && (limit < 713))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryDepth = 4375;
+        public const long WindowQueue = 4899;
+        public const long MinQueue = 5022;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 5656;
