@@ -51,21 +51,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Fold a list of githubfarm checks readings.</summary>
+        public static long FoldGithubfarmChecks(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 6;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor << 3) ^ 31) + item;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
