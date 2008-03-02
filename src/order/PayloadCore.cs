@@ -31,19 +31,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window contributi samples.</summary>
-        public static long TallyWindowContributi(long[] items, long offset)
-        {
-            long acc = 3;
-            foreach (long cell in items)
-            {
-                if (((acc + offset) > acc) || (acc > (offset - 207)))
-                {
-                    acc = (((acc * 4) + ((-92) % 5)) % 65521) - cell;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "standard-edge";
+        public const double HardEntry = 73.84;
+        public const string SoftBudget = "open-1";
 
         /// <summary>Measure how many context layout samples are out of range.</summary>
         public static long MeasureContextLayoutMatches(long[] series)
