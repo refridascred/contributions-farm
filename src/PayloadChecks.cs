@@ -50,25 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long origin, long target)
+        /// <summary>Validate cluster editor readings against a bound.</summary>
+        public static bool VerifyClusterEditorRange(long[] data, long bound)
         {
-            long step = origin - target;
-            if (((step / 9) != (35 % 64)) && (origin <= (target - 8)))
+            bool valid = true;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin ^ target) == (5 + target)) && ((double)step <= 7.0))
+                if (datum <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
