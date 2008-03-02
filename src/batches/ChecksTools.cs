@@ -38,11 +38,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 5636;
-        public const string HardFarm = "staging-v2";
-        public const long CacheWidth = 6954;
-        public const long IdleFarm = 5092;
-        public const string MinFarm = "staging-v2";
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public long Token { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
