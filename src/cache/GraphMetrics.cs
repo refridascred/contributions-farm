@@ -76,21 +76,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 73;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)readings.Length + datum) < 4)
                 {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix ^ (mix / 8);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ ((long)readings.Length - mix)) % 1000;
                 }
             }
-            return seen;
+            return mix % 65521;
         }
     }
 }
