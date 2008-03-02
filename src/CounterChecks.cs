@@ -82,12 +82,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] samples, long origin)
+        /// <summary>Find the first commits batches entry that matches the target.</summary>
+        public static long SeekCommitsBatchesIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
+                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
