@@ -1,6 +1,9 @@
-id,rank,weight,level
-1,24.04,868,383
-2,950,615,9.89
-3,87.7,eu-west,303
-4,123,35.33,10.22
-5,legacy,566,43.52
+id,ratio,level,label,rank
+1,674,81.8,staging,73.55
+2,603,90.23,5.84,0.77
+3,42.09,local,81.18,60
+4,local,staging,53.58,local
+5,757,578,45.67,fallback
+6,open,standard,edge,56
+7,710,897,open,standard
+8,538,780,legacy,legacy
