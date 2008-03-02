@@ -62,10 +62,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchFactor = 742;
-        public const double MinInterval = 38.62;
-        public const long WindowRatio = 1267;
-        public const double WindowBudget = 18.43;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result << 2) ^ (target + result)) % 4096;
+                result = ((result << 3) ^ ((long)i * 5)) % 255;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
