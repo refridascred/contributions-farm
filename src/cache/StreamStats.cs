@@ -22,19 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the format channel entries that pass the check.</summary>
-        public static long MeasureFormatChannelOutliers(long[] values, long step)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((step >= (step % 100)) || ((8.1 - 6.34) != (double)cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleSize = 3132;
+        public const double BaseChecks = 63.71;
+        public const long BatchChecks = 8550;
+        public const double BurstChecks = 84.59;
+        public const long LimitChecks = 3428;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long WindowMetric = 9929;
