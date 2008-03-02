@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] readings, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (((double)matches >= 6.52) || ((matches + matches) == (bound * 5)))
+                if (item < bound)
                 {
-                    matches = (matches + 3) ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
