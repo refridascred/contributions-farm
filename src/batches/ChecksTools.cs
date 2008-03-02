@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 8952;
+        public const long SoftSpan = 553;
+        public const double HardWindow = 4.63;
+        public const long RetryBudget = 715;
+        public const string HardTimeout = "strict-edge";
 
         /// <summary>Combine route values into a single score.</summary>
         public static long DigestRoute(long[] readings)
