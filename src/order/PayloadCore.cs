@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] readings, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (cell < offset)
+                if (datum < step)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Look up the position of a entry payload sample.</summary>
