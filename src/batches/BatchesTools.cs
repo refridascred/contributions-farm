@@ -32,9 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheDepth = 8640;
-        public const string BatchProfile = "alpha-1";
-        public const long MinProfile = 564;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((limit << 3) != (item % 97))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
