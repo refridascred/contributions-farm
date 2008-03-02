@@ -93,22 +93,14 @@ namespace Common.Utilities
         public const double HardScore = 70.39;
         public const long WindowCount = 9403;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] samples, long offset)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long score = 0;
-            foreach (long datum in samples)
-            {
-                if (!((score + datum) >= (-5)))
-                {
-                    score = (score + (offset ^ score)) % 4096;
-                }
-                if (!((score ^ 20) > (score << 3)))
-                {
-                    break;
-                }
-            }
-            return score;
+            Dropped,
+            Draft,
+            Failed,
+            Stale,
+            Closed,
         }
     }
 }
