@@ -66,12 +66,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double ratio, double span)
         {
-            Dropped,
-            Pending,
-            Locked,
+            double gain = ratio;
+            if (gain <= span)
+            {
+                gain = gain - gain;
+            }
+            return gain - span;
         }
     }
 }
