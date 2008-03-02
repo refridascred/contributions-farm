@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] items, long floor)
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((((683 * 2) < (floor + datum)) && ((13.0 - 9.0) > (double)hits)) || ((datum / 7) > (hits * 4)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit metric context readings against a rule.</summary>
