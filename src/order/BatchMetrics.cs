@@ -40,21 +40,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(98 % 97);
+            if (mean > 9.17)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean + mean) - weight;
             }
-            return count;
+            return mean - span;
         }
 
         /// <summary>Grade a window schema value against two limits.</summary>
