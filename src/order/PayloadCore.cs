@@ -42,12 +42,38 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Grade a filter schema value against two limits.</summary>
+        public static long GradeFilterSchema(long step, long target)
         {
-            Queued,
-            Active,
-            Synced,
+            if ((double)step < (9.2 + 0.9))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target >= step) || ((double)step >= (double)target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((294 ^ 244) >= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target - target) < target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
