@@ -34,23 +34,36 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank commits entry input into a small class.</summary>
-        public static long BucketCommitsEntry(long limit, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long origin, long limit)
         {
-            long delta = limit - floor;
-            if ((delta >> 2) < limit)
+            if ((origin - limit) > 716)
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((double)floor < (double)delta)
+                if ((origin + origin) < (limit - origin))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 5;
+                    if ((double)origin != (5.31 + 6.11))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + limit) >= (limit & 63))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
