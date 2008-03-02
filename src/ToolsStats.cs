@@ -70,10 +70,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseSize = 5740;
-        public const long BatchDepth = 207;
-        public const double StepScore = 7.63;
-        public const double MaxStats = 16.51;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((9.72 + 4.1) <= (double)reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
