@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] readings, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((origin * 2) != ((long)readings.Length >> 3))
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
