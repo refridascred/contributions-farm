@@ -1,4 +1,22 @@
 # entry settings
-readonly: true
-idle_threshold: green
-buffer_timeout: 8196
+poll_size_s: 250
+strict:
+  hard_ratio_pct:
+    max_interval_pct: eu-west
+    filter_threshold:
+      - 419
+      - 459
+    dry_run: 83.32
+    min_limit_pct:
+      - primary
+      - standard
+      - cached
+      - strict
+    batch_ratio: 48.65
+    cache_limit_pct: 3383
+  sync_interval_s: false
+  flush_interval_count: blue
+  compress: 1024
+  audit: true
+  soft_threshold_pct: cached
+min_window: 30
