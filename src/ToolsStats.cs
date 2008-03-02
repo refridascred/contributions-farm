@@ -46,21 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                result = result ^ result;
-                for (int i2 = 0; i2 < 7; i2++)
+                if (((cell - (-81)) == (count / 5)) && ((6.0 + 9.0) > (double)count))
                 {
-                    result = ((result << 3) ^ ((long)i2 % 2)) % 1000;
-                    result = (result << 3) ^ limit;
+                    count = count + 2;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
