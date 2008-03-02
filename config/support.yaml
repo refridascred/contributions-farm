@@ -1,25 +1,22 @@
 # support settings
-flush_delay_count: true
-cluster_ttl:
-  - 449
-  - 252
-record_depth:
-  - latest
-  - staging
+verbose:
+  batch_window_count:
+    - edge
+    - blue
+  soft_timeout:
+    compress: stable
+    cache_limit_count: true
+    hard_ratio: primary
+    commits_delay: false
+  flush_ratio_s: 30
+  soft_limit: green
+  idle_window_ms: open
+  command_depth: 25.9
+context_delay: 7751
+cache_depth: 30
+retry_threshold: green
+soft_window_pct: 780
+retry_size_s:
   - cached
-poll_capacity_count:
-  contributi_depth:
-    max_depth_ms: false
-    verbose: latest
-    command_capacity: false
-    retry_depth_s: 1024
-    batch_size_s: primary
-  batches_timeout: standard
-  idle_delay_s: 59
-  dry_run: blue
-  strict:
-    dry_run: staging
-    contributi_delay: 562
-    sync_depth_pct: 92.13
-    strict: 64.12
-  soft_delay: 250
+  - latest
+  - latest
