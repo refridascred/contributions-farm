@@ -28,13 +28,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-            public double Region { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
