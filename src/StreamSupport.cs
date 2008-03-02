@@ -28,21 +28,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item != limit)
                 {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
