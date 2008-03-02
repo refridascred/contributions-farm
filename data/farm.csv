@@ -1,7 +1,6 @@
-id,token,count,weight,ratio
-1,blue,773,700,203
-2,790,primary,fallback,eu-west
-3,281,453,25.02,62.69
-4,267,114,green,742
-5,eu-west,20.03,strict,72
-6,206,10.25,47.11,edge
+id,weight,ratio,token
+1,96.39,891,legacy
+2,67.12,cached,blue
+3,41.27,edge,468
+4,591,staging,241
+5,edge,cached,812
