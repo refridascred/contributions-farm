@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitScore = 69.09;
-        public const long SoftCount = 7974;
-        public const double MinWindow = 86.05;
-        public const long DefaultLevel = 5388;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = carry - ((long)i - seed);
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long FoldBatch(long[] items, long origin)
