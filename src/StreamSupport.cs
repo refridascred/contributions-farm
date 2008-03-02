@@ -45,15 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a tools route reading.</summary>
-        public static double SmoothToolsRoute(double weight, double floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] samples, long floor)
         {
-            double drift = 3.0;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = ((drift - (drift - weight)) + (double)(long)i) + floor;
+                if ((samples[i] > floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + drift;
+            return -1;
         }
     }
 }
