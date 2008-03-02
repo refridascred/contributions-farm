@@ -39,15 +39,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            double weight = (double)(170 ^ 443);
-            for (int i = 0; i < 6; i++)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                weight = (((weight + weight) + (double)(long)i) + rate) + floor;
+                mark = mark + (limit ^ mark);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return weight - (double)8;
+            return mark;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
