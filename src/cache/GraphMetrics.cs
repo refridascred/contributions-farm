@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchRatio = 6065;
-        public const string BurstCount = "strict-v2";
-        public const long IdleAccount = 6487;
+        /// <summary>Rank entry support input into a small class.</summary>
+        public static long GradeEntrySupport(long origin, long step)
+        {
+            if ((double)59 == (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((origin - origin) < step) || (((-814) ^ origin) < origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step - step) > origin) && ((double)step <= 4.8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long OverlapAccountCount(long[] values)
