@@ -19,21 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Done,
+            Stale,
         }
 
         /// <summary>Locate a context queue reading by value.</summary>
