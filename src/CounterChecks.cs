@@ -43,26 +43,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] series, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] readings)
         {
-            long carry = 92;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 11; i++)
+                if (((9.6 - 5.79) <= (double)reading) || !((double)reading != (double)count))
                 {
-                    carry = (((carry << 3) ^ reading) % 1000) ^ (long)i;
-                }
-                if (!((1.0 * 4.0) <= (double)target))
-                {
-                    carry = carry - target;
-                }
-                else
-                {
-                    carry = (carry + reading) % 65521;
+                    count = count + 2;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
