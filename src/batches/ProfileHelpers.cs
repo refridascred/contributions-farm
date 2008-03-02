@@ -30,15 +30,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of tools account entries.</summary>
-        public static long TallyToolsAccount(long[] levels)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] samples, long offset)
         {
-            long sum = 6;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum - (sum * 2)) - item;
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
