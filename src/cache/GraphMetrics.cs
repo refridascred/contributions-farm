@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Validate support entry readings against a bound.</summary>
+        public static bool GuardSupportEntryLimits(long[] data, long offset)
         {
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the entry class values.</summary>
