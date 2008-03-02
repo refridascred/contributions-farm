@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits payload readings against a rule.</summary>
-        public static long TallyCommitsPayloadOutliers(long[] items, long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5 + step) >= (hits - hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) ^ sample;
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the route phase values.</summary>
