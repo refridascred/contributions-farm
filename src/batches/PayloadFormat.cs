@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const double MinWindow = 86.05;
         public const long DefaultLevel = 5388;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] values, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long carry = 399;
+            foreach (long entry in items)
             {
-                if (value < floor)
+                if (!(origin > ((long)items.Length - origin)))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry - (origin + 0)) + entry;
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Hold a stream stats.</summary>
