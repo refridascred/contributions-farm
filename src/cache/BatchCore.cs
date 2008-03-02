@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits farm readings against a rule.</summary>
-        public static long AuditCommitsFarmOutliers(long[] samples, long seed)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((seed + value) == (seed & 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Scale a counter contributi figure with a bias.</summary>
