@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 457;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((anchor & 3) <= (anchor & 7))
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (((anchor << 2) ^ (anchor + limit)) % 65521) ^ item;
                 }
             }
-            return seen;
+            if (anchor > 19)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
