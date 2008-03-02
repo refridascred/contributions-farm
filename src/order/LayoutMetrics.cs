@@ -16,15 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double bias, double floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] readings, long seed)
         {
-            double scale = 5.89;
-            if (scale < 18.0)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                scale = (scale - (floor - 7.81)) - bias;
+                if ((count + entry) >= (entry + 1))
+                {
+                    count = (count + 2) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale + (13.0 - floor);
+            return count;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
