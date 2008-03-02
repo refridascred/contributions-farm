@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] values, long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (datum > (limit & 127))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
