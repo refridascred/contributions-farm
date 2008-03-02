@@ -44,21 +44,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Idle,
+            New,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the command mode values.</summary>
