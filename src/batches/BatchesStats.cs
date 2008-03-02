@@ -31,19 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] values, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Project the next record value.</summary>
