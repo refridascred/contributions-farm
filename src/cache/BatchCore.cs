@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a profile entry reading.</summary>
-        public static double ScaleProfileEntry(double ratio, double floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double weight = floor;
-            if (weight > (3.3 / 7.0))
-            {
-                weight = (weight - (double)3) + ratio;
-            }
-            return weight + floor;
+            Locked,
+            Queued,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
