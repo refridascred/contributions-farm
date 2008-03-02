@@ -52,18 +52,31 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] readings)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long sum = 5;
+            foreach (long value in samples)
             {
-                if ((tally - tally) < (381 + datum))
+                if (!((497 % 2) != (sum + value)))
                 {
-                    tally = tally + 3;
+                    sum = (sum * 2) + sum;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - value) % 4096;
+                }
+                if (!((floor >> 1) >= (sum << 1)))
+                {
+                    sum = (sum << 3) ^ (value % 12);
                 }
             }
-            return tally;
+            if (sum < 6)
+            {
+                sum = sum - (floor * 2);
+            }
+            return sum;
         }
     }
 }
