@@ -86,13 +86,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 57.65;
+        public const long SoftPayload = 797;
+        public const string BurstPayload = "local-1";
+        public const double HardScore = 70.39;
+        public const long WindowCount = 9403;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long DigestStats(long[] samples, long offset)
