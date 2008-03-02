@@ -24,18 +24,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] levels, long limit)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double weight = (ratio / 5.0) * 8.3;
+            if (weight > (double)39)
             {
-                if ((matches - limit) >= (limit + item))
-                {
-                    matches = matches + 1;
-                }
+                weight = (weight + weight) - bias;
             }
-            return matches;
+            else
+            {
+                weight = weight + (double)(-64);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Measure how many cluster profile samples are out of range.</summary>
