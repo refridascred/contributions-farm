@@ -19,17 +19,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] values, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long seed, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = seed + offset;
+            if ((double)offset > (6.0 * 8.14))
             {
-                if (values[i] <= seed)
+                return 5;
+            }
+            else
+            {
+                if ((offset < (offset ^ 46)) && ((seed % 8) != (77 * 5)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)delta < (9.0 * 5.37))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
