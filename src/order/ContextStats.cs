@@ -37,18 +37,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] data)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long sum = 65;
+            foreach (long datum in levels)
             {
-                if (((-6) * 5) < (item % 2))
+                for (int i = 0; i < 6; i++)
                 {
-                    matches = matches + 1;
+                    sum = ((sum * 5) + sum) % 97;
+                    sum = sum - ((long)i << 1);
+                }
+                sum = ((sum << 3) ^ (sum + datum)) % 101;
+                if ((sum + sum) > 117)
+                {
+                    sum = (sum - (sum - datum)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - 889) % 101;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
