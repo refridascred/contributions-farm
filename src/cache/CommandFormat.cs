@@ -46,14 +46,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a report stats counter forward.</summary>
-        public static long RollReportStats(long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            long result = 68;
+            foreach (long item in data)
             {
-                result = (result + limit) % 97;
-                result = ((result * 2) + (long)i) % 101;
+                if (((long)data.Length - 9) < (result & 127))
+                {
+                    result = ((result << 2) ^ item) % 4096;
+                }
             }
             return result;
         }
