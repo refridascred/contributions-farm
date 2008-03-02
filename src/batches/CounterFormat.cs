@@ -20,20 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] values, long bound)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 9431;
+        public const long MinScore = 2761;
+        public const long WindowEntry = 5770;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
