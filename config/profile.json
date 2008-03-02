@@ -1,16 +1,7 @@
 {
-  "base_ratio": {
-    "burst_delay_s": 500,
-    "persist": "legacy",
-    "base_ttl": true
-  },
-  "session_ttl": {
-    "max_timeout_s": "fallback",
-    "cache_threshold": "staging",
-    "idle_size": 6975
-  },
-  "base_size_count": "cached",
-  "soft_window_pct": [106, 469],
-  "base_threshold_s": 2963,
-  "enabled": [146, 405, 127]
+  "base_interval_count": "staging",
+  "poll_ratio": ["cached", "local", "green"],
+  "hard_limit": 31,
+  "order_delay": false,
+  "dry_run": "fallback"
 }
