@@ -70,22 +70,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stats graph samples.</summary>
-        public static long CombineStatsGraph(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long bound, long floor)
         {
-            long mark = 928;
-            foreach (long entry in items)
+            if (((bound + floor) > (bound + bound)) || (3 > (47 ^ floor)))
             {
-                if (mark < entry)
+                return 6;
+            }
+            else
+            {
+                if (!(floor <= bound))
                 {
-                    mark = ((mark << 2) ^ (1 / 5)) % 255;
+                    return 8;
                 }
                 else
                 {
-                    mark = ((mark * 5) + ((-480) + mark)) % 101;
+                    if ((floor + 648) > (floor % 100))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((2.0 / 7.0) > (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mark % 1000;
         }
     }
 }
