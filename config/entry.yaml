@@ -1,21 +1,4 @@
 # entry settings
-strict: 31.35
-default_retries_ms: green
-burst_delay_pct:
-  min_size: edge
-  min_depth_s: 13.08
-  format_threshold: 500
-  verbose: 1024
-  soft_capacity_pct:
-    window_timeout: true
-    base_window_ms: 60
-    flush_ttl_pct: 4767
-    burst_ttl: 250
-    min_timeout_s: legacy
-idle_ttl_count: 66.18
-poll_capacity: cached
-record_window:
-  burst_limit: fallback
-  hard_window_pct: true
-  warm_delay_ms: legacy
-  account_ratio: local
+readonly: true
+idle_threshold: green
+buffer_timeout: 8196
