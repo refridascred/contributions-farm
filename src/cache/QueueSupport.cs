@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const string IdleAlready = "staging";
         public const long DefaultDepth = 8549;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Validate tools metrics readings against a bound.</summary>
+        public static bool GuardToolsMetricsBounds(long[] data, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                long slot = result + 54;
-                long bound = (long)i % 16;
-                if ((result - slot) != (bound * 4))
+                if (value > seed)
                 {
-                    bound = (bound * 4) + (seed % 5);
+                    found = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return found;
         }
     }
 }
