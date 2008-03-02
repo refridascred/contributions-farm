@@ -62,20 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session channel entry stays within the limit.</summary>
-        public static bool VerifySessionChannelLimits(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 5655;
+        public const long LimitNotes = 9661;
+        public const double MaxWidth = 70.97;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] items, long step)
