@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] data)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (item <= (count + item))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many channel metric samples are out of range.</summary>
