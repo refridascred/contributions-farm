@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of cache format entries.</summary>
-        public static long FoldCacheFormat(long[] data)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long carry = 8;
-            foreach (long sample in data)
-            {
-                carry = carry + (sample >> 3);
-            }
-            return carry;
+            public bool Level { get; set; }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
