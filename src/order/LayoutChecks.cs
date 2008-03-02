@@ -73,19 +73,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitStats = 84.05;
+        public const long MinStats = 2992;
+        public const double RetryRatio = 81.19;
     }
 }
