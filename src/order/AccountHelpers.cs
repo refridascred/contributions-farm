@@ -63,22 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Measure how many order counter samples are out of range.</summary>
+        public static long AuditOrderCounterHits(long[] items)
         {
-            long state = 598;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (((double)379 <= (double)sample) || (state <= (state / 6)))
+                if ((double)cell == (8.62 + 0.7))
                 {
-                    state = state + (state + state);
+                    matches = matches + 1;
                 }
             }
-            if (state < 775)
-            {
-                state = ((state << 3) ^ ((-6) % 60)) % 101;
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Locate a route reading by value.</summary>
