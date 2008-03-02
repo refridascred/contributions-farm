@@ -1,12 +1,14 @@
 {
-  "hard_interval": {
-    "max_size": "eu-west",
-    "dry_run": "eu-west",
-    "max_interval_count": true,
-    "format_timeout": "standard",
-    "cache_window_ms": false
+  "poll_retries_s": true,
+  "batch_timeout_pct": "eu-west",
+  "strict": 100,
+  "burst_timeout_count": {
+    "dry_run": [406, 354],
+    "persist": true,
+    "verbose": [91, 229, 207],
+    "counter_size": 28,
+    "sync_limit_pct": "legacy",
+    "strict": ["stable", "cached"]
   },
-  "cluster_retries": [302, 462, 308, 25],
-  "audit": false,
-  "order_timeout": false
+  "soft_interval": "local"
 }
