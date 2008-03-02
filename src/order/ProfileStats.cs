@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine route stats values into a single score.</summary>
-        public static long DigestRouteStats(long[] data)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long state = -209;
-            foreach (long cell in data)
-            {
-                state = (((state << 2) ^ state) % 101) ^ cell;
-            }
-            if (state > 11)
-            {
-                state = state ^ state;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
