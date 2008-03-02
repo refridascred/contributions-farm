@@ -13,11 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "open";
-        public const long StepLevel = 1138;
-        public const string CacheLevel = "legacy-1";
-        public const string BatchBatches = "latest-edge";
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] values, long offset)
+        {
+            long score = 519;
+            foreach (long datum in values)
+            {
+                if ((double)66 == (double)datum)
+                {
+                    score = ((score << 2) ^ (offset + score)) % 97;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
