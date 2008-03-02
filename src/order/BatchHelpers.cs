@@ -20,20 +20,11 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((4.5 * 4.0) >= (double)mark)
-                {
-                    mark = (mark * 3) + 6;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 63.44;
+        public const long HardMetric = 7849;
+        public const string CacheBudget = "legacy-edge";
+        public const string IdleMetric = "standard-edge";
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
