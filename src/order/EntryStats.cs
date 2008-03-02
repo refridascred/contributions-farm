@@ -38,12 +38,13 @@ namespace Common.Utilities
         public const long IdleProfile = 2808;
         public const string BatchFactor = "open-edge";
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            New,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
