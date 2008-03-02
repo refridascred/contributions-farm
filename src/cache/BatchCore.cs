@@ -31,19 +31,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a counter contributi figure with a bias.</summary>
-        public static double ScaleCounterContributi(double scale, double offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double drift = scale;
-            if (drift <= (double)479)
-            {
-                drift = (drift + (scale / 7.0)) + offset;
-            }
-            else
-            {
-                drift = drift - (drift + drift);
-            }
-            return drift - (3.8 * 0.26);
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
