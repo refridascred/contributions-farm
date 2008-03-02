@@ -1,8 +1,11 @@
 {
-  "default_ttl": false,
-  "min_interval_count": 500,
-  "strict": [171, 60, 58, 448],
-  "base_threshold_count": "eu-west",
-  "default_ratio_ms": "local",
-  "compress": true
+  "stream_interval": {
+    "default_ratio": 33,
+    "min_ttl": 32,
+    "compress": 60
+  },
+  "layout_capacity": 71.61,
+  "base_ttl_pct": true,
+  "format_ratio": true,
+  "min_retries_ms": true
 }
