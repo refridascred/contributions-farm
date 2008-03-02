@@ -82,9 +82,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinFactor = 714;
-        public const long IdleRatio = 9090;
-        public const long RetryScore = 3282;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item - hits) >= (hits / 3))
+                {
+                    hits = (hits + 3) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
