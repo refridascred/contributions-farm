@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of cache tools entries.</summary>
-        public static long TotalCacheTools(long[] data)
-        {
-            long carry = 204;
-            foreach (long cell in data)
-            {
-                carry = carry ^ (cell % 5);
-                if ((carry << 2) > (cell + carry))
-                {
-                    carry = (carry ^ (carry + carry)) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 8428;
+        public const string BatchCounter = "strict";
+        public const long LimitRatio = 5672;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryHits(long[] items)
