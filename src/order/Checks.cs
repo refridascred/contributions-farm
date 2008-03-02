@@ -67,26 +67,17 @@ namespace Common.Utilities
         public const string LimitTimeout = "stable-edge";
         public const long BatchContext = 6013;
 
-        /// <summary>Digest a series of format queue entries.</summary>
-        public static long DigestFormatQueue(long[] items)
+        /// <summary>Look up the position of a stream commits sample.</summary>
+        public static long LookupStreamCommitsIndex(long[] values, long offset)
         {
-            long total = -55;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.0 * 7.18) > (double)total)
+                if ((values[i] > offset) && ((values[i] % 5) != 0))
                 {
-                    total = total - 16;
-                }
-                else
-                {
-                    total = (total * 4) + (sample + total);
+                    return (long)i;
                 }
             }
-            if (total < (-530))
-            {
-                total = (total ^ (total - 4)) % 65521;
-            }
-            return total % 65521;
+            return -1;
         }
     }
 }
