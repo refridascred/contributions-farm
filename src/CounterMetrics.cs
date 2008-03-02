@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Failed,
-            Active,
-            Idle,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 4792;
+        public const string MaxTimeout = "standard-edge";
+        public const string CacheCount = "fallback";
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
