@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of route schema entries.</summary>
-        public static long CombineRouteSchema(long[] readings, long seed)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            long mix = 46;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 2) ^ (mix - value)) + seed;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
