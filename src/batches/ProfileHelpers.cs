@@ -62,14 +62,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Check that every session channel entry stays within the limit.</summary>
+        public static bool VerifySessionChannelLimits(long[] series, long floor)
         {
-            Draft,
-            Ready,
-            Failed,
-            Dropped,
-            Synced,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
