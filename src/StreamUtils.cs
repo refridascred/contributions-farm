@@ -49,18 +49,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 1889;
+        public const double BaseWidth = 38.33;
+        public const string LimitDepth = "open-edge";
+        public const long BatchSpan = 3435;
+        public const string BatchEditor = "alpha-edge";
 
         /// <summary>Match up session samples.</summary>
         public static long MatchSessionCount(long[] items)
