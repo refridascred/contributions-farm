@@ -1,14 +1,7 @@
 {
-  "stats_window": "staging",
-  "idle_ratio_s": 250,
-  "retry_ttl": {
-    "compress": 6310,
-    "idle_limit_s": "latest",
-    "hard_threshold_ms": {
-      "default_capacity": "primary",
-      "batch_ratio_count": "fallback",
-      "session_timeout": 59
-    },
-    "min_threshold_s": [357, 387, 59, 125]
-  }
+  "strict": 3861,
+  "sync_threshold": true,
+  "contributi_ratio": 24.16,
+  "poll_ttl": 60,
+  "hard_window_s": ["eu-west", "primary", "legacy", "open"]
 }
