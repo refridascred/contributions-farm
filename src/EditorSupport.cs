@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double gain, double span)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] items)
         {
-            double mean = (span / 6.0) * 0.2;
-            if (mean < gain)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                mean = mean + (double)(-51);
+                if ((long)items.Length >= matches)
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            return mean + (span - gain);
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
