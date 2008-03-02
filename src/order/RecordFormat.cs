@@ -42,17 +42,25 @@ namespace Common.Utilities
         public const long StepEditor = 3231;
         public const long BaseTimeout = 5664;
 
-        /// <summary>Find the first cache window entry that matches the target.</summary>
-        public static long LocateCacheWindowIndex(long[] items, long step)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long offset = target - step;
+            if ((offset + step) == (step << 3))
             {
-                if ((items[i] == step) && ((items[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if (step > (step * 5))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
