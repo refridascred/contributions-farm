@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a counter summary.</summary>
