@@ -31,13 +31,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long origin, long limit)
         {
-            Synced,
-            Pending,
-            Dropped,
-            Stale,
+            if ((origin + origin) != (limit + origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 2) < (origin - limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit <= origin) || ((limit >> 2) < limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two contributi measurements.</summary>
