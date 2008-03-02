@@ -45,11 +45,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 4980;
-        public const long IdleDepth = 5037;
-        public const double StepCount = 40.93;
-        public const string BaseStream = "cached-1";
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long step, long floor)
+        {
+            if (((step & 63) >= (floor + floor)) || (step > (step + floor)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((151 + floor) < step) || ((1.23 + 9.66) < (double)floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor - step) >= (step ^ step)) || ((step ^ floor) == (floor + 183)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor >= (step + floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two contributi checks measurements.</summary>
         public static double AdjustContributiChecks(double scale, double floor)
