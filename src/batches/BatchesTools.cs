@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] levels)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((((entry >> 5) > (entry ^ entry)) || ((double)tally >= (double)entry)) && ((entry * 3) >= (entry + 1)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Closed,
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Accumulate tools samples.</summary>
