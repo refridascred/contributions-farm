@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] values)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long target, long seed)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if (!(63 >= target))
             {
-                if (hits >= cell)
+                return 1;
+            }
+            else
+            {
+                if ((13.0 / 5.0) == (double)target)
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((target - target) >= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target <= (820 + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a cache summary.</summary>
