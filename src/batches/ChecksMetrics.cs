@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a route channel sample.</summary>
-        public static long LookupRouteChannelIndex(long[] items, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] >= floor)
+                if (((long)i % 64) > (origin << 1))
                 {
-                    return (long)i;
+                    sum = (sum + (origin % 7)) % 4096;
+                    sum = (sum + sum) % 97;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a batches summary.</summary>
