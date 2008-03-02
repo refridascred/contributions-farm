@@ -58,16 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = (anchor << 2) ^ (limit % 97);
-                anchor = ((anchor * 4) + (long)i) % 101;
+                result = ((result * 2) + (result + seed)) % 255;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
