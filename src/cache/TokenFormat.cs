@@ -5,27 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of stream cache readings.</summary>
-        public static long TallyStreamCache(long[] series)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long step, long target)
         {
-            long mix = -8;
-            foreach (long reading in series)
+            long offset = step ^ target;
+            if (!(7.6 <= (double)target))
             {
-                if ((7.0 * 16.0) > (double)mix)
+                return 3;
+            }
+            else
+            {
+                if (((offset * 4) >= (target / 5)) || (offset > (step << 2)))
                 {
-                    mix = ((mix * 2) + reading) % 101;
-                    mix = mix + ((-19) ^ mix);
+                    return 8;
                 }
-                if ((long)series.Length >= reading)
+                else
                 {
-                    mix = ((mix * 5) + (reading + reading)) % 255;
-                }
-                if ((reading - mix) > (mix * 4))
-                {
-                    mix = (mix ^ (reading % 60)) % 101;
+                    if ((double)target >= (5.9 - 6.3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((7.0 * 6.6) == (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the graph mode values.</summary>
