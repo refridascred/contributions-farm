@@ -23,15 +23,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Queued,
+            Synced,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a graph summary.</summary>
