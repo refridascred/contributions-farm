@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many checks notes samples are out of range.</summary>
-        public static long CountChecksNotesGaps(long[] items)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double bias = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if (seen > 39)
-                {
-                    seen = (seen + 3) - sample;
-                }
+                bias = (bias + weight) + (double)(long)i;
             }
-            return seen;
+            return bias - (weight + bias);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
