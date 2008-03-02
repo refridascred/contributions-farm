@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count window batches pairs that satisfy a relation.</summary>
-        public static long CompareWindowBatchesCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheRatio = 2297;
+        public const string SoftBuffer = "latest-edge";
+        public const string BatchTimeout = "local";
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double AdjustContributi(double bias, double floor)
