@@ -20,13 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Active,
-            Done,
-            Queued,
-            Paused,
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
