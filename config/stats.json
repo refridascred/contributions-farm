@@ -1,6 +1,8 @@
 {
-  "cache_ttl_pct": "local",
-  "default_size_ms": 60,
-  "batch_size": "cached",
-  "warm_threshold": true
+  "min_threshold_count": 8076,
+  "batch_timeout": "legacy",
+  "strict": ["latest", "cached", "green"],
+  "layout_depth": 27.09,
+  "persist": 76.58,
+  "enabled": 51.01
 }
