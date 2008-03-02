@@ -29,15 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] values)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] data)
         {
             long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count - count) == (count << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) - reading;
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
