@@ -1,23 +1,39 @@
 # githubfarm settings
-token_timeout: 60
-audit:
-  soft_ratio_pct: true
-  dry_run:
-    soft_size_ms: 30
-    max_threshold_ms: local
-    account_interval: false
-    idle_interval_ms: 2564
-  sync_size_pct: cached
-  route_size: false
-  base_timeout_count: 6616
-  cache_interval:
-    - cached
-    - fallback
-context_size:
-  payload_timeout: 100
-  max_threshold_ms: 9356
-  batches_limit: legacy
-  audit: primary
-session_timeout: open
-retry_window_pct: 8834
-compress: 100
+burst_ttl: true
+max_delay_s:
+  flush_timeout:
+    base_retries_pct: green
+    soft_window_ms: false
+    cache_retries_s: standard
+    idle_ttl_s:
+      - 198
+      - 349
+      - 93
+      - 245
+    idle_size_pct:
+      - legacy
+      - cached
+  graph_capacity:
+    - strict
+    - open
+    - standard
+    - latest
+  idle_retries_count:
+    - 396
+    - 368
+    - 364
+    - 479
+retry_timeout:
+  burst_threshold_s: 2827
+  soft_ttl_pct:
+    - 92
+    - 147
+    - 23
+    - 90
+  warm_threshold_ms: 95.81
+  stats_depth: true
+  flush_delay_pct:
+    - 275
+    - 54
+  record_capacity: fallback
+account_window: blue
