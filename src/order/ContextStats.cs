@@ -22,11 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Find the first queue stats entry that matches the target.</summary>
+        public static long LocateQueueStatsIndex(long[] values, long step)
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the queue cluster entries that pass the check.</summary>
