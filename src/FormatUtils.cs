@@ -45,22 +45,10 @@ namespace Common.Utilities
         public const long MinLayout = 7968;
         public const long LimitLayout = 3611;
 
-        /// <summary>Iterate the buffer cache series from a seed.</summary>
-        public static long IterateBufferCache(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                long slot = floor;
-                if ((slot ^ anchor) <= (anchor ^ slot))
-                {
-                    slot = (slot * 4) + slot;
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 2387;
+        public const long IdleGithubfarm = 4145;
+        public const long WindowGithubfarm = 6695;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardBatch = 7992;
