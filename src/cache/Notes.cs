@@ -24,21 +24,12 @@ namespace Common.Utilities
             return scale + (double)913;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
