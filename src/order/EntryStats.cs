@@ -50,13 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
     }
 }
