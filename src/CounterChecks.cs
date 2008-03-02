@@ -38,11 +38,16 @@ namespace Common.Utilities
             return mean + (9.0 / 4.0);
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] series, long step)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            long carry = 50;
+            foreach (long cell in series)
+            {
+                carry = ((carry ^ ((-283) / 7)) ^ cell) + step;
+                carry = carry ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
