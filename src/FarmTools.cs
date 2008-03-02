@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items, long limit)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long floor, long seed)
         {
-            long carry = 187;
-            foreach (long cell in items)
+            if ((floor & 15) > seed)
             {
-                carry = ((carry << 2) ^ (limit + 194)) % 65521;
-                if (((carry / 4) < (cell % 2)) && ((carry + limit) > 176))
+                return 1;
+            }
+            else
+            {
+                if ((seed >> 4) > floor)
                 {
-                    carry = (carry + carry) % 101;
+                    return 7;
                 }
-                if ((3.04 - 4.2) <= (double)carry)
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            return carry;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
