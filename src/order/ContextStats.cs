@@ -55,19 +55,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] values, long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            double ratio = (double)779 - (offset - bias);
+            if (ratio >= (offset * 0.3))
             {
-                if (cell >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio + (ratio / 9.0);
             }
-            return ok;
+            return ratio - (bias + ratio);
         }
     }
 }
