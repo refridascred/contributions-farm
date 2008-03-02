@@ -1,10 +1,9 @@
 # githubfarm settings
-hard_limit_s:
-  - 150
-  - 214
-  - 478
-stream_ttl: 100
-strict: staging
-readonly: 91.34
-min_window_ms: 100
-notes_size: 75
+retry_capacity_s:
+  - fallback
+  - cached
+  - edge
+session_ttl: 69.98
+default_size_s: latest
+hard_retries_s: 100
+persist: true
