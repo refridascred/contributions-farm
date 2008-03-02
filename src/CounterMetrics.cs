@@ -47,10 +47,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinSpan = 7336;
-        public const string MinScore = "open-1";
-        public const string MaxWidth = "fallback-1";
-        public const string LimitCount = "fallback-edge";
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
