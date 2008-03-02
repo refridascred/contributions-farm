@@ -1,21 +1,10 @@
 # support settings
-base_capacity_pct: standard
-hard_limit_s: eu-west
-flush_timeout_count:
-  cache_interval:
-    contributi_size: 86.08
-    verbose:
-      - 261
-      - 240
-      - 308
-    sync_threshold_pct: 52
-  verbose: true
-  max_ratio: staging
-  githubfarm_ratio:
-    cache_timeout: stable
-    flush_threshold_s: 2741
-    profile_capacity: fallback
-    batch_depth: staging
-    sync_capacity: legacy
-    cluster_retries: stable
-  warm_ratio_pct: 55.89
+cache_interval_pct:
+  - standard
+  - stable
+  - stable
+tools_depth: open
+retry_timeout: edge
+warm_delay_s: local
+batch_interval: edge
+burst_limit: 88.16
