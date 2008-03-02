@@ -62,13 +62,13 @@ namespace Common.Utilities
             return mean - (6.0 + scale);
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
             public long Mode { get; set; }
-            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
         }
     }
 }
