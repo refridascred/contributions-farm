@@ -58,14 +58,9 @@ namespace Common.Utilities
         public const long IdleWidth = 1830;
         public const long StepFactor = 1117;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Dropped,
-            Paused,
-            Queued,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseCount = "standard";
+        public const string HardReport = "legacy-1";
+        public const long IdleReport = 6211;
     }
 }
