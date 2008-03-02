@@ -53,18 +53,19 @@ namespace Common.Utilities
         public const long StepEditor = 3231;
         public const long BaseTimeout = 5664;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] data)
+        /// <summary>Validate farm buffer readings against a bound.</summary>
+        public static bool GuardFarmBufferBounds(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((matches % 24) < (matches + matches))
+                if (datum <= floor)
                 {
-                    matches = (matches + 3) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
