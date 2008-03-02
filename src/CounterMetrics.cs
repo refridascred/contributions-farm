@@ -29,22 +29,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] series, long limit)
+        /// <summary>Derive the next route entry value from a seed.</summary>
+        public static long IterateRouteEntry(long limit)
         {
-            long acc = 196;
-            foreach (long datum in series)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (((datum - acc) <= (acc - limit)) || ((double)acc == (18.0 + 7.2)))
-                {
-                    continue;
-                }
-                if (((acc ^ 251) < (55 >> 5)) && (1.9 < (double)acc))
-                {
-                    acc = (acc + (datum + 37)) % 101;
-                }
+                score = ((score << 2) ^ (66 + 18)) % 65521;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return acc % 1000;
+            return score;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
