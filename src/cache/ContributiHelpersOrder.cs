@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] data, long origin)
+        /// <summary>Audit counter batch readings against a rule.</summary>
+        public static long TallyCounterBatchGaps(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (data[i] > origin)
+                if (!(count >= datum))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a metric options.</summary>
