@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit record profile readings against a rule.</summary>
+        public static long AuditRecordProfileMatches(long[] levels)
         {
-            Active,
-            Pending,
-            Synced,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((((seen - item) > 71) || ((5.2 * 8.7) < (double)seen)) || ((double)item < (7.3 - 9.0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of support farm entries.</summary>
