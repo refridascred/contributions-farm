@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] readings, long offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] samples, long bound)
         {
-            long carry = 95;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)offset >= (double)value)
+                if (samples[i] > bound)
                 {
-                    carry = carry + (6 + carry);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
