@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] data)
+        /// <summary>Count entry payload pairs that satisfy a relation.</summary>
+        public static long OverlapEntryPayloadCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((seen + seen) >= datum) || !((datum + seen) < (seen - 0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the cache level values.</summary>
