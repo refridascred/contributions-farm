@@ -66,9 +66,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowLevel = "primary-1";
-        public const long LimitQueue = 6697;
-        public const string LimitCount = "latest-edge";
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 3) + ((long)i ^ 11)) % 101;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
