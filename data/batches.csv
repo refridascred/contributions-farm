@@ -1,8 +1,6 @@
-id,label,region,ratio,count
-1,standard,560,203,27.69
-2,775,cached,local,888
-3,123,open,832,59.6
-4,stable,62.96,980,970
-5,365,31.36,194,eu-west
-6,84.27,green,61.99,758
-7,0.5,staging,open,41.87
+id,active,token,weight
+1,95.54,open,80.79
+2,latest,111,blue
+3,499,964,8.35
+4,local,green,stable
+5,418,stable,open
