@@ -25,31 +25,12 @@ namespace Common.Utilities
         public const long DefaultProfile = 4652;
         public const long BatchRatio = 1052;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((floor % 3) > (carry >> 5))
-                {
-                    carry = carry - (floor + carry);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (long)i;
-                }
-                if ((double)floor > 2.84)
-                {
-                    carry = (carry - (floor + floor)) % 4096;
-                }
-                else
-                {
-                    carry = (carry + (carry ^ (-970))) % 101;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
