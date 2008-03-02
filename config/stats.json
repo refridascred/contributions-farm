@@ -1,13 +1,8 @@
 {
-  "cache_delay_s": ["eu-west", "primary", "staging", "fallback"],
-  "compress": 12.3,
-  "metrics_window": "eu-west",
-  "filter_capacity": 32.83,
-  "sync_capacity": {
-    "burst_threshold_s": 84,
-    "soft_ttl": "primary",
-    "max_window": 39.52,
-    "token_ttl": true
-  },
-  "idle_depth": 87.46
+  "cluster_ttl": [9, 453, 35, 203],
+  "compress": 11.2,
+  "audit": 1851,
+  "burst_retries_ms": "blue",
+  "idle_limit_count": "strict",
+  "session_ttl": "blue"
 }
