@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheRatio = 2297;
-        public const string SoftBuffer = "latest-edge";
-        public const string BatchTimeout = "local";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double AdjustContributi(double bias, double floor)
