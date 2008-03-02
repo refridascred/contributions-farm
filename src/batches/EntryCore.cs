@@ -51,9 +51,14 @@ namespace Common.Utilities
         public const string SoftLevel = "standard-1";
         public const long CacheBatch = 3977;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 1954;
-        public const string BurstInterval = "staging-v2";
-        public const double WindowWidth = 75.86;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Queued,
+            New,
+            Stale,
+            Failed,
+            Paused,
+        }
     }
 }
