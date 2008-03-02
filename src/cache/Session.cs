@@ -25,12 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxBudget = 40.63;
-        public const string BurstCount = "alpha-edge";
-        public const long WindowContext = 2374;
-        public const long WindowLevel = 443;
-        public const double RetryContext = 41.94;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Draft,
+            Paused,
+            Ready,
+            Active,
+        }
 
         /// <summary>Digest a series of already window entries.</summary>
         public static long TallyAlreadyWindow(long[] values, long target)
