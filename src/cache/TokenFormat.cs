@@ -28,11 +28,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long bound, long step)
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
+            if ((step > (752 & 3)) && ((bound >> 4) == (step ^ step)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (step > (4 + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step - bound) < (step / 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((1.0 + 20.0) >= (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up buffer samples.</summary>
