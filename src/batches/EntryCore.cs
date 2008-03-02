@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define order limits and defaults.</summary>
