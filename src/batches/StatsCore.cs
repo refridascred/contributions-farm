@@ -27,19 +27,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] levels, long step)
+        /// <summary>Iterate the commits metric series from a seed.</summary>
+        public static long IterateCommitsMetric(long offset)
         {
-            long acc = 597;
-            foreach (long sample in levels)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                acc = ((acc + 398) + sample) - step;
-                if ((9.9 + 8.6) >= (double)acc)
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return acc % 4096;
+            return score;
         }
 
         /// <summary>Iterate the buffer channel series from a seed.</summary>
