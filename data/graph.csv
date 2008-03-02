@@ -1,6 +1,11 @@
-id,level,score,token
-1,96.96,25,cached
-2,legacy,12.72,91.45
-3,59,742,39.76
-4,9,stable,991
-5,19.13,998,75.18
+id,token,score,weight
+1,cached,417,latest
+2,green,edge,477
+3,112,682,85.08
+4,212,29.33,open
+5,primary,eu-west,682
+6,strict,944,staging
+7,931,108,804
+8,493,31.7,953
+9,210,87.68,624
+10,edge,7.74,standard
