@@ -19,24 +19,22 @@ namespace Common.Utilities
             return ratio + (scale * 7.91);
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long step, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] values, long floor)
         {
-            if (8.0 >= (double)bound)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + bound) > (19 + bound))
+                if ((941 % 8) > datum)
                 {
-                    return 0;
+                    tally = (tally + 1) - floor;
                 }
                 else
                 {
-                    return 6;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a metric info.</summary>
