@@ -1,6 +1,6 @@
-id,owner,state,count,ratio
-1,903,227,868,447
-2,fallback,939,80.66,855
-3,eu-west,60,292,593
-4,19.44,565,eu-west,cached
-5,eu-west,legacy,616,46.23
+id,token,weight
+1,edge,186
+2,16.01,43.85
+3,576,cached
+4,914,40.52
+5,84.21,fallback
