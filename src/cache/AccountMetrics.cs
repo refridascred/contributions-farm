@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Iterate the queue metric series from a seed.</summary>
+        public static long RollQueueMetric(long step)
         {
-            Ready,
-            New,
-            Pending,
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state ^ (state + step)) % 97;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a order summary.</summary>
