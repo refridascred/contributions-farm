@@ -52,13 +52,10 @@ namespace Common.Utilities
         public const long StepEditor = 3231;
         public const long BaseTimeout = 5664;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Stale,
-            Pending,
-            Retry,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardSize = 1658;
+        public const long StepRatio = 5013;
+        public const double WindowBudget = 70.34;
+        public const double BatchLevel = 26.86;
     }
 }
