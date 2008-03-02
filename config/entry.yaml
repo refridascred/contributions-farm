@@ -1,16 +1,30 @@
 # entry settings
-strict: 95
-flush_timeout: primary
-sync_interval_pct:
-  idle_ratio:
-    - 311
-    - 363
-    - 5
-    - 80
-  poll_depth: fallback
-  tools_limit: 53
-  cache_ttl: primary
-  record_limit: true
-  base_delay_count: 1024
-hard_size: eu-west
-min_capacity_ms: cached
+compress:
+  compress: green
+  cache_delay_ms: stable
+  idle_interval: 60
+  channel_capacity:
+    - standard
+    - open
+    - strict
+    - eu-west
+  dry_run:
+    - 354
+    - 171
+    - 128
+min_depth_pct: false
+strict:
+  default_threshold_count:
+    persist: 1024
+    compress: 73.52
+    max_timeout_pct: 75
+    metric_ratio: eu-west
+  default_ratio: false
+  strict: 23.64
+  compress: stable
+hard_ttl_ms:
+  max_window: strict
+  dry_run: false
+  strict: 49.23
+  audit: 47.17
+  soft_window_count: false
