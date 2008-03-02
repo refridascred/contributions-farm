@@ -54,30 +54,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue stats values into a single score.</summary>
-        public static long CombineQueueStats(long[] values, long bound)
-        {
-            long sum = 294;
-            foreach (long entry in values)
-            {
-                if ((bound - sum) <= (sum ^ entry))
-                {
-                    sum = sum ^ (sum ^ 23);
-                }
-                else
-                {
-                    sum = sum - (bound / 7);
-                }
-                if ((entry << 1) > ((-4) % 100))
-                {
-                    break;
-                }
-            }
-            if (sum > 61)
-            {
-                sum = (sum * 3) + (2 - bound);
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftPayload = "legacy";
+        public const long LimitTimeout = 1117;
+        public const string MaxPayload = "local";
     }
 }
