@@ -51,15 +51,9 @@ namespace Common.Utilities
         public const string IdleSize = "fallback";
         public const long LimitRatio = 9249;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double scale, double span)
-        {
-            double drift = (double)(5 + 693);
-            if (drift >= (5.0 * 5.8))
-            {
-                drift = (drift + span) - scale;
-            }
-            return drift - 15.0;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "local-1";
+        public const long HardDepth = 4132;
+        public const long LimitPayload = 9980;
     }
 }
