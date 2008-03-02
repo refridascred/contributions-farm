@@ -22,12 +22,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] samples, long floor)
         {
-            public double Total { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the commits cache entries that pass the check.</summary>
