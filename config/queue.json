@@ -1,7 +1,14 @@
 {
-  "stats_size": ["latest", "green"],
-  "min_window_count": false,
-  "enabled": false,
-  "cluster_delay": true,
-  "audit": 43
+  "stats_window": "staging",
+  "idle_ratio_s": 250,
+  "retry_ttl": {
+    "compress": 6310,
+    "idle_limit_s": "latest",
+    "hard_threshold_ms": {
+      "default_capacity": "primary",
+      "batch_ratio_count": "fallback",
+      "session_timeout": 59
+    },
+    "min_threshold_s": [357, 387, 59, 125]
+  }
 }
