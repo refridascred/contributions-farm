@@ -24,18 +24,11 @@ namespace Common.Utilities
             return mean - (3.9 + offset);
         }
 
-        /// <summary>Find the first tools record entry that matches the target.</summary>
-        public static long FindToolsRecordIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultRatio = 7909;
+        public const long BurstAccount = 3104;
+        public const string DefaultBudget = "local-edge";
+        public const double BurstDepth = 27.38;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] samples, long offset)
