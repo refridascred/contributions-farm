@@ -27,14 +27,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double scale, double span)
         {
-            Synced,
-            New,
-            Stale,
-            Dropped,
-            Failed,
+            double weight = (double)28 * 3.1;
+            if (weight > (15.0 - weight))
+            {
+                weight = ((weight - (double)88) - scale) + span;
+            }
+            return weight - (double)51;
         }
 
         /// <summary>Check that every tools counter entry stays within the limit.</summary>
