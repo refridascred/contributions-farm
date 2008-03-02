@@ -44,39 +44,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batches notes input into a small class.</summary>
-        public static long GradeBatchesNotes(long seed, long limit)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long prev = seed + limit;
-            if (seed < (prev ^ prev))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit < 2.58)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((prev - seed) >= (169 + limit)) && ((5.0 + 9.51) != (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-1) % 64) < prev)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
