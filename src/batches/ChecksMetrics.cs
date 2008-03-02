@@ -27,15 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] series, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Match up cluster samples.</summary>
