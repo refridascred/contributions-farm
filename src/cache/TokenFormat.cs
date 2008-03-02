@@ -50,12 +50,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] values, long limit)
         {
-            public double Count { get; set; }
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
