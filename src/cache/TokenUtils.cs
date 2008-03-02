@@ -33,19 +33,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] values, long floor)
+        /// <summary>Accumulate graph metrics samples.</summary>
+        public static long ScoreGraphMetrics(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long anchor = 6;
+            foreach (long value in series)
             {
-                if (entry != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (((anchor << 3) ^ (anchor + anchor)) % 255) - value;
             }
-            return stale;
+            return anchor % 4096;
         }
     }
 }
