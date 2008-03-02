@@ -43,19 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double gain, double span)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            double load = (span - gain) * 3.88;
-            if (load < gain)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (10.0 + load);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + 4.5) + (double)(long)i;
-            }
-            return load + span;
+            return tally;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
