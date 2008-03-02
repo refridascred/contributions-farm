@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long target, long offset)
         {
-            New,
-            Pending,
-            Idle,
-            Queued,
-            Done,
+            if ((offset - target) >= 6)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset + offset) > 9)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset <= (target << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
