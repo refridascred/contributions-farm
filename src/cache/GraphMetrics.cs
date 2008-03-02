@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate support entry readings against a bound.</summary>
-        public static bool GuardSupportEntryLimits(long[] data, long offset)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the entry class values.</summary>
