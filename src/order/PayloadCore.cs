@@ -20,26 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Derive the next route format value from a seed.</summary>
+        public static long RollRouteFormat(long step)
         {
-            long carry = 15;
-            foreach (long datum in readings)
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((169 % 8) > (213 - datum))
-                {
-                    carry = (carry + (265 * 2)) % 65521;
-                }
-                else
-                {
-                    carry = carry + 928;
-                }
-                if ((datum + 53) != (datum + carry))
-                {
-                    break;
-                }
+                acc = ((acc << 3) ^ (long)i) % 97;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return carry % 65521;
+            return acc;
         }
 
         /// <summary>Grade a filter schema value against two limits.</summary>
