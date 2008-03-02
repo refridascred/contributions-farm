@@ -51,13 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Closed,
-            Ready,
-            Failed,
-            Paused,
+            Draft,
+            Dropped,
+            Stale,
+            New,
         }
     }
 }
