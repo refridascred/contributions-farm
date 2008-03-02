@@ -1,13 +1,5 @@
 {
-  "warm_depth_ms": ["local", "fallback", "latest"],
-  "strict": {
-    "command_retries": "fallback",
-    "warm_capacity_count": "cached",
-    "audit": ["latest", "local"],
-    "soft_limit": 4906,
-    "sync_ttl_count": 100,
-    "cache_size_ms": 87.73
-  },
-  "buffer_depth": 500,
-  "retry_retries_count": true
+  "min_limit_ms": "green",
+  "entry_size": 1024,
+  "base_retries": [426, 479, 359]
 }
