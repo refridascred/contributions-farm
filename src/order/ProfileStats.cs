@@ -35,19 +35,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] readings, long seed)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long floor, long floor2)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long delta = floor + floor2;
+            if (!((floor2 << 1) < floor))
             {
-                if (value != seed)
+                return 5;
+            }
+            else
+            {
+                if ((delta * 3) != ((-1) * 4))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor2 % 10) >= (floor * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
