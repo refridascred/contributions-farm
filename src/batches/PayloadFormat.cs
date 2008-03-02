@@ -48,13 +48,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
+            Stale,
+            New,
+            Locked,
         }
     }
 }
