@@ -5,22 +5,34 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the farm record entries that pass the check.</summary>
-        public static long MeasureFarmRecordGaps(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples, long bound)
         {
-            long tally = 0;
+            long total = 93;
             foreach (long sample in samples)
             {
-                if ((tally <= (sample % 7)) && !((tally & 63) != (71 >> 5)))
+                if ((49 * 4) >= (bound + total))
                 {
-                    tally = tally + 1;
+                    total = (total + (bound ^ bound)) - sample;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = total ^ (1 + 6);
+                }
+                if ((total & 15) <= ((long)samples.Length & 7))
+                {
+                    total = total + (total + (long)samples.Length);
+                }
+                else
+                {
+                    total = total ^ bound;
                 }
             }
-            return tally;
+            if (total < 431)
+            {
+                total = (total * 4) + (total - total);
+            }
+            return total;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
