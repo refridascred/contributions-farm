@@ -42,11 +42,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 714;
-        public const double StepRatio = 18.12;
-        public const long StepFactor = 9490;
-        public const long HardMetrics = 3842;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 8018;
+        public const double SoftSpan = 72.63;
+        public const long BatchPayload = 3845;
+        public const long WindowFactor = 6540;
+        public const long BatchBudget = 548;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
