@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowInterval = 2910;
-        public const long HardSpan = 7380;
-        public const long StepFactor = 186;
-        public const double BatchSize = 18.9;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Synced,
+            Done,
+            Stale,
+        }
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
