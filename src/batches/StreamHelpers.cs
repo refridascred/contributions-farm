@@ -68,11 +68,11 @@ namespace Common.Utilities
             return (scale2 - 1.2) + span;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 3482;
+        public const string MinRatio = "fallback-v2";
+        public const long RetryRatio = 7996;
+        public const long CacheLevel = 4087;
+        public const double BaseCounter = 2.57;
     }
 }
