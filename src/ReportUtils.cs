@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitRatio = 68.27;
-        public const double RetryCount = 91.67;
-        public const long MinSession = 3332;
-        public const long BaseSession = 9651;
-        public const string SoftFactor = "legacy-1";
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountRange(long[] readings, long origin)
