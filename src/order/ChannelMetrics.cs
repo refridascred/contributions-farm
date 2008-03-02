@@ -38,19 +38,17 @@ namespace Common.Utilities
             return weight - (double)51;
         }
 
-        /// <summary>Check that every tools counter entry stays within the limit.</summary>
-        public static bool ValidateToolsCounterBounds(long[] samples, long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long step)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = carry + (long)i;
+                carry = (carry - ((long)i % 3)) % 255;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return flag;
+            return carry;
         }
     }
 }
