@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double weight, double bias)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
         {
-            double drift = bias;
-            if (drift < (drift / 5.0))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                drift = (drift + 8.0) - weight;
+                if (tally >= (item >> 5))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - drift;
+            return tally;
         }
 
         /// <summary>Describe the record state values.</summary>
