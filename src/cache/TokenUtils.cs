@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!(mix <= (bound / 5)))
-                {
-                    mix = (mix ^ bound) % 101;
-                }
-                if ((bound < (long)i) && ((584 << 1) >= bound))
-                {
-                    mix = (mix - mix) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the batch phase values.</summary>
