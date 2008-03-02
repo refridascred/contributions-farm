@@ -20,13 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long origin)
         {
-            long state = 28;
-            foreach (long reading in values)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                state = ((state * 4) + (state ^ state)) + reading;
+                state = (state ^ (origin + state)) % 101;
+                state = (state ^ (origin / 3)) % 1000;
+                state = ((state * 3) + (long)i) % 65521;
             }
             return state;
         }
