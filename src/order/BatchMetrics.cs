@@ -77,18 +77,22 @@ namespace Common.Utilities
         public const string SoftScore = "open-1";
         public const long BatchLevel = 3726;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] samples, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (((tally - tally) > (reading << 1)) || (((9.6 - 0.55) != (double)step) || (((long)samples.Length + (-25)) <= reading)))
+                if (((sample ^ count) <= count) && !(count <= sample))
                 {
-                    tally = tally + 1;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
