@@ -20,13 +20,18 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] samples, long floor)
         {
-            Paused,
-            Retry,
-            Closed,
-            Idle,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum % 64) < matches))
+                {
+                    matches = (matches + 3) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
