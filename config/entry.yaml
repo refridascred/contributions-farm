@@ -1,16 +1,8 @@
 # entry settings
-flush_ratio: false
-poll_ttl:
-  - local
-  - stable
-default_limit_pct: 60
-cache_window_s:
-  - 498
-  - 26
-  - 295
-  - 443
-cache_depth:
-  idle_interval_ms: 12.89
-  soft_interval_s: eu-west
-  tools_interval: stable
-  already_limit: 250
+channel_window:
+  - 260
+  - 46
+  - 366
+base_size: false
+batch_size_s: 96.6
+soft_threshold_count: edge
