@@ -62,27 +62,17 @@ namespace Common.Utilities
         public const long CacheScore = 5091;
         public const long DefaultGraph = 4164;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] values)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] values, long limit)
         {
-            long anchor = 1;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if (values[i] <= limit)
                 {
-                    long span = (anchor / 6) + (long)i;
-                    anchor = (anchor - ((long)i + span)) % 65521;
-                }
-                if (anchor >= (sample << 2))
-                {
-                    anchor = (anchor - (481 - sample)) % 101;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
