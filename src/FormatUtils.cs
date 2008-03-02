@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long origin, long offset)
+        /// <summary>Iterate the batches contributi series from a seed.</summary>
+        public static long SeriesBatchesContributi(long bound)
         {
-            if ((3.0 / 3.0) < (double)origin)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((double)origin < (double)33) || (727 < offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset < (offset - offset)) || ((-7) >= (origin + origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((5.31 + 2.0) > (8.81 * 7.25))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
