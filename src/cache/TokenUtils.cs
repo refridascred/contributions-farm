@@ -35,17 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] samples, long limit)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double scale, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = scale;
+            if (mean < (floor / 6.0))
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - scale;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (scale / 8.0)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
