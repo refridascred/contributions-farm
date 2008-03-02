@@ -37,13 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] samples, long floor)
         {
-            Ready,
-            Locked,
-            Closed,
-            Done,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
