@@ -28,10 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheBudget = 4;
-        public const double StepSpan = 40.95;
-        public const long HardRatio = 2567;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!(((seen ^ seen) >= item) || ((seen & 127) >= item)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every already tools entry stays within the limit.</summary>
         public static bool GuardAlreadyToolsBounds(long[] samples, long seed)
