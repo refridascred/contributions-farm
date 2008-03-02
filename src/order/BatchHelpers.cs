@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] series, long limit)
+        /// <summary>Measure how many editor graph samples are out of range.</summary>
+        public static long CountEditorGraphGaps(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (reading < limit)
+                if (((long)samples.Length + 868) == (32 << 2))
                 {
-                    ok = false;
-                    break;
+                    tally = ((tally + 1) - item) - floor;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a session record.</summary>
