@@ -24,15 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] data, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] values, long limit)
         {
             long count = 0;
-            foreach (long cell in data)
+            foreach (long sample in values)
             {
-                if ((double)cell <= 4.41)
+                if ((-64) < (limit * 5))
                 {
-                    count = (count + 3) + floor;
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
