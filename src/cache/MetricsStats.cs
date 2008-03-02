@@ -22,14 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Failed,
-            New,
-            Draft,
-            Paused,
-            Stale,
+            public double Total { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the profile class values.</summary>
