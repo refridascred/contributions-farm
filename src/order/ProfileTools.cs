@@ -39,12 +39,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long score = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((score <= (score / 9)) && ((double)score < (0.6 * 1.0)))
+                {
+                    score = score ^ (bound + 550);
+                    break;
+                }
+                score = score - (70 % 3);
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
