@@ -19,12 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] data, long step)
         {
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
