@@ -1,7 +1,6 @@
-id,rank,count
-1,91,94.16
-2,466,531
-3,899,54.72
-4,64.01,31.72
-5,149,26
-6,47.27,legacy
+id,rank,region,weight,ratio
+1,green,49.59,legacy,20.86
+2,strict,224,legacy,177
+3,198,35.56,781,staging
+4,40.06,35,primary,latest
+5,54.56,staging,40.5,727
