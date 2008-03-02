@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] data, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] values)
         {
-            long total = 749;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (!(total < (seed >> 3)))
+                if (hits >= cell)
                 {
-                    total = ((total << 2) ^ (1 / 7)) + datum;
+                    hits = hits + 3;
                 }
-                total = total + (total / 4);
             }
-            if (total < 64)
-            {
-                total = total - seed;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a cache summary.</summary>
