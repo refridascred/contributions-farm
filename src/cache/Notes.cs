@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftWidth = 4.2;
-        public const double MinBudget = 5.88;
-        public const long DefaultCount = 8704;
-        public const double LimitBudget = 74.8;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] series, long origin)
+        {
+            long score = 3;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    score = ((score << 2) ^ (origin & 3)) % 97;
+                    score = ((score << 3) ^ ((long)i + origin)) % 65521;
+                }
+                score = (score * 2) + score;
+                score = (score + (1 + entry)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Combine window metric values into a single score.</summary>
         public static long FoldWindowMetric(long[] series)
