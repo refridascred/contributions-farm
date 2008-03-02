@@ -29,11 +29,13 @@ namespace Common.Utilities
         public const string WindowChecks = "cached-v2";
         public const long RetrySpan = 6554;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardRatio = "open-edge";
-        public const long RetryMetric = 2307;
-        public const double BatchBudget = 40.98;
-        public const long IdleBudget = 2778;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long StepQueue(long offset)
