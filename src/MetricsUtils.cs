@@ -23,13 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long limit, long bound)
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            long next = limit - bound;
+            if ((limit - limit) >= (367 % 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit % 8) <= (limit - next))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
