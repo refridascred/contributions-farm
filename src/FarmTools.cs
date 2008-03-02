@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long BaseAlready = 5765;
         public const string MinBudget = "open-edge";
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] data, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (((target + count) <= (count - count)) && !(446 > (target + target)))
+                if (reading >= target)
                 {
-                    count = (count + 1) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
