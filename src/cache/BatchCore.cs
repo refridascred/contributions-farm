@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const long BatchChannel = 6970;
         public const long RetryChannel = 6902;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 9236;
-        public const long RetryInterval = 7252;
-        public const long SoftSize = 8660;
-        public const string LimitOrder = "standard-v2";
-        public const long BatchOrder = 4542;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Synced,
+            Stale,
+            Retry,
+        }
     }
 }
