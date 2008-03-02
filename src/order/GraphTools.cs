@@ -27,31 +27,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate report cache samples.</summary>
-        public static long FoldReportCache(long[] samples, long step)
+        /// <summary>Compare every pair of cache entry readings.</summary>
+        public static long OverlapCacheEntryCount(long[] samples)
         {
-            long carry = 70;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading == (double)carry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = carry ^ (-328);
-                    continue;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (step / 5);
-                }
-                if ((2 + carry) == (step * 5))
-                {
-                    carry = carry ^ reading;
-                }
-                else
-                {
-                    carry = (carry + (carry << 2)) % 4096;
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
