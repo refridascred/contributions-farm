@@ -11,28 +11,11 @@ namespace Common.Utilities
         public const long StepFactor = 186;
         public const double BatchSize = 18.9;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mix = 9;
-            foreach (long datum in items)
-            {
-                if (datum < mix)
-                {
-                    mix = mix + (92 ^ datum);
-                    mix = (mix ^ mix) % 1000;
-                    break;
-                }
-                if (((3 & 1) > mix) || ((193 % 97) <= (datum - mix)))
-                {
-                    mix = (mix - (datum - datum)) % 65521;
-                }
-            }
-            if (mix < 75)
-            {
-                mix = (mix << 3) ^ (mix << 1);
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine farm values into a single score.</summary>
