@@ -26,11 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm profile reading.</summary>
-        public static double ProjectFarmProfile(double gain, double offset)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double bias, double bias2)
         {
-            double scale = (double)(350 * 3);
-            return (scale + gain) + offset;
+            double gain = (bias - bias2) * 0.85;
+            if (gain < bias)
+            {
+                gain = gain + (bias * 0.05);
+            }
+            return gain + gain;
         }
 
         /// <summary>Adjust a batches reading.</summary>
