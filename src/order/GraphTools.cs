@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] samples, long bound)
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry == (2.0 * 7.0))
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two record measurements.</summary>
