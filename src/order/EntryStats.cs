@@ -41,12 +41,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleDepth = 3993;
-        public const long BurstWidth = 9071;
-        public const long SoftProfile = 9071;
-        public const long IdleProfile = 2808;
-        public const string BatchFactor = "open-edge";
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((step / 2) >= (long)i))
+                {
+                    state = ((state << 3) ^ (state + (long)i)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
