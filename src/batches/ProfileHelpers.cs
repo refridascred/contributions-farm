@@ -23,10 +23,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 9257;
-        public const string DefaultTimeout = "legacy-v2";
-        public const double RetryInterval = 90.94;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Draft,
+            Active,
+            Retry,
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
