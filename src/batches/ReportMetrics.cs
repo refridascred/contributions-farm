@@ -19,11 +19,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 8639;
-        public const double RetryFarm = 8.43;
-        public const double StepWidth = 62.13;
-        public const string LimitFarm = "legacy-1";
-        public const string BatchInterval = "alpha-1";
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
