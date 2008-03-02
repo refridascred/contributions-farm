@@ -30,13 +30,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
