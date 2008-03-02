@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] values, long offset)
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the report mode values.</summary>
