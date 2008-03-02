@@ -16,18 +16,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 750;
+        public const string CacheInterval = "strict-edge";
+        public const long IdleFactor = 1531;
+        public const long RetryOrder = 3025;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepFactor = 8116;
