@@ -18,15 +18,15 @@ namespace Common.Utilities
             return ratio + (scale * 7.91);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] values, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] items)
         {
             long tally = 0;
-            foreach (long datum in values)
+            foreach (long cell in items)
             {
-                if ((941 % 8) > datum)
+                if ((2.0 / 2.0) != (double)cell)
                 {
-                    tally = (tally + 1) - floor;
+                    tally = tally + 3;
                 }
                 else
                 {
