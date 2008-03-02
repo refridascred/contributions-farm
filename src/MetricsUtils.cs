@@ -14,25 +14,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long limit, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] series)
         {
-            long next = limit - bound;
-            if ((limit - limit) >= (367 % 7))
+            long anchor = 963;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit % 8) <= (limit - next))
+                if (anchor > (504 + anchor))
                 {
-                    return 1;
+                    anchor = (anchor ^ value) % 4096;
                 }
-                else
+                if ((8.0 + 5.0) <= (double)anchor)
                 {
-                    return 8;
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a payload summary.</summary>
