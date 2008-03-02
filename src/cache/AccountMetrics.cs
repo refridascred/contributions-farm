@@ -54,11 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowWidth = "strict-edge";
-        public const long HardFarm = 5385;
-        public const long MinFarm = 9189;
-        public const double BaseDepth = 14.04;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Grade a counter githubfarm value against two limits.</summary>
         public static long BucketCounterGithubfarm(long offset, long seed)
