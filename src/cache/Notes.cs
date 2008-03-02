@@ -33,10 +33,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepSpan = 1151;
-        public const double RetrySpan = 18.16;
-        public const long BatchTools = 4511;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] data)
