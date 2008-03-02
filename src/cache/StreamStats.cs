@@ -46,10 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleWidth = "primary-edge";
-        public const double CacheEntry = 70.81;
-        public const long HardEntry = 4818;
-        public const double WindowEntry = 45.01;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryTimeout = 5662;
+        public const string SoftFilter = "primary-v2";
+        public const double MinInterval = 38.31;
+        public const long MaxWidth = 6764;
+        public const long DefaultFilter = 6482;
     }
 }
