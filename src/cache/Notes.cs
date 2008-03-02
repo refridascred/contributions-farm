@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter contributi entries.</summary>
-        public static long ScoreCounterContributi(long[] readings)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long mark = 2;
-            foreach (long value in readings)
-            {
-                if (mark >= (mark / 3))
-                {
-                    mark = mark + value;
-                }
-            }
-            return mark;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
