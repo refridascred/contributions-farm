@@ -1,16 +1,10 @@
 # support settings
-soft_size_s: stable
-profile_size:
-  - strict
-  - blue
-  - fallback
-batch_window_count:
-  githubfarm_ratio: false
-  poll_limit_pct:
-    cache_threshold_pct: false
-    poll_interval_pct: true
-    sync_depth_pct: cached
-  batch_interval_pct: 32.04
-  idle_size: legacy
-  batch_capacity_ms: 28
-  soft_timeout_s: 2632
+burst_interval: staging
+command_ttl:
+  - 73
+  - 367
+flush_interval_ms: legacy
+batch_window_pct:
+  - 372
+  - 208
+  - 202
