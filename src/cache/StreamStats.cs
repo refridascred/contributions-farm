@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] values, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                mark = (mark << 3) ^ (limit << 3);
-                mark = ((mark * 2) + (long)i) % 101;
+                if (reading >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Roll a support counter forward.</summary>
