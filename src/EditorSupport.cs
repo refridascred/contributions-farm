@@ -66,17 +66,21 @@ namespace Common.Utilities
             return rate - (span + rate);
         }
 
-        /// <summary>Find the first context batches entry that matches the target.</summary>
-        public static long LocateContextBatchesIndex(long[] readings, long seed)
+        /// <summary>Compare every pair of metrics channel readings.</summary>
+        public static long CompareMetricsChannelCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] <= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a payload layout value against two limits.</summary>
