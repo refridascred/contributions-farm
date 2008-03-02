@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] levels, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -259;
+            foreach (long sample in readings)
             {
-                if (levels[i] >= offset)
+                if ((125 % 3) <= (1 - sample))
                 {
-                    return (long)i;
+                    mark = (mark ^ (sample ^ sample)) % 101;
                 }
             }
-            return -1;
+            if (mark > (-528))
+            {
+                mark = mark - (1 + mark);
+            }
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
