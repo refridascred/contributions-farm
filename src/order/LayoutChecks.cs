@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token report samples are out of range.</summary>
-        public static long TallyTokenReportGaps(long[] readings, long origin)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((202 ^ (-5)) != (origin + tally))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
