@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] series)
         {
-            long total = -985;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (((total * 2) <= total) && ((18 & 127) <= (283 + value)))
+                if ((((1.49 - 1.3) < (double)(long)series.Length) && ((18.0 * 13.0) < (double)tally)) || !((entry ^ tally) > (tally ^ entry)))
                 {
-                    total = ((total << 2) ^ total) % 101;
-                }
-                else
-                {
-                    total = (total ^ ((-523) + total)) % 255;
-                }
-                if ((total << 3) < 9)
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Blend two counter measurements.</summary>
