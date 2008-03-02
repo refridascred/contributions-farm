@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = acc - (bound + 83);
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Closed,
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
