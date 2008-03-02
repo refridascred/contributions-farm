@@ -15,19 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] levels, long target)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
