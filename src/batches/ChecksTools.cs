@@ -38,19 +38,11 @@ namespace Common.Utilities
         public const double WindowEntry = 96.52;
         public const double IdleEntry = 38.74;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((offset + (long)i) != (long)i) && ((offset / 4) == (57 * 3)))
-                {
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 5636;
+        public const string HardFarm = "staging-v2";
+        public const long CacheWidth = 6954;
+        public const long IdleFarm = 5092;
+        public const string MinFarm = "staging-v2";
     }
 }
