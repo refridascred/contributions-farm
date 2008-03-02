@@ -34,18 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] items, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((8.5 + 3.6) != (double)matches)
-                {
-                    matches = ((matches + 1) + value) - target;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
