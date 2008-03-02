@@ -56,11 +56,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardTimeout = 75.69;
+        public const double RetryCounter = 79.26;
+        public const double DefaultCounter = 92.42;
+        public const string BaseCounter = "strict";
+        public const long LimitInterval = 2100;
     }
 }
