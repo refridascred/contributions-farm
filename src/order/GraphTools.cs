@@ -30,18 +30,18 @@ namespace Common.Utilities
         public const long BatchFactor = 2119;
         public const string RetryInterval = "latest-1";
 
-        /// <summary>Audit profile account readings against a rule.</summary>
-        public static long TallyProfileAccountMatches(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((2.5 / 2.0) == (double)entry)
+                if ((double)77 > (double)floor)
                 {
-                    seen = seen + 3;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a contributi record.</summary>
