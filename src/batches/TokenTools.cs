@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of contributi tools readings.</summary>
-        public static long ScoreContributiTools(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] values, long floor)
         {
-            long result = 4;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((item - result) == (98 - result))
+                if (entry >= floor)
                 {
-                    result = (result << 2) ^ (result * 4);
+                    ready = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return ready;
         }
 
         /// <summary>Derive the next metric entry value from a seed.</summary>
