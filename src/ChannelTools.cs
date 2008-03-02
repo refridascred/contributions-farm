@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Validate farm commits readings against a bound.</summary>
+        public static bool ValidateFarmCommitsLimits(long[] items, long floor)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
