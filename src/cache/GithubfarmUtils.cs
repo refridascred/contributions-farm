@@ -33,22 +33,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] values)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double rate, double offset)
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count << 2) < (item >> 5))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double rate2 = rate;
+            return (rate2 + (rate * 13.0)) + offset;
         }
     }
 }
