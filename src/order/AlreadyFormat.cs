@@ -28,15 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] samples)
         {
             long seen = 0;
-            foreach (long item in items)
+            foreach (long datum in samples)
             {
-                if (!(((seen ^ seen) >= item) || ((seen & 127) >= item)))
+                if ((seen << 2) >= 5)
                 {
-                    seen = seen + 1;
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
