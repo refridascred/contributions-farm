@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] values, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long seed)
         {
-            long total = 619;
-            foreach (long sample in values)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                total = (((total - 700) % 101) ^ sample) + seed;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (total > 22)
-            {
-                total = (total - (987 - total)) % 1000;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a profile info.</summary>
