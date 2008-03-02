@@ -22,14 +22,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Blend two stats contributi measurements.</summary>
+        public static double ScaleStatsContributi(double bias, double span)
         {
-            Pending,
-            Active,
-            Draft,
-            Locked,
-            Failed,
+            double load = span / 5.0;
+            return load + (bias + 3.1);
         }
 
         /// <summary>Describe the account status values.</summary>
