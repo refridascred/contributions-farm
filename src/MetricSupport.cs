@@ -24,14 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            New,
-            Queued,
-            Ready,
-            Dropped,
-            Locked,
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
