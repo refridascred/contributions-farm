@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const long BaseSupport = 5548;
         public const long WindowSupport = 6513;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] items, long seed)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            double scale = (gain + bias) * 8.4;
+            if (scale >= scale)
             {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale - gain;
             }
-            return ready;
+            else
+            {
+                scale = scale - (double)1;
+            }
+            return scale - (bias + bias);
         }
     }
 }
