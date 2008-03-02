@@ -28,11 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] levels, long seed)
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (seed < (sample - seed))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
