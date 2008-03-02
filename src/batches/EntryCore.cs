@@ -52,18 +52,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support record samples.</summary>
-        public static long TallySupportRecord(long[] samples, long limit)
+        /// <summary>Find the first token order entry that matches the target.</summary>
+        public static long LocateTokenOrderIndex(long[] items, long seed)
         {
-            long mix = 2;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((224 <= (entry * 5)) || ((entry & 127) <= (mix << 2)))
+                if (items[i] >= seed)
                 {
-                    mix = (((mix * 2) + (entry - mix)) % 255) - limit;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
     }
 }
