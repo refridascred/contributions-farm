@@ -37,11 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 180;
-        public const double LimitBudget = 90.96;
-        public const long BaseWidth = 1927;
-        public const long LimitCache = 3769;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Check that every already tools entry stays within the limit.</summary>
         public static bool GuardAlreadyToolsBounds(long[] samples, long seed)
