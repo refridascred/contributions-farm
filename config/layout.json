@@ -1,11 +1,13 @@
 {
-  "flush_timeout_pct": {
-    "sync_threshold_s": "stable",
-    "warm_retries_s": 9432,
-    "default_depth_pct": "fallback",
-    "command_depth": true,
-    "default_limit": "cached"
+  "cache_interval_count": ["legacy", "legacy", "eu-west"],
+  "idle_retries_count": {
+    "audit": 1024,
+    "cache_delay": 1024,
+    "base_capacity": 100,
+    "batch_delay": 23,
+    "sync_capacity_s": "eu-west",
+    "persist": 1024
   },
-  "batch_interval": "edge",
-  "enabled": "legacy"
+  "entry_size": false,
+  "verbose": 100
 }
