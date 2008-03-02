@@ -33,11 +33,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "fallback";
-        public const double MinLevel = 3.76;
-        public const double LimitScore = 70.55;
-        public const long MinDepth = 2762;
-        public const long StepContext = 6735;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
