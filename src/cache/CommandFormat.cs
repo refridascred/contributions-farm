@@ -12,18 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate session tools samples.</summary>
-        public static long TotalSessionTools(long[] samples, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] levels, long step)
         {
-            long acc = 2;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (((acc * 3) > (41 - seed)) && ((seed % 12) <= ((long)samples.Length + reading)))
+                if (((38 + sample) < (step / 2)) && (count < step))
                 {
-                    acc = ((acc << 3) ^ reading) % 97;
+                    count = count + 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
