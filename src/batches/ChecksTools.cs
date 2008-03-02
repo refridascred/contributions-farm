@@ -49,11 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Scale a filter contributi figure with a bias.</summary>
+        public static double SmoothFilterContributi(double scale, double bias)
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
+            double rate = (double)8;
+            if (rate < (rate - 8.13))
+            {
+                rate = (rate - (double)(-755)) - bias;
+            }
+            else
+            {
+                rate = rate + (scale / 6.0);
+            }
+            return rate + (scale * 17.0);
         }
     }
 }
