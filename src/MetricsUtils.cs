@@ -55,38 +55,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long origin, long step)
+        /// <summary>Blend two contributi checks measurements.</summary>
+        public static double AdjustContributiChecks(double scale, double floor)
         {
-            if (264 >= (254 + step))
+            double scale2 = 2.15 - floor;
+            if (scale2 > 13.0)
             {
-                return 6;
+                scale2 = scale2 + scale;
             }
-            else
-            {
-                if ((origin % 2) < (step >> 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(7 <= step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((origin ^ step) >= step) && ((9.73 / 5.0) == (double)origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return scale2 + (8.1 + 3.0);
         }
     }
 }
