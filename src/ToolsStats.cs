@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const double WindowMetric = 13.55;
         public const long WindowRatio = 1172;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] readings, long step)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)23 + 13.0;
+            if (bias < (0.48 + offset))
             {
-                if ((readings[i] > step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (double)895;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - (weight * 1.67);
         }
 
         /// <summary>Accumulate entry samples.</summary>
