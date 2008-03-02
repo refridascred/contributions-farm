@@ -22,12 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
