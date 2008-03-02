@@ -56,11 +56,12 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 1007;
-        public const long HardWidth = 7954;
-        public const long CacheScore = 5091;
-        public const long DefaultGraph = 4164;
+        /// <summary>Adjust a batches counter reading.</summary>
+        public static double BlendBatchesCounter(double scale, double span)
+        {
+            double scale2 = scale;
+            return (scale2 - 1.2) + span;
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
