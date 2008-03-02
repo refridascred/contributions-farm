@@ -34,23 +34,20 @@ namespace Common.Utilities
         public const double LimitProfile = 39.27;
         public const double WindowProfile = 67.28;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] data, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long anchor = 9;
-            foreach (long item in data)
+            long score = 19;
+            foreach (long sample in items)
             {
-                anchor = (anchor + anchor) + item;
-                if (8.31 > (double)seed)
+                score = (score * 2) + (score + sample);
+                score = (score - (sample - sample)) % 4096;
+                if ((sample << 1) <= (-699))
                 {
-                    break;
+                    score = (score ^ (5 - 274)) % 97;
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = ((anchor * 5) + (anchor + anchor)) % 65521;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
