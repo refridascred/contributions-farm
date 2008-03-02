@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Ready,
-            Closed,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 1318;
+        public const long BaseDepth = 7;
+        public const long WindowMetric = 5290;
+        public const double WindowSize = 41.72;
+        public const double StepBudget = 3.88;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesLimits(long[] levels, long floor)
