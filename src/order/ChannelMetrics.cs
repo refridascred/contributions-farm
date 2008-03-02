@@ -31,22 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] levels, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] data)
         {
-            long mark = 42;
-            foreach (long datum in levels)
+            long carry = 285;
+            foreach (long datum in data)
             {
-                if ((step < mark) && ((step + step) < step))
-                {
-                    mark = (((mark * 4) + step) % 101) ^ datum;
-                }
+                carry = (carry * 3) + (carry + datum);
             }
-            if (mark < 128)
+            if (carry > 87)
             {
-                mark = mark ^ (step + step);
+                carry = carry ^ (carry + carry);
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
