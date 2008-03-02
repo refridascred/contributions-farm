@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] readings, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
+                if (((10.0 <= (double)hits) || (hits < ((-7) ^ hits))) || ((reading & 127) > hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
