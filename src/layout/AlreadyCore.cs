@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] data, long step)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((20.0 * 7.55) >= (double)step)
+                if (!(4.0 >= (double)mix))
                 {
-                    matches = (matches + 1) + item;
+                    mix = ((mix * 3) + (seed % 24)) % 255;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a farm header.</summary>
