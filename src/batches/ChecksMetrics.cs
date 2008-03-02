@@ -27,20 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 1059;
+        public const long DefaultSpan = 6552;
+        public const long RetryLevel = 6284;
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] samples)
