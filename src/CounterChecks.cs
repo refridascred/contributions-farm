@@ -34,17 +34,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Locate a context queue reading by value.</summary>
-        public static long LocateContextQueueIndex(long[] series, long floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
