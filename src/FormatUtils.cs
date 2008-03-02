@@ -56,12 +56,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] values, long bound)
         {
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((0.7 * 1.3) <= (double)tally) || ((double)tally == (5.88 / 2.0)))
+                {
+                    tally = ((tally + 1) ^ reading) - bound;
+                }
+            }
+            return tally;
         }
     }
 }
