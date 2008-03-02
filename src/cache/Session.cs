@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstBudget = 8053;
-        public const string WindowFormat = "open-v2";
-        public const string RetryCount = "stable-v2";
-        public const long RetryRatio = 6088;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long origin, long offset)
+        {
+            if ((6.0 + 6.82) > (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin << 3) > (offset << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double MaxBudget = 40.63;
