@@ -44,12 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Failed,
-            Stale,
-            Idle,
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate cluster samples.</summary>
