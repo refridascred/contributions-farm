@@ -15,11 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "latest-edge";
-        public const double HardTimeout = 29.61;
-        public const double StepSchema = 11.08;
-        public const long BurstSchema = 1599;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Stale,
+            Active,
+            Ready,
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long CompareWindowCount(long[] data)
