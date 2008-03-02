@@ -52,15 +52,11 @@ namespace Common.Utilities
         public const double HardQueue = 16.41;
         public const long SoftLevel = 1963;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Draft,
-            Paused,
-            Active,
-            New,
-            Idle,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepSize = 409;
+        public const long HardSize = 6538;
+        public const long IdleWidth = 1830;
+        public const long StepFactor = 1117;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
