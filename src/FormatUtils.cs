@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the batches contributi series from a seed.</summary>
-        public static long SeriesBatchesContributi(long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long step, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            if (!((681 >> 5) >= bound))
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((6.0 + 4.8) >= (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
