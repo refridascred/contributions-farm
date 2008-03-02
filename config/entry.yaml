@@ -1,8 +1,12 @@
 # entry settings
-editor_depth: true
-flush_timeout_s: 29.62
-audit: cached
-dry_run: false
-payload_delay:
-  - fallback
-  - primary
+retry_window_count:
+  - 101
+  - 17
+  - 37
+  - 25
+default_retries_s:
+  - 354
+  - 377
+  - 87
+  - 216
+batch_delay: 500
