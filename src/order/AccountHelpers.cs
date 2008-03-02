@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] samples, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double ratio, double floor)
         {
-            long state = 629;
-            foreach (long value in samples)
+            double drift = (double)(566 - 529);
+            if (drift >= floor)
             {
-                if ((state + state) != (state & 15))
-                {
-                    state = state - (bound + state);
-                }
-                else
-                {
-                    state = (state * 3) + (value >> 3);
-                }
+                drift = (drift + floor) - ratio;
             }
-            return state;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)513) + (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
