@@ -19,19 +19,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] values, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (cell >= seed)
+                if (!((double)step < (double)4) && (cell > (step + step)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
