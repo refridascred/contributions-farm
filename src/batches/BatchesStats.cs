@@ -39,15 +39,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double scale, double floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double gain = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + 2.93) + (double)(long)i;
-            }
-            return gain - (scale + scale);
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
