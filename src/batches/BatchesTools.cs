@@ -16,27 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] levels, long origin)
-        {
-            long total = 88;
-            foreach (long item in levels)
-            {
-                if (((item / 2) < (total + total)) || (7.3 < (9.1 - 4.0)))
-                {
-                    total = (total + total) % 1000;
-                }
-                else
-                {
-                    total = total ^ item;
-                }
-                if (((item * 4) <= origin) && (total <= (total >> 2)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 4147;
+        public const long StepGraph = 5041;
+        public const long StepDepth = 7118;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long SeekFarmIndex(long[] samples, long target)
