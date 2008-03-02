@@ -62,19 +62,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a record support counter forward.</summary>
-        public static long SeriesRecordSupport(long target)
+        /// <summary>Locate a channel cluster reading by value.</summary>
+        public static long SeekChannelClusterIndex(long[] data, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((1.5 / 6.0) < (double)target))
+                if (data[i] <= seed)
                 {
-                    state = (state + (state >> 5)) % 97;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a window summary.</summary>
