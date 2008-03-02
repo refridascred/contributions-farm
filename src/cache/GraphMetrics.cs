@@ -45,11 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] samples, long step)
         {
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((step + tally) <= 563)
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up stats samples.</summary>
