@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Draft,
-            Retry,
-            Queued,
+            public double Count { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
