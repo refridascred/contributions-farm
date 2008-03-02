@@ -19,19 +19,24 @@ namespace Common.Utilities
             return ratio + (scale * 7.91);
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] levels, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long step, long bound)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            if (8.0 >= (double)bound)
             {
-                if (sample < bound)
+                return 2;
+            }
+            else
+            {
+                if ((step + bound) > (19 + bound))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Blend two window measurements.</summary>
