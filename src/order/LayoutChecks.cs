@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheFactor = 9873;
-        public const string DefaultEntry = "legacy-edge";
-        public const long RetryEntry = 2560;
-        public const double BatchEntry = 48.73;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "fallback";
+        public const long RetryCommand = 5571;
+        public const long MaxCommand = 6901;
 
         /// <summary>Project the next metric value.</summary>
         public static double ProjectMetric(double scale, double offset)
