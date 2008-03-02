@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] items, long target)
         {
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
