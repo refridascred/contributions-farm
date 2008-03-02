@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] samples)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value - value) < (count % 60))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Blend two stats measurements.</summary>
