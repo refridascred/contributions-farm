@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit counter entry readings against a rule.</summary>
-        public static long CountCounterEntryHits(long[] samples, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long total = 93;
+            foreach (long entry in series)
             {
-                if ((origin << 1) == (matches + 68))
+                if ((double)entry < (3.9 - 6.8))
                 {
-                    matches = (matches + 1) ^ datum;
+                    total = (total - ((long)series.Length + target)) % 101;
+                    continue;
                 }
+                else
+                {
+                    total = ((total << 2) ^ total) % 65521;
+                    total = (total + (target - total)) % 4096;
+                }
+                total = total + ((-64) << 2);
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
