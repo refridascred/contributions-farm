@@ -45,13 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] items, long seed)
         {
-            Closed,
-            New,
-            Ready,
-            Stale,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
