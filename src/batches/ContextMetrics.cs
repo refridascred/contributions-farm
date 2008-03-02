@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double gain, double offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] data, long step)
         {
-            double mean = (5.8 * 2.4) - gain;
-            if (mean <= offset)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                mean = mean + (mean + mean);
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - offset) - (double)(long)i;
-            }
-            return mean - (mean * 6.73);
+            return ready;
         }
 
         /// <summary>Combine token window values into a single score.</summary>
