@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] samples, long origin)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((tally > reading) || (((origin - reading) > (tally + 223)) || ((reading + 329) <= (tally - reading))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
