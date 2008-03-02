@@ -19,27 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] series, long limit)
-        {
-            long mix = 2;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = ((mix << 3) ^ (473 % 7)) ^ (long)i;
-                }
-                if ((limit + limit) > (sample - mix))
-                {
-                    mix = (mix ^ (limit + 79)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (sample - mix)) % 1000;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 1845;
+        public const double BatchAlready = 83.73;
+        public const long CacheAlready = 5759;
+        public const string IdleAlready = "staging";
+        public const long DefaultDepth = 8549;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long DeriveBuffer(long seed)
