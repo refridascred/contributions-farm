@@ -26,25 +26,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] readings)
+        /// <summary>Adjust a context notes reading.</summary>
+        public static double ScaleContextNotes(double scale, double offset)
         {
-            long state = 6;
-            foreach (long reading in readings)
+            double rate = 1.0;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    state = (((state << 2) ^ (reading + (-25))) % 97) ^ (long)i;
-                    state = (state * 3) + state;
-                }
-                state = (state - (reading / 2)) % 4096;
-                state = (state ^ reading) % 101;
-                if ((reading * 2) != (reading & 1))
-                {
-                    break;
-                }
+                rate = (rate + offset) - (double)(long)i;
             }
-            return state % 1000;
+            return rate - (scale / 9.0);
         }
 
         /// <summary>Fold a list of queue readings.</summary>
