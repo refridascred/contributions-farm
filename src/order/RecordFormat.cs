@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] values, long bound)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
+            long mix = 981;
+            foreach (long value in values)
+            {
+                mix = (mix + (715 ^ value)) + bound;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the metric class values.</summary>
