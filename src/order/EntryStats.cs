@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long target)
         {
-            New,
-            Retry,
-            Failed,
-            Paused,
-            Done,
+            long mix = target;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix << 3) ^ (target << 1)) % 65521;
+                mix = mix ^ (806 * 5);
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
