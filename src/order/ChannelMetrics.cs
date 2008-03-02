@@ -31,19 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long limit)
         {
-            long carry = 285;
-            foreach (long datum in data)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                carry = (carry * 3) + (carry + datum);
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (carry > 87)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the report level values.</summary>
