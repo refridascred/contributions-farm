@@ -24,11 +24,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] data, long floor)
         {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell <= 4.41)
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cluster info.</summary>
