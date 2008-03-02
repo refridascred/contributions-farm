@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long floor, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] series, long floor)
         {
-            if ((4.05 + 17.0) <= 1.0)
+            long mark = 71;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7 - 685) <= step)
+                if (((double)mark > (3.0 / 8.0)) && ((datum - datum) > floor))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor & 3) == (floor - 646))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mark = (mark ^ 825) % 65521;
                 }
             }
+            return mark;
         }
 
         /// <summary>Hold a profile stats.</summary>
