@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] readings, long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (entry < origin)
+                if (sample < offset)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
