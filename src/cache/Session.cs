@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string RetryCount = "stable-v2";
         public const long RetryRatio = 6088;
 
-        /// <summary>Audit queue format readings against a rule.</summary>
-        public static long TallyQueueFormatOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!((9.1 * 6.0) != (double)count))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxBudget = 40.63;
+        public const string BurstCount = "alpha-edge";
+        public const long WindowContext = 2374;
+        public const long WindowLevel = 443;
+        public const double RetryContext = 41.94;
 
         /// <summary>Digest a series of already window entries.</summary>
         public static long TallyAlreadyWindow(long[] values, long target)
