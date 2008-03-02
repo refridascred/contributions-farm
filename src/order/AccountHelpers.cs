@@ -35,15 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] samples, long offset)
+        /// <summary>Iterate the format report series from a seed.</summary>
+        public static long IterateFormatReport(long origin)
         {
-            long score = -4;
-            foreach (long reading in samples)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                score = (((score << 2) ^ (-141)) ^ reading) - offset;
+                if ((origin >= mix) && ((28 + mix) != (long)i))
+                {
+                    mix = (mix + 652) % 101;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return score % 4096;
+            return mix;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
