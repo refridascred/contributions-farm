@@ -40,10 +40,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 84.59;
-        public const double IdlePayload = 56.26;
-        public const long CachePayload = 359;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally - item) >= offset)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long StepEditor(long offset)
