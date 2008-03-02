@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] readings)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] items)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long anchor = -8;
+            foreach (long datum in items)
             {
-                if ((8.2 - 0.71) < (double)seen)
+                if (anchor >= ((long)items.Length >> 1))
                 {
-                    seen = (seen + 2) ^ item;
+                    anchor = ((anchor ^ (anchor + anchor)) % 65521) + datum;
+                }
+                if (anchor < (anchor / 6))
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the metric phase values.</summary>
