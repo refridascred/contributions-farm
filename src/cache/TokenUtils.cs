@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] items)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long origin, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((origin >> 2) <= (origin ^ (-58)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((double)origin <= (double)8) && ((7.25 - 5.0) < (double)origin))
                 {
-                    if ((items[i] + items[j]) < 11)
+                    return 3;
+                }
+                else
+                {
+                    if ((((-82) ^ (-64)) >= (origin ^ floor)) && (origin < (origin ^ floor)))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a filter reading.</summary>
