@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            Paused,
-            Done,
-            Active,
-            Locked,
-            Retry,
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix ^ 48) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a support summary.</summary>
