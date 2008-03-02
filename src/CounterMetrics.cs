@@ -28,19 +28,13 @@ namespace Common.Utilities
         public const string MaxTimeout = "standard-edge";
         public const string CacheCount = "fallback";
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] items, long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a graph header.</summary>
