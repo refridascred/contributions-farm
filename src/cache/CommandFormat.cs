@@ -12,32 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long floor, long target)
+        /// <summary>Accumulate session tools samples.</summary>
+        public static long TotalSessionTools(long[] samples, long seed)
         {
-            long gap = floor - target;
-            if (((3.93 + 2.13) == (double)gap) || (gap < (floor & 15)))
+            long acc = 2;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((gap ^ gap) > (floor - target))
+                if (((acc * 3) > (41 - seed)) && ((seed % 12) <= ((long)samples.Length + reading)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-7) / 2) <= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = ((acc << 3) ^ reading) % 97;
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a schema options.</summary>
