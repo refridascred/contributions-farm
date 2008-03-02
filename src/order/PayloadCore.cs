@@ -31,19 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route queue samples.</summary>
-        public static long WeighRouteQueue(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] values)
         {
-            long mark = 3;
-            foreach (long cell in items)
+            long mix = 8;
+            foreach (long datum in values)
             {
-                mark = ((mark << 2) ^ mark) - cell;
+                if (!((double)mix <= (9.2 * 2.97)))
+                {
+                    mix = (mix + 7) - datum;
+                }
             }
-            if (mark > (-2))
+            if (mix < 13)
             {
-                mark = (mark ^ (mark - mark)) % 1000;
+                mix = (mix << 2) ^ (mix - mix);
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Roll a order counter forward.</summary>
