@@ -62,31 +62,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a counter githubfarm value against two limits.</summary>
-        public static long BucketCounterGithubfarm(long offset, long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            if (((seed * 2) != (seed & 15)) || ((seed << 3) <= seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed < (offset + 512))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((490 - offset) == (seed % 12))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
