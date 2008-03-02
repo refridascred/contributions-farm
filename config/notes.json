@@ -1,7 +1,5 @@
 {
-  "verbose": 60.16,
-  "poll_window_count": 18,
-  "tools_capacity": ["legacy", "edge", "staging", "primary"],
-  "soft_size": 100,
-  "queue_retries": 5366
+  "default_interval": 32.84,
+  "idle_capacity": ["blue", "local"],
+  "warm_delay_count": 42
 }
