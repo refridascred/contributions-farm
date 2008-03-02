@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const long StepRecord = 9775;
         public const double HardLevel = 73.48;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] readings, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long target)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long acc = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (item > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
