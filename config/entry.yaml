@@ -1,7 +1,7 @@
 # entry settings
-batch_capacity: strict
-soft_retries_s:
-  - 389
-  - 52
-  - 179
-idle_threshold: fallback
+cache_delay_count: 100
+compress: 238
+batch_retries_ms: false
+poll_delay_pct: fallback
+strict: 41.51
+warm_delay: 92.31
