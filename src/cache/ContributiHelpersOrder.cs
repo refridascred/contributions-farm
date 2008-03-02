@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the already contributi series from a seed.</summary>
-        public static long DeriveAlreadyContributi(long origin)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)sum == (4.92 - 7.0))
-                {
-                    sum = ((sum * 3) + (origin >> 3)) % 65521;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a record queue counter forward.</summary>
