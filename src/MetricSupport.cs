@@ -12,11 +12,32 @@ namespace Common.Utilities
         public const long CacheCommits = 1458;
         public const long BaseBudget = 9210;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long step)
         {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)(long)i < 6.0)
+                {
+                    state = state + (319 & 15);
+                    break;
+                }
+                if ((step - step) < state)
+                {
+                    state = (state << 3) ^ (step * 5);
+                }
+                else
+                {
+                    state = state + (state / 2);
+                }
+                if (step < (state << 1))
+                {
+                    state = ((state * 4) + (-853)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the commits kind values.</summary>
