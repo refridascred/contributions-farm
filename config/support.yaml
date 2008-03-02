@@ -1,9 +1,9 @@
 # support settings
-payload_delay: 2680
-order_depth: 1024
-max_threshold: legacy
-editor_limit:
+strict: cached
+default_ttl_count: 83.15
+base_timeout_ms: 250
+max_ttl_pct:
+  - primary
   - blue
-  - standard
-  - legacy
-  - staging
+  - local
+  - local
