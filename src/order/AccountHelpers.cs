@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long origin, long origin2)
         {
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            if ((origin / 2) > (origin2 & 127))
+            {
+                return 7;
+            }
+            else
+            {
+                if (60 >= (origin2 * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Classify a batches commits pair into a bucket.</summary>
