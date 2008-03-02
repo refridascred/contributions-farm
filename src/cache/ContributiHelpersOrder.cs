@@ -53,9 +53,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryToken = 44.64;
-        public const long HardInterval = 8930;
-        public const long IdleToken = 7377;
+        /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
+        public static bool GuardFarmGithubfarmRange(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
