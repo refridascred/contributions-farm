@@ -22,11 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Look up the position of a already notes sample.</summary>
+        public static long LookupAlreadyNotesIndex(long[] data, long limit)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
