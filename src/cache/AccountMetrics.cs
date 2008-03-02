@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every order profile entry stays within the limit.</summary>
-        public static bool ValidateOrderProfileRange(long[] items, long target)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxSpan = 2503;
+        public const string MinLevel = "staging";
+        public const long BatchCache = 5265;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
