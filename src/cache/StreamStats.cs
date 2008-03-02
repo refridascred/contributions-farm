@@ -37,18 +37,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] samples, long step)
+        /// <summary>Count the format channel entries that pass the check.</summary>
+        public static long MeasureFormatChannelOutliers(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (hits < (value << 2))
+                if ((step >= (step % 100)) || ((8.1 - 6.34) != (double)cell))
                 {
-                    hits = (hits + 3) + step;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
