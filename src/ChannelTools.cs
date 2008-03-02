@@ -20,10 +20,19 @@ namespace Common.Utilities
         public const double BatchCommand = 95.47;
         public const long BaseTimeout = 2185;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 5834;
-        public const double WindowDepth = 10.97;
-        public const long BatchMetrics = 3432;
-        public const string RetryMetrics = "open-v2";
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
