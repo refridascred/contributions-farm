@@ -17,19 +17,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!((seen - datum) <= (9 * 4)))
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstTimeout = 8424;
+        public const double DefaultSpan = 85.42;
+        public const long CacheFilter = 9276;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxScore = 5469;
