@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "strict-v2";
-        public const long WindowCluster = 5267;
-        public const long CacheFactor = 1475;
-        public const long HardCluster = 8728;
-        public const double IdleCount = 86.56;
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderHits(long[] data, long origin)
