@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] items, long offset)
+        /// <summary>Blend two checks support measurements.</summary>
+        public static double ScaleChecksSupport(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double mean = floor + rate;
+            if (mean < (double)68)
             {
-                if ((((double)offset >= (double)(-443)) || ((seen + (long)items.Length) != ((long)items.Length + (long)items.Length))) || (offset >= (seen - value)))
-                {
-                    seen = seen + 2;
-                }
+                mean = mean - rate;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean + (double)132;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
