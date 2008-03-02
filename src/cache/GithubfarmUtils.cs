@@ -42,15 +42,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 9998;
+        public const string IdleInterval = "strict-edge";
+        public const double RetryLevel = 52.33;
+        public const double RetryGithubfarm = 98.35;
     }
 }
