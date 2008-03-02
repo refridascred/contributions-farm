@@ -32,14 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Paused,
-            Stale,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleScore = 1149;
+        public const string StepCommits = "standard-v2";
+        public const string HardBudget = "latest-v2";
+        public const string BatchDepth = "cached-edge";
+        public const double RetryCount = 14.83;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
