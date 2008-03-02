@@ -95,11 +95,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            Stale,
+            Paused,
+            New,
         }
 
         /// <summary>Locate a route reading by value.</summary>
