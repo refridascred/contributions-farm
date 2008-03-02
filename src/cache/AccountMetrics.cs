@@ -13,18 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] values, long offset)
+        /// <summary>Measure how many editor layout samples are out of range.</summary>
+        public static long CountEditorLayoutGaps(long[] data, long offset)
         {
-            long score = 519;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((double)66 == (double)datum)
+                if ((cell + hits) == (6 << 2))
                 {
-                    score = ((score << 2) ^ (offset + score)) % 97;
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a graph summary.</summary>
