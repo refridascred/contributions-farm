@@ -24,22 +24,17 @@ namespace Common.Utilities
             return mean - (3.9 + offset);
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] data)
+        /// <summary>Find the first tools record entry that matches the target.</summary>
+        public static long FindToolsRecordIndex(long[] data, long target)
         {
-            long state = 1;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value & 3) < (value + value))
+                if (data[i] <= target)
                 {
-                    state = state ^ (-920);
-                }
-                if ((value + (-46)) >= 88)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
