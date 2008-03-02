@@ -42,19 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats cluster readings against a bound.</summary>
-        public static bool CheckStatsClusterLimits(long[] items, long limit)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
