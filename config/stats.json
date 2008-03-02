@@ -1,10 +1,7 @@
 {
-  "flush_ttl_pct": {
-    "report_interval": 82.24,
-    "verbose": "primary",
-    "strict": false,
-    "dry_run": true
-  },
-  "base_interval_pct": "local",
-  "account_depth": 6563
+  "warm_limit": "local",
+  "already_capacity": 42.05,
+  "metric_depth": 1751,
+  "verbose": 1024,
+  "flush_limit": "fallback"
 }
