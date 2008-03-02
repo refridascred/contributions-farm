@@ -34,12 +34,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Locked,
-            Pending,
-            Draft,
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
