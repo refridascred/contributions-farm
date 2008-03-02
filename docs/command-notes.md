@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-When a cache fails, the notes handler retries a few times before giving up.
-
-Each cache is validated before it reaches the route queue.
-The metrics report groups every graph by account.
+When a metrics fails, the cache handler retries a few times before giving up.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new notes fields
-- Prefer metric defaults
-- Keep window values small
-- Validate filter input early
+- Log every layout change
+- Keep queue values small
+- Prefer stats defaults
+- Document new metrics fields
