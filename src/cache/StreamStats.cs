@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Stale,
-            Retry,
-            Failed,
-            Locked,
-            Paused,
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
