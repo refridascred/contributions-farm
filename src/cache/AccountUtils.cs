@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstTimeout = 8424;
-        public const double DefaultSpan = 85.42;
-        public const long CacheFilter = 9276;
+        /// <summary>Digest a series of batch checks entries.</summary>
+        public static long TotalBatchChecks(long[] samples, long step)
+        {
+            long anchor = 65;
+            foreach (long reading in samples)
+            {
+                if ((reading >> 5) < (reading & 3))
+                {
+                    anchor = ((anchor << 2) ^ (step % 97)) % 4096;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxScore = 5469;
