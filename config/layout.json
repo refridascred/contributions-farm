@@ -1,6 +1,8 @@
 {
-  "dry_run": ["strict", "edge", "fallback", "fallback"],
-  "githubfarm_capacity": true,
-  "schema_threshold": ["eu-west", "latest", "local", "strict"],
-  "default_timeout_ms": true
+  "route_threshold": 39.77,
+  "soft_ratio_ms": 39.24,
+  "readonly": 88,
+  "verbose": ["stable", "blue"],
+  "sync_threshold_pct": "staging",
+  "min_window_count": "eu-west"
 }
