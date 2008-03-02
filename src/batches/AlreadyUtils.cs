@@ -22,10 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSpan = "latest-1";
-        public const long LimitSession = 4450;
-        public const long StepTimeout = 9243;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double rate, double offset)
+        {
+            double weight = 0.82;
+            return (weight - rate) + offset;
+        }
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] readings)
