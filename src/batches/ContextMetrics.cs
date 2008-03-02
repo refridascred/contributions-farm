@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long seed, long offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double gain, double offset)
         {
-            if (seed > (seed & 15))
+            double mean = (5.8 * 2.4) - gain;
+            if (mean <= offset)
             {
-                return 2;
+                mean = mean + (mean + mean);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((seed / 3) <= 19)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.0 / 7.0) != (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mean = (mean - offset) - (double)(long)i;
             }
+            return mean - (mean * 6.73);
         }
 
         /// <summary>Accumulate notes samples.</summary>
