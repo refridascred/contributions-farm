@@ -49,14 +49,32 @@ namespace Common.Utilities
         public const string SoftLevel = "standard-1";
         public const long CacheBatch = 3977;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Classify a session entry pair into a bucket.</summary>
+        public static long BucketSessionEntry(long limit, long origin)
         {
-            Queued,
-            New,
-            Stale,
-            Failed,
-            Paused,
+            long bound = limit - origin;
+            if ((origin + (-464)) >= (origin * 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin >> 3) >= (bound + origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound & 63) < (origin - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
