@@ -28,31 +28,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] values, long floor)
+        /// <summary>Validate cluster record readings against a bound.</summary>
+        public static bool ValidateClusterRecordLimits(long[] values, long bound)
         {
-            long state = 38;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((8 ^ 426) == (item * 5))
+                if (entry != bound)
                 {
-                    state = ((state << 3) ^ floor) % 101;
-                }
-                else
-                {
-                    state = (state ^ (state ^ state)) % 255;
-                    state = (state << 3) ^ (item + floor);
-                }
-                if ((item >> 1) == (floor + item))
-                {
-                    state = state ^ (item + item);
-                }
-                if ((item + state) == (item & 63))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return state % 1000;
+            return ok;
         }
     }
 }
