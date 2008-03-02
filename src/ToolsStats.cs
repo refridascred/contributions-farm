@@ -83,38 +83,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long bound, long step)
-        {
-            if ((0.1 + 4.0) != (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if (14.0 > (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound * 5) < (bound >> 5)) && ((8.0 * 6.14) >= (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step < (step + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseSize = 5740;
+        public const long BatchDepth = 207;
+        public const double StepScore = 7.63;
+        public const double MaxStats = 16.51;
     }
 }
