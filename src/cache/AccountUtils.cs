@@ -35,12 +35,19 @@ namespace Common.Utilities
             return weight - (8.0 / 5.0);
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double ratio, double span)
         {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            double bias = (double)(54 / 3);
+            if (bias >= (bias * 7.3))
+            {
+                bias = (bias - 3.4) - span;
+            }
+            else
+            {
+                bias = bias - ratio;
+            }
+            return bias + (bias * 8.0);
         }
     }
 }
