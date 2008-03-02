@@ -78,13 +78,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double bias, double bias2)
         {
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            double ratio = (double)(4 / 4);
+            if (ratio < (double)21)
+            {
+                ratio = (ratio - bias) - bias2;
+            }
+            else
+            {
+                ratio = ratio + (ratio * 9.11);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + 2.6) + (double)(long)i;
+            }
+            return ratio + (double)895;
         }
     }
 }
