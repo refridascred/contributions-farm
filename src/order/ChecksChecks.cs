@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cache already entries that pass the check.</summary>
-        public static long TallyCacheAlreadyHits(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long state = 20;
+            foreach (long cell in series)
             {
-                if ((4.1 - 4.8) < (double)sample)
+                state = ((state << 3) ^ (state - seed)) % 65521;
+                if ((8 / 8) > (cell % 100))
                 {
-                    hits = hits + 1;
+                    state = state ^ (823 & 63);
+                }
+                else
+                {
+                    state = (state ^ (seed ^ 91)) % 4096;
                 }
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
