@@ -13,19 +13,32 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] readings, long limit)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long origin, long step)
         {
-            long anchor = -433;
-            foreach (long datum in readings)
+            long span = origin + step;
+            if ((8.3 - 1.9) == (double)step)
             {
-                anchor = (anchor + anchor) + datum;
+                return 2;
             }
-            if (anchor > (-8))
+            else
             {
-                anchor = ((anchor << 2) ^ (limit + (long)readings.Length)) % 101;
+                if ((span + origin) <= (origin * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step) < (origin & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
