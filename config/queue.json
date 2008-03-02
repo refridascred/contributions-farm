@@ -1,5 +1,5 @@
 {
-  "dry_run": 100,
-  "base_capacity_ms": 10,
-  "batch_threshold": 71
+  "poll_limit_pct": 21.4,
+  "persist": 40.81,
+  "default_interval_pct": "standard"
 }
