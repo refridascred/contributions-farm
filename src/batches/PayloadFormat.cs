@@ -50,18 +50,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up order farm samples.</summary>
-        public static long PairOrderFarmCount(long[] values)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading / 8) != (6 + 1))
                 {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
