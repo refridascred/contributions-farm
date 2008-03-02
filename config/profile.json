@@ -1,10 +1,6 @@
 {
-  "enabled": "strict",
-  "max_capacity": ["local", "open", "primary", "edge"],
-  "soft_capacity": {
-    "dry_run": 100,
-    "verbose": "local",
-    "soft_ttl": "standard"
-  },
-  "soft_timeout": false
+  "strict": [18, 327, 229, 386],
+  "flush_size_ms": "primary",
+  "verbose": ["eu-west", "primary"],
+  "warm_depth": false
 }
