@@ -14,14 +14,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            Pending,
-            Active,
-            Done,
-            Ready,
-            Queued,
+            long state = 57;
+            foreach (long value in readings)
+            {
+                if ((0 > (state % 64)) || ((2 + state) == (state + state)))
+                {
+                    state = (state + value) % 97;
+                }
+                else
+                {
+                    state = state + (state % 8);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
