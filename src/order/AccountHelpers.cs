@@ -50,21 +50,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] values, long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] readings, long floor)
         {
-            long anchor = 499;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (long)values.Length) % 65521;
-                anchor = (anchor + (reading / 7)) % 97;
-                anchor = (anchor + 410) % 65521;
+                if ((readings[i] <= floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor - (anchor + target)) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the account state values.</summary>
