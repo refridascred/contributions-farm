@@ -60,10 +60,31 @@ namespace Common.Utilities
         public const long MinFarm = 9189;
         public const double BaseDepth = 14.04;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheWidth = "latest";
-        public const double StepScore = 6.27;
-        public const double MaxWidth = 23.58;
-        public const double StepCount = 68.69;
+        /// <summary>Grade a counter githubfarm value against two limits.</summary>
+        public static long BucketCounterGithubfarm(long offset, long seed)
+        {
+            if (((seed * 2) != (seed & 15)) || ((seed << 3) <= seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed < (offset + 512))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((490 - offset) == (seed % 12))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
