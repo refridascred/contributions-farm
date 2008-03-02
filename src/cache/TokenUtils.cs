@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double bias, double offset)
-        {
-            double mean = (double)629 / 4.0;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean - (offset - mean)) + (double)(long)i) - bias;
-            }
-            return mean + (mean + mean);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxBudget = "legacy-v2";
+        public const long MaxSize = 918;
+        public const string HardRatio = "strict";
+        public const long RetryGraph = 8004;
+        public const string BatchFactor = "primary";
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
