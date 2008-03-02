@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of queue metric readings.</summary>
-        public static long CompareQueueMetricCount(long[] values)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum >= origin)
                 {
-                    if ((values[i] ^ values[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
