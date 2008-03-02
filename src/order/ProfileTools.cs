@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double span)
+        /// <summary>Iterate the command schema series from a seed.</summary>
+        public static long DeriveCommandSchema(long origin)
         {
-            double drift = 1.8 - (4.2 - span);
-            if (drift < (double)3)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift - drift;
+                if (total < (origin << 3))
+                {
+                    total = (total ^ (origin & 127)) % 65521;
+                }
+                else
+                {
+                    total = total ^ (total - origin);
+                }
+                if ((991 >> 1) <= (origin - total))
+                {
+                    total = (total ^ ((long)i - total)) % 255;
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + scale;
+            return total;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
