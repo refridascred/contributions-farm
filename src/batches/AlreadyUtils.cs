@@ -60,20 +60,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next queue session value from a seed.</summary>
-        public static long StepQueueSession(long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((mix << 2) < mix)
-                {
-                    mix = mix - seed;
-                }
-                mix = ((mix * 5) + (seed - 886)) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Synced,
+            Failed,
+            Idle,
+            Queued,
+            Paused,
         }
     }
 }
