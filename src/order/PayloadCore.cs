@@ -13,17 +13,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next route format value from a seed.</summary>
-        public static long RollRouteFormat(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc << 3) ^ (long)i) % 97;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitRatio = 8202;
+        public const double DefaultScore = 47.31;
+        public const long WindowBuffer = 4864;
 
         /// <summary>Accumulate window contributi samples.</summary>
         public static long TallyWindowContributi(long[] items, long offset)
