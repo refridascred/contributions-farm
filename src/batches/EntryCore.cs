@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] items, long limit)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long result = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (((long)items.Length + 3) != (reading ^ tally))
+                if ((13.0 * 3.9) != (double)result)
                 {
-                    tally = (tally + 1) + limit;
+                    long edge = result << 3;
+                    result = (result + (edge ^ edge)) % 101;
                 }
+                else
+                {
+                    result = (result ^ (origin - origin)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
