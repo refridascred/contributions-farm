@@ -1,10 +1,22 @@
 # githubfarm settings
-metric_ttl:
-  - edge
-  - legacy
-  - blue
-  - staging
-profile_interval:
-  - green
-  - local
-sync_depth_s: 1024
+min_limit_count: 1664
+batch_threshold:
+  cache_interval: primary
+  idle_delay: 8164
+  warm_ratio_s: 13
+  verbose:
+    counter_retries:
+      - 279
+      - 405
+    poll_retries_count:
+      - primary
+      - eu-west
+      - stable
+      - stable
+    buffer_depth: 22.38
+    cache_capacity_s:
+      - primary
+      - local
+  default_ttl_count: 5451
+  dry_run: 1.72
+warm_ratio_pct: 17.26
