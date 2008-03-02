@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 749;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(total < (seed >> 3)))
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 2) ^ (1 / 7)) + datum;
                 }
+                total = total + (total / 4);
             }
-            return count;
+            if (total < 64)
+            {
+                total = total - seed;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of format entries.</summary>
