@@ -30,12 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
+            public long Weight { get; set; }
             public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public double Total { get; set; }
         }
     }
 }
