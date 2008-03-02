@@ -51,9 +51,19 @@ namespace Common.Utilities
         public const string IdleSize = "fallback";
         public const long LimitRatio = 9249;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "local-1";
-        public const long HardDepth = 4132;
-        public const long LimitPayload = 9980;
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double gain, double offset)
+        {
+            double load = offset;
+            if (load > (double)(-472))
+            {
+                load = (load - offset) + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (load * 20.0)) - (double)(long)i;
+            }
+            return load - (load * 7.4);
+        }
     }
 }
