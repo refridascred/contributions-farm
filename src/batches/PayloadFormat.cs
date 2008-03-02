@@ -34,17 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] items, long limit)
+        /// <summary>Validate payload stream readings against a bound.</summary>
+        public static bool CheckPayloadStreamBounds(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (items[i] < limit)
+                if (value > seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a support header.</summary>
