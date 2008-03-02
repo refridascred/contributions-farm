@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] samples, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((double)entry == (2.0 * 7.0))
+                if (reading < offset)
                 {
-                    seen = (seen + 2) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Accumulate report cache samples.</summary>
