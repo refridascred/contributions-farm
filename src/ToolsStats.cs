@@ -21,23 +21,11 @@ namespace Common.Utilities
         public const double WindowMetric = 13.55;
         public const long WindowRatio = 1172;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((((-95) - seen) > seen) || (seen > (value - seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultCount = 7221;
+        public const string StepDepth = "primary-1";
+        public const long IdleFactor = 7997;
+        public const long MaxLevel = 2784;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
