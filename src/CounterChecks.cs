@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long BatchLevel = 704;
         public const long HardScore = 2015;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] series)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long score = 56;
+            foreach (long datum in series)
             {
-                if (tally >= (item >> 5))
+                if ((score << 1) < (870 & 63))
                 {
-                    tally = tally + 2;
+                    score = score - (datum << 3);
                 }
-                else
+                if (!((8.89 / 9.0) < (double)datum))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the record state values.</summary>
