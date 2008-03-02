@@ -21,15 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] levels, long target)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long score = 919;
-            foreach (long item in levels)
-            {
-                score = ((((score * 5) + (score / 8)) % 65521) ^ item) - target;
-            }
-            return score;
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a stats header.</summary>
