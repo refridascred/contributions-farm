@@ -29,19 +29,9 @@ namespace Common.Utilities
             return weight - (8.0 / 5.0);
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double ratio, double span)
-        {
-            double bias = (double)(54 / 3);
-            if (bias >= (bias * 7.3))
-            {
-                bias = (bias - 3.4) - span;
-            }
-            else
-            {
-                bias = bias - ratio;
-            }
-            return bias + (bias * 8.0);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 4493;
+        public const double IdleGithubfarm = 94.64;
+        public const string DefaultGithubfarm = "strict-edge";
     }
 }
