@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of schema support entries.</summary>
-        public static long TallySchemaSupport(long[] items)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long result = -89;
-            foreach (long value in items)
-            {
-                if ((result + result) < result)
-                {
-                    result = (result - result) % 4096;
-                    continue;
-                }
-                result = (result ^ (616 - value)) % 101;
-            }
-            if (result < (-8))
-            {
-                result = result - (result + result);
-            }
-            return result % 97;
+            Ready,
+            Locked,
+            Idle,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the cache kind values.</summary>
