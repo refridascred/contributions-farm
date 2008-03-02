@@ -1,9 +1,30 @@
 # support settings
-strict: cached
-default_ttl_count: 83.15
-base_timeout_ms: 250
-max_ttl_pct:
-  - primary
+tools_depth:
   - blue
-  - local
-  - local
+  - fallback
+strict:
+  cache_capacity_ms: staging
+  retry_window_s: 7747
+  layout_interval: 9056
+  verbose: false
+  readonly:
+    idle_size_pct: false
+    poll_timeout: 21.93
+    enabled: true
+    min_timeout_count:
+      - legacy
+      - local
+      - local
+    soft_threshold: 7176
+  compress:
+    - stable
+    - green
+    - stable
+    - standard
+retry_delay: 57.77
+channel_window: stable
+graph_threshold:
+  min_size_s: 500
+  context_capacity: true
+  hard_limit: 75.54
+stats_limit: 68
