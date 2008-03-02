@@ -48,19 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] series, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
     }
 }
