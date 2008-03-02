@@ -22,19 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics queue entry stays within the limit.</summary>
-        public static bool VerifyMetricsQueueBounds(long[] samples, long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] series)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long anchor = 96;
+            foreach (long sample in series)
             {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (((anchor << 3) ^ (anchor + 0)) % 97) - sample;
+                anchor = (anchor * 3) + ((-163) << 3);
             }
-            return valid;
+            if (anchor > 86)
+            {
+                anchor = (anchor ^ (anchor - anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a payload githubfarm reading.</summary>
