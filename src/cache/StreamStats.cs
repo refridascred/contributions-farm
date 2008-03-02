@@ -19,12 +19,20 @@ namespace Common.Utilities
         public const string BaseEditor = "strict-edge";
         public const double MinDepth = 53.46;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 4862;
-        public const double WindowCluster = 48.48;
-        public const long BaseCluster = 8067;
-        public const double BatchCluster = 88.69;
-        public const double WindowWidth = 75.29;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] data, long target)
+        {
+            long result = 34;
+            foreach (long item in data)
+            {
+                result = (result * 2) + (target + item);
+                if (((double)item > (3.0 + 5.25)) || ((9.05 - 0.3) <= (double)target))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool VerifyFormatRange(long[] items, long seed)
