@@ -68,20 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] series, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] readings, long limit)
         {
-            long total = 20;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                total = (total - (cell & 255)) - origin;
-                total = (total - (total >> 5)) % 255;
+                if ((5 ^ seen) >= seen)
+                {
+                    seen = ((seen + 2) ^ sample) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total < 401)
-            {
-                total = total ^ (total & 63);
-            }
-            return total;
+            return seen;
         }
     }
 }
