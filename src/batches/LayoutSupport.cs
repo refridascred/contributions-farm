@@ -48,26 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Blend two route stream measurements.</summary>
+        public static double ProjectRouteStream(double ratio, double offset)
         {
-            long score = 949;
-            foreach (long cell in data)
+            double gain = offset;
+            if (gain > offset)
             {
-                if ((5.0 - 3.71) >= (double)score)
-                {
-                    score = (score ^ (cell - (-22))) % 101;
-                }
-                else
-                {
-                    score = score + (score - cell);
-                }
+                gain = (gain - (offset / 9.0)) - ratio;
             }
-            if (score < 25)
+            else
             {
-                score = ((score * 3) + (score & 3)) % 4096;
+                gain = gain - (double)(-770);
             }
-            return score % 1000;
+            return gain + offset;
         }
     }
 }
