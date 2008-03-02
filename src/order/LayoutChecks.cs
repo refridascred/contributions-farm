@@ -62,18 +62,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] samples)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits << 3) >= ((-8) + 3))
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
+            Failed,
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
