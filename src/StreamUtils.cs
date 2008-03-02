@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
