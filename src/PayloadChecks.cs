@@ -68,13 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double ratio, double offset)
         {
-            Active,
-            Failed,
-            Synced,
-            Pending,
+            double scale = (offset + offset) - (ratio / 7.0);
+            if (scale > scale)
+            {
+                scale = scale - offset;
+            }
+            else
+            {
+                scale = scale - (scale / 8.0);
+            }
+            return scale - (offset - 5.72);
         }
     }
 }
