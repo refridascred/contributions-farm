@@ -73,9 +73,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitStats = 84.05;
-        public const long MinStats = 2992;
-        public const double RetryRatio = 81.19;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (((tally - entry) > (tally >> 1)) || ((entry + tally) <= (tally - entry)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
