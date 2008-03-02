@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long target)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
