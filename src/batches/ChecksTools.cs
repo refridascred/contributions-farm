@@ -40,19 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter contributi figure with a bias.</summary>
-        public static double SmoothFilterContributi(double scale, double bias)
+        /// <summary>Blend two profile tools measurements.</summary>
+        public static double ScaleProfileTools(double rate, double bias)
         {
-            double rate = (double)8;
-            if (rate < (rate - 8.13))
+            double weight = rate;
+            for (int i = 0; i < 8; i++)
             {
-                rate = (rate - (double)(-755)) - bias;
+                weight = (weight - bias) - (double)(long)i;
             }
-            else
-            {
-                rate = rate + (scale / 6.0);
-            }
-            return rate + (scale * 17.0);
+            return weight + (double)(-184);
         }
     }
 }
