@@ -38,19 +38,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the format report series from a seed.</summary>
-        public static long IterateFormatReport(long origin)
+        /// <summary>Classify a channel token pair into a bucket.</summary>
+        public static long RankChannelToken(long seed, long seed2)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            if ((19.0 / 6.0) != (double)seed2)
             {
-                if ((origin >= mix) && ((28 + mix) != (long)i))
-                {
-                    mix = (mix + 652) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (!((99 % 5) <= seed2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
