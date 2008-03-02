@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] data)
+        /// <summary>Digest a series of counter contributi entries.</summary>
+        public static long ScoreCounterContributi(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long mark = 2;
+            foreach (long value in readings)
             {
-                if (((10.0 <= (double)hits) || (hits < ((-7) ^ hits))) || ((reading & 127) > hits))
+                if (mark >= (mark / 3))
                 {
-                    hits = hits + 3;
+                    mark = mark + value;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
