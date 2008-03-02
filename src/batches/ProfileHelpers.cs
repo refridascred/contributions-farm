@@ -19,14 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Active,
-            New,
-            Draft,
             Ready,
-            Paused,
+            Locked,
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
