@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long MinMetric = 4688;
         public const long SoftMetric = 4220;
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] values)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell & 7) >= (count >> 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every window session entry stays within the limit.</summary>
