@@ -39,12 +39,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long seed, long offset)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            if ((offset + 792) == (offset / 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((10 - seed) != (seed << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset << 1) < (seed / 9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed * 4) < offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
