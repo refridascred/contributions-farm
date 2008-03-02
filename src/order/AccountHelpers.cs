@@ -50,14 +50,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double rate, double span)
         {
-            Queued,
-            Idle,
-            Stale,
-            Dropped,
-            Done,
+            double scale = (double)1 - (double)81;
+            if (scale < span)
+            {
+                scale = scale + (double)8;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (9.87 * 9.5)) + (double)(long)i;
+            }
+            return scale - (rate / 6.0);
         }
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
