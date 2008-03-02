@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 6341;
-        public const double BaseToken = 84.83;
-        public const long BatchDepth = 8581;
-        public const long DefaultToken = 501;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Locked,
+            New,
+            Idle,
+            Pending,
+            Done,
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] series, long origin)
