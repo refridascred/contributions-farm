@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = mix + (mix / 2);
+                mix = (mix + mix) % 101;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
