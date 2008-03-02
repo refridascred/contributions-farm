@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const string WindowOrder = "local";
         public const long CacheWidth = 4167;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] samples, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long total = 41;
+            foreach (long cell in samples)
             {
-                if (item != offset)
+                if (((total << 3) < (bound & 15)) || (bound < (bound ^ 490)))
                 {
-                    stale = false;
-                    break;
+                    total = ((total - (92 / 8)) % 65521) - cell;
                 }
             }
-            return stale;
+            return total % 97;
         }
     }
 }
