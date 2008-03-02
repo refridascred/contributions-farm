@@ -53,23 +53,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a githubfarm checks reading.</summary>
-        public static double BlendGithubfarmChecks(double bias, double floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] readings, long seed)
         {
-            double weight = (floor + 1.8) * 3.52;
-            if (weight >= (floor + 4.2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + (weight - floor)) - bias;
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (floor + floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + 3.13) - (double)(long)i;
-            }
-            return weight - floor;
+            return -1;
         }
     }
 }
