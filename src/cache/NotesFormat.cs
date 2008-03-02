@@ -33,18 +33,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (hits < (hits / 7))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 1148;
+        public const double BaseEditor = 94.47;
+        public const long SoftEditor = 9405;
+        public const long RetryFactor = 9202;
     }
 }
