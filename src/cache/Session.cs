@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] data, long target)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] samples)
         {
-            long score = 484;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score + (item / 6)) % 1000) + target;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
