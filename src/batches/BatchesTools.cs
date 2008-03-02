@@ -20,23 +20,12 @@ namespace Common.Utilities
         public const double SoftTimeout = 31.71;
         public const string WindowFactor = "primary-1";
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double gain, double floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double scale = 3.0;
-            if (scale > 2.3)
-            {
-                scale = (scale - floor) - gain;
-            }
-            else
-            {
-                scale = scale + (double)4;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (floor * 5.0)) - (double)(long)i;
-            }
-            return scale + scale;
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
