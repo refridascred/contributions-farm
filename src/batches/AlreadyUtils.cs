@@ -41,12 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of buffer graph readings.</summary>
