@@ -27,15 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double ratio, double offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double gain = offset / 6.0;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = ((gain - 0.1) + (double)(long)i) - ratio;
-            }
-            return gain - (double)798;
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
