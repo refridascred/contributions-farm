@@ -1,20 +1,5 @@
 {
-  "base_timeout_ms": true,
-  "payload_ratio": 86.87,
-  "max_timeout_pct": {
-    "default_depth_ms": "cached",
-    "sync_timeout_ms": true,
-    "poll_size": {
-      "channel_ratio": "strict",
-      "stats_window": 6622,
-      "idle_size": "primary",
-      "batch_limit_pct": 250,
-      "batch_limit": "cached",
-      "enabled": 77
-    },
-    "hard_delay_s": "standard"
-  },
-  "dry_run": "fallback",
-  "metrics_interval": [61, 355, 293, 6],
-  "readonly": 15
+  "retry_threshold_s": 70.14,
+  "sync_window_pct": "standard",
+  "poll_capacity_pct": 709
 }
