@@ -38,10 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultChecks = "fallback-1";
-        public const string BurstInterval = "primary";
-        public const string WindowChecks = "stable-edge";
-        public const long BatchWidth = 4467;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample ^ count) == (sample + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
