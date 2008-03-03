@@ -39,18 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] values, long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample / 6) > step)
+                if ((series[i] < bound) && ((series[i] % 3) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
