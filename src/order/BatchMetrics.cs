@@ -21,20 +21,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine format session values into a single score.</summary>
-        public static long TallyFormatSession(long[] values, long step)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long floor)
         {
-            long anchor = 49;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor - (anchor - step)) + reading;
-                anchor = anchor - (1 + (long)values.Length);
+                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 171)
-            {
-                anchor = anchor + step;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate command metric readings against a bound.</summary>
