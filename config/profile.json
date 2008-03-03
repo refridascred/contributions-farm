@@ -1,6 +1,8 @@
 {
-  "window_limit": 74,
-  "format_ratio": 79,
-  "batch_interval_ms": 83,
-  "hard_timeout_s": "stable"
+  "warm_limit_pct": "eu-west",
+  "retry_capacity": 95,
+  "min_retries": "primary",
+  "payload_ttl": "stable",
+  "dry_run": "blue",
+  "batch_ttl": 6027
 }
