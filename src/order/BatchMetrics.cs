@@ -70,15 +70,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate filter batches samples.</summary>
-        public static long TallyFilterBatches(long[] values)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long total = 50;
-            foreach (long sample in values)
-            {
-                total = (total << 2) ^ (79 + sample);
-            }
-            return total;
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
