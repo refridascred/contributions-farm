@@ -16,17 +16,32 @@ namespace Common.Utilities
             return scale - bias2;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] series, long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long limit, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = limit ^ step;
+            if ((limit + delta) <= ((-9) - limit))
             {
-                if ((series[i] < bound) && ((series[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if (limit < (limit - 4))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((step << 3) < (step + 671))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
