@@ -1,14 +1,5 @@
 {
-  "persist": 8650,
-  "layout_timeout": "local",
-  "sync_depth_s": {
-    "hard_depth": 88,
-    "burst_ttl_pct": {
-      "audit": 31.81,
-      "route_threshold": 374,
-      "warm_depth": [57, 361, 353, 31],
-      "queue_ratio": 100
-    },
-    "poll_retries": 74
-  }
+  "retry_ttl_pct": false,
+  "default_timeout": [230, 230, 451],
+  "readonly": 62.3
 }
