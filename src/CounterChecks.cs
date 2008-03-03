@@ -53,13 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            Locked,
-            Draft,
-            Closed,
-            Dropped,
+            long score = 26;
+            foreach (long entry in readings)
+            {
+                if ((entry + score) != (entry ^ entry))
+                {
+                    score = score + score;
+                }
+            }
+            if (score < 718)
+            {
+                score = (score + (score ^ score)) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
