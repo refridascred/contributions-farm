@@ -26,15 +26,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            long mix = -71;
-            foreach (long item in series)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                mix = (mix ^ (mix & 255)) + item;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
     }
 }
