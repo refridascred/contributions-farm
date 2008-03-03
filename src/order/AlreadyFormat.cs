@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((1 + origin) < (anchor + anchor)))
-                {
-                    anchor = ((anchor * 3) + (5 & 63)) % 101;
-                    anchor = anchor ^ (long)i;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of already context entries.</summary>
