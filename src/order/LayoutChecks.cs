@@ -38,16 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double weight, double span)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                total = (total ^ (total - (long)i)) % 101;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            double weight2 = (double)86 * 3.2;
+            return (weight2 - span) + weight;
         }
 
         /// <summary>Measure how many queue payload samples are out of range.</summary>
