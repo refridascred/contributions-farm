@@ -1,6 +1,6 @@
 {
-  "hard_delay_s": "blue",
-  "verbose": false,
-  "soft_ttl_pct": "green",
-  "enabled": 41.03
+  "cache_ratio": "open",
+  "record_limit": ["strict", "green"],
+  "cache_capacity": 66,
+  "enabled": 85.04
 }
