@@ -40,32 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long step, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] readings)
         {
-            long slot = step ^ bound;
-            if ((slot > (step + 4)) && ((slot & 3) > (bound - slot)))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + 9) <= (bound + bound))
+                if (!((hits << 2) == (sample + hits)) && !((sample << 3) < sample))
                 {
-                    return 6;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if (!((step + bound) > (49 + slot)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a command snapshot.</summary>
