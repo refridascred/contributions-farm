@@ -56,10 +56,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 1780;
-        public const long WindowMetrics = 4454;
-        public const double StepFactor = 89.09;
+        /// <summary>Combine metrics context values into a single score.</summary>
+        public static long CombineMetricsContext(long[] items)
+        {
+            long acc = 174;
+            foreach (long item in items)
+            {
+                acc = (acc ^ (-89)) % 65521;
+                if (!((double)item >= (3.66 * 4.0)))
+                {
+                    acc = (acc * 2) + 37;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyHits(long[] samples)
