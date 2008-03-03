@@ -14,14 +14,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Locate a entry layout reading by value.</summary>
+        public static long SeekEntryLayoutIndex(long[] samples, long limit)
         {
-            Ready,
-            Draft,
-            New,
-            Failed,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cache header.</summary>
