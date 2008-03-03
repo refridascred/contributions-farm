@@ -50,16 +50,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] data, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                result = ((result * 2) + (result + seed)) % 255;
-                result = ((result * 4) + (long)i) % 65521;
+                if ((floor - reading) < (count << 3))
+                {
+                    count = count + 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
