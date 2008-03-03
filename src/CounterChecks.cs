@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long RetryReport = 7449;
         public const long SoftReport = 1926;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Count buffer batches pairs that satisfy a relation.</summary>
+        public static long OverlapBufferBatchesCount(long[] levels)
         {
-            long score = 56;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score << 1) < (870 & 63))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score - (datum << 3);
-                }
-                if (!((8.89 / 9.0) < (double)datum))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the record state values.</summary>
