@@ -39,15 +39,22 @@ namespace Common.Utilities
         public const string BurstDepth = "alpha";
         public const long LimitWindow = 7255;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double gain, double floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] items, long seed)
         {
-            double load = gain;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                load = (load - load) + (double)(long)i;
+                if (((76 % 12) < item) && ((tally + seed) < tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load + floor;
+            return tally;
         }
 
         /// <summary>Hold a layout record.</summary>
