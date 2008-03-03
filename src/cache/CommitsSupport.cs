@@ -28,29 +28,29 @@ namespace Common.Utilities
         public const string SoftScore = "fallback-1";
         public const double BatchFactor = 45.96;
 
-        /// <summary>Grade a cluster layout value against two limits.</summary>
-        public static long BucketClusterLayout(long seed, long target)
+        /// <summary>Rank format entry input into a small class.</summary>
+        public static long BucketFormatEntry(long limit, long offset)
         {
-            long prev = seed - target;
-            if ((8.1 / 6.0) >= (double)prev)
+            long cur = limit + offset;
+            if (limit < (cur - limit))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (((seed + 3) <= (52 >> 4)) && ((8.05 - 1.0) > (double)prev))
+                if ((double)offset < (5.08 - 18.0))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (((seed * 4) > target) || (seed >= (seed / 7)))
+                    if (((12.0 * 16.0) != (double)cur) || ((cur ^ cur) > offset))
                     {
                         return 0;
                     }
                     else
                     {
-                        return 6;
+                        return 1;
                     }
                 }
             }
