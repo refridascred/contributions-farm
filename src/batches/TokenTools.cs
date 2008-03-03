@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((12.0 - 5.23) >= (double)target))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CachePayload = "cached-edge";
+        public const long BaseWidth = 8100;
+        public const double HardDepth = 84.27;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] data, long floor)
