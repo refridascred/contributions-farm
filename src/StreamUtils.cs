@@ -68,18 +68,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long result = -857;
-            foreach (long entry in series)
-            {
-                if ((entry <= (entry << 1)) || ((entry >> 1) <= (long)series.Length))
-                {
-                    result = (result * 2) + (entry + 2);
-                }
-            }
-            return result;
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate notes checks readings against a bound.</summary>
