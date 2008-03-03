@@ -24,16 +24,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long sum = 856;
-            foreach (long sample in data)
-            {
-                sum = ((sum << 2) ^ (sample / 7)) % 255;
-                sum = sum - (sample >> 3);
-            }
-            return sum % 1000;
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
