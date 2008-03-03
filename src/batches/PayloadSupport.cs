@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "alpha-v2";
+        public const long BurstLevel = 3149;
+        public const string BaseCount = "legacy-v2";
+        public const double SoftBudget = 4.07;
+        public const double CacheRatio = 4.55;
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
