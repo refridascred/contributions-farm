@@ -20,12 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            Active,
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
