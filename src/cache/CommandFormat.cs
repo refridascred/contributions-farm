@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long target, long offset)
-        {
-            if ((offset - target) >= 6)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset + offset) > 9)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset <= (target << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 5242;
+        public const long IdleLevel = 4812;
+        public const long BaseFactor = 9438;
+        public const long MinTimeout = 5312;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
