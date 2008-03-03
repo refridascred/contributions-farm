@@ -1,8 +1,15 @@
 # support settings
-readonly: 75
-notes_interval:
-  - stable
-  - strict
-  - standard
-payload_retries: primary
-flush_timeout: primary
+poll_retries_count: local
+audit: 60.19
+base_retries_s:
+  verbose: staging
+  default_window: 48.36
+  notes_delay:
+    - standard
+    - latest
+  githubfarm_window:
+    - 205
+    - 262
+    - 388
+    - 126
+  persist: latest
