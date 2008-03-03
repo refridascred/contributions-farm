@@ -1,5 +1,12 @@
 {
-  "idle_interval_pct": "standard",
-  "batch_interval_pct": "primary",
-  "batch_window": "legacy"
+  "sync_timeout": {
+    "profile_retries": 982,
+    "record_size": "primary",
+    "burst_threshold_s": 38,
+    "enabled": 100,
+    "dry_run": 14.58,
+    "soft_ratio_pct": [411, 461]
+  },
+  "batch_retries": "open",
+  "soft_limit_ms": "edge"
 }
