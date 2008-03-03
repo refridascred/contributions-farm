@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit profile tools readings against a rule.</summary>
-        public static long TallyProfileToolsGaps(long[] levels, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (!(tally > 54))
+                if (step < hits)
                 {
-                    tally = ((tally + 1) ^ reading) - limit;
+                    hits = (hits + 1) ^ sample;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
