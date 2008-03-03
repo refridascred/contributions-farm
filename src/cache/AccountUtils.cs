@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many token tools samples are out of range.</summary>
+        public static long AuditTokenToolsOutliers(long[] data)
         {
-            Failed,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - seen) >= (-8))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next route batches value.</summary>
