@@ -44,11 +44,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryDepth = 42.85;
-        public const string BurstCluster = "cached-edge";
-        public const long IdleCluster = 9332;
-        public const long BatchScore = 1357;
+        /// <summary>Grade a queue batches value against two limits.</summary>
+        public static long ClassifyQueueBatches(long floor, long floor2)
+        {
+            long prev = floor ^ floor2;
+            if ((floor + 6) >= floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((-197) - floor2) > (floor % 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor % 10) <= floor) || ((double)prev >= (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
         public static long AuditOrderCounterHits(long[] items)
