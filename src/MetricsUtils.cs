@@ -20,23 +20,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long seed, long target)
+        /// <summary>Grade a farm cluster value against two limits.</summary>
+        public static long ClassifyFarmCluster(long floor, long seed)
         {
-            long diff = seed + target;
-            if ((seed + seed) >= (seed >> 3))
+            long span = floor - seed;
+            if ((7 < (floor + seed)) && ((0.5 / 8.0) >= (double)span))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (((0 & 31) < target) && ((target ^ diff) == (target << 2)))
+                if ((9.82 >= (double)floor) && ((floor & 31) > (seed + (-67))))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    if ((span - floor) >= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
