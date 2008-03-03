@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const double IdleStream = 43.64;
         public const long BatchFactor = 4282;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] == origin)
                 {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
