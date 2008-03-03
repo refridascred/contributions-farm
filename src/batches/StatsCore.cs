@@ -60,25 +60,39 @@ namespace Common.Utilities
         public const long StepBatches = 1072;
         public const string DefaultBatches = "standard-v2";
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Classify a checks metrics pair into a bucket.</summary>
+        public static long BucketChecksMetrics(long floor, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long span = floor ^ limit;
+            if ((2 >> 5) == (170 - floor))
             {
-                if ((sum * 5) == (32 >> 1))
+                return 8;
+            }
+            else
+            {
+                if (((8.37 * 0.18) != (double)floor) && ((span ^ span) < (span % 2)))
                 {
-                    long step = 540;
-                    sum = ((sum * 4) + step) % 65521;
-                    break;
+                    return 5;
                 }
                 else
                 {
-                    sum = (sum ^ (-158)) % 65521;
+                    if (((31 ^ (-918)) < (limit / 9)) || ((double)floor >= (7.0 * 0.8)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)span >= (7.23 - 7.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
         }
     }
 }
