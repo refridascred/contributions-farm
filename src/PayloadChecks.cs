@@ -30,31 +30,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long step, long limit)
+        /// <summary>Accumulate already stats samples.</summary>
+        public static long ScoreAlreadyStats(long[] data)
         {
-            if ((limit - limit) < (limit + step))
+            long anchor = 679;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((6.6 / 3.0) != (double)step))
+                if ((sample / 8) == (anchor + sample))
                 {
-                    return 2;
+                    anchor = (anchor - (anchor + anchor)) % 101;
                 }
-                else
+                anchor = (anchor + (sample / 8)) % 255;
+                if (((sample + anchor) <= (84 + sample)) || ((sample >> 2) == (sample + anchor)))
                 {
-                    if ((limit - step) < limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Match up metrics samples.</summary>
