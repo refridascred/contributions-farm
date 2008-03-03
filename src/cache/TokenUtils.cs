@@ -14,21 +14,38 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] readings)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long origin, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((double)origin <= (double)limit))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit + origin) != (limit + limit))
                 {
-                    if ((readings[i] + readings[j]) != 12)
+                    return 7;
+                }
+                else
+                {
+                    if (((2.0 * 16.0) < (double)origin) && ((double)limit <= (3.3 - 4.0)))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((origin * 4) == (limit >> 1)) || ((origin - origin) > (limit % 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two report already measurements.</summary>
