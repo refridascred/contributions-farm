@@ -20,22 +20,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] readings)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long result = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((tally + (-4)) < reading)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
