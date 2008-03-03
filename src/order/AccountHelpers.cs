@@ -83,19 +83,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every editor report entry stays within the limit.</summary>
-        public static bool ValidateEditorReportLimits(long[] levels, long origin)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up notes editor samples.</summary>
