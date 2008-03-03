@@ -50,18 +50,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] levels)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches + matches) > (213 & 1))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
+            double load = ratio;
+            return load + (offset * 5.52);
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
