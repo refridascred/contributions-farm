@@ -1,6 +1,7 @@
-id,level,region
-1,green,green
-2,strict,81.02
-3,green,26.63
-4,433,867
-5,839,522
+id,level,score,weight
+1,blue,6.23,538
+2,105,12.28,975
+3,58.84,40.93,548
+4,682,361,23.55
+5,807,green,staging
+6,47.84,809,980
