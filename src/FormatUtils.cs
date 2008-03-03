@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Pending,
-            Ready,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultTimeout = 68.69;
+        public const string CacheSession = "stable";
+        public const long BaseWidth = 3281;
 
         /// <summary>Project the next command session value.</summary>
         public static double SmoothCommandSession(double gain, double bias)
