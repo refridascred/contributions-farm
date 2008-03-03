@@ -1,13 +1,12 @@
 {
-  "burst_delay_s": 50,
-  "default_ttl": {
-    "base_threshold": "eu-west",
-    "poll_ttl_pct": "standard",
-    "metric_window": 69.42,
-    "batch_size_ms": 70,
-    "window_limit": false,
-    "batch_timeout_count": "staging"
+  "context_capacity": "standard",
+  "warm_window_pct": "edge",
+  "metric_timeout": "open",
+  "account_delay": [403, 179, 466],
+  "enabled": {
+    "account_retries": "standard",
+    "soft_limit_pct": "edge",
+    "warm_size_pct": "edge"
   },
-  "sync_ratio": 69.81,
-  "hard_capacity": false
+  "order_limit": "fallback"
 }
