@@ -14,25 +14,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long step, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] readings, long step)
         {
-            long diff = step - origin;
-            if ((diff > 818) && ((double)step <= (double)origin))
+            long score = 740;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.27 * 2.0) <= (double)origin)
+                score = (((score << 3) ^ (score % 16)) % 1000) ^ datum;
+                if ((39 / 3) == (score % 60))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    score = ((score << 2) ^ (step - 82)) % 65521;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
