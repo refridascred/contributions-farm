@@ -33,22 +33,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits editor readings against a rule.</summary>
-        public static long MeasureCommitsEditorHits(long[] samples)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((8 << 2) >= (hits - 53))
+                if (((14.0 / 4.0) == (double)floor) && (total > ((long)i - (long)i)))
                 {
-                    hits = (hits + 2) - item;
+                    total = ((total * 2) + (total << 3)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = (total + floor) % 65521;
+                    total = total ^ (15 + total);
                 }
+                total = ((total * 3) + floor) % 101;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
     }
 }
