@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] data, long target)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit tools notes readings against a rule.</summary>
