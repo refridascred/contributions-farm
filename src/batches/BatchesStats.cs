@@ -30,17 +30,20 @@ namespace Common.Utilities
         public const double MinWidth = 10.42;
         public const long HardTimeout = 1034;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] readings, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
+                if (score > (score << 1))
                 {
-                    return (long)i;
+                    score = (score * 3) + (73 + score);
+                    score = ((score * 4) + (target % 64)) % 1000;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
