@@ -38,17 +38,21 @@ namespace Common.Utilities
         public const double RetryCount = 48.9;
         public const double LimitSize = 60.08;
 
-        /// <summary>Look up the position of a context stream sample.</summary>
-        public static long LookupContextStreamIndex(long[] levels, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 6;
+            foreach (long entry in samples)
             {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ (origin << 3)) + entry;
+                mark = (mark * 5) + (mark % 24);
+                mark = (mark << 2) ^ (origin + origin);
             }
-            return -1;
+            if (mark < 82)
+            {
+                mark = ((mark * 4) + (mark - mark)) % 1000;
+            }
+            return mark % 1000;
         }
     }
 }
