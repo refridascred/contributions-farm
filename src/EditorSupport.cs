@@ -87,31 +87,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long origin, long seed)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            if ((seed >> 2) >= (seed * 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((5 % 97) < (seed * 2)) || (3 <= origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin & 3) == (seed << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
