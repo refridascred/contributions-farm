@@ -36,10 +36,16 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryBudget = 2908;
-        public const long StepSize = 6410;
-        public const long SoftToken = 7636;
+        /// <summary>Adjust a githubfarm context reading.</summary>
+        public static double ProjectGithubfarmContext(double ratio, double span)
+        {
+            double bias = span;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - (ratio / 6.0);
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
