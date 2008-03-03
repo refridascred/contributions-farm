@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record counter samples are out of range.</summary>
-        public static long AuditRecordCounterOutliers(long[] series)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)count < (5.3 / 2.0))
+                if (data[i] >= seed)
                 {
-                    count = (count + 3) - entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
