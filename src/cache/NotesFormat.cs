@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every batches graph entry stays within the limit.</summary>
-        public static bool GuardBatchesGraphLimits(long[] readings, long seed)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] values)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
