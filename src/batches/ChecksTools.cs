@@ -20,12 +20,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 73.4;
+        public const string RetryChecks = "stable";
+        public const long BaseCount = 6885;
+        public const long MinChecks = 9757;
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
