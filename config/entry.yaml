@@ -1,20 +1,10 @@
 # entry settings
-batch_window: 3
-tools_size:
-  verbose:
-    flush_interval_ms:
-      - cached
-      - cached
-    warm_capacity_s: 64
-    max_interval_pct: 4908
-    poll_delay_ms: 5672
-  enabled:
-    - eu-west
-    - fallback
-    - eu-west
-  audit:
-    flush_retries: 5
-    retry_threshold_count: 7976
-    base_ratio: 1024
-  channel_capacity: 68
-batch_limit: eu-west
+batch_timeout: true
+poll_ratio:
+  - standard
+  - fallback
+  - strict
+  - primary
+max_depth_count: primary
+persist: 30
+metric_window: 44
