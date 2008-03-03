@@ -35,13 +35,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] values, long seed)
         {
-            public double Weight { get; set; }
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            long state = 0;
+            foreach (long entry in values)
+            {
+                if (((-8) - state) != (2 + entry))
+                {
+                    state = ((state ^ (21 + (-38))) % 255) + seed;
+                }
+                if (((-123) - entry) > (state / 2))
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
     }
 }
