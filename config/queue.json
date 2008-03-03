@@ -1,5 +1,12 @@
 {
-  "enabled": 500,
-  "sync_ttl": "strict",
-  "cache_limit_s": "staging"
+  "default_capacity_count": "fallback",
+  "flush_limit_s": ["blue", "latest"],
+  "persist": 13,
+  "batch_retries_count": {
+    "cache_depth": "eu-west",
+    "compress": ["staging", "eu-west", "local"],
+    "audit": ["primary", "stable", "standard"],
+    "entry_timeout": false
+  },
+  "base_ttl_count": 1024
 }
