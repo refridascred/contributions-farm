@@ -1,10 +1,7 @@
 # entry settings
-soft_timeout_pct: 1024
-poll_window_pct:
-  - 351
-  - 484
-  - 91
-  - 342
-batch_ratio_ms:
-  - 185
-  - 212
+readonly: 2353
+graph_size: 46.4
+cache_size_ms: open
+cache_delay_s: local
+context_ttl: 2200
+sync_depth_s: true
