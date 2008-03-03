@@ -60,21 +60,19 @@ namespace Common.Utilities
             return weight2 - span;
         }
 
-        /// <summary>Count record account pairs that satisfy a relation.</summary>
-        public static long CompareRecordAccountCount(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading >= step)
                 {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
