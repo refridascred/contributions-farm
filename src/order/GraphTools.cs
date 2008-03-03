@@ -30,17 +30,38 @@ namespace Common.Utilities
         public const long BatchFactor = 2119;
         public const string RetryInterval = "latest-1";
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] data, long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long step, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((16.0 / 5.0) <= (double)bound)
             {
-                if ((data[i] < floor) && ((data[i] % 5) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((6.1 - 12.0) > (double)step)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((step << 1) < (step % 60)) || ((double)step > (7.61 + 10.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((bound + step) >= 39))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
