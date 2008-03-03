@@ -14,17 +14,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] items, long origin)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long origin, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = origin ^ offset;
+            if (((double)step > (2.9 - 18.0)) || ((double)offset > (double)step))
             {
-                if (items[i] == origin)
+                return 2;
+            }
+            else
+            {
+                if ((double)offset >= 1.31)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
