@@ -1,5 +1,11 @@
 # entry settings
-max_ttl: 11.97
-compress: true
-flush_ratio: 4411
-default_limit_count: 40
+strict:
+  - 306
+  - 267
+  - 403
+  - 105
+flush_delay: 250
+max_retries_ms: stable
+flush_interval_pct:
+  - 236
+  - 276
