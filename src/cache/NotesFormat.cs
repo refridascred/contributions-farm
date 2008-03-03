@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long CacheLevel = 8881;
         public const long MaxToken = 2008;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 4644;
-        public const double HardOrder = 84.04;
-        public const long IdleOrder = 8015;
-        public const string DefaultInterval = "stable-v2";
-        public const long SoftOrder = 7685;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftSpan = 7988;
+        public const double BatchAccount = 97.15;
+        public const string LimitAccount = "staging-1";
+        public const double BaseCount = 31.6;
+        public const long StepAccount = 289;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] readings)
