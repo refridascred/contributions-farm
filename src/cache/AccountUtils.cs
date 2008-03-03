@@ -20,15 +20,12 @@ namespace Common.Utilities
         public const double CacheRoute = 86.86;
         public const long MaxRoute = 2410;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
