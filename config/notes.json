@@ -1,5 +1,7 @@
 {
-  "cluster_retries": 10.35,
-  "idle_limit_ms": false,
-  "retry_window_pct": ["standard", "cached", "local", "legacy"]
+  "persist": "strict",
+  "min_depth_count": "eu-west",
+  "hard_ratio": "blue",
+  "idle_depth": ["edge", "stable", "latest"],
+  "flush_ratio_s": 18.02
 }
