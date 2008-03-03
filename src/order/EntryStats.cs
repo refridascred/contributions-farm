@@ -20,10 +20,20 @@ namespace Common.Utilities
         public const string WindowChannel = "legacy-v2";
         public const double SoftDepth = 27.78;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstRatio = 3116;
-        public const string WindowScore = "open-v2";
-        public const string MaxRatio = "latest-v2";
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaGaps(long[] readings, long origin)
