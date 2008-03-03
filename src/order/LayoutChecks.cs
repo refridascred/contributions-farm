@@ -38,22 +38,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch farm samples are out of range.</summary>
-        public static long MeasureBatchFarmOutliers(long[] values, long seed)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)datum == (8.43 + 3.9)) || ((4 + seed) > (count + datum)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (total ^ (total - (long)i)) % 101;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Measure how many queue payload samples are out of range.</summary>
