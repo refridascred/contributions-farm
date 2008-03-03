@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long floor, long seed)
-        {
-            if (((522 >> 2) < seed) && (floor < seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor << 1) > seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryLevel = 358;
+        public const long BatchSize = 6205;
+        public const long MaxEntry = 9366;
+        public const long LimitScore = 4559;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
