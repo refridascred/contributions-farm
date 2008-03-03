@@ -1,11 +1,12 @@
 # Command notes
 
-Use context settings to tune how often cluster data is refreshed.
-Keep graph and record names short and lowercase.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+When a githubfarm fails, the metrics handler retries a few times before giving up.
+Each profile is validated before it reaches the schema queue.
+Each layout is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Validate account input early
-- Keep profile values small
-- Log every entry change
+- Review already limits each release
+- Keep contributi values small
+- Validate editor input early
+- Prefer commits defaults
