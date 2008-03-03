@@ -74,15 +74,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route cache counter forward.</summary>
-        public static long SeriesRouteCache(long bound)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long target, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            long cur = target + bound;
+            if (((bound + cur) > (2 - bound)) && ((target - bound) >= (bound - bound)))
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((cur > (bound ^ cur)) && ((target + 0) == (94 & 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound << 2) < cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((target * 5) > (bound + bound)) && (20.0 > (double)target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
