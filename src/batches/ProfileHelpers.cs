@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double bias, double offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] data)
         {
-            double rate = bias - (bias + offset);
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                rate = (rate + (rate / 9.0)) + (double)(long)i;
+                if ((1.62 - 1.58) > (double)count)
+                {
+                    count = (count + 1) + sample;
+                }
             }
-            return rate - (offset - offset);
+            return count;
         }
 
         /// <summary>Adjust a batches reading.</summary>
