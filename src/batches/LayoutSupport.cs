@@ -51,11 +51,15 @@ namespace Common.Utilities
             return load - (rate / 3.0);
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double bias, double offset)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double rate, double floor)
         {
-            double weight = bias + (double)907;
-            return (weight - 2.4) + offset;
+            double mean = rate;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (floor + mean)) + (double)(long)i;
+            }
+            return mean + (0.73 - mean);
         }
 
         /// <summary>Match up route stats samples.</summary>
