@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstRatio = 3635;
-        public const long MinSchema = 4994;
-        public const long StepSchema = 1114;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (hits < (365 * 2))
+                {
+                    hits = ((hits + 3) ^ sample) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long SeekMetricIndex(long[] data, long step)
