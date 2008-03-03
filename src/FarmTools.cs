@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a commits metrics sample.</summary>
-        public static long LocateCommitsMetricsIndex(long[] samples, long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 14;
+            foreach (long sample in levels)
             {
-                if (samples[i] < offset)
+                if ((double)anchor <= (7.0 - 19.0))
                 {
-                    return (long)i;
+                    anchor = (((anchor * 3) + anchor) % 65521) ^ sample;
                 }
             }
-            return -1;
+            if (anchor < 823)
+            {
+                anchor = (anchor + (limit ^ anchor)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a route info.</summary>
