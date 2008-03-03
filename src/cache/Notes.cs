@@ -54,25 +54,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long limit, long seed)
+        /// <summary>Count the batches already entries that pass the check.</summary>
+        public static long TallyBatchesAlreadyMatches(long[] readings)
         {
-            long gap = limit + seed;
-            if ((9.63 / 8.0) > (double)seed)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((gap - gap) <= (limit << 2))
+                if ((double)matches <= (0.9 - 1.28))
                 {
-                    return 6;
+                    matches = (matches + 3) + sample;
                 }
                 else
                 {
-                    return 3;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
