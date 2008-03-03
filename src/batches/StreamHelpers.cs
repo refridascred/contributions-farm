@@ -54,19 +54,22 @@ namespace Common.Utilities
         public const long IdleFormat = 3511;
         public const string RetryInterval = "alpha-1";
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] values, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (cell < bound)
+                if (((origin - hits) < datum) || !(origin < (hits + origin)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the stats kind values.</summary>
