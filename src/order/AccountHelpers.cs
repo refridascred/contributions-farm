@@ -40,24 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a channel token pair into a bucket.</summary>
-        public static long RankChannelToken(long seed, long seed2)
+        /// <summary>Check that every record commits entry stays within the limit.</summary>
+        public static bool VerifyRecordCommitsLimits(long[] data, long limit)
         {
-            if ((19.0 / 6.0) != (double)seed2)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((99 % 5) <= seed2))
+                if (datum > limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
