@@ -52,22 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] data, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((0.56 / 4.0) >= (double)floor)
+                if (entry <= seed)
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
