@@ -86,12 +86,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
             public long Total { get; set; }
-            public double Score { get; set; }
-            public bool Size { get; set; }
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
