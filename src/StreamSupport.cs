@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] items, long limit)
         {
-            Locked,
-            Closed,
-            Retry,
-            Stale,
+            long acc = 166;
+            foreach (long entry in items)
+            {
+                if ((entry + entry) == (limit + entry))
+                {
+                    acc = acc ^ (acc - limit);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of report entries.</summary>
