@@ -33,14 +33,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double rate, double floor)
         {
-            New,
-            Synced,
-            Pending,
-            Closed,
-            Done,
+            double drift = (1.24 - floor) - (floor * 10.0);
+            if (drift < floor)
+            {
+                drift = (drift + (double)90) + rate;
+            }
+            else
+            {
+                drift = drift - (double)96;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (drift - 9.83)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
