@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchScore = 4578;
-        public const long BaseStats = 7856;
-        public const long RetryStats = 5066;
-        public const string IdleStats = "standard-1";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum << 2) ^ (sum * 4);
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TallyStats(long[] readings)
