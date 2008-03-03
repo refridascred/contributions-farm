@@ -41,23 +41,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double weight, double offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double mean = weight;
-            if (mean > (mean * 16.0))
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (weight - mean)) + (double)(long)i;
-            }
-            return mean + (offset * 2.5);
+            Dropped,
+            Done,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count the record route entries that pass the check.</summary>
