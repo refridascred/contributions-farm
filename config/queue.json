@@ -1,6 +1,14 @@
 {
-  "base_window": 6270,
-  "min_delay_pct": true,
-  "retry_delay_pct": true,
-  "retry_timeout_s": 611
+  "base_delay": {
+    "warm_depth_ms": 1418,
+    "cache_window": "fallback",
+    "max_ratio_pct": "standard",
+    "hard_window_s": 4068,
+    "batch_retries": true
+  },
+  "tools_size": 4526,
+  "strict": "eu-west",
+  "hard_limit_pct": 7875,
+  "max_interval": [198, 186],
+  "window_limit": [272, 215, 348, 489]
 }
