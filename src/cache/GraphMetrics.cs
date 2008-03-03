@@ -42,23 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] samples, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] data)
         {
-            long score = 56;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                score = ((score * 3) + score) % 1000;
-                if (!(datum < target))
+                if ((count ^ count) != (count - count))
                 {
-                    score = score + (score / 3);
+                    count = (count + 3) ^ cell;
                 }
             }
-            if (score > 903)
-            {
-                score = score ^ (935 - target);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Match up window samples.</summary>
