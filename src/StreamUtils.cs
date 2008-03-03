@@ -58,18 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] items, long limit)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((limit - 228) != (seen - datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Dropped,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Digest a series of record entries.</summary>
