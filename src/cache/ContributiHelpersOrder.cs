@@ -53,19 +53,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
-        public static bool GuardFarmGithubfarmRange(long[] samples, long offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
