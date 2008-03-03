@@ -38,21 +38,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count order commits pairs that satisfy a relation.</summary>
-        public static long MatchOrderCommitsCount(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 676;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix ^ (mix % 97)) % 4096) + sample;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
