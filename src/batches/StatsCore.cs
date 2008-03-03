@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a stream metric reading by value.</summary>
-        public static long SeekStreamMetricIndex(long[] readings, long origin)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Compare every pair of farm filter readings.</summary>
