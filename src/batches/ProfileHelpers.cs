@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] data, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (((long)data.Length + datum) >= (seed + datum))
+                if (entry < seed)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
