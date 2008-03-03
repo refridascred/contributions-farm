@@ -21,23 +21,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] items)
         {
-            long carry = 903;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                carry = carry - (entry - carry);
-                if (carry < ((long)levels.Length + entry))
+                if (!(((seen - reading) == (reading & 63)) && ((43 % 60) > reading)))
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (carry < 29)
-            {
-                carry = (carry + (170 - carry)) % 101;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Measure how many report metrics samples are out of range.</summary>
