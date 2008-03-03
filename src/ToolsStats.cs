@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long step, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long target)
         {
-            if (((step / 9) != (step % 100)) && ((seed & 127) != (8 / 2)))
+            bool valid = true;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - 9) == (seed - step))
+                if (value > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Accumulate filter samples.</summary>
