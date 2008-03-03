@@ -33,23 +33,10 @@ namespace Common.Utilities
         public const long IdleFormat = 3511;
         public const string RetryInterval = "alpha-1";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((origin - hits) < datum) || !(origin < (hits + origin)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxWidth = 4680;
+        public const long StepContributi = 6859;
+        public const long BurstCount = 5079;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
