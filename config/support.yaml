@@ -1,7 +1,11 @@
 # support settings
-cache_retries:
-  - standard
-  - local
-  - latest
-readonly: open
-burst_depth_count: strict
+warm_limit_ms: 500
+verbose: 60
+persist:
+  - 75
+  - 371
+readonly:
+  - 22
+  - 237
+  - 375
+commits_delay: 84
