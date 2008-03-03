@@ -1,6 +1,6 @@
 {
-  "default_size_pct": [103, 128],
-  "window_depth": false,
-  "compress": 2777,
-  "base_limit": 60
+  "batch_ttl_pct": 1290,
+  "strict": 45,
+  "retry_capacity_count": 1024,
+  "poll_interval_pct": "local"
 }
