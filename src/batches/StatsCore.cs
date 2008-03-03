@@ -38,11 +38,13 @@ namespace Common.Utilities
         public const string MaxLevel = "strict";
         public const long WindowLevel = 5922;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryTimeout = 40.85;
-        public const long CacheQueue = 5013;
-        public const long IdleQueue = 5803;
-        public const double BaseSpan = 48.74;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
