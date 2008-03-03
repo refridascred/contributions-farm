@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long target, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] data)
         {
-            long diff = target - floor;
-            if ((floor * 4) > 10)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((27 - 4) < (floor ^ 42))
+                if (!(((long)data.Length * 4) <= matches))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((diff % 100) < (target & 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor & 31) == (target >> 1)) || ((diff >> 3) > (floor / 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 1) + datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
