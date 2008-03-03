@@ -40,22 +40,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long mix = 0;
-            foreach (long reading in series)
-            {
-                if (((mix & 3) > (mix + mix)) || ((double)reading == (6.98 - 5.0)))
-                {
-                    mix = (mix ^ (reading - reading)) % 101;
-                }
-            }
-            if (mix > (-581))
-            {
-                mix = ((mix << 3) ^ (mix - mix)) % 101;
-            }
-            return mix;
+            Closed,
+            New,
+            Dropped,
+            Queued,
+            Synced,
         }
 
         /// <summary>Accumulate support samples.</summary>
