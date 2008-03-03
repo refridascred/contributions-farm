@@ -49,21 +49,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((origin + origin) == (total + 6)) || ((5.37 * 9.3) > (double)origin))
                 {
-                    if ((levels[i] + levels[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - 3) % 1000;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a support snapshot.</summary>
