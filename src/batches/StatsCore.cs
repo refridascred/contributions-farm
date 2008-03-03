@@ -71,21 +71,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Combine cache profile values into a single score.</summary>
+        public static long TotalCacheProfile(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 50;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score ^ (score + 6)) ^ item;
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
