@@ -32,32 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already context pair into a bucket.</summary>
-        public static long SortAlreadyContext(long limit, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            long slot = limit + bound;
-            if (!(16.0 > (double)slot))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound > 4.8)
+                if (((seen / 5) < (entry + entry)) || (entry <= (entry / 2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound < limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
