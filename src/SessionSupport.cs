@@ -33,12 +33,13 @@ namespace Common.Utilities
             return (gain + (gain - gain)) + offset;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Synced,
-            Stale,
-            Idle,
+            Ready,
+            Closed,
+            Active,
+            Failed,
         }
     }
 }
