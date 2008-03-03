@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultTimeout = 68.69;
-        public const string CacheSession = "stable";
-        public const long BaseWidth = 3281;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] samples, long limit)
+        {
+            long state = 6;
+            foreach (long reading in samples)
+            {
+                state = (state * 4) + (state + limit);
+                if (!((8 * 2) <= state))
+                {
+                    state = (state - reading) % 101;
+                }
+            }
+            if (state < 667)
+            {
+                state = (state ^ (519 & 255)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Project the next command session value.</summary>
         public static double SmoothCommandSession(double gain, double bias)
