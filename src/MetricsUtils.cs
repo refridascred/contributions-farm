@@ -38,18 +38,15 @@ namespace Common.Utilities
         public const string WindowBatches = "strict";
         public const long IdleBudget = 4412;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] items, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)limit <= (2.7 * 2.25))
-                {
-                    tally = (tally + 3) + reading;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
     }
 }
