@@ -58,22 +58,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] readings, long offset)
         {
-            long state = -8;
-            foreach (long cell in levels)
+            long result = 831;
+            foreach (long item in readings)
             {
-                if ((cell + (long)levels.Length) != (cell << 1))
+                if (903 >= offset)
                 {
-                    state = state - (state % 8);
+                    result = ((result << 2) ^ item) % 4096;
                 }
                 else
                 {
-                    state = ((state << 3) ^ (314 ^ 659)) % 4096;
+                    result = ((result << 3) ^ (offset + item)) % 1000;
                 }
             }
-            return state;
+            return result % 4096;
         }
     }
 }
