@@ -20,11 +20,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleSize = 2.53;
-        public const double HardDepth = 61.31;
-        public const string WindowEditor = "legacy";
-        public const double BatchTimeout = 14.58;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Locked,
+            Retry,
+            Queued,
+            Pending,
+            Active,
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
