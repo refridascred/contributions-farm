@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitGithubfarm = 54.82;
-        public const long IdleTimeout = 9276;
-        public const double RetryGithubfarm = 3.86;
-        public const long BatchGithubfarm = 5663;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowSpan = "cached-edge";
+        public const string HardInterval = "standard";
+        public const long CacheFarm = 8381;
+        public const double IdleSize = 61.4;
+        public const double BatchCount = 67.46;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
