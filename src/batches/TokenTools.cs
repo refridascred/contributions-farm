@@ -29,13 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] series)
         {
-            Paused,
-            Retry,
-            Done,
-            Closed,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((long)series.Length + sample) <= sample)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
