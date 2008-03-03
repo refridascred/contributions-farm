@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            Pending,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Compare every pair of farm filter readings.</summary>
