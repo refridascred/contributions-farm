@@ -39,11 +39,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheInterval = "staging-1";
-        public const double DefaultSize = 79.46;
-        public const long MinChecks = 7409;
-        public const double BaseChecks = 30.73;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long step, long origin)
+        {
+            long prev = step + origin;
+            if ((step & 127) >= (step & 255))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((origin ^ origin) >= (origin % 16)) && ((origin + step) == (origin + origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin / 8) < (prev + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit commits payload readings against a rule.</summary>
         public static long AuditCommitsPayloadMatches(long[] samples)
