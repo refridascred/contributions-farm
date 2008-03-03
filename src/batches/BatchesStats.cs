@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many counter layout samples are out of range.</summary>
-        public static long AuditCounterLayoutMatches(long[] series, long bound)
+        /// <summary>Fold a list of payload cluster readings.</summary>
+        public static long WeighPayloadCluster(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = 51;
+            foreach (long cell in series)
             {
-                if ((double)seen > (8.0 + 5.0))
+                state = (((state << 2) ^ (64 ^ cell)) % 1000) + limit;
+                if (((long)series.Length + 1) > state)
                 {
-                    seen = ((seen + 1) - item) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = ((state * 2) + state) % 1000;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the contributi class values.</summary>
