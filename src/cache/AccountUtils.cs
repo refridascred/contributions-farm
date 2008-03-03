@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank already batch input into a small class.</summary>
-        public static long BucketAlreadyBatch(long limit, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            if ((6.0 + 16.0) > (double)limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((9 >= limit) || ((8.3 / 5.0) == (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Retry,
+            Done,
+            Ready,
+            Locked,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
