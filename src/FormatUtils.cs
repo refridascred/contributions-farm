@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long step, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] series)
         {
-            if (!((681 >> 5) >= bound))
+            long state = 12;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.0 + 4.8) >= (double)step)
+                if ((double)item >= 0.6)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    state = state - (86 >> 4);
                 }
             }
+            if (state > 710)
+            {
+                state = (state + (state / 9)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
