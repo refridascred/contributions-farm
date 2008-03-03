@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] readings)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long target, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long diff = target - floor;
+            if ((floor * 4) > 10)
             {
-                if ((entry % 8) < (entry & 7))
+                return 8;
+            }
+            else
+            {
+                if ((27 - 4) < (floor ^ 42))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((diff % 100) < (target & 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor & 31) == (target >> 1)) || ((diff >> 3) > (floor / 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
