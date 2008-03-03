@@ -70,14 +70,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Stale,
-            Paused,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstWidth = 58.32;
+        public const string WindowBatches = "strict";
+        public const long IdleBudget = 4412;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double bias, double offset)
