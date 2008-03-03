@@ -58,22 +58,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine channel batch values into a single score.</summary>
-        public static long WeighChannelBatch(long[] samples, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long mix = 386;
-            foreach (long reading in samples)
-            {
-                if ((mix <= ((long)samples.Length - reading)) && (reading > (target >> 5)))
-                {
-                    mix = mix - 47;
-                }
-            }
-            if (mix < 52)
-            {
-                mix = (mix + (5 - target)) % 97;
-            }
-            return mix;
+            New,
+            Dropped,
+            Retry,
+            Locked,
         }
     }
 }
