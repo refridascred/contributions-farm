@@ -40,11 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 1515;
-        public const long BatchFactor = 3954;
-        public const long RetryPayload = 7808;
-        public const string LimitInterval = "strict-v2";
+        /// <summary>Measure how many report metrics samples are out of range.</summary>
+        public static long MeasureReportMetricsHits(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!((tally - tally) > tally))
+                {
+                    tally = ((tally + 2) - sample) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long SeriesWindow(long bound)
