@@ -60,19 +60,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every window notes entry stays within the limit.</summary>
-        public static bool ValidateWindowNotesRange(long[] values, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (reading <= origin)
+                if (cell <= bound)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
