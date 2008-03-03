@@ -24,11 +24,14 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            Locked,
+            Pending,
+            New,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
