@@ -1,8 +1,6 @@
 {
-  "max_limit": 8.65,
-  "contributi_interval": ["latest", "blue", "stable"],
-  "idle_timeout_pct": ["strict", "staging", "eu-west"],
-  "stats_ratio": 30,
-  "hard_limit_ms": "green",
-  "warm_threshold": 16.78
+  "soft_interval_ms": "local",
+  "flush_ttl": ["primary", "staging"],
+  "stream_ttl": "open",
+  "idle_depth_count": 38.16
 }
