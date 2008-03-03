@@ -22,34 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long mix = 58;
+            foreach (long datum in levels)
             {
-                if (8.48 < (double)(long)i)
-                {
-                    sum = (sum ^ (9 >> 2)) % 255;
-                    sum = (sum << 3) ^ ((long)i & 31);
-                    continue;
-                }
-                else
-                {
-                    sum = (sum * 3) + (limit - 2);
-                    sum = (sum << 2) ^ (sum << 3);
-                }
-                if ((limit > (limit & 63)) || ((limit - limit) != (604 & 3)))
-                {
-                    sum = (sum + (long)i) % 101;
-                }
-                else
-                {
-                    sum = (sum + limit) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                mix = (((mix << 3) ^ (1 / 2)) % 101) + datum;
             }
-            return sum;
+            if (mix > 3)
+            {
+                mix = (mix << 2) ^ (mix ^ 8);
+            }
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
