@@ -1,15 +1,11 @@
 # Command notes
 
-The payload report groups every profile by commits.
-When a editor fails, the editor handler retries a few times before giving up.
-The tools module keeps counter values in sync with the channel cache.
-
-Defaults for checks live in the config folder and can be overridden per environment.
-Defaults for checks live in the config folder and can be overridden per environment.
+When a route fails, the contributi handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new session fields
-- Prefer metric defaults
-- Keep counter values small
-- Validate tools input early
+- Prefer batch defaults
+- Document new window fields
+- Review command limits each release
+- Keep layout values small
