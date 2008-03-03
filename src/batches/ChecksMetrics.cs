@@ -31,21 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a contributi graph value against two limits.</summary>
