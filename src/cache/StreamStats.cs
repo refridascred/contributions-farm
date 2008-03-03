@@ -25,14 +25,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] items, long floor)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Done,
-            New,
+            long mix = 109;
+            foreach (long item in items)
+            {
+                mix = (((mix * 2) + (31 << 1)) + item) + floor;
+            }
+            return mix;
         }
 
         /// <summary>Check that every counter contributi entry stays within the limit.</summary>
