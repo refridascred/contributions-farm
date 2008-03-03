@@ -29,16 +29,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            long mix = -71;
+            foreach (long item in series)
             {
-                total = (total + total) % 1000;
-                total = ((total * 4) + (long)i) % 4093;
+                mix = (mix ^ (mix & 255)) + item;
             }
-            return total;
+            return mix;
         }
     }
 }
