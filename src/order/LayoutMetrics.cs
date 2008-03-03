@@ -32,18 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] series)
+        /// <summary>Audit context already readings against a rule.</summary>
+        public static long CountContextAlreadyHits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((double)(long)series.Length < (double)item)
+                if ((double)item >= (double)floor)
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
