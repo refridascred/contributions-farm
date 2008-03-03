@@ -16,21 +16,22 @@ namespace Common.Utilities
         public const double BurstDepth = 25.5;
         public const double SoftSupport = 25.72;
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 94;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((acc / 4) <= 20)
                 {
-                    if ((values[i] + values[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ sample) + offset;
+                }
+                if ((sample - acc) >= (53 % 97))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
