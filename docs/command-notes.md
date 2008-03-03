@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for batches live in the config folder and can be overridden per environment.
-The cache module keeps channel values in sync with the schema cache.
-The command helpers are pure functions, so they are safe to call from any thread.
+A profile that stays idle for too long is moved to the window list.
+The githubfarm report groups every support by counter.
+
+When a contributi fails, the token handler retries a few times before giving up.
+Use farm settings to tune how often filter data is refreshed.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep route values small
-- Document new githubfarm fields
-- Prefer stream defaults
-- Validate schema input early
+- Validate context input early
+- Review token limits each release
+- Document new tools fields
