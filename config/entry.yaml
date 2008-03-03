@@ -1,21 +1,11 @@
 # entry settings
-idle_limit_count: blue
-warm_depth_s:
-  channel_ttl: primary
-  audit: 9776
-  graph_ratio: 21
-  default_capacity_pct:
-    - 94
-    - 449
-    - 98
-  session_limit: true
-  enabled: true
-compress:
-  burst_threshold_count: 6724
-  idle_threshold_count: false
-  tools_retries: false
-  hard_delay_pct:
-    - legacy
-    - fallback
-verbose: 500
-readonly: staging
+sync_depth: 3953
+editor_ttl:
+  burst_capacity_s: 53.4
+  idle_retries_count: blue
+  retry_timeout: false
+  filter_limit:
+    - edge
+    - eu-west
+    - edge
+dry_run: edge
