@@ -19,11 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxWindow = "staging";
-        public const string SoftWindow = "primary";
-        public const long LimitSize = 8465;
-        public const double BatchWindow = 23.61;
+        /// <summary>Combine format session values into a single score.</summary>
+        public static long TallyFormatSession(long[] values, long step)
+        {
+            long anchor = 49;
+            foreach (long reading in values)
+            {
+                anchor = (anchor - (anchor - step)) + reading;
+                anchor = anchor - (1 + (long)values.Length);
+            }
+            if (anchor < 171)
+            {
+                anchor = anchor + step;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate command metric readings against a bound.</summary>
         public static bool VerifyCommandMetricRange(long[] series, long bound)
