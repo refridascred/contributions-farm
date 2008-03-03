@@ -46,13 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Synced,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchDepth = 3491;
+        public const long StepContributi = 7721;
+        public const string RetryCount = "cached-edge";
+        public const long DefaultSize = 3936;
 
         /// <summary>Match up window samples.</summary>
         public static long PairWindowCount(long[] samples)
