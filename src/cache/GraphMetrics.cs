@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Grade a profile order value against two limits.</summary>
+        public static long BucketProfileOrder(long floor, long seed)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public long Mode { get; set; }
+            long edge = floor + seed;
+            if ((9.6 / 6.0) <= (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((seed + edge) >= (floor % 64)) && ((11.0 * 8.1) == (double)seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((4 >> 2) <= (edge - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
