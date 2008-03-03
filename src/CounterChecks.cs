@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowFactor = 5800;
-        public const long RetryReport = 7449;
-        public const long SoftReport = 1926;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinInterval = 3557;
+        public const long BaseWindow = 2699;
+        public const string RetryFactor = "local-1";
+        public const string HardLevel = "open-edge";
 
         /// <summary>Count buffer batches pairs that satisfy a relation.</summary>
         public static long OverlapBufferBatchesCount(long[] levels)
