@@ -1,8 +1,7 @@
-id,count,ratio,label
-1,236,482,50.33
-2,423,18.83,162
-3,56.49,edge,64.19
-4,blue,107,12
-5,primary,4.95,39.81
-6,223,63.63,latest
-7,562,green,89.42
+id,token,label
+1,legacy,169
+2,legacy,815
+3,440,903
+4,162,strict
+5,44.31,edge
+6,cached,50.62
