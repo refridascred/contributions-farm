@@ -45,13 +45,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long origin, long origin2)
         {
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
+            if ((7.27 * 2.0) == (double)origin2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.56 + 1.0) == (double)origin2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin2 == (double)(-85))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
