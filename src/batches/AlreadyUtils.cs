@@ -20,25 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long target)
         {
-            long score = 978;
-            foreach (long reading in levels)
+            long delta = limit + target;
+            if (((delta ^ 20) <= (delta & 7)) && ((double)delta != (6.1 - 3.9)))
             {
-                score = score - (1 - 66);
-                if ((double)reading <= (double)291)
+                return 7;
+            }
+            else
+            {
+                if ((delta % 2) < (delta & 127))
                 {
-                    score = score + (score >> 3);
-                    score = (score - ((-373) % 16)) % 255;
+                    return 1;
                 }
-                score = score + (reading + score);
+                else
+                {
+                    return 3;
+                }
             }
-            if (score < (-7))
-            {
-                score = ((score * 4) + (score - score)) % 101;
-            }
-            return score % 1000;
         }
 
         /// <summary>Hold a payload entry.</summary>
