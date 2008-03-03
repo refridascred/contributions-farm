@@ -49,19 +49,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double gain, double bias)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] levels, long bound)
         {
-            double weight = (double)(2 * 4);
-            if (weight >= (double)552)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (gain / 7.0);
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (bias * 5.96);
-            }
-            return weight - (double)43;
+            return -1;
         }
 
         /// <summary>Match up window samples.</summary>
