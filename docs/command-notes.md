@@ -1,10 +1,12 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the checks list.
-A context that stays idle for too long is moved to the session list.
+The route module keeps buffer values in sync with the order cache.
+Use command settings to tune how often commits data is refreshed.
+The report module keeps record values in sync with the batches cache.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Keep command values small
-- Log every cache change
+- Validate tools input early
+- Keep tools values small
+- Document new editor fields
+- Review tools limits each release
