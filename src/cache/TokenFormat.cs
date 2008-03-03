@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double gain, double bias)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long offset)
         {
-            double drift = (double)234 / 7.0;
-            if (drift > drift)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                drift = ((drift + (double)40) + gain) + bias;
+                acc = acc - (offset - acc);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                drift = drift + (drift - drift);
-            }
-            return drift + (double)9;
+            return acc;
         }
 
         /// <summary>Adjust a session reading.</summary>
