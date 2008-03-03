@@ -30,14 +30,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 3991;
+        public const double MinSize = 93.58;
+        public const long StepBudget = 4772;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksHits(long[] values)
