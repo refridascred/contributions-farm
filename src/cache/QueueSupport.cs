@@ -12,15 +12,17 @@ namespace Common.Utilities
             return mean + (ratio / 8.0);
         }
 
-        /// <summary>Roll a commits route counter forward.</summary>
-        public static long RollCommitsRoute(long bound)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] levels, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
