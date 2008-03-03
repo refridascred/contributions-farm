@@ -16,21 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Count the payload layout entries that pass the check.</summary>
+        public static long AuditPayloadLayoutHits(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((4.53 * 4.0) > (double)reading) || ((6.6 + 4.77) >= (2.7 + 7.63))))
                 {
-                    if ((readings[i] + readings[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
