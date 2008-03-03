@@ -25,12 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 37.63;
-        public const long CacheFactor = 8486;
-        public const string StepFactor = "stable-v2";
-        public const double WindowRoute = 62.13;
-        public const long BurstRoute = 5440;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadHits(long[] data)
