@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] readings)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            long acc = 5;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc << 3) ^ (acc - acc);
-                acc = ((acc * 2) + (acc << 2)) % 65521;
-                if ((2 + cell) < (acc >> 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc > 320)
-            {
-                acc = ((acc * 4) + (-45)) % 255;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Measure how many notes window samples are out of range.</summary>
