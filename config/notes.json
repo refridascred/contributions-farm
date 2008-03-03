@@ -1,18 +1,8 @@
 {
-  "tools_window": true,
-  "burst_interval": {
-    "account_depth": "green",
-    "format_limit": "strict",
-    "filter_interval": "latest",
-    "idle_threshold": true,
-    "max_threshold": 42.33,
-    "idle_capacity_s": {
-      "context_depth": 1024,
-      "window_delay": 88.86,
-      "sync_ratio_count": 9,
-      "persist": false
-    }
-  },
-  "default_capacity_ms": "cached",
-  "warm_delay_count": [60, 77]
+  "flush_limit_ms": ["staging", "open", "latest"],
+  "contributi_threshold": false,
+  "record_depth": [436, 96],
+  "base_interval_ms": 59.08,
+  "support_depth": 19.13,
+  "strict": "fallback"
 }
