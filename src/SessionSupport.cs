@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double floor)
-        {
-            double ratio = floor;
-            if (ratio <= bias)
-            {
-                ratio = ratio - (floor + ratio);
-            }
-            else
-            {
-                ratio = ratio + (double)4;
-            }
-            return ratio - (1.0 - 4.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardLevel = 2243;
+        public const string LimitFactor = "standard-v2";
+        public const long BurstLevel = 3992;
+        public const long MinCommits = 5469;
+        public const double CacheCommits = 65.84;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
