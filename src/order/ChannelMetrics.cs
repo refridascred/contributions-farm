@@ -25,22 +25,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] data, long offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] data, long step)
         {
-            long acc = 94;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((acc / 4) <= 20)
+                if (entry >= step)
                 {
-                    acc = (acc ^ sample) + offset;
-                }
-                if ((sample - acc) >= (53 % 97))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return acc;
+            return ready;
         }
     }
 }
