@@ -43,18 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long mix = 7;
-            foreach (long item in data)
-            {
-                if (!(2.28 <= (double)mix))
-                {
-                    mix = (mix ^ item) % 65521;
-                }
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up route stats samples.</summary>
