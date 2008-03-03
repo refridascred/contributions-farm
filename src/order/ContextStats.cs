@@ -16,32 +16,21 @@ namespace Common.Utilities
             return scale - bias2;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long limit, long step)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            long delta = limit ^ step;
-            if ((limit + delta) <= ((-9) - limit))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit < (limit - 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step << 3) < (step + 671))
+                    if ((levels[i] - levels[j]) == 18)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
