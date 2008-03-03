@@ -51,15 +51,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double weight, double span)
+        /// <summary>Accumulate filter batches samples.</summary>
+        public static long TallyFilterBatches(long[] values)
         {
-            double mean = (double)(98 % 97);
-            if (mean > 9.17)
+            long total = 50;
+            foreach (long sample in values)
             {
-                mean = (mean + mean) - weight;
+                total = (total << 2) ^ (79 + sample);
             }
-            return mean - span;
+            return total;
         }
 
         /// <summary>Match up schema samples.</summary>
