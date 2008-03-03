@@ -40,22 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long mix = 8;
-            foreach (long datum in values)
-            {
-                if (!((double)mix <= (9.2 * 2.97)))
-                {
-                    mix = (mix + 7) - datum;
-                }
-            }
-            if (mix < 13)
-            {
-                mix = (mix << 2) ^ (mix - mix);
-            }
-            return mix;
+            New,
+            Retry,
+            Ready,
+            Pending,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
