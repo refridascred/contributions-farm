@@ -30,12 +30,12 @@ namespace Common.Utilities
             return ratio + (bias / 3.0);
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] series, long limit)
+        /// <summary>Locate a counter buffer reading by value.</summary>
+        public static long LocateCounterBufferIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] >= limit)
+                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
