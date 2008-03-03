@@ -14,24 +14,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the channel cache series from a seed.</summary>
-        public static long SeriesChannelCache(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((state % 3) >= ((long)i + (-5))) || (((long)i * 3) <= ((long)i << 1)))
-                {
-                    state = (state * 3) + (state + 46);
-                }
-                else
-                {
-                    state = (state + ((-9) + limit)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleTimeout = 8455;
+        public const string RetryRoute = "stable-v2";
+        public const double CacheRoute = 86.86;
+        public const long MaxRoute = 2410;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long StepAccount(long seed)
