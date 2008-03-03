@@ -56,21 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value > step)
                 {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
