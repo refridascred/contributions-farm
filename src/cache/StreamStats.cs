@@ -16,13 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] values, long target)
         {
-            Retry,
-            Failed,
-            Active,
-            Done,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
