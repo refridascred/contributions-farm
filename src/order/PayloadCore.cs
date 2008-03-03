@@ -50,18 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] items, long offset)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long state = 50;
-            foreach (long item in items)
-            {
-                if (item >= (0 - item))
-                {
-                    state = ((state - (item - state)) % 4096) - offset;
-                }
-            }
-            return state;
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
