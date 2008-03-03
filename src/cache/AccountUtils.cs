@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Rank already batch input into a small class.</summary>
+        public static long BucketAlreadyBatch(long limit, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            if ((6.0 + 16.0) > (double)limit)
             {
-                long prev = (anchor ^ (long)i) + (long)i;
-                long lane = (anchor % 3) - (bound / 9);
-                if ((lane - lane) > (prev + bound))
-                {
-                    anchor = ((anchor * 3) + (bound - lane)) % 255;
-                    lane = lane + lane;
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((9 >= limit) || ((8.3 / 5.0) == (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
