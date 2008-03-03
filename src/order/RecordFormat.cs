@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
+            Ready,
+            Dropped,
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
