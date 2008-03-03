@@ -58,18 +58,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] data, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (!((396 ^ origin) < (origin - 85)))
+                if ((6 + 0) <= (hits + item))
                 {
-                    tally = (tally + 3) - sample;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
