@@ -64,12 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
+            Ready,
+            Dropped,
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
