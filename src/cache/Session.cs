@@ -39,18 +39,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] data)
+        /// <summary>Compare every pair of stats entry readings.</summary>
+        public static long OverlapStatsEntryCount(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample <= 8.86)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
