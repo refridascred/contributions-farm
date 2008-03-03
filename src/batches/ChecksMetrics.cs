@@ -53,20 +53,12 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double ratio, double floor)
-        {
-            double scale = (double)((-5) + 73);
-            if (scale <= (scale * 11.0))
-            {
-                scale = (scale + scale) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (8.87 + 11.0)) + (double)(long)i;
-            }
-            return scale + ratio;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 61.31;
+        public const long CacheInterval = 7479;
+        public const string RetrySpan = "latest-1";
+        public const long IdleScore = 8283;
+        public const long SoftFilter = 5487;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
