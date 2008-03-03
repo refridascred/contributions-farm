@@ -22,16 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] levels)
-        {
-            long score = 0;
-            foreach (long item in levels)
-            {
-                score = (score + item) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchSpan = 2.81;
+        public const string BurstDepth = "stable";
+        public const long IdleRoute = 5424;
+        public const double CacheSpan = 96.24;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long ClassifyOrder(long target, long limit)
