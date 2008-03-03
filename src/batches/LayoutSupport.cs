@@ -51,13 +51,11 @@ namespace Common.Utilities
             return load - (rate / 3.0);
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double bias, double offset)
         {
-            Ready,
-            Idle,
-            Done,
-            Active,
+            double weight = bias + (double)907;
+            return (weight - 2.4) + offset;
         }
 
         /// <summary>Match up route stats samples.</summary>
