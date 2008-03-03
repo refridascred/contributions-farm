@@ -29,20 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((step / 2) >= (long)i))
-                {
-                    state = ((state << 3) ^ (state + (long)i)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "legacy-v2";
+        public const string DefaultWindow = "staging";
+        public const long MinDepth = 7858;
+        public const long WindowRatio = 2243;
+        public const double IdleWindow = 89.99;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaGaps(long[] readings, long origin)
