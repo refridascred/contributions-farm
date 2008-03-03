@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowBudget = 91.79;
-        public const long CacheLevel = 5502;
-        public const long LimitEditor = 2796;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((double)matches >= (13.0 - 2.69))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate buffer contributi readings against a bound.</summary>
         public static bool ValidateBufferContributiLimits(long[] samples, long limit)
