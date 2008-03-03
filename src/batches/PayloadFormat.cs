@@ -30,22 +30,18 @@ namespace Common.Utilities
         public const string BurstFactor = "open";
         public const long StepBatches = 3543;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] readings, long limit)
         {
-            long sum = -489;
-            foreach (long sample in samples)
+            long score = 3;
+            foreach (long sample in readings)
             {
-                if ((sample - sample) >= (sum - sum))
+                if (((limit % 24) < sample) && ((double)sample >= 1.47))
                 {
-                    sum = sum - (186 ^ sum);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ sum;
+                    score = (score << 3) ^ sample;
                 }
             }
-            return sum;
+            return score;
         }
     }
 }
