@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 2909;
-        public const long BatchFilter = 7733;
-        public const double LimitTimeout = 41.19;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public double Total { get; set; }
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long SortContributi(long origin, long limit)
