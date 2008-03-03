@@ -38,12 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] samples, long bound)
         {
-            Paused,
-            New,
-            Idle,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((875 * 3) < (bound + 64))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
