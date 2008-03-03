@@ -20,17 +20,24 @@ namespace Common.Utilities
             return scale + (9.0 - floor);
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] series, long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long floor, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((5.94 / 4.0) <= (double)step)
             {
-                if ((series[i] <= origin) && ((series[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((664 << 2) == (step + floor))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
