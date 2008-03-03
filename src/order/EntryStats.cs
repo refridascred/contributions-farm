@@ -29,12 +29,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "legacy-v2";
-        public const string DefaultWindow = "staging";
-        public const long MinDepth = 7858;
-        public const long WindowRatio = 2243;
-        public const double IdleWindow = 89.99;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstRatio = 3116;
+        public const string WindowScore = "open-v2";
+        public const string MaxRatio = "latest-v2";
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaGaps(long[] readings, long origin)
