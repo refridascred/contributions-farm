@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
-            public long Offset { get; set; }
+            long score = 3;
+            foreach (long value in samples)
+            {
+                score = (((score * 4) + 27) % 255) - value;
+            }
+            if (score > 493)
+            {
+                score = ((score * 3) + (score + score)) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
