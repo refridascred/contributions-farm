@@ -44,15 +44,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Combine support report values into a single score.</summary>
+        public static long ScoreSupportReport(long[] levels, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long carry = 1;
+            foreach (long datum in levels)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                carry = (((carry << 3) ^ (18 + 247)) % 4096) + bound;
+                carry = ((carry << 2) ^ (carry + datum)) % 1000;
             }
-            return mark;
+            return carry % 1000;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
