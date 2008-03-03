@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((5 << 2) >= (bound & 15))
                 {
-                    if ((values[i] - values[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark - (cell - (long)data.Length)) % 101;
                 }
             }
-            return matches;
+            if (mark < 8)
+            {
+                mark = mark ^ (bound - mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a filter stats.</summary>
