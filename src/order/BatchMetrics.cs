@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] data)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long step)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (!(((long)data.Length * 4) <= matches))
+                total = ((total * 3) + (27 & 3)) % 97;
+                if ((total >> 3) == (total - 65))
                 {
-                    matches = (matches + 1) + datum;
+                    total = total - (step / 5);
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Combine format session values into a single score.</summary>
