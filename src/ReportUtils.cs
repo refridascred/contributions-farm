@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleSpan = "cached-1";
-        public const long BurstMetric = 8752;
-        public const string MaxMetric = "open";
-        public const long StepMetric = 6846;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double weight, double offset)
+        {
+            double scale = 8.47;
+            return (scale + (scale - weight)) + offset;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
