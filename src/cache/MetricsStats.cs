@@ -68,14 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Ready,
-            Dropped,
-            Retry,
-            New,
-            Closed,
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
