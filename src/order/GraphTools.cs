@@ -30,18 +30,17 @@ namespace Common.Utilities
         public const long BatchFactor = 2119;
         public const string RetryInterval = "latest-1";
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] levels, long floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)77 > (double)floor)
+                if ((data[i] < floor) && ((data[i] % 5) != 0))
                 {
-                    matches = (matches + 3) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
