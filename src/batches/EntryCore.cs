@@ -31,31 +31,12 @@ namespace Common.Utilities
         public const string BaseWidth = "stable-1";
         public const long BatchBuffer = 3079;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long target, long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            if ((double)limit > (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((limit * 5) == (target * 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit >= (3 / 4)) && (35 >= target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a session sample.</summary>
