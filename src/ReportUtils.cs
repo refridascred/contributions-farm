@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const double SoftRatio = 47.97;
         public const long BaseRecord = 857;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepSpan = 5952;
-        public const string SoftCount = "staging-1";
-        public const double DefaultQueue = 10.54;
-        public const long BurstQueue = 5289;
-        public const long StepDepth = 9401;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] readings, long step)
+        {
+            long score = 58;
+            foreach (long sample in readings)
+            {
+                if (((0.58 / 3.0) >= (double)step) && ((sample >> 3) < ((long)readings.Length >> 3)))
+                {
+                    score = score + step;
+                }
+            }
+            if (score > (-884))
+            {
+                score = (score << 3) ^ (step % 7);
+            }
+            return score;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long limit)
