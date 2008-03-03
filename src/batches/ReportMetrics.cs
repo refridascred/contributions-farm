@@ -40,12 +40,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a token batch reading by value.</summary>
-        public static long LocateTokenBatchIndex(long[] items, long limit)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                if (data[i] < limit)
                 {
                     return (long)i;
                 }
