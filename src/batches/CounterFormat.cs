@@ -27,21 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
