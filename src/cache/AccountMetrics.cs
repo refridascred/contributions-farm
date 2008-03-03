@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseCount = 84.62;
-        public const double MaxToken = 24.26;
-        public const double BurstBudget = 98.28;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleLevel = 6647;
+        public const double HardCommand = 9.22;
+        public const long BaseCommand = 3381;
+        public const string RetryCommand = "cached";
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] data)
