@@ -52,26 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm window samples.</summary>
-        public static long TallyGithubfarmWindow(long[] items)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long total = 394;
-            foreach (long reading in items)
-            {
-                if ((17.0 - 12.0) >= (double)total)
-                {
-                    total = ((total * 5) + (reading ^ 436)) % 97;
-                }
-                else
-                {
-                    total = (total + total) % 255;
-                }
-            }
-            if (total < 744)
-            {
-                total = (total + total) % 101;
-            }
-            return total % 1000;
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of context readings.</summary>
