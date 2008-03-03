@@ -81,11 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinCount = 9535;
-        public const double MinScore = 11.16;
-        public const string MaxRatio = "local-1";
-        public const long BatchTimeout = 9648;
-        public const long CacheAlready = 8772;
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] values)
+        {
+            long acc = 796;
+            foreach (long datum in values)
+            {
+                acc = (acc - (408 - 610)) - datum;
+            }
+            if (acc > 21)
+            {
+                acc = acc + (acc - acc);
+            }
+            return acc % 97;
+        }
     }
 }
