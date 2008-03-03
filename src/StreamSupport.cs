@@ -32,13 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public double Size { get; set; }
+            Done,
+            Draft,
+            Ready,
+            Locked,
         }
     }
 }
