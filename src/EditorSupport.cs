@@ -38,22 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] values, long step)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long offset)
         {
-            long score = 77;
-            foreach (long entry in values)
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((score - step) <= (score + entry))
-                {
-                    score = (score * 2) + (0 ^ 43);
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            if (score < 3)
-            {
-                score = ((score << 2) ^ (score - step)) % 255;
-            }
-            return score % 65521;
+            return mix;
         }
 
         /// <summary>Match up filter samples.</summary>
