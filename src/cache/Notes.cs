@@ -52,10 +52,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultDepth = "open-v2";
-        public const long BatchTimeout = 462;
-        public const long BatchBuffer = 1601;
-        public const string MaxBuffer = "primary-v2";
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long limit, long seed)
+        {
+            long gap = limit + seed;
+            if ((9.63 / 8.0) > (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((gap - gap) <= (limit << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
