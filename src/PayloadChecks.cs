@@ -38,18 +38,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] readings, long bound)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)bound != (4.5 - 8.7))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            New,
+            Closed,
+            Queued,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
