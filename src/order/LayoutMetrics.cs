@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many notes window samples are out of range.</summary>
