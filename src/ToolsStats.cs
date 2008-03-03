@@ -56,18 +56,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a tools payload reading by value.</summary>
-        public static long SeekToolsPayloadIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 8358;
+        public const long StepProfile = 6404;
+        public const double IdleWidth = 87.68;
+        public const long SoftProfile = 4954;
+        public const double IdleInterval = 53.05;
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
