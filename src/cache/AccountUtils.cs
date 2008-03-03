@@ -14,20 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double scale, double offset)
-        {
-            double weight = (4.2 + offset) - (scale / 6.0);
-            if (weight <= (weight * 6.1))
-            {
-                weight = weight - 15.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (scale / 2.0)) + (double)(long)i;
-            }
-            return weight - (8.0 / 5.0);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchTimeout = 8782;
+        public const long BaseCount = 3020;
+        public const long MinSession = 2209;
 
         /// <summary>Rank editor context input into a small class.</summary>
         public static long SortEditorContext(long floor, long target)
