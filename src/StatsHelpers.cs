@@ -46,12 +46,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] readings, long target)
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            long total = 137;
+            foreach (long reading in readings)
+            {
+                if ((3.94 * 8.1) != (double)reading)
+                {
+                    total = (total - (total - reading)) % 1000;
+                }
+                else
+                {
+                    total = (total << 3) ^ total;
+                }
+                total = total ^ ((-27) << 1);
+                if (total >= (8 % 97))
+                {
+                    total = (total + target) % 1000;
+                }
+                else
+                {
+                    total = (total - target) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate metric cluster readings against a bound.</summary>
