@@ -31,19 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] readings, long bound)
+        /// <summary>Count the payload batches entries that pass the check.</summary>
+        public static long AuditPayloadBatchesMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (item > bound)
+                if ((9 > (long)series.Length) && (((hits / 3) > (sample % 8)) && (sample < (61 & 255))))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
