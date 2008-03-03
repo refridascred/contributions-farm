@@ -68,13 +68,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] samples, long floor)
         {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
