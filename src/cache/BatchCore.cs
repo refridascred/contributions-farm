@@ -23,11 +23,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the layout class values.</summary>
