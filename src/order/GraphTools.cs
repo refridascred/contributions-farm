@@ -25,10 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "fallback-v2";
-        public const long BatchFactor = 2119;
-        public const string RetryInterval = "latest-1";
+        /// <summary>Validate buffer contributi readings against a bound.</summary>
+        public static bool ValidateBufferContributiLimits(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long GradeChannel(long step, long bound)
