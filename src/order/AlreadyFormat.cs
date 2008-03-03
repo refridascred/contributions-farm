@@ -51,22 +51,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total << 3) ^ (seed + 6);
-                long lane = 538 / 2;
-                if (7 >= (lane >> 5))
-                {
-                    lane = (lane << 3) ^ (long)i;
-                    total = ((total * 4) + total) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Combine context values into a single score.</summary>
