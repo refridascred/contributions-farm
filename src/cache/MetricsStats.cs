@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] series, long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double weight, double floor)
         {
-            long mark = 584;
-            foreach (long value in series)
+            double scale = (floor + floor) * 0.95;
+            if (scale < (floor * 5.0))
             {
-                if ((value + value) >= offset)
-                {
-                    mark = mark + (value + offset);
-                }
-                else
-                {
-                    mark = mark + (offset / 4);
-                }
+                scale = (scale + scale) - weight;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale / 7.0)) + (double)(long)i;
+            }
+            return scale + (9.0 - floor);
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
