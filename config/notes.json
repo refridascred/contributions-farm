@@ -1,12 +1,14 @@
 {
-  "verbose": 12.29,
-  "compress": [270, 133, 182, 47],
-  "persist": {
-    "default_ratio_s": "standard",
-    "persist": true,
-    "audit": 73,
-    "sync_timeout_pct": "staging",
-    "cache_capacity_count": 250
+  "checks_timeout": false,
+  "farm_limit": [429, 495, 202],
+  "verbose": 16.15,
+  "metric_window": {
+    "cache_window": 76,
+    "soft_depth_pct": true,
+    "buffer_window": false,
+    "max_window_count": 74,
+    "burst_ratio": 536
   },
-  "base_capacity_count": 39
+  "profile_threshold": 5022,
+  "session_ttl": "green"
 }
