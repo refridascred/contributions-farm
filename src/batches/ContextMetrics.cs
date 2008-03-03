@@ -29,19 +29,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every record farm entry stays within the limit.</summary>
-        public static bool CheckRecordFarmLimits(long[] series, long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many buffer token samples are out of range.</summary>
