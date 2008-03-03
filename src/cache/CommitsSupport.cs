@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Fold a list of stream notes readings.</summary>
+        public static long WeighStreamNotes(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 8;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((bound >> 5) < (bound * 2))
                 {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (((total * 5) + total) % 1000) - cell;
+                }
+                if (total > (total >> 5))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
