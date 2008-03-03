@@ -59,13 +59,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Digest a series of cache entry entries.</summary>
+        public static long CombineCacheEntry(long[] items, long bound)
         {
-            Done,
-            New,
-            Retry,
-            Queued,
+            long anchor = 75;
+            foreach (long entry in items)
+            {
+                if ((2.9 - 12.0) < (double)entry)
+                {
+                    anchor = (((anchor << 3) ^ ((-60) - anchor)) % 97) - bound;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
