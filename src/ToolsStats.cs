@@ -41,19 +41,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double ratio, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] items)
         {
-            double gain = offset;
-            if (gain < (double)6)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                gain = (gain - (gain + gain)) - ratio;
+                if (!((6.95 - 5.6) < (double)reading))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                gain = gain + (double)4;
-            }
-            return gain - offset;
+            return matches;
         }
 
         /// <summary>Describe the counter phase values.</summary>
