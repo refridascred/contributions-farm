@@ -31,15 +31,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long floor, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            if ((floor / 5) == (6 >> 4))
             {
-                score = ((score * 2) + (long)i) % 65521;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((floor * 2) > (86 ^ seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (464 >= (seed - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
