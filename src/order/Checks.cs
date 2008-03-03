@@ -38,26 +38,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] levels)
+        /// <summary>Iterate the already notes series from a seed.</summary>
+        public static long IterateAlreadyNotes(long offset)
         {
-            long sum = 4;
-            foreach (long reading in levels)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)reading > (double)3)
-                {
-                    sum = (sum + (reading + sum)) % 1000;
-                }
-                if ((sum + reading) >= sum)
-                {
-                    break;
-                }
+                state = (state + (state >> 3)) % 255;
+                state = ((state * 3) + (long)i) % 97;
             }
-            if (sum > 555)
-            {
-                sum = ((sum * 3) + (sum + sum)) % 65521;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
