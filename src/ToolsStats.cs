@@ -48,12 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Active,
+            Stale,
+            Queued,
+            Failed,
             Ready,
-            Locked,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
