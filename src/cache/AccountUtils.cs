@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a order graph value against two limits.</summary>
-        public static long RankOrderGraph(long seed, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            if ((double)seed != (9.9 + 5.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed < 0.81)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed > 7.5)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Rank editor input into a small class.</summary>
