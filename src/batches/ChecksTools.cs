@@ -36,24 +36,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)result == (1.44 * 4.5))
-                {
-                    result = (result - ((long)i + origin)) % 101;
-                }
-                else
-                {
-                    result = (result - (-22)) % 65521;
-                    result = ((result * 5) + (origin / 2)) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return result;
+            return score;
         }
     }
 }
