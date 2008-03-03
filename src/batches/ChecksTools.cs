@@ -27,19 +27,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value != (6.0 / 8.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowTimeout = 79.03;
+        public const string LimitSize = "local-edge";
+        public const long RetryBatch = 3588;
+        public const string HardBatch = "latest-1";
+        public const long BaseDepth = 7525;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long DefaultLevel = 117;
