@@ -1,4 +1,12 @@
 # entry settings
-cache_timeout_count: fallback
-warm_limit_ms: 45.06
-enabled: standard
+flush_size_count: fallback
+persist:
+  commits_depth: true
+  audit: blue
+  compress: 1045
+  poll_retries:
+    - 169
+    - 20
+batch_size: blue
+soft_limit_ms: 96
+hard_threshold_ms: 100
