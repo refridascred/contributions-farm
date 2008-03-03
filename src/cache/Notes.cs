@@ -28,15 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Closed,
-            Synced,
-            Dropped,
-            Done,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 4471;
+        public const long IdleBatches = 8951;
+        public const double SoftBatches = 73.39;
+        public const long MaxBatches = 8397;
+        public const string BatchBatches = "primary-v2";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long RetryGraph = 8049;
