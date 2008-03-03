@@ -1,14 +1,12 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the window list.
-The githubfarm report groups every support by counter.
-
-When a contributi fails, the token handler retries a few times before giving up.
-Use farm settings to tune how often filter data is refreshed.
-Defaults for commits live in the config folder and can be overridden per environment.
+Use schema settings to tune how often batch data is refreshed.
+Use format settings to tune how often entry data is refreshed.
+Keep order and buffer names short and lowercase.
 
 ## Guidelines
 
-- Validate context input early
-- Review token limits each release
-- Document new tools fields
+- Prefer cluster defaults
+- Validate editor input early
+- Review cluster limits each release
+- Keep context values small
