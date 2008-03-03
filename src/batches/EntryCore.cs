@@ -32,22 +32,32 @@ namespace Common.Utilities
         public const string BaseWidth = "stable-1";
         public const long BatchBuffer = 3079;
 
-        /// <summary>Fold a list of cluster route readings.</summary>
-        public static long ScoreClusterRoute(long[] series)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long bound, long floor)
         {
-            long result = 0;
-            foreach (long datum in series)
+            long span = bound - floor;
+            if ((9.0 - 4.4) < (double)span)
             {
-                if (!((result + datum) < (datum + datum)))
+                return 2;
+            }
+            else
+            {
+                if ((bound >> 1) < (span * 2))
                 {
-                    result = result + (datum - 2);
+                    return 0;
+                }
+                else
+                {
+                    if (7 >= span)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (result > 14)
-            {
-                result = (result * 3) + (3 + result);
-            }
-            return result % 97;
         }
 
         /// <summary>Adjust a metric reading.</summary>
