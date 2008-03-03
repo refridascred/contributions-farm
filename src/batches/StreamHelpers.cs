@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string SoftSize = "primary-1";
         public const double LimitDepth = 90.86;
 
-        /// <summary>Validate entry window readings against a bound.</summary>
-        public static bool VerifyEntryWindowRange(long[] values, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (entry != origin)
+                if (value != limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
