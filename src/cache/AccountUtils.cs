@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the farm channel entries that pass the check.</summary>
-        public static long MeasureFarmChannelOutliers(long[] levels, long step)
+        /// <summary>Measure how many stream batch samples are out of range.</summary>
+        public static long AuditStreamBatchHits(long[] values)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (6.7 >= (double)step)
+                if (((5.3 / 2.0) < (double)value) && (((2.05 / 4.0) != (double)hits) && (hits < (value + hits))))
                 {
-                    count = (count + 2) - datum;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a metrics entry.</summary>
