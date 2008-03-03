@@ -55,18 +55,10 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheSpan = 48.17;
+        public const string WindowBatch = "stable-v2";
+        public const long DefaultScore = 5464;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
