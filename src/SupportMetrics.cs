@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Support metrics helpers.</summary>
     public static class SupportMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] levels, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Closed,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the schema state values.</summary>
