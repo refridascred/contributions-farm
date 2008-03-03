@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 2909;
+        public const long BatchFilter = 7733;
+        public const double LimitTimeout = 41.19;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long FoldTools(long[] series)
