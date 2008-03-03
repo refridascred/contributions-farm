@@ -27,12 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long step, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
+            long slot = step ^ bound;
+            if ((slot > (step + 4)) && ((slot & 3) > (bound - slot)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + 9) <= (bound + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((step + bound) > (49 + slot)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate githubfarm window samples.</summary>
