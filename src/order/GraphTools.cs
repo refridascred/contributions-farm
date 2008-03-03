@@ -16,19 +16,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate buffer contributi readings against a bound.</summary>
-        public static bool ValidateBufferContributiLimits(long[] samples, long limit)
+        /// <summary>Check that every notes support entry stays within the limit.</summary>
+        public static bool VerifyNotesSupportBounds(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (datum >= limit)
+                if (value < floor)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
