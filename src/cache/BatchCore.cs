@@ -34,18 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 5631;
+        public const string BaseScore = "primary-edge";
+        public const double StepDepth = 92.59;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double SoftSize = 51.66;
