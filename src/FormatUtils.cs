@@ -40,10 +40,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 2387;
-        public const long IdleGithubfarm = 4145;
-        public const long WindowGithubfarm = 6695;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 1515;
+        public const long BatchFactor = 3954;
+        public const long RetryPayload = 7808;
+        public const string LimitInterval = "strict-v2";
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long PairWindowCount(long[] data)
