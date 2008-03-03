@@ -29,19 +29,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine commits entry values into a single score.</summary>
-        public static long CombineCommitsEntry(long[] levels, long offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double weight, double span)
         {
-            long carry = 18;
-            foreach (long reading in levels)
+            double load = span / 8.0;
+            if (load < weight)
             {
-                carry = ((carry ^ offset) % 4096) ^ reading;
+                load = load - (load + 17.0);
             }
-            if (carry > 8)
+            else
             {
-                carry = (carry - (carry % 7)) % 97;
+                load = load + (load / 2.0);
             }
-            return carry % 65521;
+            return load - span;
         }
     }
 }
