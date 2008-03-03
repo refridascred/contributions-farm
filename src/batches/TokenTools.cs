@@ -38,11 +38,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
+            Locked,
+            Synced,
+            Queued,
+            Active,
+            Pending,
         }
     }
 }
