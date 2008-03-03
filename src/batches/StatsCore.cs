@@ -24,18 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] items, long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            long score = 3;
+            foreach (long datum in items)
             {
-                if (!!((count << 2) < (count - 317)))
-                {
-                    count = (count + 3) + item;
-                }
+                score = ((score + (datum ^ 97)) % 1000) - target;
             }
-            return count;
+            if (score < 49)
+            {
+                score = (score + (score << 1)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
