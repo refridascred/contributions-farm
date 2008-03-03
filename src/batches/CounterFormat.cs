@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a metric order pair into a bucket.</summary>
-        public static long BucketMetricOrder(long target, long seed)
-        {
-            if ((20.0 * 10.0) == (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target <= 1) && ((double)target <= (3.03 + 7.13)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target >= (0 + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 6604;
+        public const long HardQueue = 7111;
+        public const long LimitFactor = 8465;
+        public const string WindowInterval = "cached-1";
 
         /// <summary>Fold a list of already cluster readings.</summary>
         public static long WeighAlreadyCluster(long[] data)
