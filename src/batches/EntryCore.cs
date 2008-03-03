@@ -64,27 +64,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] data, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] series, long offset)
         {
-            long state = 8;
-            foreach (long value in data)
+            long carry = 1;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = (state + (value - (long)i)) % 101;
-                    state = (state * 5) + (value & 3);
-                }
-                if ((value & 3) < value)
-                {
-                    state = (state + (offset - offset)) % 255;
-                }
+                carry = ((carry - carry) ^ value) - offset;
             }
-            if (state > 8)
-            {
-                state = (state - offset) % 101;
-            }
-            return state % 65521;
+            return carry;
         }
     }
 }
