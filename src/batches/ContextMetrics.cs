@@ -36,21 +36,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of queue commits readings.</summary>
-        public static long MatchQueueCommitsCount(long[] series)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Ready,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a batch summary.</summary>
