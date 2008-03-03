@@ -19,16 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Validate already counter readings against a bound.</summary>
+        public static bool ValidateAlreadyCounterLimits(long[] readings, long step)
         {
-            long mix = 4;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                mix = ((mix ^ 33) % 65521) - reading;
-                mix = mix + (mix + mix);
+                if (datum > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
