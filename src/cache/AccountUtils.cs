@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowTimeout = 65.88;
+        public const double MaxScore = 58.56;
+        public const long StepSpan = 1151;
+        public const string MaxEntry = "fallback-v2";
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
