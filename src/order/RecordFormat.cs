@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long origin, long floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] samples)
         {
-            long span = origin ^ floor;
-            if ((954 < (span * 5)) && (origin < floor))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span << 3) >= (42 + span))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin % 24) == (floor + span)) && ((floor & 3) <= (origin - floor)))
+                    if ((samples[i] + samples[j]) == 13)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate schema samples.</summary>
