@@ -54,18 +54,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] data, long limit)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((count ^ 44) > (count >> 5)) && ((13.0 * 5.3) == (double)reading))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
