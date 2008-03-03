@@ -62,19 +62,14 @@ namespace Common.Utilities
         public const string WindowBatches = "strict";
         public const long IdleBudget = 4412;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long mix = 63;
-            foreach (long item in levels)
-            {
-                mix = (mix ^ 94) % 65521;
-                if (item <= (666 - item))
-                {
-                    mix = mix - (39 >> 1);
-                }
-            }
-            return mix;
+            New,
+            Closed,
+            Ready,
+            Locked,
+            Paused,
         }
     }
 }
