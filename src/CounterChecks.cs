@@ -27,39 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long floor, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double ratio, double offset)
         {
-            long diff = floor ^ limit;
-            if (!((34 - diff) >= limit))
+            double gain = offset / 6.0;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                gain = ((gain - 0.1) + (double)(long)i) - ratio;
             }
-            else
-            {
-                if ((double)limit >= (5.17 / 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor <= (floor << 2)) || (floor < diff))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((408 + limit) != (floor - floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return gain - (double)798;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
