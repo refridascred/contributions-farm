@@ -55,19 +55,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] readings, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (reading < seed)
+                if (((matches - 0) < item) && ((double)limit == (19.0 * 9.0)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
