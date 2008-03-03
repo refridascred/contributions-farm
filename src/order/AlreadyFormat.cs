@@ -48,12 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 42.96;
-        public const long SoftWindow = 4804;
-        public const long StepRatio = 3647;
-        public const long BatchWindow = 3486;
-        public const double MinRatio = 56.94;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Paused,
+            Idle,
+            Locked,
+            New,
+            Retry,
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterMatches(long[] items, long offset)
