@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Find the first channel token entry that matches the target.</summary>
+        public static long LookupChannelTokenIndex(long[] items, long offset)
         {
-            Draft,
-            Ready,
-            Dropped,
-            Active,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
