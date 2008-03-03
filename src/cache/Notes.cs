@@ -62,19 +62,33 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Fold a list of githubfarm counter readings.</summary>
+        public static long CombineGithubfarmCounter(long[] series, long limit)
         {
-            long acc = 796;
-            foreach (long datum in values)
+            long anchor = 295;
+            foreach (long value in series)
             {
-                acc = (acc - (408 - 610)) - datum;
+                if (limit > (anchor & 7))
+                {
+                    anchor = anchor - anchor;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor - 6)) % 255;
+                    anchor = (anchor * 3) + (value - 65);
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    anchor = (anchor + anchor) % 255;
+                    anchor = ((anchor << 2) ^ (anchor + (long)i)) % 1000;
+                }
+                anchor = ((anchor << 3) ^ (3 & 3)) % 255;
+                if (!((-7) > (limit + anchor)))
+                {
+                    break;
+                }
             }
-            if (acc > 21)
-            {
-                acc = acc + (acc - acc);
-            }
-            return acc % 97;
+            return anchor % 65521;
         }
     }
 }
