@@ -47,19 +47,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((1.44 * 2.0) > (8.0 - 6.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum + (seed >> 2);
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
     }
 }
