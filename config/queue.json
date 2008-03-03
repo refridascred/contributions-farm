@@ -1,6 +1,6 @@
 {
-  "default_interval_pct": ["strict", "edge", "eu-west"],
-  "stats_capacity": ["legacy", "cached", "strict"],
-  "sync_capacity": [112, 138],
-  "poll_capacity_count": [334, 9]
+  "dry_run": false,
+  "record_capacity": 70.92,
+  "poll_size_s": 23,
+  "metric_timeout": 38
 }
