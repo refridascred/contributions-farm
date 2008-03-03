@@ -56,31 +56,16 @@ namespace Common.Utilities
         public const long IdleWidth = 2101;
         public const long BaseGraph = 7358;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long floor, long origin)
+        /// <summary>Iterate the stats cache series from a seed.</summary>
+        public static long SeriesStatsCache(long target)
         {
-            if (((double)floor >= (7.0 - 7.0)) && (floor >= (191 + floor)))
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
+                state = ((state * 3) + (target * 3)) % 4096;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((origin + floor) < (origin / 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)origin < (double)0) && ((2.0 * 4.0) == (double)origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
