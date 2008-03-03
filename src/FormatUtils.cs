@@ -44,20 +44,32 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long offset, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            long slot = offset + step;
+            if (((3.0 + 9.0) <= (double)step) || ((offset - offset) != (step - step)))
             {
-                if ((0.4 * 8.7) != (double)carry)
-                {
-                    carry = (carry + (780 ^ 3)) % 1000;
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (slot < (offset >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step * 4) < (step % 24))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a cluster channel pair into a bucket.</summary>
