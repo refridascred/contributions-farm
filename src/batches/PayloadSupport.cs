@@ -12,12 +12,31 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a metrics queue pair into a bucket.</summary>
+        public static long BucketMetricsQueue(long origin, long bound)
         {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            if (origin >= (origin & 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound <= (bound ^ origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin != (15.0 / 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
