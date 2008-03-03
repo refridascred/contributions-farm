@@ -35,22 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the batches profile entries that pass the check.</summary>
-        public static long AuditBatchesProfileOutliers(long[] items, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((bound & 63) == (5 >> 5))
-                {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
