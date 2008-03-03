@@ -38,14 +38,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Queued,
-            Synced,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheScore = 73.3;
+        public const long BaseFactor = 2931;
+        public const long WindowRatio = 8478;
+        public const long HardFactor = 9902;
+        public const string IdleScore = "fallback";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 3372;
