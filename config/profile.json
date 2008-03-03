@@ -1,12 +1,8 @@
 {
-  "order_delay": false,
-  "buffer_interval": ["local", "edge"],
-  "dry_run": {
-    "max_timeout_ms": 2699,
-    "soft_window_s": "standard",
-    "context_ratio": 87.02,
-    "batch_interval": 44,
-    "poll_size": 68.4,
-    "max_threshold_pct": 67
-  }
+  "profile_retries": 76.16,
+  "poll_window": "edge",
+  "dry_run": 84.16,
+  "payload_delay": false,
+  "enabled": 23.3,
+  "filter_retries": 60
 }
