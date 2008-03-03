@@ -37,31 +37,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long offset, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            if ((double)offset != (8.3 - 3.6))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((limit >> 1) != (48 >> 1)) && ((offset >> 4) > 529))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit / 5) < (offset + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Ready,
+            Idle,
+            Done,
+            Active,
         }
 
         /// <summary>Match up route stats samples.</summary>
