@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics commits readings against a bound.</summary>
-        public static bool GuardMetricsCommitsLimits(long[] readings, long seed)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Done,
+            Idle,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
