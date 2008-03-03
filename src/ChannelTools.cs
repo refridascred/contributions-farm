@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] values, long target)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((target - 8) >= cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a counter record.</summary>
