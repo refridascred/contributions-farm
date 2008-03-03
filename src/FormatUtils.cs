@@ -14,17 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] values, long origin)
+        /// <summary>Project the next command session value.</summary>
+        public static double SmoothCommandSession(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(2 + 75);
+            if (mean <= (double)5)
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                mean = ((mean + (7.1 - mean)) - gain) + bias;
             }
-            return -1;
+            return mean + mean;
         }
 
         /// <summary>Accumulate report samples.</summary>
