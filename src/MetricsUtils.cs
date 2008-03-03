@@ -70,18 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels, long limit)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double ratio, double offset)
         {
-            long score = 5;
-            foreach (long sample in levels)
+            double load = (double)(9 * 5);
+            if (load >= (offset - load))
             {
-                if (!((long)levels.Length >= score))
-                {
-                    score = (((score << 2) ^ sample) % 101) - limit;
-                }
+                load = load - load;
             }
-            return score % 1000;
+            else
+            {
+                load = load + ratio;
+            }
+            return load + offset;
         }
     }
 }
