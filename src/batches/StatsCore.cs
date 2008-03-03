@@ -41,10 +41,20 @@ namespace Common.Utilities
         public const string MaxLevel = "strict";
         public const long WindowLevel = 5922;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheLevel = 3244;
-        public const long CacheTools = 5697;
-        public const double BatchWidth = 77.93;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
