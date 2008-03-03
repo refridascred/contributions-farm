@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Count the graph batch entries that pass the check.</summary>
+        public static long CountGraphBatchHits(long[] values, long seed)
         {
-            Idle,
-            Closed,
-            New,
-            Locked,
-            Synced,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((tally ^ reading) > (tally ^ 0)) || (reading > (reading + seed)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate tools samples.</summary>
