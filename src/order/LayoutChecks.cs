@@ -73,19 +73,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((double)seed > 9.71) || ((seed + carry) > ((long)i << 2)))
-                {
-                    carry = carry - (carry & 1);
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
