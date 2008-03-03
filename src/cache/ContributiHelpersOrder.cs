@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 3615;
-        public const string RetryWidth = "standard-edge";
-        public const long CacheNotes = 3180;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double rate, double floor)
+        {
+            double mean = (double)(265 ^ 83);
+            if (mean < floor)
+            {
+                mean = mean - rate;
+            }
+            else
+            {
+                mean = mean - (double)30;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + rate;
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double SmoothWindow(double bias, double offset)
