@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] readings, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((readings[i] < step) && ((readings[i] % 3) != 0))
+                if (reading >= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
