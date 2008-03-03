@@ -1,5 +1,5 @@
 {
-  "retry_ttl_pct": false,
-  "default_timeout": [230, 230, 451],
-  "readonly": 62.3
+  "cache_size_count": "primary",
+  "persist": ["legacy", "strict"],
+  "report_window": "green"
 }
