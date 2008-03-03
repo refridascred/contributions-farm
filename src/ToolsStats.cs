@@ -56,13 +56,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Locate a tools payload reading by value.</summary>
+        public static long SeekToolsPayloadIndex(long[] data, long target)
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
