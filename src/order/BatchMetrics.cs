@@ -34,20 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command metric readings against a bound.</summary>
-        public static bool VerifyCommandMetricRange(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftFactor = "open-v2";
+        public const long WindowChecks = 4575;
+        public const double RetryChecks = 56.55;
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
