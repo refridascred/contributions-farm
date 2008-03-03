@@ -60,11 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double weight, double span)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] levels, long origin)
         {
-            double weight2 = (double)86 * 3.2;
-            return (weight2 - span) + weight;
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many queue payload samples are out of range.</summary>
