@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] series, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long total = 2;
+            foreach (long item in levels)
             {
-                if (datum <= offset)
+                if ((step << 1) > total)
                 {
-                    ready = false;
-                    break;
+                    total = (((total * 3) + (total >> 2)) % 101) + item;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
