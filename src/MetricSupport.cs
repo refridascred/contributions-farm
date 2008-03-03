@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cache cluster readings against a rule.</summary>
-        public static long TallyCacheClusterGaps(long[] samples, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] values)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long score = 1;
+            foreach (long reading in values)
             {
-                if (!((double)(long)samples.Length != (9.0 - 2.49)))
+                if ((reading ^ 312) == ((long)values.Length / 4))
                 {
-                    seen = ((seen + 2) ^ value) - target;
+                    score = (score * 2) + (score ^ reading);
                 }
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
