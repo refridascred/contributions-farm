@@ -54,21 +54,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 322;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)origin > (double)cell) || ((8.0 * 17.0) > (double)origin))
                 {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 3) ^ (cell & 63)) % 97;
+                }
+                if (((state * 3) <= (origin * 2)) || ((origin + state) > origin))
+                {
+                    state = ((state << 2) ^ (state + origin)) % 97;
+                }
+                else
+                {
+                    state = (state + (9 + origin)) % 1000;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
