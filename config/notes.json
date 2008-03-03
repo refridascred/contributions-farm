@@ -1,15 +1,7 @@
 {
-  "max_delay": true,
-  "compress": ["stable", "primary", "fallback", "cached"],
-  "cache_retries_count": [26, 486],
-  "soft_retries_ms": {
-    "max_retries_ms": {
-      "verbose": 6.82,
-      "readonly": ["cached", "edge", "blue"],
-      "profile_retries": 21
-    },
-    "min_window_count": ["staging", "latest", "eu-west"],
-    "flush_threshold_s": 28.38
-  },
-  "payload_ratio": [182, 195, 302]
+  "base_delay_s": false,
+  "hard_interval_pct": "local",
+  "batch_threshold": "legacy",
+  "payload_ttl": [376, 147, 423],
+  "readonly": 54.0
 }
