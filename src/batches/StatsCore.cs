@@ -55,22 +55,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up command graph samples.</summary>
-        public static long PairCommandGraphCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheLevel = 3244;
+        public const long CacheTools = 5697;
+        public const double BatchWidth = 77.93;
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
