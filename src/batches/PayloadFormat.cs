@@ -40,31 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long origin, long origin2)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            if ((7.27 * 2.0) == (double)origin2)
+            long sum = -489;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1.56 + 1.0) == (double)origin2)
+                if ((sample - sample) >= (sum - sum))
                 {
-                    return 6;
+                    sum = sum - (186 ^ sum);
                 }
                 else
                 {
-                    if ((double)origin2 == (double)(-85))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = (sum << 2) ^ sum;
                 }
             }
+            return sum;
         }
     }
 }
