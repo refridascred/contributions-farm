@@ -33,14 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Pending,
-            Failed,
-            Stale,
-            Ready,
-            Locked,
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
