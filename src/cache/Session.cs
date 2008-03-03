@@ -46,20 +46,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total - (total / 8);
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total ^ ((long)i >> 1)) % 1000) ^ (long)i2;
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
     }
 }
