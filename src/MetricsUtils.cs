@@ -48,11 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] values)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long carry = 79;
+            foreach (long cell in values)
+            {
+                if (cell >= (carry - carry))
+                {
+                    carry = (carry ^ 6) % 65521;
+                }
+                else
+                {
+                    carry = carry + (8 ^ cell);
+                }
+                if ((carry % 5) < (cell - cell))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the graph mode values.</summary>
