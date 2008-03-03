@@ -37,20 +37,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((8 + 512) > (15 + seed))
-                {
-                    break;
-                }
-                total = (total ^ (total & 1)) % 1000;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Draft,
+            Ready,
+            Failed,
         }
     }
 }
