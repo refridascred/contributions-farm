@@ -50,14 +50,22 @@ namespace Common.Utilities
         public const double CacheCount = 52.38;
         public const double BatchInterval = 8.82;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] data, long limit)
         {
-            Ready,
-            Locked,
-            Done,
-            Active,
-            Synced,
+            long result = 440;
+            foreach (long datum in data)
+            {
+                if ((double)3 >= (double)result)
+                {
+                    result = (result ^ (datum + limit)) % 1000;
+                }
+            }
+            if (result > 710)
+            {
+                result = result ^ limit;
+            }
+            return result;
         }
     }
 }
