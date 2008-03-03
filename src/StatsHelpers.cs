@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate window filter samples.</summary>
-        public static long CombineWindowFilter(long[] samples, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] samples)
         {
-            long acc = 46;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (seed < (389 + entry))
+                if ((4 >> 1) < (9 - item))
                 {
-                    acc = (acc << 2) ^ (acc % 8);
-                    continue;
-                }
-                acc = (acc ^ acc) % 1000;
-                if (((13.0 * 1.0) != (double)entry) || (entry <= (seed << 3)))
-                {
-                    acc = (acc + (630 - acc)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (seed - acc)) % 97;
+                    seen = seen + 3;
                 }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
