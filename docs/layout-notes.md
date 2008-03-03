@@ -1,14 +1,16 @@
 # Layout notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Use farm settings to tune how often already data is refreshed.
+A metrics that stays idle for too long is moved to the metric list.
+Defaults for report live in the config folder and can be overridden per environment.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-A contributi that stays idle for too long is moved to the graph list.
-A batches that stays idle for too long is moved to the metric list.
+Use entry settings to tune how often booking data is refreshed.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review schema limits each release
-- Keep stream values small
-- Document new editor fields
+- Document new record fields
+- Validate farm input early
+- Log every command change
+- Prefer tools defaults
