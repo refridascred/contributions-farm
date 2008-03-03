@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many batch report samples are out of range.</summary>
-        public static long CountBatchReportHits(long[] readings, long step)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (2.4 > (double)step)
-                {
-                    tally = (tally + 3) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
