@@ -32,22 +32,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double rate, double span)
         {
-            long carry = 5;
-            foreach (long entry in values)
+            double ratio = rate;
+            if (ratio > 8.1)
             {
-                if ((double)carry == (double)entry)
-                {
-                    carry = ((carry * 2) + (6 - entry)) % 255;
-                }
-                if (entry >= (-67))
-                {
-                    break;
-                }
+                ratio = ratio - rate;
             }
-            return carry % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - span;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
