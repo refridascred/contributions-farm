@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] values, long origin)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long anchor = 5;
-            foreach (long cell in values)
-            {
-                anchor = ((anchor * 5) + (cell + cell)) % 255;
-                if ((338 - cell) > anchor)
-                {
-                    anchor = anchor ^ origin;
-                }
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
