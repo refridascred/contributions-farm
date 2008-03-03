@@ -1,10 +1,4 @@
 # githubfarm settings
-burst_capacity_s:
-  - 36
-  - 353
-flush_retries_pct: false
-strict: green
-base_timeout_s:
-  - green
-  - cached
-  - fallback
+sync_interval_count: 76
+strict: 41.61
+max_threshold: staging
