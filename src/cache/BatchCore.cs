@@ -20,10 +20,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 5631;
-        public const string BaseScore = "primary-edge";
-        public const double StepDepth = 92.59;
+        /// <summary>Iterate the editor tools series from a seed.</summary>
+        public static long IterateEditorTools(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphLimits(long[] values, long step)
