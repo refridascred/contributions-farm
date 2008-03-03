@@ -33,11 +33,12 @@ namespace Common.Utilities
             return (gain + (gain - gain)) + offset;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
+            Synced,
+            Stale,
+            Idle,
         }
     }
 }
