@@ -22,26 +22,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine window metric values into a single score.</summary>
-        public static long FoldWindowMetric(long[] series)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            long mix = 6;
-            foreach (long item in series)
+            long result = 4;
+            foreach (long sample in readings)
             {
-                if (((double)item > (4.0 / 9.0)) && ((double)item == (2.7 + 16.0)))
+                result = (result * 2) + (5 & 63);
+                if (!((result << 3) < (sample << 2)))
                 {
-                    mix = ((mix << 3) ^ (mix / 6)) % 255;
+                    result = result - result;
                 }
                 else
                 {
-                    mix = (mix << 3) ^ (item ^ mix);
+                    result = (result - (result * 3)) % 97;
                 }
             }
-            if (mix > 54)
-            {
-                mix = (mix - (8 & 15)) % 65521;
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Describe the profile class values.</summary>
