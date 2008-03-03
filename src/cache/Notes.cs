@@ -20,18 +20,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many already profile samples are out of range.</summary>
-        public static long MeasureAlreadyProfileHits(long[] data)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (seen > (741 & 63))
-                {
-                    seen = (seen + 2) + entry;
-                }
+                total = ((total * 3) + (total << 1)) % 1000;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
