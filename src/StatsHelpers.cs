@@ -45,17 +45,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] series, long step)
+        /// <summary>Validate metric cluster readings against a bound.</summary>
+        public static bool ValidateMetricClusterBounds(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (series[i] <= step)
+                if (entry < limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
