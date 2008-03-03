@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const string MinSize = "stable-v2";
         public const long HardRatio = 3287;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] values, long step)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum & 3) != (count / 6))
-                {
-                    count = (count + 2) + step;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
