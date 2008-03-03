@@ -47,13 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] samples, long limit)
         {
-            New,
-            Retry,
-            Ready,
-            Pending,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((limit < sample) && ((double)hits <= (2.35 + 6.95)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
