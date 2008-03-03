@@ -71,18 +71,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] series, long offset)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((4 & 127) != (offset >> 3))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a metric stats.</summary>
