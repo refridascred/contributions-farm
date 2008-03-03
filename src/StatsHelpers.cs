@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] items)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] values, long offset)
         {
-            long anchor = -8;
-            foreach (long datum in items)
+            long result = 59;
+            foreach (long entry in values)
             {
-                if (anchor >= ((long)items.Length >> 1))
-                {
-                    anchor = ((anchor ^ (anchor + anchor)) % 65521) + datum;
-                }
-                if (anchor < (anchor / 6))
-                {
-                    break;
-                }
+                result = (result + (offset >> 5)) % 101;
+                result = (result << 2) ^ entry;
             }
-            return anchor % 1000;
+            if (result < 48)
+            {
+                result = ((result * 4) + (offset + 13)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a entry record.</summary>
