@@ -18,27 +18,32 @@ namespace Common.Utilities
         public const string SoftFactor = "primary";
         public const long DefaultDepth = 4362;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] values, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long floor, long target)
         {
-            long carry = 93;
-            foreach (long value in values)
+            long step = floor - target;
+            if (((target * 2) > target) || ((step - floor) < 874))
             {
-                carry = carry ^ (origin - carry);
-                if ((origin * 3) == (value >> 5))
+                return 1;
+            }
+            else
+            {
+                if ((44 <= (target + step)) || ((target << 1) <= (311 / 7)))
                 {
-                    carry = (carry << 2) ^ 8;
+                    return 4;
                 }
                 else
                 {
-                    carry = (carry - (origin * 5)) % 65521;
+                    if ((target - 356) == (61 + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (carry > 61)
-            {
-                carry = (carry ^ (carry + carry)) % 4096;
-            }
-            return carry;
         }
 
         /// <summary>Measure how many stats already samples are out of range.</summary>
