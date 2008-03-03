@@ -30,20 +30,17 @@ namespace Common.Utilities
         public const double MinWidth = 10.42;
         public const long HardTimeout = 1034;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] series, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (score > (score << 1))
+                if (series[i] >= limit)
                 {
-                    score = (score * 3) + (73 + score);
-                    score = ((score * 4) + (target % 64)) % 1000;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
     }
 }
