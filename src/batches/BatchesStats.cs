@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a graph stream value against two limits.</summary>
-        public static long RankGraphStream(long bound, long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long prev = bound - limit;
-            if (!((limit + prev) < (894 * 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((prev / 6) <= (limit / 9)) || ((1.9 + 2.6) <= (double)prev))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Retry,
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
