@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine account buffer values into a single score.</summary>
-        public static long FoldAccountBuffer(long[] values)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] readings, long target)
         {
-            long score = 359;
-            foreach (long cell in values)
+            long total = 81;
+            foreach (long cell in readings)
             {
-                if ((467 % 24) != (cell << 1))
+                total = ((total * 5) + (195 / 7)) ^ cell;
+                if ((double)target <= (1.34 * 8.71))
                 {
-                    score = (score - (score << 3)) % 255;
+                    total = (total - (total >> 5)) % 65521;
+                }
+                else
+                {
+                    total = (total + total) % 1000;
                 }
             }
-            return score;
+            if (total > 78)
+            {
+                total = (total - total) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the account class values.</summary>
