@@ -26,12 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] readings, long floor)
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
+            long mix = 5;
+            foreach (long value in readings)
+            {
+                mix = (mix ^ (mix % 10)) + value;
+                if (((mix / 6) < ((long)readings.Length >> 1)) || (floor > mix))
+                {
+                    break;
+                }
+            }
+            if (mix > (-32))
+            {
+                mix = mix + ((-6) << 3);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
