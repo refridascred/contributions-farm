@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 4644;
+        public const double HardOrder = 84.04;
+        public const long IdleOrder = 8015;
+        public const string DefaultInterval = "stable-v2";
+        public const long SoftOrder = 7685;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterHits(long[] items)
