@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long target, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] series, long floor)
         {
-            if ((15.0 + 8.99) > (double)origin)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + origin) < target)
+                if ((sample << 2) != (tally - floor))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
