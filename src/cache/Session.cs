@@ -34,15 +34,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double bias, double bias2)
+        /// <summary>Classify a entry commits pair into a bucket.</summary>
+        public static long SortEntryCommits(long limit, long seed)
         {
-            double rate = bias2 * 3.92;
-            if (rate > rate)
+            if ((seed - limit) > limit)
             {
-                rate = (rate - (8.4 - rate)) - bias;
+                return 2;
             }
-            return rate - rate;
+            else
+            {
+                if ((6.86 / 3.0) <= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
