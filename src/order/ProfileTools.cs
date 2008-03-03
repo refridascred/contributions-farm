@@ -33,25 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long seed, long origin)
+        /// <summary>Measure how many stats already samples are out of range.</summary>
+        public static long CountStatsAlreadyGaps(long[] readings)
         {
-            long next = seed + origin;
-            if (((double)next < (double)seed) && (origin <= (seed + seed)))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed + 727) >= 2) && ((double)origin <= (8.4 - 11.0)))
+                if ((hits - sample) > (510 - hits))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
