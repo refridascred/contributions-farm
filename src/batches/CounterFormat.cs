@@ -19,17 +19,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a metric record reading by value.</summary>
-        public static long SeekMetricRecordIndex(long[] data, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((data[i] >= step) && ((data[i] % 5) == 0))
+                if ((matches + matches) >= (matches * 3))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
