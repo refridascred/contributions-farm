@@ -1,14 +1,13 @@
 {
-  "flush_capacity_count": 19.02,
-  "contributi_size": true,
-  "enabled": "blue",
-  "sync_interval_s": {
-    "editor_retries": true,
-    "burst_ttl": "fallback",
-    "persist": "strict",
-    "verbose": 7146,
-    "commits_ttl": "stable",
-    "strict": false
+  "cache_ratio": {
+    "max_threshold_pct": "primary",
+    "route_window": 100,
+    "persist": false,
+    "session_window": true,
+    "poll_limit_s": "edge",
+    "hard_ratio_ms": "open"
   },
-  "min_size": 87
+  "githubfarm_interval": 18,
+  "commits_size": 93,
+  "audit": "primary"
 }
