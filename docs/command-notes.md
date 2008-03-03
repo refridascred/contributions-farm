@@ -1,11 +1,14 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the window list.
-The cluster module keeps window values in sync with the queue cache.
+Use filter settings to tune how often tools data is refreshed.
+Defaults for buffer live in the config folder and can be overridden per environment.
+
+A tools that stays idle for too long is moved to the route list.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep session values small
-- Prefer queue defaults
-- Document new window fields
-- Validate report input early
+- Validate metrics input early
+- Review order limits each release
+- Log every cache change
+- Prefer graph defaults
