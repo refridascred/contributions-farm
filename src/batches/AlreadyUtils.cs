@@ -41,12 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] readings, long bound)
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!((bound & 3) <= (cell ^ cell)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a entry summary.</summary>
