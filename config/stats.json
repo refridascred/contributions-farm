@@ -1,7 +1,18 @@
 {
-  "batch_window_s": "edge",
-  "base_ratio_pct": "cached",
-  "token_size": 25.35,
-  "readonly": [66, 48, 268],
-  "flush_ttl_pct": 49
+  "audit": "eu-west",
+  "readonly": "green",
+  "warm_threshold_pct": {
+    "enabled": {
+      "burst_timeout_s": 50.23,
+      "cache_delay_ms": "blue",
+      "retry_delay": 2.15,
+      "default_retries_ms": false,
+      "layout_depth": "primary"
+    },
+    "stats_depth": true,
+    "graph_limit": 175,
+    "verbose": 17,
+    "poll_interval_count": [475, 385, 245]
+  },
+  "warm_threshold_s": 32
 }
