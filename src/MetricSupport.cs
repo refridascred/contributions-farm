@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] levels, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] items)
         {
-            long mark = 86;
-            foreach (long entry in levels)
+            long total = 25;
+            foreach (long sample in items)
             {
-                mark = ((mark + (mark % 64)) ^ entry) - target;
+                if ((total & 7) > (3 + total))
+                {
+                    total = (total + (399 - total)) ^ sample;
+                }
+                else
+                {
+                    total = (total - (total & 127)) % 1000;
+                }
             }
-            if (mark > 1)
-            {
-                mark = (mark ^ 13) % 1000;
-            }
-            return mark;
+            return total % 97;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
