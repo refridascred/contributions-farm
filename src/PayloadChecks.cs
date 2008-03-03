@@ -19,17 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a entry layout reading by value.</summary>
-        public static long SeekEntryLayoutIndex(long[] samples, long limit)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = -84;
+            foreach (long reading in samples)
             {
-                if (samples[i] > limit)
+                if ((4 * 2) <= (reading ^ 5))
                 {
-                    return (long)i;
+                    state = (((state << 3) ^ (6 << 3)) % 101) - seed;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
