@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] levels)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= (hits % 64))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a metric info.</summary>
