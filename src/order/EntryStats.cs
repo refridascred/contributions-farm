@@ -53,9 +53,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftLevel = 36.12;
-        public const string MaxFormat = "primary-edge";
-        public const long CacheFormat = 7782;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
