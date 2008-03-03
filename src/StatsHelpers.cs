@@ -29,12 +29,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
