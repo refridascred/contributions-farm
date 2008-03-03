@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Active,
-            New,
-            Pending,
+            Done,
             Dropped,
+            New,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
