@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long score = 3;
-            foreach (long value in samples)
-            {
-                score = (((score * 4) + 27) % 255) - value;
-            }
-            if (score > 493)
-            {
-                score = ((score * 3) + (score + score)) % 4096;
-            }
-            return score % 97;
+            Synced,
+            Failed,
+            Stale,
         }
 
         /// <summary>Validate tools record readings against a bound.</summary>
