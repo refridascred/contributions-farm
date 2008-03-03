@@ -23,19 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits filter entry stays within the limit.</summary>
-        public static bool ValidateCommitsFilterLimits(long[] data, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] series, long target)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long mark = 3;
+            foreach (long value in series)
             {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (((mark ^ 12) % 4096) ^ value) + target;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Blend two channel measurements.</summary>
