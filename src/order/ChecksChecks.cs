@@ -35,22 +35,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] values, long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long state = 0;
-            foreach (long entry in values)
-            {
-                if (((-8) - state) != (2 + entry))
-                {
-                    state = ((state ^ (21 + (-38))) % 255) + seed;
-                }
-                if (((-123) - entry) > (state / 2))
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            Idle,
+            Done,
+            Queued,
+            Paused,
+            Failed,
         }
     }
 }
