@@ -68,18 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order counter samples are out of range.</summary>
-        public static long AuditOrderCounterHits(long[] items)
+        /// <summary>Check that every editor report entry stays within the limit.</summary>
+        public static bool ValidateEditorReportLimits(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((double)cell == (8.62 + 0.7))
+                if (reading <= origin)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
