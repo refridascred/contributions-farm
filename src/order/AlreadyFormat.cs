@@ -43,13 +43,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryBudget = 2908;
+        public const long StepSize = 6410;
+        public const long SoftToken = 7636;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
