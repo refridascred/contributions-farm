@@ -20,24 +20,20 @@ namespace Common.Utilities
             return scale + (9.0 - floor);
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long floor, long step)
+        /// <summary>Fold a list of record command readings.</summary>
+        public static long TallyRecordCommand(long[] samples)
         {
-            if ((5.94 / 4.0) <= (double)step)
+            long result = 76;
+            foreach (long entry in samples)
             {
-                return 1;
+                result = result + (entry % 12);
+                result = ((result * 3) + (entry * 3)) % 101;
             }
-            else
+            if (result > 53)
             {
-                if ((664 << 2) == (step + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                result = (result << 3) ^ (result - 5);
             }
+            return result % 1000;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
