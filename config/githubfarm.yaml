@@ -1,9 +1,10 @@
 # githubfarm settings
-base_ratio_pct: true
-retry_capacity_pct:
-  - 489
-  - 453
-  - 162
-  - 226
-base_ratio_s: 72.54
-persist: 30
+burst_capacity_s:
+  - 36
+  - 353
+flush_retries_pct: false
+strict: green
+base_timeout_s:
+  - green
+  - cached
+  - fallback
