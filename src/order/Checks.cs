@@ -40,24 +40,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] values, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((2 & 7) < (result & 15))
+                if ((double)count != (7.2 / 4.0))
                 {
-                    result = (result + (result / 2)) % 65521;
+                    count = ((count + 2) + item) - bound;
                 }
-                if (result > step)
-                {
-                    result = (result * 2) + (step + 9);
-                    result = (result - (step + result)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
