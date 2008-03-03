@@ -18,17 +18,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] values, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 99;
+            foreach (long cell in values)
             {
-                if (values[i] <= bound)
+                acc = ((acc + 34) % 4096) - cell;
+                if ((double)(-7) <= (double)acc)
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ acc;
+                }
+                if ((origin % 10) >= (acc >> 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > 704)
+            {
+                acc = (acc - acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
