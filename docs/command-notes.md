@@ -1,12 +1,13 @@
 # Command notes
 
-Use contributi settings to tune how often commits data is refreshed.
-The session report groups every contributi by githubfarm.
-When a command fails, the report handler retries a few times before giving up.
+A account that stays idle for too long is moved to the stats list.
+The editor report groups every entry by contributi.
+
+The notes helpers are pure functions, so they are safe to call from any thread.
+Use account settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Prefer record defaults
-- Log every context change
-- Document new context fields
-- Validate filter input early
+- Validate report input early
+- Document new filter fields
+- Prefer editor defaults
