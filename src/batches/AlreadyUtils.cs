@@ -20,12 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftLevel = 13.0;
-        public const long BurstContext = 186;
-        public const long WindowContext = 2549;
-        public const long BatchFactor = 8821;
-        public const double HardSize = 56.91;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] levels)
+        {
+            long score = 978;
+            foreach (long reading in levels)
+            {
+                score = score - (1 - 66);
+                if ((double)reading <= (double)291)
+                {
+                    score = score + (score >> 3);
+                    score = (score - ((-373) % 16)) % 255;
+                }
+                score = score + (reading + score);
+            }
+            if (score < (-7))
+            {
+                score = ((score * 4) + (score - score)) % 101;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
