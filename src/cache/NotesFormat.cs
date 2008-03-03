@@ -29,21 +29,18 @@ namespace Common.Utilities
         public const double RetryWidth = 70.96;
         public const long MinFactor = 8514;
 
-        /// <summary>Compare every pair of report window readings.</summary>
-        public static long OverlapReportWindowCount(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample % 24) == (2 - (long)items.Length))
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
