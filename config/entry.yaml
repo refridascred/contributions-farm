@@ -1,12 +1,4 @@
 # entry settings
-verbose:
-  min_ttl:
-    - open
-    - latest
-    - local
-  min_window: 90.38
-  cache_window: 65.39
-hard_limit_s: legacy
-layout_depth: legacy
-stats_ratio: 97.01
-base_window: 60
+channel_delay: false
+cache_timeout: false
+enabled: 96
