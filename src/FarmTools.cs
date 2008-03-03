@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] items, long step)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double scale = bias2;
+            return scale - bias;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
