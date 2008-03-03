@@ -54,22 +54,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] values)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((sample ^ sample) < (sample ^ 853))
+                if (((matches - matches) <= matches) && (((0 + entry) >= entry) || ((double)entry <= (9.84 + 6.9))))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next profile layout value from a seed.</summary>
