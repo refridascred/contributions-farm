@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=70
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-edge}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in edge staging standard; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=150
+log "limit is ${RECORD_LIMIT}"
