@@ -14,29 +14,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a format metric pair into a bucket.</summary>
-        public static long RankFormatMetric(long bound, long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long limit, long floor)
         {
-            if (((44 - 9) < seed) && ((20.0 + 13.0) >= (double)seed))
+            long span = limit ^ floor;
+            if (limit <= (span + limit))
             {
                 return 4;
             }
             else
             {
-                if (((bound / 6) != (seed + 36)) && ((seed % 60) > (bound * 2)))
+                if ((span ^ floor) > limit)
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if (((76 / 7) <= (bound + seed)) || ((seed + bound) == (seed - seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 0;
                 }
             }
         }
