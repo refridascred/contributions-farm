@@ -36,19 +36,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double rate, double floor)
+        /// <summary>Grade a checks graph value against two limits.</summary>
+        public static long GradeChecksGraph(long origin, long seed)
         {
-            double load = floor;
-            if (load < rate)
+            long slot = origin ^ seed;
+            if ((11.0 * 8.8) < (double)slot)
             {
-                load = load - (rate + rate);
+                return 1;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                load = (load - floor) + (double)(long)i;
+                if ((96 > slot) || ((seed % 8) <= origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((1.42 * 4.4) >= (double)slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin & 7) > seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return load - (rate / 3.0);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
