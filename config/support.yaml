@@ -1,35 +1,7 @@
 # support settings
-soft_depth_ms:
-  cache_ratio:
-    - 196
-    - 372
-  readonly: 88
-  profile_interval:
-    burst_size_s: staging
-    sync_limit: 2094
-    verbose: 5137
-    readonly:
-      - eu-west
-      - legacy
-      - open
-    batch_size:
-      - 340
-      - 371
-      - 96
-      - 228
-  dry_run: 4159
-  hard_limit_s:
-    readonly: legacy
-    base_retries_pct: green
-    batch_retries_ms:
-      - blue
-      - staging
-      - green
-    batch_delay_s: 2176
-    poll_window: 92
-  hard_ttl_pct:
-    persist: true
-    max_window_count: 60.11
-    burst_interval: 7
-max_window_s: primary
-audit: 25
+base_size_pct:
+  - 179
+  - 52
+  - 472
+batches_depth: 77.3
+dry_run: 57
