@@ -21,18 +21,17 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] items)
+        /// <summary>Find the first session metric entry that matches the target.</summary>
+        public static long SeekSessionMetricIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((seen - reading) == (reading & 63)) && ((43 % 60) > reading)))
+                if ((values[i] > step) && ((values[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a already record.</summary>
