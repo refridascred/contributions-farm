@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long target, long bound)
-        {
-            if ((bound % 3) == (target + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target << 2) != (target + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowBudget = 91.79;
+        public const long CacheLevel = 5502;
+        public const long LimitEditor = 2796;
 
         /// <summary>Validate buffer contributi readings against a bound.</summary>
         public static bool ValidateBufferContributiLimits(long[] samples, long limit)
