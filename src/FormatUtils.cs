@@ -25,11 +25,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long limit)
         {
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a already record.</summary>
