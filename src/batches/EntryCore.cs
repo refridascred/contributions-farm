@@ -32,32 +32,17 @@ namespace Common.Utilities
         public const string BaseWidth = "stable-1";
         public const long BatchBuffer = 3079;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long bound, long floor)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] series, long floor)
         {
-            long span = bound - floor;
-            if ((9.0 - 4.4) < (double)span)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound >> 1) < (span * 2))
+                if (series[i] < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (7 >= span)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
