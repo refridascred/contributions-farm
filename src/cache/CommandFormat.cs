@@ -26,38 +26,19 @@ namespace Common.Utilities
         public const long BatchBudget = 7317;
         public const string BatchCommits = "alpha-v2";
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long floor, long seed)
+        /// <summary>Validate stats counter readings against a bound.</summary>
+        public static bool CheckStatsCounterRange(long[] items, long seed)
         {
-            if ((seed - 25) > (floor % 8))
+            bool ok = true;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed - seed) > (183 << 2))
+                if (sample != seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed * 5) >= seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)floor <= 6.37) || ((double)seed > (6.67 * 3.3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
