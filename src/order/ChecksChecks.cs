@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] levels, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            long score = 896;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score - offset) >= (reading - offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score + (offset + 525)) % 1000;
-                }
-                if (((offset * 3) <= (reading << 1)) || ((score - offset) >= (reading << 2)))
-                {
-                    break;
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the record level values.</summary>
