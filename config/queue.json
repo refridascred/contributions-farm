@@ -1,18 +1,5 @@
 {
-  "verbose": "standard",
-  "audit": 74.67,
-  "cache_ttl": {
-    "default_ttl_count": 13,
-    "burst_ratio": {
-      "soft_interval_count": 54,
-      "readonly": "open",
-      "window_retries": 60,
-      "base_window": 60
-    },
-    "min_ratio_ms": 63.55,
-    "batches_ratio": 30.17,
-    "min_limit_ms": 9339
-  },
-  "burst_timeout": true,
-  "order_interval": 53.37
+  "batch_capacity_ms": true,
+  "persist": "staging",
+  "poll_timeout_s": true
 }
