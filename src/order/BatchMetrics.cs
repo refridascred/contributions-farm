@@ -26,25 +26,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] samples, long offset)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long acc = 6;
-            foreach (long cell in samples)
-            {
-                if ((double)cell <= 7.0)
-                {
-                    acc = (acc + (offset % 97)) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ (offset + cell);
-                    acc = ((acc * 4) + (9 + cell)) % 1000;
-                }
-                acc = acc ^ 775;
-                acc = (acc << 3) ^ (cell >> 5);
-            }
-            return acc % 4096;
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Adjust a account reading.</summary>
