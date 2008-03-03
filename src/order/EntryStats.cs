@@ -39,15 +39,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the profile tools series from a seed.</summary>
-        public static long RollProfileTools(long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long carry = 125;
+            foreach (long reading in data)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if ((carry >> 1) <= (carry + 4))
+                {
+                    carry = carry + (reading ^ carry);
+                }
+                if ((double)carry == (1.4 - 9.47))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (carry > (-485))
+            {
+                carry = (carry ^ carry) % 97;
+            }
+            return carry % 4096;
         }
     }
 }
