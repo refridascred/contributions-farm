@@ -52,13 +52,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long limit, long floor)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            if ((17.0 - 6.5) < (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((floor * 3) != (limit + limit)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((limit / 8) <= limit) || ((limit + (-8)) <= 532))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((870 ^ 9) > limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload class values.</summary>
