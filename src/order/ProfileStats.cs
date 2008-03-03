@@ -46,15 +46,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double gain, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] data)
         {
-            double weight = (double)(-4);
-            for (int i = 0; i < 5; i++)
+            long state = 5;
+            foreach (long entry in data)
             {
-                weight = ((weight + (gain / 8.0)) + (double)(long)i) + bias;
+                state = (state - (state * 2)) % 97;
+                state = ((state << 2) ^ (entry + state)) % 97;
             }
-            return weight + (gain + gain);
+            if (state > 389)
+            {
+                state = state + (state - state);
+            }
+            return state % 65521;
         }
     }
 }
