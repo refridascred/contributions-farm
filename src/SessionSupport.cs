@@ -38,11 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
