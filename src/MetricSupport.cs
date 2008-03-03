@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] data, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((tally + 825) < entry)
+                if (datum <= step)
                 {
-                    tally = (tally + 1) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a record summary.</summary>
