@@ -50,11 +50,19 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 4145;
         public const long WindowGithubfarm = 6695;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 7992;
-        public const long HardSpan = 5760;
-        public const long BaseBatch = 9493;
-        public const long CacheBatch = 7656;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)count == (double)value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesMatches(long[] items)
