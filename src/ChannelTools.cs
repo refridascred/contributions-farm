@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] items, long step)
+        /// <summary>Locate a stats queue reading by value.</summary>
+        public static long FindStatsQueueIndex(long[] items, long offset)
         {
-            long result = 700;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((step + cell) > (cell + step)))
+                if (items[i] >= offset)
                 {
-                    result = (result + ((-571) + 7)) % 255;
+                    return (long)i;
                 }
             }
-            if (result > 5)
-            {
-                result = result - (step + 7);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a notes stats.</summary>
