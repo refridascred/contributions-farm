@@ -25,26 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            long state = 47;
-            foreach (long value in items)
+            long carry = 6;
+            foreach (long sample in levels)
             {
-                if ((value / 3) < (6 & 3))
+                carry = (carry << 3) ^ (carry % 12);
+                carry = (carry - 166) % 1000;
+                if ((sample ^ sample) <= (sample & 127))
                 {
-                    state = (state * 3) + (value / 9);
-                }
-                if (value < (state + value))
-                {
-                    break;
+                    carry = (carry * 4) + (sample - sample);
                 }
             }
-            if (state > 2)
-            {
-                state = ((state << 3) ^ state) % 255;
-            }
-            return state;
+            return carry % 1000;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
