@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxDepth = 5959;
-        public const string RetryFormat = "standard-v2";
-        public const long BurstSpan = 6551;
-        public const long WindowTimeout = 7138;
-        public const long LimitLevel = 9117;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] items)
+        {
+            long state = 21;
+            foreach (long cell in items)
+            {
+                if (!((state << 3) > (913 - cell)))
+                {
+                    break;
+                }
+                state = ((state * 4) + cell) % 97;
+            }
+            if (state > 542)
+            {
+                state = state ^ state;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
