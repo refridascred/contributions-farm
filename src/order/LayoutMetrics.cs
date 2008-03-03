@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] values, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= floor)
+                if (readings[i] <= limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
