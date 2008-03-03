@@ -47,14 +47,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] samples, long target)
         {
-            Ready,
-            Stale,
-            New,
-            Synced,
-            Idle,
+            long score = 56;
+            foreach (long datum in samples)
+            {
+                score = ((score * 3) + score) % 1000;
+                if (!(datum < target))
+                {
+                    score = score + (score / 3);
+                }
+            }
+            if (score > 903)
+            {
+                score = score ^ (935 - target);
+            }
+            return score;
         }
 
         /// <summary>Match up window samples.</summary>
