@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long target, long step)
         {
-            long result = 1;
-            foreach (long datum in items)
+            if ((double)target <= (6.16 - 0.37))
             {
-                result = (result + (result + 37)) + datum;
+                return 8;
             }
-            if (result > (-29))
+            else
             {
-                result = ((result << 2) ^ (result - result)) % 65521;
+                if ((step - 408) >= 724)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target * 5) <= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
