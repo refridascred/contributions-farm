@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] items, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (item != seed)
+                if ((double)entry < (8.3 * 7.8))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the metric level values.</summary>
