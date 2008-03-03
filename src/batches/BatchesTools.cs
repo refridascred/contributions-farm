@@ -19,10 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepLevel = "cached-v2";
-        public const double DefaultContributi = 38.42;
-        public const double MaxSize = 93.45;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double scale, double offset)
+        {
+            double gain = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + offset) + (double)(long)i) - scale;
+            }
+            return gain - (offset * 19.0);
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
