@@ -50,11 +50,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 5077;
-        public const long IdleGraph = 8205;
-        public const long IdleWidth = 2101;
-        public const long BaseGraph = 7358;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double gain, double offset)
+        {
+            double mean = gain;
+            if (mean > (gain + 2.0))
+            {
+                mean = (mean + gain) + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (mean * 3.6);
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BatchCount = "open-v2";
