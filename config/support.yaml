@@ -1,16 +1,6 @@
 # support settings
-idle_window:
-  - legacy
-  - legacy
-persist: 80
-flush_ttl: 21.12
-retry_ttl_pct:
-  sync_ttl_s:
-    hard_ttl: latest
-    counter_threshold: true
-    enabled: open
-    flush_interval_pct: true
-  soft_interval_count: 78
-  strict: open
-command_ratio: legacy
-metrics_window: false
+idle_ttl_pct: 60
+compress: false
+dry_run: 8364
+cluster_depth: 250
+flush_depth_pct: 100
