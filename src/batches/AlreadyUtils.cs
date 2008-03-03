@@ -43,12 +43,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (tally <= (tally - 342))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate queue samples.</summary>
