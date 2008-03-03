@@ -23,19 +23,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((16.0 * 1.95) <= (double)step)
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxNotes = 72.94;
+        public const string WindowCount = "standard-1";
+        public const string MinNotes = "stable-1";
+        public const double MinWidth = 10.42;
+        public const long HardTimeout = 1034;
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long SeekFormatIndex(long[] readings, long offset)
