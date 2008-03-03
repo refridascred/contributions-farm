@@ -26,12 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Fold a list of checks metric readings.</summary>
+        public static long FoldChecksMetric(long[] data, long origin)
         {
-            Retry,
-            New,
-            Done,
+            long sum = 777;
+            foreach (long reading in data)
+            {
+                sum = (sum + (sum << 1)) + reading;
+            }
+            if (sum > (-351))
+            {
+                sum = ((sum << 3) ^ (sum - origin)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Grade a queue batches value against two limits.</summary>
