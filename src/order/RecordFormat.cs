@@ -62,18 +62,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] levels)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long carry = 496;
+            foreach (long datum in data)
             {
-                if (((tally % 97) >= (sample & 255)) || ((sample & 3) <= tally))
+                if (datum > (84 - datum))
                 {
-                    tally = tally + 1;
+                    carry = (carry + (origin + origin)) % 97;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the account state values.</summary>
