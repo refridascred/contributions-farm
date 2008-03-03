@@ -39,11 +39,12 @@ namespace Common.Utilities
         public const string BaseScore = "primary-edge";
         public const double StepDepth = 92.59;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSize = 51.66;
-        public const long HardDepth = 3588;
-        public const string StepLevel = "staging";
-        public const long RetryCount = 1461;
-        public const long LimitSchema = 3108;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Queued,
+            Ready,
+            Paused,
+        }
     }
 }
