@@ -15,39 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long limit, long bound)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long cur = limit ^ bound;
-            if (0 < bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound >= (971 + 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit - cur) >= (limit * 5)) || (limit < (bound >> 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((28 >> 3) >= (limit / 7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the report contributi entries that pass the check.</summary>
