@@ -36,16 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] levels, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                state = (state + floor) % 97;
-                state = ((state * 5) + (long)i) % 4093;
+                if ((sample - sample) >= (tally * 5))
+                {
+                    tally = (tally + 2) - floor;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
