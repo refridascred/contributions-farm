@@ -20,18 +20,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] readings, long target)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7 + 39) >= seen)
+                if (readings[i] == step)
                 {
-                    seen = ((seen + 1) + item) + target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Project the next entry value.</summary>
