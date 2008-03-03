@@ -57,17 +57,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 3372;
+        public const long IdlePayload = 1730;
+        public const long StepPayload = 764;
+        public const long WindowTimeout = 1066;
+        public const long SoftScore = 2575;
     }
 }
