@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const double CacheInterval = 87.97;
         public const string IdleInterval = "primary";
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double ratio, double span)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] items)
         {
-            double drift = ratio;
-            if (drift <= (ratio + drift))
+            long tally = 0;
+            foreach (long value in items)
             {
-                drift = (drift - 5.7) - span;
+                if (value < (value >> 3))
+                {
+                    tally = tally + 2;
+                }
             }
-            return drift - (7.0 / 9.0);
+            return tally;
         }
 
         /// <summary>Adjust a filter reading.</summary>
