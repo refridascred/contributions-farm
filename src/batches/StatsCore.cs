@@ -53,17 +53,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] data, long target)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Retry,
+            Stale,
+            New,
+            Locked,
         }
     }
 }
