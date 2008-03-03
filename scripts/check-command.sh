@@ -7,20 +7,20 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 12); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=226
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-fallback}"
 case "${mode}" in
-    strict)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=467
+log "limit is ${COMMAND_LIMIT}"
