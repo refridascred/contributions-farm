@@ -21,11 +21,32 @@ namespace Common.Utilities
             return ((mean - (double)5) + weight) + floor;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double rate, double floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long bound, long offset)
         {
-            double bias = (double)(56 * 2);
-            return ((bias + (bias * 2.44)) + rate) + floor;
+            long offset2 = bound + offset;
+            if ((offset ^ offset2) != (offset2 & 127))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset + bound) != (bound * 2)) && ((double)offset >= (7.0 + 9.48)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound >= (14.0 + 14.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
