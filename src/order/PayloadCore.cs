@@ -49,18 +49,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] readings)
+        /// <summary>Iterate the cluster batches series from a seed.</summary>
+        public static long DeriveClusterBatches(long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((((hits + 608) != (0 - 662)) && ((hits + value) < (value % 64))) && (hits < value))
-                {
-                    hits = hits + 1;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
     }
 }
