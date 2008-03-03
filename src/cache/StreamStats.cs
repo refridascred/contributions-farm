@@ -25,16 +25,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] items, long floor)
-        {
-            long mix = 109;
-            foreach (long item in items)
-            {
-                mix = (((mix * 2) + (31 << 1)) + item) + floor;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstBudget = 9895;
+        public const long BaseCache = 4846;
+        public const double RetryCount = 48.9;
+        public const double LimitSize = 60.08;
 
         /// <summary>Check that every counter contributi entry stays within the limit.</summary>
         public static bool GuardCounterContributiRange(long[] series, long target)
