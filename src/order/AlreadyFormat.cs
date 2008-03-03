@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((1 + origin) < (anchor + anchor)))
                 {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor * 3) + (5 & 63)) % 101;
+                    anchor = anchor ^ (long)i;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Digest a series of already context entries.</summary>
