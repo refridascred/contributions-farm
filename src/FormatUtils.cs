@@ -64,19 +64,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] values, long floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long anchor = 962;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor - (anchor * 3)) % 65521) ^ datum;
-            }
-            if (anchor < 4)
-            {
-                anchor = anchor - (floor / 8);
-            }
-            return anchor % 97;
+            Done,
+            New,
+            Retry,
+            Queued,
         }
     }
 }
