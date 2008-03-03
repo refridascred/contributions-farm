@@ -1,12 +1,13 @@
 {
-  "burst_ratio": [32, 119, 244],
-  "record_retries": "standard",
-  "cache_capacity_s": true,
-  "compress": "latest",
-  "min_threshold_pct": {
-    "readonly": "strict",
-    "burst_delay_ms": "blue",
-    "poll_ttl": true
+  "cache_retries": false,
+  "tools_window": {
+    "max_capacity_pct": true,
+    "persist": 60,
+    "poll_depth_ms": "eu-west",
+    "warm_capacity_count": [231, 147, 498],
+    "cache_ttl_count": 43.96,
+    "default_threshold_s": 250
   },
-  "checks_timeout": 250
+  "persist": [428, 44],
+  "verbose": "edge"
 }
