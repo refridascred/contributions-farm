@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
