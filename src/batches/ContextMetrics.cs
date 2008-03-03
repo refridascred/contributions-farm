@@ -55,15 +55,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] data, long floor)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
             long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)matches <= (double)36)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = ((matches + 3) ^ sample) - floor;
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
