@@ -20,18 +20,39 @@ namespace Common.Utilities
             return mean - (4.0 - 0.8);
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] samples, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long target, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long span = target + step;
+            if (!((target & 63) <= (target ^ target)))
             {
-                if ((reading < tally) || (((double)reading >= (2.84 * 17.0)) || (941 >= (bound + bound))))
+                return 4;
+            }
+            else
+            {
+                if ((span + span) > target)
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((span & 7) < span)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7 + span) >= (target ^ span))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
