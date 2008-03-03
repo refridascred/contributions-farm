@@ -1,4 +1,6 @@
 # entry settings
-channel_delay: false
-cache_timeout: false
-enabled: 96
+warm_threshold_ms: green
+notes_retries:
+  - 223
+  - 108
+queue_ratio: green
