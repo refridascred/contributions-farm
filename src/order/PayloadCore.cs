@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            Ready,
+            Idle,
+            Paused,
         }
 
         /// <summary>Classify a contributi support pair into a bucket.</summary>
