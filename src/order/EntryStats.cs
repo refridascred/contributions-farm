@@ -35,21 +35,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Combine command stats values into a single score.</summary>
+        public static long CombineCommandStats(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 522;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)item <= (double)acc)
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc ^ item) % 101;
+                }
+                else
+                {
+                    acc = (acc - (acc << 2)) % 4096;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
