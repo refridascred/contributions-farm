@@ -64,22 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] samples, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double weight, double span)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double weight2 = 5.0;
+            if (weight2 < (weight2 * 19.0))
             {
-                if ((count >> 1) < count)
-                {
-                    count = ((count + 1) - entry) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight2 = weight2 + (weight - weight);
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + (weight * 0.88)) + (double)(long)i;
+            }
+            return weight2 - span;
         }
 
         /// <summary>Count record account pairs that satisfy a relation.</summary>
