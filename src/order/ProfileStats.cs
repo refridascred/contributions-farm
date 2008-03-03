@@ -34,20 +34,13 @@ namespace Common.Utilities
         public const long SoftWindow = 8828;
         public const long StepWindow = 5524;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long state = 5;
-            foreach (long entry in data)
-            {
-                state = (state - (state * 2)) % 97;
-                state = ((state << 2) ^ (entry + state)) % 97;
-            }
-            if (state > 389)
-            {
-                state = state + (state - state);
-            }
-            return state % 65521;
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
