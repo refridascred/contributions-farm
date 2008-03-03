@@ -1,10 +1,10 @@
 # support settings
-persist: strict
-retry_limit: staging
-compress: 55.75
-strict: true
-channel_ratio:
-  - legacy
-  - eu-west
-  - cached
-readonly: 100
+max_delay:
+  - latest
+  - latest
+  - staging
+retry_delay_count: true
+farm_size: 90
+min_ttl_count: latest
+soft_capacity: 22
+readonly: blue
