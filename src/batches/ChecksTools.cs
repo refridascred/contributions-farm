@@ -48,18 +48,11 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Measure how many buffer route samples are out of range.</summary>
-        public static long CountBufferRouteGaps(long[] levels, long limit)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count << 3) < count)
-                {
-                    count = ((count + 1) - reading) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepContributi = "cached-edge";
+        public const long IdleContributi = 5381;
+        public const string BatchContributi = "latest-v2";
+        public const double RetryBudget = 59.43;
+        public const double StepBudget = 75.91;
     }
 }
