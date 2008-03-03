@@ -33,23 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] values)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double scale, double span)
         {
-            long mix = 97;
-            foreach (long reading in values)
+            double mean = span + 0.1;
+            if (mean < (double)(-11))
             {
-                if ((mix ^ reading) < mix)
-                {
-                    break;
-                }
-                else
-                {
-                    mix = (mix ^ (mix - mix)) % 97;
-                }
-                mix = mix - reading;
+                mean = (mean + (span - span)) + scale;
             }
-            return mix % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Describe the counter class values.</summary>
