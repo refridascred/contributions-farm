@@ -1,8 +1,13 @@
 # githubfarm settings
-counter_retries: 49
-burst_depth_s: true
-hard_size_s: green
-min_window_pct:
-  - 77
-  - 233
-  - 53
+batch_delay: 79.42
+verbose: 91
+max_capacity_count: latest
+readonly:
+  - 492
+  - 69
+  - 435
+cache_capacity_count: standard
+flush_capacity_s:
+  - 240
+  - 273
+  - 161
