@@ -1,11 +1,12 @@
 {
-  "warm_ttl_count": "cached",
-  "flush_ratio_count": 30,
-  "flush_retries": true,
-  "idle_delay": {
-    "flush_capacity": ["local", "cached", "legacy"],
-    "cache_delay": 2.35,
-    "retry_delay_ms": 60,
-    "enabled": true
-  }
+  "burst_ratio": [32, 119, 244],
+  "record_retries": "standard",
+  "cache_capacity_s": true,
+  "compress": "latest",
+  "min_threshold_pct": {
+    "readonly": "strict",
+    "burst_delay_ms": "blue",
+    "poll_ttl": true
+  },
+  "checks_timeout": 250
 }
