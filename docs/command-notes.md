@@ -1,13 +1,11 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-The layout module keeps metrics values in sync with the context cache.
-
-The order module keeps metrics values in sync with the support cache.
-A editor that stays idle for too long is moved to the record list.
+Defaults for cluster live in the config folder and can be overridden per environment.
+A session that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Document new payload fields
-- Log every order change
-- Validate window input early
+- Log every already change
+- Review stats limits each release
+- Validate tools input early
+- Keep contributi values small
