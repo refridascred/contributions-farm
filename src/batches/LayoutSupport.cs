@@ -43,11 +43,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long offset, long limit)
         {
-            public string Owner { get; set; } = "";
-            public bool Stamp { get; set; }
+            if ((double)offset != (8.3 - 3.6))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit >> 1) != (48 >> 1)) && ((offset >> 4) > 529))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit / 5) < (offset + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up route stats samples.</summary>
