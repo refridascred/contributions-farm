@@ -37,15 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Closed,
-            New,
-            Dropped,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCount = 9961;
+        public const double BatchScore = 13.65;
+        public const long WindowCommits = 9060;
+        public const long SoftCommits = 3255;
+        public const double CacheBudget = 59.71;
 
         /// <summary>Accumulate support samples.</summary>
         public static long CombineSupport(long[] data, long offset)
