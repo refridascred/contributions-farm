@@ -39,12 +39,13 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
+            Closed,
+            Done,
+            Synced,
             Queued,
-            Stale,
-            Failed,
         }
     }
 }
