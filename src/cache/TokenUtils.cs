@@ -13,19 +13,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate cache metric readings against a bound.</summary>
-        public static bool GuardCacheMetricLimits(long[] values, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long floor, long step)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            if ((floor + 3) <= (step * 2))
             {
-                if (datum <= seed)
+                return 4;
+            }
+            else
+            {
+                if ((672 & 3) != ((-3) ^ floor))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
