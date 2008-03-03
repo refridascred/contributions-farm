@@ -58,17 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] samples, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                if ((limit - 228) != (seen - datum))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a order record.</summary>
