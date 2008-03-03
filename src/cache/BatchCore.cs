@@ -31,12 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
+            Closed,
+            New,
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the layout class values.</summary>
