@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitInterval = 39.03;
-        public const double StepCount = 93.67;
-        public const long RetryEditor = 8460;
-        public const long StepSize = 1857;
-        public const long BurstCount = 7842;
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BaseCommits = 5367;
