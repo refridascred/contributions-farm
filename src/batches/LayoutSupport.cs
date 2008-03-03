@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items)
         {
-            public bool Mode { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
+            long carry = 3;
+            foreach (long cell in items)
+            {
+                if ((5.0 >= (double)carry) && ((long)items.Length <= cell))
+                {
+                    carry = ((carry << 2) ^ ((long)items.Length % 2)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the command mode values.</summary>
