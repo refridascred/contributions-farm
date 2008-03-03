@@ -15,11 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowCache = "latest-v2";
-        public const long RetryCache = 3427;
-        public const string RetryLevel = "fallback-edge";
-        public const long DefaultScore = 2621;
+        /// <summary>Compare every pair of batches channel readings.</summary>
+        public static long OverlapBatchesChannelCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheLimits(long[] levels, long limit)
