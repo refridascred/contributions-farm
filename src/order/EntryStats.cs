@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "latest-1";
-        public const double StepLayout = 97.84;
-        public const long DefaultCount = 8867;
-        public const string WindowTimeout = "legacy";
-        public const long RetryFactor = 7904;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public double Region { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorOutliers(long[] samples)
