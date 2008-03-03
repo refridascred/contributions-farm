@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] series, long origin)
+        /// <summary>Classify a format entry pair into a bucket.</summary>
+        public static long ClassifyFormatEntry(long target, long target2)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            if ((target - 711) > target2)
             {
-                if (cell < origin)
+                return 5;
+            }
+            else
+            {
+                if ((target - 13) >= (target * 2))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of order contributi readings.</summary>
