@@ -1,8 +1,14 @@
 {
-  "default_retries_count": false,
-  "enabled": 60,
-  "batch_capacity": ["legacy", "strict"],
-  "max_ttl_count": true,
-  "soft_interval_s": ["local", "eu-west"],
-  "cache_ttl": true
+  "audit": 1723,
+  "default_size_count": {
+    "soft_timeout_pct": 1024,
+    "counter_ttl": 82,
+    "readonly": 100,
+    "max_delay_ms": "green",
+    "schema_delay": true
+  },
+  "buffer_delay": "cached",
+  "poll_window_pct": "open",
+  "max_interval": "latest",
+  "poll_limit_ms": true
 }
