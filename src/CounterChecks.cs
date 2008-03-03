@@ -83,19 +83,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] values, long step)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the checks class values.</summary>
