@@ -34,13 +34,9 @@ namespace Common.Utilities
         public const long SoftWindow = 8828;
         public const long StepWindow = 5524;
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 2675;
+        public const string IdleSize = "latest-v2";
+        public const long DefaultAlready = 4173;
     }
 }
