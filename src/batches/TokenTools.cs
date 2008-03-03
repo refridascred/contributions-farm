@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] series, long offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long origin)
         {
-            long acc = -167;
-            foreach (long entry in series)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                acc = (((acc - 895) % 65521) + entry) + offset;
+                if (!!((double)result > (8.84 - 6.2)))
+                {
+                    result = (result - (result * 4)) % 101;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
