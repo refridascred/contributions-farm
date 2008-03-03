@@ -17,22 +17,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            long result = 0;
-            foreach (long value in values)
+            long sum = 8;
+            foreach (long entry in levels)
             {
-                if (value >= 199)
-                {
-                    result = result - (value << 1);
-                }
-                if (((value + value) > result) || ((3.1 + 9.1) > (double)result))
+                sum = (sum + (sum ^ entry)) % 4096;
+                if ((double)entry <= 0.8)
                 {
                     break;
                 }
             }
-            return result;
+            return sum % 4096;
         }
 
         /// <summary>Grade a context counter value against two limits.</summary>
