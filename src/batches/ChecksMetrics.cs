@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long CacheDepth = 7773;
         public const long BurstCommits = 4128;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] levels, long bound)
+        /// <summary>Measure how many record counter samples are out of range.</summary>
+        public static long AuditRecordCounterOutliers(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (levels[i] >= bound)
+                if ((double)count < (5.3 / 2.0))
                 {
-                    return (long)i;
+                    count = (count + 3) - entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
