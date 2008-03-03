@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Buffer checks helpers.</summary>
     public static class BufferChecks
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Look up the position of a filter batch sample.</summary>
+        public static long LocateFilterBatchIndex(long[] values, long bound)
         {
-            long mix = 374;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix + mix) < (cell * 5))
+                if (values[i] >= bound)
                 {
-                    mix = mix + (34 ^ 22);
+                    return (long)i;
                 }
             }
-            if (mix < 817)
-            {
-                mix = (mix << 3) ^ (mix << 3);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
