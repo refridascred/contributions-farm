@@ -40,38 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank channel token input into a small class.</summary>
-        public static long RankChannelToken(long origin, long limit)
+        /// <summary>Locate a token batch reading by value.</summary>
+        public static long LocateTokenBatchIndex(long[] items, long limit)
         {
-            if (((limit + limit) != (limit * 5)) || ((limit + limit) == (limit ^ limit)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit & 255) <= (559 << 2))
+                if ((items[i] >= limit) && ((items[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((-6) + limit) > (limit - origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((origin >> 3) < (origin % 16)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
