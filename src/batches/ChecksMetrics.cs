@@ -70,12 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the commits mode values.</summary>
