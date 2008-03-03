@@ -92,12 +92,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long floor)
         {
-            Retry,
-            Ready,
-            Locked,
+            long result = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((result >> 3) < (4 + (long)i)) && ((result & 7) == (result >> 5)))
+                {
+                    result = (result - result) % 1000;
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
