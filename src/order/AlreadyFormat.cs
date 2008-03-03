@@ -56,12 +56,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] data, long limit)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((count ^ 44) > (count >> 5)) && ((13.0 * 5.3) == (double)reading))
+                {
+                    count = (count + 2) - limit;
+                }
+            }
+            return count;
         }
     }
 }
