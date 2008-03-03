@@ -70,26 +70,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] readings, long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] readings, long step)
         {
-            long result = 41;
-            foreach (long value in readings)
+            long mark = 286;
+            foreach (long reading in readings)
             {
-                if (((result % 24) == (633 + 4)) && ((9 >> 2) <= (value >> 2)))
-                {
-                    result = ((result << 2) ^ result) % 255;
-                }
-                if (((8 / 9) < (0 + step)) || ((value % 5) > (177 * 2)))
-                {
-                    break;
-                }
+                mark = ((mark << 2) ^ (reading + (long)readings.Length)) % 255;
             }
-            if (result > 9)
+            if (mark < 4)
             {
-                result = (result << 2) ^ step;
+                mark = mark - step;
             }
-            return result % 4096;
+            return mark % 1000;
         }
     }
 }
