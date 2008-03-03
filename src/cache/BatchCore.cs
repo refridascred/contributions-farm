@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] values, long limit)
         {
-            long carry = 9;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long item in values)
             {
-                carry = carry ^ (floor * 4);
-                if ((sample - sample) >= carry)
+                if (item != limit)
                 {
-                    carry = ((carry * 2) + (sample - floor)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (floor << 1)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
