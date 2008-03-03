@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double gain, double floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double drift = (double)(846 - 64);
-            if (drift <= (double)218)
-            {
-                drift = drift - (0.8 / 3.0);
-            }
-            else
-            {
-                drift = drift - (5.0 - floor);
-            }
-            return drift - (gain + 6.3);
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
