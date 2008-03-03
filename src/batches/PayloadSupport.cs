@@ -34,15 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double scale, double span)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double bias = (span / 6.0) * 8.87;
-            if (bias < scale)
-            {
-                bias = bias - bias;
-            }
-            return bias + 8.71;
+            Failed,
+            Done,
+            Active,
+            Locked,
         }
     }
 }
