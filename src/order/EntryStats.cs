@@ -35,19 +35,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] items, long floor)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
