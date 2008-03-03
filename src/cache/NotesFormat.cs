@@ -35,16 +35,9 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of command payload entries.</summary>
-        public static long ScoreCommandPayload(long[] values)
-        {
-            long state = -35;
-            foreach (long datum in values)
-            {
-                state = state ^ (datum - state);
-                state = state + (state ^ state);
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitSize = 6393;
+        public const string MaxBudget = "alpha-v2";
+        public const long HardCount = 1941;
     }
 }
