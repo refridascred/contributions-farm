@@ -28,29 +28,36 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long seed, long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long offset, long target)
         {
-            long delta = seed + offset;
-            if ((double)offset > (6.0 * 8.14))
+            long next = offset ^ target;
+            if ((next - next) >= (target - offset))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((offset < (offset ^ 46)) && ((seed % 8) != (77 * 5)))
+                if (((double)next >= (2.9 + 13.0)) || ((target << 2) == (next / 8)))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)delta < (9.0 * 5.37))
+                    if ((next > (offset + next)) && ((double)next > (20.0 / 2.0)))
                     {
                         return 4;
                     }
                     else
                     {
-                        return 3;
+                        if ((double)next < (7.5 / 6.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
