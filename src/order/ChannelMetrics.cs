@@ -16,12 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 5364;
-        public const string CacheContributi = "alpha";
-        public const long CacheDepth = 7805;
-        public const string StepTimeout = "latest-v2";
-        public const double IdleContributi = 21.12;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double BlendNotes(double weight, double bias)
