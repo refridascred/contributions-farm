@@ -39,25 +39,13 @@ namespace Common.Utilities
         public const double BurstStats = 24.29;
         public const long MaxWidth = 7499;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(((long)i + result) > (227 + result)))
-                {
-                    result = (result + 8) % 97;
-                    break;
-                }
-                else
-                {
-                    result = (result + 591) % 255;
-                    result = (result - (bound << 2)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
