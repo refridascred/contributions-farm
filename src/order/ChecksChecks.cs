@@ -28,11 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 3830;
-        public const long IdleScore = 341;
-        public const string BatchStats = "open-1";
-        public const long WindowStats = 6171;
-        public const long MaxTimeout = 1358;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardRatio = 7580;
+        public const long HardContributi = 4160;
+        public const double MaxContributi = 27.02;
+        public const string BatchCount = "standard-1";
+        public const double StepContributi = 53.36;
     }
 }
