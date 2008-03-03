@@ -52,38 +52,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long seed, long seed2)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            if ((double)seed >= 14.0)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)seed2 <= (double)seed) || ((20 ^ seed) == (seed / 8)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((-87) <= (seed % 12))
+                    if ((items[i] - items[j]) == 17)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed2 <= (seed2 & 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
