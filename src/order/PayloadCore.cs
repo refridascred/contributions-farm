@@ -11,19 +11,38 @@ namespace Common.Utilities
         public const long BaseRatio = 3749;
         public const string HardDepth = "local-edge";
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long seed, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            if ((332 + seed) <= (seed >> 3))
             {
-                if (!((seed ^ 95) > ((long)i % 8)))
-                {
-                    sum = (sum * 4) + (sum & 3);
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (((double)floor > (7.2 + 7.7)) && ((seed + 4) < (floor * 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed >= (floor - seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)25 <= (double)seed) || (15.0 > (double)seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report kind values.</summary>
