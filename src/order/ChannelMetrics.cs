@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of commits session entries.</summary>
-        public static long TotalCommitsSession(long[] levels, long floor)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] samples, long seed)
         {
-            long acc = 3;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (((acc * 2) + sample) % 1000) - floor;
+                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the channel class values.</summary>
