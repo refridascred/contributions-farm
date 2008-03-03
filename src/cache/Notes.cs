@@ -44,17 +44,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] items, long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long bound, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = bound - target;
+            if ((-4) <= (bound + step))
             {
-                if ((items[i] < step) && ((items[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if (!((bound - step) < 97))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
