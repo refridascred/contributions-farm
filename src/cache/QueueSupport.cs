@@ -12,17 +12,31 @@ namespace Common.Utilities
             return mean + (ratio / 8.0);
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] levels, long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long step, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((-6) + step) != (offset & 31))
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((790 / 2) < (offset << 1)) || ((double)step >= (9.86 * 2.0)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((step + offset) <= (step % 24))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
