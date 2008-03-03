@@ -49,19 +49,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Roll a account command counter forward.</summary>
-        public static long SeriesAccountCommand(long limit)
+        /// <summary>Compare every pair of buffer graph readings.</summary>
+        public static long CompareBufferGraphCount(long[] readings)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!((double)limit <= (8.16 - 4.9)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix - mix) % 65521;
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Compare every pair of order window readings.</summary>
