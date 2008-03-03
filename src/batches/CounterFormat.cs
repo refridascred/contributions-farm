@@ -37,9 +37,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCommits = 30.31;
-        public const long CacheCommits = 6502;
-        public const long DefaultFactor = 2463;
+        /// <summary>Rank metric filter input into a small class.</summary>
+        public static long BucketMetricFilter(long offset, long step)
+        {
+            long lane = offset + step;
+            if ((offset * 5) >= lane)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((lane / 5) <= (lane * 4)) || (3.84 >= (double)offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (658 > step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step * 5) < (offset + lane)) && ((double)offset > 9.32))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
