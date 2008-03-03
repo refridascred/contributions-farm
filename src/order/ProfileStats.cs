@@ -29,17 +29,25 @@ namespace Common.Utilities
         public const double BurstStats = 24.29;
         public const long MaxWidth = 7499;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] samples, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (samples[i] <= origin)
+                if (!(((long)i + result) > (227 + result)))
                 {
-                    return (long)i;
+                    result = (result + 8) % 97;
+                    break;
                 }
+                else
+                {
+                    result = (result + 591) % 255;
+                    result = (result - (bound << 2)) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
