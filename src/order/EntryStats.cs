@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string WindowTimeout = "legacy";
         public const long RetryFactor = 7904;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 8476;
-        public const double MinChannel = 19.42;
-        public const string LimitBudget = "standard";
-        public const string WindowChannel = "legacy-v2";
-        public const double SoftDepth = 27.78;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (8.0 > (double)matches)
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool ValidateStatsLimits(long[] samples, long step)
