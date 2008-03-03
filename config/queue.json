@@ -1,21 +1,15 @@
 {
-  "filter_size": {
-    "verbose": true,
-    "context_window": {
-      "entry_ratio": 3372,
-      "sync_timeout": "stable",
-      "audit": false
-    },
-    "base_threshold_pct": ["open", "standard", "legacy"]
+  "idle_timeout_pct": {
+    "base_interval": "stable",
+    "min_retries": [334, 224],
+    "dry_run": 66.82,
+    "contributi_limit": 15.39,
+    "sync_capacity_ms": [250, 415, 400, 18],
+    "sync_capacity": 8410
   },
-  "readonly": {
-    "route_ratio": "strict",
-    "sync_threshold_s": true,
-    "cache_size_ms": false,
-    "warm_interval_pct": [218, 56]
-  },
-  "buffer_window": 100,
-  "schema_timeout": 92.21,
-  "default_interval_s": "standard",
-  "default_ratio_ms": 19.92
+  "sync_delay_ms": 41,
+  "persist": "standard",
+  "min_ratio_ms": 250,
+  "window_interval": 3222,
+  "retry_ttl_ms": ["latest", "fallback"]
 }
