@@ -20,17 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] samples, long floor)
+        /// <summary>Accumulate editor checks samples.</summary>
+        public static long CombineEditorChecks(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -6;
+            foreach (long value in series)
             {
-                if (samples[i] == floor)
+                if ((acc + acc) >= acc)
                 {
-                    return (long)i;
+                    acc = (acc + (value ^ acc)) % 65521;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Hold a metrics header.</summary>
