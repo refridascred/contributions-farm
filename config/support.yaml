@@ -1,10 +1,16 @@
 # support settings
-warm_capacity_pct:
-  - 341
-  - 358
-  - 324
-  - 161
-retry_interval_count: eu-west
-commits_window: 30
-batch_ttl: false
-batch_timeout: 40.0
+window_window: 88
+base_depth:
+  dry_run: staging
+  cache_window_ms:
+    poll_depth: 500
+    sync_limit:
+      - latest
+      - fallback
+      - blue
+    flush_ratio_ms: staging
+    dry_run: false
+  flush_interval: 39
+  retry_ratio_count: latest
+  filter_size: stable
+graph_retries: legacy
