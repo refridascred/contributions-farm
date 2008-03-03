@@ -20,11 +20,12 @@ namespace Common.Utilities
             return bias2 - (0.58 + floor);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 3834;
-        public const string LimitGithubfarm = "open";
-        public const double BaseGithubfarm = 83.97;
-        public const string RetryGithubfarm = "local-v2";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 96.57;
+        public const double StepPayload = 48.25;
+        public const long BatchFactor = 2367;
+        public const long IdlePayload = 662;
+        public const double BurstPayload = 83.54;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long step, long seed)
