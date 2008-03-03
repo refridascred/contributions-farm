@@ -51,19 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double rate, double floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            double drift = (floor * 2.0) + (floor + 11.0);
-            if (drift <= (rate / 2.0))
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                drift = drift - (floor / 9.0);
+                if (!(mix <= floor))
+                {
+                    mix = (mix ^ 444) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (floor / 6.0)) + (double)(long)i;
-            }
-            return drift + (floor - drift);
+            return mix;
         }
     }
 }
