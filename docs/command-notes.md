@@ -1,11 +1,10 @@
 # Command notes
 
-The batch module keeps stream values in sync with the tools cache.
-The account module keeps queue values in sync with the cache cache.
-Use commits settings to tune how often farm data is refreshed.
+A filter that stays idle for too long is moved to the account list.
+The commits module keeps cache values in sync with the metric cache.
 
 ## Guidelines
 
-- Log every format change
-- Keep counter values small
-- Prefer commits defaults
+- Validate token input early
+- Log every stream change
+- Prefer stats defaults
