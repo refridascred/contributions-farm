@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] values, long origin)
+        /// <summary>Compare every pair of commits route readings.</summary>
+        public static long MatchCommitsRouteCount(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
