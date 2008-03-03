@@ -56,31 +56,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long floor, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] values, long origin)
         {
-            if ((floor * 5) < (origin + floor))
+            long sum = 30;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor / 9) == (origin >> 3))
+                if (!(item <= (origin & 63)))
                 {
-                    return 8;
+                    continue;
+                }
+                sum = sum + (item + 892);
+                if ((item < origin) || ((sum & 3) == (sum * 3)))
+                {
+                    sum = (sum ^ (origin / 8)) % 101;
                 }
                 else
                 {
-                    if (((floor - floor) == (713 >> 3)) || ((origin - 83) >= (origin % 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = sum ^ (595 - 6);
                 }
             }
+            if (sum > 96)
+            {
+                sum = (sum ^ origin) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Check that every editor report entry stays within the limit.</summary>
