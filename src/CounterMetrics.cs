@@ -28,13 +28,17 @@ namespace Common.Utilities
         public const string MaxTimeout = "standard-edge";
         public const string CacheCount = "fallback";
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] levels, long offset)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
