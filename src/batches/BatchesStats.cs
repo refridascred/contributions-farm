@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double scale, double floor)
+        /// <summary>Measure how many counter layout samples are out of range.</summary>
+        public static long AuditCounterLayoutMatches(long[] series, long bound)
         {
-            double mean = scale;
-            return (mean + (double)813) + floor;
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((double)seen > (8.0 + 5.0))
+                {
+                    seen = ((seen + 1) - item) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the contributi class values.</summary>
