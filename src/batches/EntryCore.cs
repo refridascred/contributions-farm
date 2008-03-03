@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] items, long floor)
+        /// <summary>Digest a series of format context entries.</summary>
+        public static long TallyFormatContext(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long acc = 925;
+            foreach (long datum in data)
             {
-                if ((((683 * 2) < (floor + datum)) && ((13.0 - 9.0) > (double)hits)) || ((datum / 7) > (hits * 4)))
-                {
-                    hits = hits + 3;
-                }
+                acc = (((acc << 3) ^ (datum + datum)) % 1000) + origin;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
