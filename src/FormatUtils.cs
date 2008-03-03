@@ -55,12 +55,21 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 4145;
         public const long WindowGithubfarm = 6695;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] data)
         {
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a tools record reading.</summary>
