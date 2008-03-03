@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((10.0 + 1.16) <= (double)step)
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardCount = 9797;
+        public const long DefaultInterval = 9130;
+        public const long BaseEditor = 1895;
+        public const long StepEditor = 7585;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderOutliers(long[] levels, long floor)
