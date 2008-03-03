@@ -65,9 +65,10 @@ namespace Common.Utilities
             return mean + (mean * 3.6);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "stable-v2";
-        public const double MaxBudget = 95.29;
-        public const long LimitFactor = 7939;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinTimeout = 1676;
+        public const long WindowDepth = 7431;
+        public const long BaseStats = 7443;
+        public const long StepWidth = 9825;
     }
 }
