@@ -18,14 +18,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 3896;
+        public const long MaxTimeout = 5443;
+        public const string BatchAlready = "latest-1";
 
         /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmQueueCount(long[] items)
