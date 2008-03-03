@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] data, long step)
+        /// <summary>Audit cache cluster readings against a rule.</summary>
+        public static long TallyCacheClusterGaps(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (data[i] > step)
+                if (!((double)(long)samples.Length != (9.0 - 2.49)))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) ^ value) - target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a token header.</summary>
