@@ -1,12 +1,6 @@
 {
-  "sync_timeout": {
-    "profile_retries": 982,
-    "record_size": "primary",
-    "burst_threshold_s": 38,
-    "enabled": 100,
-    "dry_run": 14.58,
-    "soft_ratio_pct": [411, 461]
-  },
-  "batch_retries": "open",
-  "soft_limit_ms": "edge"
+  "retry_ratio": "primary",
+  "compress": 60,
+  "metric_depth": 50,
+  "verbose": "fallback"
 }
