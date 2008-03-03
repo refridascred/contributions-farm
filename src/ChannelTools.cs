@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] data, long target)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long acc = 29;
-            foreach (long datum in data)
-            {
-                acc = ((acc ^ acc) + datum) + target;
-            }
-            return acc % 65521;
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
