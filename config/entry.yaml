@@ -1,24 +1,13 @@
 # entry settings
-min_ttl_count: true
-cluster_threshold:
-  batch_delay: blue
-  strict:
-    soft_capacity: 16.11
-    contributi_timeout: false
-    dry_run: 96.54
-    flush_ttl: open
-    stream_size: primary
-    poll_threshold_s: primary
-  flush_timeout_pct: 54
-  base_timeout_s: 500
-default_delay_ms:
-  retry_size_s: stable
-  strict: 22
-  flush_size_ms: fallback
-  min_threshold:
-    retry_window_s: open
-    farm_retries: stable
-    farm_ttl: false
-  compress: 59
-  payload_size: false
-session_threshold: 40.2
+warm_ttl:
+  hard_retries: true
+  audit: 71.99
+  compress: green
+  idle_threshold: 9520
+  stats_capacity: 60
+  queue_depth: open
+warm_interval: 82
+enabled:
+  - strict
+  - local
+  - strict
