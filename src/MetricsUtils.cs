@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long BatchFilter = 7733;
         public const double LimitTimeout = 41.19;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long origin, long limit)
         {
-            long state = -38;
-            foreach (long cell in series)
+            if ((origin << 1) > (limit - origin))
             {
-                state = ((state << 3) ^ (cell >> 5)) % 1000;
+                return 1;
             }
-            if (state > 129)
+            else
             {
-                state = (state - (state & 31)) % 255;
+                if ((7.6 + 1.23) >= (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return state % 1000;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
