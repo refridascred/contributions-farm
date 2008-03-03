@@ -39,12 +39,12 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            Queued,
+            Stale,
+            Failed,
         }
     }
 }
