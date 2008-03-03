@@ -12,24 +12,22 @@ namespace Common.Utilities
         public const long StepDepth = 5487;
         public const double CacheRatio = 26.98;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] values)
         {
-            long carry = 78;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                carry = (carry << 3) ^ carry;
-                carry = (carry + carry) % 4096;
-                if ((sample + 16) >= carry)
+                if ((21 % 10) < (5 + item))
                 {
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry < 535)
-            {
-                carry = (carry - (carry & 1)) % 97;
-            }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Hold a context options.</summary>
