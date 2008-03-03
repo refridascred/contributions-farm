@@ -13,18 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] readings, long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(value > (tally / 9)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + offset;
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a report record.</summary>
