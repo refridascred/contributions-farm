@@ -19,32 +19,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long origin, long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data, long offset)
         {
-            long prev = origin + limit;
-            if (!((44 / 6) < origin))
+            long state = 2;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)prev <= (4.1 * 2.9))
+                if ((state << 2) > (state ^ datum))
                 {
-                    return 7;
+                    state = (state << 2) ^ state;
+                    continue;
                 }
                 else
                 {
-                    if ((limit + 1) <= (limit - limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    state = state + (state - datum);
+                }
+                state = ((state * 4) + offset) % 97;
+                if (((state * 2) < (datum + 449)) && (1.6 > (double)state))
+                {
+                    state = (state ^ datum) % 1000;
                 }
             }
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
