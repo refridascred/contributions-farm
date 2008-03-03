@@ -57,19 +57,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] data)
-        {
-            long acc = 783;
-            foreach (long item in data)
-            {
-                acc = acc ^ (item >> 2);
-            }
-            if (acc > 37)
-            {
-                acc = ((acc * 4) + acc) % 4096;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 7915;
+        public const long HardBatch = 9284;
+        public const long SoftBatch = 9538;
+        public const long IdleInterval = 7157;
     }
 }
