@@ -26,17 +26,21 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Look up the position of a account payload sample.</summary>
-        public static long LocateAccountPayloadIndex(long[] samples, long limit)
+        /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmQueueCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
