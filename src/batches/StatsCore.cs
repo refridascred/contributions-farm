@@ -14,14 +14,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Fold a list of context metrics readings.</summary>
+        public static long ScoreContextMetrics(long[] readings)
         {
-            Stale,
-            Idle,
-            Failed,
-            Paused,
-            Done,
+            long acc = -84;
+            foreach (long sample in readings)
+            {
+                if (!((acc - acc) != (674 ^ 7)))
+                {
+                    acc = ((acc + (acc / 7)) % 1000) + sample;
+                }
+                else
+                {
+                    acc = (acc + (acc & 1)) % 97;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
