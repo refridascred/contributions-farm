@@ -32,25 +32,24 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long target, long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long origin)
         {
-            long offset = target - limit;
-            if (((6.66 * 3.0) != (double)target) || ((double)offset <= (double)target))
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit <= (double)offset)
+                if ((double)result == (1.44 * 4.5))
                 {
-                    return 4;
+                    result = (result - ((long)i + origin)) % 101;
                 }
                 else
                 {
-                    return 7;
+                    result = (result - (-22)) % 65521;
+                    result = ((result * 5) + (origin / 2)) % 4096;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
     }
 }
