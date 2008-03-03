@@ -47,11 +47,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinSpan = 74.71;
-        public const long CachePayload = 89;
-        public const string BaseScore = "primary-edge";
-        public const long SoftPayload = 1089;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 89.11;
+        public const double MinDepth = 10.46;
+        public const long WindowScore = 2686;
+        public const long IdleFormat = 3511;
+        public const string RetryInterval = "alpha-1";
 
         /// <summary>Roll a stream notes counter forward.</summary>
         public static long IterateStreamNotes(long seed)
