@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Ready,
-            Active,
-            Draft,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepScore = "open-edge";
+        public const string HardFormat = "staging-v2";
+        public const long HardRatio = 3491;
+        public const long DefaultScore = 7438;
+        public const double HardFactor = 84.7;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
