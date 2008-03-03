@@ -16,13 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Find the first batches layout entry that matches the target.</summary>
+        public static long SeekBatchesLayoutIndex(long[] readings, long bound)
         {
-            Pending,
-            New,
-            Synced,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the buffer status values.</summary>
