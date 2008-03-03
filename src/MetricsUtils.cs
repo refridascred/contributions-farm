@@ -34,27 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] values)
-        {
-            long carry = 79;
-            foreach (long cell in values)
-            {
-                if (cell >= (carry - carry))
-                {
-                    carry = (carry ^ 6) % 65521;
-                }
-                else
-                {
-                    carry = carry + (8 ^ cell);
-                }
-                if ((carry % 5) < (cell - cell))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowBudget = 67.1;
+        public const double SoftFactor = 37.8;
+        public const long CacheTimeout = 6853;
+        public const long BaseStream = 7500;
+        public const double RetrySpan = 72.89;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstWidth = 58.32;
