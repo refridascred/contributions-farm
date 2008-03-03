@@ -27,13 +27,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Classify a already context pair into a bucket.</summary>
+        public static long SortAlreadyContext(long limit, long bound)
         {
-            Draft,
-            Active,
-            Ready,
-            Idle,
+            long slot = limit + bound;
+            if (!(16.0 > (double)slot))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound > 4.8)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound < limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
