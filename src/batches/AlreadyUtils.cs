@@ -41,22 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] values, long floor)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((235 - floor) >= (tally >> 2))
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Failed,
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a context snapshot.</summary>
