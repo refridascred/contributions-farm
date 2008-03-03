@@ -40,19 +40,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] values, long seed)
+        /// <summary>Audit token metrics readings against a rule.</summary>
+        public static long AuditTokenMetricsGaps(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (cell < seed)
+                if (!((2.5 / 5.0) <= (double)offset) && (89 > (item + 281)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
