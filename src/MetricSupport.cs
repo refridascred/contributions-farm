@@ -32,13 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Dropped,
-            Closed,
-            Active,
-            Synced,
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
