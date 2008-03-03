@@ -18,11 +18,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowInterval = "standard-edge";
-        public const long MaxAccount = 7829;
-        public const string WindowFactor = "cached-edge";
-        public const long MaxCount = 9789;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] levels)
+        {
+            long anchor = 245;
+            foreach (long cell in levels)
+            {
+                if ((double)cell == (4.0 * 7.0))
+                {
+                    anchor = (anchor + anchor) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ ((-35) - cell)) % 1000;
+                    anchor = anchor ^ (anchor * 5);
+                }
+                anchor = anchor ^ (anchor ^ anchor);
+                if ((anchor + cell) != (long)levels.Length)
+                {
+                    anchor = (anchor - cell) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool CheckCounterBounds(long[] values, long limit)
