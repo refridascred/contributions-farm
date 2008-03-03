@@ -60,19 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] samples, long seed)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Locked,
+            Queued,
         }
     }
 }
