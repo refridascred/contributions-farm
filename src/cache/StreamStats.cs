@@ -35,19 +35,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 9554;
         public const double HardStream = 88.17;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Check that every counter contributi entry stays within the limit.</summary>
+        public static bool GuardCounterContributiRange(long[] series, long target)
         {
-            long carry = 8;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long item in series)
             {
-                carry = (carry << 2) ^ (item / 5);
+                if (item >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (carry < 236)
-            {
-                carry = carry + carry;
-            }
-            return carry % 65521;
+            return ready;
         }
     }
 }
