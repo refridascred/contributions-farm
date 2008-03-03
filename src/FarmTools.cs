@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the window already entries that pass the check.</summary>
-        public static long AuditWindowAlreadyMatches(long[] readings, long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((7.4 - 14.0) == (double)count)
-                {
-                    count = ((count + 3) - sample) + offset;
-                }
+                result = (result * 4) + ((long)i * 5);
+                result = (result * 5) + (863 + result);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
