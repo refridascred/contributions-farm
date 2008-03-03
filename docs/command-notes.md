@@ -1,11 +1,12 @@
 # Command notes
 
-When a route fails, the contributi handler retries a few times before giving up.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Use contributi settings to tune how often commits data is refreshed.
+The session report groups every contributi by githubfarm.
+When a command fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Document new window fields
-- Review command limits each release
-- Keep layout values small
+- Prefer record defaults
+- Log every context change
+- Document new context fields
+- Validate filter input early
