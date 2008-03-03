@@ -41,21 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count stats cache pairs that satisfy a relation.</summary>
-        public static long MatchStatsCacheCount(long[] data)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = offset;
+            if (gain < (double)6)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain - (gain + gain)) - ratio;
             }
-            return tally;
+            else
+            {
+                gain = gain + (double)4;
+            }
+            return gain - offset;
         }
 
         /// <summary>Hold a profile stats.</summary>
