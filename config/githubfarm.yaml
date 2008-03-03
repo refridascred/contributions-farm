@@ -1,9 +1,8 @@
 # githubfarm settings
-default_delay_count:
-  - primary
-  - primary
-  - cached
-  - edge
-base_delay: 100
-support_delay: legacy
-compress: 4857
+counter_retries: 49
+burst_depth_s: true
+hard_size_s: green
+min_window_pct:
+  - 77
+  - 233
+  - 53
