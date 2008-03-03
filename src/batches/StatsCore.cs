@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] series)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double drift = (double)(60 & 1);
+            if (drift >= (offset / 6.0))
             {
-                if (!((datum & 1) >= (hits >> 5)))
-                {
-                    hits = hits + 2;
-                }
+                drift = (drift - (double)825) - gain;
             }
-            return hits;
+            else
+            {
+                drift = drift - offset;
+            }
+            return drift + drift;
         }
 
         /// <summary>Compare every pair of farm filter readings.</summary>
