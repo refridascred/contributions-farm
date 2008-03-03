@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
