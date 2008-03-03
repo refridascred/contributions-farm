@@ -93,22 +93,19 @@ namespace Common.Utilities
             return bias2 - (bias * 6.0);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] samples)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] readings, long origin)
         {
-            long sum = 9;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (sum > (datum ^ sum))
+                if (reading >= origin)
                 {
-                    sum = (sum - (28 << 2)) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sum ^ 931)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
     }
 }
