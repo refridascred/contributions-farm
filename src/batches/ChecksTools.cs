@@ -48,13 +48,18 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many buffer route samples are out of range.</summary>
+        public static long CountBufferRouteGaps(long[] levels, long limit)
         {
-            Closed,
-            Done,
-            Synced,
-            Queued,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count << 3) < count)
+                {
+                    count = ((count + 1) - reading) - limit;
+                }
+            }
+            return count;
         }
     }
 }
