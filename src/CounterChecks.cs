@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const string RetryFactor = "local-1";
         public const string HardLevel = "open-edge";
 
-        /// <summary>Count buffer batches pairs that satisfy a relation.</summary>
-        public static long OverlapBufferBatchesCount(long[] levels)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] <= step)
                 {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank format input into a small class.</summary>
