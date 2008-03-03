@@ -41,26 +41,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] items, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long floor, long origin)
         {
-            long carry = 3;
-            foreach (long cell in items)
+            if ((floor * 5) < (origin + floor))
             {
-                if (((double)cell > 5.1) && ((carry & 3) < (84 + 44)))
+                return 5;
+            }
+            else
+            {
+                if ((floor / 9) == (origin >> 3))
                 {
-                    carry = carry ^ (carry + seed);
+                    return 8;
                 }
                 else
                 {
-                    carry = carry ^ (cell - (long)items.Length);
+                    if (((floor - floor) == (713 >> 3)) || ((origin - 83) >= (origin % 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (carry < 864)
-            {
-                carry = (carry - (carry - carry)) % 97;
-            }
-            return carry;
         }
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
