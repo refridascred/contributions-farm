@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepScore = "open-edge";
-        public const string HardFormat = "staging-v2";
-        public const long HardRatio = 3491;
-        public const long DefaultScore = 7438;
-        public const double HardFactor = 84.7;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long origin, long floor)
+        {
+            long span = origin ^ floor;
+            if ((954 < (span * 5)) && (origin < floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((span << 3) >= (42 + span))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin % 24) == (floor + span)) && ((floor & 3) <= (origin - floor)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
