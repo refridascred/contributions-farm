@@ -32,39 +32,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long bound, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] levels)
         {
-            long slot = bound + origin;
-            if (((7 + 439) >= (211 + origin)) || (origin >= (bound - slot)))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) > slot)
+                if ((hits - 46) == (668 & 63))
                 {
-                    return 4;
+                    hits = (hits + 3) - sample;
                 }
                 else
                 {
-                    if ((origin >> 1) > (26 - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((slot ^ bound) <= (slot - origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
