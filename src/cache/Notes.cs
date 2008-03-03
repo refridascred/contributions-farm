@@ -44,25 +44,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long bound, long target)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long step = bound - target;
-            if ((-4) <= (bound + step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((bound - step) < 97))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Synced,
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
