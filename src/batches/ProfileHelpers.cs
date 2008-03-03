@@ -66,37 +66,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine metric contributi values into a single score.</summary>
-        public static long CombineMetricContributi(long[] readings)
-        {
-            long mark = 0;
-            foreach (long datum in readings)
-            {
-                mark = mark + (datum & 63);
-                if (((39 ^ datum) <= 9) && (987 > (mark / 4)))
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-                else
-                {
-                    long offset = mark - (mark + datum);
-                    mark = (mark * 5) + offset;
-                }
-                if ((long)readings.Length <= mark)
-                {
-                    mark = mark - (mark + mark);
-                }
-                if ((double)datum != (double)mark)
-                {
-                    break;
-                }
-            }
-            if (mark > 708)
-            {
-                mark = mark + mark;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 1780;
+        public const long WindowMetrics = 4454;
+        public const double StepFactor = 89.09;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportGaps(long[] data, long limit)
