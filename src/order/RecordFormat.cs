@@ -33,14 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] readings, long origin)
         {
-            Idle,
-            Pending,
-            Draft,
-            Active,
-            Synced,
+            long result = 3;
+            foreach (long item in readings)
+            {
+                if (!((origin - origin) != (468 * 2)))
+                {
+                    result = (result ^ result) + item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
