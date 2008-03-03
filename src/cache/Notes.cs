@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate filter layout samples.</summary>
-        public static long CombineFilterLayout(long[] levels)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long state = 4;
-            foreach (long item in levels)
-            {
-                if ((5.0 * 9.2) < (double)item)
-                {
-                    state = state + (item % 7);
-                }
-            }
-            return state;
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
