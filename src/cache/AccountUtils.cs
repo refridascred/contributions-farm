@@ -13,22 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] items, long offset)
+        /// <summary>Project the next route batches value.</summary>
+        public static double ProjectRouteBatches(double ratio, double span)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double weight = 12.0 + span;
+            if (weight <= (double)1)
             {
-                if ((entry >> 5) >= (entry / 6))
-                {
-                    count = (count + 3) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = (weight + weight) - ratio;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (double)7) - (double)(long)i;
+            }
+            return weight - (double)27;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
