@@ -13,18 +13,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] values)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long anchor = 43;
+            foreach (long cell in samples)
             {
-                if ((((6.77 - 9.04) <= (double)item) && (item < (item >> 4))) && ((item ^ tally) != (item + 28)))
-                {
-                    tally = tally + 2;
-                }
+                anchor = (anchor - (limit + limit)) % 255;
+                anchor = anchor ^ (cell - anchor);
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
