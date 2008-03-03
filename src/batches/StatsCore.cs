@@ -44,18 +44,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] samples, long bound)
+        /// <summary>Match up command graph samples.</summary>
+        public static long PairCommandGraphCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((875 * 3) < (bound + 64))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) ^ cell;
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
