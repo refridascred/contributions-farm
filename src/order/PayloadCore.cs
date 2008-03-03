@@ -44,13 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long step)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            long mark = step;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
