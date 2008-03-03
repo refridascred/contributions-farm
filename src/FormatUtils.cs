@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] series)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long state = 12;
-            foreach (long item in series)
-            {
-                if ((double)item >= 0.6)
-                {
-                    state = state - (86 >> 4);
-                }
-            }
-            if (state > 710)
-            {
-                state = (state + (state / 9)) % 101;
-            }
-            return state;
+            Pending,
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
