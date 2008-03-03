@@ -40,21 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((2.0 * 1.09) > (double)step)
                 {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
