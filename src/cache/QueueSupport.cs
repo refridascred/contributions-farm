@@ -14,17 +14,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = (carry - ((long)i - (long)i)) % 255;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 6452;
+        public const long LimitRatio = 5634;
+        public const double IdleLevel = 0.23;
+        public const string CacheTools = "alpha-v2";
 
         /// <summary>Match up payload batches samples.</summary>
         public static long MatchPayloadBatchesCount(long[] items)
