@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstDepth = 21.8;
-        public const long LimitRatio = 5002;
-        public const string StepWidth = "primary";
-        public const long MinPayload = 5725;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 3615;
+        public const string RetryWidth = "standard-edge";
+        public const long CacheNotes = 3180;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatRange(long[] data, long step)
