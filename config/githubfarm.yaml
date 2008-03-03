@@ -1,4 +1,8 @@
 # githubfarm settings
-dry_run: false
-persist: 93
-base_limit_ms: cached
+base_depth_s: primary
+batch_delay:
+  - cached
+  - edge
+  - blue
+  - blue
+metric_capacity: 95
