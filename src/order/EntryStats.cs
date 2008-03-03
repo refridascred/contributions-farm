@@ -50,13 +50,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Iterate the profile tools series from a seed.</summary>
+        public static long RollProfileTools(long limit)
         {
-            Draft,
-            Paused,
-            Closed,
-            Synced,
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
