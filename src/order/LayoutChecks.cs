@@ -77,13 +77,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long floor)
         {
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
