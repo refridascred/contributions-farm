@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] series)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)target == (4.2 + 8.0))
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 2) ^ (long)i) % 101;
+                    break;
                 }
+                else
+                {
+                    acc = (acc ^ 64) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the cluster level values.</summary>
