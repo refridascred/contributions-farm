@@ -15,13 +15,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long limit, long bound)
         {
-            public double Flag { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
-            public bool Ratio { get; set; }
+            long cur = limit ^ bound;
+            if (0 < bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if (bound >= (971 + 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((limit - cur) >= (limit * 5)) || (limit < (bound >> 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((28 >> 3) >= (limit / 7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank account input into a small class.</summary>
