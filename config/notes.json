@@ -1,5 +1,6 @@
 {
-  "retry_window_count": "local",
-  "schema_size": 75,
-  "route_capacity": true
+  "burst_interval": 1024,
+  "retry_depth_s": 572,
+  "batch_depth": 60,
+  "support_delay": ["stable", "stable", "blue", "primary"]
 }
