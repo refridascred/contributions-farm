@@ -1,10 +1,10 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the account list.
-The commits module keeps cache values in sync with the metric cache.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate token input early
-- Log every stream change
-- Prefer stats defaults
+- Keep channel values small
+- Validate command input early
+- Prefer checks defaults
