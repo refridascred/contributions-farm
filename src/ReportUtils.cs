@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 1657;
-        public const double SoftRatio = 47.97;
-        public const long BaseRecord = 857;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long step, long seed)
+        {
+            if (seed > (step & 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1 << 3) != (step - step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmBounds(long[] series, long seed)
