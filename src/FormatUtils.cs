@@ -55,18 +55,12 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 4145;
         public const long WindowGithubfarm = 6695;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] levels)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)count == (double)value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a tools record reading.</summary>
