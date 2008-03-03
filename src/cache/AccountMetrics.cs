@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate session githubfarm samples.</summary>
-        public static long CombineSessionGithubfarm(long[] readings)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long step, long limit)
         {
-            long sum = 35;
-            foreach (long sample in readings)
+            if ((limit + limit) >= 1)
             {
-                if ((sum + sample) == (sample + sum))
+                return 5;
+            }
+            else
+            {
+                if (step >= (440 << 3))
                 {
-                    sum = (sum - (sample ^ sum)) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (sum + sum);
-                }
-                if (((-683) + sample) >= (85 >> 5))
-                {
-                    sum = sum ^ (sum + sample);
+                    if ((limit - 90) <= (step + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Classify a already context pair into a bucket.</summary>
