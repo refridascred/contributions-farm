@@ -34,15 +34,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double ratio, double bias)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double gain = (ratio + 2.7) / 7.0;
-            if (gain > (double)33)
-            {
-                gain = (gain + (gain / 7.0)) - bias;
-            }
-            return gain + ratio;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
