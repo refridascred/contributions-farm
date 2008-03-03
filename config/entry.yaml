@@ -1,20 +1,30 @@
 # entry settings
-channel_window: 59.19
-verbose:
-  - eu-west
-  - green
-  - fallback
-  - edge
-retry_retries_pct: true
-retry_interval_pct:
-  - 205
-  - 157
-  - 425
-warm_size_s:
-  soft_delay_ms: cached
-  flush_threshold: 37.35
-  metrics_retries:
-    - fallback
-    - open
-    - local
-    - staging
+max_ttl_ms:
+  flush_ttl_count:
+    soft_capacity_pct: 1024
+    min_retries:
+      - 81
+      - 435
+    account_ratio: eu-west
+    verbose: false
+    already_delay:
+      - 372
+      - 467
+  readonly: legacy
+  cache_limit: staging
+  sync_ratio_count: legacy
+flush_limit: 93.9
+dry_run: false
+batch_size:
+  warm_capacity_s: true
+  sync_limit_s: 1036
+  audit:
+    compress: 62.9
+    audit: standard
+    base_timeout_count:
+      - staging
+      - edge
+      - open
+    editor_size: open
+    idle_delay_pct: fallback
+    sync_ttl_s: true
