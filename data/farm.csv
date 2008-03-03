@@ -1,11 +1,6 @@
-id,level,rank,ratio
-1,863,988,strict
-2,588,7.76,136
-3,543,fallback,eu-west
-4,777,737,773
-5,350,primary,79.54
-6,79.83,988,10.36
-7,87.66,35.35,912
-8,fallback,15.68,179
-9,staging,61.94,open
-10,920,fallback,blue
+id,weight,count,token,rank
+1,125,strict,818,38.35
+2,72.25,867,149,73.12
+3,380,627,329,651
+4,141,706,56.28,825
+5,primary,32.2,56.32,17.34
