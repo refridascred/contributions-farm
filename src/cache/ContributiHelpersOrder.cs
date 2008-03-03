@@ -26,11 +26,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            Retry,
+            Stale,
+            Pending,
         }
     }
 }
