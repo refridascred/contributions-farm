@@ -1,6 +1,7 @@
 {
-  "soft_interval_ms": "local",
-  "flush_ttl": ["primary", "staging"],
-  "stream_ttl": "open",
-  "idle_depth_count": 38.16
+  "batch_window_s": "edge",
+  "base_ratio_pct": "cached",
+  "token_size": 25.35,
+  "readonly": [66, 48, 268],
+  "flush_ttl_pct": 49
 }
