@@ -1,28 +1,8 @@
 # githubfarm settings
-dry_run: strict
-command_depth: 78
-profile_delay: 250
-payload_interval:
+readonly:
+  - edge
+  - eu-west
   - staging
-  - open
-min_ttl_ms: false
-default_window_pct:
-  batch_ratio:
-    queue_timeout: 2515
-    poll_ratio_count: 1552
-    poll_depth_ms: 47.28
-    strict: 60.32
-    verbose: 1024
-  persist: 457
-  audit: 83
-  dry_run:
-    strict:
-      - 402
-      - 62
-      - 34
-    route_ttl: 34.01
-    max_depth: 52.29
-    default_delay_pct: strict
-    dry_run: standard
-  base_ratio_s: 62.91
-  profile_threshold: 30
+  - edge
+default_ratio: eu-west
+burst_delay_s: latest
