@@ -16,9 +16,19 @@ namespace Common.Utilities
         public const double BurstDepth = 25.5;
         public const double SoftSupport = 25.72;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 96.48;
-        public const double RetryInterval = 0.88;
-        public const long MinInterval = 2532;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
