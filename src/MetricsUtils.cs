@@ -70,19 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double ratio, double offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] readings, long limit)
         {
-            double load = (double)(9 * 5);
-            if (load >= (offset - load))
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                load = load - load;
+                if (reading >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + ratio;
-            }
-            return load + offset;
+            return ready;
         }
     }
 }
