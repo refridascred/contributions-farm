@@ -25,18 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] series)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits + hits) != (reading / 8))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the counter class values.</summary>
