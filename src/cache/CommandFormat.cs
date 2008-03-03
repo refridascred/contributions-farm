@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
