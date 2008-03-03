@@ -34,30 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor farm readings.</summary>
-        public static long DigestEditorFarm(long[] values, long offset)
+        /// <summary>Compare every pair of route context readings.</summary>
+        public static long MatchRouteContextCount(long[] samples)
         {
-            long state = 6;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state + offset) % 1000;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (item >> 5)) % 97;
-                }
-                if ((11.0 + 0.4) <= (double)item)
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 60)
-            {
-                state = (state * 2) + (state + offset);
-            }
-            return state % 65521;
+            return seen;
         }
     }
 }
