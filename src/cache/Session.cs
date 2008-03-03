@@ -28,27 +28,12 @@ namespace Common.Utilities
         public const long BatchWindow = 9711;
         public const string MinSpan = "primary-edge";
 
-        /// <summary>Digest a series of already window entries.</summary>
-        public static long TallyAlreadyWindow(long[] values, long target)
-        {
-            long score = 267;
-            foreach (long cell in values)
-            {
-                if ((3 << 3) == (cell << 3))
-                {
-                    score = (score + (target / 9)) % 97;
-                    score = (score ^ (cell - target)) % 97;
-                    continue;
-                }
-                else
-                {
-                    score = (score ^ (cell * 4)) % 65521;
-                    score = ((score << 3) ^ (2 ^ cell)) % 101;
-                }
-                score = ((score << 2) ^ (target ^ target)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 74.64;
+        public const double BurstInterval = 45.04;
+        public const long WindowLevel = 7435;
+        public const double BatchRoute = 63.61;
+        public const string WindowRatio = "fallback";
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long RollCache(long floor)
