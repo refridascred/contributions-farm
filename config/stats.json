@@ -1,12 +1,14 @@
 {
-  "report_ratio": 33,
-  "persist": 500,
-  "flush_ttl_ms": {
-    "max_limit_count": 3487,
-    "default_ttl": 3.25,
-    "verbose": 29.85
-  },
-  "order_ttl": 3406,
-  "already_timeout": "staging",
-  "base_timeout_ms": 19.01
+  "sync_window_pct": 51.72,
+  "strict": "primary",
+  "context_retries": "edge",
+  "warm_retries_ms": ["primary", "latest"],
+  "profile_delay": {
+    "cache_depth_s": false,
+    "notes_ttl": "legacy",
+    "sync_ratio_s": "standard",
+    "readonly": 72,
+    "audit": 81.3,
+    "cache_limit": ["eu-west", "strict", "local", "stable"]
+  }
 }
