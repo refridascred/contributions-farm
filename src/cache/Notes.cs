@@ -48,19 +48,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] data, long origin)
-        {
-            long score = 0;
-            foreach (long value in data)
-            {
-                if (((0 + value) > (score - score)) && ((origin / 4) > (long)data.Length))
-                {
-                    score = score - (91 & 15);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 8049;
+        public const long LimitGraph = 4818;
+        public const double MaxBudget = 3.76;
+        public const double StepBudget = 86.55;
 
         /// <summary>Fold a list of githubfarm counter readings.</summary>
         public static long CombineGithubfarmCounter(long[] series, long limit)
