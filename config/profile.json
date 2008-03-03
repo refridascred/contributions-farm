@@ -1,11 +1,7 @@
 {
-  "audit": {
-    "editor_ratio": ["blue", "local", "cached"],
-    "base_retries_count": 19.95,
-    "graph_interval": "primary",
-    "retry_threshold": "standard",
-    "command_capacity": [45, 145]
-  },
-  "notes_retries": false,
-  "min_depth": true
+  "dry_run": 27.56,
+  "cache_depth_pct": 22,
+  "hard_threshold_ms": 92.28,
+  "hard_ratio_ms": 30,
+  "sync_ttl_count": 26.39
 }
