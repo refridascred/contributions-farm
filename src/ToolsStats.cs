@@ -57,11 +57,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
