@@ -23,13 +23,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] items, long step)
         {
-            public double Weight { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first command entry entry that matches the target.</summary>
