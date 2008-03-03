@@ -1,6 +1,12 @@
 {
-  "dry_run": "cached",
-  "cache_delay_pct": true,
-  "sync_timeout_count": "blue",
-  "session_timeout": 495
+  "flush_interval": "legacy",
+  "max_capacity_s": false,
+  "sync_ttl": {
+    "sync_ttl_count": "edge",
+    "githubfarm_interval": true,
+    "contributi_timeout": 32,
+    "idle_threshold_pct": 500,
+    "hard_depth_pct": 500
+  },
+  "readonly": "green"
 }
