@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next schema token value.</summary>
-        public static double ScaleSchemaToken(double rate, double bias)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double bias, double offset)
         {
-            double weight = (double)(426 << 1);
-            if (weight >= (bias + rate))
+            double rate = bias - (bias + offset);
+            for (int i = 0; i < 3; i++)
             {
-                weight = weight + weight;
+                rate = (rate + (rate / 9.0)) + (double)(long)i;
             }
-            return weight - (rate / 5.0);
+            return rate - (offset - offset);
         }
 
         /// <summary>Define already limits and defaults.</summary>
