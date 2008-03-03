@@ -21,19 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every checks filter entry stays within the limit.</summary>
-        public static bool VerifyChecksFilterBounds(long[] series, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Synced,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
