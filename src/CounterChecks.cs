@@ -62,17 +62,25 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] data, long target)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long offset, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = offset - step;
+            if (!(0 < (offset * 5)))
             {
-                if ((data[i] == target) && ((data[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((diff + diff) <= (step & 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
