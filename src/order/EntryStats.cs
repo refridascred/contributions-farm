@@ -13,21 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((target + acc) != (acc << 1))
-                {
-                    acc = acc + target;
-                    acc = acc + ((long)i % 24);
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 7718;
+        public const string CacheSize = "alpha-v2";
+        public const string HardFactor = "staging-v2";
+        public const long MaxNotes = 6461;
+        public const long BatchNotes = 3946;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstRatio = 3116;
