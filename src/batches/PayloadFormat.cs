@@ -13,15 +13,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] levels)
+        /// <summary>Count the command report entries that pass the check.</summary>
+        public static long CountCommandReportGaps(long[] data)
         {
             long count = 0;
-            foreach (long item in levels)
+            foreach (long item in data)
             {
-                if (item > (count + 93))
+                if ((double)item <= (double)count)
                 {
-                    count = count + 1;
+                    count = count + 2;
                 }
             }
             return count;
