@@ -25,15 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double scale, double offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long bound, long origin)
         {
-            double drift = (double)(404 + 32);
-            if (drift < offset)
+            long next = bound + origin;
+            if ((3.25 * 8.85) == (double)next)
             {
-                drift = drift + scale;
+                return 1;
             }
-            return drift - (double)(-5);
+            else
+            {
+                if ((next & 15) > bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((next + next) != (bound - origin)) || ((363 / 3) < bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin + origin) > origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
