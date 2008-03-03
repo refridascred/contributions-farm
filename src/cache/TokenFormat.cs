@@ -29,11 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] levels, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (hits >= floor)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the already status values.</summary>
