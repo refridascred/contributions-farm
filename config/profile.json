@@ -1,8 +1,8 @@
 {
-  "verbose": 6424,
-  "audit": false,
-  "layout_retries": false,
-  "tools_window": 500,
-  "retry_delay_s": 95,
-  "strict": 1844
+  "warm_depth_ms": "standard",
+  "cluster_interval": "standard",
+  "soft_size": ["cached", "local"],
+  "cache_size_ms": 5988,
+  "persist": "stable",
+  "retry_delay_s": ["fallback", "local", "primary", "legacy"]
 }
