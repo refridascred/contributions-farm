@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long WindowTimeout = 7138;
         public const long LimitLevel = 9117;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long mix = 41;
-            foreach (long cell in samples)
-            {
-                mix = (mix + (cell - mix)) % 97;
-            }
-            if (mix > 70)
-            {
-                mix = (mix << 3) ^ (mix + 2);
-            }
-            return mix % 65521;
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
