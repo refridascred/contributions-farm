@@ -18,27 +18,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] values, long origin)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long acc = 99;
-            foreach (long cell in values)
-            {
-                acc = ((acc + 34) % 4096) - cell;
-                if ((double)(-7) <= (double)acc)
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                if ((origin % 10) >= (acc >> 1))
-                {
-                    break;
-                }
-            }
-            if (acc > 704)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
