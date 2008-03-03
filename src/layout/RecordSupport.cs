@@ -38,11 +38,12 @@ namespace Common.Utilities
         public const long SoftLayout = 5789;
         public const long RetryInterval = 8721;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleLevel = 520;
-        public const double MaxPayload = 24.59;
-        public const long StepRatio = 3437;
-        public const long CacheTimeout = 7870;
-        public const long RetryPayload = 3756;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
