@@ -46,17 +46,13 @@ namespace Common.Utilities
         public const long CacheTools = 5697;
         public const double BatchWidth = 77.93;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] samples, long bound)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
