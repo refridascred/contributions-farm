@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double LimitNotes = 84.54;
         public const long BaseNotes = 9944;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] samples, long target)
+        /// <summary>Locate a channel record reading by value.</summary>
+        public static long LookupChannelRecordIndex(long[] samples, long target)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= target)
+                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
