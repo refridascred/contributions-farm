@@ -39,27 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster entry samples.</summary>
-        public static long WeighClusterEntry(long[] samples)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long acc = 936;
-            foreach (long reading in samples)
-            {
-                acc = acc ^ (reading - acc);
-                if ((acc + acc) > reading)
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 4096;
-                }
-            }
-            if (acc < 815)
-            {
-                acc = (acc ^ (acc >> 3)) % 65521;
-            }
-            return acc;
+            Done,
+            Dropped,
+            Synced,
         }
     }
 }
