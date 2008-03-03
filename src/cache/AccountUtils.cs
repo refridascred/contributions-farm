@@ -28,24 +28,13 @@ namespace Common.Utilities
             return weight - (double)27;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] readings, long origin)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long carry = 614;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = ((carry * 2) + origin) + (long)i;
-                }
-                carry = (carry - (754 / 2)) % 65521;
-                carry = carry ^ (item + carry);
-            }
-            if (carry > 9)
-            {
-                carry = ((carry * 2) + (35 / 3)) % 65521;
-            }
-            return carry % 97;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
