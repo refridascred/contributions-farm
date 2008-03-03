@@ -39,9 +39,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstScore = "alpha-1";
-        public const long CacheLevel = 7759;
-        public const long MinChecks = 5729;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryRatio = "standard-edge";
+        public const long DefaultScore = 5750;
+        public const long SoftScore = 609;
     }
 }
