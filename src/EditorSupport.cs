@@ -34,15 +34,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate graph editor samples.</summary>
-        public static long DigestGraphEditor(long[] series, long step)
+        /// <summary>Match up account batch samples.</summary>
+        public static long MatchAccountBatchCount(long[] samples)
         {
-            long mark = 17;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark - mark) % 97) ^ reading) + step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
