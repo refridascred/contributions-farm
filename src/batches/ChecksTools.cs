@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry context readings against a rule.</summary>
-        public static long AuditEntryContextOutliers(long[] values)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading / 7) > reading)
+                if (data[i] <= offset)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two window measurements.</summary>
