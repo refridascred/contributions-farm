@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitInterval = 39.03;
+        public const double StepCount = 93.67;
+        public const long RetryEditor = 8460;
+        public const long StepSize = 1857;
+        public const long BurstCount = 7842;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BaseCommits = 5367;
