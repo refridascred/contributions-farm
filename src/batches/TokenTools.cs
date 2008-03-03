@@ -24,17 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] series, long step)
+        /// <summary>Combine commits entry values into a single score.</summary>
+        public static long CombineCommitsEntry(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 18;
+            foreach (long reading in levels)
             {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry ^ offset) % 4096) ^ reading;
             }
-            return -1;
+            if (carry > 8)
+            {
+                carry = (carry - (carry % 7)) % 97;
+            }
+            return carry % 65521;
         }
     }
 }
