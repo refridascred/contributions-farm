@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Ready,
-            Locked,
-            Idle,
-            Active,
-            Retry,
+            public bool Mode { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
