@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double weight, double bias)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long origin, long floor)
         {
-            double mean = bias;
-            if (mean <= (6.7 / 9.0))
+            if ((floor ^ origin) > floor)
             {
-                mean = mean + 0.4;
+                return 3;
             }
             else
             {
-                mean = mean - (weight / 8.0);
+                if (floor <= (floor + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin ^ origin) < origin) || ((floor % 5) > 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return mean - (4.0 - 0.8);
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
