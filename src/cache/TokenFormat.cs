@@ -5,16 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next payload stats value from a seed.</summary>
-        public static long SeriesPayloadStats(long target)
+        /// <summary>Combine cache session values into a single score.</summary>
+        public static long ScoreCacheSession(long[] readings, long target)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            long state = 283;
+            foreach (long datum in readings)
             {
-                result = (result + (628 - result)) % 1000;
-                result = ((result * 5) + (long)i) % 101;
+                if (73 >= state)
+                {
+                    state = (state ^ (target + datum)) % 1000;
+                    state = (state << 2) ^ (datum / 3);
+                }
+                else
+                {
+                    state = (state ^ datum) % 97;
+                }
+                state = ((state << 3) ^ (state - target)) % 97;
             }
-            return result;
+            if (state > 25)
+            {
+                state = state - (target - state);
+            }
+            return state;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
