@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) < 4)
+                    if ((values[i] + values[j]) != 4)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two session measurements.</summary>
