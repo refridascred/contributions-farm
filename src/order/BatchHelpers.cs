@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 224;
-        public const string SoftCounter = "stable-v2";
-        public const long RetryTimeout = 6293;
-        public const long StepDepth = 5487;
-        public const double CacheRatio = 26.98;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftScore = 9498;
+        public const long BurstStats = 546;
+        public const long CacheLevel = 4959;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheInterval = 3711;
