@@ -47,18 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm route entries that pass the check.</summary>
-        public static long TallyFarmRouteHits(long[] levels, long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (floor > datum)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Locked,
+            Pending,
+            Draft,
         }
     }
 }
