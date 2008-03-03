@@ -31,23 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate already stats samples.</summary>
-        public static long ScoreAlreadyStats(long[] data)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long anchor = 679;
-            foreach (long sample in data)
-            {
-                if ((sample / 8) == (anchor + sample))
-                {
-                    anchor = (anchor - (anchor + anchor)) % 101;
-                }
-                anchor = (anchor + (sample / 8)) % 255;
-                if (((sample + anchor) <= (84 + sample)) || ((sample >> 2) == (sample + anchor)))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            New,
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
