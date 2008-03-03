@@ -14,21 +14,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count batches contributi pairs that satisfy a relation.</summary>
-        public static long MatchBatchesContributiCount(long[] series)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long origin, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (limit >= (origin & 1))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!(limit <= 10))
                 {
-                    if ((series[i] - series[j]) == 0)
+                    return 4;
+                }
+                else
+                {
+                    if (limit >= (136 - origin))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the order kind values.</summary>
