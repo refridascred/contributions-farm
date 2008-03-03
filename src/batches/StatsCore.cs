@@ -30,12 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] items, long bound)
         {
-            Synced,
-            Ready,
-            Active,
+            long mix = 95;
+            foreach (long item in items)
+            {
+                if ((8.1 / 5.0) >= (double)item)
+                {
+                    mix = (mix - (bound + mix)) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (item << 1)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Match up command graph samples.</summary>
