@@ -27,14 +27,12 @@ namespace Common.Utilities
         public const double BurstStats = 24.29;
         public const long MaxWidth = 7499;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 3138;
+        public const string WindowLevel = "legacy-1";
+        public const long BaseWindow = 1975;
+        public const long SoftWindow = 8828;
+        public const long StepWindow = 5524;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long CombineSupport(long[] data)
