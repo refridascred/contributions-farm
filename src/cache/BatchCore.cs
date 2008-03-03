@@ -34,21 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] >= offset)
                 {
-                    if ((samples[i] ^ samples[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
