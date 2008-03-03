@@ -73,13 +73,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowTimeout = 71.19;
+        public const string BatchInterval = "open-1";
+        public const long BatchBatches = 849;
+        public const double BaseBatches = 37.35;
+        public const long DefaultBatches = 4317;
     }
 }
