@@ -19,15 +19,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Iterate the editor tools series from a seed.</summary>
-        public static long IterateEditorTools(long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] items)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            long acc = 96;
+            foreach (long datum in items)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if (acc > (long)items.Length)
+                {
+                    acc = (((acc << 2) ^ acc) % 101) + datum;
+                }
+                else
+                {
+                    acc = (acc - (-977)) % 97;
+                }
             }
-            return result;
+            if (acc < 24)
+            {
+                acc = ((acc * 4) + ((long)items.Length % 3)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
