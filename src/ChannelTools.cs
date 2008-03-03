@@ -37,11 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 2794;
-        public const string StepLayout = "open";
-        public const string BaseFactor = "open-1";
-        public const long CacheSize = 9777;
-        public const long StepFactor = 5966;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheInterval = 6395;
+        public const string BurstEntry = "legacy-edge";
+        public const double HardEntry = 25.7;
+        public const string HardLevel = "local";
+        public const double SoftEntry = 41.54;
     }
 }
