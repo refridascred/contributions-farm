@@ -66,11 +66,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public string Label { get; set; } = "";
+            public bool Score { get; set; }
             public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
