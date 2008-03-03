@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of payload cluster readings.</summary>
-        public static long WeighPayloadCluster(long[] series, long limit)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long state = 51;
-            foreach (long cell in series)
-            {
-                state = (((state << 2) ^ (64 ^ cell)) % 1000) + limit;
-                if (((long)series.Length + 1) > state)
-                {
-                    state = ((state * 2) + state) % 1000;
-                }
-            }
-            return state;
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the contributi class values.</summary>
