@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            Queued,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a batches stats.</summary>
