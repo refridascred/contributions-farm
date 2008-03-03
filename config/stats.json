@@ -1,12 +1,6 @@
 {
-  "context_capacity": "standard",
-  "warm_window_pct": "edge",
-  "metric_timeout": "open",
-  "account_delay": [403, 179, 466],
-  "enabled": {
-    "account_retries": "standard",
-    "soft_limit_pct": "edge",
-    "warm_size_pct": "edge"
-  },
-  "order_limit": "fallback"
+  "cache_interval": 50,
+  "verbose": 5.07,
+  "base_depth": 7071,
+  "buffer_ttl": "cached"
 }
