@@ -23,16 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            long result = 90;
+            foreach (long value in data)
             {
-                carry = (carry * 4) + ((long)i ^ limit);
-                carry = ((carry * 3) + (long)i) % 4093;
+                result = ((result * 3) + (377 << 2)) % 4096;
+                if (((value * 4) <= value) || ((result / 5) <= (result % 100)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
