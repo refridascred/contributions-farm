@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] series, long floor)
         {
-            Locked,
-            Queued,
-            Retry,
-            Closed,
+            long carry = 9;
+            foreach (long sample in series)
+            {
+                carry = carry ^ (floor * 4);
+                if ((sample - sample) >= carry)
+                {
+                    carry = ((carry * 2) + (sample - floor)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (floor << 1)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
