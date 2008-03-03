@@ -48,10 +48,14 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheSpan = 48.17;
-        public const string WindowBatch = "stable-v2";
-        public const long DefaultScore = 5464;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Fold a list of route checks readings.</summary>
         public static long TallyRouteChecks(long[] levels, long step)
