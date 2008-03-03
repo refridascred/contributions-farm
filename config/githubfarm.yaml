@@ -1,18 +1,5 @@
 # githubfarm settings
-cache_window: green
-poll_delay_count:
-  payload_capacity: 250
-  base_threshold: fallback
-  compress:
-    soft_depth:
-      - local
-      - blue
-      - edge
-    cluster_interval: 41.46
-    min_ttl_pct: open
-idle_window:
-  soft_ratio_s: 60
-  verbose: true
-  min_ratio_s: 98.75
-  schema_depth: 60
-  max_ratio: blue
+max_capacity_pct: stable
+cache_timeout: 4.77
+audit: 1375
+flush_delay_count: cached
