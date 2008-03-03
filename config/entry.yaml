@@ -1,16 +1,4 @@
 # entry settings
-soft_retries_s: eu-west
-sync_window_count: 250
-poll_delay_pct: primary
-batch_ttl_pct:
-  max_delay:
-    - 465
-    - 474
-    - 323
-    - 468
-  min_window_count: 76
-  soft_capacity:
-    - 250
-    - 426
-githubfarm_depth: true
-batch_interval_pct: 79.49
+cache_timeout_count: fallback
+warm_limit_ms: 45.06
+enabled: standard
