@@ -34,13 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] data)
         {
-            Failed,
-            Done,
-            Active,
-            Locked,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches + matches) > matches)
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
     }
 }
