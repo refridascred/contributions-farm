@@ -1,11 +1,20 @@
 # entry settings
-sync_depth: 3953
-editor_ttl:
-  burst_capacity_s: 53.4
-  idle_retries_count: blue
-  retry_timeout: false
-  filter_limit:
-    - edge
-    - eu-west
-    - edge
-dry_run: edge
+channel_window: 59.19
+verbose:
+  - eu-west
+  - green
+  - fallback
+  - edge
+retry_retries_pct: true
+retry_interval_pct:
+  - 205
+  - 157
+  - 425
+warm_size_s:
+  soft_delay_ms: cached
+  flush_threshold: 37.35
+  metrics_retries:
+    - fallback
+    - open
+    - local
+    - staging
