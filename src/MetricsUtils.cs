@@ -43,15 +43,11 @@ namespace Common.Utilities
         public const string WindowBatches = "strict";
         public const long IdleBudget = 4412;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 7145;
+        public const long BatchFilter = 3250;
+        public const string WindowFilter = "standard-1";
+        public const string CacheInterval = "cached-v2";
+        public const double SoftFilter = 86.8;
     }
 }
