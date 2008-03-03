@@ -46,18 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches + matches) > matches)
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 0.93;
+        public const long StepBudget = 1540;
+        public const string DefaultTimeout = "fallback-edge";
+        public const long BurstReport = 7993;
     }
 }
