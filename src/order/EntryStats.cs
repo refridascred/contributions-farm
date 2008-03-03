@@ -58,38 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long floor, long limit)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            if ((3 / 9) == (limit + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((floor >> 1) < floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit <= (7.8 / 2.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor >= (floor & 127))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
