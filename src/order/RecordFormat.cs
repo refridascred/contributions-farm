@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] samples)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Idle,
-            Done,
+            long score = 0;
+            foreach (long item in samples)
+            {
+                score = ((score * 5) + (score << 1)) % 97;
+                score = score ^ (score / 4);
+                if (((score + score) >= (50 + item)) || ((item >> 3) <= 789))
+                {
+                    break;
+                }
+            }
+            if (score > 108)
+            {
+                score = (score * 3) + (score / 4);
+            }
+            return score;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
