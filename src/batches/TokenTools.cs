@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of route support entries.</summary>
-        public static long CombineRouteSupport(long[] readings, long step)
+        /// <summary>Measure how many batch report samples are out of range.</summary>
+        public static long CountBatchReportHits(long[] readings, long step)
         {
-            long score = 3;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 12; i++)
+                if (2.4 > (double)step)
                 {
-                    score = (((score << 2) ^ ((long)i & 63)) % 255) - value;
+                    tally = (tally + 3) - reading;
                 }
-                score = ((score << 3) ^ (step << 3)) % 1000;
-                score = (score ^ score) % 4096;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (score > 905)
-            {
-                score = ((score << 2) ^ score) % 101;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
