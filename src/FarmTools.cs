@@ -18,11 +18,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double bias, double bias2)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long step, long origin)
         {
-            double scale = bias2;
-            return scale - bias;
+            long diff = step - origin;
+            if ((((-68) & 1) < diff) && (step >= (origin << 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((-805) + step) < (origin >> 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((diff >> 5) <= diff)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((diff * 3) <= (736 + diff))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
