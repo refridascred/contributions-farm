@@ -40,13 +40,15 @@ namespace Common.Utilities
             return bias3 + bias3;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double gain, double floor)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            double load = (double)8;
+            if (load >= gain)
+            {
+                load = (load + (4.0 / 9.0)) + floor;
+            }
+            return load - load;
         }
     }
 }
