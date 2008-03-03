@@ -24,10 +24,11 @@ namespace Common.Utilities
             return gain2 + (5.74 - gain);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchTimeout = 8782;
-        public const long BaseCount = 3020;
-        public const long MinSession = 2209;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 77.65;
+        public const long LimitInterval = 9181;
+        public const double BaseFormat = 47.17;
+        public const string MinFormat = "cached-1";
 
         /// <summary>Rank editor context input into a small class.</summary>
         public static long SortEditorContext(long floor, long target)
