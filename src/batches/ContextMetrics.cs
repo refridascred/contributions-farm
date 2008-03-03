@@ -53,19 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] readings, long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long mark = 286;
-            foreach (long reading in readings)
-            {
-                mark = ((mark << 2) ^ (reading + (long)readings.Length)) % 255;
-            }
-            if (mark < 4)
-            {
-                mark = mark - step;
-            }
-            return mark % 1000;
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
