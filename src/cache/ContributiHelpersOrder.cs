@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string StepWidth = "primary";
         public const long MinPayload = 5725;
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] data, long step)
         {
-            public double Token { get; set; }
-            public double Offset { get; set; }
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a metrics header.</summary>
