@@ -23,16 +23,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings, long step)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long mix = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix ^ 718) ^ sample;
-                mix = mix + (step ^ 6);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Project the next queue value.</summary>
