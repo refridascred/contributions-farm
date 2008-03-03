@@ -19,14 +19,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] series, long target)
         {
-            Queued,
-            Closed,
-            Dropped,
-            New,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
