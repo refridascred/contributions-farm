@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] readings)
+        /// <summary>Count the farm route entries that pass the check.</summary>
+        public static long TallyFarmRouteHits(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (!(((long)readings.Length >= (27 & 31)) && (hits < (hits - hits))))
+                if (floor > datum)
                 {
-                    hits = (hits + 3) ^ datum;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
