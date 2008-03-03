@@ -46,18 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample & 1) >= (origin ^ sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleRatio = 4852;
+        public const string MaxCache = "stable";
+        public const string BatchInterval = "legacy-v2";
+        public const string SoftCache = "staging-1";
     }
 }
