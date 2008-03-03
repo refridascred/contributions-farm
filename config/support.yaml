@@ -1,6 +1,4 @@
 # support settings
-default_delay: 53
-default_delay_pct: primary
-max_depth_pct: edge
-contributi_retries: 45.74
-default_window_pct: 10
+default_depth_s: 100
+soft_ratio_pct: 25.32
+flush_threshold_s: primary
