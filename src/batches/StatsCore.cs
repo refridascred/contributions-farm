@@ -38,20 +38,11 @@ namespace Common.Utilities
         public const string MaxLevel = "strict";
         public const long WindowLevel = 5922;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryTimeout = 40.85;
+        public const long CacheQueue = 5013;
+        public const long IdleQueue = 5803;
+        public const double BaseSpan = 48.74;
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
