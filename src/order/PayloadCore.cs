@@ -44,14 +44,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Combine metrics batches values into a single score.</summary>
+        public static long DigestMetricsBatches(long[] items, long step)
         {
-            Locked,
-            Retry,
-            Failed,
-            Closed,
-            Queued,
+            long state = 4;
+            foreach (long cell in items)
+            {
+                if ((9.0 + 14.0) < (double)state)
+                {
+                    state = ((state << 2) ^ (state * 5)) % 97;
+                    state = (state ^ (step >> 3)) % 65521;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (step - step)) % 101;
+                }
+                if (!((30 <= step) && ((9.0 / 4.0) != (double)cell)))
+                {
+                    state = state + (cell - 156);
+                }
+                if ((state * 5) == (58 + state))
+                {
+                    state = (state + (state % 2)) % 255;
+                }
+            }
+            if (state < 19)
+            {
+                state = state + 30;
+            }
+            return state % 97;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
