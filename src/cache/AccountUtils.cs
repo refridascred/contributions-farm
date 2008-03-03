@@ -35,13 +35,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            Pending,
-            Closed,
-            Queued,
-            Synced,
+            long total = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total + total) % 1000;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
