@@ -88,23 +88,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] readings)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long score = -34;
-            foreach (long entry in readings)
-            {
-                score = (score + entry) % 4096;
-                if ((double)score <= (4.2 + 1.0))
-                {
-                    score = (score * 2) + (entry % 2);
-                }
-            }
-            if (score > 277)
-            {
-                score = (score ^ score) % 97;
-            }
-            return score;
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
