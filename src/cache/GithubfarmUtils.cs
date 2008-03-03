@@ -34,18 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] samples, long origin)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double weight2 = 1.4;
+            if (weight2 >= (double)1)
             {
-                if (0 < (sample + (-2)))
-                {
-                    tally = (tally + 1) + origin;
-                }
+                weight2 = weight2 + (weight2 - weight2);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - (span / 9.0)) + (double)(long)i;
+            }
+            return weight2 + (5.0 - weight);
         }
 
         /// <summary>Describe the cluster kind values.</summary>
