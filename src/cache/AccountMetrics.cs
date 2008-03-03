@@ -53,12 +53,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 5568;
-        public const long StepReport = 4233;
-        public const string WindowBudget = "strict";
-        public const long BaseBudget = 8480;
-        public const long MaxReport = 6336;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryLimits(long[] series, long floor)
