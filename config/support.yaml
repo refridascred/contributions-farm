@@ -1,7 +1,34 @@
 # support settings
-base_size_pct:
-  - 179
-  - 52
-  - 472
-batches_depth: 77.3
-dry_run: 57
+max_depth_s: 18.03
+warm_retries_count:
+  verbose: 1
+  min_threshold:
+    - 33
+    - 263
+  compress: standard
+  persist: false
+  enabled: 31
+retry_delay:
+  - stable
+  - legacy
+  - fallback
+  - fallback
+strict: 63
+poll_interval_s:
+  - local
+  - edge
+  - fallback
+  - edge
+idle_depth:
+  farm_interval: true
+  default_retries_pct: 39.27
+  burst_limit_pct: true
+  cache_ratio_pct: false
+  batch_limit_s:
+    base_retries: staging
+    poll_retries_pct: 17.83
+    warm_interval_ms: 8616
+    flush_ratio: staging
+    burst_ttl_count: 85
+    cache_threshold_s: 74
+  soft_ttl_s: edge
