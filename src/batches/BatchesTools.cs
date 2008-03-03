@@ -40,12 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Ready,
-            Idle,
-            Closed,
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
