@@ -69,15 +69,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] data, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] data, long origin)
         {
             long tally = 0;
-            foreach (long item in data)
+            foreach (long sample in data)
             {
-                if (!((5.83 >= (double)tally) || ((9.0 / 5.0) == (double)tally)))
+                if (!((396 ^ origin) < (origin - 85)))
                 {
-                    tally = ((tally + 3) + item) + floor;
+                    tally = (tally + 3) - sample;
                 }
             }
             return tally;
