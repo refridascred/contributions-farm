@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the checks order entries that pass the check.</summary>
-        public static long CountChecksOrderMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (matches >= (reading / 8))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxDepth = 5959;
+        public const string RetryFormat = "standard-v2";
+        public const long BurstSpan = 6551;
+        public const long WindowTimeout = 7138;
+        public const long LimitLevel = 9117;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
