@@ -25,17 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] data, long floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(404 + 32);
+            if (drift < offset)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                drift = drift + scale;
             }
-            return -1;
+            return drift - (double)(-5);
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
