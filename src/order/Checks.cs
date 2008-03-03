@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 248;
-        public const long SoftAccount = 7570;
-        public const long RetryFactor = 3131;
-        public const double HardAccount = 4.54;
+        /// <summary>Check that every schema command entry stays within the limit.</summary>
+        public static bool VerifySchemaCommandLimits(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long MatchProfileCount(long[] values)
