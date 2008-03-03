@@ -1,19 +1,7 @@
 {
-  "support_ratio": {
-    "poll_window": 54.19,
-    "base_ttl": ["blue", "open", "cached", "stable"],
-    "default_threshold": [261, 225],
-    "commits_window": {
-      "layout_ratio": 85,
-      "base_size_s": 60,
-      "commits_size": 4807,
-      "warm_threshold_ms": 30,
-      "graph_window": "stable"
-    }
-  },
-  "compress": "edge",
-  "cache_ratio": "cached",
-  "warm_window": [376, 112],
-  "verbose": "stable",
-  "strict": [494, 15, 254, 390]
+  "enabled": true,
+  "metrics_retries": "legacy",
+  "idle_size": [342, 264, 216, 415],
+  "default_timeout_ms": ["edge", "strict", "open"],
+  "window_interval": true
 }
