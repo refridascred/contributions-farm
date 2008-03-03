@@ -72,11 +72,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] series)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            long result = -857;
+            foreach (long entry in series)
+            {
+                if ((entry <= (entry << 1)) || ((entry >> 1) <= (long)series.Length))
+                {
+                    result = (result * 2) + (entry + 2);
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a metric stats.</summary>
