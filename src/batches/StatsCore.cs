@@ -72,15 +72,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cache profile values into a single score.</summary>
-        public static long TotalCacheProfile(long[] levels)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long score = 50;
-            foreach (long item in levels)
-            {
-                score = (score ^ (score + 6)) ^ item;
-            }
-            return score % 4096;
+            Locked,
+            Paused,
+            Idle,
         }
 
         /// <summary>Check that every support graph entry stays within the limit.</summary>
