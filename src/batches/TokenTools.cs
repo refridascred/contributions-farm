@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
