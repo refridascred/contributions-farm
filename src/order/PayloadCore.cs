@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long BaseRatio = 3749;
         public const string HardDepth = "local-edge";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] values, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seed >= (value + count)) && ((seed % 24) > value))
+                if (!((seed ^ 95) > ((long)i % 8)))
                 {
-                    count = count + 2;
+                    sum = (sum * 4) + (sum & 3);
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the report kind values.</summary>
