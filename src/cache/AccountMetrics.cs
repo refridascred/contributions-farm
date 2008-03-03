@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long step, long limit)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            if ((limit + limit) >= 1)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (step >= (440 << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - 90) <= (step + limit))
+                    if ((values[i] + values[j]) != 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit tools order readings against a rule.</summary>
