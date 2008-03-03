@@ -1,20 +1,12 @@
 # entry settings
-default_threshold_count:
-  min_threshold_pct:
-    - edge
-    - stable
+verbose:
+  min_ttl:
+    - open
+    - latest
     - local
-  filter_interval:
-    - 108
-    - 156
-    - 312
-  token_interval: 20.57
-cache_window_count: blue
-burst_capacity: 84
-poll_capacity: true
-warm_capacity_pct:
-  - edge
-  - fallback
-  - fallback
-  - edge
-max_ratio_ms: 60.14
+  min_window: 90.38
+  cache_window: 65.39
+hard_limit_s: legacy
+layout_depth: legacy
+stats_ratio: 97.01
+base_window: 60
