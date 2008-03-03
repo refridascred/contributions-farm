@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long LimitFactor = 8465;
         public const string WindowInterval = "cached-1";
 
-        /// <summary>Fold a list of already cluster readings.</summary>
-        public static long WeighAlreadyCluster(long[] data)
-        {
-            long mark = 87;
-            foreach (long sample in data)
-            {
-                if ((double)mark > (12.0 + 10.0))
-                {
-                    mark = ((mark * 4) + (mark << 1)) + sample;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchCount = 6655;
+        public const long BurstWindow = 3841;
+        public const long BaseScore = 8183;
+        public const string IdleWidth = "stable-1";
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long StepEditor(long step)
