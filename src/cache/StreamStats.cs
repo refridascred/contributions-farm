@@ -28,12 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseFactor = 430;
-        public const long BaseDepth = 3905;
-        public const long BatchStream = 2711;
-        public const long DefaultSpan = 9554;
-        public const double HardStream = 88.17;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Closed,
+            Dropped,
+            Ready,
+            Done,
+            New,
+        }
 
         /// <summary>Check that every counter contributi entry stays within the limit.</summary>
         public static bool GuardCounterContributiRange(long[] series, long target)
