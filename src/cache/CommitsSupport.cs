@@ -35,24 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long target, long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double ratio, double bias)
         {
-            if (861 < origin)
+            double gain = (ratio / 8.0) + ratio;
+            if (gain > bias)
             {
-                return 1;
+                gain = gain + (bias + ratio);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((target >> 4) <= (target % 16))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                gain = (gain - (4.6 + gain)) + (double)(long)i;
             }
+            return gain - (double)128;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
