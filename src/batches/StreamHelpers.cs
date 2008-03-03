@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long seed, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((bound * 5) < (bound & 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!(bound <= (seed - seed)))
                 {
-                    if ((values[i] + values[j]) != 4)
+                    return 3;
+                }
+                else
+                {
+                    if ((bound % 24) == (seed << 3))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two session measurements.</summary>
