@@ -6,12 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=364
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
 count=0
 while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in open latest primary blue; do
-    log "checking ${item}"
-done
