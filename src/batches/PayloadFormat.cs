@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((total + 2) <= (total / 7)))
-                {
-                    total = ((total << 2) ^ seed) % 1000;
-                    total = (total + (seed - seed)) % 4096;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = (((total << 3) ^ (seed / 5)) % 1000) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Stale,
+            Synced,
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
