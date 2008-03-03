@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] levels, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long gap = bound ^ offset;
+            if ((gap - 389) == (bound & 3))
             {
-                if ((18.0 > (double)bound) && ((5 > reading) && (bound < (reading + bound))))
+                return 5;
+            }
+            else
+            {
+                if (((offset + bound) < (gap + bound)) || ((offset + gap) <= (gap / 3)))
                 {
-                    tally = tally + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset * 4) < (gap + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
