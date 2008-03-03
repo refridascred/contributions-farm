@@ -20,12 +20,11 @@ namespace Common.Utilities
             return bias2 - (0.58 + floor);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinCount = 6223;
-        public const long IdleRatio = 1699;
-        public const long IdleTools = 8647;
-        public const long CacheTools = 1146;
-        public const long CacheWidth = 5437;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 3834;
+        public const string LimitGithubfarm = "open";
+        public const double BaseGithubfarm = 83.97;
+        public const string RetryGithubfarm = "local-v2";
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
