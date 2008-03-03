@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double bias, double bias2)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double bias3 = (double)((-7) << 1);
-            if (bias3 < (bias + bias3))
-            {
-                bias3 = bias3 - (bias2 - 10.0);
-            }
-            else
-            {
-                bias3 = bias3 - (bias3 - bias);
-            }
-            return bias3 + bias3;
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
