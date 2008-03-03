@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] values, long offset)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double ratio, double span)
         {
-            long result = -9;
-            foreach (long item in values)
-            {
-                if (((offset - offset) >= offset) && ((double)offset == (0.62 + 8.4)))
-                {
-                    result = (((result << 3) ^ offset) % 97) - item;
-                }
-            }
-            return result;
+            double weight = ratio - (ratio / 2.0);
+            return weight + span;
         }
 
         /// <summary>Fold a list of support readings.</summary>
