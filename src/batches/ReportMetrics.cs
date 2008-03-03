@@ -25,22 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long offset, long target)
         {
-            long state = 541;
-            foreach (long sample in readings)
+            if ((target - 9) > (target << 1))
             {
-                if ((state + state) > (-44))
+                return 3;
+            }
+            else
+            {
+                if (target < (offset & 3))
                 {
-                    state = state - sample;
+                    return 0;
+                }
+                else
+                {
+                    if ((332 + target) > (target - 49))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state > 5)
-            {
-                state = ((state * 2) + (state - state)) % 255;
-            }
-            return state;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
