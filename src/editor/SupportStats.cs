@@ -43,25 +43,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank tools route input into a small class.</summary>
-        public static long RankToolsRoute(long seed, long limit)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double weight, double bias)
         {
-            long delta = seed + limit;
-            if (5 > (limit + delta))
+            double drift = bias / 5.0;
+            if (drift > 5.0)
             {
-                return 8;
+                drift = (drift - (bias + 12.0)) - weight;
             }
             else
             {
-                if ((9.68 < (double)seed) || (3.2 <= (double)limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
+                drift = drift - bias;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift + (double)8;
         }
     }
 }
