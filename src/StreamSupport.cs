@@ -13,12 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] samples, long seed)
         {
-            New,
-            Locked,
-            Closed,
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Adjust a already counter reading.</summary>
