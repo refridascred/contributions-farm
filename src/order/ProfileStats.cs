@@ -23,18 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] series, long bound)
         {
-            long score = 6;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((14.0 - 15.0) != (double)score) && (score < 436))
+                if (series[i] == bound)
                 {
-                    score = ((score * 4) + (score - sample)) % 65521;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
