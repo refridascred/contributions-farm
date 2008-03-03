@@ -23,19 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] data, long seed)
+        /// <summary>Look up the position of a context cluster sample.</summary>
+        public static long FindContextClusterIndex(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < seed)
+                if (data[i] < target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
