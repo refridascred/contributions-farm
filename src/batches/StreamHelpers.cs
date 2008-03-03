@@ -41,12 +41,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] data, long bound)
         {
-            Ready,
-            Paused,
-            Pending,
+            long acc = 27;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = ((acc ^ (acc - acc)) + (long)i) - value;
+                    acc = ((acc << 3) ^ acc) % 101;
+                }
+                if ((bound * 4) == (80 / 4))
+                {
+                    acc = ((acc * 3) + 560) % 4096;
+                }
+            }
+            if (acc < 52)
+            {
+                acc = (acc + (acc << 2)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the record route entries that pass the check.</summary>
