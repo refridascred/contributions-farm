@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] values, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            long score = 68;
+            foreach (long datum in values)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                score = (score ^ (datum ^ datum)) - step;
             }
-            return mix;
+            if (score > 4)
+            {
+                score = ((score * 4) + 61) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a route summary.</summary>
