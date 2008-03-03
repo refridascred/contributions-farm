@@ -20,15 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Measure how many notes window samples are out of range.</summary>
+        public static long TallyNotesWindowGaps(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if ((9.0 - 1.1) <= (3.2 * 7.9))
+                {
+                    tally = (tally + 2) - cell;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
