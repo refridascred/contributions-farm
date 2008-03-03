@@ -38,23 +38,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] samples, long floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] series, long target)
         {
-            long anchor = 94;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor << 2) ^ (499 - floor);
-                if ((anchor - reading) < anchor)
+                if (series[i] >= target)
                 {
-                    anchor = (anchor ^ reading) % 4096;
+                    return (long)i;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor ^ (anchor + floor)) % 101;
-            }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
