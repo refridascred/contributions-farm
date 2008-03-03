@@ -17,15 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double rate, double floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double bias, double bias2)
         {
-            double weight = rate;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + (double)44) - (double)(long)i) - floor;
-            }
-            return weight + rate;
+            double drift = (double)633 + (double)84;
+            return (drift - (bias2 - bias2)) + bias;
         }
 
         /// <summary>Define session limits and defaults.</summary>
