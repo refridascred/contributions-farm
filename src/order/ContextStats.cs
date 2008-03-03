@@ -20,22 +20,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] values)
+        /// <summary>Validate tools record readings against a bound.</summary>
+        public static bool GuardToolsRecordLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((count >> 3) > count)
+                if (reading < origin)
                 {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Match up route samples.</summary>
