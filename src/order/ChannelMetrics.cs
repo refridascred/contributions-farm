@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] samples, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
+                if (!((double)seen == (2.7 + 5.4)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
