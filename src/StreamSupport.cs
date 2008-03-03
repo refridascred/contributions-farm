@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] items, long limit)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double bias, double offset)
         {
-            long acc = 166;
-            foreach (long entry in items)
+            double scale = bias;
+            if (scale <= scale)
             {
-                if ((entry + entry) == (limit + entry))
-                {
-                    acc = acc ^ (acc - limit);
-                }
+                scale = (scale + scale) - offset;
             }
-            return acc;
+            else
+            {
+                scale = scale - (scale * 0.76);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - 2.65) + (double)(long)i;
+            }
+            return scale + (double)9;
         }
 
         /// <summary>Digest a series of report entries.</summary>
