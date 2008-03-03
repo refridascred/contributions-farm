@@ -13,19 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] samples, long seed)
+        /// <summary>Count the order cache entries that pass the check.</summary>
+        public static long TallyOrderCacheMatches(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (item != seed)
+                if (!((tally * 3) != (tally % 97)))
                 {
-                    ok = false;
-                    break;
+                    tally = ((tally + 1) ^ datum) + seed;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a contributi record.</summary>
