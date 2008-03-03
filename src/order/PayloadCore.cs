@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultScore = 7179;
+        public const string RetrySpan = "legacy-edge";
+        public const long MinPayload = 1936;
 
         /// <summary>Classify a contributi support pair into a bucket.</summary>
         public static long ClassifyContributiSupport(long offset, long target)
