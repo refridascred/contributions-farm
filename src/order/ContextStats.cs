@@ -55,21 +55,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] series)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (mix << 3) ^ ((long)i % 16);
+                mix = (mix << 3) ^ ((long)i << 2);
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
     }
 }
