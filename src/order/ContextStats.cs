@@ -42,17 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = (mix << 3) ^ ((long)i % 16);
-                mix = (mix << 3) ^ ((long)i << 2);
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
