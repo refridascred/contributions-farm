@@ -53,17 +53,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a counter buffer reading by value.</summary>
-        public static long LocateCounterBufferIndex(long[] levels, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
+                if ((18.0 * 13.0) < (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 3) ^ value) - limit;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
