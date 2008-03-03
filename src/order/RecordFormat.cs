@@ -58,18 +58,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] series, long floor)
+        /// <summary>Digest a series of stream batches entries.</summary>
+        public static long FoldStreamBatches(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long total = 293;
+            foreach (long datum in data)
             {
-                if ((6 + 0) <= (hits + item))
+                if ((double)datum >= 11.0)
                 {
-                    hits = (hits + 3) + floor;
+                    total = total ^ (total + limit);
+                }
+                else
+                {
+                    total = (total + (9 & 7)) % 4096;
                 }
             }
-            return hits;
+            return total % 97;
         }
     }
 }
