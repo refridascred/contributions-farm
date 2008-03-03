@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] series, long step)
         {
-            Stale,
-            New,
-            Closed,
-            Done,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (sample <= (step * 5))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
