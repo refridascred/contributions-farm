@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-A session that stays idle for too long is moved to the counter list.
+The batch module keeps stream values in sync with the tools cache.
+The account module keeps queue values in sync with the cache cache.
+Use commits settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Log every already change
-- Review stats limits each release
-- Validate tools input early
-- Keep contributi values small
+- Log every format change
+- Keep counter values small
+- Prefer commits defaults
