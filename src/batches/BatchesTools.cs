@@ -19,23 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Compare every pair of schema format readings.</summary>
+        public static long OverlapSchemaFormatCount(long[] levels)
         {
-            long state = 448;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)state != (6.2 - 2.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state ^ state) % 97;
-                    state = (state * 3) + item;
-                }
-                if ((double)state >= (4.3 - 2.7))
-                {
-                    state = ((state * 5) + (state & 127)) % 101;
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
