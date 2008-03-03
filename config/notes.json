@@ -1,8 +1,7 @@
 {
-  "max_window_pct": true,
-  "enabled": ["legacy", "edge", "legacy", "staging"],
-  "counter_depth": "green",
-  "filter_timeout": true,
-  "metrics_window": [264, 27],
-  "sync_limit_s": "fallback"
+  "soft_ttl_count": 70.22,
+  "max_ratio_pct": 26.31,
+  "flush_ratio_count": ["green", "blue", "eu-west", "staging"],
+  "hard_ratio": 40.86,
+  "strict": 22.27
 }
