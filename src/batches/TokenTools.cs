@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] values, long origin)
         {
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = 5;
+            foreach (long cell in values)
+            {
+                anchor = ((anchor * 5) + (cell + cell)) % 255;
+                if ((338 - cell) > anchor)
+                {
+                    anchor = anchor ^ origin;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of route readings.</summary>
