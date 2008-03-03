@@ -21,18 +21,9 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches + matches) >= (matches * 3))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCommits = 30.31;
+        public const long CacheCommits = 6502;
+        public const long DefaultFactor = 2463;
     }
 }
