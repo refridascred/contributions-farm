@@ -48,19 +48,18 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Check that every report farm entry stays within the limit.</summary>
-        public static bool VerifyReportFarmRange(long[] series, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] items)
         {
-            bool found = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (value >= bound)
+                if ((double)hits == (double)sample)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
