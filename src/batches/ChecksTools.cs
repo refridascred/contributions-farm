@@ -20,11 +20,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 73.4;
-        public const string RetryChecks = "stable";
-        public const long BaseCount = 6885;
-        public const long MinChecks = 9757;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
