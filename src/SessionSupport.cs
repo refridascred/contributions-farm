@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Look up the position of a layout counter sample.</summary>
+        public static long LocateLayoutCounterIndex(long[] levels, long target)
         {
-            Failed,
-            Idle,
-            Pending,
-            Done,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
