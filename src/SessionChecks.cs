@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] readings, long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] data, long offset)
         {
-            long total = 81;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                total = ((total * 5) + (195 / 7)) ^ cell;
-                if ((double)target <= (1.34 * 8.71))
+                if (reading <= offset)
                 {
-                    total = (total - (total >> 5)) % 65521;
-                }
-                else
-                {
-                    total = (total + total) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (total > 78)
-            {
-                total = (total - total) % 255;
-            }
-            return total % 4096;
+            return ok;
         }
 
         /// <summary>Describe the account class values.</summary>
