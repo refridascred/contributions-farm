@@ -1,6 +1,17 @@
 {
-  "window_threshold": 500,
-  "poll_ttl_pct": "eu-west",
-  "counter_threshold": 1.46,
-  "profile_delay": "staging"
+  "max_interval": 29.74,
+  "poll_retries_ms": {
+    "base_ttl_count": [193, 305, 426, 419],
+    "soft_timeout": 18.45,
+    "warm_delay": false,
+    "cache_capacity_pct": "fallback"
+  },
+  "githubfarm_ratio": "green",
+  "metrics_timeout": {
+    "batch_timeout": 2021,
+    "soft_size": 6228,
+    "retry_retries_pct": false,
+    "persist": 7.51
+  },
+  "hard_depth": "stable"
 }
