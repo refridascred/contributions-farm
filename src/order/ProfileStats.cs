@@ -23,13 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            Locked,
-            Done,
-            Stale,
-            Synced,
+            long carry = -1;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = ((carry << 3) ^ (sample + carry)) ^ (long)i;
+                }
+                if ((carry >> 1) >= (sample ^ 382))
+                {
+                    carry = ((carry * 5) + carry) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
