@@ -39,17 +39,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] samples, long origin)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
+                if (anchor >= (anchor + step))
                 {
-                    return (long)i;
+                    anchor = (anchor + (anchor + anchor)) % 101;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
     }
 }
