@@ -61,18 +61,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] items, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((tally < ((-4) >> 3)) && !(tally > (offset % 100)))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            Queued,
+            Active,
+            Dropped,
+            Ready,
         }
     }
 }
