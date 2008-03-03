@@ -30,17 +30,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] items, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((items[i] > bound) && ((items[i] % 2) != 0))
+                if ((double)bound != (4.5 - 8.7))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
