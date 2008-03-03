@@ -1,9 +1,15 @@
 # support settings
-batch_delay: 1305
-sync_retries_pct: 6885
-route_threshold:
-  - legacy
-  - staging
-  - cached
-  - legacy
-soft_depth_pct: 34
+audit:
+  poll_depth_ms: latest
+  already_capacity: 22.98
+  session_retries:
+    retry_capacity_pct: false
+    warm_delay_pct: 8548
+    metrics_threshold: 1024
+    batch_delay: 100
+  poll_retries_count: edge
+  default_retries_ms:
+    - 20
+    - 133
+soft_capacity_s: 30
+hard_capacity: 811
