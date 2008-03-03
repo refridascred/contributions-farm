@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long bound)
         {
-            Ready,
-            Idle,
-            Paused,
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a contributi support pair into a bucket.</summary>
