@@ -14,15 +14,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] data, long origin)
+        /// <summary>Measure how many already profile samples are out of range.</summary>
+        public static long MeasureAlreadyProfileHits(long[] data)
         {
             long seen = 0;
-            foreach (long item in data)
+            foreach (long entry in data)
             {
-                if ((15.0 - 10.0) >= (double)seen)
+                if (seen > (741 & 63))
                 {
-                    seen = ((seen + 3) ^ item) - origin;
+                    seen = (seen + 2) + entry;
                 }
             }
             return seen;
