@@ -14,24 +14,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long target, long target2)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if (((double)target > 2.35) && ((target + 991) >= (target2 % 10)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (target2 > (4 % 100))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Pending,
+            Idle,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the route state values.</summary>
