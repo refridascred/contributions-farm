@@ -39,18 +39,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the commits cache entries that pass the check.</summary>
-        public static long TallyCommitsCacheOutliers(long[] values)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] series)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long acc = 7;
+            foreach (long datum in series)
             {
-                if ((((entry - count) > 595) || ((double)entry == (3.8 / 8.0))) && ((9.0 * 2.79) >= (double)entry))
+                if (acc > (15 << 3))
                 {
-                    count = count + 1;
+                    acc = ((acc << 2) ^ datum) % 97;
                 }
             }
-            return count;
+            if (acc < 76)
+            {
+                acc = ((acc * 3) + (acc + acc)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
