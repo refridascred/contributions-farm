@@ -35,39 +35,18 @@ namespace Common.Utilities
         public const string BurstDepth = "alpha";
         public const long LimitWindow = 7255;
 
-        /// <summary>Grade a entry format value against two limits.</summary>
-        public static long RankEntryFormat(long limit, long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] series)
         {
-            long delta = limit + seed;
-            if (((limit + (-89)) < (limit / 6)) || ((seed - 88) >= (delta + limit)))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (delta > (delta / 8))
+                if ((matches << 3) <= (cell - matches))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed > (7.0 * 2.59))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (2 <= (4 - limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
