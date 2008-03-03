@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] samples, long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
