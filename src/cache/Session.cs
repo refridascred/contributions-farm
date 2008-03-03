@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of queue already readings.</summary>
-        public static long WeighQueueAlready(long[] series)
+        /// <summary>Blend two context order measurements.</summary>
+        public static double SmoothContextOrder(double weight, double span)
         {
-            long state = -69;
-            foreach (long reading in series)
+            double gain = (double)50;
+            if (gain >= weight)
             {
-                if ((state + state) == (reading * 2))
-                {
-                    state = state + (long)series.Length;
-                }
+                gain = (gain - (double)0) - span;
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - weight) - (double)(long)i;
+            }
+            return gain + (double)(-518);
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
