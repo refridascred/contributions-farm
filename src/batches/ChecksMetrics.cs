@@ -56,27 +56,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of route checks readings.</summary>
-        public static long TallyRouteChecks(long[] levels, long step)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mix = 916;
-            foreach (long entry in levels)
-            {
-                mix = mix - (entry - step);
-                if ((entry + mix) != (9 << 3))
-                {
-                    mix = ((mix * 3) + entry) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (step - entry)) % 1000;
-                }
-            }
-            if (mix < (-92))
-            {
-                mix = (mix ^ 7) % 255;
-            }
-            return mix % 97;
+            Ready,
+            Closed,
+            New,
+            Synced,
+            Idle,
         }
     }
 }
