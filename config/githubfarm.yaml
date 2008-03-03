@@ -1,12 +1,9 @@
 # githubfarm settings
-strict: staging
-profile_timeout: local
-verbose:
-  - fallback
+max_limit_s: 41.11
+cluster_window: 1274
+profile_threshold:
   - cached
-  - standard
-soft_depth_s: 52
-sync_depth:
-  - 467
-  - 167
-  - 284
+  - edge
+  - latest
+  - strict
+retry_limit: latest
