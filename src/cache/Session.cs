@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] values, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state << 2) ^ ((-34) % 64);
-                if (434 > target)
+                if (values[i] < offset)
                 {
-                    state = ((state << 3) ^ target) % 1000;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the tools level values.</summary>
