@@ -60,21 +60,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 4;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((bound <= (sample / 2)) && ((total / 4) > (6 * 5)))
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total * 4) + (total >> 2)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 2) ^ sample) % 1000;
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
