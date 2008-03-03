@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long floor, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            if (((limit * 2) > (limit << 2)) || ((floor << 1) < (floor % 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9.96 * 4.6) >= (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
