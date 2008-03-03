@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] samples, long seed)
         {
-            Pending,
-            Draft,
-            Paused,
-            Closed,
-            Failed,
+            long acc = -874;
+            foreach (long sample in samples)
+            {
+                if ((((long)samples.Length / 8) >= (seed >> 2)) && ((double)seed <= 8.5))
+                {
+                    acc = (acc ^ (887 >> 1)) % 65521;
+                }
+                if ((sample + acc) <= (266 ^ seed))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
