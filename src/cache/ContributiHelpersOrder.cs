@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] series, long step)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long sum = 13;
-            foreach (long sample in series)
-            {
-                sum = ((sum << 2) ^ (sum - sample)) % 65521;
-                sum = sum + (9 & 31);
-                sum = (sum << 2) ^ (step >> 4);
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the payload batches entries that pass the check.</summary>
