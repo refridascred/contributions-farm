@@ -1,12 +1,5 @@
 # githubfarm settings
-warm_threshold: edge
-flush_retries_ms:
-  - 474
-  - 491
-flush_interval_ms: 27.25
-max_retries_count:
-  sync_timeout: 100
-  flush_retries_s: cached
-  cache_delay_s: strict
-  dry_run: 500
-burst_depth: green
+context_depth: 67.44
+filter_limit: legacy
+hard_threshold_ms: 2221
+record_threshold: false
