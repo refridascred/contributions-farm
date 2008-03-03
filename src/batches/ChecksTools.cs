@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "latest-v2";
-        public const long IdleSpan = 6511;
-        public const double MaxNotes = 44.2;
-        public const string LimitNotes = "fallback-1";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleFactor = 22.89;
+        public const long MinStream = 9136;
+        public const double WindowStream = 63.04;
+        public const double IdleStream = 43.64;
+        public const long BatchFactor = 4282;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long PairSchemaCount(long[] readings)
