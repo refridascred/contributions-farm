@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Combine account buffer values into a single score.</summary>
+        public static long FoldAccountBuffer(long[] values)
         {
-            Ready,
-            Paused,
-            Failed,
-            Done,
-            Locked,
+            long score = 359;
+            foreach (long cell in values)
+            {
+                if ((467 % 24) != (cell << 1))
+                {
+                    score = (score - (score << 3)) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the support state values.</summary>
