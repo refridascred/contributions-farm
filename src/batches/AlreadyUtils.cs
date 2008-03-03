@@ -20,25 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long limit, long target)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] values, long target)
         {
-            long delta = limit + target;
-            if (((delta ^ 20) <= (delta & 7)) && ((double)delta != (6.1 - 3.9)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((delta % 2) < (delta & 127))
+                if ((values[i] < target) && ((values[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the token mode values.</summary>
