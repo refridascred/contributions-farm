@@ -34,18 +34,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] data, long floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if (496 < floor)
             {
-                if (((727 % 10) <= (reading % 97)) || ((floor & 15) > (hits + hits)))
+                return 8;
+            }
+            else
+            {
+                if ((limit - floor) < (limit + limit))
                 {
-                    hits = hits + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((884 & 7) == (floor + 625))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
