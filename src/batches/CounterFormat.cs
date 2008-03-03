@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long DefaultOrder = 3740;
         public const long LimitOrder = 2082;
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            public double Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
