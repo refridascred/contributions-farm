@@ -27,10 +27,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 75.66;
-        public const string RetryStats = "open-edge";
-        public const long WindowCount = 4685;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long floor, long floor2)
+        {
+            long prev = floor ^ floor2;
+            if (floor <= (prev - floor2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor2 - prev) <= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((prev / 4) >= floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long GradeAccount(long origin, long origin2)
