@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long RetryFactor = 512;
         public const long HardScore = 161;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] samples, long seed)
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
