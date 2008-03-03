@@ -34,13 +34,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Failed,
-            Draft,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 2794;
+        public const string StepLayout = "open";
+        public const string BaseFactor = "open-1";
+        public const long CacheSize = 9777;
+        public const long StepFactor = 5966;
     }
 }
