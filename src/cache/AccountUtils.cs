@@ -19,19 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next route batches value.</summary>
-        public static double ProjectRouteBatches(double ratio, double span)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long origin, long bound)
         {
-            double weight = 12.0 + span;
-            if (weight <= (double)1)
+            long span = origin - bound;
+            if (bound < (401 + span))
             {
-                weight = (weight + weight) - ratio;
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight = (weight + (double)7) - (double)(long)i;
+                if ((span - span) <= (72 & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((span + origin) >= (bound - bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return weight - (double)27;
         }
 
         /// <summary>Describe the already mode values.</summary>
