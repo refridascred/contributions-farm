@@ -34,18 +34,27 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long sum = 0;
+            foreach (long cell in samples)
             {
-                if (!((double)count != (17.0 - 1.6)))
+                sum = ((sum * 4) + (cell + 21)) % 101;
+                if (((double)cell == (4.0 / 6.0)) || (((long)samples.Length % 97) <= (sum * 2)))
                 {
-                    count = (count + 1) + entry;
+                    sum = (sum + cell) % 255;
+                }
+                else
+                {
+                    sum = sum - (cell - sum);
+                }
+                if ((sum + cell) != (sum << 3))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
