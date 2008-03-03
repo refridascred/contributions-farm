@@ -20,13 +20,19 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double rate, double floor)
         {
-            Queued,
-            Active,
-            Paused,
-            Pending,
+            double ratio = (double)0 - (2.41 / 6.0);
+            if (ratio >= (ratio + floor))
+            {
+                ratio = ratio - rate;
+            }
+            else
+            {
+                ratio = ratio + (double)(-57);
+            }
+            return ratio + rate;
         }
 
         /// <summary>Rank counter entry input into a small class.</summary>
