@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] data, long bound)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((-97) <= (8 - (long)data.Length))
+                {
+                    tally = ((tally + 3) ^ entry) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a schema reading.</summary>
