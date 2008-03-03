@@ -1,12 +1,8 @@
 {
-  "batches_threshold": {
-    "metrics_threshold": [155, 286, 165, 172],
-    "min_delay_pct": 29,
-    "persist": 42
-  },
-  "persist": 76.05,
-  "max_capacity": "cached",
-  "verbose": ["standard", "primary", "strict"],
-  "sync_interval_ms": 50.77,
-  "base_depth": "blue"
+  "batch_ratio_count": "cached",
+  "poll_ratio_ms": 84.14,
+  "window_timeout": false,
+  "batch_delay_s": 95.51,
+  "readonly": "blue",
+  "strict": [413, 440]
 }
