@@ -74,18 +74,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools session samples are out of range.</summary>
-        public static long MeasureToolsSessionMatches(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((tally + sample) > (origin & 255)) && ((tally % 8) > origin))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 3760;
+        public const long DefaultScore = 3660;
+        public const long BatchInterval = 2089;
+        public const double RetryDepth = 98.04;
     }
 }
