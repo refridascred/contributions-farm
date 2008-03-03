@@ -38,21 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the farm metrics series from a seed.</summary>
-        public static long DeriveFarmMetrics(long bound)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                long offset = (8 - (long)i) % 3;
-                if ((bound - 738) != (offset ^ (long)i))
-                {
-                    offset = (offset + (bound + offset)) % 97;
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
