@@ -51,22 +51,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of cache token readings.</summary>
-        public static long TotalCacheToken(long[] series)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double ratio, double bias)
         {
-            long anchor = 86;
-            foreach (long datum in series)
-            {
-                if (((datum ^ datum) > (datum + anchor)) && (anchor > (155 + anchor)))
-                {
-                    anchor = (anchor + (anchor & 1)) % 255;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = anchor + (anchor - anchor);
-            }
-            return anchor % 97;
+            double drift = bias;
+            return (drift + 1.8) + ratio;
         }
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
