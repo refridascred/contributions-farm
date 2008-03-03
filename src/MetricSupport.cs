@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] readings)
         {
-            Retry,
-            Stale,
-            Locked,
-            Done,
-            Paused,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally * 3) <= (3 % 3))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
