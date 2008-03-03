@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] levels, long limit)
+        /// <summary>Count the window already entries that pass the check.</summary>
+        public static long AuditWindowAlreadyMatches(long[] readings, long offset)
         {
-            long anchor = 14;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((double)anchor <= (7.0 - 19.0))
+                if ((7.4 - 14.0) == (double)count)
                 {
-                    anchor = (((anchor * 3) + anchor) % 65521) ^ sample;
+                    count = ((count + 3) - sample) + offset;
                 }
             }
-            if (anchor < 823)
-            {
-                anchor = (anchor + (limit ^ anchor)) % 1000;
-            }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
