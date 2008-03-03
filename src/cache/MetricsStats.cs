@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a commits format sample.</summary>
-        public static long FindCommitsFormatIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepScore = 2512;
+        public const long HardInterval = 1249;
+        public const string SoftRoute = "cached-edge";
+        public const long LimitWidth = 2817;
 
         /// <summary>Locate a notes report reading by value.</summary>
         public static long LookupNotesReportIndex(long[] samples, long seed)
