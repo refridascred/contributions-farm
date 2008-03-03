@@ -13,27 +13,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of cluster editor readings.</summary>
-        public static long FoldClusterEditor(long[] values)
+        /// <summary>Audit tools notes readings against a rule.</summary>
+        public static long TallyToolsNotesMatches(long[] series)
         {
-            long anchor = 3;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                anchor = anchor - (anchor + 527);
-                if (6.3 >= (double)(long)values.Length)
+                if (!((7 - datum) > (datum - seen)))
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + ((long)values.Length - value)) % 97;
-                }
-                if ((value >> 2) != (value >> 5))
-                {
-                    anchor = anchor ^ (anchor - anchor);
+                    seen = seen + 3;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Rank format input into a small class.</summary>
