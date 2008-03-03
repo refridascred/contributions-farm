@@ -1,14 +1,5 @@
 {
-  "hard_threshold_count": 60,
-  "retry_window_s": [275, 446],
-  "poll_capacity": true,
-  "sync_window": "primary",
-  "already_ratio": true,
-  "support_limit": {
-    "cluster_window": 60,
-    "format_retries": 4451,
-    "warm_retries_pct": true,
-    "hard_window": 18.17,
-    "audit": 88
-  }
+  "max_depth_pct": 79,
+  "warm_capacity_count": 1024,
+  "readonly": [318, 334]
 }
