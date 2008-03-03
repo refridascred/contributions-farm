@@ -50,13 +50,10 @@ namespace Common.Utilities
             return weight + 8.0;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Pending,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "strict-edge";
+        public const double BatchBatches = 0.71;
+        public const double MaxFactor = 76.01;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
