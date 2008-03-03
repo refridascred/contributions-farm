@@ -21,19 +21,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry > (20.0 - 6.9))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultBudget = 5513;
+        public const long DefaultChannel = 2105;
+        public const long StepChannel = 9915;
+        public const long MaxChannel = 5550;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long ScoreReport(long[] data, long seed)
