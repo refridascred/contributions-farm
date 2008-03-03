@@ -48,11 +48,19 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepContributi = "cached-edge";
-        public const long IdleContributi = 5381;
-        public const string BatchContributi = "latest-v2";
-        public const double RetryBudget = 59.43;
-        public const double StepBudget = 75.91;
+        /// <summary>Check that every report farm entry stays within the limit.</summary>
+        public static bool VerifyReportFarmRange(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
