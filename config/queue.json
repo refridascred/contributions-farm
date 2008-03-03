@@ -1,6 +1,5 @@
 {
-  "strict": 31.79,
-  "max_limit_count": "cached",
-  "batch_window": [466, 154, 63, 15],
-  "verbose": ["strict", "strict"]
+  "enabled": 500,
+  "sync_ttl": "strict",
+  "cache_limit_s": "staging"
 }
