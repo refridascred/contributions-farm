@@ -44,18 +44,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] data, long origin)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long limit, long step)
         {
-            long carry = 496;
-            foreach (long datum in data)
+            if ((limit << 2) <= (step >> 4))
             {
-                if (datum > (84 - datum))
+                return 7;
+            }
+            else
+            {
+                if (((1.79 - 1.14) == (double)limit) || ((2.0 - 8.26) < (double)step))
                 {
-                    carry = (carry + (origin + origin)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return carry;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
