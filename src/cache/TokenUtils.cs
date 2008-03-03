@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many report profile samples are out of range.</summary>
-        public static long TallyReportProfileGaps(long[] readings, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((double)value == (8.9 / 6.0))
+                if (((7.4 <= (double)tally) && ((double)tally > (double)243)) && (value >= (value >> 4)))
                 {
-                    hits = (hits + 1) - offset;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
