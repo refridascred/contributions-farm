@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 96.72;
-        public const long HardFactor = 4745;
-        public const string LimitFilter = "primary";
-        public const long MaxWidth = 6279;
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderGaps(long[] data, long step)
