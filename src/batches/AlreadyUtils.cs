@@ -41,21 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio2 = (double)92 * 6.0;
+            if (ratio2 < (0.5 * 2.04))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio2 = ((ratio2 - (double)416) + ratio) + floor;
             }
-            return count;
+            return ratio2 - 11.0;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
