@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long BaseCommand = 3381;
         public const string RetryCommand = "cached";
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the payload mode values.</summary>
