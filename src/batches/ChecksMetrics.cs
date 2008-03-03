@@ -48,13 +48,12 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public string Level { get; set; } = "";
             public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of route checks readings.</summary>
