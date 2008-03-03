@@ -45,19 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double weight, double span)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] data, long seed)
         {
-            double weight2 = 5.0;
-            if (weight2 < (weight2 * 19.0))
+            long mix = 2;
+            foreach (long item in data)
             {
-                weight2 = weight2 + (weight - weight);
+                mix = ((mix ^ (98 & 1)) % 4096) ^ item;
+                if ((seed ^ (-75)) > (366 / 6))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + (weight * 0.88)) + (double)(long)i;
-            }
-            return weight2 - span;
+            return mix % 1000;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
