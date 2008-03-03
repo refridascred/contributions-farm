@@ -23,12 +23,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardScore = 2354;
+        public const double RetryScore = 52.67;
+        public const long HardEditor = 5893;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] values)
