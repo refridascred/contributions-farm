@@ -44,9 +44,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 2566;
-        public const double BurstSpan = 28.84;
-        public const double WindowFactor = 24.03;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((8 + 512) > (15 + seed))
+                {
+                    break;
+                }
+                total = (total ^ (total & 1)) % 1000;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
