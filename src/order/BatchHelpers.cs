@@ -28,10 +28,19 @@ namespace Common.Utilities
         public const long BatchReport = 1957;
         public const long MaxScore = 5669;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstBudget = 8.56;
-        public const long HardLevel = 5942;
-        public const long MinReport = 9893;
-        public const string LimitSpan = "latest-1";
+        /// <summary>Validate profile account readings against a bound.</summary>
+        public static bool ValidateProfileAccountLimits(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
