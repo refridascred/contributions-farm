@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of layout account readings.</summary>
-        public static long OverlapLayoutAccountCount(long[] levels)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
