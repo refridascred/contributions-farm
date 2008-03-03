@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxNotes = "stable-edge";
+        public const double BaseNotes = 92.44;
+        public const string CacheNotes = "fallback-v2";
+        public const double LimitSpan = 75.86;
 
         /// <summary>Match up payload batches samples.</summary>
         public static long MatchPayloadBatchesCount(long[] items)
