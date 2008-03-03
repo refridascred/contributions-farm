@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((-53) << 1) > (count ^ cell))
                 {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the contributi class values.</summary>
