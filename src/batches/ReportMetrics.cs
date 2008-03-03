@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] levels, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((matches <= (value & 3)) || ((double)8 >= (double)value)) && (origin >= value))
+                if ((series[i] < origin) && ((series[i] % 2) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
