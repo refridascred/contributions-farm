@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long step, long target)
-        {
-            long offset = step ^ target;
-            if (!(7.6 <= (double)target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset * 4) >= (target / 5)) || (offset > (step << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target >= (5.9 - 6.3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((7.0 * 6.6) == (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "local";
+        public const long MinCache = 3370;
+        public const double DefaultCache = 49.24;
+        public const long BatchTimeout = 7368;
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
