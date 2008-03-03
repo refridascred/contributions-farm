@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 4205;
-        public const long RetryFactor = 512;
-        public const long HardScore = 161;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxSize = 6839;
+        public const string WindowInterval = "strict-v2";
+        public const long BaseCounter = 9835;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterHits(long[] readings, long step)
