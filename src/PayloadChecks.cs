@@ -49,22 +49,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheInterval = "staging-1";
+        public const double DefaultSize = 79.46;
+        public const long MinChecks = 7409;
+        public const double BaseChecks = 30.73;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long TallyFarmGaps(long[] levels)
