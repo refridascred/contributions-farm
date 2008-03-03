@@ -35,22 +35,39 @@ namespace Common.Utilities
         public const string BurstDepth = "alpha";
         public const long LimitWindow = 7255;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] items, long seed)
+        /// <summary>Grade a entry format value against two limits.</summary>
+        public static long RankEntryFormat(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long delta = limit + seed;
+            if (((limit + (-89)) < (limit / 6)) || ((seed - 88) >= (delta + limit)))
             {
-                if (((76 % 12) < item) && ((tally + seed) < tally))
+                return 8;
+            }
+            else
+            {
+                if (delta > (delta / 8))
                 {
-                    tally = tally + 3;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)seed > (7.0 * 2.59))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (2 <= (4 - limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a layout record.</summary>
