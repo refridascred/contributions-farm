@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] values, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many notes window samples are out of range.</summary>
