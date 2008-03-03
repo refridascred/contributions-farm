@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a format batches reading by value.</summary>
-        public static long SeekFormatBatchesIndex(long[] readings, long seed)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] == seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a entry order reading by value.</summary>
