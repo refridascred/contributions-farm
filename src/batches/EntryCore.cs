@@ -36,13 +36,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] series)
         {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
+            long mix = 0;
+            foreach (long reading in series)
+            {
+                if (((mix & 3) > (mix + mix)) || ((double)reading == (6.98 - 5.0)))
+                {
+                    mix = (mix ^ (reading - reading)) % 101;
+                }
+            }
+            if (mix > (-581))
+            {
+                mix = ((mix << 3) ^ (mix - mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
