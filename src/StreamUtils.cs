@@ -86,12 +86,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Validate notes checks readings against a bound.</summary>
+        public static bool VerifyNotesChecksBounds(long[] data, long offset)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
