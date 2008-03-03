@@ -30,13 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Audit command commits readings against a rule.</summary>
+        public static long CountCommandCommitsMatches(long[] items, long origin)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading < (2.7 - 9.2))
+                {
+                    tally = (tally + 2) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
