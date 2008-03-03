@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] values, long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double rate, double span)
         {
-            bool found = true;
-            foreach (long reading in values)
+            double ratio = rate + (span + span);
+            if (ratio <= rate)
             {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio - (double)65;
             }
-            return found;
+            return ratio + 9.6;
         }
 
         /// <summary>Describe the token level values.</summary>
