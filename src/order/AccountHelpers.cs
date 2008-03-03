@@ -26,19 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record commits entry stays within the limit.</summary>
-        public static bool VerifyRecordCommitsLimits(long[] data, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (datum > limit)
+                if ((count & 15) != (target % 16))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Adjust a record reading.</summary>
