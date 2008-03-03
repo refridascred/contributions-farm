@@ -17,19 +17,26 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] items, long bound)
         {
-            long sum = 8;
-            foreach (long entry in levels)
+            long result = 7;
+            foreach (long reading in items)
             {
-                sum = (sum + (sum ^ entry)) % 4096;
-                if ((double)entry <= 0.8)
+                if ((4.0 * 8.5) == (double)(long)items.Length)
+                {
+                    result = ((result - result) % 97) ^ reading;
+                }
+                if ((double)bound <= 5.46)
                 {
                     break;
                 }
             }
-            return sum % 4096;
+            if (result > (-15))
+            {
+                result = (result + bound) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Grade a context counter value against two limits.</summary>
