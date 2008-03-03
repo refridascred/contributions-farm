@@ -34,13 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double ratio, double bias)
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
+            double gain = (ratio + 2.7) / 7.0;
+            if (gain > (double)33)
+            {
+                gain = (gain + (gain / 7.0)) - bias;
+            }
+            return gain + ratio;
         }
     }
 }
