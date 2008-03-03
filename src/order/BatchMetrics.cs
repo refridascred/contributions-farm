@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double RetryRatio = 66.07;
         public const double LimitScore = 44.12;
 
-        /// <summary>Validate window route readings against a bound.</summary>
-        public static bool GuardWindowRouteRange(long[] data, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (value != bound)
+                if (item != bound)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
