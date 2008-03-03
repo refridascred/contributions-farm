@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] samples, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (cell >= offset)
+                if (reading < origin)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
