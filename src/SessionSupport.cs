@@ -35,22 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double ratio, double floor)
         {
-            long score = 4;
-            foreach (long entry in samples)
+            double scale = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                if (8.7 < (double)score)
-                {
-                    score = ((score * 4) + score) % 255;
-                }
-                if (((2.1 * 4.8) < (double)entry) || ((entry + score) > entry))
-                {
-                    score = score + score;
-                }
+                scale = (scale - floor) + (double)(long)i;
             }
-            return score % 4096;
+            return scale - (ratio + scale);
         }
     }
 }
