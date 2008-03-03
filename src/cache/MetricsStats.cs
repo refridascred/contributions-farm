@@ -72,19 +72,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] series, long seed)
+        /// <summary>Roll a route cache counter forward.</summary>
+        public static long SeriesRouteCache(long bound)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (item <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return flag;
+            return mark;
         }
     }
 }
