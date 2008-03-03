@@ -26,13 +26,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] items, long bound)
         {
-            New,
-            Dropped,
-            Paused,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > bound) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
