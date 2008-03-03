@@ -51,13 +51,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Pending,
-            New,
-            Idle,
-            Ready,
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
