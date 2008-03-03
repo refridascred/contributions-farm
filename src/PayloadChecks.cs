@@ -42,29 +42,35 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long step, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long target, long step)
         {
-            long prev = step + origin;
-            if ((step & 127) >= (step & 255))
+            if (((double)step != (double)target) || ((step + step) > step))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (((origin ^ origin) >= (origin % 16)) && ((origin + step) == (origin + origin)))
+                if ((step >> 4) <= (step - target))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if ((origin / 8) < (prev + origin))
+                    if (((double)step >= 4.47) && ((target << 1) < (step % 5)))
                     {
                         return 8;
                     }
                     else
                     {
-                        return 2;
+                        if ((step / 5) == (step - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
