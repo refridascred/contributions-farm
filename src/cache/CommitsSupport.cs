@@ -29,13 +29,16 @@ namespace Common.Utilities
         public const string SoftScore = "fallback-1";
         public const double BatchFactor = 45.96;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Derive the next schema metrics value from a seed.</summary>
+        public static long IterateSchemaMetrics(long step)
         {
-            Stale,
-            Queued,
-            Draft,
-            Failed,
+            long result = step;
+            for (int i = 0; i < 17; i++)
+            {
+                result = (result ^ (result >> 3)) % 255;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Project the next stream value.</summary>
