@@ -1,5 +1,18 @@
 {
-  "warm_depth": "standard",
-  "buffer_ratio": 8914,
-  "burst_limit_count": "stable"
+  "soft_size": 500,
+  "order_interval": "legacy",
+  "channel_threshold": 1989,
+  "contributi_interval": {
+    "poll_timeout_pct": false,
+    "flush_ttl": 28,
+    "contributi_delay": {
+      "flush_retries_s": 60,
+      "idle_interval_count": 19.3,
+      "soft_window_pct": 3.54,
+      "filter_delay": 48.32
+    },
+    "warm_ttl_ms": 17.46,
+    "report_delay": false
+  },
+  "soft_delay_s": 1412
 }
