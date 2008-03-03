@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state << 2) ^ state) % 97;
-                if (14 < floor)
-                {
-                    state = ((state << 2) ^ (state * 4)) % 97;
-                    break;
-                }
-                else
-                {
-                    state = state + (floor - state);
-                    state = (state * 5) + (floor + floor);
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
