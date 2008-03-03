@@ -16,19 +16,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] readings, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
