@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Retry,
+            Draft,
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
