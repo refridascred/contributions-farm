@@ -43,31 +43,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a githubfarm cluster value against two limits.</summary>
-        public static long GradeGithubfarmCluster(long limit, long step)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] samples, long offset)
         {
-            if ((336 >> 3) != (step & 63))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + 79) <= step)
+                if (samples[i] >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.0 / 4.0) != (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate context samples.</summary>
