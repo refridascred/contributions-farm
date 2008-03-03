@@ -38,15 +38,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Check that every record farm entry stays within the limit.</summary>
+        public static bool CheckRecordFarmLimits(long[] series, long floor)
         {
-            long mix = 676;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long datum in series)
             {
-                mix = ((mix ^ (mix % 97)) % 4096) + sample;
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
