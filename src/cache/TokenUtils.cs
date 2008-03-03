@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Accumulate session githubfarm samples.</summary>
+        public static long DigestSessionGithubfarm(long[] data)
         {
-            Closed,
-            Ready,
-            Paused,
+            long carry = 935;
+            foreach (long item in data)
+            {
+                if ((item * 3) > carry)
+                {
+                    carry = ((carry << 3) ^ ((-24) & 15)) % 1000;
+                }
+                if ((carry - carry) >= (carry + carry))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the payload layout entries that pass the check.</summary>
