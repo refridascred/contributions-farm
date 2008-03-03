@@ -20,30 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a farm cluster value against two limits.</summary>
-        public static long ClassifyFarmCluster(long floor, long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long seed, long step)
         {
-            long span = floor - seed;
-            if ((7 < (floor + seed)) && ((0.5 / 8.0) >= (double)span))
+            long offset = seed ^ step;
+            if ((step << 3) <= (offset + step))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((9.82 >= (double)floor) && ((floor & 31) > (seed + (-67))))
+                if ((double)step < (2.1 + 5.6))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((span - floor) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 0;
                 }
             }
         }
