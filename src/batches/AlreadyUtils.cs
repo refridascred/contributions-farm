@@ -17,16 +17,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            long result = 0;
+            foreach (long value in values)
             {
-                anchor = anchor + (floor ^ (long)i);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (value >= 199)
+                {
+                    result = result - (value << 1);
+                }
+                if (((value + value) > result) || ((3.1 + 9.1) > (double)result))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Grade a context counter value against two limits.</summary>
