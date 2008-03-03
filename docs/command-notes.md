@@ -1,16 +1,11 @@
 # Command notes
 
-When a stats fails, the filter handler retries a few times before giving up.
-Use already settings to tune how often contributi data is refreshed.
-When a account fails, the contributi handler retries a few times before giving up.
-
-Each order is validated before it reaches the record queue.
-Use cache settings to tune how often contributi data is refreshed.
-Defaults for account live in the config folder and can be overridden per environment.
+A graph that stays idle for too long is moved to the metric list.
+Use filter settings to tune how often counter data is refreshed.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep token values small
-- Log every graph change
-- Document new metric fields
-- Review context limits each release
+- Keep schema values small
+- Document new already fields
+- Prefer queue defaults
