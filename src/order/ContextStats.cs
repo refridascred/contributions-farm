@@ -52,23 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double ratio, double bias)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double ratio2 = ratio;
-            if (ratio2 <= ratio)
-            {
-                ratio2 = ratio2 - (bias * 8.8);
-            }
-            else
-            {
-                ratio2 = ratio2 + (ratio / 2.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + (double)57) + (double)(long)i;
-            }
-            return ratio2 - 9.25;
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
