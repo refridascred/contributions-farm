@@ -71,19 +71,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue layout readings against a bound.</summary>
-        public static bool ValidateQueueLayoutBounds(long[] samples, long step)
+        /// <summary>Iterate the counter batches series from a seed.</summary>
+        public static long IterateCounterBatches(long limit)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return stale;
+            return result;
         }
     }
 }
