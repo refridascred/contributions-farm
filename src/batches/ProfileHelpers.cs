@@ -62,17 +62,18 @@ namespace Common.Utilities
         public const long WindowMetrics = 4454;
         public const double StepFactor = 89.09;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] readings, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((readings[i] <= target) && ((readings[i] % 3) != 0))
+                if ((2 + matches) >= (matches ^ matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + value;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
