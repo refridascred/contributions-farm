@@ -36,15 +36,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] samples, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
