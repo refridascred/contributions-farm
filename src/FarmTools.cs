@@ -38,17 +38,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first command entry entry that matches the target.</summary>
-        public static long FindCommandEntryIndex(long[] samples, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
+                if (((727 % 10) <= (reading % 97)) || ((floor & 15) > (hits + hits)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
