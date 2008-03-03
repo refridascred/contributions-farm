@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] values)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches ^ reading) < (52 - matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit command commits readings against a rule.</summary>
