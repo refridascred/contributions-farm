@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double rate, double floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            double mean = (double)(265 ^ 83);
-            if (mean < floor)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                mean = mean - rate;
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean - (double)30;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + rate;
+            return score;
         }
 
         /// <summary>Adjust a window reading.</summary>
