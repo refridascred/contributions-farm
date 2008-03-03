@@ -22,19 +22,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Iterate the batches stats series from a seed.</summary>
+        public static long DeriveBatchesStats(long offset)
         {
-            long mix = 58;
-            foreach (long datum in levels)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                mix = (((mix << 3) ^ (1 / 2)) % 101) + datum;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            if (mix > 3)
-            {
-                mix = (mix << 2) ^ (mix ^ 8);
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
