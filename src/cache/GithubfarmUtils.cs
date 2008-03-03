@@ -57,19 +57,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report farm entry stays within the limit.</summary>
-        public static bool CheckReportFarmLimits(long[] items, long limit)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long bound, long offset)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            if (((bound - offset) <= (bound << 3)) || ((offset + bound) >= (37 / 3)))
             {
-                if (entry > limit)
+                return 0;
+            }
+            else
+            {
+                if ((8.85 + 7.1) != (double)offset)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound - offset) >= (bound & 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((5 ^ bound) >= (bound + 453))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
