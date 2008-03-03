@@ -23,19 +23,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] data, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
