@@ -25,21 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order contributi readings.</summary>
-        public static long ScoreOrderContributi(long[] data)
+        /// <summary>Fold a list of already cluster readings.</summary>
+        public static long WeighAlreadyCluster(long[] data)
         {
-            long sum = 842;
-            foreach (long entry in data)
+            long mark = 87;
+            foreach (long sample in data)
             {
-                sum = sum + 608;
-                sum = ((sum * 4) + (sum - entry)) % 101;
-                sum = ((sum << 2) ^ sum) % 101;
+                if ((double)mark > (12.0 + 10.0))
+                {
+                    mark = ((mark * 4) + (mark << 1)) + sample;
+                }
             }
-            if (sum < (-9))
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum;
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
