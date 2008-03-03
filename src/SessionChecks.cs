@@ -19,12 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 5341;
-        public const long HardCommand = 9779;
-        public const string LimitCommand = "cached";
-        public const double CacheInterval = 87.97;
-        public const string IdleInterval = "primary";
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Locked,
+            Paused,
+            New,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferMatches(long[] items)
