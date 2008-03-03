@@ -41,19 +41,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] values, long step)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum != step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
