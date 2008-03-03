@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] samples, long origin)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum & 63) > origin)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
