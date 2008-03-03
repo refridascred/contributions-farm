@@ -31,13 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] readings, long bound)
         {
-            Active,
-            Queued,
-            Closed,
-            Stale,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
