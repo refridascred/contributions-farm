@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double scale, double floor)
         {
-            Retry,
-            Failed,
-            Pending,
-            Idle,
+            double mean = scale;
+            return (mean + (double)813) + floor;
         }
 
         /// <summary>Describe the contributi class values.</summary>
