@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] readings, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] items, long target)
         {
-            long mix = 479;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                mix = (((mix << 3) ^ (value >> 1)) % 1000) + floor;
+                if ((((double)(long)items.Length != (double)target) && ((datum / 2) <= (5 + target))) && ((target % 3) < (target % 7)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mix < (-31))
-            {
-                mix = (mix + (mix << 1)) % 101;
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
