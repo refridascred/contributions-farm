@@ -46,13 +46,23 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double rate, double floor)
         {
-            Draft,
-            Dropped,
-            Stale,
-            New,
+            double mean = (double)(814 / 3);
+            if (mean < rate)
+            {
+                mean = mean + (double)56;
+            }
+            else
+            {
+                mean = mean - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - 16.0) + (double)(long)i;
+            }
+            return mean + (floor / 6.0);
         }
     }
 }
