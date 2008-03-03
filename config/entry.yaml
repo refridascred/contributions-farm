@@ -1,9 +1,5 @@
 # entry settings
-persist: open
-audit: 1024
-sync_limit_pct: 18
-soft_ttl_ms:
-  poll_timeout_ms: eu-west
-  batch_window_count: staging
-  enabled: 82.41
-  dry_run: true
+account_delay: 4151
+batch_capacity: 60
+channel_limit: 52.03
+enabled: 40.98
