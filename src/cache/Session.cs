@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] data, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (reading >= bound)
+                if (reading > floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Describe the report level values.</summary>
