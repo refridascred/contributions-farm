@@ -65,21 +65,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of order window readings.</summary>
-        public static long OverlapOrderWindowCount(long[] items)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = (mix + (mix + mix)) % 97;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (((mix * 4) + (93 + floor)) % 255) ^ (long)i2;
+                    mix = (mix ^ (mix >> 5)) % 1000;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
     }
 }
