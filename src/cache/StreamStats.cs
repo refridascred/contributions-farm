@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const long RetryFactor = 512;
         public const long HardScore = 161;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] samples, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((samples[i] < target) && ((samples[i] % 3) == 0))
+                if ((matches > (7 >> 5)) && ((step <= (item / 2)) && ((item - step) > 6)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
