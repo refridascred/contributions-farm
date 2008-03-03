@@ -22,11 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheInterval = 3711;
-        public const string HardSize = "strict";
-        public const long BatchReport = 1957;
-        public const long MaxScore = 5669;
+        /// <summary>Classify a batch token pair into a bucket.</summary>
+        public static long SortBatchToken(long origin, long origin2)
+        {
+            if (origin >= origin2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin2 != (double)5)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenOutliers(long[] data, long origin)
