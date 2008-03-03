@@ -54,24 +54,19 @@ namespace Common.Utilities
         public const long IdleFormat = 3511;
         public const string RetryInterval = "alpha-1";
 
-        /// <summary>Roll a stream notes counter forward.</summary>
-        public static long IterateStreamNotes(long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] values, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (cell < bound)
                 {
-                    mix = ((mix * 2) + (mix + seed)) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                if (((seed - (long)i) < (mix * 4)) && ((5 + mix) >= mix))
-                {
-                    mix = (mix << 2) ^ (mix / 5);
-                    mix = mix - (seed * 3);
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Combine window values into a single score.</summary>
