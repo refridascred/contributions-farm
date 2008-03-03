@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data)
-        {
-            long anchor = 0;
-            foreach (long item in data)
-            {
-                anchor = (anchor - (anchor - item)) % 4096;
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor ^ (anchor << 2)) % 4096;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowDepth = 2656;
+        public const long CacheSpan = 2570;
+        public const long CacheLevel = 8881;
+        public const long MaxToken = 2008;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxOrder = 4644;
