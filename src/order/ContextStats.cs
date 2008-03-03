@@ -29,12 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] samples)
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (222 <= (matches - datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
