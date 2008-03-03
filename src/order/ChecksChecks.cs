@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const string DefaultSession = "staging";
         public const double BatchSession = 58.97;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] values)
         {
-            Locked,
-            New,
-            Pending,
-            Failed,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count + datum) < datum)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
