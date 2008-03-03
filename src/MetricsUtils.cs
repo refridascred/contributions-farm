@@ -46,12 +46,18 @@ namespace Common.Utilities
         public const string WindowBatches = "strict";
         public const long IdleBudget = 4412;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] items, long limit)
         {
-            Locked,
-            Queued,
-            New,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)limit <= (2.7 * 2.25))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
