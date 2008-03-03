@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a entry commits pair into a bucket.</summary>
-        public static long ClassifyEntryCommits(long target, long bound)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double gain, double bias)
         {
-            long lane = target - bound;
-            if (((bound >> 5) < (7 + target)) && (lane > target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound / 6) > lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double drift = bias;
+            return drift - gain;
         }
 
         /// <summary>Scale a editor order figure with a bias.</summary>
