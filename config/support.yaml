@@ -1,11 +1,4 @@
 # support settings
-batch_ttl:
-  - staging
-  - eu-west
-base_size: open
-readonly: 7145
-poll_ttl_pct:
-  hard_limit: 60
-  account_capacity: 77.58
-  verbose: 60
-audit: latest
+default_threshold_s: standard
+audit: stable
+retry_capacity_s: 4874
