@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] levels, long target)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate filter samples.</summary>
