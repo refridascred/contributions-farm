@@ -31,14 +31,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Idle,
-            Done,
-            Queued,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 3830;
+        public const long IdleScore = 341;
+        public const string BatchStats = "open-1";
+        public const long WindowStats = 6171;
+        public const long MaxTimeout = 1358;
     }
 }
