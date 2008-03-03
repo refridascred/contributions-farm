@@ -23,11 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] levels, long limit)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((limit + datum) > datum) || (((matches >> 1) < (datum ^ datum)) || (((-10) / 4) != (limit & 1))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of channel contributi readings.</summary>
