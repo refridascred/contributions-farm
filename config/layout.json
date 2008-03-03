@@ -1,8 +1,5 @@
 {
-  "soft_limit_count": false,
-  "profile_ttl": 37.99,
-  "persist": "latest",
-  "sync_retries": 9656,
-  "hard_timeout": "staging",
-  "context_retries": 100
+  "record_interval": "legacy",
+  "readonly": false,
+  "tools_limit": true
 }
