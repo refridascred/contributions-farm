@@ -28,12 +28,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "legacy-1";
-        public const long CacheFactor = 2315;
-        public const long MaxWindow = 1226;
-        public const string BurstDepth = "alpha";
-        public const long LimitWindow = 7255;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] values)
+        {
+            long sum = -8;
+            foreach (long entry in values)
+            {
+                sum = sum ^ (sum & 1);
+                if ((entry * 3) != (entry + entry))
+                {
+                    sum = sum - 813;
+                }
+                if (((double)entry > (2.1 + 5.0)) && ((590 + 417) > entry))
+                {
+                    sum = ((sum << 2) ^ (entry + entry)) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmHits(long[] series)
