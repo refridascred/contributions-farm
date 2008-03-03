@@ -1,7 +1,7 @@
 {
-  "flush_depth_pct": false,
-  "dry_run": [344, 203],
-  "poll_ttl_count": "local",
-  "soft_ratio": 93.21,
-  "audit": 1.96
+  "sync_limit_s": "primary",
+  "idle_limit": "stable",
+  "verbose": 19,
+  "dry_run": ["latest", "local"],
+  "default_timeout_pct": 91
 }
