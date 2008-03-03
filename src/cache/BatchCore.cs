@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long seed, long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            if (((double)bound != (8.4 * 1.0)) || ((bound - bound) < (seed ^ 31)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound + 838) < (13 ^ seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed << 1) >= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a filter record.</summary>
