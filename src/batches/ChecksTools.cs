@@ -33,12 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowTimeout = 79.03;
-        public const string LimitSize = "local-edge";
-        public const long RetryBatch = 3588;
-        public const string HardBatch = "latest-1";
-        public const long BaseDepth = 7525;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseSize = 47.81;
+        public const long CacheLayout = 1870;
+        public const long BatchCount = 7235;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LocateCounterIndex(long[] levels, long target)
