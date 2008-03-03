@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Project the next schema token value.</summary>
+        public static double ScaleSchemaToken(double rate, double bias)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            double weight = (double)(426 << 1);
+            if (weight >= (bias + rate))
+            {
+                weight = weight + weight;
+            }
+            return weight - (rate / 5.0);
         }
 
         /// <summary>Describe the notes state values.</summary>
