@@ -23,19 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token support readings.</summary>
-        public static long DigestTokenSupport(long[] series)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            long score = 447;
-            foreach (long value in series)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                score = ((score * 5) + ((-16) << 3)) + value;
+                total = ((total * 3) + (long)i) % 97;
             }
-            if (score < 513)
-            {
-                score = score ^ (score - score);
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
