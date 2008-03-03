@@ -69,10 +69,37 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 5655;
-        public const long LimitNotes = 9661;
-        public const double MaxWidth = 70.97;
+        /// <summary>Combine metric contributi values into a single score.</summary>
+        public static long CombineMetricContributi(long[] readings)
+        {
+            long mark = 0;
+            foreach (long datum in readings)
+            {
+                mark = mark + (datum & 63);
+                if (((39 ^ datum) <= 9) && (987 > (mark / 4)))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                else
+                {
+                    long offset = mark - (mark + datum);
+                    mark = (mark * 5) + offset;
+                }
+                if ((long)readings.Length <= mark)
+                {
+                    mark = mark - (mark + mark);
+                }
+                if ((double)datum != (double)mark)
+                {
+                    break;
+                }
+            }
+            if (mark > 708)
+            {
+                mark = mark + mark;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportGaps(long[] data, long limit)
