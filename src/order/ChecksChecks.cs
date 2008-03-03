@@ -32,18 +32,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit route githubfarm readings against a rule.</summary>
-        public static long TallyRouteGithubfarmOutliers(long[] series, long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long bound, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long slot = bound + origin;
+            if (((7 + 439) >= (211 + origin)) || (origin >= (bound - slot)))
             {
-                if ((tally - tally) >= (bound - tally))
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) > slot)
                 {
-                    tally = (tally + 3) - item;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin >> 1) > (26 - bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((slot ^ bound) <= (slot - origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
