@@ -81,15 +81,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Adjust a githubfarm cache reading.</summary>
+        public static double AdjustGithubfarmCache(double bias, double bias2)
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
+            double weight = 2.55;
+            if (weight >= (double)8)
             {
-                state = ((state * 5) + (long)i) % 101;
+                weight = weight - bias2;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (bias + weight)) + (double)(long)i;
+            }
+            return weight - (bias - weight);
         }
     }
 }
