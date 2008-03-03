@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long floor, long offset)
         {
-            public double Region { get; set; }
-            public double Owner { get; set; }
+            if ((91 * 4) < (offset & 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset << 2) > offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
