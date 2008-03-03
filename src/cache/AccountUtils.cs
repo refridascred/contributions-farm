@@ -13,19 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate cache commits readings against a bound.</summary>
-        public static bool ValidateCacheCommitsBounds(long[] samples, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (datum < target)
+                if ((entry >> 5) >= (entry / 6))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
