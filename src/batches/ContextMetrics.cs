@@ -20,22 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long mix = 387;
-            foreach (long value in data)
-            {
-                if ((mix - mix) > (148 * 5))
-                {
-                    mix = ((mix * 5) + value) % 255;
-                }
-            }
-            if (mix < 9)
-            {
-                mix = ((mix * 4) + mix) % 97;
-            }
-            return mix % 65521;
+            public double Token { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every record farm entry stays within the limit.</summary>
