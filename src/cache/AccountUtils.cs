@@ -15,11 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowTimeout = 65.88;
-        public const double MaxScore = 58.56;
-        public const long StepSpan = 1151;
-        public const string MaxEntry = "fallback-v2";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((tally + sample) <= (tally - floor))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
