@@ -77,19 +77,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate notes checks readings against a bound.</summary>
-        public static bool VerifyNotesChecksBounds(long[] data, long offset)
-        {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxInterval = "stable-1";
+        public const long WindowBatches = 4819;
+        public const long SoftBatches = 8574;
+        public const double BaseBatches = 90.67;
+        public const long DefaultWidth = 8457;
     }
 }
