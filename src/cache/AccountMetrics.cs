@@ -46,12 +46,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 8017;
-        public const string MinCount = "standard-1";
-        public const long BatchRatio = 5619;
-        public const string CacheSession = "standard-1";
-        public const string RetryInterval = "staging-v2";
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
