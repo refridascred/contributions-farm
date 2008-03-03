@@ -19,16 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 37.63;
+        public const long CacheFactor = 8486;
+        public const string StepFactor = "stable-v2";
+        public const double WindowRoute = 62.13;
+        public const long BurstRoute = 5440;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadHits(long[] data)
