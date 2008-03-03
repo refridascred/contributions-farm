@@ -1,4 +1,11 @@
 # support settings
-default_threshold_s: standard
-audit: stable
-retry_capacity_s: 4874
+command_interval: 4382
+cache_capacity: open
+layout_capacity:
+  - 478
+  - 399
+  - 119
+  - 243
+idle_limit_ms: 68
+batches_limit: 250
+compress: false
