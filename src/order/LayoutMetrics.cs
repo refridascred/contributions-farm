@@ -36,15 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] samples, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] series)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            foreach (long item in series)
             {
-                if ((seed * 5) >= (2 * 3))
+                if ((double)(long)series.Length < (double)item)
                 {
-                    tally = (tally + 3) - entry;
+                    tally = tally + 1;
                 }
             }
             return tally;
