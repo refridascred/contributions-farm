@@ -28,23 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a counter order reading.</summary>
-        public static double ScaleCounterOrder(double rate, double bias)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] samples, long origin)
         {
-            double load = rate;
-            if (load > load)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                load = load - (rate / 4.0);
+                if (0 < (sample + (-2)))
+                {
+                    tally = (tally + 1) + origin;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - bias) - (double)(long)i;
-            }
-            return load - (bias - load);
+            return tally;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
