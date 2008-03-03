@@ -25,21 +25,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Iterate the farm metrics series from a seed.</summary>
