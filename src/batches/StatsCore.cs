@@ -31,19 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] items, long target)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long score = 3;
-            foreach (long datum in items)
-            {
-                score = ((score + (datum ^ 97)) % 1000) - target;
-            }
-            if (score < 49)
-            {
-                score = (score + (score << 1)) % 255;
-            }
-            return score;
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Match up command graph samples.</summary>
