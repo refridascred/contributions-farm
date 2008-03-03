@@ -48,18 +48,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] values, long bound)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long item in values)
+            long next = limit - limit2;
+            if ((limit * 2) <= (83 / 9))
             {
-                if ((double)count != (7.2 / 4.0))
+                return 7;
+            }
+            else
+            {
+                if ((limit - limit) > (next << 1))
                 {
-                    count = ((count + 2) + item) - bound;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
