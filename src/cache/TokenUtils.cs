@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] items)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((double)value < (double)hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count the payload layout entries that pass the check.</summary>
