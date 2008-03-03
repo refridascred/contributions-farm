@@ -56,28 +56,35 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Grade a window schema value against two limits.</summary>
-        public static long BucketWindowSchema(long step, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long offset, long floor)
         {
-            if ((0 % 2) > (limit - limit))
+            if ((offset << 3) >= (-78))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (!((double)step != (12.0 / 6.0)))
+                if ((offset / 7) < (floor + 2))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)limit <= (6.0 / 3.0))
+                    if (offset >= (floor << 2))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        return 1;
+                        if (floor <= (9 + offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
