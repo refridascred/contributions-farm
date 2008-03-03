@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a contributi route counter forward.</summary>
-        public static long SeriesContributiRoute(long floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] items, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((items[i] > seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
