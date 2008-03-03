@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] series, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long state = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum > seed)
+                state = (state << 2) ^ ((-34) % 64);
+                if (434 > target)
                 {
-                    flag = false;
-                    break;
+                    state = ((state << 3) ^ target) % 1000;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
