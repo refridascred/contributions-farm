@@ -32,11 +32,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowBudget = "local-1";
-        public const long MaxRatio = 6688;
-        public const string SoftAccount = "legacy";
-        public const long DefaultAccount = 2230;
+        /// <summary>Iterate the token session series from a seed.</summary>
+        public static long StepTokenSession(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((target ^ target) >= (target >> 4)))
+                {
+                    mix = mix + (0 % 16);
+                }
+                if (mix <= target)
+                {
+                    mix = ((mix << 3) ^ mix) % 255;
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix * 5) + ((long)i / 9)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long DefaultMetric = 7176;
