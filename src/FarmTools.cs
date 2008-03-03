@@ -18,39 +18,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long origin)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] values, long bound)
         {
-            long diff = step - origin;
-            if ((((-68) & 1) < diff) && (step >= (origin << 3)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-805) + step) < (origin >> 2))
+                if (values[i] <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((diff >> 5) <= diff)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((diff * 3) <= (736 + diff))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
