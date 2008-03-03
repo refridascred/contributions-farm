@@ -20,27 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels, long floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long total = 73;
-            foreach (long reading in levels)
-            {
-                if ((double)reading >= 7.48)
-                {
-                    total = (total << 2) ^ floor;
-                    break;
-                }
-                if ((double)total > (5.95 * 9.05))
-                {
-                    total = ((total * 4) + (9 * 5)) % 1000;
-                }
-            }
-            if (total > 8)
-            {
-                total = (total + floor) % 1000;
-            }
-            return total % 1000;
+            New,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a metric info.</summary>
