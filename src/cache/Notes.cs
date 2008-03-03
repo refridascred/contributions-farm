@@ -71,26 +71,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] items)
-        {
-            long carry = 28;
-            foreach (long sample in items)
-            {
-                if ((sample + sample) <= (sample >> 4))
-                {
-                    carry = (carry - (carry + carry)) % 4096;
-                }
-                if ((carry > (carry ^ carry)) || ((double)carry == (9.0 / 3.0)))
-                {
-                    break;
-                }
-            }
-            if (carry < 407)
-            {
-                carry = carry ^ (carry & 15);
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinCount = 9535;
+        public const double MinScore = 11.16;
+        public const string MaxRatio = "local-1";
+        public const long BatchTimeout = 9648;
+        public const long CacheAlready = 8772;
     }
 }
