@@ -54,15 +54,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long seed, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
+            long next = seed + origin;
+            if (((double)next < (double)seed) && (origin <= (seed + seed)))
             {
-                score = ((score * 2) + (long)i) % 65521;
+                return 0;
             }
-            return score;
+            else
+            {
+                if (((seed + 727) >= 2) && ((double)origin <= (8.4 - 11.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a token record.</summary>
