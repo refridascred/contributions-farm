@@ -40,20 +40,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            long sum = 97;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum ^ (70 % 8)) - item;
-                sum = ((sum * 2) + sum) % 101;
-                if (!((3 & 63) >= sum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum - (0 >> 4)) % 65521;
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return matches;
         }
     }
 }
