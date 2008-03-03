@@ -27,11 +27,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Fold a list of order contributi readings.</summary>
+        public static long ScoreOrderContributi(long[] data)
         {
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
+            long sum = 842;
+            foreach (long entry in data)
+            {
+                sum = sum + 608;
+                sum = ((sum * 4) + (sum - entry)) % 101;
+                sum = ((sum << 2) ^ sum) % 101;
+            }
+            if (sum < (-9))
+            {
+                sum = sum - (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
