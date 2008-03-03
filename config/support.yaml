@@ -1,7 +1,8 @@
 # support settings
-min_depth_ms: 47.36
-audit: 7263
-entry_interval: eu-west
-default_size_s: 9785
-warm_window_ms: cached
-soft_interval_count: false
+batch_ttl: latest
+profile_ratio:
+  - stable
+  - strict
+  - green
+idle_ratio: eu-west
+farm_retries: 3991
