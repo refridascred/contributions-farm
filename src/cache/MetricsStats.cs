@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchLevel = "fallback-1";
-        public const string BatchNotes = "standard-1";
-        public const double MaxNotes = 48.88;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] readings, long limit)
