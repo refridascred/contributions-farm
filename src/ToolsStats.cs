@@ -13,20 +13,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] data)
         {
-            long carry = 6;
-            foreach (long sample in levels)
+            long anchor = 1;
+            foreach (long entry in data)
             {
-                carry = (carry << 3) ^ (carry % 12);
-                carry = (carry - 166) % 1000;
-                if ((sample ^ sample) <= (sample & 127))
+                if (anchor <= (entry ^ anchor))
                 {
-                    carry = (carry * 4) + (sample - sample);
+                    anchor = (anchor ^ 453) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + entry) % 101;
                 }
             }
-            return carry % 1000;
+            return anchor;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
