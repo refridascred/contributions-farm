@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double BurstLevel = 96.65;
         public const long SoftBatch = 1907;
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseScore = "legacy-edge";
+        public const long IdleScore = 6356;
+        public const long MinFactor = 8854;
+        public const string SoftFactor = "primary";
+        public const long DefaultDepth = 4362;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TallyStats(long[] values, long origin)
