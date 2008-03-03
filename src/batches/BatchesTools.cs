@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double scale, double offset)
+        /// <summary>Look up the position of a buffer metric sample.</summary>
+        public static long SeekBufferMetricIndex(long[] items, long origin)
         {
-            double gain = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = ((gain + offset) + (double)(long)i) - scale;
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (offset * 19.0);
+            return -1;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
