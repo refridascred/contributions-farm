@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] samples, long seed)
+        /// <summary>Iterate the farm record series from a seed.</summary>
+        public static long SeriesFarmRecord(long limit)
         {
-            long state = -84;
-            foreach (long reading in samples)
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((4 * 2) <= (reading ^ 5))
-                {
-                    state = (((state << 3) ^ (6 << 3)) % 101) - seed;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return state % 1000;
+            return score;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
