@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Iterate the context buffer series from a seed.</summary>
+        public static long SeriesContextBuffer(long origin)
         {
             long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < 4; i++)
             {
-                long prev = anchor + anchor;
-                if ((375 ^ origin) > prev)
+                long gap = (long)i;
+                if ((6.0 + 1.02) >= (double)gap)
                 {
-                    prev = (prev ^ 223) % 4096;
-                    anchor = ((anchor << 3) ^ anchor) % 1000;
+                    gap = ((gap << 2) ^ origin) % 97;
                 }
                 else
                 {
-                    anchor = (anchor ^ (2 << 1)) % 255;
+                    gap = (gap * 4) + ((long)i / 4);
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
             return anchor;
         }
