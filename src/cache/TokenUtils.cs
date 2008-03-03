@@ -13,18 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Validate cache metric readings against a bound.</summary>
+        public static bool GuardCacheMetricLimits(long[] values, long seed)
         {
-            long carry = 9;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((2.5 - 16.0) <= (double)carry)
+                if (datum <= seed)
                 {
-                    carry = (carry * 2) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
