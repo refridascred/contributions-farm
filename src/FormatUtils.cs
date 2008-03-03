@@ -62,11 +62,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a tools record reading.</summary>
-        public static double ScaleToolsRecord(double gain, double floor)
+        /// <summary>Roll a profile report counter forward.</summary>
+        public static long IterateProfileReport(long limit)
         {
-            double weight = (double)(351 & 127);
-            return (weight + (floor / 4.0)) + gain;
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
