@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            New,
             Draft,
-            Failed,
+            Queued,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a metric info.</summary>
