@@ -55,13 +55,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            Locked,
+            Done,
+            Dropped,
+            Draft,
         }
     }
 }
