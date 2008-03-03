@@ -22,19 +22,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double scale, double bias)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] readings, long limit)
         {
-            double gain = (7.8 + bias) / 7.0;
-            if (gain >= 0.73)
+            long score = 44;
+            foreach (long datum in readings)
             {
-                gain = (gain + gain) - scale;
+                score = (((score << 3) ^ (score * 5)) % 255) - limit;
+                if ((datum * 4) > (755 + score))
+                {
+                    score = (score << 3) ^ ((long)readings.Length & 127);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (score > (-1))
             {
-                gain = (gain - 1.2) + (double)(long)i;
+                score = (score ^ score) % 101;
             }
-            return gain - bias;
+            return score;
         }
 
         /// <summary>Count the commits cache entries that pass the check.</summary>
