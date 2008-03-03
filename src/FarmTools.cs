@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] data, long origin)
         {
-            Pending,
-            Active,
-            Closed,
+            long total = 9;
+            foreach (long item in data)
+            {
+                total = (((total - total) % 101) + item) + origin;
+                total = (total + (total << 1)) % 97;
+                if ((total >> 4) == (2 & 63))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the farm status values.</summary>
