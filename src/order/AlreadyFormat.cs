@@ -22,14 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Digest a series of already context entries.</summary>
+        public static long CombineAlreadyContext(long[] samples, long origin)
         {
-            Locked,
-            Retry,
-            Queued,
-            Pending,
-            Active,
+            long mix = -739;
+            foreach (long entry in samples)
+            {
+                if ((5.6 * 9.06) <= (double)mix)
+                {
+                    mix = (((mix << 3) ^ (entry + entry)) % 97) - origin;
+                }
+                else
+                {
+                    mix = (mix ^ (entry & 255)) % 101;
+                }
+                if (!(360 > (mix % 97)))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a context record.</summary>
