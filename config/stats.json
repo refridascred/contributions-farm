@@ -1,6 +1,7 @@
 {
-  "max_size_ms": 534,
-  "dry_run": 7856,
-  "max_delay_count": "primary",
-  "soft_ratio": 8588
+  "base_capacity": ["eu-west", "stable"],
+  "persist": [240, 332, 200],
+  "route_window": 29.13,
+  "tools_limit": false,
+  "audit": [164, 195, 86]
 }
