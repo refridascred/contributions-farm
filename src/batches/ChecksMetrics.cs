@@ -53,22 +53,27 @@ namespace Common.Utilities
         public const string WindowBatch = "stable-v2";
         public const long DefaultScore = 5464;
 
-        /// <summary>Count the batches counter entries that pass the check.</summary>
-        public static long TallyBatchesCounterOutliers(long[] readings, long origin)
+        /// <summary>Fold a list of route checks readings.</summary>
+        public static long TallyRouteChecks(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mix = 916;
+            foreach (long entry in levels)
             {
-                if ((5.5 * 6.09) < (double)matches)
+                mix = mix - (entry - step);
+                if ((entry + mix) != (9 << 3))
                 {
-                    matches = ((matches + 1) + reading) - origin;
+                    mix = ((mix * 3) + entry) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = ((mix << 2) ^ (step - entry)) % 1000;
                 }
             }
-            return matches;
+            if (mix < (-92))
+            {
+                mix = (mix ^ 7) % 255;
+            }
+            return mix % 97;
         }
     }
 }
