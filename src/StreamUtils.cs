@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of commits route readings.</summary>
-        public static long MatchCommitsRouteCount(long[] series)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Ready,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
