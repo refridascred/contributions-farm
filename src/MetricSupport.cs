@@ -20,18 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] values)
+        /// <summary>Fold a list of support checks readings.</summary>
+        public static long CombineSupportChecks(long[] readings)
         {
-            long score = 1;
-            foreach (long reading in values)
+            long score = 84;
+            foreach (long datum in readings)
             {
-                if ((reading ^ 312) == ((long)values.Length / 4))
+                if ((score + datum) < (score % 60))
                 {
-                    score = (score * 2) + (score ^ reading);
+                    score = ((score * 5) + (score - datum)) % 65521;
+                }
+                if ((score - 80) > (datum % 2))
+                {
+                    break;
                 }
             }
-            return score % 1000;
+            return score;
         }
 
         /// <summary>Hold a record summary.</summary>
