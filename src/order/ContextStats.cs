@@ -50,13 +50,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            Queued,
+            Pending,
+            Idle,
         }
     }
 }
