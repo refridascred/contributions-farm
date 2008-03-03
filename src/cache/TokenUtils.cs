@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-            public double Flag { get; set; }
+            Closed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
