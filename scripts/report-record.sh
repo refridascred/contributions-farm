@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 9 ]; do
@@ -22,5 +18,6 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=320
-log "limit is ${RECORD_LIMIT}"
+for item in legacy open; do
+    log "checking ${item}"
+done
