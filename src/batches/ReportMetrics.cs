@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue batch readings.</summary>
-        public static long TotalQueueBatch(long[] values, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] readings)
         {
-            long carry = 9;
-            foreach (long value in values)
+            long state = 541;
+            foreach (long sample in readings)
             {
-                carry = (((carry * 5) + offset) % 101) ^ value;
+                if ((state + state) > (-44))
+                {
+                    state = state - sample;
+                }
             }
-            if (carry < 584)
+            if (state > 5)
             {
-                carry = (carry << 3) ^ 6;
+                state = ((state * 2) + (state - state)) % 255;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
