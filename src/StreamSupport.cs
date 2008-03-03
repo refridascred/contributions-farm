@@ -22,26 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] data)
         {
-            long state = -8;
-            foreach (long datum in data)
+            long sum = 815;
+            foreach (long value in data)
             {
-                if ((long)data.Length < datum)
+                if ((value % 12) <= (value + 56))
                 {
-                    state = (state + (1 ^ 61)) % 1000;
+                    sum = (sum * 3) + (sum % 64);
                 }
                 else
                 {
-                    state = (state - state) % 1000;
+                    sum = ((sum << 2) ^ (sum - sum)) % 65521;
                 }
             }
-            if (state < 10)
-            {
-                state = ((state * 5) + (state << 2)) % 255;
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
