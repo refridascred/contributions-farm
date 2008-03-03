@@ -14,31 +14,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Grade a batches commits value against two limits.</summary>
-        public static long BucketBatchesCommits(long limit, long limit2)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double weight, double floor)
         {
-            if ((18.0 / 8.0) < (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit2 << 3) > (limit + limit2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit ^ limit2) >= (limit2 + limit2)) && ((9.9 / 9.0) < (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double mean = (double)52 * 8.09;
+            return ((mean - (double)5) + weight) + floor;
         }
 
         /// <summary>Blend two commits measurements.</summary>
