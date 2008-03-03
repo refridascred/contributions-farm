@@ -1,9 +1,8 @@
 {
-  "strict": 1024,
-  "default_threshold_s": {
-    "sync_size": ["latest", "staging", "open", "green"],
-    "command_timeout": 30,
-    "max_threshold": 2121
-  },
-  "batch_window_ms": "standard"
+  "default_size_count": "fallback",
+  "readonly": 6528,
+  "max_retries": "open",
+  "burst_delay": 30,
+  "flush_ttl": "standard",
+  "support_retries": ["eu-west", "legacy"]
 }
