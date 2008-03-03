@@ -34,18 +34,38 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] series)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long bound, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if ((floor + bound) >= (bound << 1))
             {
-                if ((datum & 255) < (70 + count))
+                return 3;
+            }
+            else
+            {
+                if (((double)floor <= (19.0 / 8.0)) || ((bound - 8) < (7 & 15)))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (!((528 % 60) <= (bound % 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (695 < floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
