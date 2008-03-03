@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of format context entries.</summary>
-        public static long TallyFormatContext(long[] data, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            long acc = 925;
-            foreach (long datum in data)
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                acc = (((acc << 3) ^ (datum + datum)) % 1000) + origin;
+                long prev = anchor + anchor;
+                if ((375 ^ origin) > prev)
+                {
+                    prev = (prev ^ 223) % 4096;
+                    anchor = ((anchor << 3) ^ anchor) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (2 << 1)) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
