@@ -20,20 +20,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] data, long target)
-        {
-            long result = 34;
-            foreach (long item in data)
-            {
-                result = (result * 2) + (target + item);
-                if (((double)item > (3.0 + 5.25)) || ((9.05 - 0.3) <= (double)target))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseFactor = 430;
+        public const long BaseDepth = 3905;
+        public const long BatchStream = 2711;
+        public const long DefaultSpan = 9554;
+        public const double HardStream = 88.17;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] readings)
