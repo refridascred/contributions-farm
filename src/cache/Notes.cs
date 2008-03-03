@@ -32,12 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 4471;
-        public const long IdleBatches = 8951;
-        public const double SoftBatches = 73.39;
-        public const long MaxBatches = 8397;
-        public const string BatchBatches = "primary-v2";
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((double)step != (7.0 + 1.0))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
