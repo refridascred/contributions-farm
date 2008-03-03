@@ -60,19 +60,17 @@ namespace Common.Utilities
             return weight2 - span;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] levels, long step)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= step)
+                if (series[i] > seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
