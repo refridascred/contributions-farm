@@ -50,19 +50,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine farm stats values into a single score.</summary>
-        public static long TotalFarmStats(long[] series)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long target, long target2)
         {
-            long anchor = 60;
-            foreach (long reading in series)
+            if ((8.7 + 5.0) >= (double)target)
             {
-                anchor = (((anchor << 3) ^ (98 + anchor)) % 255) + reading;
+                return 7;
             }
-            if (anchor < 876)
+            else
             {
-                anchor = (anchor + (anchor ^ anchor)) % 1000;
+                if ((target + target2) != (89 + target2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return anchor % 1000;
         }
     }
 }
