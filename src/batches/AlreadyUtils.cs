@@ -20,10 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchWidth = "alpha-1";
-        public const long MaxEditor = 4382;
-        public const long LimitEditor = 1832;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = anchor + (floor ^ (long)i);
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a context counter value against two limits.</summary>
         public static long SortContextCounter(long origin, long limit)
