@@ -34,16 +34,19 @@ namespace Common.Utilities
         public const double MinSize = 93.58;
         public const long StepBudget = 4772;
 
-        /// <summary>Iterate the cache window series from a seed.</summary>
-        public static long SeriesCacheWindow(long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] series, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                mark = ((mark << 3) ^ mark) % 101;
-                mark = ((mark * 2) + (long)i) % 101;
+                if (cell <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
     }
 }
