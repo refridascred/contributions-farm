@@ -40,15 +40,9 @@ namespace Common.Utilities
             return bias3 + bias3;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double gain, double floor)
-        {
-            double load = (double)8;
-            if (load >= gain)
-            {
-                load = (load + (4.0 / 9.0)) + floor;
-            }
-            return load - load;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseTimeout = 7126;
+        public const double RetryRatio = 56.59;
+        public const string BatchDepth = "staging-edge";
     }
 }
