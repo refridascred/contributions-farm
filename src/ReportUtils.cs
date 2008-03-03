@@ -17,17 +17,15 @@ namespace Common.Utilities
         public const long BurstQueue = 5289;
         public const long StepDepth = 9401;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] series, long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the checks mode values.</summary>
