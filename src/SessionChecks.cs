@@ -34,22 +34,16 @@ namespace Common.Utilities
         public const double MinSize = 93.58;
         public const long StepBudget = 4772;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] values)
+        /// <summary>Iterate the cache window series from a seed.</summary>
+        public static long SeriesCacheWindow(long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((item << 1) != (tally - tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark << 3) ^ mark) % 101;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
     }
 }
