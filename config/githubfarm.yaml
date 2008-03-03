@@ -1,8 +1,21 @@
 # githubfarm settings
-soft_limit_s: true
-editor_interval:
-  - primary
+metric_retries:
+  warm_threshold: primary
+  soft_threshold_ms: open
+  notes_depth: fallback
+  compress: eu-west
+  schema_ratio: 60
+  hard_delay_count: standard
+persist:
+  - staging
+  - open
   - blue
-  - edge
-  - local
-strict: 96
+  - legacy
+counter_size: true
+cache_interval_s: 51.0
+default_delay_ms:
+  - 435
+  - 416
+  - 489
+  - 401
+warm_threshold: stable
