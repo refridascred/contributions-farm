@@ -50,18 +50,21 @@ namespace Common.Utilities
             return gain - (double)128;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] values, long origin)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (origin > matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) ^ reading;
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a contributi stats.</summary>
