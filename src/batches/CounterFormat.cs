@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 47.48;
-        public const long RetryOrder = 2845;
-        public const long StepFactor = 3794;
-        public const long DefaultOrder = 3740;
-        public const long LimitOrder = 2082;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
