@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long StepDepth = 5487;
         public const double CacheRatio = 26.98;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheInterval = 3711;
+        public const string HardSize = "strict";
+        public const long BatchReport = 1957;
+        public const long MaxScore = 5669;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BurstBudget = 8.56;
