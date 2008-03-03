@@ -14,23 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] readings)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double weight, double floor)
         {
-            long result = 4;
-            foreach (long sample in readings)
+            double scale = (double)179 + floor;
+            if (scale >= (floor + weight))
             {
-                result = (result * 2) + (5 & 63);
-                if (!((result << 3) < (sample << 2)))
-                {
-                    result = result - result;
-                }
-                else
-                {
-                    result = (result - (result * 3)) % 97;
-                }
+                scale = scale - weight;
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (weight + floor)) + (double)(long)i;
+            }
+            return scale - (scale - floor);
         }
 
         /// <summary>Project the next batch value.</summary>
