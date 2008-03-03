@@ -1,15 +1,22 @@
 # support settings
-poll_retries_count: local
-audit: 60.19
-base_retries_s:
-  verbose: staging
-  default_window: 48.36
-  notes_delay:
-    - standard
-    - latest
-  githubfarm_window:
-    - 205
-    - 262
-    - 388
-    - 126
-  persist: latest
+flush_limit: standard
+readonly:
+  soft_ttl_count:
+    - cached
+    - strict
+    - eu-west
+  token_timeout: 1024
+  strict: 86
+  metrics_window:
+    - legacy
+    - local
+    - green
+  cache_depth_s: 45
+  idle_size_ms:
+    - eu-west
+    - stable
+    - blue
+    - local
+base_limit_ms: stable
+idle_threshold_s: 100
+max_ttl_s: legacy
