@@ -25,13 +25,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Look up the position of a cluster order sample.</summary>
+        public static long LocateClusterOrderIndex(long[] values, long step)
         {
-            Locked,
-            Dropped,
-            Synced,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
