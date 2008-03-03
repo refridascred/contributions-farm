@@ -46,13 +46,18 @@ namespace Common.Utilities
         public const string WindowBatches = "strict";
         public const long IdleBudget = 4412;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] levels)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((value << 1) <= hits) || !(value < (value * 3)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
