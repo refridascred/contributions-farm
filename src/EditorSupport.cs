@@ -51,23 +51,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double scale, double span)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long seed, long seed2)
         {
-            double rate = scale;
-            if (rate > (rate / 8.0))
+            if ((double)seed >= 14.0)
             {
-                rate = rate + (rate * 4.24);
+                return 6;
             }
             else
             {
-                rate = rate + (span * 8.26);
+                if (((double)seed2 <= (double)seed) || ((20 ^ seed) == (seed / 8)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((-87) <= (seed % 12))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (seed2 <= (seed2 & 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (span / 2.0)) + (double)(long)i;
-            }
-            return rate - (span + rate);
         }
 
         /// <summary>Compare every pair of metrics channel readings.</summary>
