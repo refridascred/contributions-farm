@@ -46,21 +46,21 @@ namespace Common.Utilities
             return weight + 8.0;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Count farm layout pairs that satisfy a relation.</summary>
+        public static long OverlapFarmLayoutCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 18)
+                    if ((levels[i] - levels[j]) > 12)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the contributi level values.</summary>
