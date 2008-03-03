@@ -37,11 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheInterval = 6395;
-        public const string BurstEntry = "legacy-edge";
-        public const double HardEntry = 25.7;
-        public const string HardLevel = "local";
-        public const double SoftEntry = 41.54;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
+        }
     }
 }
