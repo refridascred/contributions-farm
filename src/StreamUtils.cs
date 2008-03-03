@@ -14,13 +14,29 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long step)
         {
-            Stale,
-            Queued,
-            Draft,
-            Retry,
+            long carry = step;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry << 2) ^ 91) % 1000;
+                if (step > (step & 63))
+                {
+                    carry = (carry * 4) + (7 >> 3);
+                    carry = ((carry << 2) ^ (step & 7)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry ^ 963)) % 65521;
+                }
+                if (9.0 >= (double)carry)
+                {
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Rank record input into a small class.</summary>
