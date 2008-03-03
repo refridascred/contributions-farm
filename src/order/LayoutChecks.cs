@@ -69,12 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] values, long target)
         {
-            Failed,
-            Active,
-            Dropped,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
