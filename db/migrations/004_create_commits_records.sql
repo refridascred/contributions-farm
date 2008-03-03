@@ -3,12 +3,11 @@ CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
     active INTEGER NOT NULL DEFAULT 1,
-    score REAL NOT NULL DEFAULT 0,
-    rank INTEGER,
-    token TEXT
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
+CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
 
-INSERT INTO commits_records (count, active, score, rank, token) VALUES (92, 83, 81.26, 34, 'edge');
-INSERT INTO commits_records (count, active, score, rank, token) VALUES (25, 7, 24.89, 92, 'latest');
+INSERT INTO commits_records (count, active, label) VALUES (96, 5, 'blue');
+INSERT INTO commits_records (count, active, label) VALUES (81, 74, 'legacy');
+INSERT INTO commits_records (count, active, label) VALUES (44, 12, 'standard');
