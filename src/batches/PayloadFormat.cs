@@ -28,13 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
