@@ -1,6 +1,10 @@
-id,token,weight,state,score
-1,eu-west,blue,219,357
-2,51,14,166,194
-3,493,58.66,fallback,blue
-4,fallback,296,12.46,604
-5,446,57.78,920,142
+id,level,token
+1,local,47.8
+2,89.08,859
+3,27.98,796
+4,681,48.53
+5,6.04,672
+6,46.82,173
+7,21.42,645
+8,staging,918
+9,stable,edge
