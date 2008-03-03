@@ -36,12 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 74.64;
-        public const double BurstInterval = 45.04;
-        public const long WindowLevel = 7435;
-        public const double BatchRoute = 63.61;
-        public const string WindowRatio = "fallback";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftSize = 51.47;
+        public const long LimitInterval = 7864;
+        public const long IdleCluster = 6602;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long RollCache(long floor)
