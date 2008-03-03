@@ -19,19 +19,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] series, long floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Hold a filter summary.</summary>
