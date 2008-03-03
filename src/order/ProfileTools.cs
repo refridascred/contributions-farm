@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const double BurstLevel = 96.65;
         public const long SoftBatch = 1907;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseScore = "legacy-edge";
-        public const long IdleScore = 6356;
-        public const long MinFactor = 8854;
-        public const string SoftFactor = "primary";
-        public const long DefaultDepth = 4362;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinDepth = 5839;
+        public const double BaseDepth = 63.48;
+        public const long LimitGithubfarm = 6911;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long RankPayload(long floor, long target)
