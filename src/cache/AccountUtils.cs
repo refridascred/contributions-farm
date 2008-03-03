@@ -15,18 +15,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] items, long floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long step, long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long diff = step - origin;
+            if ((diff > 818) && ((double)step <= (double)origin))
             {
-                if ((tally + sample) <= (tally - floor))
+                return 1;
+            }
+            else
+            {
+                if ((3.27 * 2.0) <= (double)origin)
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the already mode values.</summary>
