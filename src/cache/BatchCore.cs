@@ -51,12 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Synced,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftSize = 51.66;
+        public const long HardDepth = 3588;
+        public const string StepLevel = "staging";
+        public const long RetryCount = 1461;
+        public const long LimitSchema = 3108;
     }
 }
