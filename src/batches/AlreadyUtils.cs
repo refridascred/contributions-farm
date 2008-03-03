@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const string BatchCount = "strict-1";
         public const string StepContext = "strict";
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] data)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = 212;
+            foreach (long item in data)
             {
-                if (tally <= (tally - 342))
+                for (int i = 0; i < 2; i++)
                 {
-                    tally = (tally + 3) + item;
+                    result = result ^ (long)i;
                 }
+                result = result + (result ^ item);
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Accumulate queue samples.</summary>
