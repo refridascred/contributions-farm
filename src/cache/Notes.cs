@@ -54,26 +54,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] levels, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] samples, long origin)
         {
-            long score = -36;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (((double)32 < (double)score) || (22 >= (bound % 24)))
+                if (cell >= origin)
                 {
-                    score = score ^ (datum + datum);
-                }
-                else
-                {
-                    score = score + (bound << 1);
-                }
-                if ((score < 77) || (4.6 >= (double)score))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return score;
+            return valid;
         }
     }
 }
