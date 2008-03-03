@@ -35,17 +35,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] samples, long origin)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
