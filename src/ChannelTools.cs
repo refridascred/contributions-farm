@@ -31,11 +31,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] values)
         {
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((19 - matches) >= 268) && ((1.0 + 5.6) != (double)datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
