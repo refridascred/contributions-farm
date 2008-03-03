@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long bound, long limit)
+        /// <summary>Adjust a session entry reading.</summary>
+        public static double BlendSessionEntry(double bias, double bias2)
         {
-            if ((bound > (limit + limit)) || ((limit >> 4) > bound))
+            double scale = bias2;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                scale = ((scale - bias2) - (double)(long)i) - bias;
             }
-            else
-            {
-                if ((5.29 * 4.37) == (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((17.0 - 3.21) >= (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit % 5) >= (limit << 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return scale - bias2;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
