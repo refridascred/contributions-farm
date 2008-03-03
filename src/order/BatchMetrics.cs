@@ -17,18 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] levels, long bound)
+        /// <summary>Validate window route readings against a bound.</summary>
+        public static bool GuardWindowRouteRange(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (reading <= (572 + bound))
+                if (value != bound)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
