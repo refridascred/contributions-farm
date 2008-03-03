@@ -18,11 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the channel mode values.</summary>
