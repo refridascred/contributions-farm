@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Check that every cache channel entry stays within the limit.</summary>
+        public static bool CheckCacheChannelBounds(long[] data, long seed)
         {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
