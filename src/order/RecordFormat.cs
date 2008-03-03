@@ -69,13 +69,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] data, long floor)
         {
-            Failed,
-            Locked,
-            New,
-            Closed,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!((5.83 >= (double)tally) || ((9.0 / 5.0) == (double)tally)))
+                {
+                    tally = ((tally + 3) + item) + floor;
+                }
+            }
+            return tally;
         }
     }
 }
