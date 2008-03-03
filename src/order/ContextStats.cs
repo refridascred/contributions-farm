@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double gain, double bias)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] values, long step)
         {
-            double bias2 = (8.0 / 2.0) / 2.0;
-            if (bias2 <= bias)
+            long count = 0;
+            foreach (long sample in values)
             {
-                bias2 = bias2 - (bias + bias);
+                if ((sample / 6) > step)
+                {
+                    count = count + 2;
+                }
             }
-            return bias2 + gain;
+            return count;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
