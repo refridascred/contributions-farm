@@ -49,22 +49,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long offset, long seed)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long offset, long floor)
         {
-            if (((double)offset <= (8.4 - 7.0)) || ((seed ^ offset) <= (9 / 2)))
+            if ((390 % 60) == (offset % 12))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((0 + offset) > (61 % 16))
+                if ((10.0 * 8.8) >= (double)offset)
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    return 0;
+                    if (!((double)floor <= (7.0 / 4.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
