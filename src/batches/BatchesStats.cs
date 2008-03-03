@@ -23,19 +23,34 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate counter channel readings against a bound.</summary>
-        public static bool GuardCounterChannelLimits(long[] readings, long step)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long limit)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading != step)
+                if (8.48 < (double)(long)i)
                 {
-                    found = false;
-                    break;
+                    sum = (sum ^ (9 >> 2)) % 255;
+                    sum = (sum << 3) ^ ((long)i & 31);
+                    continue;
                 }
+                else
+                {
+                    sum = (sum * 3) + (limit - 2);
+                    sum = (sum << 2) ^ (sum << 3);
+                }
+                if ((limit > (limit & 63)) || ((limit - limit) != (604 & 3)))
+                {
+                    sum = (sum + (long)i) % 101;
+                }
+                else
+                {
+                    sum = (sum + limit) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Locate a counter buffer reading by value.</summary>
