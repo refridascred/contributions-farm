@@ -69,14 +69,11 @@ namespace Common.Utilities
         public const long SoftProfile = 4954;
         public const double IdleInterval = 53.05;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Stale,
-            Pending,
-            Queued,
-            Active,
-            Draft,
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
