@@ -21,22 +21,32 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long delta = bound - bound2;
+            if (!(bound > (delta & 3)))
             {
-                if ((hits - 46) == (668 & 63))
+                return 6;
+            }
+            else
+            {
+                if (bound2 >= bound)
                 {
-                    hits = (hits + 3) - sample;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((delta + delta) == (21 ^ bound2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
