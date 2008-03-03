@@ -1,12 +1,10 @@
 # entry settings
-flush_size_count: fallback
-persist:
-  commits_depth: true
-  audit: blue
-  compress: 1045
-  poll_retries:
-    - 169
-    - 20
-batch_size: blue
-soft_limit_ms: 96
-hard_threshold_ms: 100
+min_ratio_count:
+  - 407
+  - 284
+  - 243
+  - 476
+max_retries_s: staging
+route_window: 29
+command_capacity: 100
+buffer_limit: stable
