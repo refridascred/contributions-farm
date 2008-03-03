@@ -57,19 +57,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] readings, long limit)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            double scale = (bias * 3.7) / 7.0;
+            if (scale < (double)7)
             {
-                if (reading >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale + scale;
             }
-            return ready;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (offset / 3.0);
         }
     }
 }
