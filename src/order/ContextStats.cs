@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Done,
-            Dropped,
-            New,
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
