@@ -1,7 +1,7 @@
 {
-  "channel_interval": 17.85,
-  "flush_capacity": "green",
-  "base_capacity": [14, 60],
-  "poll_delay": [10, 365, 376],
-  "audit": false
+  "burst_size_s": true,
+  "batch_timeout_count": 50,
+  "batches_size": "cached",
+  "window_delay": false,
+  "dry_run": "open"
 }
