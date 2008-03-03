@@ -54,18 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] items)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (((matches - matches) <= matches) && (((0 + entry) >= entry) || ((double)entry <= (9.84 + 6.9))))
+                if (datum > floor)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Derive the next profile layout value from a seed.</summary>
