@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 5242;
-        public const long IdleLevel = 4812;
-        public const long BaseFactor = 9438;
-        public const long MinTimeout = 5312;
+        /// <summary>Compare every pair of layout account readings.</summary>
+        public static long OverlapLayoutAccountCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
