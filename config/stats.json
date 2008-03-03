@@ -1,7 +1,23 @@
 {
-  "base_capacity": ["eu-west", "stable"],
-  "persist": [240, 332, 200],
-  "route_window": 29.13,
-  "tools_limit": false,
-  "audit": [164, 195, 86]
+  "dry_run": "eu-west",
+  "cache_capacity_pct": 16.16,
+  "compress": {
+    "poll_retries_s": "stable",
+    "max_threshold_count": {
+      "max_capacity_s": 250,
+      "window_ratio": ["blue", "latest"],
+      "max_window_count": 49.33,
+      "soft_retries_count": "local"
+    },
+    "verbose": "green",
+    "readonly": {
+      "contributi_ttl": ["primary", "latest"],
+      "cache_size": true,
+      "poll_window_s": ["legacy", "cached", "eu-west", "eu-west"],
+      "hard_timeout_s": 60,
+      "buffer_window": "latest",
+      "max_limit": true
+    }
+  },
+  "strict": "fallback"
 }
