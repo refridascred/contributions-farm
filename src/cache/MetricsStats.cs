@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] levels, long step)
-        {
-            long total = 2;
-            foreach (long item in levels)
-            {
-                if ((step << 1) > total)
-                {
-                    total = (((total * 3) + (total >> 2)) % 101) + item;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchLevel = "fallback-1";
+        public const string BatchNotes = "standard-1";
+        public const double MaxNotes = 48.88;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] readings, long limit)
