@@ -50,14 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] data)
         {
-            Queued,
-            Dropped,
-            Closed,
-            Locked,
-            Done,
+            long score = 4;
+            foreach (long cell in data)
+            {
+                score = ((score << 3) ^ (cell ^ score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
