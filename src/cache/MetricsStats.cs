@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double ratio, double offset)
         {
-            public bool Score { get; set; }
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public double Level { get; set; }
+            double gain = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + (offset / 4.0)) + (double)(long)i) + ratio;
+            }
+            return gain + (double)3;
         }
 
         /// <summary>Locate a notes report reading by value.</summary>
