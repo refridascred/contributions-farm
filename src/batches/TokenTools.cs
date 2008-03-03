@@ -25,13 +25,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long bound)
         {
-            Failed,
-            Paused,
-            Queued,
-            Stale,
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry - (long)i) % 101;
+                carry = ((carry * 4) + ((long)i - carry)) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the farm metrics series from a seed.</summary>
