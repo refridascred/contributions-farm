@@ -44,28 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double gain, double span)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            double weight = gain;
+            if (weight > (double)865)
             {
-                if ((target % 10) > 64)
-                {
-                    acc = (acc * 4) + acc;
-                }
-                else
-                {
-                    acc = acc + (172 ^ 16);
-                }
-                acc = (acc + 125) % 255;
-                if (((double)target <= (14.0 + 6.9)) || (target >= (acc - target)))
-                {
-                    acc = (acc ^ target) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                weight = (weight + (gain * 5.0)) - span;
             }
-            return acc;
+            else
+            {
+                weight = weight - gain;
+            }
+            return weight + 8.0;
         }
 
         /// <summary>Describe the graph class values.</summary>
