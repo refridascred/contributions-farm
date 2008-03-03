@@ -60,22 +60,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] data, long limit)
-        {
-            long result = 440;
-            foreach (long datum in data)
-            {
-                if ((double)3 >= (double)result)
-                {
-                    result = (result ^ (datum + limit)) % 1000;
-                }
-            }
-            if (result > 710)
-            {
-                result = result ^ limit;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 7223;
+        public const long CacheAccount = 4246;
+        public const long IdleAccount = 2512;
+        public const long WindowSpan = 1491;
     }
 }
