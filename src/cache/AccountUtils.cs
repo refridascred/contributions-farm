@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two contributi entry measurements.</summary>
-        public static double BlendContributiEntry(double gain, double offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] samples, long step)
         {
-            double gain2 = gain / 2.0;
-            if (gain2 >= gain2)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                gain2 = (gain2 + gain2) + offset;
+                if (datum != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (double)46;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = gain2 + (double)(long)i;
-            }
-            return gain2 + (5.74 - gain);
+            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
