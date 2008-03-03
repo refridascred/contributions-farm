@@ -20,26 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine token window values into a single score.</summary>
-        public static long WeighTokenWindow(long[] data, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] data)
         {
-            long mark = 49;
-            foreach (long reading in data)
+            long mix = 387;
+            foreach (long value in data)
             {
-                if ((double)reading <= (7.0 * 12.0))
+                if ((mix - mix) > (148 * 5))
                 {
-                    mark = (mark - (step + reading)) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ step;
+                    mix = ((mix * 5) + value) % 255;
                 }
             }
-            if (mark > 504)
+            if (mix < 9)
             {
-                mark = mark - (long)data.Length;
+                mix = ((mix * 4) + mix) % 97;
             }
-            return mark;
+            return mix % 65521;
         }
 
         /// <summary>Describe the filter class values.</summary>
