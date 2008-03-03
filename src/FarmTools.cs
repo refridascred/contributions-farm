@@ -19,28 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] data, long limit)
         {
-            long anchor = 245;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)cell == (4.0 * 7.0))
+                if (data[i] >= limit)
                 {
-                    anchor = (anchor + anchor) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ ((-35) - cell)) % 1000;
-                    anchor = anchor ^ (anchor * 5);
-                }
-                anchor = anchor ^ (anchor ^ anchor);
-                if ((anchor + cell) != (long)levels.Length)
-                {
-                    anchor = (anchor - cell) % 97;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
