@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] data, long offset)
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            long mix = 637;
+            foreach (long entry in data)
+            {
+                if ((mix + offset) > mix)
+                {
+                    continue;
+                }
+                if ((((long)data.Length + 8) >= (offset - 891)) || (52 >= (mix % 5)))
+                {
+                    mix = ((mix * 4) + mix) ^ entry;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (mix & 15)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
