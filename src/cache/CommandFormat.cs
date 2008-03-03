@@ -32,23 +32,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of queue order entries.</summary>
-        public static long DigestQueueOrder(long[] samples)
-        {
-            long acc = 973;
-            foreach (long sample in samples)
-            {
-                if ((sample ^ sample) != (acc + (long)samples.Length))
-                {
-                    acc = (acc + sample) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (sample * 5)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepScore = 16.26;
+        public const long IdleSpan = 5292;
+        public const long WindowSupport = 6302;
+        public const double LimitFactor = 45.63;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long RankReport(long target, long target2)
