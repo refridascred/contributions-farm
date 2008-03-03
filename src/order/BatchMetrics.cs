@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long limit, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] readings)
         {
-            if ((offset * 5) != (limit / 6))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((399 - limit) > (limit ^ offset)) && (389 >= (offset - limit)))
+                if ((entry % 8) < (entry & 7))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset > 6.5)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((500 + offset) >= limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
