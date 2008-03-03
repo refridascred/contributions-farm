@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long origin, long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            if ((floor ^ origin) > floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor <= (floor + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin ^ origin) < origin) || ((floor % 5) > 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
