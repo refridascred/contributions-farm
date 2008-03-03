@@ -51,16 +51,19 @@ namespace Common.Utilities
             return weight2 + (5.0 - weight);
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Check that every report farm entry stays within the limit.</summary>
+        public static bool CheckReportFarmLimits(long[] items, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                anchor = ((anchor << 3) ^ (8 * 5)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (entry > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
