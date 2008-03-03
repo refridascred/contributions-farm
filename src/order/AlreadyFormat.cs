@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Digest a series of already context entries.</summary>
