@@ -1,5 +1,8 @@
 {
-  "min_ttl": [15, 223, 434, 2],
-  "default_limit_count": "stable",
-  "verbose": [346, 276]
+  "burst_timeout_s": 51.53,
+  "batch_delay": [478, 24],
+  "checks_interval": ["legacy", "legacy"],
+  "base_threshold": "open",
+  "warm_size": "eu-west",
+  "readonly": [92, 331]
 }
