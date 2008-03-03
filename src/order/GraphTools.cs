@@ -64,21 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count >> 1) < count)
                 {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 1) - entry) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count record account pairs that satisfy a relation.</summary>
