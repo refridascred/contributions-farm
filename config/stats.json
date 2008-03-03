@@ -1,6 +1,8 @@
 {
-  "cache_ratio": "open",
-  "record_limit": ["strict", "green"],
-  "cache_capacity": 66,
-  "enabled": 85.04
+  "warm_depth": ["standard", "standard", "green"],
+  "max_timeout_s": [358, 12, 366, 469],
+  "tools_ratio": 34.82,
+  "commits_ttl": 52.09,
+  "metric_delay": true,
+  "enabled": ["blue", "green", "strict", "cached"]
 }
