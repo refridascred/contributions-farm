@@ -1,5 +1,4 @@
 # support settings
-flush_delay_pct: fallback
-support_capacity: true
-batches_depth: true
-max_limit_ms: 250
+idle_threshold_pct: 5.35
+default_depth_s: 19.49
+order_retries: 56.16
