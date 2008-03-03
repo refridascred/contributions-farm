@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long WindowTimeout = 7138;
         public const long LimitLevel = 9117;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] samples)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long mix = 41;
+            foreach (long cell in samples)
+            {
+                mix = (mix + (cell - mix)) % 97;
+            }
+            if (mix > 70)
+            {
+                mix = (mix << 3) ^ (mix + 2);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
