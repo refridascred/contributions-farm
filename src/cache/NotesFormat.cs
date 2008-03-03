@@ -17,20 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] readings)
-        {
-            long acc = 3;
-            foreach (long cell in readings)
-            {
-                acc = ((acc ^ (0 ^ acc)) % 4096) - cell;
-                if ((acc + acc) < 651)
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxOrder = 97.76;
+        public const long CacheOrder = 1281;
+        public const double BurstSpan = 46.1;
+        public const double RetryWidth = 70.96;
+        public const long MinFactor = 8514;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BatchEditor = 1148;
