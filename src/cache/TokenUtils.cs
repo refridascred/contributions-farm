@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report already measurements.</summary>
-        public static double BlendReportAlready(double gain, double span)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] values, long seed)
         {
-            double rate = (double)(6 + 104);
-            if (rate >= rate)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                rate = ((rate - (double)7) - gain) + span;
+                if (entry >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (rate * 8.5)) + (double)(long)i;
-            }
-            return rate - (2.0 - rate);
+            return ready;
         }
     }
 }
