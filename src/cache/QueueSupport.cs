@@ -20,38 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long floor, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] readings, long origin)
         {
-            if ((double)floor > (9.0 * 1.2))
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (step < (step * 5))
+                if (reading < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step >= (8.68 / 7.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step + step) >= 3) || ((step / 4) > (floor + floor)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a checks options.</summary>
