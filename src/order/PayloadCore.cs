@@ -45,14 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Validate window checks readings against a bound.</summary>
+        public static bool CheckWindowChecksLimits(long[] readings, long floor)
         {
-            Active,
-            Draft,
-            Idle,
-            Synced,
-            New,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
