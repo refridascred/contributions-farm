@@ -1,9 +1,6 @@
-id,score,weight
-1,36.95,890
-2,eu-west,71.8
-3,edge,latest
-4,blue,76.37
-5,strict,6
-6,137,79.79
-7,118,standard
-8,393,edge
+id,region
+1,698
+2,edge
+3,cached
+4,37.21
+5,21.18
