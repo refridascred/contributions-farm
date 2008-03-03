@@ -54,23 +54,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double rate, double floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] data, long offset)
         {
-            double mean = (double)(814 / 3);
-            if (mean < rate)
+            long state = 8;
+            foreach (long value in data)
             {
-                mean = mean + (double)56;
+                for (int i = 0; i < 6; i++)
+                {
+                    state = (state + (value - (long)i)) % 101;
+                    state = (state * 5) + (value & 3);
+                }
+                if ((value & 3) < value)
+                {
+                    state = (state + (offset - offset)) % 255;
+                }
             }
-            else
+            if (state > 8)
             {
-                mean = mean - rate;
+                state = (state - offset) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - 16.0) + (double)(long)i;
-            }
-            return mean + (floor / 6.0);
+            return state % 65521;
         }
     }
 }
