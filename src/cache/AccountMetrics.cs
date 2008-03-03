@@ -37,22 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session contributi samples.</summary>
-        public static long OverlapSessionContributiCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleSpan = 7314;
+        public const long BaseNotes = 3420;
+        public const long DefaultSize = 5181;
+        public const long CacheNotes = 2122;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ProjectCluster(double rate, double span)
