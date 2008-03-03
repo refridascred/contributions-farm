@@ -27,10 +27,14 @@ namespace Common.Utilities
         public const double BurstStats = 24.29;
         public const long MaxWidth = 7499;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftRatio = 9145;
-        public const long BaseSession = 8027;
-        public const long LimitSize = 9953;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long CombineSupport(long[] data)
