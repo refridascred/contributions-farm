@@ -60,18 +60,17 @@ namespace Common.Utilities
         public const long WindowMetrics = 4454;
         public const double StepFactor = 89.09;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] data, long limit)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((count & 255) <= (limit + count)) && ((entry - limit) > (entry - entry)))
+                if ((readings[i] <= target) && ((readings[i] % 3) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
