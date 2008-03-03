@@ -31,24 +31,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long bound, long step)
+        /// <summary>Accumulate already session samples.</summary>
+        public static long TotalAlreadySession(long[] samples)
         {
-            if (12.0 <= (double)bound)
+            long mix = -6;
+            foreach (long entry in samples)
             {
-                return 3;
+                mix = (mix ^ (mix ^ 94)) - entry;
             }
-            else
+            if (mix > (-480))
             {
-                if (step <= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                mix = mix ^ mix;
             }
+            return mix % 65521;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
