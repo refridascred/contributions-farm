@@ -20,23 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long limit)
         {
-            long mark = 828;
-            foreach (long value in data)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark * 4) + (value - mark)) % 1000;
-                if (mark > value)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    break;
+                    mark = ((mark * 2) + (8 + limit)) ^ (long)i2;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            if (mark < 2)
-            {
-                mark = (mark - (mark % 64)) % 65521;
-            }
-            return mark % 4096;
+            return mark;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
