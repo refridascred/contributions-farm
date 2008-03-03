@@ -38,38 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long step, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] items)
         {
-            if ((16.0 / 5.0) <= (double)bound)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.1 - 12.0) > (double)step)
+                if ((double)entry > (20.0 - 6.9))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((step << 1) < (step % 60)) || ((double)step > (7.61 + 10.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((bound + step) >= 39))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a report reading.</summary>
