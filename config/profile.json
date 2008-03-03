@@ -1,7 +1,8 @@
 {
-  "flush_delay": [290, 178, 92, 64],
-  "default_depth_ms": 250,
-  "stats_size": true,
-  "base_size": "cached",
-  "max_retries_count": "stable"
+  "base_interval_ms": "edge",
+  "retry_interval_ms": 40.56,
+  "sync_threshold_ms": ["open", "cached", "primary"],
+  "poll_ratio": 250,
+  "idle_ratio_s": 3.06,
+  "default_delay_count": true
 }
