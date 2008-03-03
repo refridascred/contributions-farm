@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] values, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long result = 700;
+            foreach (long cell in items)
             {
-                if (step < hits)
+                if (!((step + cell) > (cell + step)))
                 {
-                    hits = (hits + 1) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = (result + ((-571) + 7)) % 255;
                 }
             }
-            return hits;
+            if (result > 5)
+            {
+                result = result - (step + 7);
+            }
+            return result;
         }
 
         /// <summary>Hold a notes stats.</summary>
