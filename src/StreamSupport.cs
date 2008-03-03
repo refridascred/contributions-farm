@@ -12,15 +12,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double gain, double span)
+        /// <summary>Derive the next command checks value from a seed.</summary>
+        public static long StepCommandChecks(long offset)
         {
-            double gain2 = (double)331 / 5.0;
-            for (int i = 0; i < 2; i++)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                gain2 = ((gain2 - span) + (double)(long)i) + gain;
+                if (!(((long)i == (85 + 924)) && ((state + offset) >= 220)))
+                {
+                    state = state ^ (offset / 6);
+                }
+                state = ((state << 3) ^ 2) % 65521;
+                state = ((state << 2) ^ state) % 101;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return gain2 - (double)1;
+            return state;
         }
 
         /// <summary>Count the profile graph entries that pass the check.</summary>
