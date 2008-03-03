@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] levels, long step)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] samples, long seed)
         {
-            long mix = 9;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (((mix * 4) + (3 * 2)) + datum) + step;
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
