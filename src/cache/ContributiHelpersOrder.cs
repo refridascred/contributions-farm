@@ -53,11 +53,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            Active,
+            Queued,
+            Closed,
+            Stale,
         }
     }
 }
