@@ -13,20 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
-        public static bool CheckSchemaContributiBounds(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 8476;
+        public const double MinChannel = 19.42;
+        public const string LimitBudget = "standard";
+        public const string WindowChannel = "legacy-v2";
+        public const double SoftDepth = 27.78;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstRatio = 3116;
