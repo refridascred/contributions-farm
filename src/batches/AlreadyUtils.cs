@@ -55,21 +55,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] readings, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            long carry = 191;
+            foreach (long entry in readings)
             {
-                mix = (mix + (mix + mix)) % 97;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = (((mix * 4) + (93 + floor)) % 255) ^ (long)i2;
-                    mix = (mix ^ (mix >> 5)) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                carry = (carry - (entry + 55)) - bound;
             }
-            return mix;
+            return carry;
         }
     }
 }
