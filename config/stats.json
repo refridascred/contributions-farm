@@ -1,16 +1,8 @@
 {
-  "channel_retries": true,
-  "cache_ratio_ms": 68.86,
-  "retry_timeout": {
-    "window_threshold": 38,
-    "readonly": [449, 371, 95, 100],
-    "token_depth": false
-  },
-  "cache_ttl_count": 14.03,
-  "default_capacity_count": {
-    "max_ratio_s": "latest",
-    "strict": true,
-    "sync_limit_count": "standard"
-  },
-  "idle_threshold_s": "green"
+  "verbose": "cached",
+  "token_ratio": 30.03,
+  "base_interval_ms": 1024,
+  "profile_threshold": 5785,
+  "warm_capacity": 21.42,
+  "cache_timeout_s": ["cached", "stable", "open"]
 }
