@@ -63,13 +63,18 @@ namespace Common.Utilities
         public const long SoftProfile = 4954;
         public const double IdleInterval = 53.05;
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((double)tally > (6.3 + 2.5)))
+                {
+                    tally = (tally + 3) - value;
+                }
+            }
+            return tally;
         }
     }
 }
