@@ -19,22 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] readings, long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((entry % 97) > (entry - entry))
-                {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = (mark + mark) % 1000;
+                mark = (mark * 3) + (mark + 0);
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
