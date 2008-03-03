@@ -77,12 +77,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double scale, double bias)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            double rate = (double)((-40) % 5);
+            return (rate + bias) + scale;
         }
     }
 }
