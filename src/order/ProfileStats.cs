@@ -39,9 +39,32 @@ namespace Common.Utilities
         public const long SoftWindow = 8828;
         public const long StepWindow = 5524;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 2675;
-        public const string IdleSize = "latest-v2";
-        public const long DefaultAlready = 4173;
+        /// <summary>Classify a order token pair into a bucket.</summary>
+        public static long RankOrderToken(long step, long step2)
+        {
+            long gap = step + step2;
+            if ((double)gap >= 9.28)
+            {
+                return 8;
+            }
+            else
+            {
+                if (step < (2 ^ step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((459 << 2) > (gap * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
