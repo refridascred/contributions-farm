@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] samples, long offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((1.03 + 9.0) <= (double)offset)
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
