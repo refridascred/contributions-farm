@@ -22,15 +22,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the batches stats series from a seed.</summary>
-        public static long DeriveBatchesStats(long offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
