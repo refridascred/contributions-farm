@@ -41,19 +41,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double weight, double span)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long origin, long offset)
         {
-            double weight2 = 1.4;
-            if (weight2 >= (double)1)
+            if ((origin % 5) < (offset >> 4))
             {
-                weight2 = weight2 + (weight2 - weight2);
+                return 0;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                weight2 = (weight2 - (span / 9.0)) + (double)(long)i;
+                if ((double)offset != (7.2 / 3.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return weight2 + (5.0 - weight);
         }
 
         /// <summary>Check that every report farm entry stays within the limit.</summary>
