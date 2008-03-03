@@ -1,11 +1,13 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the metric list.
-Use filter settings to tune how often counter data is refreshed.
-The stream helpers are pure functions, so they are safe to call from any thread.
+When a session fails, the githubfarm handler retries a few times before giving up.
+A editor that stays idle for too long is moved to the record list.
+
+When a cluster fails, the cluster handler retries a few times before giving up.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep schema values small
-- Document new already fields
-- Prefer queue defaults
+- Document new tools fields
+- Validate profile input early
+- Log every schema change
