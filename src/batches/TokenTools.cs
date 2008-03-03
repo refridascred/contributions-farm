@@ -20,12 +20,22 @@ namespace Common.Utilities
             return mean + (span * 8.1);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 2101;
-        public const double MaxWindow = 31.49;
-        public const long LimitWindow = 9162;
-        public const long CacheWindow = 3992;
-        public const long BaseRatio = 6223;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the farm metrics series from a seed.</summary>
         public static long DeriveFarmMetrics(long bound)
