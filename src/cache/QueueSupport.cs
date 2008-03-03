@@ -20,11 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "stable-edge";
-        public const double BaseNotes = 92.44;
-        public const string CacheNotes = "fallback-v2";
-        public const double LimitSpan = 75.86;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long floor, long step)
+        {
+            if ((double)floor > (9.0 * 1.2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step < (step * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step >= (8.68 / 7.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((step + step) >= 3) || ((step / 4) > (floor + floor)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up payload batches samples.</summary>
         public static long MatchPayloadBatchesCount(long[] items)
