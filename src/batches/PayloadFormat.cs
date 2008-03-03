@@ -14,13 +14,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long bound, long offset)
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            if ((offset - bound) != (offset % 12))
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound >= (bound + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound >> 1) >= ((-22) << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound < (bound & 7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
