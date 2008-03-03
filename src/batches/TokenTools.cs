@@ -25,18 +25,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = (carry - (long)i) % 101;
-                carry = ((carry * 4) + ((long)i - carry)) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardDepth = 5790;
+        public const long HardSpan = 7633;
+        public const string BaseNotes = "open-1";
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
