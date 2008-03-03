@@ -39,10 +39,12 @@ namespace Common.Utilities
         public const double BurstStats = 24.29;
         public const long MaxWidth = 7499;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 8681;
-        public const long BaseSchema = 7750;
-        public const string LimitSchema = "legacy-1";
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double SmoothNotes(double gain, double bias)
