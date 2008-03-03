@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] readings, long floor)
         {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits - hits) <= (floor % 7))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many already profile samples are out of range.</summary>
