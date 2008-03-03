@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the githubfarm support entries that pass the check.</summary>
-        public static long CountGithubfarmSupportMatches(long[] readings, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long sum = -688;
+            foreach (long cell in levels)
             {
-                if ((31 - 6) > (seen << 1))
+                if ((sum + floor) != (sum & 127))
                 {
-                    seen = ((seen + 2) - sample) + offset;
+                    sum = ((sum << 2) ^ (sum & 127)) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = (sum * 2) + (sum + cell);
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Combine format channel values into a single score.</summary>
