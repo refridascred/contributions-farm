@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long floor, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] items, long seed)
         {
-            if ((91 * 4) < (offset & 3))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset << 2) > offset)
+                if (cell < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
