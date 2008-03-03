@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a layout contributi reading.</summary>
-        public static double SmoothLayoutContributi(double weight, double offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double drift = weight * 19.0;
-            if (drift <= (drift - offset))
-            {
-                drift = drift - (double)85;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (11.0 - drift)) - (double)(long)i;
-            }
-            return drift + (6.43 * 9.54);
+            Ready,
+            Active,
+            Draft,
+            Locked,
+            Idle,
         }
 
         /// <summary>Describe the cluster level values.</summary>
