@@ -27,22 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache batch entries that pass the check.</summary>
-        public static long TallyCacheBatchMatches(long[] items)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((matches ^ item) <= (matches + item))
+                sum = ((sum << 3) ^ (long)i) % 4096;
+                if (!((((long)i + bound) >= sum) && ((sum + sum) > (sum >> 1))))
                 {
-                    matches = matches + 1;
+                    sum = (sum ^ 982) % 255;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the tools mode values.</summary>
