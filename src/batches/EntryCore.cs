@@ -49,12 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCount = 9961;
-        public const double BatchScore = 13.65;
-        public const long WindowCommits = 9060;
-        public const long SoftCommits = 3255;
-        public const double CacheBudget = 59.71;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Active,
+            Dropped,
+            Queued,
+            Done,
+            Pending,
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long CombineSupport(long[] data, long offset)
