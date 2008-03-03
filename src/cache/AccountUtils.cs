@@ -26,39 +26,20 @@ namespace Common.Utilities
         public const double BaseFormat = 47.17;
         public const string MinFormat = "cached-1";
 
-        /// <summary>Rank editor context input into a small class.</summary>
-        public static long SortEditorContext(long floor, long target)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long origin)
         {
-            long edge = floor - target;
-            if (((double)floor <= (7.54 + 1.7)) && ((floor / 5) < 122))
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((edge + target) >= (edge + 14)) || ((double)edge == (6.64 * 20.0)))
+                if (688 <= (origin + (-4)))
                 {
-                    return 5;
+                    result = (result ^ ((long)i ^ (long)i)) % 1000;
+                    continue;
                 }
-                else
-                {
-                    if (!(edge > (floor - edge)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target % 24) >= floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
+            return result;
         }
     }
 }
