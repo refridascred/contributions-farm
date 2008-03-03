@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstDepth = 21.8;
+        public const long LimitRatio = 5002;
+        public const string StepWidth = "primary";
+        public const long MinPayload = 5725;
 
         /// <summary>Accumulate editor checks samples.</summary>
         public static long CombineEditorChecks(long[] series)
