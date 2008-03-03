@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxOrder = 97.76;
-        public const long CacheOrder = 1281;
-        public const double BurstSpan = 46.1;
-        public const double RetryWidth = 70.96;
-        public const long MinFactor = 8514;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterHits(long[] items)
