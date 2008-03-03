@@ -29,19 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double scale, double span)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double scale2 = span;
-            if (scale2 >= (span - span))
-            {
-                scale2 = scale2 - (span + scale);
-            }
-            else
-            {
-                scale2 = scale2 - (span * 8.4);
-            }
-            return scale2 - (double)9;
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Describe the already status values.</summary>
