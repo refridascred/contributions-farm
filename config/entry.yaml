@@ -1,25 +1,10 @@
 # entry settings
-readonly: 250
-cache_ttl_s:
-  - cached
-  - edge
-  - strict
-  - open
-commits_delay: strict
-entry_depth:
-  warm_ratio:
-    base_limit: 100
-    persist:
-      - fallback
-      - stable
-    idle_capacity_count: 3311
-    batch_delay_ms: false
-    sync_depth_count: cached
-    compress: 6566
-  payload_ttl: edge
-  retry_interval_pct: standard
-  persist: 63.9
-  cache_threshold_count: legacy
-  poll_ttl: 25.9
-verbose: blue
-compress: green
+soft_timeout_pct: 1024
+poll_window_pct:
+  - 351
+  - 484
+  - 91
+  - 342
+batch_ratio_ms:
+  - 185
+  - 212
