@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine cache session values into a single score.</summary>
-        public static long ScoreCacheSession(long[] readings, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] readings, long limit)
         {
-            long state = 283;
-            foreach (long datum in readings)
+            long mark = -12;
+            foreach (long reading in readings)
             {
-                if (73 >= state)
+                if ((limit + mark) >= limit)
                 {
-                    state = (state ^ (target + datum)) % 1000;
-                    state = (state << 2) ^ (datum / 3);
+                    mark = ((mark << 3) ^ mark) - reading;
                 }
-                else
-                {
-                    state = (state ^ datum) % 97;
-                }
-                state = ((state << 3) ^ (state - target)) % 97;
             }
-            if (state > 25)
-            {
-                state = state - (target - state);
-            }
-            return state;
+            return mark % 4096;
         }
 
         /// <summary>Describe the stream state values.</summary>
