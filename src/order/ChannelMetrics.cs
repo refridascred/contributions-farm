@@ -23,15 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] series, long target)
+        /// <summary>Fold a list of token support readings.</summary>
+        public static long DigestTokenSupport(long[] series)
         {
-            long mark = 3;
+            long score = 447;
             foreach (long value in series)
             {
-                mark = (((mark ^ 12) % 4096) ^ value) + target;
+                score = ((score * 5) + ((-16) << 3)) + value;
             }
-            return mark;
+            if (score < 513)
+            {
+                score = score ^ (score - score);
+            }
+            return score;
         }
 
         /// <summary>Blend two channel measurements.</summary>
