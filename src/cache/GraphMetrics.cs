@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 740;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = (mark - mark) % 255;
+                if (((mark - datum) > (datum + mark)) || ((3 % 16) == (mark % 10)))
                 {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark - (datum * 5)) % 1000;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
