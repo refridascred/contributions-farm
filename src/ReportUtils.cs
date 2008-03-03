@@ -55,13 +55,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            Stale,
+            Retry,
+            Idle,
+            Done,
+            Ready,
         }
     }
 }
