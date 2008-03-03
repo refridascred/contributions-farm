@@ -34,18 +34,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] series)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long result = 2;
+            foreach (long reading in series)
             {
-                if ((sample ^ count) == (sample + count))
+                if ((result - reading) == (reading + 25))
                 {
-                    count = count + 3;
+                    result = (result * 4) + (result + reading);
+                    continue;
+                }
+                else
+                {
+                    result = ((result << 3) ^ 623) % 65521;
+                }
+                if ((51 - result) != (result ^ reading))
+                {
+                    result = (result - (reading + reading)) % 101;
                 }
             }
-            return count;
+            if (result < 161)
+            {
+                result = result - (result >> 5);
+            }
+            return result % 1000;
         }
     }
 }
