@@ -50,10 +50,22 @@ namespace Common.Utilities
             return weight + 8.0;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "strict-edge";
-        public const double BatchBatches = 0.71;
-        public const double MaxFactor = 76.01;
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
