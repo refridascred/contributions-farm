@@ -33,18 +33,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((hits + hits) == (reading * 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "stable-1";
+        public const long BatchSpan = 4906;
+        public const long StepRecord = 7896;
+        public const double MaxRecord = 96.37;
     }
 }
