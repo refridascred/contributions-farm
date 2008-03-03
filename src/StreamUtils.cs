@@ -73,31 +73,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if ((offset + step) > (step >> 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset << 1) > offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (1.0 <= (2.83 - 3.79))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
     }
 }
