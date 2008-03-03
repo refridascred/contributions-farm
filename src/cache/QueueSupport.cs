@@ -14,12 +14,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 1845;
-        public const double BatchAlready = 83.73;
-        public const long CacheAlready = 5759;
-        public const string IdleAlready = "staging";
-        public const long DefaultDepth = 8549;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry - ((long)i - (long)i)) % 255;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
