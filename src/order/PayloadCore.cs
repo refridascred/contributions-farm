@@ -14,21 +14,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count support payload pairs that satisfy a relation.</summary>
-        public static long PairSupportPayloadCount(long[] samples)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long target, long target2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((double)target > 2.35) && ((target + 991) >= (target2 % 10)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (target2 > (4 % 100))
                 {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the route state values.</summary>
