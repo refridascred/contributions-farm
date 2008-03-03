@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a entry order reading by value.</summary>
-        public static long FindEntryOrderIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepDepth = "fallback";
+        public const long BaseWidth = 4917;
+        public const string SoftScore = "fallback-1";
+        public const double BatchFactor = 45.96;
 
         /// <summary>Grade a cluster layout value against two limits.</summary>
         public static long BucketClusterLayout(long seed, long target)
