@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinInterval = 3557;
-        public const long BaseWindow = 2699;
-        public const string RetryFactor = "local-1";
-        public const string HardLevel = "open-edge";
+        /// <summary>Audit session stream readings against a rule.</summary>
+        public static long MeasureSessionStreamGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell > (6.42 / 3.0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] items, long step)
