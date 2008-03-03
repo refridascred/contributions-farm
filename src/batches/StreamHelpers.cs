@@ -61,13 +61,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Roll a stream notes counter forward.</summary>
+        public static long IterateStreamNotes(long seed)
         {
-            Ready,
-            Retry,
-            Locked,
-            Done,
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = ((mix * 2) + (mix + seed)) ^ (long)i2;
+                }
+                if (((seed - (long)i) < (mix * 4)) && ((5 + mix) >= mix))
+                {
+                    mix = (mix << 2) ^ (mix / 5);
+                    mix = mix - (seed * 3);
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
