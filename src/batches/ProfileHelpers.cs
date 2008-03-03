@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double scale, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] data, long seed)
         {
-            double weight = scale - floor;
-            if (weight > floor)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                weight = weight - weight;
+                if (((long)data.Length + datum) >= (seed + datum))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (double)621;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
