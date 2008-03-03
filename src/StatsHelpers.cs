@@ -73,24 +73,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] levels)
         {
-            long mark = 5;
-            foreach (long reading in readings)
+            long state = 17;
+            foreach (long value in levels)
             {
-                if (((mark % 16) != (limit & 127)) || ((mark - mark) >= 9))
+                state = ((state << 2) ^ (5 + value)) % 4096;
+                if (((-1) << 2) < value)
                 {
-                    mark = ((mark - mark) % 97) - reading;
-                    mark = (mark * 5) + (limit >> 3);
+                    state = ((state << 2) ^ (value << 1)) % 1000;
                 }
-                else
-                {
-                    mark = mark - (mark / 3);
-                }
-                mark = ((mark * 5) + mark) % 101;
             }
-            return mark % 97;
+            return state % 97;
         }
 
         /// <summary>Hold a entry info.</summary>
