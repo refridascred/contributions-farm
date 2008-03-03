@@ -70,12 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] series, long limit)
         {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the commits mode values.</summary>
