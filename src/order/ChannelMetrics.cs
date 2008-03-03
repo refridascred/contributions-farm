@@ -25,19 +25,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] data, long step)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            double gain = rate;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + (gain + rate)) + (double)(long)i;
             }
-            return ready;
+            return gain - (2.12 + floor);
         }
     }
 }
