@@ -47,12 +47,38 @@ namespace Common.Utilities
         public const long BatchBudget = 7317;
         public const string BatchCommits = "alpha-v2";
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long floor, long seed)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            if ((seed - 25) > (floor % 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed - seed) > (183 << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 5) >= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)floor <= 6.37) || ((double)seed > (6.67 * 3.3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
