@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] readings, long floor)
         {
-            Retry,
-            Draft,
-            Ready,
-            Stale,
-            Queued,
+            long result = 39;
+            foreach (long sample in readings)
+            {
+                if ((double)floor < (9.28 / 8.0))
+                {
+                    result = (result + (sample / 2)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of batches channel readings.</summary>
