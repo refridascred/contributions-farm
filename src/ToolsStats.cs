@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((-676) / 9) >= entry)
                 {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
