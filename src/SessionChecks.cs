@@ -33,15 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema notes readings against a rule.</summary>
-        public static long CountSchemaNotesOutliers(long[] values)
+        /// <summary>Audit commits editor readings against a rule.</summary>
+        public static long MeasureCommitsEditorHits(long[] samples)
         {
             long hits = 0;
-            foreach (long entry in values)
+            foreach (long item in samples)
             {
-                if ((hits + 415) > (hits / 4))
+                if ((8 << 2) >= (hits - 53))
                 {
-                    hits = (hits + 1) + entry;
+                    hits = (hits + 2) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
