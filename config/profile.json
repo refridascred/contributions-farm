@@ -1,6 +1,7 @@
 {
-  "min_ttl": 47.04,
-  "flush_size": 1024,
-  "cache_interval_pct": 81.84,
-  "enabled": "edge"
+  "cache_retries_ms": "legacy",
+  "enabled": ["standard", "local", "local"],
+  "idle_interval_count": [368, 215, 45],
+  "warm_ratio_s": true,
+  "warm_timeout_s": [22, 500, 498, 421]
 }
