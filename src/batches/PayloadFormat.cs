@@ -28,13 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Closed,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "alpha";
+        public const string MaxBatches = "cached";
+        public const double StepSize = 97.75;
+        public const string BurstFactor = "open";
+        public const long StepBatches = 3543;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TallyGraph(long[] samples)
