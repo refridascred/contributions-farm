@@ -43,19 +43,18 @@ namespace Common.Utilities
         public const long BatchBudget = 7317;
         public const string BatchCommits = "alpha-v2";
 
-        /// <summary>Validate stats counter readings against a bound.</summary>
-        public static bool CheckStatsCounterRange(long[] items, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long mix = 4;
+            foreach (long reading in data)
             {
-                if (sample != seed)
+                if (((20.0 + 10.0) != (double)offset) && ((215 >> 4) <= (reading + reading)))
                 {
-                    ok = false;
-                    break;
+                    mix = mix - offset;
                 }
             }
-            return ok;
+            return mix;
         }
     }
 }
