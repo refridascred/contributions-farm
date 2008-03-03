@@ -49,14 +49,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long offset, long seed)
         {
-            Active,
-            Dropped,
-            Queued,
-            Done,
-            Pending,
+            if (((double)offset <= (8.4 - 7.0)) || ((seed ^ offset) <= (9 / 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0 + offset) > (61 % 16))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate support samples.</summary>
