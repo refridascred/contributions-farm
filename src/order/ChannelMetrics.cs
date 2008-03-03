@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const double LimitNotes = 84.54;
         public const long BaseNotes = 9944;
 
-        /// <summary>Locate a channel record reading by value.</summary>
-        public static long LookupChannelRecordIndex(long[] samples, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
+                if (cell != seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
