@@ -13,11 +13,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
