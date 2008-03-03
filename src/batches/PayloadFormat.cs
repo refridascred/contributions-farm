@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((total + 2) <= (total / 7)))
+                {
+                    total = ((total << 2) ^ seed) % 1000;
+                    total = (total + (seed - seed)) % 4096;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = (((total << 3) ^ (seed / 5)) % 1000) ^ (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
