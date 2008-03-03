@@ -10,25 +10,22 @@ namespace Common.Utilities
         public const string HardEditor = "latest-1";
         public const long MinEditor = 7093;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long origin, long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] data)
         {
-            long prev = origin - floor;
-            if (!((double)prev > (6.05 / 9.0)))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((prev ^ origin) < (floor + floor))
+                if (item <= (item << 2))
                 {
-                    return 2;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 4;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of account entries.</summary>
