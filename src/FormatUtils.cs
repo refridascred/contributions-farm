@@ -36,18 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] items, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long carry = 903;
+            foreach (long entry in levels)
             {
-                if (((origin & 3) == ((long)items.Length >> 2)) || ((matches - matches) <= (matches + 374)))
+                carry = carry - (entry - carry);
+                if (carry < ((long)levels.Length + entry))
                 {
-                    matches = (matches + 2) + reading;
+                    break;
                 }
             }
-            return matches;
+            if (carry < 29)
+            {
+                carry = (carry + (170 - carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
