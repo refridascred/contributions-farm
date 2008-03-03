@@ -56,27 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry layout values into a single score.</summary>
-        public static long TallyEntryLayout(long[] items, long origin)
+        /// <summary>Measure how many queue payload samples are out of range.</summary>
+        public static long CountQueuePayloadMatches(long[] series)
         {
-            long mark = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                mark = mark + (origin + datum);
-                for (int i = 0; i < 3; i++)
+                if ((6.8 + 1.79) > (double)(long)series.Length)
                 {
-                    mark = (((mark << 2) ^ (mark + mark)) % 65521) + (long)i;
-                }
-                if ((mark < (mark * 5)) && ((double)4 < (double)origin))
-                {
-                    mark = (mark ^ origin) % 101;
-                }
-                else
-                {
-                    mark = (mark - mark) % 4096;
+                    count = (count + 3) + entry;
                 }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Describe the command status values.</summary>
