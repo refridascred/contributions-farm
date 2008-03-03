@@ -32,21 +32,22 @@ namespace Common.Utilities
         public const string BaseWidth = "stable-1";
         public const long BatchBuffer = 3079;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Fold a list of cluster route readings.</summary>
+        public static long ScoreClusterRoute(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((result + datum) < (datum + datum)))
                 {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result + (datum - 2);
                 }
             }
-            return seen;
+            if (result > 14)
+            {
+                result = (result * 3) + (3 + result);
+            }
+            return result % 97;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
