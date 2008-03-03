@@ -32,11 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 6349;
-        public const long BasePayload = 9247;
-        public const string MaxLevel = "strict";
-        public const long WindowLevel = 5922;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 9586;
+        public const long IdleFactor = 7455;
+        public const long BatchWidth = 8537;
+        public const long IdleRatio = 2126;
+        public const string WindowCommits = "latest-edge";
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
