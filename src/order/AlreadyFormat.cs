@@ -58,10 +58,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 92.69;
-        public const string SoftRatio = "primary";
-        public const double RetryStream = 65.31;
-        public const double StepStream = 51.36;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public double Total { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
