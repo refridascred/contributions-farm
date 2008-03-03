@@ -48,22 +48,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 5932;
+        public const long BaseFactor = 3451;
+        public const long BatchWidth = 4112;
+        public const long SoftInterval = 7514;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double HardRatio = 79.73;
