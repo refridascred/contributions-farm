@@ -56,12 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] items, long bound)
         {
-            Locked,
-            Pending,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
