@@ -55,14 +55,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] values, long step)
         {
-            Stale,
-            Retry,
-            Idle,
-            Done,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
