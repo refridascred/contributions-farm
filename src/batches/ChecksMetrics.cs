@@ -19,14 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Pending,
-            Ready,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitScore = 1272;
+        public const long BatchScore = 8134;
+        public const long IdleEntry = 9602;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long OverlapFormatCount(long[] readings)
