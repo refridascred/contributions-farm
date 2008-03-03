@@ -25,19 +25,22 @@ namespace Common.Utilities
         public const double CacheContributi = 6.46;
         public const long DefaultBudget = 8040;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] items, long origin)
+        /// <summary>Audit contributi support readings against a rule.</summary>
+        public static long AuditContributiSupportOutliers(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (reading != origin)
+                if ((2 ^ 83) == (792 + step))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
