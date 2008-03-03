@@ -22,18 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token batch samples are out of range.</summary>
-        public static long MeasureTokenBatchMatches(long[] series, long target)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((7 + 3) < (datum + datum))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
+            Done,
+            Stale,
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
