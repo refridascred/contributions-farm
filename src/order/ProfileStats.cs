@@ -41,12 +41,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 3138;
-        public const string WindowLevel = "legacy-1";
-        public const long BaseWindow = 1975;
-        public const long SoftWindow = 8828;
-        public const long StepWindow = 5524;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a order token pair into a bucket.</summary>
         public static long RankOrderToken(long step, long step2)
