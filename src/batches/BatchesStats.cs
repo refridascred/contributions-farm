@@ -19,14 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Stale,
-            Retry,
-            Failed,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardInterval = "stable-edge";
+        public const double LimitCount = 4.41;
+        public const string WindowEditor = "legacy-v2";
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
