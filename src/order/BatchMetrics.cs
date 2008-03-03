@@ -49,19 +49,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double weight, double span)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            double load = weight;
-            if (load <= (load + load))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (load / 4.0)) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)619) + (double)(long)i;
-            }
-            return load + (double)756;
+            return tally;
         }
 
         /// <summary>Hold a support snapshot.</summary>
