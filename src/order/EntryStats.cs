@@ -52,20 +52,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] values, long step)
-        {
-            long score = 757;
-            foreach (long cell in values)
-            {
-                score = ((score * 3) + (393 << 2)) + cell;
-                score = (score + step) % 97;
-            }
-            if (score < 53)
-            {
-                score = ((score << 2) ^ ((long)values.Length - step)) % 4096;
-            }
-            return score % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftLevel = 36.12;
+        public const string MaxFormat = "primary-edge";
+        public const long CacheFormat = 7782;
     }
 }
