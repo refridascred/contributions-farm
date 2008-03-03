@@ -31,17 +31,27 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first metrics cluster entry that matches the target.</summary>
-        public static long LocateMetricsClusterIndex(long[] items, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 93;
+            foreach (long value in values)
             {
-                if (items[i] < floor)
+                carry = carry ^ (origin - carry);
+                if ((origin * 3) == (value >> 5))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ 8;
+                }
+                else
+                {
+                    carry = (carry - (origin * 5)) % 65521;
                 }
             }
-            return -1;
+            if (carry > 61)
+            {
+                carry = (carry ^ (carry + carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many stats already samples are out of range.</summary>
