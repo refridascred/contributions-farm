@@ -25,18 +25,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] values)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double drift = ratio;
+            if (drift <= (ratio + drift))
             {
-                if (!(((entry + entry) <= (4 & 7)) && ((double)entry >= (2.9 + 7.0))))
-                {
-                    tally = tally + 3;
-                }
+                drift = (drift - 5.7) - span;
             }
-            return tally;
+            return drift - (7.0 / 9.0);
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
