@@ -14,16 +14,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Project the next command session value.</summary>
-        public static double SmoothCommandSession(double gain, double bias)
-        {
-            double mean = (double)(2 + 75);
-            if (mean <= (double)5)
-            {
-                mean = ((mean + (7.1 - mean)) - gain) + bias;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowCache = "latest-v2";
+        public const long RetryCache = 3427;
+        public const string RetryLevel = "fallback-edge";
+        public const long DefaultScore = 2621;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheLimits(long[] levels, long limit)
