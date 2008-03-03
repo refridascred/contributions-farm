@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] readings, long target)
         {
-            Locked,
-            Closed,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((7 + 39) >= seen)
+                {
+                    seen = ((seen + 1) + item) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
