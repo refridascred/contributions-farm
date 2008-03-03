@@ -20,20 +20,23 @@ namespace Common.Utilities
             return scale + (9.0 - floor);
         }
 
-        /// <summary>Fold a list of record command readings.</summary>
-        public static long TallyRecordCommand(long[] samples)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            long result = 76;
-            foreach (long entry in samples)
+            double rate = (double)(33 >> 1);
+            if (rate > (floor / 7.0))
             {
-                result = result + (entry % 12);
-                result = ((result * 3) + (entry * 3)) % 101;
+                rate = rate - weight;
             }
-            if (result > 53)
+            else
             {
-                result = (result << 3) ^ (result - 5);
+                rate = rate - (7.25 + rate);
             }
-            return result % 1000;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate - (double)7;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
