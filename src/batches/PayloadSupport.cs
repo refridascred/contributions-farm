@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] data, long offset)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
