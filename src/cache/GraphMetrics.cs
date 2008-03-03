@@ -25,14 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstScore = 2223;
+        public const long BaseBatches = 178;
+        public const long BaseTimeout = 9463;
+        public const double WindowBatches = 80.1;
+        public const string IdleSpan = "strict-v2";
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
