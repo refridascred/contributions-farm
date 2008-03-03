@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up schema batch samples.</summary>
-        public static long CompareSchemaBatchCount(long[] values)
+        /// <summary>Combine account record values into a single score.</summary>
+        public static long TotalAccountRecord(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 664;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)offset == (0.19 - 13.0))
                 {
-                    if ((values[i] - values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (total + offset)) % 101;
+                }
+                else
+                {
+                    total = (total - (datum + offset)) % 1000;
+                    total = ((total << 3) ^ (offset - datum)) % 101;
+                }
+                if (offset <= ((long)data.Length + 515))
+                {
+                    total = ((total << 2) ^ total) % 255;
                 }
             }
-            return hits;
+            if (total < (-96))
+            {
+                total = total + (total / 6);
+            }
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
