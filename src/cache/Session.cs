@@ -19,13 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] series, long floor)
         {
-            Draft,
-            Queued,
-            Dropped,
-            Closed,
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
