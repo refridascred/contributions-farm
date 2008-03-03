@@ -1,5 +1,6 @@
 {
-  "record_interval": "legacy",
-  "readonly": false,
-  "tools_limit": true
+  "default_timeout_s": "staging",
+  "soft_ratio": 500,
+  "hard_window": 41.34,
+  "default_ttl_ms": "legacy"
 }
