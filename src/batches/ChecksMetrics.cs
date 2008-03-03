@@ -30,19 +30,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + hits) > (hits + sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "legacy-1";
+        public const long CacheFactor = 2315;
+        public const long MaxWindow = 1226;
+        public const string BurstDepth = "alpha";
+        public const long LimitWindow = 7255;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ScaleOrder(double gain, double floor)
