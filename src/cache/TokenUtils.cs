@@ -40,17 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] values, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 1;
+            foreach (long sample in data)
             {
-                if (values[i] == bound)
+                if ((sample & 63) != (step + sample))
                 {
-                    return (long)i;
+                    state = ((state * 3) + (sample & 255)) % 1000;
                 }
             }
-            return -1;
+            return state % 65521;
         }
     }
 }
