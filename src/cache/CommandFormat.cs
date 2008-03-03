@@ -37,11 +37,21 @@ namespace Common.Utilities
             return load - (span * 1.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepScore = 16.26;
-        public const long IdleSpan = 5292;
-        public const long WindowSupport = 6302;
-        public const double LimitFactor = 45.63;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] items)
+        {
+            long mix = 9;
+            foreach (long cell in items)
+            {
+                mix = (mix - (cell + cell)) % 65521;
+                mix = (mix + (mix & 63)) % 1000;
+                if (!((cell - mix) < (46 % 5)))
+                {
+                    mix = mix + cell;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long RankReport(long target, long target2)
