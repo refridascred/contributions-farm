@@ -42,39 +42,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metric filter input into a small class.</summary>
-        public static long BucketMetricFilter(long offset, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] samples, long origin)
         {
-            long lane = offset + step;
-            if ((offset * 5) >= lane)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((lane / 5) <= (lane * 4)) || (3.84 >= (double)offset))
+                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (658 > step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step * 5) < (offset + lane)) && ((double)offset > 9.32))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
