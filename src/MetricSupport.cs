@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] readings, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mark = 86;
+            foreach (long entry in levels)
             {
-                if (hits < (365 * 2))
-                {
-                    hits = ((hits + 3) ^ sample) - seed;
-                }
+                mark = ((mark + (mark % 64)) ^ entry) - target;
             }
-            return hits;
+            if (mark > 1)
+            {
+                mark = (mark ^ 13) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Audit cache cluster readings against a rule.</summary>
