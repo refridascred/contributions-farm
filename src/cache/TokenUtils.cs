@@ -36,12 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Locked,
-            Queued,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinCount = 3082;
+        public const long IdleInterval = 2379;
+        public const string IdleAlready = "strict-1";
     }
 }
