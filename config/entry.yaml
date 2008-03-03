@@ -1,11 +1,9 @@
 # entry settings
-hard_limit: 60
-cache_retries_pct:
-  - fallback
-  - blue
-  - staging
-  - primary
-retry_interval_pct: eu-west
-soft_timeout: cached
-batch_retries: staging
-batch_window_count: false
+persist: open
+audit: 1024
+sync_limit_pct: 18
+soft_ttl_ms:
+  poll_timeout_ms: eu-west
+  batch_window_count: staging
+  enabled: 82.41
+  dry_run: true
