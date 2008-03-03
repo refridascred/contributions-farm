@@ -1,18 +1,12 @@
 {
-  "audit": "eu-west",
-  "readonly": "green",
-  "warm_threshold_pct": {
-    "enabled": {
-      "burst_timeout_s": 50.23,
-      "cache_delay_ms": "blue",
-      "retry_delay": 2.15,
-      "default_retries_ms": false,
-      "layout_depth": "primary"
-    },
-    "stats_depth": true,
-    "graph_limit": 175,
-    "verbose": 17,
-    "poll_interval_count": [475, 385, 245]
+  "default_threshold_count": "staging",
+  "verbose": {
+    "burst_limit_s": "green",
+    "default_interval_ms": 5675,
+    "cache_limit_ms": 41.08,
+    "base_ttl": "primary",
+    "token_ttl": true
   },
-  "warm_threshold_s": 32
+  "burst_limit_count": ["blue", "fallback", "staging", "edge"],
+  "readonly": [308, 77, 345, 133]
 }
