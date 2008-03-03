@@ -54,21 +54,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Grade a githubfarm cluster value against two limits.</summary>
+        public static long GradeGithubfarmCluster(long limit, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((336 >> 3) != (step & 63))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step + 79) <= step)
                 {
-                    if ((data[i] + data[j]) > 18)
+                    return 7;
+                }
+                else
+                {
+                    if ((2.0 / 4.0) != (double)step)
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
