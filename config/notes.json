@@ -1,11 +1,18 @@
 {
-  "queue_window": {
-    "profile_ratio": 100,
-    "notes_interval": 82.1,
-    "hard_limit_s": true,
-    "batch_timeout": [43, 17]
+  "tools_window": true,
+  "burst_interval": {
+    "account_depth": "green",
+    "format_limit": "strict",
+    "filter_interval": "latest",
+    "idle_threshold": true,
+    "max_threshold": 42.33,
+    "idle_capacity_s": {
+      "context_depth": 1024,
+      "window_delay": 88.86,
+      "sync_ratio_count": 9,
+      "persist": false
+    }
   },
-  "cache_delay_pct": 75.9,
-  "idle_delay_pct": "primary",
-  "audit": "standard"
+  "default_capacity_ms": "cached",
+  "warm_delay_count": [60, 77]
 }
