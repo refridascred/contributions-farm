@@ -53,13 +53,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            Queued,
-            Active,
-            Dropped,
-            Ready,
+            long result = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                result = result - (41 >> 1);
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
