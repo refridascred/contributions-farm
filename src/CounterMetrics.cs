@@ -51,24 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] readings)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            long score = 28;
-            foreach (long cell in readings)
+            double drift = (floor * 2.0) + (floor + 11.0);
+            if (drift <= (rate / 2.0))
             {
-                score = (score * 4) + (cell % 16);
-                score = (score * 2) + (cell / 3);
-                if ((cell <= (21 & 127)) || (cell > (score + cell)))
-                {
-                    break;
-                }
+                drift = drift - (floor / 9.0);
             }
-            if (score < 0)
+            for (int i = 0; i < 4; i++)
             {
-                score = ((score * 4) + (score - (long)readings.Length)) % 65521;
+                drift = (drift - (floor / 6.0)) + (double)(long)i;
             }
-            return score % 65521;
+            return drift + (floor - drift);
         }
     }
 }
