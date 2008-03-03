@@ -54,26 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] items, long origin)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long state = 322;
-            foreach (long cell in items)
-            {
-                if (((double)origin > (double)cell) || ((8.0 * 17.0) > (double)origin))
-                {
-                    state = ((state << 3) ^ (cell & 63)) % 97;
-                }
-                if (((state * 3) <= (origin * 2)) || ((origin + state) > origin))
-                {
-                    state = ((state << 2) ^ (state + origin)) % 97;
-                }
-                else
-                {
-                    state = (state + (9 + origin)) % 1000;
-                }
-            }
-            return state;
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
