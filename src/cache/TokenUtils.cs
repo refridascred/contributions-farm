@@ -47,19 +47,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] values, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long state = 2;
+            foreach (long datum in samples)
             {
-                if (entry >= seed)
+                state = state - (datum * 2);
+                if ((datum + state) > state)
                 {
-                    ready = false;
-                    break;
+                    state = (state ^ target) % 255;
+                    continue;
+                }
+                if ((double)datum != (double)139)
+                {
+                    state = ((state << 2) ^ (target * 4)) % 4096;
                 }
             }
-            return ready;
+            if (state < 7)
+            {
+                state = state - (target << 2);
+            }
+            return state;
         }
     }
 }
