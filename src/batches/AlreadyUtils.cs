@@ -65,15 +65,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] readings, long bound)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] series, long floor)
         {
-            long carry = 191;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - (entry + 55)) - bound;
+                if ((series[i] > floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
