@@ -74,19 +74,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] items, long bound)
+        /// <summary>Blend two schema report measurements.</summary>
+        public static double ScaleSchemaReport(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double bias2 = (double)5 * 1.3;
+            if (bias2 <= (double)0)
             {
-                if (item != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                bias2 = bias2 - bias;
             }
-            return ok;
+            else
+            {
+                bias2 = bias2 + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - rate) - (double)(long)i;
+            }
+            return bias2 - (bias * 6.0);
         }
 
         /// <summary>Combine session values into a single score.</summary>
