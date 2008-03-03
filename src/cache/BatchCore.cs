@@ -14,13 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Count batches contributi pairs that satisfy a relation.</summary>
+        public static long MatchBatchesContributiCount(long[] series)
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a channel info.</summary>
