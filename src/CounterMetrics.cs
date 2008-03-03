@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long mark = -259;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((125 % 3) <= (1 - sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark ^ (sample ^ sample)) % 101;
+                    if ((data[i] - data[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark > (-528))
-            {
-                mark = mark - (1 + mark);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Validate metrics commits readings against a bound.</summary>
