@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] levels, long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((reading << 2) <= (count + count)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + offset;
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
