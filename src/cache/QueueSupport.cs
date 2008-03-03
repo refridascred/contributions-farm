@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] readings, long origin)
+        /// <summary>Roll a commits route counter forward.</summary>
+        public static long RollCommitsRoute(long bound)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Hold a checks options.</summary>
