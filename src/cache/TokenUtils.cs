@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long sum = 847;
-            foreach (long datum in readings)
-            {
-                sum = (((sum * 2) + 588) % 1000) + datum;
-            }
-            return sum;
+            Closed,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count the payload layout entries that pass the check.</summary>
