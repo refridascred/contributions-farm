@@ -31,12 +31,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long target, long limit)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            long diff = target ^ limit;
+            if (1.95 < (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit >> 4) > limit) || ((target ^ diff) != (diff + diff)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((diff & 7) >= (152 << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
