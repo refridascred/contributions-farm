@@ -36,18 +36,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many buffer token samples are out of range.</summary>
-        public static long AuditBufferTokenOutliers(long[] levels, long target)
+        /// <summary>Compare every pair of queue commits readings.</summary>
+        public static long MatchQueueCommitsCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((13.0 - 9.65) != (double)target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) - value;
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
