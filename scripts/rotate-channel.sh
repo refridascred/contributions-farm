@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback stable; do
+mode="${1:-open}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in strict standard; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=218
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
