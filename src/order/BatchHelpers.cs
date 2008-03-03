@@ -46,18 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] series)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((datum & 255) < (70 + count))
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
