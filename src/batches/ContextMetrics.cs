@@ -73,16 +73,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                total = (total + 0) % 4096;
-                total = ((total * 2) + (long)i) % 101;
+                if ((sample ^ sample) < (sample ^ 853))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Derive the next profile layout value from a seed.</summary>
