@@ -47,12 +47,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] data, long target)
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
