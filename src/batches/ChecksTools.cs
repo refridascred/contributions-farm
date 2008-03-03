@@ -27,19 +27,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double scale, double span)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] samples)
         {
-            double mean = span + 0.1;
-            if (mean < (double)(-11))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                mean = (mean + (span - span)) + scale;
+                if ((double)value != (6.0 / 8.0))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean + span;
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
