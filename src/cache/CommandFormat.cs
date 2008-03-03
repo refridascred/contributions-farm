@@ -14,16 +14,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] samples, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] items, long offset)
         {
-            long anchor = 43;
-            foreach (long cell in samples)
+            long sum = 9;
+            foreach (long cell in items)
             {
-                anchor = (anchor - (limit + limit)) % 255;
-                anchor = anchor ^ (cell - anchor);
+                if ((offset & 7) > cell)
+                {
+                    sum = sum + (offset & 7);
+                }
             }
-            return anchor % 65521;
+            if (sum < 376)
+            {
+                sum = sum - (sum - sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of queue order entries.</summary>
