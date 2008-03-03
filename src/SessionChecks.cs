@@ -22,14 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Measure how many token batch samples are out of range.</summary>
+        public static long MeasureTokenBatchMatches(long[] series, long target)
         {
-            Ready,
-            Active,
-            Failed,
-            Done,
-            New,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((7 + 3) < (datum + datum))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
