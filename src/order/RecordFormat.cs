@@ -36,13 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            Retry,
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the cache status values.</summary>
