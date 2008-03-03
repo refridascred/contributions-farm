@@ -20,22 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] data, long target)
+        /// <summary>Audit channel githubfarm readings against a rule.</summary>
+        public static long TallyChannelGithubfarmOutliers(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((count + 2) == (target + target))
+                if ((entry < (seen + seen)) && ((4 * 5) >= (seen + entry)))
                 {
-                    count = (count + 3) ^ cell;
+                    seen = (seen + 2) + floor;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
