@@ -1,4 +1,23 @@
 # support settings
-idle_threshold_pct: 5.35
-default_depth_s: 19.49
-order_retries: 56.16
+min_interval_ms: local
+idle_ratio_s: 500
+audit:
+  schema_window:
+    token_limit: 87
+    strict:
+      - strict
+      - blue
+      - green
+    soft_capacity: 68
+  soft_capacity_s: 250
+  audit:
+    soft_timeout_s: 78
+    base_depth_ms: 500
+    hard_limit_count: 8450
+    max_capacity_ms: 29.29
+  dry_run: 0.54
+  compress: true
+  cache_capacity_ms: strict
+already_size: 1120
+channel_size: 250
+soft_capacity_s: 77
