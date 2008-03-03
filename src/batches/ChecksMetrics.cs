@@ -21,11 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            Pending,
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
