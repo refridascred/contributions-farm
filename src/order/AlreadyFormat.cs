@@ -41,14 +41,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] levels, long origin)
         {
-            Paused,
-            Idle,
-            New,
-            Ready,
-            Closed,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)count <= 4.7)
+                {
+                    count = ((count + 2) ^ reading) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a counter entry.</summary>
