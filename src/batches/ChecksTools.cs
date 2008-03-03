@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleFactor = 22.89;
-        public const long MinStream = 9136;
-        public const double WindowStream = 63.04;
-        public const double IdleStream = 43.64;
-        public const long BatchFactor = 4282;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            New,
+            Queued,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LocateMetricIndex(long[] items, long origin)
