@@ -23,11 +23,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two window route measurements.</summary>
-        public static double BlendWindowRoute(double bias, double bias2)
+        /// <summary>Validate counter channel readings against a bound.</summary>
+        public static bool GuardCounterChannelLimits(long[] readings, long step)
         {
-            double ratio = bias2 / 3.0;
-            return ratio + (bias / 3.0);
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a counter buffer reading by value.</summary>
