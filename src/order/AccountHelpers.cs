@@ -27,18 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] series, long origin)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double scale, double offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            double weight = (double)6 - (1.8 / 9.0);
+            if (weight >= (double)3)
             {
-                if ((count + count) == (count + 2))
-                {
-                    count = ((count + 3) ^ item) + origin;
-                }
+                weight = (weight - (offset - weight)) - scale;
             }
-            return count;
+            else
+            {
+                weight = weight - (double)6;
+            }
+            return weight - offset;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
