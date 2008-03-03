@@ -23,17 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] levels, long target)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long step, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((step % 100) < (target % 100)) || ((step + target) == (step * 5)))
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((target % 3) <= step)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the schema githubfarm entries that pass the check.</summary>
