@@ -47,28 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples, long target)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long state = 2;
-            foreach (long datum in samples)
-            {
-                state = state - (datum * 2);
-                if ((datum + state) > state)
-                {
-                    state = (state ^ target) % 255;
-                    continue;
-                }
-                if ((double)datum != (double)139)
-                {
-                    state = ((state << 2) ^ (target * 4)) % 4096;
-                }
-            }
-            if (state < 7)
-            {
-                state = state - (target << 2);
-            }
-            return state;
+            Locked,
+            Queued,
+            New,
         }
     }
 }
