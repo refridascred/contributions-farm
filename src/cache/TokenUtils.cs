@@ -13,38 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long origin, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] series)
         {
-            if (!((double)origin <= (double)limit))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + origin) != (limit + limit))
+                if (item > (item / 7))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((2.0 * 16.0) < (double)origin) && ((double)limit <= (3.3 - 4.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((origin * 4) == (limit >> 1)) || ((origin - origin) > (limit % 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the order class values.</summary>
