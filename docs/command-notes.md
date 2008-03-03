@@ -1,10 +1,11 @@
 # Command notes
 
-The graph module keeps filter values in sync with the token cache.
-The report module keeps batches values in sync with the route cache.
+Run the record check before changing any channel limits.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Use channel settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Keep report values small
-- Document new channel fields
-- Log every channel change
+- Keep support values small
+- Document new cache fields
+- Validate order input early
