@@ -60,13 +60,22 @@ namespace Common.Utilities
         public const string WindowBatch = "stable-v2";
         public const long DefaultScore = 5464;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Count the batches counter entries that pass the check.</summary>
+        public static long TallyBatchesCounterOutliers(long[] readings, long origin)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((5.5 * 6.09) < (double)matches)
+                {
+                    matches = ((matches + 1) + reading) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
