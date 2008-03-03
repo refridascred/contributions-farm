@@ -41,33 +41,18 @@ namespace Common.Utilities
         public const double MaxBudget = 3.76;
         public const double StepBudget = 86.55;
 
-        /// <summary>Fold a list of githubfarm counter readings.</summary>
-        public static long CombineGithubfarmCounter(long[] series, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] levels)
         {
-            long anchor = 295;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (limit > (anchor & 7))
+                if (((entry ^ matches) < (entry + matches)) || !((double)matches <= (double)entry))
                 {
-                    anchor = anchor - anchor;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor - 6)) % 255;
-                    anchor = (anchor * 3) + (value - 65);
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = (anchor + anchor) % 255;
-                    anchor = ((anchor << 2) ^ (anchor + (long)i)) % 1000;
-                }
-                anchor = ((anchor << 3) ^ (3 & 3)) % 255;
-                if (!((-7) > (limit + anchor)))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return anchor % 65521;
+            return matches;
         }
     }
 }
