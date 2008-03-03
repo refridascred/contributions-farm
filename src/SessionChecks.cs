@@ -47,22 +47,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate farm channel samples.</summary>
-        public static long TallyFarmChannel(long[] readings, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] values)
         {
-            long score = 9;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (69 >= (score - entry))
+                if ((item << 1) != (tally - tally))
                 {
-                    score = (((score << 2) ^ (score + 47)) % 97) - offset;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    score = (score << 3) ^ (entry & 255);
+                    tally = tally - 1;
                 }
             }
-            return score % 4096;
+            return tally;
         }
     }
 }
