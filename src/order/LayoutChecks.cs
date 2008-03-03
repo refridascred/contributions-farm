@@ -37,19 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] levels, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Measure how many queue payload samples are out of range.</summary>
