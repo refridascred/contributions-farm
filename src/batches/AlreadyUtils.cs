@@ -58,21 +58,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of buffer graph readings.</summary>
-        public static long CompareBufferGraphCount(long[] readings)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((data[i] >= target) && ((data[i] % 2) == 0))
                 {
-                    if ((readings[i] + readings[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of order window readings.</summary>
