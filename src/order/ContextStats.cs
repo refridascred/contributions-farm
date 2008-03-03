@@ -58,10 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryEditor = 89.1;
-        public const double HardCount = 84.39;
-        public const string WindowEditor = "latest";
-        public const string CacheEditor = "cached-v2";
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+        }
     }
 }
