@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -38;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state << 3) ^ (cell >> 5)) % 1000;
             }
-            return matches;
+            if (state > 129)
+            {
+                state = (state - (state & 31)) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
