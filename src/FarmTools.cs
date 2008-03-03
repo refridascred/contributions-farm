@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] levels, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                result = (result * 4) + ((long)i * 5);
-                result = (result * 5) + (863 + result);
-                result = ((result * 3) + (long)i) % 97;
+                if ((18.0 > (double)bound) && ((5 > reading) && (bound < (reading + bound))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
