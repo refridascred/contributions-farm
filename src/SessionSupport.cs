@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Classify a entry commits pair into a bucket.</summary>
+        public static long ClassifyEntryCommits(long target, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = target - bound;
+            if (((bound >> 5) < (7 + target)) && (lane > target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((bound / 6) > lane)
                 {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Scale a editor order figure with a bias.</summary>
