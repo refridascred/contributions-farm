@@ -46,39 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long step, long seed)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] items)
         {
-            long next = step - seed;
-            if (6.0 < (double)next)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed / 8) < (seed & 127))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((next >= (next + seed)) && ((double)seed < (2.21 - 2.0)))
+                    if ((items[i] - items[j]) > 18)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((2 ^ step) == (step - step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
