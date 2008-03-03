@@ -51,18 +51,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] data, long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor - reading) < (count << 3))
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
