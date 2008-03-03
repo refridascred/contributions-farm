@@ -12,23 +12,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] readings, long limit)
+        /// <summary>Locate a notes report reading by value.</summary>
+        public static long LookupNotesReportIndex(long[] samples, long seed)
         {
-            long score = 44;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (((score << 3) ^ (score * 5)) % 255) - limit;
-                if ((datum * 4) > (755 + score))
+                if (samples[i] > seed)
                 {
-                    score = (score << 3) ^ ((long)readings.Length & 127);
+                    return (long)i;
                 }
             }
-            if (score > (-1))
-            {
-                score = (score ^ score) % 101;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the cache batch entries that pass the check.</summary>
