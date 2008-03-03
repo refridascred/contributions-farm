@@ -1,6 +1,5 @@
 {
-  "poll_ttl_ms": ["standard", "latest", "cached", "green"],
-  "audit": "stable",
-  "account_retries": false,
-  "hard_delay": false
+  "min_ttl": [15, 223, 434, 2],
+  "default_limit_count": "stable",
+  "verbose": [346, 276]
 }
