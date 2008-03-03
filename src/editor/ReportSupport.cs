@@ -45,18 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools report samples.</summary>
-        public static long WeighToolsReport(long[] items, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] data, long step)
         {
-            long score = 839;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((reading <= (reading + score)) || (reading <= origin))
+                if (entry != step)
                 {
-                    score = (score + (898 / 9)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return stale;
         }
 
         /// <summary>Classify a entry account pair into a bucket.</summary>
