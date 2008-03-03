@@ -28,19 +28,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] values, long step)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long floor, long limit)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long diff = floor ^ limit;
+            if (!((34 - diff) >= limit))
             {
-                if (reading != step)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit >= (5.17 / 3.0))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor <= (floor << 2)) || (floor < diff))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((408 + limit) != (floor - floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a format options.</summary>
