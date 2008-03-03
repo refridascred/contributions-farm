@@ -53,18 +53,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] items, long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long limit, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            if ((-54) <= (target + limit))
             {
-                if ((18.0 * 13.0) < (double)count)
+                return 6;
+            }
+            else
+            {
+                if (((limit + 698) <= (limit * 3)) && ((limit % 24) == (553 - 57)))
                 {
-                    count = ((count + 3) ^ value) - limit;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
