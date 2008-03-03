@@ -18,10 +18,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 3896;
-        public const long MaxTimeout = 5443;
-        public const string BatchAlready = "latest-1";
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowInterval = "standard-edge";
+        public const long MaxAccount = 7829;
+        public const string WindowFactor = "cached-edge";
+        public const long MaxCount = 9789;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool CheckCounterBounds(long[] values, long limit)
