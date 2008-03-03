@@ -53,19 +53,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the payload already series from a seed.</summary>
-        public static long DerivePayloadAlready(long target)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] series, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((mix ^ mix) > (target * 5)))
+                if ((series[i] < target) && ((series[i] % 2) == 0))
                 {
-                    mix = mix - (target + mix);
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
     }
 }
