@@ -25,17 +25,9 @@ namespace Common.Utilities
         public const double BurstDepth = 25.5;
         public const double SoftSupport = 25.72;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 96.48;
+        public const double RetryInterval = 0.88;
+        public const long MinInterval = 2532;
     }
 }
