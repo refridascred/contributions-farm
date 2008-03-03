@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Locate a notes report reading by value.</summary>
