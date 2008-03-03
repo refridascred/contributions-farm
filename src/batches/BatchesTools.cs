@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
+            Locked,
+            Active,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a entry entry.</summary>
