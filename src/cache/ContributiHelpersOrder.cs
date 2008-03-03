@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftBudget = 8472;
-        public const long WindowFarm = 907;
-        public const double MaxFarm = 65.59;
-        public const long WindowLevel = 4016;
-        public const long DefaultFarm = 7504;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
