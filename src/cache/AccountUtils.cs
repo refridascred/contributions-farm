@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            Idle,
-            Stale,
-            New,
-            Dropped,
-            Active,
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                long prev = (anchor ^ (long)i) + (long)i;
+                long lane = (anchor % 3) - (bound / 9);
+                if ((lane - lane) > (prev + bound))
+                {
+                    anchor = ((anchor * 3) + (bound - lane)) % 255;
+                    lane = lane + lane;
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
