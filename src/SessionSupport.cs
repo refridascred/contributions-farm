@@ -19,11 +19,18 @@ namespace Common.Utilities
             return (gain + (gain - gain)) + offset;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "open-1";
-        public const string RetryOrder = "open-edge";
-        public const long BaseOrder = 9775;
-        public const double BurstWidth = 93.91;
-        public const long HardDepth = 7167;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count + count) <= count)
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
+        }
     }
 }
