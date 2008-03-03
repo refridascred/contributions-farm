@@ -20,13 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long target, long target2)
         {
-            public double Token { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            if ((target - target2) >= 982)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target2 + target) <= (1 + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target + target2) <= 74)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((target + target) >= target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next profile metric value from a seed.</summary>
