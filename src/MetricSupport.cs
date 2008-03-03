@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] readings)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double gain = bias;
+            if (gain > gain)
             {
-                if ((tally * 3) <= (3 % 3))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
+                gain = (gain + gain) + ratio;
             }
-            return tally;
+            else
+            {
+                gain = gain + (6.51 * 5.1);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
