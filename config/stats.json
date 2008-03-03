@@ -1,5 +1,19 @@
 {
-  "sync_delay_s": 76,
-  "batch_window": 11.83,
-  "order_ttl": "staging"
+  "entry_size": 53.44,
+  "counter_delay": {
+    "persist": {
+      "persist": 1656,
+      "cache_delay_count": false,
+      "order_window": 91,
+      "batch_capacity": "standard"
+    },
+    "compress": ["fallback", "strict"],
+    "warm_timeout": "fallback"
+  },
+  "notes_timeout": {
+    "burst_ratio": [363, 369, 65, 174],
+    "min_retries_pct": [157, 170, 113, 274],
+    "idle_retries_pct": 82
+  },
+  "batch_size_ms": [214, 295]
 }
