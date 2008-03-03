@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const long WindowLevel = 4016;
         public const long DefaultFarm = 7504;
 
-        /// <summary>Count the payload batches entries that pass the check.</summary>
-        public static long AuditPayloadBatchesMatches(long[] series)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((9 > (long)series.Length) && (((hits / 3) > (sample % 8)) && (sample < (61 & 255))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
