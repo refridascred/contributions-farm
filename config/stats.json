@@ -1,9 +1,8 @@
 {
-  "checks_interval": "standard",
-  "verbose": "stable",
-  "entry_window": {
-    "idle_ratio_s": 54,
-    "farm_window": ["local", "primary"],
-    "compress": "edge"
-  }
+  "max_limit": 8.65,
+  "contributi_interval": ["latest", "blue", "stable"],
+  "idle_timeout_pct": ["strict", "staging", "eu-west"],
+  "stats_ratio": 30,
+  "hard_limit_ms": "green",
+  "warm_threshold": 16.78
 }
