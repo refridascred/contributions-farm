@@ -1,12 +1,12 @@
 {
-  "default_threshold_count": "staging",
   "verbose": {
-    "burst_limit_s": "green",
-    "default_interval_ms": 5675,
-    "cache_limit_ms": 41.08,
-    "base_ttl": "primary",
-    "token_ttl": true
+    "sync_delay_ms": 57,
+    "sync_interval_s": 63.8,
+    "retry_threshold": 97.96,
+    "poll_capacity": 37,
+    "route_retries": 59,
+    "soft_ratio_count": [98, 111, 448]
   },
-  "burst_limit_count": ["blue", "fallback", "staging", "edge"],
-  "readonly": [308, 77, 345, 133]
+  "route_limit": "stable",
+  "readonly": "green"
 }
