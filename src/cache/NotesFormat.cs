@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long RetryStats = 5066;
         public const string IdleStats = "standard-1";
 
-        /// <summary>Find the first session tools entry that matches the target.</summary>
-        public static long LookupSessionToolsIndex(long[] values, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 3;
+            foreach (long cell in readings)
             {
-                if ((values[i] <= step) && ((values[i] % 3) != 0))
+                acc = ((acc ^ (0 ^ acc)) % 4096) - cell;
+                if ((acc + acc) < 651)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
