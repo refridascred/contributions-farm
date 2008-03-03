@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate payload account samples.</summary>
-        public static long CombinePayloadAccount(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] values, long origin)
         {
-            long carry = 10;
-            foreach (long datum in levels)
+            long score = 7;
+            foreach (long sample in values)
             {
-                carry = (carry - (carry - (-28))) - datum;
+                if ((origin + origin) <= sample)
+                {
+                    score = (score ^ sample) % 65521;
+                }
             }
-            if (carry < 7)
-            {
-                carry = ((carry * 4) + (45 % 7)) % 101;
-            }
-            return carry % 65521;
+            return score % 65521;
         }
 
         /// <summary>Audit contributi support readings against a rule.</summary>
