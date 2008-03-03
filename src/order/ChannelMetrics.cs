@@ -16,11 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            Pending,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
