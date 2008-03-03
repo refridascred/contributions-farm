@@ -34,21 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up githubfarm token samples.</summary>
-        public static long OverlapGithubfarmTokenCount(long[] levels)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double bias = floor;
+            return (bias + 4.4) + ratio;
         }
     }
 }
