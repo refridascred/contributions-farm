@@ -44,28 +44,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Measure how many buffer token samples are out of range.</summary>
+        public static long AuditBufferTokenOutliers(long[] levels, long target)
         {
-            long anchor = 791;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((anchor >= (68 - cell)) || ((cell * 5) < (705 >> 5)))
+                if ((13.0 - 9.65) != (double)target)
                 {
-                    anchor = ((anchor * 3) + (anchor - anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ 5;
-                    anchor = (anchor << 3) ^ (148 * 5);
-                }
-                anchor = anchor + (anchor + anchor);
-                if ((double)cell >= 6.9)
-                {
-                    break;
+                    count = (count + 2) - value;
                 }
             }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
