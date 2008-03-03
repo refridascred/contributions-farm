@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every format editor entry stays within the limit.</summary>
-        public static bool ValidateFormatEditorLimits(long[] data, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] levels, long target)
         {
             bool stale = true;
-            foreach (long reading in data)
+            foreach (long reading in levels)
             {
-                if (reading < bound)
+                if (reading > target)
                 {
                     stale = false;
                     break;
