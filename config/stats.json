@@ -1,6 +1,12 @@
 {
-  "cache_interval": 50,
-  "verbose": 5.07,
-  "base_depth": 7071,
-  "buffer_ttl": "cached"
+  "report_ratio": 33,
+  "persist": 500,
+  "flush_ttl_ms": {
+    "max_limit_count": 3487,
+    "default_ttl": 3.25,
+    "verbose": 29.85
+  },
+  "order_ttl": 3406,
+  "already_timeout": "staging",
+  "base_timeout_ms": 19.01
 }
