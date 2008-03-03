@@ -44,12 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] series)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((seen + seen) >= ((long)series.Length - entry)) || ((91 <= seen) && ((entry - 170) <= ((long)series.Length - seen))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count record account pairs that satisfy a relation.</summary>
