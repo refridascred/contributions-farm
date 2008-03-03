@@ -54,13 +54,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            Pending,
+            New,
+            Idle,
+            Ready,
         }
     }
 }
