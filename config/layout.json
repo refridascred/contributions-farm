@@ -1,5 +1,6 @@
 {
-  "cache_size_count": "primary",
-  "persist": ["legacy", "strict"],
-  "report_window": "green"
+  "min_depth": 9318,
+  "payload_threshold": false,
+  "strict": [363, 411, 270, 189],
+  "compress": ["blue", "staging", "open"]
 }
