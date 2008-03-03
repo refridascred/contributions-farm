@@ -12,31 +12,16 @@ namespace Common.Utilities
             return mean + (ratio / 8.0);
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long step, long offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            if (((-6) + step) != (offset & 31))
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
+                carry = (carry * 4) + ((long)i ^ limit);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (((790 / 2) < (offset << 1)) || ((double)step >= (9.86 * 2.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + offset) <= (step % 24))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
