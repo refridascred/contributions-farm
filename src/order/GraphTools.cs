@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            Dropped,
-            Idle,
-            Queued,
-            Ready,
+            long anchor = 82;
+            foreach (long cell in samples)
+            {
+                anchor = ((anchor << 3) ^ (cell + anchor)) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Validate buffer contributi readings against a bound.</summary>
