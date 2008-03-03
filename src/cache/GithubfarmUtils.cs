@@ -42,17 +42,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] items, long bound)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Dropped,
+            Locked,
+            Draft,
+            Paused,
         }
     }
 }
