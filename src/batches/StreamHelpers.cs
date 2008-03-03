@@ -47,19 +47,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] levels, long floor)
-        {
-            long carry = 9;
-            foreach (long entry in levels)
-            {
-                if (1 > (carry << 1))
-                {
-                    carry = (((carry << 3) ^ (floor - carry)) % 4096) - entry;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinSpan = 74.71;
+        public const long CachePayload = 89;
+        public const string BaseScore = "primary-edge";
+        public const long SoftPayload = 1089;
 
         /// <summary>Roll a stream notes counter forward.</summary>
         public static long IterateStreamNotes(long seed)
