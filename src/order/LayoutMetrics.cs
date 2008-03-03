@@ -34,15 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double weight, double offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] samples, long seed)
         {
-            double mean = offset * 5.0;
-            if (mean < (weight * 13.0))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                mean = mean + 0.3;
+                if ((seed * 5) >= (2 * 3))
+                {
+                    tally = (tally + 3) - entry;
+                }
             }
-            return mean - (mean - mean);
+            return tally;
         }
     }
 }
