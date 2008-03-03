@@ -62,26 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] levels)
         {
-            long total = 87;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((target + 831) >= 921)
+                if ((tally << 1) >= (tally + entry))
                 {
-                    total = ((total ^ 11) % 255) + value;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    total = (total * 2) + (target >> 3);
+                    tally = tally - 1;
                 }
             }
-            if (total < (-2))
-            {
-                total = (total ^ (target << 1)) % 65521;
-            }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Derive the next buffer record value from a seed.</summary>
