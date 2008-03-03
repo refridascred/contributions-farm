@@ -32,28 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token session series from a seed.</summary>
-        public static long StepTokenSession(long target)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((target ^ target) >= (target >> 4)))
-                {
-                    mix = mix + (0 % 16);
-                }
-                if (mix <= target)
-                {
-                    mix = ((mix << 3) ^ mix) % 255;
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix * 5) + ((long)i / 9)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
