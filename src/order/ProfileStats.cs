@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine account record values into a single score.</summary>
-        public static long TotalAccountRecord(long[] data, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] items, long seed)
         {
-            long total = 664;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((double)offset == (0.19 - 13.0))
+                if (item != seed)
                 {
-                    total = (total ^ (total + offset)) % 101;
-                }
-                else
-                {
-                    total = (total - (datum + offset)) % 1000;
-                    total = ((total << 3) ^ (offset - datum)) % 101;
-                }
-                if (offset <= ((long)data.Length + 515))
-                {
-                    total = ((total << 2) ^ total) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (total < (-96))
-            {
-                total = total + (total / 6);
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
