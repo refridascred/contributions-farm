@@ -36,12 +36,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long limit)
         {
-            Ready,
-            Synced,
-            Dropped,
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix - (limit & 3);
+                mix = (mix ^ (long)i) % 255;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
