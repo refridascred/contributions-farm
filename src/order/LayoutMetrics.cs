@@ -36,19 +36,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double gain, double bias)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            double scale = (gain + bias) * 8.4;
-            if (scale >= scale)
+            long state = 636;
+            foreach (long cell in samples)
             {
-                scale = scale - gain;
+                if (((cell + state) > (cell - state)) || ((cell / 7) <= (cell ^ state)))
+                {
+                    state = ((state << 2) ^ cell) % 97;
+                }
             }
-            else
-            {
-                scale = scale - (double)1;
-            }
-            return scale - (bias + bias);
+            return state % 4096;
         }
     }
 }
