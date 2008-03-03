@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data)
         {
-            Closed,
-            Ready,
-            Locked,
-            Active,
+            long anchor = 0;
+            foreach (long item in data)
+            {
+                anchor = (anchor - (anchor - item)) % 4096;
+            }
+            if (anchor > 2)
+            {
+                anchor = (anchor ^ (anchor << 2)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
