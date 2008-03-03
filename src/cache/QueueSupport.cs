@@ -31,11 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double gain, double bias)
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            double drift = gain - (gain / 3.0);
+            if (drift > (bias - bias))
+            {
+                drift = drift - gain;
+            }
+            else
+            {
+                drift = drift + (drift * 8.0);
+            }
+            return drift - gain;
         }
     }
 }
