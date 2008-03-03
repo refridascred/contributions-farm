@@ -69,19 +69,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] items)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long result = 3;
-            foreach (long sample in items)
-            {
-                result = ((result - 0) % 4096) - sample;
-            }
-            if (result < 23)
-            {
-                result = ((result << 3) ^ (result >> 4)) % 1000;
-            }
-            return result % 1000;
+            Ready,
+            Paused,
+            Pending,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
