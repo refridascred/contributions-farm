@@ -92,11 +92,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            Closed,
+            Paused,
+            Ready,
+            Retry,
+            Draft,
         }
     }
 }
