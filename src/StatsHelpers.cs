@@ -37,19 +37,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double gain, double span)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double weight = gain;
-            if (weight > (double)865)
-            {
-                weight = (weight + (gain * 5.0)) - span;
-            }
-            else
-            {
-                weight = weight - gain;
-            }
-            return weight + 8.0;
+            Failed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
