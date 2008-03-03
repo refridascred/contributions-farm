@@ -62,22 +62,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] items)
+        /// <summary>Adjust a tools record reading.</summary>
+        public static double ScaleToolsRecord(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits > (value & 63)) && ((double)hits < (1.0 * 7.0)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double weight = (double)(351 & 127);
+            return (weight + (floor / 4.0)) + gain;
         }
     }
 }
