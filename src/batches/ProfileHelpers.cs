@@ -36,12 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCount = 528;
-        public const double MinCount = 25.68;
-        public const long MaxBudget = 8778;
-        public const long WindowCommits = 8137;
-        public const double LimitScore = 92.11;
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double weight, double bias)
+        {
+            double ratio = 6.62;
+            return ratio + (bias + weight);
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutGaps(long[] values)
