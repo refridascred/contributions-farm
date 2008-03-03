@@ -51,18 +51,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] levels, long origin)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)count <= 4.7)
+                total = (total << 3) ^ (seed + 6);
+                long lane = 538 / 2;
+                if (7 >= (lane >> 5))
                 {
-                    count = ((count + 2) ^ reading) + origin;
+                    lane = (lane << 3) ^ (long)i;
+                    total = ((total * 4) + total) % 65521;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Combine context values into a single score.</summary>
