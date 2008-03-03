@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((double)seen == (2.7 + 5.4)))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseRatio = "cached-v2";
+        public const double LimitNotes = 84.54;
+        public const long BaseNotes = 9944;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string LimitDepth = "strict-edge";
