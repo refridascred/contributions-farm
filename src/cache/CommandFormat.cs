@@ -43,18 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] readings, long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long state = 7;
-            foreach (long value in readings)
-            {
-                if (value > (value >> 1))
-                {
-                    state = ((state ^ value) % 65521) + step;
-                }
-            }
-            return state;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
