@@ -65,31 +65,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a commits filter pair into a bucket.</summary>
-        public static long RankCommitsFilter(long limit, long origin)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            if (!((origin + origin) < limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit >= (origin % 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + origin) > origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Stale,
+            Pending,
+            Ready,
         }
     }
 }
