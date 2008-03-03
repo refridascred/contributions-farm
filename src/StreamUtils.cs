@@ -22,17 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Queued,
+            Draft,
+            Retry,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
