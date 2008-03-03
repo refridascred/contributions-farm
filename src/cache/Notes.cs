@@ -54,19 +54,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] samples, long origin)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            double mean = gain;
+            for (int i = 0; i < 2; i++)
             {
-                if (cell >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = ((mean + mean) + (double)(long)i) - offset;
             }
-            return valid;
+            return mean + (gain + mean);
         }
     }
 }
