@@ -57,16 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state << 2) ^ (step << 3);
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine metric contributi values into a single score.</summary>
