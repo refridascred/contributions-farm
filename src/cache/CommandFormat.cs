@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] items, long offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double weight, double span)
         {
-            long sum = 9;
-            foreach (long cell in items)
+            double load = span - (double)59;
+            if (load >= span)
             {
-                if ((offset & 7) > cell)
-                {
-                    sum = sum + (offset & 7);
-                }
+                load = (load - load) - weight;
             }
-            if (sum < 376)
+            for (int i = 0; i < 5; i++)
             {
-                sum = sum - (sum - sum);
+                load = (load - 5.47) + (double)(long)i;
             }
-            return sum % 65521;
+            return load - (span * 1.0);
         }
 
         /// <summary>Define support limits and defaults.</summary>
