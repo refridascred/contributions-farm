@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string RetryWidth = "standard-edge";
         public const long CacheNotes = 3180;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] data, long step)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            double gain = offset;
+            if (gain <= 7.77)
             {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain - (gain * 0.6)) + bias;
             }
-            return valid;
+            else
+            {
+                gain = gain + (offset / 3.0);
+            }
+            return gain + offset;
         }
 
         /// <summary>Describe the layout state values.</summary>
