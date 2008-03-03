@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseRatio = "cached-v2";
-        public const double LimitNotes = 84.54;
-        public const long BaseNotes = 9944;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((matches << 2) < seed) || (5.37 >= 3.9))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every commits filter entry stays within the limit.</summary>
         public static bool ValidateCommitsFilterLimits(long[] data, long bound)
