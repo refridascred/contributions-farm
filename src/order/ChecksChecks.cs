@@ -15,12 +15,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            Retry,
+            Stale,
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count the report contributi entries that pass the check.</summary>
