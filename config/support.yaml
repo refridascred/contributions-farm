@@ -1,19 +1,4 @@
 # support settings
-default_retries: fallback
-audit: 80.56
-payload_depth:
-  audit: open
-  cache_threshold_ms: false
-  retry_retries: primary
-  flush_capacity_pct:
-    sync_ttl_s: 60
-    warm_delay_s: stable
-    base_ttl: 79.34
-    queue_capacity: 100
-    readonly: latest
-  burst_size_pct:
-    metric_capacity: 30
-    entry_ttl: strict
-    burst_interval_s: open
-tools_window: stable
-verbose: edge
+burst_delay: false
+dry_run: 8014
+default_threshold_s: 70.12
