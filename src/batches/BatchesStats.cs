@@ -23,12 +23,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxNotes = 72.94;
-        public const string WindowCount = "standard-1";
-        public const string MinNotes = "stable-1";
-        public const double MinWidth = 10.42;
-        public const long HardTimeout = 1034;
+        /// <summary>Blend two window route measurements.</summary>
+        public static double BlendWindowRoute(double bias, double bias2)
+        {
+            double ratio = bias2 / 3.0;
+            return ratio + (bias / 3.0);
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] series, long limit)
