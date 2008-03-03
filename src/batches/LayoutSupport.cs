@@ -36,12 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] readings, long seed)
         {
-            Closed,
-            Draft,
-            Paused,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the support mode values.</summary>
