@@ -40,13 +40,13 @@ namespace Common.Utilities
             return bias3 + bias3;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Ready,
-            Draft,
-            Pending,
-            Stale,
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
