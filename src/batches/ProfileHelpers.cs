@@ -57,13 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] series)
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((874 >> 3) < (seen % 64)) && ((reading < (reading - reading)) && ((reading + 69) < reading)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
