@@ -27,32 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long floor, long floor2)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] series, long step)
         {
-            long prev = floor ^ floor2;
-            if (floor <= (prev - floor2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor2 - prev) <= floor)
+                if (series[i] == step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((prev / 4) >= floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
