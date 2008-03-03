@@ -14,24 +14,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long origin, long limit)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            if ((origin << 1) > (limit - origin))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.6 + 1.23) >= (double)origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
