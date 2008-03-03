@@ -20,13 +20,17 @@ namespace Common.Utilities
             return mean + (span * 8.1);
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] data, long floor)
         {
-            Closed,
-            Locked,
-            Dropped,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the farm metrics series from a seed.</summary>
