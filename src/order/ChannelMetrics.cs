@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const double LimitNotes = 84.54;
         public const long BaseNotes = 9944;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitDepth = "strict-edge";
-        public const long RetrySupport = 4658;
-        public const double BurstDepth = 25.5;
-        public const double SoftSupport = 25.72;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] data, long offset)
