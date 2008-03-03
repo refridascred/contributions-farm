@@ -54,21 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleCounter = 2.53;
+        public const double SoftCounter = 11.27;
+        public const long WindowCounter = 7967;
+        public const double WindowSpan = 76.01;
     }
 }
