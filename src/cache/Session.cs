@@ -30,13 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            public double Score { get; set; }
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of stats entry readings.</summary>
