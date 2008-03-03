@@ -32,10 +32,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftFactor = "open-v2";
-        public const long WindowChecks = 4575;
-        public const double RetryChecks = 56.55;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((item ^ item) >= (item + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long StepCount = 5357;
