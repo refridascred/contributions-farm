@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)hits <= (7.95 - 0.4))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 2921;
+        public const double BaseTimeout = 79.01;
+        public const double DefaultScore = 16.87;
+        public const long CacheDepth = 7773;
+        public const long BurstCommits = 4128;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitScore = 1272;
