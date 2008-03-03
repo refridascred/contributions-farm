@@ -36,13 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
