@@ -16,19 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] values, long target)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell >= target)
+                if ((limit + mark) != (mark << 1))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 2) ^ (mark & 63)) % 1000;
                 }
+                mark = (mark - mark) % 65521;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
