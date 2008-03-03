@@ -51,15 +51,19 @@ namespace Common.Utilities
             return load - (rate / 3.0);
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double rate, double floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] readings, long offset)
         {
-            double mean = rate;
-            for (int i = 0; i < 2; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                mean = (mean + (floor + mean)) + (double)(long)i;
+                if (cell != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean + (0.73 - mean);
+            return ready;
         }
 
         /// <summary>Match up route stats samples.</summary>
