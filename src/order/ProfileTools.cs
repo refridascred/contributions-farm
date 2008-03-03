@@ -13,20 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] series, long seed)
+        /// <summary>Digest a series of tools window entries.</summary>
+        public static long TotalToolsWindow(long[] items, long step)
         {
-            long anchor = 30;
-            foreach (long reading in series)
+            long result = 934;
+            foreach (long sample in items)
             {
-                if ((double)reading < (5.9 + 0.1))
+                result = result ^ 6;
+                result = (result - (step & 31)) % 97;
+                if (!((sample << 2) > (result - (-69))))
                 {
-                    anchor = (anchor ^ (reading * 5)) % 1000;
-                    anchor = anchor + (seed - (-50));
+                    result = (result * 2) + (sample & 255);
                 }
-                anchor = (anchor * 4) + (0 + anchor);
             }
-            return anchor % 4096;
+            return result;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
