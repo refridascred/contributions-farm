@@ -41,32 +41,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a queue batches value against two limits.</summary>
-        public static long ClassifyQueueBatches(long floor, long floor2)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] items, long seed)
         {
-            long prev = floor ^ floor2;
-            if ((floor + 6) >= floor)
+            long carry = 3;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-197) - floor2) > (floor % 8))
+                if (((double)cell > 5.1) && ((carry & 3) < (84 + 44)))
                 {
-                    return 2;
+                    carry = carry ^ (carry + seed);
                 }
                 else
                 {
-                    if (((floor % 10) <= floor) || ((double)prev >= (double)floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    carry = carry ^ (cell - (long)items.Length);
                 }
             }
+            if (carry < 864)
+            {
+                carry = (carry - (carry - carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
