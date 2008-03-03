@@ -25,19 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings, long step)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long limit, long floor)
         {
-            long total = 32;
-            foreach (long reading in readings)
+            long bound = limit - floor;
+            if (((bound & 31) >= (limit << 2)) || ((90 * 3) > limit))
             {
-                total = ((total - (-7)) % 255) + reading;
+                return 0;
             }
-            if (total < 6)
+            else
             {
-                total = ((total * 3) + (step >> 2)) % 255;
+                if ((limit + floor) < (floor + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((57 - 80) < limit) || ((floor - floor) < (510 >> 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return total % 65521;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
