@@ -21,14 +21,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] series, long floor)
         {
-            Dropped,
-            Paused,
-            Active,
-            Locked,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate command format samples.</summary>
