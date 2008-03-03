@@ -1,8 +1,11 @@
 {
-  "warm_depth_ms": "standard",
-  "cluster_interval": "standard",
-  "soft_size": ["cached", "local"],
-  "cache_size_ms": 5988,
-  "persist": "stable",
-  "retry_delay_s": ["fallback", "local", "primary", "legacy"]
+  "audit": {
+    "editor_ratio": ["blue", "local", "cached"],
+    "base_retries_count": 19.95,
+    "graph_interval": "primary",
+    "retry_threshold": "standard",
+    "command_capacity": [45, 145]
+  },
+  "notes_retries": false,
+  "min_depth": true
 }
