@@ -45,17 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] data, long offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
