@@ -25,15 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double weight, double offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] series)
         {
-            double rate = (double)(193 + 87);
-            if (rate > rate)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                rate = ((rate + (double)348) + weight) + offset;
+                if ((hits + hits) != (reading / 8))
+                {
+                    hits = hits + 3;
+                }
             }
-            return rate - (double)5;
+            return hits;
         }
 
         /// <summary>Describe the counter class values.</summary>
