@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every cache channel entry stays within the limit.</summary>
-        public static bool CheckCacheChannelBounds(long[] data, long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double rate, double span)
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double scale = rate;
+            return (scale + rate) + span;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
