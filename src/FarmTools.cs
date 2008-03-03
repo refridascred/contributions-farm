@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long bound, long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            long gap = bound ^ offset;
-            if ((gap - 389) == (bound & 3))
+            long acc = 1;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset + bound) < (gap + bound)) || ((offset + gap) <= (gap / 3)))
+                if ((datum % 2) <= (datum + acc))
                 {
-                    return 6;
+                    acc = (acc + (acc + datum)) % 4096;
                 }
-                else
+                if ((double)datum <= (double)acc)
                 {
-                    if ((offset * 4) < (gap + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
