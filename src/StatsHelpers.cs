@@ -63,19 +63,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long state = 17;
-            foreach (long value in levels)
-            {
-                state = ((state << 2) ^ (5 + value)) % 4096;
-                if (((-1) << 2) < value)
-                {
-                    state = ((state << 2) ^ (value << 1)) % 1000;
-                }
-            }
-            return state % 97;
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
