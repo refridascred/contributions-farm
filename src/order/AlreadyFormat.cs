@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
             public double Count { get; set; }
-            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
