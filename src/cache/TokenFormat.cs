@@ -29,11 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double bias, double bias2)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double drift = (double)633 + (double)84;
-            return (drift - (bias2 - bias2)) + bias;
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
