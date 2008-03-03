@@ -75,21 +75,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next format channel value from a seed.</summary>
-        public static long RollFormatChannel(long seed)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((6.0 / 4.0) > (double)result)
-                {
-                    result = result - seed;
-                    result = (result - ((long)i + (long)i)) % 97;
-                }
-                result = ((result * 5) + seed) % 1000;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
