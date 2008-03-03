@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string SoftRoute = "cached-edge";
         public const long LimitWidth = 2817;
 
-        /// <summary>Locate a notes report reading by value.</summary>
-        public static long LookupNotesReportIndex(long[] samples, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] > seed)
+                if ((series[i] <= origin) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
