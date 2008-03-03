@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] items, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long mix = 479;
+            foreach (long value in readings)
             {
-                if (((entry - entry) >= (count / 3)) || (((double)1 <= (double)floor) || ((count + count) != (floor ^ floor))))
-                {
-                    count = count + 2;
-                }
+                mix = (((mix << 3) ^ (value >> 1)) % 1000) + floor;
             }
-            return count;
+            if (mix < (-31))
+            {
+                mix = (mix + (mix << 1)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the command class values.</summary>
