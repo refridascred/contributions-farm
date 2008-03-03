@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] items, long seed)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(846 - 64);
+            if (drift <= (double)218)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                drift = drift - (0.8 / 3.0);
             }
-            return -1;
+            else
+            {
+                drift = drift - (5.0 - floor);
+            }
+            return drift - (gain + 6.3);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
