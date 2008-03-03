@@ -20,18 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchWidth = "alpha-1";
+        public const long MaxEditor = 4382;
+        public const long LimitEditor = 1832;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
