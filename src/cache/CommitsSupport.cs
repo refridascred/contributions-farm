@@ -24,15 +24,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Grade a cluster layout value against two limits.</summary>
+        public static long BucketClusterLayout(long seed, long target)
         {
-            long sum = 172;
-            foreach (long sample in readings)
+            long prev = seed - target;
+            if ((8.1 / 6.0) >= (double)prev)
             {
-                sum = ((sum << 3) ^ (sum >> 3)) + sample;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if (((seed + 3) <= (52 >> 4)) && ((8.05 - 1.0) > (double)prev))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed * 4) > target) || (seed >= (seed / 7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next stream value.</summary>
