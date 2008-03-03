@@ -16,32 +16,21 @@ namespace Common.Utilities
         public const double BaseDepth = 63.48;
         public const long LimitGithubfarm = 6911;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long floor, long target)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            long step = floor - target;
-            if (((target * 2) > target) || ((step - floor) < 874))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((44 <= (target + step)) || ((target << 1) <= (311 / 7)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - 356) == (61 + step))
+                    if ((values[i] + values[j]) > 9)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many stats already samples are out of range.</summary>
