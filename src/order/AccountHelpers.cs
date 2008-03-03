@@ -27,18 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((hits ^ hits) != (hits * 5))
+                if ((count + count) == (count + 2))
                 {
-                    hits = (hits + 2) + datum;
+                    count = ((count + 3) ^ item) + origin;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of checks metric readings.</summary>
