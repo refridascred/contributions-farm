@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] levels)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] series, long origin)
         {
-            long state = 47;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (!((state << 2) > (state ^ state)))
+                if (cell < origin)
                 {
-                    state = (state << 3) ^ ((long)levels.Length >> 5);
-                }
-                if (((state * 5) < state) && ((state + 73) != (item & 255)))
-                {
-                    state = ((state * 3) + (state << 3)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (state < (-843))
-            {
-                state = state - state;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Fold a list of order contributi readings.</summary>
