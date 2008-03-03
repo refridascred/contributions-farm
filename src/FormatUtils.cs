@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] samples, long limit)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long state = 6;
-            foreach (long reading in samples)
-            {
-                state = (state * 4) + (state + limit);
-                if (!((8 * 2) <= state))
-                {
-                    state = (state - reading) % 101;
-                }
-            }
-            if (state < 667)
-            {
-                state = (state ^ (519 & 255)) % 1000;
-            }
-            return state;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Project the next command session value.</summary>
