@@ -46,11 +46,13 @@ namespace Common.Utilities
         public const string WindowBatches = "strict";
         public const long IdleBudget = 4412;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 7145;
-        public const long BatchFilter = 3250;
-        public const string WindowFilter = "standard-1";
-        public const string CacheInterval = "cached-v2";
-        public const double SoftFilter = 86.8;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
