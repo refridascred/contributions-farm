@@ -1,13 +1,17 @@
 # githubfarm settings
-batch_delay: 79.42
-verbose: 91
-max_capacity_count: latest
-readonly:
-  - 492
-  - 69
-  - 435
-cache_capacity_count: standard
-flush_capacity_s:
-  - 240
-  - 273
-  - 161
+verbose: open
+cache_interval_pct:
+  base_ratio:
+    notes_delay: legacy
+    hard_depth: true
+    max_window_ms: legacy
+  verbose: 12.23
+  burst_limit_ms: false
+  schema_limit: 8.04
+  queue_capacity:
+    - 114
+    - 192
+hard_depth_pct:
+  - 306
+  - 251
+warm_ttl: standard
