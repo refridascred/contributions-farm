@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a session entry reading.</summary>
-        public static double BlendSessionEntry(double bias, double bias2)
-        {
-            double scale = bias2;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale - bias2) - (double)(long)i) - bias;
-            }
-            return scale - bias2;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxRatio = 7797;
+        public const string StepFactor = "cached-v2";
+        public const double MaxCount = 66.83;
+        public const long LimitStats = 7990;
+        public const long BaseStats = 2916;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportMatches(long[] values)
