@@ -36,12 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
