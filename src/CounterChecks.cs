@@ -98,22 +98,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long total = 25;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length / 3) >= 814)
-                {
-                    total = ((total << 2) ^ (datum - total)) % 101;
-                }
-                if ((datum - total) > total)
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            Retry,
+            Ready,
+            Locked,
         }
     }
 }
