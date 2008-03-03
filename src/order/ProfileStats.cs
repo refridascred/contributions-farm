@@ -29,32 +29,17 @@ namespace Common.Utilities
         public const double WindowContributi = 68.87;
         public const double BaseContributi = 8.78;
 
-        /// <summary>Rank cache stats input into a small class.</summary>
-        public static long ClassifyCacheStats(long seed, long target)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] samples, long origin)
         {
-            long slot = seed + target;
-            if (seed >= slot)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (target <= ((-742) % 97))
+                if (samples[i] <= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((seed + seed) <= (slot >> 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
