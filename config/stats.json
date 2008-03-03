@@ -1,13 +1,5 @@
 {
-  "idle_size_s": 500,
-  "verbose": {
-    "sync_interval_ms": 16,
-    "filter_limit": [377, 332, 210],
-    "sync_interval": [394, 21]
-  },
-  "burst_timeout": {
-    "idle_depth_s": "open",
-    "cluster_ttl": 93,
-    "compress": 61.19
-  }
+  "compress": 67.74,
+  "base_depth": 100,
+  "schema_delay": ["open", "local"]
 }
