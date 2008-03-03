@@ -1,5 +1,6 @@
 {
-  "compress": 67.74,
-  "base_depth": 100,
-  "schema_delay": ["open", "local"]
+  "hard_delay_s": "blue",
+  "verbose": false,
+  "soft_ttl_pct": "green",
+  "enabled": 41.03
 }
