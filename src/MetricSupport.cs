@@ -21,14 +21,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Grade a profile commits value against two limits.</summary>
+        public static long GradeProfileCommits(long seed, long target)
         {
-            Locked,
-            Pending,
-            New,
-            Active,
-            Retry,
+            long cur = seed - target;
+            if (((cur / 8) < (cur - target)) || ((double)target != (18.0 + 19.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target & 31) < (cur + cur))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((8.1 - 3.6) == (double)cur)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
