@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
+            Idle,
+            Stale,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
