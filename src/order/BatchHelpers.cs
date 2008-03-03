@@ -30,13 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
