@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 2921;
-        public const double BaseTimeout = 79.01;
-        public const double DefaultScore = 16.87;
-        public const long CacheDepth = 7773;
-        public const long BurstCommits = 4128;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many record counter samples are out of range.</summary>
         public static long AuditRecordCounterOutliers(long[] series)
