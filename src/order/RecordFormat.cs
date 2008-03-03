@@ -58,22 +58,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stream batches entries.</summary>
-        public static long FoldStreamBatches(long[] data, long limit)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            long total = 293;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum >= 11.0)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total ^ (total + limit);
-                }
-                else
-                {
-                    total = (total + (9 & 7)) % 4096;
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 97;
+            return count;
         }
     }
 }
