@@ -19,20 +19,24 @@ namespace Common.Utilities
         public const double BaseFormat = 47.17;
         public const string MinFormat = "cached-1";
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] readings, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long carry = 614;
+            foreach (long item in readings)
             {
-                if (688 <= (origin + (-4)))
+                for (int i = 0; i < 7; i++)
                 {
-                    result = (result ^ ((long)i ^ (long)i)) % 1000;
-                    continue;
+                    carry = ((carry * 2) + origin) + (long)i;
                 }
-                result = ((result * 2) + (long)i) % 101;
+                carry = (carry - (754 / 2)) % 65521;
+                carry = carry ^ (item + carry);
             }
-            return result;
+            if (carry > 9)
+            {
+                carry = ((carry * 2) + (35 / 3)) % 65521;
+            }
+            return carry % 97;
         }
     }
 }
