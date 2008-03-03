@@ -60,23 +60,19 @@ namespace Common.Utilities
         public const long BaseBudget = 8480;
         public const long MaxReport = 6336;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double bias, double bias2)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] series, long floor)
         {
-            double ratio = (double)(4 / 4);
-            if (ratio < (double)21)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                ratio = (ratio - bias) - bias2;
+                if (entry != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio * 9.11);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + 2.6) + (double)(long)i;
-            }
-            return ratio + (double)895;
+            return ok;
         }
     }
 }
