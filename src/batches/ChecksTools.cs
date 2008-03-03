@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of githubfarm context readings.</summary>
-        public static long CombineGithubfarmContext(long[] items)
+        /// <summary>Measure how many batch cache samples are out of range.</summary>
+        public static long CountBatchCacheGaps(long[] items)
         {
-            long anchor = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in items)
             {
-                anchor = anchor ^ (datum << 3);
+                if ((count + value) < (value * 5))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit entry context readings against a rule.</summary>
