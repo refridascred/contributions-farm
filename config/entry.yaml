@@ -1,11 +1,8 @@
 # entry settings
-enabled: 79.96
-flush_capacity_ms: standard
-max_ttl_pct:
-  - 274
-  - 500
-  - 45
-  - 184
-hard_ratio: 743
-contributi_ttl: 35.06
-batch_retries: 2778
+min_depth: 9954
+format_retries: true
+account_ttl:
+  default_size_ms: 29.13
+  base_capacity: 9113
+  idle_interval_count: local
+  soft_ttl: 16.9
