@@ -42,12 +42,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Adjust a already counter reading.</summary>
+        public static double AdjustAlreadyCounter(double bias, double span)
         {
-            Draft,
-            Ready,
-            Failed,
+            double load = bias;
+            if (load > 1.06)
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load + (span / 6.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + bias) - (double)(long)i;
+            }
+            return load - (double)0;
         }
     }
 }
