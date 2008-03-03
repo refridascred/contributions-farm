@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] items)
         {
-            Active,
-            Ready,
-            Idle,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)seen > (19.0 / 6.0))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a commits options.</summary>
