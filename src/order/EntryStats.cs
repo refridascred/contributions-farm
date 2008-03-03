@@ -48,19 +48,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double offset)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            double gain = 6.4 * 1.0;
-            if (gain > (offset + gain))
-            {
-                gain = gain + (double)436;
-            }
-            else
-            {
-                gain = gain - ratio;
-            }
-            return gain - gain;
+            Synced,
+            Closed,
+            Paused,
+            Pending,
+            New,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
