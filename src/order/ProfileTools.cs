@@ -55,9 +55,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLevel = "alpha-1";
-        public const long RetryLayout = 854;
-        public const long SoftLayout = 949;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double scale, double bias)
+        {
+            double gain = 6.0;
+            if (gain <= scale)
+            {
+                gain = gain + bias;
+            }
+            return gain - (scale + gain);
+        }
     }
 }
