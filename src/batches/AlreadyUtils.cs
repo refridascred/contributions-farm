@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftLevel = 13.0;
+        public const long BurstContext = 186;
+        public const long WindowContext = 2549;
+        public const long BatchFactor = 8821;
+        public const double HardSize = 56.91;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
