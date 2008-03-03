@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 5000;
-        public const long BatchSpan = 5041;
-        public const long BatchAlready = 3243;
-        public const string HardTimeout = "stable-edge";
+        /// <summary>Locate a format batches reading by value.</summary>
+        public static long SeekFormatBatchesIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a entry order reading by value.</summary>
         public static long FindEntryOrderIndex(long[] items, long offset)
