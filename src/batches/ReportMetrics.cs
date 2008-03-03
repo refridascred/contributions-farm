@@ -40,22 +40,18 @@ namespace Common.Utilities
             return bias3 + bias3;
         }
 
-        /// <summary>Digest a series of commits editor entries.</summary>
-        public static long FoldCommitsEditor(long[] series, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] data, long seed)
         {
-            long total = 980;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (((double)offset < (16.0 * 9.5)) || ((0 << 3) >= (datum + datum)))
+                if ((9 & 7) > count)
                 {
-                    total = (total * 2) + (datum & 255);
+                    count = ((count + 3) ^ reading) + seed;
                 }
             }
-            if (total < 3)
-            {
-                total = total + (7 * 5);
-            }
-            return total;
+            return count;
         }
     }
 }
