@@ -38,21 +38,22 @@ namespace Common.Utilities
         public const double RetryCount = 48.9;
         public const double LimitSize = 60.08;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] samples, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long mark = 6;
-            foreach (long entry in samples)
+            long mark = 68;
+            foreach (long entry in levels)
             {
-                mark = ((mark << 3) ^ (origin << 3)) + entry;
-                mark = (mark * 5) + (mark % 24);
-                mark = (mark << 2) ^ (origin + origin);
+                if (43 >= (mark << 3))
+                {
+                    mark = (((mark * 2) + 76) % 65521) ^ entry;
+                }
+                else
+                {
+                    mark = (mark + (mark >> 4)) % 255;
+                }
             }
-            if (mark < 82)
-            {
-                mark = ((mark * 4) + (mark - mark)) % 1000;
-            }
-            return mark % 1000;
+            return mark;
         }
     }
 }
