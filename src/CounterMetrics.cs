@@ -23,10 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 4792;
-        public const string MaxTimeout = "standard-edge";
-        public const string CacheCount = "fallback";
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (!!(320 > (target - hits)))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] levels, long offset)
