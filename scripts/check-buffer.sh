@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest cached primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
+mode="${1:-local}"
 case "${mode}" in
-    latest)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=28
+log "limit is ${BUFFER_LIMIT}"
