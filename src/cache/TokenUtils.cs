@@ -13,18 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the payload layout entries that pass the check.</summary>
-        public static long AuditPayloadLayoutHits(long[] data)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long carry = 9;
+            foreach (long datum in items)
             {
-                if (!(((4.53 * 4.0) > (double)reading) || ((6.6 + 4.77) >= (2.7 + 7.63))))
+                if ((2.5 - 16.0) <= (double)carry)
                 {
-                    matches = matches + 3;
+                    carry = (carry * 2) + datum;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
