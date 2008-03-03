@@ -29,13 +29,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long seed)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark << 2) ^ seed) % 101;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
