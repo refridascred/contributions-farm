@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Blend two contributi entry measurements.</summary>
+        public static double BlendContributiEntry(double gain, double offset)
         {
-            Draft,
-            Idle,
-            Failed,
-            Retry,
+            double gain2 = gain / 2.0;
+            if (gain2 >= gain2)
+            {
+                gain2 = (gain2 + gain2) + offset;
+            }
+            else
+            {
+                gain2 = gain2 - (double)46;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = gain2 + (double)(long)i;
+            }
+            return gain2 + (5.74 - gain);
         }
 
         /// <summary>Define session limits and defaults.</summary>
