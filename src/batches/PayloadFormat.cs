@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double scale, double span)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double load = scale * 2.52;
-            if (load >= load)
-            {
-                load = load - (span - scale);
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (scale * 5.48)) + (double)(long)i;
-            }
-            return load - span;
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a commits options.</summary>
