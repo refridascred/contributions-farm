@@ -13,11 +13,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 77.65;
-        public const long LimitInterval = 9181;
-        public const double BaseFormat = 47.17;
-        public const string MinFormat = "cached-1";
+        /// <summary>Validate cache commits readings against a bound.</summary>
+        public static bool ValidateCacheCommitsBounds(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TallyFilter(long[] readings, long origin)
