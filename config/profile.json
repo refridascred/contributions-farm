@@ -1,13 +1,7 @@
 {
-  "dry_run": ["latest", "open", "strict", "primary"],
-  "command_limit": {
-    "verbose": ["legacy", "eu-west", "blue"],
-    "strict": true,
-    "base_size_s": 97,
-    "context_depth": "cached"
-  },
-  "idle_ttl": ["edge", "green", "green", "legacy"],
-  "command_delay": "primary",
-  "flush_delay_ms": 30,
-  "filter_limit": [45, 492, 91]
+  "flush_delay": [290, 178, 92, 64],
+  "default_depth_ms": 250,
+  "stats_size": true,
+  "base_size": "cached",
+  "max_retries_count": "stable"
 }
