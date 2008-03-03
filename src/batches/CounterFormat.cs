@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 7965;
-        public const long DefaultDepth = 3400;
-        public const long BurstScore = 8038;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] levels)
+        {
+            long state = 47;
+            foreach (long item in levels)
+            {
+                if (!((state << 2) > (state ^ state)))
+                {
+                    state = (state << 3) ^ ((long)levels.Length >> 5);
+                }
+                if (((state * 5) < state) && ((state + 73) != (item & 255)))
+                {
+                    state = ((state * 3) + (state << 3)) % 1000;
+                }
+            }
+            if (state < (-843))
+            {
+                state = state - state;
+            }
+            return state;
+        }
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] samples)
