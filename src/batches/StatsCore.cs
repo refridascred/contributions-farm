@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstLevel = 91.53;
-        public const long BaseSize = 4781;
-        public const double CacheTools = 2.15;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!((datum & 1) >= (hits >> 5)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of farm filter readings.</summary>
         public static long CompareFarmFilterCount(long[] data)
