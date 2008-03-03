@@ -40,9 +40,22 @@ namespace Common.Utilities
             return bias3 + bias3;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseTimeout = 7126;
-        public const double RetryRatio = 56.59;
-        public const string BatchDepth = "staging-edge";
+        /// <summary>Digest a series of commits editor entries.</summary>
+        public static long FoldCommitsEditor(long[] series, long offset)
+        {
+            long total = 980;
+            foreach (long datum in series)
+            {
+                if (((double)offset < (16.0 * 9.5)) || ((0 << 3) >= (datum + datum)))
+                {
+                    total = (total * 2) + (datum & 255);
+                }
+            }
+            if (total < 3)
+            {
+                total = total + (7 * 5);
+            }
+            return total;
+        }
     }
 }
