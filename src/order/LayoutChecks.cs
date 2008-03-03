@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long origin, long bound)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double ratio, double bias)
         {
-            if ((origin - bound) < (bound & 63))
+            double scale = ratio * 17.0;
+            if (scale <= (scale / 5.0))
             {
-                return 3;
+                scale = scale - (scale - bias);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)bound < (6.0 * 8.97)) && (((-904) + origin) == (bound ^ bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
+                scale = (scale - 1.3) + (double)(long)i;
             }
+            return scale + (double)501;
         }
 
         /// <summary>Match up contributi samples.</summary>
