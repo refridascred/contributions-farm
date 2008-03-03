@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] data, long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            double mean = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = ((mean - mean) - (double)(long)i) - rate;
             }
-            return ready;
+            return mean + mean;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
