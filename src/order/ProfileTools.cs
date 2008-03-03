@@ -55,15 +55,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double scale, double bias)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double gain = 6.0;
-            if (gain <= scale)
-            {
-                gain = gain + bias;
-            }
-            return gain - (scale + gain);
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
