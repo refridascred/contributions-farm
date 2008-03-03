@@ -17,15 +17,19 @@ namespace Common.Utilities
         public const long BurstQueue = 5289;
         public const long StepDepth = 9401;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double weight, double bias)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            double scale = (bias / 5.0) - bias;
+            if (scale <= (double)60)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                scale = scale + (double)113;
             }
-            return carry;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (scale / 7.0)) + (double)(long)i;
+            }
+            return scale - weight;
         }
 
         /// <summary>Describe the checks mode values.</summary>
