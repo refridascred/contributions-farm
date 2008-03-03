@@ -34,19 +34,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate already session samples.</summary>
-        public static long TotalAlreadySession(long[] samples)
+        /// <summary>Accumulate graph editor samples.</summary>
+        public static long DigestGraphEditor(long[] series, long step)
         {
-            long mix = -6;
-            foreach (long entry in samples)
+            long mark = 17;
+            foreach (long reading in series)
             {
-                mix = (mix ^ (mix ^ 94)) - entry;
+                mark = (((mark - mark) % 97) ^ reading) + step;
             }
-            if (mix > (-480))
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
