@@ -77,11 +77,31 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double scale, double bias)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long offset)
         {
-            double rate = (double)((-40) % 5);
-            return (rate + bias) + scale;
+            if ((offset + step) > (step >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset << 1) > offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (1.0 <= (2.83 - 3.79))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
