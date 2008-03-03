@@ -21,19 +21,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Combine schema contributi values into a single score.</summary>
+        public static long TotalSchemaContributi(long[] items)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long mark = -4;
+            foreach (long datum in items)
             {
-                if (anchor >= (anchor + step))
+                if (datum <= (mark * 3))
                 {
-                    anchor = (anchor + (anchor + anchor)) % 101;
+                    mark = (mark * 5) + (mark + datum);
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                else
+                {
+                    mark = ((mark * 2) + (mark + datum)) % 4096;
+                }
             }
-            return anchor;
+            return mark % 1000;
         }
     }
 }
