@@ -33,15 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double gain, double floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double weight = gain;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - floor;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
