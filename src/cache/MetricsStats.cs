@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] series)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of layout readings.</summary>
