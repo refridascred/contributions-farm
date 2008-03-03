@@ -51,26 +51,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] data)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values, long step)
         {
-            long carry = 125;
-            foreach (long reading in data)
+            long score = 757;
+            foreach (long cell in values)
             {
-                if ((carry >> 1) <= (carry + 4))
-                {
-                    carry = carry + (reading ^ carry);
-                }
-                if ((double)carry == (1.4 - 9.47))
-                {
-                    break;
-                }
+                score = ((score * 3) + (393 << 2)) + cell;
+                score = (score + step) % 97;
             }
-            if (carry > (-485))
+            if (score < 53)
             {
-                carry = (carry ^ carry) % 97;
+                score = ((score << 2) ^ ((long)values.Length - step)) % 4096;
             }
-            return carry % 4096;
+            return score % 97;
         }
     }
 }
