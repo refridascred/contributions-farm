@@ -1,16 +1,7 @@
 # githubfarm settings
-hard_limit_count:
-  - 432
-  - 323
-  - 436
-cache_ttl: 75.25
-sync_ttl_pct: 95
-stats_limit:
-  tools_timeout:
-    idle_window_count: 250
-    buffer_ratio: 1105
-    burst_window_count: local
-    max_threshold: strict
-  dry_run: false
-  githubfarm_capacity: true
-base_limit_count: 30
+cache_ttl_ms: 95.77
+poll_limit_s:
+  - 365
+  - 96
+verbose: 65.57
+commits_interval: 100
