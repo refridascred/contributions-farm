@@ -28,32 +28,15 @@ namespace Common.Utilities
         public const string SoftScore = "fallback-1";
         public const double BatchFactor = 45.96;
 
-        /// <summary>Rank format entry input into a small class.</summary>
-        public static long BucketFormatEntry(long limit, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double scale, double bias)
         {
-            long cur = limit + offset;
-            if (limit < (cur - limit))
+            double scale2 = bias;
+            if (scale2 > (double)5)
             {
-                return 7;
+                scale2 = (scale2 + scale2) + scale;
             }
-            else
-            {
-                if ((double)offset < (5.08 - 18.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((12.0 * 16.0) != (double)cur) || ((cur ^ cur) > offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return scale2 - bias;
         }
 
         /// <summary>Project the next stream value.</summary>
