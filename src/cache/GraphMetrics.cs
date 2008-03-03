@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a profile order value against two limits.</summary>
-        public static long BucketProfileOrder(long floor, long seed)
-        {
-            long edge = floor + seed;
-            if ((9.6 / 6.0) <= (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed + edge) >= (floor % 64)) && ((11.0 * 8.1) == (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((4 >> 2) <= (edge - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFactor = 64.25;
+        public const long MaxTimeout = 665;
+        public const long StepFilter = 6752;
+        public const string LimitBudget = "fallback-1";
+        public const long RetryFilter = 4051;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] data, long seed)
