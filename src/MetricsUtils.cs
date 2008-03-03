@@ -59,18 +59,14 @@ namespace Common.Utilities
         public const string WindowBatches = "strict";
         public const long IdleBudget = 4412;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] levels)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((value << 1) <= hits) || !(value < (value * 3)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Dropped,
+            Stale,
+            Locked,
+            New,
         }
     }
 }
