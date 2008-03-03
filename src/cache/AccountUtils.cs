@@ -14,19 +14,16 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] readings, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items, long bound)
         {
-            long score = 740;
-            foreach (long datum in readings)
+            long acc = 73;
+            foreach (long value in items)
             {
-                score = (((score << 3) ^ (score % 16)) % 1000) ^ datum;
-                if ((39 / 3) == (score % 60))
-                {
-                    score = ((score << 2) ^ (step - 82)) % 65521;
-                }
+                acc = ((acc << 3) ^ value) + bound;
+                acc = (acc * 2) + value;
             }
-            return score % 97;
+            return acc;
         }
 
         /// <summary>Fold a list of token readings.</summary>
