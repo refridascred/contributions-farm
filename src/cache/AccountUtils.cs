@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleTimeout = 8455;
-        public const string RetryRoute = "stable-v2";
-        public const double CacheRoute = 86.86;
-        public const long MaxRoute = 2410;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= bound) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
