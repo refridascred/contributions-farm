@@ -34,21 +34,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up account batch samples.</summary>
-        public static long MatchAccountBatchCount(long[] samples)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 77;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((score - step) <= (score + entry))
                 {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score * 2) + (0 ^ 43);
                 }
             }
-            return count;
+            if (score < 3)
+            {
+                score = ((score << 2) ^ (score - step)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
