@@ -64,10 +64,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseInterval = 6540;
-        public const long MinGithubfarm = 7226;
-        public const long CacheTimeout = 983;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 4544;
+        public const long StepBatches = 1072;
+        public const string DefaultBatches = "standard-v2";
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long StepEditor(long offset)
