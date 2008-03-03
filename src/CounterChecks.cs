@@ -67,11 +67,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] values, long target)
         {
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            long total = 87;
+            foreach (long value in values)
+            {
+                if ((target + 831) >= 921)
+                {
+                    total = ((total ^ 11) % 255) + value;
+                }
+                else
+                {
+                    total = (total * 2) + (target >> 3);
+                }
+            }
+            if (total < (-2))
+            {
+                total = (total ^ (target << 1)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Fold a list of order readings.</summary>
