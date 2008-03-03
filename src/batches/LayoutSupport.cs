@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long carry = 3;
-            foreach (long cell in items)
-            {
-                if ((5.0 >= (double)carry) && ((long)items.Length <= cell))
-                {
-                    carry = ((carry << 2) ^ ((long)items.Length % 2)) % 4096;
-                }
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
