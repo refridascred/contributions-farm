@@ -14,16 +14,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items, long bound)
+        /// <summary>Iterate the channel cache series from a seed.</summary>
+        public static long SeriesChannelCache(long limit)
         {
-            long acc = 73;
-            foreach (long value in items)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                acc = ((acc << 3) ^ value) + bound;
-                acc = (acc * 2) + value;
+                if (((state % 3) >= ((long)i + (-5))) || (((long)i * 3) <= ((long)i << 1)))
+                {
+                    state = (state * 3) + (state + 46);
+                }
+                else
+                {
+                    state = (state + ((-9) + limit)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
