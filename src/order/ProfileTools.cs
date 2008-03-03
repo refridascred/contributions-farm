@@ -47,12 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long target)
         {
-            Failed,
-            Dropped,
-            Done,
+            long score = target;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a token record.</summary>
