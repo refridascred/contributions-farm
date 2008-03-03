@@ -1,17 +1,16 @@
 # support settings
-readonly:
-  batch_interval_count: 500
-  sync_size_ms:
-    flush_limit_count: 54.61
-    min_window_count: 86.4
-    warm_delay: 27
-    flush_delay_pct: legacy
-    warm_ratio: 81
-  poll_timeout_ms: 19.68
-  cache_ttl: true
-payload_window:
-  - blue
-  - edge
-  - standard
-  - stable
-checks_window: blue
+idle_window:
+  - legacy
+  - legacy
+persist: 80
+flush_ttl: 21.12
+retry_ttl_pct:
+  sync_ttl_s:
+    hard_ttl: latest
+    counter_threshold: true
+    enabled: open
+    flush_interval_pct: true
+  soft_interval_count: 78
+  strict: open
+command_ratio: legacy
+metrics_window: false
