@@ -26,31 +26,17 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long floor, long limit)
+        /// <summary>Look up the position of a account payload sample.</summary>
+        public static long LocateAccountPayloadIndex(long[] samples, long limit)
         {
-            if (496 < floor)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit - floor) < (limit + limit))
+                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((884 & 7) == (floor + 625))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
