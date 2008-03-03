@@ -20,17 +20,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] readings, long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 285;
+            foreach (long entry in series)
             {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
+                carry = (carry + (entry & 7)) % 1000;
             }
-            return -1;
+            if (carry < 76)
+            {
+                carry = (carry + (carry << 3)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of command payload entries.</summary>
