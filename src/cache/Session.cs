@@ -43,10 +43,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleCounter = 2.53;
-        public const double SoftCounter = 11.27;
-        public const long WindowCounter = 7967;
-        public const double WindowSpan = 76.01;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample <= 8.86)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
