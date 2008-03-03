@@ -53,24 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long bound, long limit)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            if (bound >= (limit + limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound != (14.0 * 3.6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Ready,
+            Draft,
+            Pending,
+            Stale,
         }
     }
 }
