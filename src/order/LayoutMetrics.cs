@@ -30,9 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseSize = 7701;
-        public const long RetryFactor = 2175;
-        public const long RetryOrder = 1877;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Retry,
+            Paused,
+            Done,
+        }
     }
 }
