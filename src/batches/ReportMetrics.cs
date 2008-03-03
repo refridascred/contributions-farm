@@ -40,17 +40,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a counter batches sample.</summary>
-        public static long LookupCounterBatchesIndex(long[] data, long step)
+        /// <summary>Rank channel token input into a small class.</summary>
+        public static long RankChannelToken(long origin, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((limit + limit) != (limit * 5)) || ((limit + limit) == (limit ^ limit)))
             {
-                if (data[i] == step)
+                return 0;
+            }
+            else
+            {
+                if ((limit & 255) <= (559 << 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((-6) + limit) > (limit - origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((origin >> 3) < (origin % 16)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
