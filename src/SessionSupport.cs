@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] samples, long target)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Idle,
+            Draft,
+            Done,
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
