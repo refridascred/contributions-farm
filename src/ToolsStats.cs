@@ -25,21 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)item == (1.1 / 3.0)))
                 {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
