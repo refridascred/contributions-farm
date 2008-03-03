@@ -38,16 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already notes series from a seed.</summary>
-        public static long IterateAlreadyNotes(long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] items, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                state = (state + (state >> 3)) % 255;
-                state = ((state * 3) + (long)i) % 97;
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
