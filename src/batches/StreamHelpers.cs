@@ -88,16 +88,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long sum = 9;
+            foreach (long datum in samples)
             {
-                anchor = anchor ^ (anchor % 24);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (sum > (datum ^ sum))
+                {
+                    sum = (sum - (28 << 2)) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sum ^ 931)) % 4096;
+                }
             }
-            return anchor;
+            return sum;
         }
     }
 }
