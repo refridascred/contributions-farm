@@ -24,23 +24,10 @@ namespace Common.Utilities
             return scale + (double)9;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] data)
-        {
-            long sum = 815;
-            foreach (long value in data)
-            {
-                if ((value % 12) <= (value + 56))
-                {
-                    sum = (sum * 3) + (sum % 64);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum - sum)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "staging-v2";
+        public const long IdleChannel = 451;
+        public const long BatchChannel = 333;
 
         /// <summary>Adjust a already counter reading.</summary>
         public static double AdjustAlreadyCounter(double bias, double span)
