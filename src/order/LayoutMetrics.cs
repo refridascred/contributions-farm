@@ -26,12 +26,24 @@ namespace Common.Utilities
         public const double BaseGithubfarm = 83.97;
         public const string RetryGithubfarm = "local-v2";
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long step, long seed)
         {
-            Retry,
-            Paused,
-            Done,
+            if (((-688) + seed) != (61 + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step % 5) <= (step % 60))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
