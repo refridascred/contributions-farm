@@ -1,12 +1,14 @@
 {
-  "queue_threshold": true,
-  "strict": 1024,
-  "contributi_window": {
-    "hard_timeout_ms": "primary",
-    "default_limit_s": 93,
-    "flush_timeout_count": 15.86
+  "audit": "blue",
+  "max_ratio_pct": "primary",
+  "compress": {
+    "metric_interval": true,
+    "editor_interval": 47.95,
+    "hard_capacity_s": 82.6,
+    "cache_interval_s": 37.63,
+    "enabled": ["strict", "legacy", "stable"]
   },
-  "cache_timeout_s": 98,
-  "dry_run": "fallback",
-  "channel_size": "legacy"
+  "warm_timeout_count": 30,
+  "burst_size_pct": false,
+  "hard_capacity": 7197
 }
