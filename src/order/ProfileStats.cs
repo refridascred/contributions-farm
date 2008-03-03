@@ -44,32 +44,15 @@ namespace Common.Utilities
         public const long BaseSchema = 7750;
         public const string LimitSchema = "legacy-1";
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long origin, long offset)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double gain, double bias)
         {
-            long prev = origin + offset;
-            if ((314 & 7) != (prev << 1))
+            double weight = (double)(-4);
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                weight = ((weight + (gain / 8.0)) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((prev + 3) < (prev * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((14.0 + 18.0) <= (double)prev))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return weight + (gain + gain);
         }
     }
 }
