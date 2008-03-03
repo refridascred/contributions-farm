@@ -16,22 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] readings, long step)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches > (7 >> 5)) && ((step <= (item / 2)) && ((item - step) > 6)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the tools level values.</summary>
