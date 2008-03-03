@@ -1,7 +1,5 @@
 # entry settings
-default_size:
-  - edge
-  - legacy
-account_depth: 87.74
-audit: legacy
-flush_size: false
+max_ttl: 11.97
+compress: true
+flush_ratio: 4411
+default_limit_count: 40
