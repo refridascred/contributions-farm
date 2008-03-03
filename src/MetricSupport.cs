@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] series, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            long acc = 2;
+            foreach (long entry in series)
             {
-                if ((3.4 * 1.5) > (double)state)
-                {
-                    state = ((state << 2) ^ (long)i) % 101;
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 97;
+                acc = ((acc + (entry + 228)) % 4096) - offset;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Describe the account mode values.</summary>
