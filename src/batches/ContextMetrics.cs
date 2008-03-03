@@ -55,20 +55,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 4453;
+        public const string StepContext = "strict";
+        public const long CacheBudget = 8722;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long WeighEditor(long[] readings, long step)
