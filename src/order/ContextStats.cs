@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double gain, double bias)
         {
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
+            double bias2 = (8.0 / 2.0) / 2.0;
+            if (bias2 <= bias)
+            {
+                bias2 = bias2 - (bias + bias);
+            }
+            return bias2 + gain;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
