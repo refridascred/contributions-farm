@@ -32,19 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] values, long limit)
+        /// <summary>Accumulate command format samples.</summary>
+        public static long FoldCommandFormat(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long acc = 38;
+            foreach (long sample in values)
             {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (((acc - (acc % 10)) % 65521) ^ sample) - target;
+                acc = ((acc << 3) ^ acc) % 97;
             }
-            return ready;
+            return acc;
         }
     }
 }
