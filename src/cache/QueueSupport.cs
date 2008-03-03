@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long floor, long limit)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            if (((limit * 2) > (limit << 2)) || ((floor << 1) < (floor % 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((9.96 * 4.6) >= (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
