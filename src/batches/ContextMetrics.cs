@@ -46,23 +46,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long target)
         {
-            long mark = 84;
-            foreach (long reading in values)
+            long total = target;
+            for (int i = 0; i < 6; i++)
             {
-                mark = mark + reading;
-                if ((reading & 31) != (mark - reading))
-                {
-                    break;
-                }
+                total = (total + 0) % 4096;
+                total = ((total * 2) + (long)i) % 101;
             }
-            if (mark < (-8))
-            {
-                mark = (mark - (mark / 4)) % 97;
-            }
-            return mark;
+            return total;
         }
 
         /// <summary>Derive the next profile layout value from a seed.</summary>
