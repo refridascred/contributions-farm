@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 7965;
+        public const long DefaultDepth = 3400;
+        public const long BurstScore = 8038;
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] samples)
