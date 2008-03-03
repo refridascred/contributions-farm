@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels, long step)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] readings)
         {
-            long mark = 7;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark ^ (datum / 5)) % 65521;
-                if (9.34 >= (double)step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark ^ step) % 101;
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Describe the command kind values.</summary>
