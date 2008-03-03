@@ -29,19 +29,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double weight, double span)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double load = span / 8.0;
-            if (load < weight)
-            {
-                load = load - (load + 17.0);
-            }
-            else
-            {
-                load = load + (load / 2.0);
-            }
-            return load - span;
+            Paused,
+            Retry,
+            Done,
+            Closed,
         }
     }
 }
