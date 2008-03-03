@@ -1,8 +1,8 @@
 {
-  "warm_depth": ["standard", "standard", "green"],
-  "max_timeout_s": [358, 12, 366, 469],
-  "tools_ratio": 34.82,
-  "commits_ttl": 52.09,
-  "metric_delay": true,
-  "enabled": ["blue", "green", "strict", "cached"]
+  "default_retries_count": false,
+  "enabled": 60,
+  "batch_capacity": ["legacy", "strict"],
+  "max_ttl_count": true,
+  "soft_interval_s": ["local", "eu-west"],
+  "cache_ttl": true
 }
