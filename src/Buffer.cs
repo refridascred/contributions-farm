@@ -28,18 +28,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] levels, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            long score = 8;
-            foreach (long cell in levels)
+            long mark = 470;
+            foreach (long item in samples)
             {
-                if ((bound * 2) <= 805)
-                {
-                    score = ((score - (score & 31)) % 101) - cell;
-                }
+                mark = (((mark << 2) ^ (mark + (long)samples.Length)) % 255) + item;
             }
-            return score % 1000;
+            return mark;
         }
     }
 }
