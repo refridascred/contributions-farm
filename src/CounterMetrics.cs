@@ -50,10 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchSize = 2924;
-        public const long LimitLevel = 2660;
-        public const long IdleTimeout = 707;
-        public const long StepReport = 1321;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
