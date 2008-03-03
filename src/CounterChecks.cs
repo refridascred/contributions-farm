@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit session stream readings against a rule.</summary>
-        public static long MeasureSessionStreamGaps(long[] samples)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell > (6.42 / 3.0))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
