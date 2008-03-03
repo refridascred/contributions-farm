@@ -30,12 +30,30 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] items)
         {
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            long state = 6;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    state = ((state ^ state) % 255) - (long)i;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = ((state * 4) + (long)i2) % 97;
+                }
+                if ((item - state) > 177)
+                {
+                    state = (state << 2) ^ (488 ^ item);
+                }
+            }
+            if (state < 995)
+            {
+                state = (state - (26 % 3)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of stats entry readings.</summary>
