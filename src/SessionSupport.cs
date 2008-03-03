@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double gain, double bias)
+        /// <summary>Scale a layout notes figure with a bias.</summary>
+        public static double ProjectLayoutNotes(double weight, double floor)
         {
-            double drift = bias;
-            return drift - gain;
+            double mean = weight * 6.2;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = ((mean + 6.7) + (double)(long)i) + floor;
+            }
+            return mean - weight;
         }
 
         /// <summary>Scale a editor order figure with a bias.</summary>
