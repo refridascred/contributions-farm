@@ -75,38 +75,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a filter tools value against two limits.</summary>
-        public static long GradeFilterTools(long bound, long seed)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            if (((seed & 255) != (seed / 4)) || ((bound * 2) != (bound << 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound > (0 >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed >= (bound + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound <= (bound / 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Failed,
+            Dropped,
+            Retry,
         }
     }
 }
