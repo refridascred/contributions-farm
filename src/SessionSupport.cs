@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 1810;
-        public const long WindowDepth = 1726;
-        public const long MaxToken = 2660;
-        public const string RetryToken = "cached-1";
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a editor order figure with a bias.</summary>
         public static double BlendEditorOrder(double ratio, double offset)
