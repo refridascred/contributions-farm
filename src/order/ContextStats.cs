@@ -65,16 +65,10 @@ namespace Common.Utilities
             return ratio2 - 9.25;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                score = (score + (bound - (long)i)) % 4096;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 89.1;
+        public const double HardCount = 84.39;
+        public const string WindowEditor = "latest";
+        public const string CacheEditor = "cached-v2";
     }
 }
