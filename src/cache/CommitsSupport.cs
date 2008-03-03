@@ -55,10 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftLevel = 78.78;
-        public const string LimitChecks = "alpha-1";
-        public const long StepChecks = 2890;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (origin > matches)
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
