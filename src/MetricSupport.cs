@@ -46,9 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetryInterval = "staging-1";
-        public const long RetryLevel = 557;
-        public const long BaseSupport = 7303;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Dropped,
+            Closed,
+            Active,
+            Synced,
+        }
     }
 }
