@@ -34,18 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] samples)
+        /// <summary>Accumulate queue context samples.</summary>
+        public static long ScoreQueueContext(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = 47;
+            foreach (long entry in values)
             {
-                if (222 <= (matches - datum))
+                if (((result + 841) <= (step ^ entry)) && (547 >= (entry - 7)))
                 {
-                    matches = matches + 2;
+                    result = (result * 4) + entry;
                 }
             }
-            return matches;
+            if (result > (-8))
+            {
+                result = result - step;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a metrics header.</summary>
