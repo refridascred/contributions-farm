@@ -37,18 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry * 3) + (carry ^ bound)) % 65521;
-                carry = ((carry * 4) + (bound + carry)) % 97;
-                carry = ((carry << 2) ^ (carry - carry)) % 255;
-                carry = ((carry * 2) + (long)i) % 97;
+                state = (state + floor) % 97;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Project the next stats value.</summary>
