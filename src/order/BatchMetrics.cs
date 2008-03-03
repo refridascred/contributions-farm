@@ -46,21 +46,19 @@ namespace Common.Utilities
         public const long LimitSize = 8465;
         public const double BatchWindow = 23.61;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Validate command metric readings against a bound.</summary>
+        public static bool VerifyCommandMetricRange(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading >= bound)
                 {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a payload entry.</summary>
