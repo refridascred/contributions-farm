@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] values, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long anchor = 17;
+            foreach (long item in data)
             {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor - 3) % 97) ^ item;
+                anchor = ((anchor << 3) ^ (limit * 2)) % 97;
             }
-            return stale;
+            return anchor % 1000;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
