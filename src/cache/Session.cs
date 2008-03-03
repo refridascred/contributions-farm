@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] data, long target)
         {
-            Retry,
-            Synced,
-            Dropped,
-            Closed,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count + 2) == (target + target))
+                {
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
