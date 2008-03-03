@@ -64,18 +64,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] series)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((seen + seen) >= ((long)series.Length - entry)) || ((91 <= seen) && ((entry - 170) <= ((long)series.Length - seen))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count record account pairs that satisfy a relation.</summary>
