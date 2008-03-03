@@ -23,25 +23,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a context record value against two limits.</summary>
-        public static long RankContextRecord(long seed, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] readings, long step)
         {
-            long next = seed + step;
-            if ((step ^ next) >= (seed + next))
+            long mix = 0;
+            foreach (long sample in readings)
             {
-                return 3;
+                mix = (mix ^ 718) ^ sample;
+                mix = mix + (step ^ 6);
             }
-            else
-            {
-                if (9.0 > (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mix % 97;
         }
 
         /// <summary>Project the next queue value.</summary>
