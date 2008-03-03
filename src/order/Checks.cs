@@ -65,10 +65,21 @@ namespace Common.Utilities
             return mean + (mean * 3.6);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinTimeout = 1676;
-        public const long WindowDepth = 7431;
-        public const long BaseStats = 7443;
-        public const long StepWidth = 9825;
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
