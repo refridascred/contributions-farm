@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] items)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)matches >= (13.0 - 2.69))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Draft,
+            Retry,
         }
 
         /// <summary>Validate buffer contributi readings against a bound.</summary>
