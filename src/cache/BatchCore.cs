@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const string BaseScore = "primary-edge";
         public const double StepDepth = 92.59;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] values, long step)
         {
-            Queued,
-            Ready,
-            Paused,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
