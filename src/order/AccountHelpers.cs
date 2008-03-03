@@ -98,18 +98,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] readings)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (matches > 2)
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Draft,
+            Pending,
+            Locked,
         }
     }
 }
