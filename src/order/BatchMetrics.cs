@@ -49,13 +49,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
