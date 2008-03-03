@@ -62,38 +62,21 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long offset, long floor)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            if ((offset << 3) >= (-78))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset / 7) < (floor + 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset >= (floor << 2))
+                    if ((data[i] - data[j]) < 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor <= (9 + offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
