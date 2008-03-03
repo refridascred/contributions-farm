@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 8527;
-        public const long HardRecord = 9395;
-        public const string SoftSize = "primary-1";
-        public const double LimitDepth = 90.86;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double BlendSession(double weight, double floor)
