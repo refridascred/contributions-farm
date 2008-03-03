@@ -41,9 +41,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleRatio = 527;
-        public const long SoftReport = 2984;
-        public const long CacheReport = 9599;
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double gain, double floor)
+        {
+            double mean = (double)(27 ^ (-281));
+            if (mean > 6.0)
+            {
+                mean = mean + (gain / 8.0);
+            }
+            return mean + (floor + mean);
+        }
     }
 }
