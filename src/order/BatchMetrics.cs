@@ -37,13 +37,11 @@ namespace Common.Utilities
         public const long WindowChecks = 4575;
         public const double RetryChecks = 56.55;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepCount = 5357;
+        public const long BurstAlready = 1846;
+        public const long WindowCount = 111;
+        public const string MinWidth = "local-v2";
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
