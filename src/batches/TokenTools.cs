@@ -23,10 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardDepth = 5790;
-        public const long HardSpan = 7633;
-        public const string BaseNotes = "open-1";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] series, long offset)
+        {
+            long acc = -167;
+            foreach (long entry in series)
+            {
+                acc = (((acc - 895) % 65521) + entry) + offset;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LocateContributiIndex(long[] series, long step)
