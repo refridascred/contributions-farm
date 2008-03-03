@@ -43,14 +43,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Accumulate githubfarm window samples.</summary>
+        public static long TallyGithubfarmWindow(long[] items)
         {
-            Done,
-            Closed,
-            Idle,
-            Queued,
-            Pending,
+            long total = 394;
+            foreach (long reading in items)
+            {
+                if ((17.0 - 12.0) >= (double)total)
+                {
+                    total = ((total * 5) + (reading ^ 436)) % 97;
+                }
+                else
+                {
+                    total = (total + total) % 255;
+                }
+            }
+            if (total < 744)
+            {
+                total = (total + total) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
