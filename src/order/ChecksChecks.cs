@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Done,
-            Locked,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 2065;
+        public const string DefaultSession = "staging";
+        public const double BatchSession = 58.97;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
