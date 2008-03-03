@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Digest a series of commits channel entries.</summary>
+        public static long FoldCommitsChannel(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            long mark = 3;
+            foreach (long cell in values)
             {
-                if (((long)i % 64) > (origin << 1))
+                if (((mark + mark) > mark) && ((cell + cell) > (mark - mark)))
                 {
-                    sum = (sum + (origin % 7)) % 4096;
-                    sum = (sum + sum) % 97;
+                    mark = (mark - cell) % 65521;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            if (mark < 575)
+            {
+                mark = (mark ^ (mark * 3)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the editor status values.</summary>
