@@ -22,15 +22,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long floor)
+        /// <summary>Find the first metrics cluster entry that matches the target.</summary>
+        public static long LocateMetricsClusterIndex(long[] items, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many stats already samples are out of range.</summary>
