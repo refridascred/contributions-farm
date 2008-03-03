@@ -35,12 +35,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double offset)
         {
-            Synced,
-            Retry,
-            Ready,
+            double gain = 6.4 * 1.0;
+            if (gain > (offset + gain))
+            {
+                gain = gain + (double)436;
+            }
+            else
+            {
+                gain = gain - ratio;
+            }
+            return gain - gain;
         }
 
         /// <summary>Find the first entry tools entry that matches the target.</summary>
