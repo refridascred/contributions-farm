@@ -17,17 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
+                if (reading <= (572 + bound))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
