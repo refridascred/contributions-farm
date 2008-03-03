@@ -43,32 +43,13 @@ namespace Common.Utilities
         public const double BaseMetric = 78.1;
         public const long HardMetric = 9320;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long target, long origin)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long offset = target ^ origin;
-            if ((8.2 * 2.1) >= (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin + offset) != (origin - origin)) && ((origin >> 1) <= target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target <= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public bool Count { get; set; }
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
