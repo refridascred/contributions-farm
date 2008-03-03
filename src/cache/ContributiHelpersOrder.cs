@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long step, long limit)
+        /// <summary>Roll a contributi route counter forward.</summary>
+        public static long SeriesContributiRoute(long floor)
         {
-            long next = step - limit;
-            if (((4.9 - 3.0) > (double)next) || ((double)658 >= (double)limit))
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((next >> 4) < next)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step << 1) < (next * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((701 * 4) < (957 - limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Accumulate filter samples.</summary>
