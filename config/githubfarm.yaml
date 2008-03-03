@@ -1,21 +1,12 @@
 # githubfarm settings
-metric_retries:
-  warm_threshold: primary
-  soft_threshold_ms: open
-  notes_depth: fallback
-  compress: eu-west
-  schema_ratio: 60
-  hard_delay_count: standard
-persist:
-  - staging
-  - open
-  - blue
-  - legacy
-counter_size: true
-cache_interval_s: 51.0
-default_delay_ms:
-  - 435
-  - 416
-  - 489
-  - 401
-warm_threshold: stable
+strict: staging
+profile_timeout: local
+verbose:
+  - fallback
+  - cached
+  - standard
+soft_depth_s: 52
+sync_depth:
+  - 467
+  - 167
+  - 284
