@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] items)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((double)matches != (12.0 - 0.2))
+                if ((value <= (141 * 4)) && ((count * 5) <= count))
                 {
-                    matches = (matches + 1) + value;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
