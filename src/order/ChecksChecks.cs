@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 2065;
-        public const string DefaultSession = "staging";
-        public const double BatchSession = 58.97;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 9353;
+        public const string WindowSpan = "stable-1";
+        public const double MinSpan = 25.22;
+        public const string MinSize = "stable-v2";
+        public const long HardRatio = 3287;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
