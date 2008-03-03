@@ -40,12 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Done,
-            Dropped,
-            Synced,
+            Stale,
+            Queued,
+            Active,
         }
     }
 }
