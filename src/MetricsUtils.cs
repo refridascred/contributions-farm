@@ -48,14 +48,11 @@ namespace Common.Utilities
         public const string WindowBatches = "strict";
         public const long IdleBudget = 4412;
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Synced,
-            Dropped,
-            Stale,
-            Locked,
-            New,
+            public bool Limit { get; set; }
+            public double Count { get; set; }
         }
     }
 }
