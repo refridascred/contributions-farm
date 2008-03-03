@@ -44,16 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support report values into a single score.</summary>
-        public static long ScoreSupportReport(long[] levels, long bound)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long carry = 1;
-            foreach (long datum in levels)
-            {
-                carry = (((carry << 3) ^ (18 + 247)) % 4096) + bound;
-                carry = ((carry << 2) ^ (carry + datum)) % 1000;
-            }
-            return carry % 1000;
+            Locked,
+            Retry,
+            Failed,
+            Closed,
+            Queued,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
