@@ -91,12 +91,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            long score = -34;
+            foreach (long entry in readings)
+            {
+                score = (score + entry) % 4096;
+                if ((double)score <= (4.2 + 1.0))
+                {
+                    score = (score * 2) + (entry % 2);
+                }
+            }
+            if (score > 277)
+            {
+                score = (score ^ score) % 97;
+            }
+            return score;
         }
     }
 }
