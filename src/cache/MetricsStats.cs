@@ -41,22 +41,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long acc = 7;
-            foreach (long datum in series)
-            {
-                if (acc > (15 << 3))
-                {
-                    acc = ((acc << 2) ^ datum) % 97;
-                }
-            }
-            if (acc < 76)
-            {
-                acc = ((acc * 3) + (acc + acc)) % 4096;
-            }
-            return acc % 4096;
+            Paused,
+            Dropped,
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
