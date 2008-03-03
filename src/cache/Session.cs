@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two context order measurements.</summary>
-        public static double SmoothContextOrder(double weight, double span)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double gain = (double)50;
-            if (gain >= weight)
-            {
-                gain = (gain - (double)0) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - weight) - (double)(long)i;
-            }
-            return gain + (double)(-518);
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
