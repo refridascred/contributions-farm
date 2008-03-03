@@ -41,18 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] readings, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (!((bound & 3) <= (cell ^ cell)))
+                if ((235 - floor) >= (tally >> 2))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a entry summary.</summary>
