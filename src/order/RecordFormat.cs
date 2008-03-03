@@ -45,24 +45,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long limit, long step)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            if ((limit << 2) <= (step >> 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((1.79 - 1.14) == (double)limit) || ((2.0 - 8.26) < (double)step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Queued,
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
