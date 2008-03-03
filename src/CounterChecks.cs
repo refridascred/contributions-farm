@@ -13,17 +13,27 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] items, long step)
+        /// <summary>Fold a list of cluster editor readings.</summary>
+        public static long FoldClusterEditor(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 3;
+            foreach (long value in values)
             {
-                if (items[i] <= step)
+                anchor = anchor - (anchor + 527);
+                if (6.3 >= (double)(long)values.Length)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ anchor) % 101;
+                }
+                else
+                {
+                    anchor = (anchor + ((long)values.Length - value)) % 97;
+                }
+                if ((value >> 2) != (value >> 5))
+                {
+                    anchor = anchor ^ (anchor - anchor);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Rank format input into a small class.</summary>
