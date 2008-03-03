@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long offset, long seed)
+        /// <summary>Adjust a route layout reading.</summary>
+        public static double ScaleRouteLayout(double bias, double floor)
         {
-            if (!((offset * 5) == (44 + offset)))
+            double bias2 = (double)616 * 2.0;
+            if (bias2 <= bias2)
             {
-                return 1;
+                bias2 = (bias2 - floor) - bias;
             }
             else
             {
-                if (((seed - seed) > seed) || ((offset << 3) != (seed >> 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
+                bias2 = bias2 + (double)9;
             }
+            return bias2 - (0.58 + floor);
         }
 
         /// <summary>Measure how many notes window samples are out of range.</summary>
