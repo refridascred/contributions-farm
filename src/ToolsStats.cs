@@ -43,17 +43,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a channel cluster reading by value.</summary>
-        public static long SeekChannelClusterIndex(long[] data, long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 7;
+            foreach (long datum in samples)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                score = (score - (372 / 3)) + datum;
             }
-            return -1;
+            if (score < 839)
+            {
+                score = score ^ (target % 24);
+            }
+            return score;
         }
 
         /// <summary>Hold a batches entry.</summary>
