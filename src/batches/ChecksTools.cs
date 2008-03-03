@@ -28,13 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double weight, double offset)
         {
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            double rate = (double)(193 + 87);
+            if (rate > rate)
+            {
+                rate = ((rate + (double)348) + weight) + offset;
+            }
+            return rate - (double)5;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
