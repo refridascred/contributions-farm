@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double bias, double offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels, long step)
         {
-            double scale = bias;
-            if (scale <= scale)
+            long mark = 7;
+            foreach (long datum in levels)
             {
-                scale = (scale + scale) - offset;
+                mark = (mark ^ (datum / 5)) % 65521;
+                if (9.34 >= (double)step)
+                {
+                    mark = (mark ^ step) % 101;
+                }
             }
-            else
-            {
-                scale = scale - (scale * 0.76);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - 2.65) + (double)(long)i;
-            }
-            return scale + (double)9;
+            return mark % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
