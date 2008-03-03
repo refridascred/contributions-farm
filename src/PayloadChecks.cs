@@ -32,14 +32,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values)
         {
-            Paused,
-            Idle,
-            New,
-            Closed,
-            Queued,
+            long carry = 5;
+            foreach (long entry in values)
+            {
+                if ((double)carry == (double)entry)
+                {
+                    carry = ((carry * 2) + (6 - entry)) % 255;
+                }
+                if (entry >= (-67))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
