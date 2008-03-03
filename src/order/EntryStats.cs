@@ -50,17 +50,16 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Find the first entry tools entry that matches the target.</summary>
-        public static long SeekEntryToolsIndex(long[] samples, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 3) + (long)i;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
