@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long MaxToken = 2660;
         public const string RetryToken = "cached-1";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardLevel = 2243;
-        public const string LimitFactor = "standard-v2";
-        public const long BurstLevel = 3992;
-        public const long MinCommits = 5469;
-        public const double CacheCommits = 65.84;
+        /// <summary>Scale a editor order figure with a bias.</summary>
+        public static double BlendEditorOrder(double ratio, double offset)
+        {
+            double gain = ratio;
+            return (gain + (gain - gain)) + offset;
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
