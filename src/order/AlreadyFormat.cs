@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] data)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 219;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total - (total & 1)) + datum;
             }
-            return matches;
+            if (total < 2)
+            {
+                total = ((total * 5) + (seed + seed)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
