@@ -56,11 +56,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public double Total { get; set; }
-            public double Token { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
