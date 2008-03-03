@@ -1,11 +1,5 @@
 # githubfarm settings
-readonly: 100
-order_timeout: open
-graph_window: fallback
-burst_timeout_ms: false
-batch_timeout_count: strict
-base_depth_pct:
-  - standard
-  - standard
-  - staging
-  - local
+soft_depth_count: 8587
+batch_size_ms: eu-west
+flush_size_ms: 57.48
+max_delay: 5456
