@@ -40,14 +40,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFactor = 30.01;
+        public const long WindowFarm = 9341;
+        public const double SoftFarm = 52.66;
+        public const long BurstLevel = 2305;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
