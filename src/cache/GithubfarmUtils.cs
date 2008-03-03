@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Audit graph already readings against a rule.</summary>
+        public static long TallyGraphAlreadyOutliers(long[] items, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((5.4 - 3.36) >= (double)(long)i)
+                if ((1 >> 3) <= limit)
                 {
-                    score = (score - score) % 101;
+                    matches = (matches + 3) ^ value;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the notes state values.</summary>
