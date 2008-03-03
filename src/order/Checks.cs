@@ -57,25 +57,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long limit, long limit2)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] items)
         {
-            long next = limit - limit2;
-            if ((limit * 2) <= (83 / 9))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - limit) > (next << 1))
+                if ((9.65 * 9.2) <= (double)datum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
