@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const double IdleChecks = 51.86;
         public const long DefaultChecks = 7489;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the profile graph entries that pass the check.</summary>
+        public static long TallyProfileGraphGaps(long[] samples, long step)
         {
-            Done,
-            Draft,
-            Ready,
-            Locked,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value / 6) == (hits - hits))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
         }
     }
 }
