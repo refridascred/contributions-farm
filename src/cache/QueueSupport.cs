@@ -23,19 +23,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double gain, double bias)
-        {
-            double drift = gain - (gain / 3.0);
-            if (drift > (bias - bias))
-            {
-                drift = drift - gain;
-            }
-            else
-            {
-                drift = drift + (drift * 8.0);
-            }
-            return drift - gain;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstScore = "alpha-1";
+        public const long CacheLevel = 7759;
+        public const long MinChecks = 5729;
     }
 }
