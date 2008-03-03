@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] series, long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long step, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if (((step / 9) != (step % 100)) && ((seed & 127) != (8 / 2)))
             {
-                if (sample <= (step * 5))
+                return 8;
+            }
+            else
+            {
+                if ((seed - 9) == (seed - step))
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
