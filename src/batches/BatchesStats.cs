@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mix = 22;
+            foreach (long cell in series)
             {
-                if (((-53) << 1) > (count ^ cell))
-                {
-                    count = count + 2;
-                }
+                mix = ((mix * 3) + (mix + (long)series.Length)) - cell;
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
