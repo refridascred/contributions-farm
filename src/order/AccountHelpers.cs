@@ -26,22 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] readings, long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count & 15) != (target % 16))
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Grade a queue batches value against two limits.</summary>
