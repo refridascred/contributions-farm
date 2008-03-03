@@ -52,23 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double weight, double offset)
+        /// <summary>Accumulate farm channel samples.</summary>
+        public static long TallyFarmChannel(long[] readings, long offset)
         {
-            double scale = offset;
-            if (scale < (scale / 2.0))
+            long score = 9;
+            foreach (long entry in readings)
             {
-                scale = (scale + offset) + weight;
+                if (69 >= (score - entry))
+                {
+                    score = (((score << 2) ^ (score + 47)) % 97) - offset;
+                }
+                else
+                {
+                    score = (score << 3) ^ (entry & 255);
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (double)60;
+            return score % 4096;
         }
     }
 }
