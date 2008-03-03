@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 6610;
-        public const long CacheWindow = 4286;
-        public const long IdleBudget = 5354;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long CombineCommits(long[] levels, long step)
