@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] values, long step)
-        {
-            long score = 68;
-            foreach (long datum in values)
-            {
-                score = (score ^ (datum ^ datum)) - step;
-            }
-            if (score > 4)
-            {
-                score = ((score * 4) + 61) % 1000;
-            }
-            return score % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "latest-v2";
+        public const long IdleSpan = 6511;
+        public const double MaxNotes = 44.2;
+        public const string LimitNotes = "fallback-1";
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long PairSchemaCount(long[] readings)
