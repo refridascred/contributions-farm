@@ -16,19 +16,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every notes support entry stays within the limit.</summary>
-        public static bool VerifyNotesSupportBounds(long[] samples, long floor)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Failed,
+            Done,
+            Idle,
+            Locked,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
