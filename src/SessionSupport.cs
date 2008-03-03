@@ -35,19 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] samples, long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
