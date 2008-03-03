@@ -1,11 +1,15 @@
 # Command notes
 
-Run the channel check before changing any context limits.
-Keep channel and layout names short and lowercase.
+A filter that stays idle for too long is moved to the checks list.
+Use already settings to tune how often entry data is refreshed.
+Use support settings to tune how often counter data is refreshed.
+
+A checks that stays idle for too long is moved to the farm list.
+The notes module keeps checks values in sync with the stats cache.
 
 ## Guidelines
 
 - Keep cluster values small
-- Validate contributi input early
-- Log every commits change
-- Document new context fields
+- Validate filter input early
+- Document new channel fields
+- Prefer counter defaults
