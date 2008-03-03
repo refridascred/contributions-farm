@@ -1,7 +1,8 @@
-id,token,level,owner,score
-1,fallback,fallback,489,28.3
-2,90.75,845,18.27,488
-3,fallback,primary,10.01,cached
-4,96.89,77,505,local
-5,9.44,641,694,31.35
-6,stable,188,latest,922
+id,token,level
+1,35.12,183
+2,766,14.44
+3,828,417
+4,edge,7.08
+5,staging,eu-west
+6,56,376
+7,edge,1.05
