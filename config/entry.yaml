@@ -1,10 +1,13 @@
 # entry settings
-min_ratio_count:
-  - 407
-  - 284
-  - 243
-  - 476
-max_retries_s: staging
-route_window: 29
-command_capacity: 100
-buffer_limit: stable
+metrics_ratio: true
+default_timeout_ms: 50
+soft_window:
+  default_timeout: true
+  flush_interval: true
+  format_timeout: primary
+  flush_depth_pct: true
+already_timeout:
+  - 43
+  - 33
+  - 469
+  - 317
