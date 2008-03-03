@@ -1,7 +1,19 @@
 {
-  "warm_limit": "local",
-  "already_capacity": 42.05,
-  "metric_depth": 1751,
-  "verbose": 1024,
-  "flush_limit": "fallback"
+  "support_ratio": {
+    "poll_window": 54.19,
+    "base_ttl": ["blue", "open", "cached", "stable"],
+    "default_threshold": [261, 225],
+    "commits_window": {
+      "layout_ratio": 85,
+      "base_size_s": 60,
+      "commits_size": 4807,
+      "warm_threshold_ms": 30,
+      "graph_window": "stable"
+    }
+  },
+  "compress": "edge",
+  "cache_ratio": "cached",
+  "warm_window": [376, 112],
+  "verbose": "stable",
+  "strict": [494, 15, 254, 390]
 }
