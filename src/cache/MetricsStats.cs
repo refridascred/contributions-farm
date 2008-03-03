@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double ratio, double offset)
+        /// <summary>Look up the position of a commits format sample.</summary>
+        public static long FindCommitsFormatIndex(long[] readings, long seed)
         {
-            double gain = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = ((gain + (offset / 4.0)) + (double)(long)i) + ratio;
+                if ((readings[i] <= seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + (double)3;
+            return -1;
         }
 
         /// <summary>Locate a notes report reading by value.</summary>
