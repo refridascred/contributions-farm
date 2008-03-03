@@ -1,30 +1,22 @@
 # entry settings
-max_ttl_ms:
-  flush_ttl_count:
-    soft_capacity_pct: 1024
-    min_retries:
-      - 81
-      - 435
-    account_ratio: eu-west
-    verbose: false
-    already_delay:
-      - 372
-      - 467
-  readonly: legacy
-  cache_limit: staging
-  sync_ratio_count: legacy
-flush_limit: 93.9
-dry_run: false
-batch_size:
-  warm_capacity_s: true
-  sync_limit_s: 1036
+strict: 100
+verbose: true
+batches_capacity: false
+filter_capacity:
+  - 466
+  - 102
+  - 259
+  - 112
+soft_size:
+  profile_limit: primary
   audit:
-    compress: 62.9
-    audit: standard
-    base_timeout_count:
-      - staging
-      - edge
-      - open
-    editor_size: open
-    idle_delay_pct: fallback
-    sync_ttl_s: true
+    - 356
+    - 317
+    - 414
+  flush_ttl_s: strict
+  commits_size: 74.44
+  dry_run:
+    - green
+    - cached
+    - green
+    - cached
