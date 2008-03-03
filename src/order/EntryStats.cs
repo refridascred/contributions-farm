@@ -35,18 +35,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] readings, long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((datum * 4) >= (origin + origin))
+                if (datum != floor)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
