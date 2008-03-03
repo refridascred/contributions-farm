@@ -1,6 +1,8 @@
 {
-  "burst_interval": 1024,
-  "retry_depth_s": 572,
-  "batch_depth": 60,
-  "support_delay": ["stable", "stable", "blue", "primary"]
+  "cache_capacity_pct": false,
+  "idle_window_pct": "stable",
+  "readonly": 100,
+  "max_threshold_pct": 92,
+  "flush_depth_s": true,
+  "token_timeout": 60
 }
