@@ -32,13 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long step, long limit)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            if ((limit - limit) < (limit + step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((6.6 / 3.0) != (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - step) < limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools mode values.</summary>
