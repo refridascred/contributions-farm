@@ -1,8 +1,5 @@
 {
-  "cache_capacity_pct": false,
-  "idle_window_pct": "stable",
-  "readonly": 100,
-  "max_threshold_pct": 92,
-  "flush_depth_s": true,
-  "token_timeout": 60
+  "warm_ratio_count": 39.74,
+  "commits_delay": 39.55,
+  "schema_depth": 79.89
 }
