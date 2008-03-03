@@ -1,5 +1,9 @@
 {
-  "retry_threshold_s": 70.14,
-  "sync_window_pct": "standard",
-  "poll_capacity_pct": 709
+  "strict": 1024,
+  "default_threshold_s": {
+    "sync_size": ["latest", "staging", "open", "green"],
+    "command_timeout": 30,
+    "max_threshold": 2121
+  },
+  "batch_window_ms": "standard"
 }
