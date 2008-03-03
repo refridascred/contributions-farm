@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] items, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 755;
+            foreach (long datum in values)
             {
-                if ((items[i] > seed) && ((items[i] % 5) == 0))
+                if (((anchor % 16) != (957 + 36)) || (datum > (datum + 4)))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (seed * 5)) % 101;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a buffer summary.</summary>
