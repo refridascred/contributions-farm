@@ -58,22 +58,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] levels)
         {
-            long sum = 16;
-            foreach (long value in items)
+            long state = -8;
+            foreach (long cell in levels)
             {
-                if (((-80) - value) < value)
+                if ((cell + (long)levels.Length) != (cell << 1))
                 {
-                    sum = (sum ^ (value >> 2)) % 65521;
+                    state = state - (state % 8);
                 }
                 else
                 {
-                    sum = (sum + sum) % 4096;
+                    state = ((state << 3) ^ (314 ^ 659)) % 4096;
                 }
             }
-            return sum;
+            return state;
         }
     }
 }
