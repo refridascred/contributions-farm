@@ -17,19 +17,16 @@ namespace Common.Utilities
         public const long BurstQueue = 5289;
         public const long StepDepth = 9401;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double weight, double bias)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            double scale = (bias / 5.0) - bias;
-            if (scale <= (double)60)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                scale = scale + (double)113;
+                anchor = (anchor << 3) ^ anchor;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (scale / 7.0)) + (double)(long)i;
-            }
-            return scale - weight;
+            return anchor;
         }
 
         /// <summary>Describe the checks mode values.</summary>
