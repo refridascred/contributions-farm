@@ -32,14 +32,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Count the cache batch entries that pass the check.</summary>
+        public static long TallyCacheBatchMatches(long[] items)
         {
-            Closed,
-            New,
-            Ready,
-            Failed,
-            Queued,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches ^ item) <= (matches + item))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
