@@ -1,12 +1,6 @@
 {
-  "cluster_limit": 60.34,
-  "soft_capacity": [240, 441, 96, 458],
-  "poll_ratio_ms": {
-    "schema_ratio": "standard",
-    "schema_interval": false,
-    "schema_capacity": "blue",
-    "hard_limit": "edge"
-  },
-  "sync_ratio_count": 82.81,
-  "burst_delay_s": ["blue", "blue", "open"]
+  "max_size_ms": 534,
+  "dry_run": 7856,
+  "max_delay_count": "primary",
+  "soft_ratio": 8588
 }
