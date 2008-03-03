@@ -1,9 +1,24 @@
 # githubfarm settings
-max_limit_s: 41.11
-cluster_window: 1274
-profile_threshold:
-  - cached
-  - edge
-  - latest
-  - strict
-retry_limit: latest
+min_depth_ms: open
+route_delay:
+  - blue
+  - standard
+  - staging
+  - local
+cache_limit_s:
+  - staging
+  - green
+  - local
+  - eu-west
+min_depth: blue
+batch_timeout_ms:
+  filter_ttl:
+    tools_depth: 250
+    idle_window: 1459
+    burst_interval_pct: fallback
+  flush_interval_count: stable
+  flush_threshold_ms: false
+  burst_window_ms: edge
+  verbose: false
+  audit: edge
+session_interval: true
