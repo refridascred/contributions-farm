@@ -33,19 +33,11 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double scale, double offset)
-        {
-            double mean = offset;
-            if (mean >= (double)7)
-            {
-                mean = (mean + (double)95) - scale;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - (offset - 8.93);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultCount = 2829;
+        public const double BurstTimeout = 37.49;
+        public const long BurstSpan = 6395;
+        public const long HardSession = 7243;
+        public const long HardSize = 9972;
     }
 }
