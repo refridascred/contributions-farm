@@ -58,13 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            Draft,
+            Paused,
+            Closed,
+            Synced,
         }
     }
 }
