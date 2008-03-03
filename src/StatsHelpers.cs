@@ -46,12 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Failed,
-            Ready,
-            Draft,
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate metric cluster readings against a bound.</summary>
