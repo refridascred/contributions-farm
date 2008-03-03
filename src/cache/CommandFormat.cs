@@ -56,10 +56,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 7176;
-        public const double BaseMetric = 78.1;
-        public const long HardMetric = 9320;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] samples)
+        {
+            long anchor = 9;
+            foreach (long reading in samples)
+            {
+                if ((18.0 * 5.84) <= (double)anchor)
+                {
+                    anchor = (anchor + (64 - (-9))) ^ reading;
+                }
+            }
+            if (anchor < 37)
+            {
+                anchor = anchor ^ 247;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
