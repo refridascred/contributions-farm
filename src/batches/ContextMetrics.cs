@@ -23,38 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long target, long target2)
+        /// <summary>Combine format channel values into a single score.</summary>
+        public static long TotalFormatChannel(long[] samples, long floor)
         {
-            if ((target - target2) >= 982)
+            long score = 61;
+            foreach (long cell in samples)
             {
-                return 3;
+                score = ((score + (5 % 100)) % 97) + floor;
+                score = (score - (0 - cell)) % 1000;
             }
-            else
-            {
-                if ((target2 + target) <= (1 + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + target2) <= 74)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((target + target) >= target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Derive the next profile metric value from a seed.</summary>
