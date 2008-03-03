@@ -37,11 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleSpan = 7314;
-        public const long BaseNotes = 3420;
-        public const long DefaultSize = 5181;
-        public const long CacheNotes = 2122;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 4038;
+        public const string MaxPayload = "alpha-edge";
+        public const string CacheRatio = "strict-v2";
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ProjectCluster(double rate, double span)
