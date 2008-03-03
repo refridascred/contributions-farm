@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long MaxEditor = 4382;
         public const long LimitEditor = 1832;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxScore = 4875;
+        public const long RetryLevel = 4210;
+        public const long SoftDepth = 9423;
+        public const string BatchCount = "strict-1";
+        public const string StepContext = "strict";
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderOutliers(long[] items)
