@@ -31,22 +31,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] data)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((32 * 5) != (hits - hits))
+                if (readings[i] < bound)
                 {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
