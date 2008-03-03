@@ -1,5 +1,16 @@
 # githubfarm settings
-context_depth: 67.44
-filter_limit: legacy
-hard_threshold_ms: 2221
-record_threshold: false
+hard_limit_count:
+  - 432
+  - 323
+  - 436
+cache_ttl: 75.25
+sync_ttl_pct: 95
+stats_limit:
+  tools_timeout:
+    idle_window_count: 250
+    buffer_ratio: 1105
+    burst_window_count: local
+    max_threshold: strict
+  dry_run: false
+  githubfarm_capacity: true
+base_limit_count: 30
