@@ -36,19 +36,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] data, long offset)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
