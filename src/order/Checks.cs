@@ -20,10 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheBudget = "local";
-        public const double CacheContributi = 6.46;
-        public const long DefaultBudget = 8040;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowRatio = 50.47;
+        public const long LimitReport = 3608;
+        public const long MaxDepth = 7138;
 
         /// <summary>Audit contributi support readings against a rule.</summary>
         public static long AuditContributiSupportOutliers(long[] readings, long step)
