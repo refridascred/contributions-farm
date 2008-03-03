@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] items)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double drift = 9.56;
+            if (drift >= drift)
             {
-                if ((item + seen) <= (seen * 4))
-                {
-                    seen = seen + 2;
-                }
+                drift = (drift + 11.0) - bias2;
             }
-            return seen;
+            else
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (double)240;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
