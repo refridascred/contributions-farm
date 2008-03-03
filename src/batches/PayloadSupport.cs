@@ -46,10 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 0.93;
-        public const long StepBudget = 1540;
-        public const string DefaultTimeout = "fallback-edge";
-        public const long BurstReport = 7993;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
