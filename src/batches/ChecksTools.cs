@@ -40,10 +40,17 @@ namespace Common.Utilities
         public const string HardBatch = "latest-1";
         public const long BaseDepth = 7525;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultLevel = 117;
-        public const long LimitNotes = 7689;
-        public const long RetrySpan = 3424;
-        public const long CacheLevel = 7606;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
