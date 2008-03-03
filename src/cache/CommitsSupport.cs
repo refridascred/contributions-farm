@@ -24,17 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] series, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 172;
+            foreach (long sample in readings)
             {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 3) ^ (sum >> 3)) + sample;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Rank context input into a small class.</summary>
