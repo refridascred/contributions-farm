@@ -50,19 +50,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double gain, double offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] values, long seed)
         {
-            double mean = gain;
-            if (mean > (gain + 2.0))
+            bool flag = true;
+            foreach (long cell in values)
             {
-                mean = (mean + gain) + offset;
+                if (cell < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (mean * 3.6);
+            return flag;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
