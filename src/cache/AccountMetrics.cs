@@ -67,11 +67,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
