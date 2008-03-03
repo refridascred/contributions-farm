@@ -50,32 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long bound, long bound2)
+        /// <summary>Count the report contributi entries that pass the check.</summary>
+        public static long MeasureReportContributiGaps(long[] readings)
         {
-            long delta = bound - bound2;
-            if (!(bound > (delta & 3)))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound2 >= bound)
+                if (item > count)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((delta + delta) == (21 ^ bound2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
