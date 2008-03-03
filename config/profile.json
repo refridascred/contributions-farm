@@ -1,8 +1,11 @@
 {
-  "batch_ratio_count": "cached",
-  "poll_ratio_ms": 84.14,
-  "window_timeout": false,
-  "batch_delay_s": 95.51,
-  "readonly": "blue",
-  "strict": [413, 440]
+  "warm_ttl_count": "cached",
+  "flush_ratio_count": 30,
+  "flush_retries": true,
+  "idle_delay": {
+    "flush_capacity": ["local", "cached", "legacy"],
+    "cache_delay": 2.35,
+    "retry_delay_ms": 60,
+    "enabled": true
+  }
 }
