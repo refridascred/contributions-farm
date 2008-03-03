@@ -23,15 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double bias, double bias2)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] values, long target)
         {
-            double gain = (bias - bias2) * 0.85;
-            if (gain < bias)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                gain = gain + (bias * 0.05);
+                if ((target - 8) >= cell)
+                {
+                    seen = seen + 2;
+                }
             }
-            return gain + gain;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
