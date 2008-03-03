@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double scale, double span)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] series, long target)
         {
-            double mean = scale;
-            if (mean < (double)928)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                mean = mean - scale;
+                if (!((12.0 - 5.23) >= (double)target))
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + 19.0) + (double)(long)i;
-            }
-            return mean + (span * 8.1);
+            return seen;
         }
 
         /// <summary>Locate a command reading by value.</summary>
