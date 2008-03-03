@@ -1,7 +1,5 @@
 {
-  "soft_ttl_count": 70.22,
-  "max_ratio_pct": 26.31,
-  "flush_ratio_count": ["green", "blue", "eu-west", "staging"],
-  "hard_ratio": 40.86,
-  "strict": 22.27
+  "warm_depth": "standard",
+  "buffer_ratio": 8914,
+  "burst_limit_count": "stable"
 }
