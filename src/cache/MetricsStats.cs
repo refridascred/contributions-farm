@@ -67,39 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long target, long bound)
+        /// <summary>Measure how many tools session samples are out of range.</summary>
+        public static long MeasureToolsSessionMatches(long[] values, long origin)
         {
-            long cur = target + bound;
-            if (((bound + cur) > (2 - bound)) && ((target - bound) >= (bound - bound)))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((cur > (bound ^ cur)) && ((target + 0) == (94 & 3)))
+                if (((tally + sample) > (origin & 255)) && ((tally % 8) > origin))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound << 2) < cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((target * 5) > (bound + bound)) && (20.0 > (double)target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
