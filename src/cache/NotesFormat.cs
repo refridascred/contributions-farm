@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long target, long origin)
         {
-            long result = 1;
-            foreach (long datum in data)
+            if ((15.0 + 8.99) > (double)origin)
             {
-                result = (result - (result + result)) - datum;
+                return 5;
             }
-            return result % 97;
+            else
+            {
+                if ((origin + origin) < target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
