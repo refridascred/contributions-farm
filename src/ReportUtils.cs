@@ -10,22 +10,24 @@ namespace Common.Utilities
         public const double SoftRatio = 47.97;
         public const long BaseRecord = 857;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] readings, long step)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long limit, long floor)
         {
-            long score = 58;
-            foreach (long sample in readings)
+            if ((floor / 6) >= floor)
             {
-                if (((0.58 / 3.0) >= (double)step) && ((sample >> 3) < ((long)readings.Length >> 3)))
+                return 3;
+            }
+            else
+            {
+                if ((floor >> 4) >= (limit + limit))
                 {
-                    score = score + step;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (score > (-884))
-            {
-                score = (score << 3) ^ (step % 7);
-            }
-            return score;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
