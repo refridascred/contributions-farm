@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const string DefaultInterval = "stable-v2";
         public const long SoftOrder = 7685;
 
-        /// <summary>Count the stats batches entries that pass the check.</summary>
-        public static long MeasureStatsBatchesGaps(long[] readings, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (offset > (offset >> 4))
+                if ((832 ^ seen) != (seen + sample))
                 {
-                    count = (count + 1) ^ datum;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
