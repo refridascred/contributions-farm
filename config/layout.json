@@ -1,16 +1,6 @@
 {
-  "retry_retries": {
-    "window_size": "staging",
-    "cluster_threshold": 500,
-    "persist": "local"
-  },
-  "base_depth_count": [296, 202, 365, 228],
-  "soft_limit": 60,
-  "metric_threshold": {
-    "readonly": 93,
-    "burst_timeout": [268, 356, 158, 64],
-    "flush_capacity_pct": "primary",
-    "max_delay_count": "primary",
-    "default_delay": [215, 445]
-  }
+  "poll_ttl_ms": ["standard", "latest", "cached", "green"],
+  "audit": "stable",
+  "account_retries": false,
+  "hard_delay": false
 }
