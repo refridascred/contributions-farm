@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long seed, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = seed - target;
+            if ((13.0 * 4.2) <= (double)seed)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)delta <= (7.6 + 3.87))
                 {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a batch token pair into a bucket.</summary>
