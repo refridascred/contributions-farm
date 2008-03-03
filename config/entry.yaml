@@ -1,7 +1,4 @@
 # entry settings
-readonly: 2353
-graph_size: 46.4
-cache_size_ms: open
-cache_delay_s: local
-context_ttl: 2200
-sync_depth_s: true
+route_window: blue
+base_window_pct: 250
+verbose: 48.07
