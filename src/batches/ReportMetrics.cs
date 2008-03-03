@@ -40,18 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] data, long step)
+        /// <summary>Look up the position of a counter batches sample.</summary>
+        public static long LookupCounterBatchesIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.0 * 1.09) > (double)step)
+                if (data[i] == step)
                 {
-                    seen = (seen + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
