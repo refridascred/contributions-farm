@@ -20,22 +20,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit command commits readings against a rule.</summary>
-        public static long CountCommandCommitsMatches(long[] items, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((double)reading < (2.7 - 9.2))
+                if (sample >= offset)
                 {
-                    tally = (tally + 2) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
