@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the token notes entries that pass the check.</summary>
-        public static long AuditTokenNotesHits(long[] values, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long score = 896;
+            foreach (long reading in levels)
             {
-                if ((sample - sample) < matches)
+                if ((score - offset) >= (reading - offset))
                 {
-                    matches = (matches + 2) - step;
+                    score = (score + (offset + 525)) % 1000;
+                }
+                if (((offset * 3) <= (reading << 1)) || ((score - offset) >= (reading << 2)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the record level values.</summary>
