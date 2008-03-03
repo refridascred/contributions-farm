@@ -1,18 +1,8 @@
 # support settings
-commits_ratio: local
-readonly: 2881
-verbose: 46.78
-burst_interval_ms:
-  compress: open
-  strict: staging
-  warm_window_ms:
-    max_depth_pct: true
-    context_timeout: 48.09
-    entry_retries:
-      - stable
-      - fallback
-  min_retries: primary
-  soft_interval: staging
-  already_window: 23.41
-payload_limit: 1396
-cache_retries_count: 3240
+readonly: 75
+notes_interval:
+  - stable
+  - strict
+  - standard
+payload_retries: primary
+flush_timeout: primary
