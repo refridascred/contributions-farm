@@ -49,14 +49,16 @@ namespace Common.Utilities
             return weight2 + (5.0 - weight);
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            Idle,
-            Dropped,
-            Locked,
-            Draft,
-            Paused,
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor << 3) ^ (8 * 5)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
