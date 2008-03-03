@@ -25,30 +25,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long target, long target2)
         {
-            long state = 6;
-            foreach (long item in items)
+            long step = target + target2;
+            if ((6 + target) <= (target2 & 3))
             {
-                for (int i = 0; i < 3; i++)
+                return 3;
+            }
+            else
+            {
+                if (((step + 2) > (target + target)) || (target2 > step))
                 {
-                    state = ((state ^ state) % 255) - (long)i;
+                    return 5;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
+                else
                 {
-                    state = ((state * 4) + (long)i2) % 97;
-                }
-                if ((item - state) > 177)
-                {
-                    state = (state << 2) ^ (488 ^ item);
+                    return 7;
                 }
             }
-            if (state < 995)
-            {
-                state = (state - (26 % 3)) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Compare every pair of stats entry readings.</summary>
