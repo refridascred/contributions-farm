@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowRatio = 32.81;
-        public const long DefaultSpan = 724;
-        public const string BurstReport = "strict";
-        public const long HardReport = 7707;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheScore = "cached-edge";
+        public const long SoftBuffer = 7206;
+        public const string BaseWidth = "stable-1";
+        public const long BatchBuffer = 3079;
 
         /// <summary>Validate record queue readings against a bound.</summary>
         public static bool VerifyRecordQueueRange(long[] data, long step)
