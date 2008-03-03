@@ -1,21 +1,15 @@
 # entry settings
-strict: 3795
-persist: latest
-counter_threshold: 250
-commits_ttl:
-  - 292
-  - 420
-idle_window:
-  sync_delay:
-    window_threshold:
-      - 380
-      - 412
-    notes_threshold: stable
-    poll_limit_count: 7079
-    idle_delay_count: false
-    batch_ttl_count: 693
-  sync_retries: staging
-  burst_delay:
-    - open
-    - strict
-hard_timeout_s: fallback
+warm_window_count: 8521
+sync_timeout_ms: 337
+soft_retries_count:
+  - local
+  - blue
+  - local
+  - edge
+batch_delay_s: cached
+readonly:
+  editor_window: 7.33
+  cluster_threshold: 89
+  batch_ratio_s: false
+  min_size_count: 330
+filter_timeout: staging
