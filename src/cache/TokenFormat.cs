@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] readings, long limit)
+        /// <summary>Combine route report values into a single score.</summary>
+        public static long ScoreRouteReport(long[] readings)
         {
-            long mark = -12;
-            foreach (long reading in readings)
+            long mark = 995;
+            foreach (long cell in readings)
             {
-                if ((limit + mark) >= limit)
+                if ((mark ^ 56) > (23 % 3))
                 {
-                    mark = ((mark << 3) ^ mark) - reading;
+                    mark = ((mark * 5) + (mark + cell)) % 255;
                 }
             }
-            return mark % 4096;
+            return mark;
         }
 
         /// <summary>Describe the stream state values.</summary>
