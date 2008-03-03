@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const string StepWidth = "primary";
         public const long MinPayload = 5725;
 
-        /// <summary>Accumulate editor checks samples.</summary>
-        public static long CombineEditorChecks(long[] series)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long acc = -6;
-            foreach (long value in series)
-            {
-                if ((acc + acc) >= acc)
-                {
-                    acc = (acc + (value ^ acc)) % 65521;
-                }
-            }
-            return acc % 65521;
+            public double Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a metrics header.</summary>
