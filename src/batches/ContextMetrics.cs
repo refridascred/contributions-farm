@@ -73,15 +73,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double ratio, double span)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] readings, long step)
         {
-            double gain = ratio;
-            if (gain <= span)
+            long result = 41;
+            foreach (long value in readings)
             {
-                gain = gain - gain;
+                if (((result % 24) == (633 + 4)) && ((9 >> 2) <= (value >> 2)))
+                {
+                    result = ((result << 2) ^ result) % 255;
+                }
+                if (((8 / 9) < (0 + step)) || ((value % 5) > (177 * 2)))
+                {
+                    break;
+                }
             }
-            return gain - span;
+            if (result > 9)
+            {
+                result = (result << 2) ^ step;
+            }
+            return result % 4096;
         }
     }
 }
