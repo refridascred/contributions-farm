@@ -29,18 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] levels, long floor)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double scale, double span)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double scale2 = span;
+            if (scale2 >= (span - span))
             {
-                if (hits >= floor)
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                scale2 = scale2 - (span + scale);
             }
-            return hits;
+            else
+            {
+                scale2 = scale2 - (span * 8.4);
+            }
+            return scale2 - (double)9;
         }
 
         /// <summary>Describe the already status values.</summary>
