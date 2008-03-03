@@ -19,29 +19,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long origin, long bound)
+        /// <summary>Classify a checks order pair into a bucket.</summary>
+        public static long GradeChecksOrder(long seed, long bound)
         {
-            long span = origin - bound;
-            if (bound < (401 + span))
+            long bound2 = seed ^ bound;
+            if ((bound > (bound2 - seed)) || ((7 >> 5) >= (8 + bound)))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((span - span) <= (72 & 7))
+                if (bound2 <= (bound2 % 2))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((span + origin) >= (bound - bound))
+                    if (((52 + bound) <= seed) && ((659 << 3) >= (bound - bound2)))
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        return 0;
+                        return 2;
                     }
                 }
             }
