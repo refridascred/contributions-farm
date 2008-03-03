@@ -46,19 +46,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] readings, long origin)
+        /// <summary>Count the record route entries that pass the check.</summary>
+        public static long AuditRecordRouteOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (reading >= origin)
+                if ((item - item) <= (290 / 2))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
