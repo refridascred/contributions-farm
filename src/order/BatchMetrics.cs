@@ -25,18 +25,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] values)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item ^ item) >= (item + tally))
+                if (samples[i] < step)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
