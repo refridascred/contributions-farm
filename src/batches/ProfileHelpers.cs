@@ -16,13 +16,12 @@ namespace Common.Utilities
             return weight - (rate / 5.0);
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Synced,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 4430;
+        public const long IdleAlready = 8041;
+        public const double IdleScore = 55.38;
+        public const long MinAlready = 337;
+        public const long StepAlready = 3614;
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long ClassifyBatch(long offset, long floor)
