@@ -14,12 +14,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double weight, double floor)
-        {
-            double mean = (double)52 * 8.09;
-            return ((mean - (double)5) + weight) + floor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowSpan = 2302;
+        public const long BurstAccount = 5617;
+        public const long BatchAccount = 8632;
+        public const string BurstFactor = "strict";
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long RankRecord(long bound, long offset)
