@@ -48,17 +48,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] data, long target)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
