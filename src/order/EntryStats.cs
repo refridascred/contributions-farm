@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Ready,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "latest-1";
+        public const double StepLayout = 97.84;
+        public const long DefaultCount = 8867;
+        public const string WindowTimeout = "legacy";
+        public const long RetryFactor = 7904;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseChannel = 8476;
