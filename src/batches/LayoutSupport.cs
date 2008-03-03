@@ -63,19 +63,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] readings, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long limit, long target)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            if (target >= 19)
             {
-                if (cell != offset)
+                return 2;
+            }
+            else
+            {
+                if (limit <= target)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
