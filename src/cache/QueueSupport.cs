@@ -15,13 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long limit)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                result = ((result * 2) + (long)i) % 65521;
             }
             return result;
         }
