@@ -26,24 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch token pair into a bucket.</summary>
-        public static long SortBatchToken(long origin, long origin2)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            if (origin >= origin2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin2 != (double)5)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
