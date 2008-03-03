@@ -65,10 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowRecord = "stable-1";
-        public const long BatchSpan = 4906;
-        public const long StepRecord = 7896;
-        public const double MaxRecord = 96.37;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
