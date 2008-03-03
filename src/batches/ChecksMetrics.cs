@@ -65,14 +65,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Classify a commits filter pair into a bucket.</summary>
+        public static long RankCommitsFilter(long limit, long origin)
         {
-            Ready,
-            Closed,
-            New,
-            Synced,
-            Idle,
+            if (!((origin + origin) < limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit >= (origin % 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + origin) > origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
