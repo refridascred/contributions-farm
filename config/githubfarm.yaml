@@ -1,17 +1,14 @@
 # githubfarm settings
-verbose: open
-cache_interval_pct:
-  base_ratio:
-    notes_delay: legacy
-    hard_depth: true
-    max_window_ms: legacy
-  verbose: 12.23
-  burst_limit_ms: false
-  schema_limit: 8.04
-  queue_capacity:
-    - 114
-    - 192
-hard_depth_pct:
-  - 306
-  - 251
-warm_ttl: standard
+cache_depth: 100
+batch_size_pct: stable
+persist: stable
+burst_interval_ms:
+  audit:
+    retry_size_count: 9.75
+    batch_window: blue
+    warm_limit_s: 9096
+    route_ratio: true
+    commits_depth: 8136
+  compress: 7
+  payload_interval: true
+  cache_window_ms: 8
