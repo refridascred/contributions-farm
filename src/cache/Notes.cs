@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long target, long step)
+        /// <summary>Audit graph queue readings against a rule.</summary>
+        public static long AuditGraphQueueOutliers(long[] samples, long target)
         {
-            if ((double)target <= (6.16 - 0.37))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - 408) >= 724)
+                if ((item << 1) < (7 % 3))
                 {
-                    return 2;
+                    seen = (seen + 1) - target;
                 }
                 else
                 {
-                    if ((target * 5) <= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
