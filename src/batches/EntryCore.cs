@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitTimeout = 8.67;
-        public const string RetrySpan = "legacy-edge";
-        public const string CacheTools = "standard-edge";
-        public const long StepTools = 8576;
-        public const double BaseBudget = 72.98;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowRatio = 32.81;
+        public const long DefaultSpan = 724;
+        public const string BurstReport = "strict";
+        public const long HardReport = 7707;
 
         /// <summary>Accumulate entry account samples.</summary>
         public static long DigestEntryAccount(long[] values)
