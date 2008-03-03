@@ -52,12 +52,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] data, long origin)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public double Flag { get; set; }
+            long score = 0;
+            foreach (long value in data)
+            {
+                if (((0 + value) > (score - score)) && ((origin / 4) > (long)data.Length))
+                {
+                    score = score - (91 & 15);
+                }
+            }
+            return score;
         }
 
         /// <summary>Accumulate context samples.</summary>
