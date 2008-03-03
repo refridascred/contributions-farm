@@ -31,17 +31,31 @@ namespace Common.Utilities
         public const string BaseWidth = "stable-1";
         public const long BatchBuffer = 3079;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] series, long floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long target, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)limit > (double)target)
             {
-                if (series[i] < floor)
+                return 4;
+            }
+            else
+            {
+                if (!((limit * 5) == (target * 2)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit >= (3 / 4)) && (35 >= target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
