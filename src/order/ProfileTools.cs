@@ -13,20 +13,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of tools window entries.</summary>
-        public static long TotalToolsWindow(long[] items, long step)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long result = 934;
-            foreach (long sample in items)
-            {
-                result = result ^ 6;
-                result = (result - (step & 31)) % 97;
-                if (!((sample << 2) > (result - (-69))))
-                {
-                    result = (result * 2) + (sample & 255);
-                }
-            }
-            return result;
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
