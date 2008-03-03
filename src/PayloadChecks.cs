@@ -81,19 +81,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] series, long floor)
+        /// <summary>Check that every schema editor entry stays within the limit.</summary>
+        public static bool GuardSchemaEditorBounds(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (entry < floor)
+                if (item < bound)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
