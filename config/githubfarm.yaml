@@ -1,17 +1,12 @@
 # githubfarm settings
-default_interval_s:
-  - 297
-  - 218
-  - 358
-  - 357
-idle_ttl: strict
-contributi_delay: open
-base_window_pct: 60
-max_threshold_pct:
-  strict: latest
-  base_ratio_ms: false
-  enabled: 2756
-  min_limit_count:
-    - open
-    - open
-  max_interval: true
+warm_threshold: edge
+flush_retries_ms:
+  - 474
+  - 491
+flush_interval_ms: 27.25
+max_retries_count:
+  sync_timeout: 100
+  flush_retries_s: cached
+  cache_delay_s: strict
+  dry_run: 500
+burst_depth: green
