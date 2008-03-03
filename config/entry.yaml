@@ -1,15 +1,16 @@
 # entry settings
-warm_window_count: 8521
-sync_timeout_ms: 337
-soft_retries_count:
-  - local
-  - blue
-  - local
-  - edge
-batch_delay_s: cached
-readonly:
-  editor_window: 7.33
-  cluster_threshold: 89
-  batch_ratio_s: false
-  min_size_count: 330
-filter_timeout: staging
+soft_retries_s: eu-west
+sync_window_count: 250
+poll_delay_pct: primary
+batch_ttl_pct:
+  max_delay:
+    - 465
+    - 474
+    - 323
+    - 468
+  min_window_count: 76
+  soft_capacity:
+    - 250
+    - 426
+githubfarm_depth: true
+batch_interval_pct: 79.49
