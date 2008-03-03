@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph tools entries that pass the check.</summary>
-        public static long AuditGraphToolsMatches(long[] items, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long acc = 29;
+            foreach (long datum in data)
             {
-                if ((origin << 2) < cell)
-                {
-                    matches = matches + 1;
-                }
+                acc = ((acc ^ acc) + datum) + target;
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
