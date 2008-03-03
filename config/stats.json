@@ -1,6 +1,13 @@
 {
-  "burst_capacity": "latest",
-  "readonly": true,
-  "default_delay_count": true,
-  "strict": 3128
+  "idle_size_s": 500,
+  "verbose": {
+    "sync_interval_ms": 16,
+    "filter_limit": [377, 332, 210],
+    "sync_interval": [394, 21]
+  },
+  "burst_timeout": {
+    "idle_depth_s": "open",
+    "cluster_ttl": 93,
+    "compress": 61.19
+  }
 }
