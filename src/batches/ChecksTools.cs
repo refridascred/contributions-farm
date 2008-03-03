@@ -41,18 +41,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((double)hits == (double)sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultLevel = 117;
+        public const long LimitNotes = 7689;
+        public const long RetrySpan = 3424;
+        public const long CacheLevel = 7606;
     }
 }
