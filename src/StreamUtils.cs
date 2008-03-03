@@ -70,11 +70,21 @@ namespace Common.Utilities
         public const long BaseChecks = 4466;
         public const string StepChecks = "cached-v2";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowTimeout = 71.19;
-        public const string BatchInterval = "open-1";
-        public const long BatchBatches = 849;
-        public const double BaseBatches = 37.35;
-        public const long DefaultBatches = 4317;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
