@@ -55,23 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record metric entries.</summary>
-        public static long TallyRecordMetric(long[] data)
-        {
-            long total = 83;
-            foreach (long sample in data)
-            {
-                if (!((total & 15) > (total + total)))
-                {
-                    total = ((total * 3) + total) - sample;
-                }
-            }
-            if (total > 2)
-            {
-                total = (total ^ (total % 2)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftLevel = 78.78;
+        public const string LimitChecks = "alpha-1";
+        public const long StepChecks = 2890;
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
