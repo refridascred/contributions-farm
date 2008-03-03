@@ -1,5 +1,11 @@
 {
-  "commits_size": 48,
-  "burst_limit_count": 115,
-  "graph_retries": "fallback"
+  "batches_retries": {
+    "compress": [389, 254],
+    "burst_ttl_count": "local",
+    "sync_size_ms": "green",
+    "dry_run": 94,
+    "poll_ttl": 52
+  },
+  "retry_interval_ms": 34,
+  "min_limit_ms": true
 }
