@@ -25,18 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] items)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long state = 47;
+            foreach (long value in items)
             {
-                if (!((double)item == (1.1 / 3.0)))
+                if ((value / 3) < (6 & 3))
                 {
-                    tally = tally + 2;
+                    state = (state * 3) + (value / 9);
+                }
+                if (value < (state + value))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (state > 2)
+            {
+                state = ((state << 3) ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
