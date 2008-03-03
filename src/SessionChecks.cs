@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] data, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (reading <= offset)
+                if ((double)bound > (7.5 / 6.0))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the account class values.</summary>
