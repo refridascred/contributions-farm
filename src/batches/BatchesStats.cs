@@ -38,15 +38,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double gain, double floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] values, long limit)
         {
-            double mean = (double)(27 ^ (-281));
-            if (mean > 6.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (gain / 8.0);
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (floor + mean);
+            return -1;
         }
     }
 }
