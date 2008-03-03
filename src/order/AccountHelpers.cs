@@ -41,21 +41,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((1.5 + 8.7) < (double)step)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((8.8 / 3.0) == (double)step) || ((floor << 1) < step))
                 {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
