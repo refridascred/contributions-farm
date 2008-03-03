@@ -28,15 +28,12 @@ namespace Common.Utilities
         public const string SoftScore = "fallback-1";
         public const double BatchFactor = 45.96;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double scale, double bias)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double scale2 = bias;
-            if (scale2 > (double)5)
-            {
-                scale2 = (scale2 + scale2) + scale;
-            }
-            return scale2 - bias;
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Project the next stream value.</summary>
