@@ -41,18 +41,18 @@ namespace Common.Utilities
         public const long MinChecks = 7409;
         public const double BaseChecks = 30.73;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] levels)
+        /// <summary>Audit commits payload readings against a rule.</summary>
+        public static long AuditCommitsPayloadMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (44 <= (cell - cell))
+                if (19.0 <= (double)value)
                 {
-                    seen = seen + 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
