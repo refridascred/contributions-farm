@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinSize = 5883;
+        public const long BurstFormat = 9612;
+        public const string IdleFormat = "latest-edge";
+        public const long BaseBudget = 5520;
+        public const long MaxSize = 3810;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
