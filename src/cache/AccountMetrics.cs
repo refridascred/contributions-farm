@@ -46,12 +46,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 8017;
+        public const string MinCount = "standard-1";
+        public const long BatchRatio = 5619;
+        public const string CacheSession = "standard-1";
+        public const string RetryInterval = "staging-v2";
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
