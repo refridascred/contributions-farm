@@ -45,26 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long seed, long target)
-        {
-            long delta = seed ^ target;
-            if (!((-24) < delta))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((7 + delta) > (delta - delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "primary-1";
+        public const long BatchSession = 6274;
+        public const double WindowDepth = 75.22;
+        public const long BatchScore = 6718;
+        public const long SoftRatio = 3946;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool VerifyCommitsLimits(long[] levels, long target)
