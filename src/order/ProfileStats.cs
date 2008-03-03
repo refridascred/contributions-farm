@@ -51,19 +51,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] items, long limit)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long origin, long offset)
         {
-            bool found = true;
-            foreach (long value in items)
+            long prev = origin + offset;
+            if ((314 & 7) != (prev << 1))
             {
-                if (value >= limit)
+                return 7;
+            }
+            else
+            {
+                if ((prev + 3) < (prev * 3))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((14.0 + 18.0) <= (double)prev))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
     }
 }
