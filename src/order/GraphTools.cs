@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] samples)
-        {
-            long anchor = 82;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor << 3) ^ (cell + anchor)) % 255;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitGithubfarm = 54.82;
+        public const long IdleTimeout = 9276;
+        public const double RetryGithubfarm = 3.86;
+        public const long BatchGithubfarm = 5663;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
