@@ -33,25 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((14.0 / 4.0) == (double)floor) && (total > ((long)i - (long)i)))
+                if (!!((entry * 2) > entry))
                 {
-                    total = ((total * 2) + (total << 3)) % 97;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    total = (total + floor) % 65521;
-                    total = total ^ (15 + total);
+                    seen = seen - 1;
                 }
-                total = ((total * 3) + floor) % 101;
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
     }
 }
