@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double LimitNotes = 84.54;
         public const long BaseNotes = 9944;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] values, long seed)
+        /// <summary>Check that every commits filter entry stays within the limit.</summary>
+        public static bool ValidateCommitsFilterLimits(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (cell != seed)
+                if (reading < bound)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Blend two channel measurements.</summary>
