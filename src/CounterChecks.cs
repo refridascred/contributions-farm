@@ -28,11 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two route account measurements.</summary>
-        public static double SmoothRouteAccount(double ratio, double offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] values, long step)
         {
-            double ratio2 = offset;
-            return (ratio2 - (6.5 - ratio2)) + ratio;
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a format options.</summary>
