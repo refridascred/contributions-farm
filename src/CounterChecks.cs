@@ -60,25 +60,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long offset, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            long diff = offset - step;
-            if (!(0 < (offset * 5)))
+            long total = 25;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((diff + diff) <= (step & 3))
+                if (((long)series.Length / 3) >= 814)
                 {
-                    return 3;
+                    total = ((total << 2) ^ (datum - total)) % 101;
                 }
-                else
+                if ((datum - total) > total)
                 {
-                    return 6;
+                    break;
                 }
             }
+            return total % 1000;
         }
     }
 }
