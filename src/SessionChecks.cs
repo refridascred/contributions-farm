@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Done,
-            Stale,
-            Pending,
-            Draft,
-            Idle,
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
