@@ -1,8 +1,6 @@
 {
-  "warm_limit_pct": "eu-west",
-  "retry_capacity": 95,
-  "min_retries": "primary",
-  "payload_ttl": "stable",
-  "dry_run": "blue",
-  "batch_ttl": 6027
+  "cache_window_ms": true,
+  "sync_retries_count": 14.97,
+  "hard_capacity": 31.69,
+  "readonly": "stable"
 }
