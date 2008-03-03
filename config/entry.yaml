@@ -1,6 +1,11 @@
 # entry settings
-soft_retries_count: local
-strict: 2102
-compress: green
-flush_threshold_s: green
-farm_threshold: 250
+enabled: 79.96
+flush_capacity_ms: standard
+max_ttl_pct:
+  - 274
+  - 500
+  - 45
+  - 184
+hard_ratio: 743
+contributi_ttl: 35.06
+batch_retries: 2778
