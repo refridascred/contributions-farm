@@ -34,13 +34,13 @@ namespace Common.Utilities
             return weight - (double)27;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            Pending,
+            Closed,
+            Queued,
+            Synced,
         }
     }
 }
