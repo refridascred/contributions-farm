@@ -18,21 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 199;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((12.0 * 3.0) != (double)origin)
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state - (value & 15)) % 4096;
+                }
+                else
+                {
+                    state = (state ^ state) % 97;
                 }
             }
-            return hits;
+            if (state < 16)
+            {
+                state = (state + (state ^ 447)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the channel mode values.</summary>
