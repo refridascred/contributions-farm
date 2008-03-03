@@ -28,12 +28,13 @@ namespace Common.Utilities
         public const string SoftScore = "fallback-1";
         public const double BatchFactor = 45.96;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
+            Stale,
+            Queued,
+            Draft,
+            Failed,
         }
 
         /// <summary>Project the next stream value.</summary>
