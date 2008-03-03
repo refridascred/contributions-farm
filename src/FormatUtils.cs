@@ -46,21 +46,20 @@ namespace Common.Utilities
         public const long RetryPayload = 7808;
         public const string LimitInterval = "strict-v2";
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((0.4 * 8.7) != (double)carry)
                 {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry + (780 ^ 3)) % 1000;
+                    continue;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Adjust a tools record reading.</summary>
