@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-            public bool Limit { get; set; }
+            long score = 6;
+            foreach (long sample in values)
+            {
+                if (((14.0 - 15.0) != (double)score) && (score < 436))
+                {
+                    score = ((score * 4) + (score - sample)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
