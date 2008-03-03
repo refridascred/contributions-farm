@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit graph already readings against a rule.</summary>
-        public static long TallyGraphAlreadyOutliers(long[] items, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((1 >> 3) <= limit)
+                if (((entry - entry) >= (count / 3)) || (((double)1 <= (double)floor) || ((count + count) != (floor ^ floor))))
                 {
-                    matches = (matches + 3) ^ value;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the command class values.</summary>
