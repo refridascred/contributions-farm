@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 224;
+        public const string SoftCounter = "stable-v2";
+        public const long RetryTimeout = 6293;
+        public const long StepDepth = 5487;
+        public const double CacheRatio = 26.98;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] samples)
