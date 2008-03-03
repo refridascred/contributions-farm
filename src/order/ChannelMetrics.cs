@@ -38,15 +38,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double rate, double floor)
-        {
-            double gain = rate;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (gain + rate)) + (double)(long)i;
-            }
-            return gain - (2.12 + floor);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultChecks = "fallback-1";
+        public const string BurstInterval = "primary";
+        public const string WindowChecks = "stable-edge";
+        public const long BatchWidth = 4467;
     }
 }
