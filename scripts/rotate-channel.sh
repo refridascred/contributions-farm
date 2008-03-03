@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached edge standard fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-mode="${1:-edge}"
+mode="${1:-primary}"
 case "${mode}" in
-    fallback)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in edge green; do
+    log "checking ${item}"
+done
