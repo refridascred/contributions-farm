@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches ^ reading) < (52 - matches))
                 {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit command commits readings against a rule.</summary>
