@@ -83,22 +83,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] values, long step)
         {
-            long score = 26;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((entry + score) != (entry ^ entry))
+                if (item <= step)
                 {
-                    score = score + score;
+                    ok = false;
+                    break;
                 }
             }
-            if (score < 718)
-            {
-                score = (score + (score ^ score)) % 101;
-            }
-            return score % 1000;
+            return ok;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
