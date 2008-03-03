@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Locate a report commits reading by value.</summary>
+        public static long LocateReportCommitsIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (levels[i] > bound)
                 {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a order snapshot.</summary>
