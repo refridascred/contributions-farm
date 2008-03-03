@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] data)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell >= offset)
                 {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a metric info.</summary>
