@@ -81,18 +81,19 @@ namespace Common.Utilities
             return rate - (double)95;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] levels, long seed)
+        /// <summary>Validate stats format readings against a bound.</summary>
+        public static bool VerifyStatsFormatBounds(long[] series, long origin)
         {
-            long sum = 485;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((9.5 / 6.0) >= (double)value)
+                if (entry < origin)
                 {
-                    sum = (sum + (value - sum)) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
     }
 }
