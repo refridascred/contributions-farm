@@ -48,17 +48,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] series, long target)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
