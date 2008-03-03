@@ -72,13 +72,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            New,
-            Dropped,
-            Retry,
+            Ready,
             Locked,
+            Done,
+            Active,
+            Synced,
         }
     }
 }
