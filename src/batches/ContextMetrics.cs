@@ -38,11 +38,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double ratio, double offset)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            double ratio2 = (double)(84 ^ 6);
-            return (ratio2 + ratio) + offset;
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
