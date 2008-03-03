@@ -54,19 +54,26 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] levels, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long score = -36;
+            foreach (long datum in levels)
             {
-                if (!((8.0 + 15.0) < (double)carry))
+                if (((double)32 < (double)score) || (22 >= (bound % 24)))
+                {
+                    score = score ^ (datum + datum);
+                }
+                else
+                {
+                    score = score + (bound << 1);
+                }
+                if ((score < 77) || (4.6 >= (double)score))
                 {
                     break;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return score;
         }
     }
 }
