@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] readings, long limit)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count the graph tools entries that pass the check.</summary>
