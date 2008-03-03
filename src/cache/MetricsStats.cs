@@ -60,22 +60,9 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] data, long bound)
-        {
-            long total = 4;
-            foreach (long sample in data)
-            {
-                if ((bound <= (sample / 2)) && ((total / 4) > (6 * 5)))
-                {
-                    total = ((total * 4) + (total >> 2)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 2) ^ sample) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheRatio = 4315;
+        public const long BaseDepth = 5709;
+        public const double MinCount = 41.34;
     }
 }
