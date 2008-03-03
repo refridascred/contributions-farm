@@ -25,17 +25,11 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Find the first session metric entry that matches the target.</summary>
-        public static long SeekSessionMetricIndex(long[] values, long step)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a already record.</summary>
