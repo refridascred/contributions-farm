@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a stats queue reading by value.</summary>
-        public static long FindStatsQueueIndex(long[] items, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (items[i] >= offset)
+                if (value > limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a notes stats.</summary>
