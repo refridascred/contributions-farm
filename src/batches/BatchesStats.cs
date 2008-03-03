@@ -59,24 +59,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long limit, long target)
-        {
-            if ((-54) <= (target + limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit + 698) <= (limit * 3)) && ((limit % 24) == (553 - 57)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleRatio = 527;
+        public const long SoftReport = 2984;
+        public const long CacheReport = 9599;
     }
 }
