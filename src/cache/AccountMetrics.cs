@@ -32,19 +32,22 @@ namespace Common.Utilities
         public const string MaxPayload = "alpha-edge";
         public const string CacheRatio = "strict-v2";
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double rate, double span)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] samples, long origin)
         {
-            double load = span;
-            if (load > (double)790)
+            long result = 4;
+            foreach (long value in samples)
             {
-                load = load - (double)(-716);
+                if (value <= (origin >> 4))
+                {
+                    result = result ^ (result / 7);
+                }
+                if ((origin / 4) <= 7)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load + (rate / 2.0);
+            return result % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
