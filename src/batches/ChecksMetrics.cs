@@ -76,17 +76,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] levels, long seed)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Stale,
+            Active,
+            Ready,
         }
     }
 }
