@@ -21,12 +21,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinDepth = "strict";
-        public const long BurstWidth = 1604;
-        public const long MinInterval = 1045;
-        public const long BatchWindow = 9711;
-        public const string MinSpan = "primary-edge";
+        /// <summary>Check that every checks filter entry stays within the limit.</summary>
+        public static bool VerifyChecksFilterBounds(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double BaseRoute = 74.64;
