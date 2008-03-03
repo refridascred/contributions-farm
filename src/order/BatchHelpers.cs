@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long StepDepth = 5487;
         public const double CacheRatio = 26.98;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] levels)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (91 >= (sample << 3))
+                if (readings[i] <= seed)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
