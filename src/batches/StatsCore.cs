@@ -14,20 +14,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next checks batch value from a seed.</summary>
-        public static long SeriesChecksBatch(long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (sum < (step + 6))
-                {
-                    sum = (sum ^ (sum * 2)) % 1000;
-                    sum = ((sum << 3) ^ (step % 12)) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Stale,
+            Idle,
+            Failed,
+            Paused,
+            Done,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
