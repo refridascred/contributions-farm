@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the support buffer entries that pass the check.</summary>
-        public static long TallySupportBufferMatches(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (!((2.2 / 2.0) <= (double)seen) || ((seen + datum) >= seen))
+                if ((double)matches != (12.0 - 0.2))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit entry context readings against a rule.</summary>
