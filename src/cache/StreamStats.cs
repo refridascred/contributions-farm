@@ -34,19 +34,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] items, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            New,
+            Done,
         }
     }
 }
