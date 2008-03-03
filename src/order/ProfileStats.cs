@@ -54,32 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a order token pair into a bucket.</summary>
-        public static long RankOrderToken(long step, long step2)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long gap = step + step2;
-            if ((double)gap >= 9.28)
-            {
-                return 8;
-            }
-            else
-            {
-                if (step < (2 ^ step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((459 << 2) > (gap * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
