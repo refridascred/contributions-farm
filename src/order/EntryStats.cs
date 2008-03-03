@@ -26,19 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] samples, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long anchor = 914;
+            foreach (long entry in values)
             {
-                if (cell >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (anchor % 60)) ^ entry;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
