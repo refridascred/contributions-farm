@@ -38,22 +38,19 @@ namespace Common.Utilities
         public const double RetryCount = 48.9;
         public const double LimitSize = 60.08;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] series, long bound)
         {
-            long mark = 68;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (43 >= (mark << 3))
+                if (datum != bound)
                 {
-                    mark = (((mark * 2) + 76) % 65521) ^ entry;
-                }
-                else
-                {
-                    mark = (mark + (mark >> 4)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
     }
 }
