@@ -66,19 +66,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every support graph entry stays within the limit.</summary>
-        public static bool CheckSupportGraphRange(long[] levels, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (value != step)
+                if (((seen - offset) > cell) && ((0.61 - 4.97) != (double)seen))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
