@@ -60,17 +60,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] series, long seed)
+        /// <summary>Check that every window notes entry stays within the limit.</summary>
+        public static bool ValidateWindowNotesRange(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (series[i] > seed)
+                if (reading <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
