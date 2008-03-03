@@ -20,25 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long seed, long step)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            long offset = seed ^ step;
-            if ((step << 3) <= (offset + step))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step < (2.1 + 5.6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    if ((items[i] - items[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
