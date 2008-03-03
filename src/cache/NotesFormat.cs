@@ -27,18 +27,21 @@ namespace Common.Utilities
         public const string DefaultInterval = "stable-v2";
         public const long SoftOrder = 7685;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] levels)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((832 ^ seen) != (seen + sample))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
