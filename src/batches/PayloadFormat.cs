@@ -25,38 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long bound, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] readings, long step)
         {
-            if ((offset - bound) != (offset % 12))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound >= (bound + bound))
+                if ((hits * 5) == (sample << 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound >> 1) >= ((-22) << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound < (bound & 7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 3) - step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
