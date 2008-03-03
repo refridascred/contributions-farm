@@ -1,12 +1,6 @@
 {
-  "flush_interval": "legacy",
-  "max_capacity_s": false,
-  "sync_ttl": {
-    "sync_ttl_count": "edge",
-    "githubfarm_interval": true,
-    "contributi_timeout": 32,
-    "idle_threshold_pct": 500,
-    "hard_depth_pct": 500
-  },
-  "readonly": "green"
+  "window_limit": 74,
+  "format_ratio": 79,
+  "batch_interval_ms": 83,
+  "hard_timeout_s": "stable"
 }
