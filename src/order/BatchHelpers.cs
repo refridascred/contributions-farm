@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long StepDepth = 5487;
         public const double CacheRatio = 26.98;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((21 % 10) < (5 + item))
+                if (91 >= (sample << 3))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a stream info.</summary>
