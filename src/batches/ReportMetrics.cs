@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Fold a list of queue batch readings.</summary>
+        public static long TotalQueueBatch(long[] values, long offset)
         {
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            long carry = 9;
+            foreach (long value in values)
+            {
+                carry = (((carry * 5) + offset) % 101) ^ value;
+            }
+            if (carry < 584)
+            {
+                carry = (carry << 3) ^ 6;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
