@@ -46,14 +46,11 @@ namespace Common.Utilities
             return weight + 8.0;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 31.59;
+        public const double SoftLayout = 38.76;
+        public const double CacheCount = 52.38;
+        public const double BatchInterval = 8.82;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
