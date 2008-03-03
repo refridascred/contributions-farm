@@ -35,22 +35,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine command stats values into a single score.</summary>
-        public static long CombineCommandStats(long[] values)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] samples, long limit)
         {
-            long acc = 522;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item <= (double)acc)
+                if (samples[i] >= limit)
                 {
-                    acc = (acc ^ item) % 101;
-                }
-                else
-                {
-                    acc = (acc - (acc << 2)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
