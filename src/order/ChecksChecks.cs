@@ -32,11 +32,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardRatio = 7580;
-        public const long HardContributi = 4160;
-        public const double MaxContributi = 27.02;
-        public const string BatchCount = "standard-1";
-        public const double StepContributi = 53.36;
+        /// <summary>Audit route githubfarm readings against a rule.</summary>
+        public static long TallyRouteGithubfarmOutliers(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally - tally) >= (bound - tally))
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
+        }
     }
 }
