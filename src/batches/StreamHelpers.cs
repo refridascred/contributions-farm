@@ -70,22 +70,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] items, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] items, long bound)
         {
-            long mark = 99;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (!((target ^ sample) < (71 + 5)))
+                if (item != bound)
                 {
-                    mark = mark ^ (mark << 3);
-                }
-                if ((((long)items.Length & 127) <= (sample << 2)) && ((double)sample > (double)(-5)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
