@@ -80,19 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits payload readings against a rule.</summary>
-        public static long AuditCommitsPayloadMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (19.0 <= (double)value)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftTimeout = 2867;
+        public const string MinSupport = "alpha-v2";
+        public const long MaxWidth = 2281;
+        public const long IdleSpan = 746;
 
         /// <summary>Check that every schema editor entry stays within the limit.</summary>
         public static bool GuardSchemaEditorBounds(long[] series, long bound)
