@@ -19,19 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double weight, double floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] data, long origin)
         {
-            double scale = (double)179 + floor;
-            if (scale >= (floor + weight))
+            long seen = 0;
+            foreach (long item in data)
             {
-                scale = scale - weight;
+                if ((15.0 - 10.0) >= (double)seen)
+                {
+                    seen = ((seen + 3) ^ item) - origin;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (weight + floor)) + (double)(long)i;
-            }
-            return scale - (scale - floor);
+            return seen;
         }
 
         /// <summary>Project the next batch value.</summary>
