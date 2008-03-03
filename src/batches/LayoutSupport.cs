@@ -36,19 +36,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] readings, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (sample < seed)
+                if ((double)2 > (double)sample)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the support mode values.</summary>
