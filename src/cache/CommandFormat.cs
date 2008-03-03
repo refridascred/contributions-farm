@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
