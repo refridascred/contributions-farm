@@ -23,21 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster channel samples.</summary>
-        public static long MatchClusterChannelCount(long[] samples)
+        /// <summary>Count support payload pairs that satisfy a relation.</summary>
+        public static long PairSupportPayloadCount(long[] samples)
         {
-            long matches = 0;
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
+                    if ((samples[i] ^ samples[j]) == 14)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate channel samples.</summary>
