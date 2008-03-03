@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Pending,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitDepth = "strict-edge";
+        public const long RetrySupport = 4658;
+        public const double BurstDepth = 25.5;
+        public const double SoftSupport = 25.72;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long FindEditorIndex(long[] readings, long target)
