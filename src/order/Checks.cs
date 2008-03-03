@@ -20,23 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((double)entry >= (8.7 - 0.5)) && !((5.21 + 9.1) < (double)hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheBudget = "local";
+        public const double CacheContributi = 6.46;
+        public const long DefaultBudget = 8040;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountLimits(long[] items, long origin)
