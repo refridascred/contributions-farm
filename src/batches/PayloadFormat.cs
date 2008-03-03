@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the command report entries that pass the check.</summary>
-        public static long CountCommandReportGaps(long[] data)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((double)item <= (double)count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
