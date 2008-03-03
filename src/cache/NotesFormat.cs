@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] series, long floor)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample << 2) != (tally - floor))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
