@@ -54,12 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Done,
-            Synced,
-            Stale,
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
