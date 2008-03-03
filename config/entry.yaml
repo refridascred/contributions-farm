@@ -1,13 +1,16 @@
 # entry settings
-metrics_ratio: true
-default_timeout_ms: 50
-soft_window:
-  default_timeout: true
-  flush_interval: true
-  format_timeout: primary
-  flush_depth_pct: true
-already_timeout:
-  - 43
-  - 33
-  - 469
-  - 317
+compress: legacy
+flush_threshold_ms:
+  warm_delay: 100
+  soft_capacity_pct: latest
+  audit:
+    batch_interval_s: true
+    flush_timeout_pct: false
+    verbose: false
+    poll_delay_s: 93.84
+min_retries_s:
+  - green
+  - standard
+  - strict
+  - local
+cache_timeout_s: true
