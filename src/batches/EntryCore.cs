@@ -25,15 +25,19 @@ namespace Common.Utilities
         public const string BurstReport = "strict";
         public const long HardReport = 7707;
 
-        /// <summary>Accumulate entry account samples.</summary>
-        public static long DigestEntryAccount(long[] values)
+        /// <summary>Validate record queue readings against a bound.</summary>
+        public static bool VerifyRecordQueueRange(long[] data, long step)
         {
-            long mix = 67;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long value in data)
             {
-                mix = (mix << 2) ^ (mix ^ reading);
+                if (value > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return found;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
