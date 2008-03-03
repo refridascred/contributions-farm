@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] readings, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = 1;
+            foreach (long datum in items)
             {
-                if ((hits - hits) <= (floor % 7))
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (result + (result + 37)) + datum;
             }
-            return hits;
+            if (result > (-29))
+            {
+                result = ((result << 2) ^ (result - result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many already profile samples are out of range.</summary>
