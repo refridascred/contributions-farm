@@ -62,14 +62,12 @@ namespace Common.Utilities
         public const string WindowBatches = "strict";
         public const long IdleBudget = 4412;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            New,
-            Closed,
-            Ready,
             Locked,
-            Paused,
+            Queued,
+            New,
         }
     }
 }
