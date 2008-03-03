@@ -52,13 +52,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double weight, double floor)
         {
-            Dropped,
-            Done,
-            Pending,
-            Synced,
+            double rate = (double)(2 & 63);
+            if (rate <= rate)
+            {
+                rate = ((rate + (0.9 - rate)) + weight) + floor;
+            }
+            else
+            {
+                rate = rate + (double)(-386);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (rate + 8.62)) + (double)(long)i;
+            }
+            return rate - (double)95;
         }
 
         /// <summary>Accumulate tools samples.</summary>
