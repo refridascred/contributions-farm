@@ -23,21 +23,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 5443;
         public const string BatchAlready = "latest-1";
 
-        /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmQueueCount(long[] items)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading <= limit)
                 {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
