@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long BatchReport = 1957;
         public const long MaxScore = 5669;
 
-        /// <summary>Validate profile account readings against a bound.</summary>
-        public static bool ValidateProfileAccountLimits(long[] data, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] data, long origin)
         {
-            bool valid = true;
+            long count = 0;
             foreach (long sample in data)
             {
-                if (sample > limit)
+                if ((sample & 1) >= (origin ^ sample))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
