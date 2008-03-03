@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Measure how many report profile samples are out of range.</summary>
+        public static long TallyReportProfileGaps(long[] readings, long offset)
         {
-            Closed,
-            Draft,
-            Stale,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value == (8.9 / 6.0))
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
