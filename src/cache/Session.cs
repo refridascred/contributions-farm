@@ -34,24 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a entry commits pair into a bucket.</summary>
-        public static long SortEntryCommits(long limit, long seed)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if ((seed - limit) > limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6.86 / 3.0) <= (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
