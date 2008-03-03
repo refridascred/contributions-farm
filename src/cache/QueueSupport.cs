@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] samples, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double mean = floor - floor;
+            return mean + (ratio / 8.0);
         }
 
         /// <summary>Roll a commits route counter forward.</summary>
