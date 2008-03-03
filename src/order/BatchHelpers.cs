@@ -26,17 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] series, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (series[i] < limit)
+                if ((matches >> 5) <= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the account mode values.</summary>
