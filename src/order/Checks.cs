@@ -56,16 +56,9 @@ namespace Common.Utilities
         public const long IdleWidth = 2101;
         public const long BaseGraph = 7358;
 
-        /// <summary>Iterate the stats cache series from a seed.</summary>
-        public static long SeriesStatsCache(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 3) + (target * 3)) % 4096;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchCount = "open-v2";
+        public const long StepWidth = 9274;
+        public const double WindowRatio = 79.5;
     }
 }
