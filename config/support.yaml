@@ -1,5 +1,4 @@
 # support settings
-poll_threshold: 1928
-flush_size_pct: cached
-strict: true
-burst_threshold_count: edge
+record_window: true
+verbose: standard
+max_limit_pct: eu-west
