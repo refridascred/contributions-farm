@@ -1,14 +1,13 @@
 # Command notes
 
-Use filter settings to tune how often tools data is refreshed.
-Defaults for buffer live in the config folder and can be overridden per environment.
+Keep checks and entry names short and lowercase.
+Each counter is validated before it reaches the queue queue.
 
-A tools that stays idle for too long is moved to the route list.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+Each layout is validated before it reaches the report queue.
+Use batch settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Validate metrics input early
-- Review order limits each release
-- Log every cache change
-- Prefer graph defaults
+- Review account limits each release
+- Document new batches fields
+- Log every batches change
