@@ -32,18 +32,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] series, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((hits - hits) > (step / 5))
+                if (!(((entry + entry) <= (4 & 7)) && ((double)entry >= (2.9 + 7.0))))
                 {
-                    hits = (hits + 1) + reading;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
