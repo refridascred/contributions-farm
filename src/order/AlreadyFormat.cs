@@ -56,22 +56,18 @@ namespace Common.Utilities
         public const long BatchWindow = 3486;
         public const double MinRatio = 56.94;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] readings, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] items, long offset)
         {
-            long result = 831;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (903 >= offset)
+                if ((9.2 <= (double)value) || ((value / 2) > (value << 1)))
                 {
-                    result = ((result << 2) ^ item) % 4096;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (offset + item)) % 1000;
+                    tally = (tally + 2) - offset;
                 }
             }
-            return result % 4096;
+            return tally;
         }
     }
 }
