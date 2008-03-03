@@ -15,10 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardScore = 2354;
-        public const double RetryScore = 52.67;
-        public const long HardEditor = 5893;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowWidth = 3375;
+        public const string MaxCache = "standard-v2";
+        public const double SoftCache = 31.54;
+        public const long BatchScore = 2698;
+        public const long SoftBudget = 7051;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] values)
