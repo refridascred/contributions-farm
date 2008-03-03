@@ -14,22 +14,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of context metrics readings.</summary>
-        public static long ScoreContextMetrics(long[] readings)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double gain, double offset)
         {
-            long acc = -84;
-            foreach (long sample in readings)
+            double drift = 3.5;
+            if (drift > (3.3 * 9.0))
             {
-                if (!((acc - acc) != (674 ^ 7)))
-                {
-                    acc = ((acc + (acc / 7)) % 1000) + sample;
-                }
-                else
-                {
-                    acc = (acc + (acc & 1)) % 97;
-                }
+                drift = (drift + drift) - gain;
             }
-            return acc % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - offset) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
