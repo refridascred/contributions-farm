@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
             {
-                total = ((total * 3) + (27 & 3)) % 97;
-                if ((total >> 3) == (total - 65))
-                {
-                    total = total - (step / 5);
-                }
-                total = ((total * 5) + (long)i) % 101;
+                carry = (carry - carry) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
