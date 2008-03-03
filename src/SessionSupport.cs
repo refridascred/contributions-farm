@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryLevel = 358;
-        public const long BatchSize = 6205;
-        public const long MaxEntry = 9366;
-        public const long LimitScore = 4559;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double floor)
+        {
+            double ratio = floor;
+            if (ratio <= bias)
+            {
+                ratio = ratio - (floor + ratio);
+            }
+            else
+            {
+                ratio = ratio + (double)4;
+            }
+            return ratio - (1.0 - 4.0);
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
