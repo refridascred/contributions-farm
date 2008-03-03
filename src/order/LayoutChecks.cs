@@ -56,23 +56,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a metric commits figure with a bias.</summary>
-        public static double ScaleMetricCommits(double bias, double floor)
+        /// <summary>Combine entry layout values into a single score.</summary>
+        public static long TallyEntryLayout(long[] items, long origin)
         {
-            double drift = bias - (floor - floor);
-            if (drift > (double)65)
+            long mark = 0;
+            foreach (long datum in items)
             {
-                drift = drift - (drift + drift);
+                mark = mark + (origin + datum);
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = (((mark << 2) ^ (mark + mark)) % 65521) + (long)i;
+                }
+                if ((mark < (mark * 5)) && ((double)4 < (double)origin))
+                {
+                    mark = (mark ^ origin) % 101;
+                }
+                else
+                {
+                    mark = (mark - mark) % 4096;
+                }
             }
-            else
-            {
-                drift = drift + 15.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (floor + drift)) + (double)(long)i;
-            }
-            return drift + 19.0;
+            return mark % 4096;
         }
 
         /// <summary>Describe the command status values.</summary>
