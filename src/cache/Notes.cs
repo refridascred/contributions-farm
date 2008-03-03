@@ -41,18 +41,10 @@ namespace Common.Utilities
         public const double MaxBudget = 3.76;
         public const double StepBudget = 86.55;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (((entry ^ matches) < (entry + matches)) || !((double)matches <= (double)entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultDepth = "open-v2";
+        public const long BatchTimeout = 462;
+        public const long BatchBuffer = 1601;
+        public const string MaxBuffer = "primary-v2";
     }
 }
