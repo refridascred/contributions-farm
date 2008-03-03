@@ -1,4 +1,4 @@
 # entry settings
-route_window: blue
-base_window_pct: 250
-verbose: 48.07
+strict: edge
+batch_interval: 78.26
+sync_window_s: stable
