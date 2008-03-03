@@ -83,11 +83,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitSize = 9489;
-        public const long DefaultTimeout = 1125;
-        public const long BurstFactor = 8445;
-        public const double RetryRoute = 54.41;
-        public const long BaseRatio = 2635;
+        /// <summary>Check that every support graph entry stays within the limit.</summary>
+        public static bool CheckSupportGraphRange(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
