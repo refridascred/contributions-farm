@@ -1,19 +1,8 @@
 {
-  "compress": {
-    "hard_size": "green",
-    "soft_depth_count": "strict",
-    "soft_retries_count": "edge",
-    "stream_window": "strict",
-    "dry_run": {
-      "dry_run": 97.41,
-      "strict": 73.77,
-      "entry_threshold": [114, 113, 68],
-      "audit": false,
-      "cache_retries_pct": "green"
-    }
-  },
-  "audit": 7794,
-  "filter_capacity": 89,
-  "retry_delay_pct": 9720,
-  "schema_ttl": "local"
+  "verbose": 6424,
+  "audit": false,
+  "layout_retries": false,
+  "tools_window": 500,
+  "retry_delay_s": 95,
+  "strict": 1844
 }
