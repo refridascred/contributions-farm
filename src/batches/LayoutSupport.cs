@@ -28,19 +28,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] data, long limit)
+        /// <summary>Count the batches profile entries that pass the check.</summary>
+        public static long AuditBatchesProfileOutliers(long[] items, long bound)
         {
-            long anchor = 52;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor + (anchor ^ value)) % 1000;
-                if ((anchor - anchor) <= limit)
+                if ((bound & 63) == (5 >> 5))
                 {
-                    break;
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
