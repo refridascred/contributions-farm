@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a cache command pair into a bucket.</summary>
-        public static long BucketCacheCommand(long origin, long limit)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            if (!((8.35 / 2.0) <= (double)origin))
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((6.1 + 17.0) >= (double)origin))
+                if (!((seed > (seed & 127)) || (seed <= 4)))
                 {
-                    return 8;
+                    mix = (mix + (83 + seed)) % 255;
                 }
-                else
-                {
-                    return 0;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
