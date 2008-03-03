@@ -48,38 +48,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long step, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            if (((step & 63) >= (floor + floor)) || (step > (step + floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((151 + floor) < step) || ((1.23 + 9.66) < (double)floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor - step) >= (step ^ step)) || ((step ^ floor) == (floor + 183)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor >= (step + floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Paused,
+            Idle,
+            Locked,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
