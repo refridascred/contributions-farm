@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxSize = 6839;
-        public const string WindowInterval = "strict-v2";
-        public const long BaseCounter = 9835;
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] values)
+        {
+            long result = 463;
+            foreach (long sample in values)
+            {
+                result = (((result * 3) + (998 >> 4)) % 4096) - sample;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterHits(long[] readings, long step)
