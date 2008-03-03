@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const double RetryCount = 48.9;
         public const double LimitSize = 60.08;
 
-        /// <summary>Check that every counter contributi entry stays within the limit.</summary>
-        public static bool GuardCounterContributiRange(long[] series, long target)
+        /// <summary>Count the context layout entries that pass the check.</summary>
+        public static long TallyContextLayoutHits(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (item >= target)
+                if ((double)sample > (double)68)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) - limit;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
