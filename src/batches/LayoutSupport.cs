@@ -36,18 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] levels)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double load = floor;
+            if (load < rate)
             {
-                if ((double)2 > (double)sample)
-                {
-                    matches = matches + 2;
-                }
+                load = load - (rate + rate);
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load - (rate / 3.0);
         }
 
         /// <summary>Describe the support mode values.</summary>
