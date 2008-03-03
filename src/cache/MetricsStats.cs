@@ -79,10 +79,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 3760;
-        public const long DefaultScore = 3660;
-        public const long BatchInterval = 2089;
-        public const double RetryDepth = 98.04;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
