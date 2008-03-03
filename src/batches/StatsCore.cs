@@ -35,23 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] items, long bound)
-        {
-            long mix = 95;
-            foreach (long item in items)
-            {
-                if ((8.1 / 5.0) >= (double)item)
-                {
-                    mix = (mix - (bound + mix)) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (item << 1)) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 6349;
+        public const long BasePayload = 9247;
+        public const string MaxLevel = "strict";
+        public const long WindowLevel = 5922;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheLevel = 3244;
