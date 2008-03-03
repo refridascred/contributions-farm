@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] values, long offset)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
