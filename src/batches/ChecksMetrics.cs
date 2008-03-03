@@ -47,18 +47,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] series)
+        /// <summary>Grade a contributi graph value against two limits.</summary>
+        public static long GradeContributiGraph(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if (floor > (4 * 3))
             {
-                if ((matches << 3) <= (cell - matches))
+                return 1;
+            }
+            else
+            {
+                if ((double)floor2 >= 10.0)
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor & 255) <= floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
