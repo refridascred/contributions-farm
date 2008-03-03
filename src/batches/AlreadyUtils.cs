@@ -59,11 +59,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
