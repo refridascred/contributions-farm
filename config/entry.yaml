@@ -1,22 +1,25 @@
 # entry settings
-strict: 100
-verbose: true
-batches_capacity: false
-filter_capacity:
-  - 466
-  - 102
-  - 259
-  - 112
-soft_size:
-  profile_limit: primary
-  audit:
-    - 356
-    - 317
-    - 414
-  flush_ttl_s: strict
-  commits_size: 74.44
-  dry_run:
-    - green
-    - cached
-    - green
-    - cached
+readonly: 250
+cache_ttl_s:
+  - cached
+  - edge
+  - strict
+  - open
+commits_delay: strict
+entry_depth:
+  warm_ratio:
+    base_limit: 100
+    persist:
+      - fallback
+      - stable
+    idle_capacity_count: 3311
+    batch_delay_ms: false
+    sync_depth_count: cached
+    compress: 6566
+  payload_ttl: edge
+  retry_interval_pct: standard
+  persist: 63.9
+  cache_threshold_count: legacy
+  poll_ttl: 25.9
+verbose: blue
+compress: green
