@@ -20,22 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] levels, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            long state = 837;
-            foreach (long reading in levels)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((reading < ((long)levels.Length % 10)) && (reading < (reading & 31)))
-                {
-                    state = ((state * 3) + (step % 3)) % 4096;
-                }
-                if ((double)8 > (double)state)
-                {
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
