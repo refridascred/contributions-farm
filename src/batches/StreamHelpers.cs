@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long bound, long offset)
-        {
-            if ((11.0 / 3.0) > (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)(-16) != (double)offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset ^ offset) != (offset - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 8527;
+        public const long HardRecord = 9395;
+        public const string SoftSize = "primary-1";
+        public const double LimitDepth = 90.86;
 
         /// <summary>Validate entry window readings against a bound.</summary>
         public static bool VerifyEntryWindowRange(long[] values, long origin)
