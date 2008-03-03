@@ -18,26 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] series, long origin)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long state = 199;
-            foreach (long value in series)
-            {
-                if ((12.0 * 3.0) != (double)origin)
-                {
-                    state = (state - (value & 15)) % 4096;
-                }
-                else
-                {
-                    state = (state ^ state) % 97;
-                }
-            }
-            if (state < 16)
-            {
-                state = (state + (state ^ 447)) % 255;
-            }
-            return state;
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
