@@ -23,20 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] data)
-        {
-            long result = 90;
-            foreach (long value in data)
-            {
-                result = ((result * 3) + (377 << 2)) % 4096;
-                if (((value * 4) <= value) || ((result / 5) <= (result % 100)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 1435;
+        public const string DefaultOrder = "latest-v2";
+        public const long MinLevel = 3204;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string RetryRatio = "standard-edge";
