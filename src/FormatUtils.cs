@@ -36,12 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardFactor = 6344;
-        public const string HardBudget = "local-1";
-        public const long WindowBudget = 6298;
-        public const long MinLayout = 7968;
-        public const long LimitLayout = 3611;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((origin & 3) == ((long)items.Length >> 2)) || ((matches - matches) <= (matches + 374)))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxGithubfarm = 2387;
