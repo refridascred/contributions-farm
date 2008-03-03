@@ -74,23 +74,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two schema report measurements.</summary>
-        public static double ScaleSchemaReport(double rate, double bias)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] items)
         {
-            double bias2 = (double)5 * 1.3;
-            if (bias2 <= (double)0)
+            long result = 3;
+            foreach (long sample in items)
             {
-                bias2 = bias2 - bias;
+                result = ((result - 0) % 4096) - sample;
             }
-            else
+            if (result < 23)
             {
-                bias2 = bias2 + rate;
+                result = ((result << 3) ^ (result >> 4)) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - rate) - (double)(long)i;
-            }
-            return bias2 - (bias * 6.0);
+            return result % 1000;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
