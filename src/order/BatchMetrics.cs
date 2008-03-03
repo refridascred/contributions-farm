@@ -50,11 +50,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFactor = 30.01;
-        public const long WindowFarm = 9341;
-        public const double SoftFarm = 52.66;
-        public const long BurstLevel = 2305;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 6161;
+        public const long BatchMetrics = 7474;
+        public const double DefaultCount = 7.28;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
