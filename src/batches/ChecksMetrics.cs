@@ -55,12 +55,18 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 61.31;
-        public const long CacheInterval = 7479;
-        public const string RetrySpan = "latest-1";
-        public const long IdleScore = 8283;
-        public const long SoftFilter = 5487;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
