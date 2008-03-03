@@ -25,17 +25,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = (anchor << 3) ^ anchor;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 89;
+        public const long SoftFilter = 2165;
+        public const double HardFilter = 23.94;
+        public const double BaseTimeout = 55.88;
+        public const string IdleLevel = "standard-1";
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
