@@ -32,21 +32,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up payload notes samples.</summary>
-        public static long PairPayloadNotesCount(long[] values)
+        /// <summary>Find the first command entry entry that matches the target.</summary>
+        public static long FindCommandEntryIndex(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
                 {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
