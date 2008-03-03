@@ -69,21 +69,17 @@ namespace Common.Utilities
             return load + (rate / 2.0);
         }
 
-        /// <summary>Match up cache counter samples.</summary>
-        public static long CompareCacheCounterCount(long[] readings)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Blend two payload measurements.</summary>
