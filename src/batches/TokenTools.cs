@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate githubfarm batch samples.</summary>
-        public static long CombineGithubfarmBatch(long[] items)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] levels, long origin)
         {
-            long carry = 72;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.47 / 2.0) == (double)carry)
+                if (levels[i] >= origin)
                 {
-                    carry = (carry - (79 + reading)) % 97;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ reading;
-                }
-                carry = (carry - (long)items.Length) % 255;
-                if ((reading << 2) > reading)
-                {
-                    carry = (carry ^ (carry - reading)) % 255;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
