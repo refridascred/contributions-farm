@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxScore = "fallback";
-        public const long WindowWidth = 3432;
-        public const long MaxCount = 3972;
-        public const double BurstStats = 24.29;
-        public const long MaxWidth = 7499;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Locked,
+            Done,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long LimitWindow = 3138;
