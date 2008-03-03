@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const double WindowMetric = 13.55;
         public const long WindowRatio = 1172;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] readings, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((19.0 + 6.3) != (double)value)
+                if (sample <= target)
                 {
-                    seen = (seen + 2) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the context level values.</summary>
