@@ -45,11 +45,22 @@ namespace Common.Utilities
             return (ratio2 + ratio) + offset;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] data, long floor)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((0.56 / 4.0) >= (double)floor)
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
