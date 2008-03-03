@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double rate, double floor)
+        /// <summary>Count the token notes entries that pass the check.</summary>
+        public static long AuditTokenNotesHits(long[] values, long step)
         {
-            double mean = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mean = ((mean - mean) - (double)(long)i) - rate;
+                if ((sample - sample) < matches)
+                {
+                    matches = (matches + 2) - step;
+                }
             }
-            return mean + mean;
+            return matches;
         }
 
         /// <summary>Describe the record level values.</summary>
