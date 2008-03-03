@@ -1,4 +1,18 @@
 # support settings
-record_window: true
-verbose: standard
-max_limit_pct: eu-west
+commits_ratio: local
+readonly: 2881
+verbose: 46.78
+burst_interval_ms:
+  compress: open
+  strict: staging
+  warm_window_ms:
+    max_depth_pct: true
+    context_timeout: 48.09
+    entry_retries:
+      - stable
+      - fallback
+  min_retries: primary
+  soft_interval: staging
+  already_window: 23.41
+payload_limit: 1396
+cache_retries_count: 3240
