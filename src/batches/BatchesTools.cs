@@ -30,14 +30,38 @@ namespace Common.Utilities
             return gain - (offset * 19.0);
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long target, long offset)
         {
-            Active,
-            Failed,
-            Queued,
-            Stale,
-            Draft,
+            if ((0.63 - 3.0) < (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target - offset) <= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset / 4) > (72 % 97))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((25 % 60) <= target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
