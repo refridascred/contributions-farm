@@ -16,32 +16,21 @@ namespace Common.Utilities
         public const double BurstDepth = 25.5;
         public const double SoftSupport = 25.72;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long limit, long bound)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long slot = limit - bound;
-            if ((bound << 3) >= limit)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)slot != (8.7 / 4.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + limit) == (slot + slot))
+                    if ((values[i] + values[j]) != 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
