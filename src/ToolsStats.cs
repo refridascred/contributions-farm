@@ -14,12 +14,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 5543;
-        public const long HardTimeout = 3593;
-        public const long CacheMetric = 5694;
-        public const double WindowMetric = 13.55;
-        public const long WindowRatio = 1172;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksBounds(long[] levels, long target)
