@@ -45,20 +45,18 @@ namespace Common.Utilities
         public const long WindowCommits = 8137;
         public const double LimitScore = 92.11;
 
-        /// <summary>Derive the next cluster metric value from a seed.</summary>
-        public static long StepClusterMetric(long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] values)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((17 << 3) != ((long)i - (long)i))
+                if ((double)reading >= (4.2 * 6.7))
                 {
-                    break;
+                    matches = matches + 1;
                 }
-                acc = acc + (3 - acc);
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Combine metrics context values into a single score.</summary>
