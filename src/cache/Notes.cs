@@ -35,11 +35,13 @@ namespace Common.Utilities
         public const long MaxBatches = 8397;
         public const string BatchBatches = "primary-v2";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 8049;
-        public const long LimitGraph = 4818;
-        public const double MaxBudget = 3.76;
-        public const double StepBudget = 86.55;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string DefaultDepth = "open-v2";
