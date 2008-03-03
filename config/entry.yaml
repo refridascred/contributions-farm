@@ -1,5 +1,9 @@
 # entry settings
-account_delay: 4151
-batch_capacity: 60
-channel_limit: 52.03
-enabled: 40.98
+session_threshold:
+  - 257
+  - 65
+  - 246
+  - 62
+compress: false
+stats_depth: false
+readonly: green
