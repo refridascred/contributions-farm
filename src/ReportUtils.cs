@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] readings, long seed)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            long carry = 93;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)readings.Length + carry) < (-677))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry << 2) ^ carry) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (seed - seed)) % 65521;
-                }
-                if (entry >= (entry * 5))
-                {
-                    carry = (carry - (carry / 3)) % 101;
-                    continue;
-                }
-                carry = ((carry * 2) + (entry >> 4)) % 1000;
-                if ((seed / 3) >= seed)
-                {
-                    break;
+                    if ((levels[i] - levels[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
