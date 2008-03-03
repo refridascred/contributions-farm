@@ -25,31 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long offset, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] levels, long origin)
         {
-            if ((target - 9) > (target << 1))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (target < (offset & 3))
+                if (((matches <= (value & 3)) || ((double)8 >= (double)value)) && (origin >= value))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((332 + target) > (target - 49))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
