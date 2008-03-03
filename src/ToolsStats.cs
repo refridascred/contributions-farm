@@ -74,18 +74,14 @@ namespace Common.Utilities
         public const long SoftProfile = 4954;
         public const double IdleInterval = 53.05;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] levels)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)tally > (6.3 + 2.5)))
-                {
-                    tally = (tally + 3) - value;
-                }
-            }
-            return tally;
+            Stale,
+            Pending,
+            Queued,
+            Active,
+            Draft,
         }
     }
 }
