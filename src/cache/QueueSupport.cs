@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] readings)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)seen != (7.6 * 1.0))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
