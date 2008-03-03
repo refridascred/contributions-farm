@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 4205;
+        public const long RetryFactor = 512;
+        public const long HardScore = 161;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
