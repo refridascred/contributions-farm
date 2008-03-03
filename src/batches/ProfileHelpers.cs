@@ -34,39 +34,12 @@ namespace Common.Utilities
             return weight + (double)621;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long offset, long floor)
-        {
-            if (offset < 6)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor < (14.0 * 6.0)) && ((offset >> 3) < floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor >= (39 << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)floor <= 5.0)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCount = 528;
+        public const double MinCount = 25.68;
+        public const long MaxBudget = 8778;
+        public const long WindowCommits = 8137;
+        public const double LimitScore = 92.11;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyMatches(long[] series)
