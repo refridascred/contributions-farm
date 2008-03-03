@@ -1,5 +1,4 @@
 # githubfarm settings
-soft_depth_count: 8587
-batch_size_ms: eu-west
-flush_size_ms: 57.48
-max_delay: 5456
+dry_run: false
+persist: 93
+base_limit_ms: cached
