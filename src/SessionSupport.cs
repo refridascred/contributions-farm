@@ -17,18 +17,22 @@ namespace Common.Utilities
             return (gain + (gain - gain)) + offset;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] readings)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long score = 4;
+            foreach (long entry in samples)
             {
-                if ((count + count) <= count)
+                if (8.7 < (double)score)
                 {
-                    count = (count + 2) + sample;
+                    score = ((score * 4) + score) % 255;
+                }
+                if (((2.1 * 4.8) < (double)entry) || ((entry + score) > entry))
+                {
+                    score = score + score;
                 }
             }
-            return count;
+            return score % 4096;
         }
     }
 }
