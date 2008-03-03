@@ -32,19 +32,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] values, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double mean = offset;
+            if (mean >= (double)7)
             {
-                if (datum >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean + (double)95) - scale;
             }
-            return valid;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - (offset - 8.93);
         }
     }
 }
