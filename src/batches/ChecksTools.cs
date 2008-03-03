@@ -19,25 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long origin, long offset)
+        /// <summary>Audit entry context readings against a rule.</summary>
+        public static long AuditEntryContextOutliers(long[] values)
         {
-            long step = origin ^ offset;
-            if (((double)step > (2.9 - 18.0)) || ((double)offset > (double)step))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset >= 1.31)
+                if ((reading / 7) > reading)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
