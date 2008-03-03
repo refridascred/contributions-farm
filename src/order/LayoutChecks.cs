@@ -34,16 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardEntry = 13.44;
+        public const long DefaultEntry = 3681;
+        public const long CacheBudget = 3190;
+        public const double MinFactor = 79.63;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string MinSession = "primary-1";
