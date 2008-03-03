@@ -25,21 +25,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Digest a series of queue order entries.</summary>
+        public static long DigestQueueOrder(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 973;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample ^ sample) != (acc + (long)samples.Length))
                 {
-                    if ((levels[i] ^ levels[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + sample) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (sample * 5)) % 101;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
