@@ -53,13 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            Queued,
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
