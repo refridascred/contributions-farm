@@ -34,16 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double bias, double bias2)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            double rate = bias2 * 3.92;
+            if (rate > rate)
             {
-                mark = ((mark << 2) ^ seed) % 101;
-                mark = ((mark * 4) + (long)i) % 1000;
+                rate = (rate - (8.4 - rate)) - bias;
             }
-            return mark;
+            return rate - rate;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
