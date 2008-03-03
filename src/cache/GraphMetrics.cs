@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFactor = 64.25;
-        public const long MaxTimeout = 665;
-        public const long StepFilter = 6752;
-        public const string LimitBudget = "fallback-1";
-        public const long RetryFilter = 4051;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] levels, long offset)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading << 2) <= (count + count)))
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] data, long seed)
