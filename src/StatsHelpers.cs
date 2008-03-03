@@ -68,16 +68,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = mark + (limit ^ mark);
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Combine channel batch values into a single score.</summary>
