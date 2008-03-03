@@ -1,12 +1,11 @@
 {
-  "default_capacity_count": "fallback",
-  "flush_limit_s": ["blue", "latest"],
-  "persist": 13,
-  "batch_retries_count": {
-    "cache_depth": "eu-west",
-    "compress": ["staging", "eu-west", "local"],
-    "audit": ["primary", "stable", "standard"],
-    "entry_timeout": false
+  "strict": {
+    "entry_capacity": 400,
+    "record_capacity": "strict",
+    "cluster_depth": "staging",
+    "notes_timeout": false
   },
-  "base_ttl_count": 1024
+  "farm_depth": ["strict", "green"],
+  "batch_delay": 72,
+  "idle_ttl_s": false
 }
