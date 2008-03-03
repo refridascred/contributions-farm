@@ -25,38 +25,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long target, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            if ((0.63 - 3.0) < (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target - offset) <= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset / 4) > (72 % 97))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((25 % 60) <= target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Idle,
+            Closed,
         }
     }
 }
