@@ -1,29 +1,16 @@
 # support settings
-stream_window:
-  - 271
-  - 319
-  - 158
-  - 376
-strict:
-  window_window: false
-  farm_retries: true
-  idle_ttl: true
-  burst_ratio_s: 11
-  metrics_capacity: 59
-  order_window: 28.8
-min_ratio:
-  base_threshold_ms:
-    - local
-    - legacy
-  schema_size: cached
-  profile_ttl: 3660
-  readonly: open
-  min_size:
-    layout_threshold:
-      - 339
-      - 314
-      - 70
-    hard_delay_count: staging
-    batch_delay_ms: false
-    compress: fallback
-  default_capacity_ms: local
+hard_depth_count: 9941
+command_limit: true
+poll_depth_ms: 57
+dry_run:
+  hard_limit_pct: true
+  base_depth:
+    - 159
+    - 339
+    - 450
+    - 173
+  retry_interval_ms:
+    - 83
+    - 345
+  hard_timeout_s: 100
+  cache_size_pct: strict
