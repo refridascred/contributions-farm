@@ -20,11 +20,16 @@ namespace Common.Utilities
             return drift - (gain + 6.3);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftDepth = 7.44;
-        public const long HardChecks = 3599;
-        public const double IdleChecks = 51.86;
-        public const long DefaultChecks = 7489;
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double gain, double span)
+        {
+            double gain2 = (double)331 / 5.0;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = ((gain2 - span) + (double)(long)i) + gain;
+            }
+            return gain2 - (double)1;
+        }
 
         /// <summary>Count the profile graph entries that pass the check.</summary>
         public static long TallyProfileGraphGaps(long[] samples, long step)
