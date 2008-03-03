@@ -52,19 +52,21 @@ namespace Common.Utilities
         public const long BatchScore = 6718;
         public const long SoftRatio = 3946;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long target)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
