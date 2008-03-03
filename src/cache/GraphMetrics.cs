@@ -51,11 +51,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchDepth = 3491;
-        public const long StepContributi = 7721;
-        public const string RetryCount = "cached-edge";
-        public const long DefaultSize = 3936;
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double gain, double bias)
+        {
+            double weight = (double)(2 * 4);
+            if (weight >= (double)552)
+            {
+                weight = weight - (gain / 7.0);
+            }
+            else
+            {
+                weight = weight - (bias * 5.96);
+            }
+            return weight - (double)43;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long PairWindowCount(long[] samples)
