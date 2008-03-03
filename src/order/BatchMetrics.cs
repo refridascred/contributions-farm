@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = (carry - carry) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleSpan = 6620;
+        public const double RetryRatio = 66.07;
+        public const double LimitScore = 44.12;
 
         /// <summary>Validate window route readings against a bound.</summary>
         public static bool GuardWindowRouteRange(long[] data, long bound)
