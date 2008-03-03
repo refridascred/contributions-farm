@@ -1,5 +1,17 @@
 # githubfarm settings
-max_capacity_pct: stable
-cache_timeout: 4.77
-audit: 1375
-flush_delay_count: cached
+default_interval_s:
+  - 297
+  - 218
+  - 358
+  - 357
+idle_ttl: strict
+contributi_delay: open
+base_window_pct: 60
+max_threshold_pct:
+  strict: latest
+  base_ratio_ms: false
+  enabled: 2756
+  min_limit_count:
+    - open
+    - open
+  max_interval: true
