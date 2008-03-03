@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] series, long origin)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long score = 3;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    score = ((score << 2) ^ (origin & 3)) % 97;
-                    score = ((score << 3) ^ ((long)i + origin)) % 65521;
-                }
-                score = (score * 2) + score;
-                score = (score + (1 + entry)) % 101;
-            }
-            return score;
+            Failed,
+            Idle,
+            Draft,
+            Done,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
