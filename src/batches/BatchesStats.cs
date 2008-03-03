@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double bias, double floor)
+        /// <summary>Grade a graph stream value against two limits.</summary>
+        public static long RankGraphStream(long bound, long limit)
         {
-            double rate = (double)((-161) * 5);
-            if (rate <= (double)8)
+            long prev = bound - limit;
+            if (!((limit + prev) < (894 * 3)))
             {
-                rate = rate - (rate * 1.7);
+                return 6;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate - bias) - (double)(long)i;
+                if (((prev / 6) <= (limit / 9)) || ((1.9 + 2.6) <= (double)prev))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return rate + floor;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
