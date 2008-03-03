@@ -15,23 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] data)
         {
-            long score = 5;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                score = score - (score + score);
-                if (!(686 <= (reading * 4)))
+                if ((value * 5) >= (896 * 2))
                 {
-                    score = score + (reading % 2);
-                }
-                if (!((score - score) <= (score << 1)))
-                {
-                    score = (score - 15) % 255;
+                    matches = matches + 3;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Describe the token level values.</summary>
