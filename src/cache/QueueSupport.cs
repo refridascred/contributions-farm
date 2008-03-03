@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
+            Draft,
+            Ready,
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
