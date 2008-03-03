@@ -22,15 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] samples, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
