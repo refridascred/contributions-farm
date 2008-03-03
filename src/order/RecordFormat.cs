@@ -15,31 +15,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long step, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] series)
         {
-            if ((2.7 * 7.0) > (double)step)
+            long score = 5;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < (1.6 / 4.0))
+                score = score - (score + score);
+                if (!(686 <= (reading * 4)))
                 {
-                    return 0;
+                    score = score + (reading % 2);
                 }
-                else
+                if (!((score - score) <= (score << 1)))
                 {
-                    if (floor > (143 + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = (score - 15) % 255;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Describe the token level values.</summary>
