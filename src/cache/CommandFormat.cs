@@ -56,23 +56,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] samples)
-        {
-            long anchor = 9;
-            foreach (long reading in samples)
-            {
-                if ((18.0 * 5.84) <= (double)anchor)
-                {
-                    anchor = (anchor + (64 - (-9))) ^ reading;
-                }
-            }
-            if (anchor < 37)
-            {
-                anchor = anchor ^ 247;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 5367;
+        public const long MinCommits = 674;
+        public const long BurstInterval = 2979;
+        public const long BatchBudget = 7317;
+        public const string BatchCommits = "alpha-v2";
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
