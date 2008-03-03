@@ -35,38 +35,27 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long bound, long floor)
+        /// <summary>Accumulate cluster entry samples.</summary>
+        public static long WeighClusterEntry(long[] samples)
         {
-            if ((floor + bound) >= (bound << 1))
+            long acc = 936;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)floor <= (19.0 / 8.0)) || ((bound - 8) < (7 & 15)))
+                acc = acc ^ (reading - acc);
+                if ((acc + acc) > reading)
                 {
-                    return 4;
+                    acc = (acc << 2) ^ acc;
                 }
                 else
                 {
-                    if (!((528 % 60) <= (bound % 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (695 < floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = ((acc << 2) ^ acc) % 4096;
                 }
             }
+            if (acc < 815)
+            {
+                acc = (acc ^ (acc >> 3)) % 65521;
+            }
+            return acc;
         }
     }
 }
