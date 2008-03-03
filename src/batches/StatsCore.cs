@@ -58,12 +58,17 @@ namespace Common.Utilities
         public const long CacheTools = 5697;
         public const double BatchWidth = 77.93;
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] samples, long bound)
         {
-            Locked,
-            Paused,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
