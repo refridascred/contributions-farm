@@ -26,12 +26,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 89.11;
-        public const double MinDepth = 10.46;
-        public const long WindowScore = 2686;
-        public const long IdleFormat = 3511;
-        public const string RetryInterval = "alpha-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "fallback";
+        public const double LimitCache = 93.1;
+        public const long RetryLevel = 6606;
+        public const long HardCache = 9883;
+        public const string DefaultCache = "legacy-v2";
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
