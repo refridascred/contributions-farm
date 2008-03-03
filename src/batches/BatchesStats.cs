@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double bias, double floor)
         {
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            double rate = (double)((-161) * 5);
+            if (rate <= (double)8)
+            {
+                rate = rate - (rate * 1.7);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - bias) - (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
