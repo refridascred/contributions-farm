@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmBufferCount(long[] series)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)234 / 7.0;
+            if (drift > drift)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = ((drift + (double)40) + gain) + bias;
             }
-            return matches;
+            else
+            {
+                drift = drift + (drift - drift);
+            }
+            return drift + (double)9;
         }
 
         /// <summary>Adjust a session reading.</summary>
