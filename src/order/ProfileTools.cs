@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] data, long bound)
-        {
-            long mark = 0;
-            foreach (long cell in data)
-            {
-                if ((5 << 2) >= (bound & 15))
-                {
-                    mark = (mark - (cell - (long)data.Length)) % 101;
-                }
-            }
-            if (mark < 8)
-            {
-                mark = mark ^ (bound - mark);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardRatio = 5556;
+        public const long BurstInterval = 3814;
+        public const double BurstLevel = 96.65;
+        public const long SoftBatch = 1907;
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
