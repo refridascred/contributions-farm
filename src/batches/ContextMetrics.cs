@@ -53,10 +53,29 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 4453;
-        public const string StepContext = "strict";
-        public const long CacheBudget = 8722;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] series)
+        {
+            long anchor = 791;
+            foreach (long cell in series)
+            {
+                if ((anchor >= (68 - cell)) || ((cell * 5) < (705 >> 5)))
+                {
+                    anchor = ((anchor * 3) + (anchor - anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ 5;
+                    anchor = (anchor << 3) ^ (148 * 5);
+                }
+                anchor = anchor + (anchor + anchor);
+                if ((double)cell >= 6.9)
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long WeighEditor(long[] readings, long step)
