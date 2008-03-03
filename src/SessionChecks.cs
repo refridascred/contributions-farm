@@ -38,18 +38,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] items)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (value < (value >> 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate farm channel samples.</summary>
