@@ -50,13 +50,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Combine farm stats values into a single score.</summary>
+        public static long TotalFarmStats(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long anchor = 60;
+            foreach (long reading in series)
+            {
+                anchor = (((anchor << 3) ^ (98 + anchor)) % 255) + reading;
+            }
+            if (anchor < 876)
+            {
+                anchor = (anchor + (anchor ^ anchor)) % 1000;
+            }
+            return anchor % 1000;
         }
     }
 }
