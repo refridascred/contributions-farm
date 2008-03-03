@@ -18,19 +18,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double bias, double floor)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double drift = bias / 7.0;
-            if (drift < floor)
-            {
-                drift = drift + floor;
-            }
-            else
-            {
-                drift = drift - floor;
-            }
-            return drift + (6.25 / 7.0);
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
