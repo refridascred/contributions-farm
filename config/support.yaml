@@ -1,6 +1,5 @@
 # support settings
-idle_ttl_pct: 60
-compress: false
-dry_run: 8364
-cluster_depth: 250
-flush_depth_pct: 100
+poll_threshold: 1928
+flush_size_pct: cached
+strict: true
+burst_threshold_count: edge
