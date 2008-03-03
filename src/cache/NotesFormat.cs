@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long floor)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = (sum << 2) ^ (sum * 4);
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            New,
+            Done,
+            Synced,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
