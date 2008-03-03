@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "latest";
-        public const double MaxWindow = 27.18;
-        public const long RetryWindow = 1027;
-        public const long HardCount = 673;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Ready,
+            Paused,
+            Failed,
+            Done,
+            Locked,
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
