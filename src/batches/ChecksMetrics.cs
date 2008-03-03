@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of commits channel entries.</summary>
-        public static long FoldCommitsChannel(long[] values)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] levels)
         {
-            long mark = 3;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (((mark + mark) > mark) && ((cell + cell) > (mark - mark)))
+                if ((double)hits <= (7.95 - 0.4))
                 {
-                    mark = (mark - cell) % 65521;
+                    hits = (hits + 1) + sample;
                 }
             }
-            if (mark < 575)
-            {
-                mark = (mark ^ (mark * 3)) % 255;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the editor status values.</summary>
