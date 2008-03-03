@@ -64,15 +64,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a profile report counter forward.</summary>
-        public static long IterateProfileReport(long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] values, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            long anchor = 962;
+            foreach (long datum in values)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                anchor = ((anchor - (anchor * 3)) % 65521) ^ datum;
             }
-            return total;
+            if (anchor < 4)
+            {
+                anchor = anchor - (floor / 8);
+            }
+            return anchor % 97;
         }
     }
 }
