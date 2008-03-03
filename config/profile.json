@@ -1,24 +1,6 @@
 {
-  "sync_ttl": "local",
-  "counter_depth": {
-    "default_depth_count": {
-      "buffer_ratio": ["edge", "cached"],
-      "sync_capacity_s": ["standard", "fallback", "standard", "latest"],
-      "cache_interval_s": 8920,
-      "persist": ["edge", "staging", "edge", "open"],
-      "idle_capacity_ms": "stable"
-    },
-    "githubfarm_limit": {
-      "warm_ttl_count": [438, 122],
-      "compress": false,
-      "report_timeout": true,
-      "sync_size_count": 66.15
-    },
-    "strict": "eu-west",
-    "idle_capacity": 24.32
-  },
-  "base_limit_count": "strict",
-  "dry_run": ["edge", "strict", "latest"],
-  "base_limit_s": false,
-  "soft_threshold_count": 53.4
+  "min_ttl": 47.04,
+  "flush_size": 1024,
+  "cache_interval_pct": 81.84,
+  "enabled": "edge"
 }
