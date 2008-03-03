@@ -54,15 +54,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double gain, double offset)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long floor, long target)
         {
-            double mean = gain;
-            for (int i = 0; i < 2; i++)
+            if (8.3 > (double)floor)
             {
-                mean = ((mean + mean) + (double)(long)i) - offset;
+                return 8;
             }
-            return mean + (gain + mean);
+            else
+            {
+                if (((floor & 3) >= (4 ^ floor)) || ((floor + floor) >= target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
