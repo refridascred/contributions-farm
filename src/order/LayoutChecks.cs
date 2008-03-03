@@ -73,14 +73,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long seed)
         {
-            Done,
-            Retry,
-            Stale,
-            New,
-            Pending,
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((double)seed > 9.71) || ((seed + carry) > ((long)i << 2)))
+                {
+                    carry = carry - (carry & 1);
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
