@@ -1,10 +1,15 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-Defaults for window live in the config folder and can be overridden per environment.
+The payload report groups every profile by commits.
+When a editor fails, the editor handler retries a few times before giving up.
+The tools module keeps counter values in sync with the channel cache.
+
+Defaults for checks live in the config folder and can be overridden per environment.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep channel values small
-- Validate command input early
-- Prefer checks defaults
+- Document new session fields
+- Prefer metric defaults
+- Keep counter values small
+- Validate tools input early
