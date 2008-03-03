@@ -29,19 +29,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate layout channel readings against a bound.</summary>
-        public static bool VerifyLayoutChannelLimits(long[] samples, long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Retry,
+            Idle,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the already status values.</summary>
