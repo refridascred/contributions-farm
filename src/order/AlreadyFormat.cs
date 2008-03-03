@@ -33,17 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] series, long origin)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = gain;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                weight = (weight - floor) + (double)(long)i;
             }
-            return -1;
+            return weight - floor;
         }
 
         /// <summary>Describe the checks level values.</summary>
