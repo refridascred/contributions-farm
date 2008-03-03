@@ -75,11 +75,32 @@ namespace Common.Utilities
         public const long SoftProfile = 4954;
         public const double IdleInterval = 53.05;
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Classify a stream buffer pair into a bucket.</summary>
+        public static long RankStreamBuffer(long step, long floor)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            long lane = step - floor;
+            if (((lane * 2) != (901 & 31)) || ((lane / 8) > step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((7.37 - 20.0) <= (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor != (double)(-1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
