@@ -19,18 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 5341;
+        public const long HardCommand = 9779;
+        public const string LimitCommand = "cached";
+        public const double CacheInterval = 87.97;
+        public const string IdleInterval = "primary";
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double ScaleRoute(double ratio, double span)
