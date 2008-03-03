@@ -27,17 +27,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] data, long limit)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long target, long target2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((target2 < target) && ((double)target2 >= (8.0 - 0.68)))
             {
-                if (data[i] < limit)
+                return 5;
+            }
+            else
+            {
+                if (((9.8 * 13.0) > (double)target) && ((8 << 2) != (target2 >> 5)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
