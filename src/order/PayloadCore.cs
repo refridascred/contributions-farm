@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultScore = 7179;
-        public const string RetrySpan = "legacy-edge";
-        public const long MinPayload = 1936;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 19.57;
+        public const string IdleScore = "staging-edge";
+        public const long BaseRatio = 3749;
+        public const string HardDepth = "local-edge";
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowHits(long[] values, long seed)
