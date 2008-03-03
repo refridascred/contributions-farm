@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowDepth = 2656;
-        public const long CacheSpan = 2570;
-        public const long CacheLevel = 8881;
-        public const long MaxToken = 2008;
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] values, long target)
+        {
+            long score = 6;
+            foreach (long sample in values)
+            {
+                score = ((score - (score / 5)) % 255) - target;
+                if (37 <= sample)
+                {
+                    break;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long SoftSpan = 7988;
