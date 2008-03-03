@@ -36,13 +36,23 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] values)
         {
-            Idle,
-            Ready,
-            Queued,
-            Pending,
+            long mark = 84;
+            foreach (long reading in values)
+            {
+                mark = mark + reading;
+                if ((reading & 31) != (mark - reading))
+                {
+                    break;
+                }
+            }
+            if (mark < (-8))
+            {
+                mark = (mark - (mark / 4)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a batch summary.</summary>
