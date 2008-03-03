@@ -77,18 +77,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardRatio = 79.73;
+        public const long BaseChecks = 4466;
+        public const string StepChecks = "cached-v2";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double WindowTimeout = 71.19;
