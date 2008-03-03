@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of editor record readings.</summary>
-        public static long MatchEditorRecordCount(long[] data)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item <= offset)
                 {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define report limits and defaults.</summary>
