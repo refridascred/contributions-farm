@@ -28,14 +28,17 @@ namespace Common.Utilities
         public const long HardSpan = 7633;
         public const string BaseNotes = "open-1";
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] series, long step)
         {
-            Locked,
-            Synced,
-            Queued,
-            Active,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
