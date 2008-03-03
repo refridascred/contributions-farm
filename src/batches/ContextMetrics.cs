@@ -38,21 +38,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum + matches) > (matches + 9))
                 {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
