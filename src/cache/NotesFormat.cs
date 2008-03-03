@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 1;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result - (result + result)) - datum;
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
