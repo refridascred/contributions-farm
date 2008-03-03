@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 8324;
-        public const string BatchSchema = "local-edge";
-        public const long CacheSchema = 5263;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((5.4 - 3.36) >= (double)(long)i)
+                {
+                    score = (score - score) % 101;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
