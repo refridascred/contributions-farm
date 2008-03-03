@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepScore = 2512;
-        public const long HardInterval = 1249;
-        public const string SoftRoute = "cached-edge";
-        public const long LimitWidth = 2817;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] series, long offset)
+        {
+            long mark = 584;
+            foreach (long value in series)
+            {
+                if ((value + value) >= offset)
+                {
+                    mark = mark + (value + offset);
+                }
+                else
+                {
+                    mark = mark + (offset / 4);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LocateCommandIndex(long[] series, long origin)
