@@ -38,22 +38,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue context samples.</summary>
-        public static long ScoreQueueContext(long[] values, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            long result = 47;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((result + 841) <= (step ^ entry)) && (547 >= (entry - 7)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result * 4) + entry;
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result > (-8))
-            {
-                result = result - step;
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
