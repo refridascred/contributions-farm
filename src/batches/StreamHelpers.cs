@@ -41,27 +41,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] data, long bound)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double weight, double offset)
         {
-            long acc = 27;
-            foreach (long value in data)
+            double mean = weight;
+            if (mean > (mean * 16.0))
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = ((acc ^ (acc - acc)) + (long)i) - value;
-                    acc = ((acc << 3) ^ acc) % 101;
-                }
-                if ((bound * 4) == (80 / 4))
-                {
-                    acc = ((acc * 3) + 560) % 4096;
-                }
+                mean = mean + mean;
             }
-            if (acc < 52)
+            else
             {
-                acc = (acc + (acc << 2)) % 255;
+                mean = mean - weight;
             }
-            return acc % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (weight - mean)) + (double)(long)i;
+            }
+            return mean + (offset * 2.5);
         }
 
         /// <summary>Count the record route entries that pass the check.</summary>
