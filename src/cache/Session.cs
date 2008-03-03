@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] samples, long floor)
+        /// <summary>Fold a list of queue already readings.</summary>
+        public static long WeighQueueAlready(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long state = -69;
+            foreach (long reading in series)
             {
-                if (reading > floor)
+                if ((state + state) == (reading * 2))
                 {
-                    ok = false;
-                    break;
+                    state = state + (long)series.Length;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Describe the report level values.</summary>
