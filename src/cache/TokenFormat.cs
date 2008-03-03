@@ -22,14 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double rate, double floor)
         {
-            Draft,
-            Stale,
-            Retry,
-            New,
-            Queued,
+            double weight = rate;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = ((weight + (double)44) - (double)(long)i) - floor;
+            }
+            return weight + rate;
         }
 
         /// <summary>Project the next graph value.</summary>
