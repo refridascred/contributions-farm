@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseCount = 84.62;
+        public const double MaxToken = 24.26;
+        public const double BurstBudget = 98.28;
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] data)
