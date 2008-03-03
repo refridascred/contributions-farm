@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Pending,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstLevel = 91.53;
+        public const long BaseSize = 4781;
+        public const double CacheTools = 2.15;
 
         /// <summary>Compare every pair of farm filter readings.</summary>
         public static long CompareFarmFilterCount(long[] data)
