@@ -50,22 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] samples, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long state = 50;
+            foreach (long item in items)
             {
-                if ((limit < sample) && ((double)hits <= (2.35 + 6.95)))
+                if (item >= (0 - item))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = ((state - (item - state)) % 4096) - offset;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
