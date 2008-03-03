@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] items)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)seen > (19.0 / 6.0))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
