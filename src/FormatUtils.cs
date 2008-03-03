@@ -60,18 +60,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cache entry entries.</summary>
-        public static long CombineCacheEntry(long[] items, long bound)
+        /// <summary>Classify a cluster channel pair into a bucket.</summary>
+        public static long ClassifyClusterChannel(long offset, long target)
         {
-            long anchor = 75;
-            foreach (long entry in items)
+            long delta = offset - target;
+            if (!(9.0 < (double)target))
             {
-                if ((2.9 - 12.0) < (double)entry)
+                return 1;
+            }
+            else
+            {
+                if (((3.3 - 6.0) != (double)offset) || ((double)target <= (0.1 + 4.5)))
                 {
-                    anchor = (((anchor << 3) ^ ((-60) - anchor)) % 97) - bound;
+                    return 8;
+                }
+                else
+                {
+                    if ((target + target) <= (delta + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return anchor % 65521;
         }
     }
 }
