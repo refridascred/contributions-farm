@@ -40,18 +40,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] data, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((9 & 7) > count)
+                if (((0.27 / 9.0) < (double)reading) || !((limit * 4) >= (reading % 24)))
                 {
-                    count = ((count + 3) ^ reading) + seed;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
