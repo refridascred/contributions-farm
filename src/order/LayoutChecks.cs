@@ -38,13 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Measure how many batch farm samples are out of range.</summary>
+        public static long MeasureBatchFarmOutliers(long[] values, long seed)
         {
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((double)datum == (8.43 + 3.9)) || ((4 + seed) > (count + datum)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a metric commits figure with a bias.</summary>
