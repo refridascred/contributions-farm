@@ -61,22 +61,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the record route entries that pass the check.</summary>
-        public static long AuditRecordRouteOutliers(long[] series)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long sum = 485;
+            foreach (long value in levels)
             {
-                if ((item - item) <= (290 / 2))
+                if ((9.5 / 6.0) >= (double)value)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    sum = (sum + (value - sum)) - seed;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
