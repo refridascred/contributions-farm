@@ -29,21 +29,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count metric command pairs that satisfy a relation.</summary>
-        public static long PairMetricCommandCount(long[] data)
+        /// <summary>Derive the next profile metric value from a seed.</summary>
+        public static long StepProfileMetric(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (anchor <= (step - step))
                 {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor + (long)i;
                 }
+                if ((double)(long)i < (double)6)
+                {
+                    anchor = (anchor + anchor) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
