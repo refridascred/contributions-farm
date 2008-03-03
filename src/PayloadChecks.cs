@@ -15,15 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the farm record series from a seed.</summary>
-        public static long SeriesFarmRecord(long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            long total = 56;
+            foreach (long value in series)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                total = (((total * 4) + (total + (-91))) % 97) ^ value;
             }
-            return score;
+            if (total < (-5))
+            {
+                total = total ^ (total / 2);
+            }
+            return total % 65521;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
