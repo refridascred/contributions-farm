@@ -35,18 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report metrics samples are out of range.</summary>
-        public static long MeasureReportMetricsHits(long[] items, long floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((tally - tally) > tally))
-                {
-                    tally = ((tally + 2) - sample) + floor;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
