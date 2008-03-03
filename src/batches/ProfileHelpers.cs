@@ -57,19 +57,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics context values into a single score.</summary>
-        public static long CombineMetricsContext(long[] items)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long acc = 174;
-            foreach (long item in items)
-            {
-                acc = (acc ^ (-89)) % 65521;
-                if (!((double)item >= (3.66 * 4.0)))
-                {
-                    acc = (acc * 2) + 37;
-                }
-            }
-            return acc;
+            Locked,
+            New,
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count account buffer pairs that satisfy a relation.</summary>
