@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many stream batch samples are out of range.</summary>
-        public static long AuditStreamBatchHits(long[] values)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((5.3 / 2.0) < (double)value) && (((2.05 / 4.0) != (double)hits) && (hits < (value + hits))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
