@@ -27,20 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum << 3) ^ (long)i) % 4096;
-                if (!((((long)i + bound) >= sum) && ((sum + sum) > (sum >> 1))))
-                {
-                    sum = (sum ^ 982) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate githubfarm window samples.</summary>
