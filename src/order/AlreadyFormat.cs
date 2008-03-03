@@ -20,18 +20,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleSize = 2.53;
+        public const double HardDepth = 61.31;
+        public const string WindowEditor = "legacy";
+        public const double BatchTimeout = 14.58;
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
