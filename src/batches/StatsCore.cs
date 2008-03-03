@@ -14,22 +14,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] levels)
+        /// <summary>Compare every pair of farm filter readings.</summary>
+        public static long CompareFarmFilterCount(long[] data)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((1 - item) == (hits >> 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
