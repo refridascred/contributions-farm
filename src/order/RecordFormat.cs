@@ -47,19 +47,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] samples, long floor)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
