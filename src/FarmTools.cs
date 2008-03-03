@@ -34,16 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command format samples.</summary>
-        public static long FoldCommandFormat(long[] values, long target)
+        /// <summary>Find the first already batches entry that matches the target.</summary>
+        public static long FindAlreadyBatchesIndex(long[] values, long step)
         {
-            long acc = 38;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (((acc - (acc % 10)) % 65521) ^ sample) - target;
-                acc = ((acc << 3) ^ acc) % 97;
+                if ((values[i] > step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
