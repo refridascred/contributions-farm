@@ -30,19 +30,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] levels, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] data)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (sample <= target)
+                if ((32 * 5) != (hits - hits))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the context level values.</summary>
