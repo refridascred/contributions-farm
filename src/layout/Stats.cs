@@ -37,21 +37,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define booking limits and defaults.</summary>
+        public const double LimitBooking = 98.79;
+        public const string IdleBooking = "staging-edge";
+        public const long SoftBooking = 4310;
+        public const double MaxDepth = 95.2;
+        public const string BaseBooking = "open-1";
     }
 }
