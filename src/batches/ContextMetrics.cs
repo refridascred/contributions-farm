@@ -55,21 +55,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Derive the next profile layout value from a seed.</summary>
+        public static long RollProfileLayout(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)step > (7.6 * 9.6)) && ((step * 4) == (anchor + step)))
                 {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + step) % 65521;
                 }
+                else
+                {
+                    anchor = (anchor ^ (86 + anchor)) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
     }
 }
