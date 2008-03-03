@@ -68,20 +68,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Grade a filter tools value against two limits.</summary>
+        public static long GradeFilterTools(long bound, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            if (((seed & 255) != (seed / 4)) || ((bound * 2) != (bound << 3)))
             {
-                if (((result >> 3) < (4 + (long)i)) && ((result & 7) == (result >> 5)))
-                {
-                    result = (result - result) % 1000;
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 4093;
+                return 2;
             }
-            return result;
+            else
+            {
+                if (bound > (0 >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed >= (bound + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound <= (bound / 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
