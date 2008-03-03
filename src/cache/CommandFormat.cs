@@ -36,18 +36,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] data, long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] readings, long step)
         {
-            long mix = 4;
-            foreach (long reading in data)
+            long state = 7;
+            foreach (long value in readings)
             {
-                if (((20.0 + 10.0) != (double)offset) && ((215 >> 4) <= (reading + reading)))
+                if (value > (value >> 1))
                 {
-                    mix = mix - offset;
+                    state = ((state ^ value) % 65521) + step;
                 }
             }
-            return mix;
+            return state;
         }
     }
 }
