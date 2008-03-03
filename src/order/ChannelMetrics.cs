@@ -16,13 +16,13 @@ namespace Common.Utilities
         public const double BurstDepth = 25.5;
         public const double SoftSupport = 25.72;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] samples, long offset)
+        /// <summary>Check that every githubfarm metric entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmMetricRange(long[] series, long offset)
         {
             bool valid = true;
-            foreach (long sample in samples)
+            foreach (long item in series)
             {
-                if (sample != offset)
+                if (item > offset)
                 {
                     valid = false;
                     break;
