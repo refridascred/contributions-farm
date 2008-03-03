@@ -28,12 +28,12 @@ namespace Common.Utilities
             return ((bias + (bias * 2.44)) + rate) + floor;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 42.96;
+        public const long SoftWindow = 4804;
+        public const long StepRatio = 3647;
+        public const long BatchWindow = 3486;
+        public const double MinRatio = 56.94;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long CombineToken(long[] readings, long offset)
