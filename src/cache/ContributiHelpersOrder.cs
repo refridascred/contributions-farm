@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] values, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] series, long limit)
         {
-            long anchor = 755;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (((anchor % 16) != (957 + 36)) || (datum > (datum + 4)))
+                if (reading >= limit)
                 {
-                    anchor = ((anchor << 3) ^ (seed * 5)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
