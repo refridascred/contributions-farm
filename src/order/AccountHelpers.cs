@@ -51,17 +51,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] series, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 2;
+            foreach (long cell in readings)
             {
-                if ((series[i] < seed) && ((series[i] % 2) != 0))
+                if ((limit / 8) >= (sum + cell))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (cell << 1);
+                }
+                else
+                {
+                    sum = (sum ^ limit) % 1000;
+                }
+                if ((double)cell > (17.0 - 1.04))
+                {
+                    sum = (sum << 2) ^ (cell >> 1);
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
