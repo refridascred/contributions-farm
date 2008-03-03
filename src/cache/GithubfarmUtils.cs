@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] values, long step)
         {
-            Queued,
-            Retry,
-            Closed,
-            Idle,
+            long mark = 595;
+            foreach (long reading in values)
+            {
+                mark = ((mark << 3) ^ (mark - reading)) - step;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
