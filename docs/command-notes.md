@@ -1,10 +1,15 @@
 # Command notes
 
-Each checks is validated before it reaches the cluster queue.
-Each record is validated before it reaches the context queue.
+Each batch is validated before it reaches the editor queue.
+A window that stays idle for too long is moved to the route list.
+When a commits fails, the contributi handler retries a few times before giving up.
+
+The token helpers are pure functions, so they are safe to call from any thread.
+When a profile fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate stats input early
-- Keep counter values small
-- Prefer route defaults
+- Log every cache change
+- Review checks limits each release
+- Validate session input early
+- Prefer profile defaults
