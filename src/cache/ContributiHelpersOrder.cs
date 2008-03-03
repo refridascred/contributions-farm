@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Count the layout account entries that pass the check.</summary>
+        public static long CountLayoutAccountOutliers(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (((matches & 1) <= ((long)data.Length - item)) && (((matches / 5) != (item * 2)) && ((item * 3) < (item << 3))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Adjust a window reading.</summary>
