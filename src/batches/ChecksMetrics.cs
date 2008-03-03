@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const long CacheDepth = 7773;
         public const long BurstCommits = 4128;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitScore = 1272;
-        public const long BatchScore = 8134;
-        public const long IdleEntry = 9602;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen - 729) <= (3 + item))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long OverlapFormatCount(long[] readings)
