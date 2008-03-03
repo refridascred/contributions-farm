@@ -1,4 +1,7 @@
 # support settings
-default_depth_s: 100
-soft_ratio_pct: 25.32
-flush_threshold_s: primary
+cache_retries:
+  - standard
+  - local
+  - latest
+readonly: open
+burst_depth_count: strict
