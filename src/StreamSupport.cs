@@ -28,11 +28,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 280;
-        public const double BaseSupport = 36.42;
-        public const long StepSupport = 7577;
-        public const long SoftSize = 4383;
-        public const string MinSupport = "primary-edge";
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
