@@ -1,7 +1,6 @@
 {
-  "hard_ratio": [101, 262, 117, 173],
-  "githubfarm_ttl": 5839,
-  "poll_retries": "cached",
-  "compress": true,
-  "readonly": "stable"
+  "context_retries": [317, 363],
+  "githubfarm_interval": false,
+  "retry_retries_count": "primary",
+  "sync_retries_ms": 3069
 }
