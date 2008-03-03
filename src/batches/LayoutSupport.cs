@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double rate, double span)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double scale = rate;
-            return (scale + rate) + span;
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
