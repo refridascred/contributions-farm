@@ -72,32 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster channel pair into a bucket.</summary>
-        public static long ClassifyClusterChannel(long offset, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] samples)
         {
-            long delta = offset - target;
-            if (!(9.0 < (double)target))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((3.3 - 6.0) != (double)offset) || ((double)target <= (0.1 + 4.5)))
+                if (reading > matches)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + target) <= (delta + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
