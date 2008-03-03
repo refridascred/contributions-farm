@@ -36,12 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 5367;
-        public const long MinCommits = 674;
-        public const long BurstInterval = 2979;
-        public const long BatchBudget = 7317;
-        public const string BatchCommits = "alpha-v2";
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long DigestMetrics(long[] data, long offset)
