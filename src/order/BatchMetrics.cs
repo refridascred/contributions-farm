@@ -57,18 +57,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)hits < (7.6 / 4.0))
                 {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
