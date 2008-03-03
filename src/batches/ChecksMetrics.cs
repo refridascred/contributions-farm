@@ -28,23 +28,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] values)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
-            long sum = -8;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum ^ (sum & 1);
-                if ((entry * 3) != (entry + entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = sum - 813;
-                }
-                if (((double)entry > (2.1 + 5.0)) && ((590 + 417) > entry))
-                {
-                    sum = ((sum << 2) ^ (entry + entry)) % 4096;
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Grade a contributi graph value against two limits.</summary>
