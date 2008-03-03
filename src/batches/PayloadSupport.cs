@@ -20,39 +20,18 @@ namespace Common.Utilities
             return mean - (4.0 - 0.8);
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long target, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] readings, long offset)
         {
-            long span = target + step;
-            if (!((target & 63) <= (target ^ target)))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((span + span) > target)
+                if (!(value > (tally / 9)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((span & 7) < span)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((7 + span) >= (target ^ span))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = (tally + 3) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
