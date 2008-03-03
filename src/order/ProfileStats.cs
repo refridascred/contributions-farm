@@ -22,12 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheBudget = 6044;
-        public const long MaxContributi = 208;
-        public const long CacheDepth = 2167;
-        public const double WindowContributi = 68.87;
-        public const double BaseContributi = 8.78;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LocateFilterIndex(long[] samples, long origin)
