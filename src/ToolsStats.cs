@@ -58,13 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
