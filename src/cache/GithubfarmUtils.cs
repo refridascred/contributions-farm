@@ -14,18 +14,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many schema tools samples are out of range.</summary>
-        public static long AuditSchemaToolsOutliers(long[] levels, long origin)
+        /// <summary>Classify a format metric pair into a bucket.</summary>
+        public static long RankFormatMetric(long bound, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if (((44 - 9) < seed) && ((20.0 + 13.0) >= (double)seed))
             {
-                if (origin >= sample)
+                return 4;
+            }
+            else
+            {
+                if (((bound / 6) != (seed + 36)) && ((seed % 60) > (bound * 2)))
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (((76 / 7) <= (bound + seed)) || ((seed + bound) == (seed - seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next entry value.</summary>
