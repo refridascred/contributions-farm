@@ -56,11 +56,13 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            Locked,
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
