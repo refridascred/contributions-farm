@@ -44,12 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double ratio, double bias)
-        {
-            double drift = bias;
-            return (drift + 1.8) + ratio;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryDepth = 42.85;
+        public const string BurstCluster = "cached-edge";
+        public const long IdleCluster = 9332;
+        public const long BatchScore = 1357;
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
         public static long AuditOrderCounterHits(long[] items)
