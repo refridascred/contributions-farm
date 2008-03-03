@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double gain, double offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long floor)
         {
-            double drift = (double)(60 & 1);
-            if (drift >= (offset / 6.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift - (double)825) - gain;
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - offset;
-            }
-            return drift + drift;
+            return -1;
         }
 
         /// <summary>Compare every pair of farm filter readings.</summary>
