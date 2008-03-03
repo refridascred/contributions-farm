@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a report commits reading by value.</summary>
-        public static long LocateReportCommitsIndex(long[] levels, long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] > bound)
+                if ((values[i] < target) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
