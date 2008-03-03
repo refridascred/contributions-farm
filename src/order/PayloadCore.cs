@@ -25,13 +25,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
-            public double Token { get; set; }
-            public double Score { get; set; }
+            Active,
+            Draft,
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
