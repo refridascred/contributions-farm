@@ -1,11 +1,6 @@
 {
-  "strict": {
-    "entry_capacity": 400,
-    "record_capacity": "strict",
-    "cluster_depth": "staging",
-    "notes_timeout": false
-  },
-  "farm_depth": ["strict", "green"],
-  "batch_delay": 72,
-  "idle_ttl_s": false
+  "default_interval_pct": ["strict", "edge", "eu-west"],
+  "stats_capacity": ["legacy", "cached", "strict"],
+  "sync_capacity": [112, 138],
+  "poll_capacity_count": [334, 9]
 }
