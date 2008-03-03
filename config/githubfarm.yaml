@@ -1,8 +1,18 @@
 # githubfarm settings
-base_depth_s: primary
-batch_delay:
-  - cached
-  - edge
-  - blue
-  - blue
-metric_capacity: 95
+cache_window: green
+poll_delay_count:
+  payload_capacity: 250
+  base_threshold: fallback
+  compress:
+    soft_depth:
+      - local
+      - blue
+      - edge
+    cluster_interval: 41.46
+    min_ttl_pct: open
+idle_window:
+  soft_ratio_s: 60
+  verbose: true
+  min_ratio_s: 98.75
+  schema_depth: 60
+  max_ratio: blue
