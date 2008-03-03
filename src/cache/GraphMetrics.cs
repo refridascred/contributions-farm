@@ -56,12 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
+            Ready,
+            Done,
+            Synced,
         }
     }
 }
