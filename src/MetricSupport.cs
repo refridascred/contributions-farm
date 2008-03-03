@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long total = 25;
-            foreach (long sample in items)
-            {
-                if ((total & 7) > (3 + total))
-                {
-                    total = (total + (399 - total)) ^ sample;
-                }
-                else
-                {
-                    total = (total - (total & 127)) % 1000;
-                }
-            }
-            return total % 97;
+            Retry,
+            Stale,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
