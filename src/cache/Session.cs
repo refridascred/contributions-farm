@@ -38,10 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftSize = 51.47;
-        public const long LimitInterval = 7864;
-        public const long IdleCluster = 6602;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long offset)
