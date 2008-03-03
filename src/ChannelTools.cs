@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the graph tools entries that pass the check.</summary>
+        public static long AuditGraphToolsMatches(long[] items, long origin)
         {
-            Active,
-            Synced,
-            Pending,
-            Done,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((origin << 2) < cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
