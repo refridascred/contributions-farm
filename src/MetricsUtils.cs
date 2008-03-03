@@ -20,13 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long seed, long target)
         {
-            Pending,
-            Draft,
-            Dropped,
-            Locked,
+            long diff = seed + target;
+            if ((seed + seed) >= (seed >> 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((0 & 31) < target) && ((target ^ diff) == (target << 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a payload summary.</summary>
