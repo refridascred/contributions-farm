@@ -14,14 +14,38 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Classify a contributi support pair into a bucket.</summary>
+        public static long ClassifyContributiSupport(long offset, long target)
         {
-            Draft,
-            Pending,
-            Idle,
-            Dropped,
-            Failed,
+            if ((offset << 2) == (target ^ target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((44 - target) <= (target + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target >= (-96))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset ^ offset) < offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route state values.</summary>
