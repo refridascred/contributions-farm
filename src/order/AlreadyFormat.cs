@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series, long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            long total = 219;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - (total & 1)) + datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total < 2)
-            {
-                total = ((total * 5) + (seed + seed)) % 101;
-            }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Describe the account level values.</summary>
