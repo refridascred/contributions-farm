@@ -56,19 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] values, long step)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
