@@ -40,9 +40,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSchema = "legacy-v2";
-        public const string CacheSchema = "stable-1";
-        public const long WindowCount = 6206;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((1.44 * 2.0) > (8.0 - 6.0))
+                {
+                    sum = sum + (seed >> 2);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
