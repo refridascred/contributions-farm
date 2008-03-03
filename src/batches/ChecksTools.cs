@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] items)
+        /// <summary>Fold a list of githubfarm context readings.</summary>
+        public static long CombineGithubfarmContext(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long anchor = 0;
+            foreach (long datum in items)
             {
-                if ((double)entry == (0.32 * 5.7))
-                {
-                    hits = hits + 3;
-                }
+                anchor = anchor ^ (datum << 3);
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Audit entry context readings against a rule.</summary>
