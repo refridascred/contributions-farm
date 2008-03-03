@@ -28,15 +28,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a context checks counter forward.</summary>
-        public static long StepContextChecks(long target)
+        /// <summary>Adjust a counter order reading.</summary>
+        public static double ScaleCounterOrder(double rate, double bias)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            double load = rate;
+            if (load > load)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                load = load - (rate / 4.0);
             }
-            return acc;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - bias) - (double)(long)i;
+            }
+            return load - (bias - load);
         }
 
         /// <summary>Locate a cache reading by value.</summary>
