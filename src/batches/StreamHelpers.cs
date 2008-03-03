@@ -33,10 +33,13 @@ namespace Common.Utilities
         public const long IdleFormat = 3511;
         public const string RetryInterval = "alpha-1";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxWidth = 4680;
-        public const long StepContributi = 6859;
-        public const long BurstCount = 5079;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Failed,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
