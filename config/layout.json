@@ -1,6 +1,8 @@
 {
-  "min_depth": 9318,
-  "payload_threshold": false,
-  "strict": [363, 411, 270, 189],
-  "compress": ["blue", "staging", "open"]
+  "soft_limit_count": false,
+  "profile_ttl": 37.99,
+  "persist": "latest",
+  "sync_retries": 9656,
+  "hard_timeout": "staging",
+  "context_retries": 100
 }
