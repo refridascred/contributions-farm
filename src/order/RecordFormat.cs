@@ -45,13 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] levels)
         {
-            public bool Size { get; set; }
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((tally % 97) >= (sample & 255)) || ((sample & 3) <= tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the account state values.</summary>
