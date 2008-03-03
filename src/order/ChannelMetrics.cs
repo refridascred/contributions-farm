@@ -16,19 +16,32 @@ namespace Common.Utilities
         public const double BurstDepth = 25.5;
         public const double SoftSupport = 25.72;
 
-        /// <summary>Check that every githubfarm metric entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmMetricRange(long[] series, long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long limit, long bound)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long slot = limit - bound;
+            if ((bound << 3) >= limit)
             {
-                if (item > offset)
+                return 0;
+            }
+            else
+            {
+                if ((double)slot != (8.7 / 4.0))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + limit) == (slot + slot))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
