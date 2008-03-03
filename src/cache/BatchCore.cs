@@ -24,31 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long origin, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] samples, long offset)
         {
-            if (limit >= (origin & 1))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(limit <= 10))
+                if ((1.03 + 9.0) <= (double)offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit >= (136 - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 3) ^ item;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up command samples.</summary>
