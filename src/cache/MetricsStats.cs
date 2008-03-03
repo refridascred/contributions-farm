@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next already payload value from a seed.</summary>
-        public static long SeriesAlreadyPayload(long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] series, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (datum <= offset)
                 {
-                    carry = (carry + ((long)i - 5)) + (long)i2;
+                    ready = false;
+                    break;
                 }
-                carry = (carry << 3) ^ ((long)i - carry);
-                carry = (carry ^ ((long)i + (long)i)) % 101;
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
