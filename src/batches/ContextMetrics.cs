@@ -55,11 +55,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] data, long floor)
         {
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)matches <= (double)36)
+                {
+                    matches = ((matches + 3) ^ sample) - floor;
+                }
+            }
+            return matches;
         }
     }
 }
