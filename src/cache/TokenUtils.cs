@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings)
         {
-            Pending,
-            Synced,
-            Locked,
-            Retry,
+            long sum = 847;
+            foreach (long datum in readings)
+            {
+                sum = (((sum * 2) + 588) % 1000) + datum;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
