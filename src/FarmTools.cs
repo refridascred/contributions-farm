@@ -34,17 +34,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already batches entry that matches the target.</summary>
-        public static long FindAlreadyBatchesIndex(long[] values, long step)
+        /// <summary>Fold a list of editor farm readings.</summary>
+        public static long DigestEditorFarm(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 6;
+            foreach (long item in values)
             {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
+                if (item < offset)
                 {
-                    return (long)i;
+                    state = (state + offset) % 1000;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (item >> 5)) % 97;
+                }
+                if ((11.0 + 0.4) <= (double)item)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state > 60)
+            {
+                state = (state * 2) + (state + offset);
+            }
+            return state % 65521;
         }
     }
 }
