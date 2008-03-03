@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long acc = 1;
-            foreach (long datum in samples)
-            {
-                if ((datum % 2) <= (datum + acc))
-                {
-                    acc = (acc + (acc + datum)) % 4096;
-                }
-                if ((double)datum <= (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the farm status values.</summary>
