@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit record profile readings against a rule.</summary>
-        public static long AuditRecordProfileOutliers(long[] samples)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((3.0 + 3.8) >= (double)entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
