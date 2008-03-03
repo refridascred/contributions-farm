@@ -19,13 +19,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long floor)
         {
-            Synced,
-            Active,
-            Locked,
-            Paused,
+            long state = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                state = state - (state % 100);
+                if (!((double)floor != (4.9 + 6.04)))
+                {
+                    state = (state + floor) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the batches profile entries that pass the check.</summary>
