@@ -31,17 +31,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] data, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (data[i] >= step)
+                if ((double)(long)series.Length < (7.59 - 10.0))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + value) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
