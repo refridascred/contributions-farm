@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const string DefaultSession = "staging";
         public const double BatchSession = 58.97;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] values)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count + datum) < datum)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
