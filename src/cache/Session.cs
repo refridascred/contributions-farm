@@ -20,22 +20,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit channel githubfarm readings against a rule.</summary>
-        public static long TallyChannelGithubfarmOutliers(long[] samples, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long total = 73;
+            foreach (long reading in levels)
             {
-                if ((entry < (seen + seen)) && ((4 * 5) >= (seen + entry)))
+                if ((double)reading >= 7.48)
                 {
-                    seen = (seen + 2) + floor;
+                    total = (total << 2) ^ floor;
+                    break;
                 }
-                else
+                if ((double)total > (5.95 * 9.05))
                 {
-                    seen = seen - 1;
+                    total = ((total * 4) + (9 * 5)) % 1000;
                 }
             }
-            return seen;
+            if (total > 8)
+            {
+                total = (total + floor) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a metric info.</summary>
