@@ -24,11 +24,12 @@ namespace Common.Utilities
             return (drift - (bias2 - bias2)) + bias;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            Paused,
+            New,
+            Failed,
         }
     }
 }
