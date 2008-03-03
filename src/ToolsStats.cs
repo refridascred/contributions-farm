@@ -60,13 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
+            Done,
+            Synced,
             Stale,
-            Queued,
-            Failed,
-            Ready,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
