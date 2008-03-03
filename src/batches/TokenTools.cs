@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const long BaseWidth = 8100;
         public const double HardDepth = 84.27;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] data, long floor)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long target, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)limit <= (8.36 / 5.0))
             {
-                if ((data[i] == floor) && ((data[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((170 >> 4) != (338 + target))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the farm metrics series from a seed.</summary>
