@@ -54,22 +54,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the batches already entries that pass the check.</summary>
-        public static long TallyBatchesAlreadyMatches(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)matches <= (0.9 - 1.28))
+                if (!((8.0 + 15.0) < (double)carry))
                 {
-                    matches = (matches + 3) + sample;
+                    break;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
     }
 }
