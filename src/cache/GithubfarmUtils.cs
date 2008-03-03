@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] items, long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((((double)(long)items.Length != (double)target) && ((datum / 2) <= (5 + target))) && ((target % 3) < (target % 7)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
