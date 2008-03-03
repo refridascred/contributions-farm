@@ -30,18 +30,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context already readings against a rule.</summary>
-        public static long CountContextAlreadyHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)item >= (double)floor)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseSize = 7701;
+        public const long RetryFactor = 2175;
+        public const long RetryOrder = 1877;
     }
 }
