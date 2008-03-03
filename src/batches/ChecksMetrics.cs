@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long CacheDepth = 7773;
         public const long BurstCommits = 4128;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] readings)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen - 729) <= (3 + item))
+                if (levels[i] >= bound)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
