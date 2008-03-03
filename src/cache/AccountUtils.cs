@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first graph command entry that matches the target.</summary>
-        public static long FindGraphCommandIndex(long[] levels, long offset)
+        /// <summary>Count the farm channel entries that pass the check.</summary>
+        public static long MeasureFarmChannelOutliers(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (levels[i] > offset)
+                if (6.7 >= (double)step)
                 {
-                    return (long)i;
+                    count = (count + 2) - datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next route batches value.</summary>
