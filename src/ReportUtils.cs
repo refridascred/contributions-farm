@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const double SoftRatio = 47.97;
         public const long BaseRecord = 857;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long limit, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] series, long seed)
         {
-            if ((floor / 6) >= floor)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor >> 4) >= (limit + limit))
+                if (sample >= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
