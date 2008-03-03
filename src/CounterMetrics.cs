@@ -50,19 +50,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!(mix <= floor))
-                {
-                    mix = (mix ^ 444) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchSize = 2924;
+        public const long LimitLevel = 2660;
+        public const long IdleTimeout = 707;
+        public const long StepReport = 1321;
     }
 }
