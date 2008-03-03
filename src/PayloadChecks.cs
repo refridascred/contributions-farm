@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] series)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - 1) < (datum % 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a entry layout reading by value.</summary>
