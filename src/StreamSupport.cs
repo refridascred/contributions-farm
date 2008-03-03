@@ -20,10 +20,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "staging-v2";
-        public const long IdleChannel = 451;
-        public const long BatchChannel = 333;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            New,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Adjust a already counter reading.</summary>
         public static double AdjustAlreadyCounter(double bias, double span)
