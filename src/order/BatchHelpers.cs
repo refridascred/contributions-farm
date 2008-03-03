@@ -26,13 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstBudget = 8.56;
+        public const long HardLevel = 5942;
+        public const long MinReport = 9893;
+        public const string LimitSpan = "latest-1";
     }
 }
