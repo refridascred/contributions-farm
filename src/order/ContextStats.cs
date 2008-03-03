@@ -28,18 +28,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Measure how many route stream samples are out of range.</summary>
+        public static long AuditRouteStreamOutliers(long[] values, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches >> 2) <= (matches % 2))
                 {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 2) - sample) - bound;
                 }
             }
             return matches;
