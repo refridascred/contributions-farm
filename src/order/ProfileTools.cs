@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
