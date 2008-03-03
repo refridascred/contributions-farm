@@ -39,31 +39,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long floor, long seed)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            if ((floor / 5) == (6 >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor * 2) > (86 ^ seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (464 >= (seed - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
