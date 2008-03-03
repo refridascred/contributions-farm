@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string SoftSize = "primary-1";
         public const double LimitDepth = 90.86;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long limit)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            double ratio = weight * 3.63;
+            if (ratio < (weight * 7.2))
             {
-                if (value != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio - (ratio - floor);
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (weight * 0.42)) + (double)(long)i;
+            }
+            return ratio + (ratio / 6.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
