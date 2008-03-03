@@ -19,27 +19,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] items)
-        {
-            long acc = 96;
-            foreach (long datum in items)
-            {
-                if (acc > (long)items.Length)
-                {
-                    acc = (((acc << 2) ^ acc) % 101) + datum;
-                }
-                else
-                {
-                    acc = (acc - (-977)) % 97;
-                }
-            }
-            if (acc < 24)
-            {
-                acc = ((acc * 4) + ((long)items.Length % 3)) % 97;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinSpan = 74.26;
+        public const string StepStream = "fallback-edge";
+        public const long BatchStream = 3647;
+        public const long HardRatio = 1959;
+        public const double HardStream = 1.0;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
