@@ -34,22 +34,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit contributi support readings against a rule.</summary>
-        public static long AuditContributiSupportOutliers(long[] readings, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((2 ^ 83) == (792 + step))
+                if (!((double)count != (17.0 - 1.6)))
                 {
-                    tally = (tally + 3) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) + entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
