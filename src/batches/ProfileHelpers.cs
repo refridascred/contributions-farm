@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] data)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] series, long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long carry = 90;
+            foreach (long item in series)
             {
-                if ((1.62 - 1.58) > (double)count)
+                if ((item <= (carry * 3)) || ((target / 9) >= (item / 9)))
                 {
-                    count = (count + 1) + sample;
+                    carry = ((carry * 5) + item) % 65521;
+                }
+                if (!((item + target) < (target - 79)))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
