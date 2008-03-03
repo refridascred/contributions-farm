@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest standard; do
+for item in cached primary green; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
