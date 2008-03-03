@@ -66,13 +66,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
             Failed,
-            Ready,
-            Done,
-            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a order entry.</summary>
