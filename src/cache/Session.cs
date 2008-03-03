@@ -43,26 +43,18 @@ namespace Common.Utilities
         public const long LimitInterval = 7864;
         public const long IdleCluster = 6602;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                long bound = floor << 2;
-                if (!((bound % 60) == (total - total)))
+                total = total - (total / 8);
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    bound = (bound ^ (bound % 2)) % 101;
+                    total = ((total ^ ((long)i >> 1)) % 1000) ^ (long)i2;
                 }
-                if ((double)total > 3.28)
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total + bound) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 65521;
+                total = ((total * 3) + (long)i) % 4093;
             }
             return total;
         }
