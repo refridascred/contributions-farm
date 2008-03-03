@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 1316;
-        public const double MaxEditor = 65.17;
-        public const string BaseEditor = "strict-edge";
-        public const double MinDepth = 53.46;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long FoldAlready(long[] data, long target)
