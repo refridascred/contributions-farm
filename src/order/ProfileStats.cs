@@ -39,14 +39,10 @@ namespace Common.Utilities
         public const double BurstStats = 24.29;
         public const long MaxWidth = 7499;
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 8681;
+        public const long BaseSchema = 7750;
+        public const string LimitSchema = "legacy-1";
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long origin, long offset)
