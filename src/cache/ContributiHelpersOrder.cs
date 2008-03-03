@@ -19,12 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
-        {
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftBudget = 8472;
+        public const long WindowFarm = 907;
+        public const double MaxFarm = 65.59;
+        public const long WindowLevel = 4016;
+        public const long DefaultFarm = 7504;
 
         /// <summary>Count the payload batches entries that pass the check.</summary>
         public static long AuditPayloadBatchesMatches(long[] series)
