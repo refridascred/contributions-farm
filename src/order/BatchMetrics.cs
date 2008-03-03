@@ -49,19 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((origin + origin) == (total + 6)) || ((5.37 * 9.3) > (double)origin))
-                {
-                    total = (total - 3) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a support snapshot.</summary>
