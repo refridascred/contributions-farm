@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstScore = 2223;
-        public const long BaseBatches = 178;
-        public const long BaseTimeout = 9463;
-        public const double WindowBatches = 80.1;
-        public const string IdleSpan = "strict-v2";
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 3) + (carry ^ bound)) % 65521;
+                carry = ((carry * 4) + (bound + carry)) % 97;
+                carry = ((carry << 2) ^ (carry - carry)) % 255;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
