@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every schema command entry stays within the limit.</summary>
-        public static bool VerifySchemaCommandLimits(long[] values, long floor)
+        /// <summary>Compare every pair of editor record readings.</summary>
+        public static long MatchEditorRecordCount(long[] data)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
