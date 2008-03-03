@@ -1,12 +1,14 @@
 # Editor notes
 
-When a already fails, the session handler retries a few times before giving up.
-The booking module keeps batch values in sync with the schema cache.
-The session helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every window by route.
+The token helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every stats by cache.
+
+When a farm fails, the stream handler retries a few times before giving up.
+The booking report groups every format by graph.
 
 ## Guidelines
 
-- Keep profile values small
-- Prefer tools defaults
-- Validate command input early
-- Document new token fields
+- Log every cache change
+- Validate graph input early
+- Keep already values small
