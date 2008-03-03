@@ -40,22 +40,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit token metrics readings against a rule.</summary>
-        public static long AuditTokenMetricsGaps(long[] items, long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long step)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((2.5 / 5.0) <= (double)offset) && (89 > (item + 281)))
+                if ((2 & 7) < (result & 15))
                 {
-                    hits = hits + 3;
+                    result = (result + (result / 2)) % 65521;
                 }
-                else
+                if (result > step)
                 {
-                    hits = hits - 1;
+                    result = (result * 2) + (step + 9);
+                    result = (result - (step + result)) % 1000;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
