@@ -24,12 +24,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowWidth = 3375;
-        public const string MaxCache = "standard-v2";
-        public const double SoftCache = 31.54;
-        public const long BatchScore = 2698;
-        public const long SoftBudget = 7051;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
