@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 9353;
-        public const string WindowSpan = "stable-1";
-        public const double MinSpan = 25.22;
-        public const string MinSize = "stable-v2";
-        public const long HardRatio = 3287;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Queued,
+            Draft,
+            Done,
+            New,
+            Failed,
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
