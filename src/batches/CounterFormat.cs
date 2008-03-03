@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 47.48;
+        public const long RetryOrder = 2845;
+        public const long StepFactor = 3794;
+        public const long DefaultOrder = 3740;
+        public const long LimitOrder = 2082;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
