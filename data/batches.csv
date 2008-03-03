@@ -1,9 +1,6 @@
-id,count,level,rank
-1,623,283,94.13
-2,latest,427,standard
-3,155,679,92.06
-4,708,standard,95.61
-5,623,eu-west,950
-6,72.16,legacy,94.61
-7,44.39,local,724
-8,staging,standard,90.32
+id,state,region,level
+1,268,552,130
+2,336,155,strict
+3,689,latest,183
+4,staging,402,254
+5,76.3,cached,965
