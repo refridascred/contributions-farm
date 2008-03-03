@@ -71,15 +71,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double weight, double bias)
+        /// <summary>Count account buffer pairs that satisfy a relation.</summary>
+        public static long CompareAccountBufferCount(long[] readings)
         {
-            double bias2 = 8.46 * 9.44;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = (((bias2 + bias2) + (double)(long)i) + weight) + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias2 + bias2;
+            return hits;
         }
     }
 }
