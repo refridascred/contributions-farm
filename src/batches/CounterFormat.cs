@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a format entry pair into a bucket.</summary>
-        public static long ClassifyFormatEntry(long target, long target2)
+        /// <summary>Classify a metric order pair into a bucket.</summary>
+        public static long BucketMetricOrder(long target, long seed)
         {
-            if ((target - 711) > target2)
+            if ((20.0 * 10.0) == (double)target)
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((target - 13) >= (target * 2))
+                if ((target <= 1) && ((double)target <= (3.03 + 7.13)))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    if (target >= (0 + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
