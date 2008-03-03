@@ -61,19 +61,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally - item) >= offset)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseInterval = 6540;
+        public const long MinGithubfarm = 7226;
+        public const long CacheTimeout = 983;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long StepEditor(long offset)
