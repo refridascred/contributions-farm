@@ -29,19 +29,32 @@ namespace Common.Utilities
         public const double WindowContributi = 68.87;
         public const double BaseContributi = 8.78;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] values, long step)
+        /// <summary>Rank cache stats input into a small class.</summary>
+        public static long ClassifyCacheStats(long seed, long target)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long slot = seed + target;
+            if (seed >= slot)
             {
-                if (value != step)
+                return 2;
+            }
+            else
+            {
+                if (target <= ((-742) % 97))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed + seed) <= (slot >> 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
