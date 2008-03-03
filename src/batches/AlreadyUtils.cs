@@ -25,12 +25,26 @@ namespace Common.Utilities
         public const long MaxEditor = 4382;
         public const long LimitEditor = 1832;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxScore = 4875;
-        public const long RetryLevel = 4210;
-        public const long SoftDepth = 9423;
-        public const string BatchCount = "strict-1";
-        public const string StepContext = "strict";
+        /// <summary>Grade a context counter value against two limits.</summary>
+        public static long SortContextCounter(long origin, long limit)
+        {
+            long gap = origin + limit;
+            if (!(gap >= limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin - origin) <= (origin >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long DigestWindow(long[] data)
