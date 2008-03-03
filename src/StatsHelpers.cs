@@ -73,19 +73,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate metric cluster readings against a bound.</summary>
-        public static bool ValidateMetricClusterBounds(long[] samples, long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long mark = 5;
+            foreach (long reading in readings)
             {
-                if (entry < limit)
+                if (((mark % 16) != (limit & 127)) || ((mark - mark) >= 9))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark - mark) % 97) - reading;
+                    mark = (mark * 5) + (limit >> 3);
                 }
+                else
+                {
+                    mark = mark - (mark / 3);
+                }
+                mark = ((mark * 5) + mark) % 101;
             }
-            return ok;
+            return mark % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
