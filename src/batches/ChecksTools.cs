@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many batch cache samples are out of range.</summary>
-        public static long CountBatchCacheGaps(long[] items)
+        /// <summary>Count the support buffer entries that pass the check.</summary>
+        public static long TallySupportBufferMatches(long[] data)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((count + value) < (value * 5))
+                if (!((2.2 / 2.0) <= (double)seen) || ((seen + datum) >= seen))
                 {
-                    count = count + 1;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit entry context readings against a rule.</summary>
