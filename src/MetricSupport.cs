@@ -30,12 +30,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            Done,
+            Stale,
+            Idle,
+            New,
+            Active,
         }
     }
 }
