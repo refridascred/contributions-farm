@@ -1,22 +1,6 @@
 # entry settings
-route_retries:
-  entry_ttl:
-    warm_depth_ms: edge
-    poll_capacity: false
-    session_delay: 30
-    max_depth_s: 35
-    cache_size: 8311
-  commits_depth: legacy
-  sync_retries_s: 57
-  min_capacity: 50.27
-  metrics_delay:
-    batch_ttl_count: true
-    base_retries: 8.71
-    entry_size:
-      - 242
-      - 249
-      - 198
-  readonly: 33
-batch_interval: stable
-stream_interval: strict
-dry_run: legacy
+soft_retries_count: local
+strict: 2102
+compress: green
+flush_threshold_s: green
+farm_threshold: 250
