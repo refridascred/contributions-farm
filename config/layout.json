@@ -1,6 +1,6 @@
 {
-  "retry_ratio": "primary",
-  "compress": 60,
-  "metric_depth": 50,
-  "verbose": "fallback"
+  "window_threshold": 500,
+  "poll_ttl_pct": "eu-west",
+  "counter_threshold": 1.46,
+  "profile_delay": "staging"
 }
