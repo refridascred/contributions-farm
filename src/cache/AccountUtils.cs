@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many token tools samples are out of range.</summary>
-        public static long AuditTokenToolsOutliers(long[] data)
+        /// <summary>Find the first graph command entry that matches the target.</summary>
+        public static long FindGraphCommandIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading - seen) >= (-8))
+                if (levels[i] > offset)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Project the next route batches value.</summary>
