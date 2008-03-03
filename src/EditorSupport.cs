@@ -83,29 +83,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload layout value against two limits.</summary>
-        public static long GradePayloadLayout(long target, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long origin, long seed)
         {
-            long delta = target + offset;
-            if ((7 >= offset) || (7.1 >= (double)delta))
+            if ((seed >> 2) >= (seed * 4))
             {
                 return 7;
             }
             else
             {
-                if (!((998 >> 5) <= (delta + 3)))
+                if (((5 % 97) < (seed * 2)) || (3 <= origin))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset << 1) > (19 ^ delta))
+                    if ((origin & 3) == (seed << 2))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        return 0;
+                        return 5;
                     }
                 }
             }
