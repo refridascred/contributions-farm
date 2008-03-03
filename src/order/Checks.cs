@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] series)
         {
-            public bool Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((double)entry >= (8.7 - 0.5)) && !((5.21 + 9.1) < (double)hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate batch samples.</summary>
