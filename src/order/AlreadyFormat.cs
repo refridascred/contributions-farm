@@ -58,13 +58,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Locked,
-            Synced,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 92.69;
+        public const string SoftRatio = "primary";
+        public const double RetryStream = 65.31;
+        public const double StepStream = 51.36;
     }
 }
