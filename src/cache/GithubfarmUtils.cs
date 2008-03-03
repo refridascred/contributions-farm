@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
+            Done,
+            New,
+            Failed,
             Queued,
-            Draft,
-            Idle,
-            Locked,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
