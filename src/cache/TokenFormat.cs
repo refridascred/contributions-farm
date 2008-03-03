@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine route report values into a single score.</summary>
-        public static long ScoreRouteReport(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] levels, long bound)
         {
-            long mark = 995;
-            foreach (long cell in readings)
+            long acc = 56;
+            foreach (long entry in levels)
             {
-                if ((mark ^ 56) > (23 % 3))
+                acc = (((acc * 5) + 65) % 65521) + entry;
+                if (922 <= (bound + acc))
                 {
-                    mark = ((mark * 5) + (mark + cell)) % 255;
+                    acc = (acc * 4) + acc;
                 }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the stream state values.</summary>
