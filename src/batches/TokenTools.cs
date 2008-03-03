@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CachePayload = "cached-edge";
-        public const long BaseWidth = 8100;
-        public const double HardDepth = 84.27;
+        /// <summary>Digest a series of route support entries.</summary>
+        public static long CombineRouteSupport(long[] readings, long step)
+        {
+            long score = 3;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    score = (((score << 2) ^ ((long)i & 63)) % 255) - value;
+                }
+                score = ((score << 3) ^ (step << 3)) % 1000;
+                score = (score ^ score) % 4096;
+            }
+            if (score > 905)
+            {
+                score = ((score << 2) ^ score) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long SortSchema(long target, long limit)
