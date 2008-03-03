@@ -1,11 +1,7 @@
 # support settings
-command_interval: 4382
-cache_capacity: open
-layout_capacity:
-  - 478
-  - 399
-  - 119
-  - 243
-idle_limit_ms: 68
-batches_limit: 250
-compress: false
+min_depth_ms: 47.36
+audit: 7263
+entry_interval: eu-west
+default_size_s: 9785
+warm_window_ms: cached
+soft_interval_count: false
