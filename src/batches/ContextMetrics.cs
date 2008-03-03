@@ -38,13 +38,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double ratio, double offset)
         {
-            Done,
-            Ready,
-            Pending,
-            New,
+            double ratio2 = (double)(84 ^ 6);
+            return (ratio2 + ratio) + offset;
         }
 
         /// <summary>Hold a stats stats.</summary>
