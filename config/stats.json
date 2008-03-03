@@ -1,7 +1,6 @@
 {
-  "enabled": true,
-  "metrics_retries": "legacy",
-  "idle_size": [342, 264, 216, 415],
-  "default_timeout_ms": ["edge", "strict", "open"],
-  "window_interval": true
+  "burst_capacity": "latest",
+  "readonly": true,
+  "default_delay_count": true,
+  "strict": 3128
 }
