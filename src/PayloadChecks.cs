@@ -23,19 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long total = 56;
-            foreach (long value in series)
-            {
-                total = (((total * 4) + (total + (-91))) % 97) ^ value;
-            }
-            if (total < (-5))
-            {
-                total = total ^ (total / 2);
-            }
-            return total % 65521;
+            New,
+            Stale,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
