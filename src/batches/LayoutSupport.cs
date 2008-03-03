@@ -86,21 +86,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up route stats samples.</summary>
-        public static long PairRouteStatsCount(long[] levels)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor << 2) ^ (origin * 2);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
     }
 }
