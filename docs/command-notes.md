@@ -1,15 +1,16 @@
 # Command notes
 
-Each batch is validated before it reaches the editor queue.
-A window that stays idle for too long is moved to the route list.
-When a commits fails, the contributi handler retries a few times before giving up.
+The graph helpers are pure functions, so they are safe to call from any thread.
+When a buffer fails, the payload handler retries a few times before giving up.
+Keep metric and cluster names short and lowercase.
 
-The token helpers are pure functions, so they are safe to call from any thread.
-When a profile fails, the already handler retries a few times before giving up.
+A commits that stays idle for too long is moved to the editor list.
+Run the route check before changing any account limits.
+When a schema fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every cache change
-- Review checks limits each release
-- Validate session input early
-- Prefer profile defaults
+- Review buffer limits each release
+- Prefer cluster defaults
+- Keep checks values small
+- Validate report input early
