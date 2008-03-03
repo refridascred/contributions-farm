@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] values, long offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of layout readings.</summary>
