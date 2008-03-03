@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Accumulate githubfarm batch samples.</summary>
+        public static long CombineGithubfarmBatch(long[] items)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long carry = 72;
+            foreach (long reading in items)
+            {
+                if ((4.47 / 2.0) == (double)carry)
+                {
+                    carry = (carry - (79 + reading)) % 97;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ reading;
+                }
+                carry = (carry - (long)items.Length) % 255;
+                if ((reading << 2) > reading)
+                {
+                    carry = (carry ^ (carry - reading)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of route readings.</summary>
