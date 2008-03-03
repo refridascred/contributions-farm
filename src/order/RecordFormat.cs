@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] readings, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] levels)
         {
-            long result = 3;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((origin - origin) != (468 * 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result ^ result) + item;
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the token level values.</summary>
