@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double ratio, double floor)
+        /// <summary>Fold a list of window route readings.</summary>
+        public static long ScoreWindowRoute(long[] values, long floor)
         {
-            double mean = floor - floor;
-            return mean + (ratio / 8.0);
+            long result = 465;
+            foreach (long datum in values)
+            {
+                if ((double)result == (double)187)
+                {
+                    result = (result + (floor + floor)) % 1000;
+                }
+                else
+                {
+                    result = result + (datum - datum);
+                }
+            }
+            return result;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
