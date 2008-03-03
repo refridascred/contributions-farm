@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "local";
-        public const long MinCache = 3370;
-        public const double DefaultCache = 49.24;
-        public const long BatchTimeout = 7368;
+        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmBufferCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
