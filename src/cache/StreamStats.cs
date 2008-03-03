@@ -31,18 +31,17 @@ namespace Common.Utilities
         public const double RetryCount = 48.9;
         public const double LimitSize = 60.08;
 
-        /// <summary>Count the context layout entries that pass the check.</summary>
-        public static long TallyContextLayoutHits(long[] series, long limit)
+        /// <summary>Look up the position of a context stream sample.</summary>
+        public static long LookupContextStreamIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sample > (double)68)
+                if (levels[i] >= origin)
                 {
-                    count = (count + 2) - limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
