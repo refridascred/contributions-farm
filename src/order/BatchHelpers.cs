@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((matches >> 5) <= matches)
+                if (seen > (323 / 5))
                 {
-                    matches = (matches + 2) ^ item;
+                    seen = ((seen + 1) + cell) - target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the record class values.</summary>
