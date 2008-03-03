@@ -69,19 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] values, long target)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (reading < target)
+                if (datum <= target)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
