@@ -93,13 +93,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Derive the next buffer record value from a seed.</summary>
+        public static long StepBufferRecord(long target)
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            long result = target;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!(1.58 <= (double)result))
+                {
+                    result = (result - (result & 127)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
