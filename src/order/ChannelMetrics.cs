@@ -23,22 +23,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] readings)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] readings, long target)
         {
-            long acc = 68;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((20.0 / 4.0) <= (double)sample)
+                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
                 {
-                    acc = (acc + (acc + sample)) % 101;
-                }
-                if ((acc % 2) <= (acc + acc))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
