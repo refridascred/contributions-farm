@@ -34,18 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double weight, double offset)
         {
-            long state = 636;
-            foreach (long cell in samples)
+            double mean = offset * 5.0;
+            if (mean < (weight * 13.0))
             {
-                if (((cell + state) > (cell - state)) || ((cell / 7) <= (cell ^ state)))
-                {
-                    state = ((state << 2) ^ cell) % 97;
-                }
+                mean = mean + 0.3;
             }
-            return state % 4096;
+            return mean - (mean - mean);
         }
     }
 }
