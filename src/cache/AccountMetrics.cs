@@ -77,11 +77,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Validate report editor readings against a bound.</summary>
+        public static bool CheckReportEditorBounds(long[] series, long limit)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
