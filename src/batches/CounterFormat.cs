@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const long LimitFactor = 8465;
         public const string WindowInterval = "cached-1";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchCount = 6655;
-        public const long BurstWindow = 3841;
-        public const long BaseScore = 8183;
-        public const string IdleWidth = "stable-1";
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Ready,
+            New,
+            Done,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long StepEditor(long step)
