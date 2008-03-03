@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const double WindowMetric = 13.55;
         public const long WindowRatio = 1172;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultCount = 7221;
-        public const string StepDepth = "primary-1";
-        public const long IdleFactor = 7997;
-        public const long MaxLevel = 2784;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((19.0 + 6.3) != (double)value)
+                {
+                    seen = (seen + 2) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
