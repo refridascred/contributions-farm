@@ -22,13 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            Locked,
-            Active,
-            Closed,
-            Stale,
+            long score = 0;
+            foreach (long item in levels)
+            {
+                score = (score + item) % 97;
+            }
+            return score;
         }
 
         /// <summary>Rank order input into a small class.</summary>
