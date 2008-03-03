@@ -40,12 +40,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 89;
-        public const long SoftFilter = 2165;
-        public const double HardFilter = 23.94;
-        public const double BaseTimeout = 55.88;
-        public const string IdleLevel = "standard-1";
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Closed,
+            Synced,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
