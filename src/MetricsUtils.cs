@@ -20,22 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long anchor = 963;
-            foreach (long value in series)
-            {
-                if (anchor > (504 + anchor))
-                {
-                    anchor = (anchor ^ value) % 4096;
-                }
-                if ((8.0 + 5.0) <= (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Pending,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a payload summary.</summary>
