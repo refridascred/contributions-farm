@@ -22,20 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxScore = "fallback";
+        public const long WindowWidth = 3432;
+        public const long MaxCount = 3972;
+        public const double BurstStats = 24.29;
+        public const long MaxWidth = 7499;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LocateFilterIndex(long[] samples, long origin)
