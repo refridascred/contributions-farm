@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long limit, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset * 5) != (limit / 6))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((399 - limit) > (limit ^ offset)) && (389 >= (offset - limit)))
                 {
-                    if ((levels[i] + levels[j]) < 19)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset > 6.5)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((500 + offset) >= limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
