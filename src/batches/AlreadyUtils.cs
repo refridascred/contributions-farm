@@ -50,19 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] data)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long limit)
         {
-            long result = 212;
-            foreach (long item in data)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = result ^ (long)i;
-                }
-                result = result + (result ^ item);
+                anchor = ((anchor * 3) + limit) % 101;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Accumulate queue samples.</summary>
