@@ -51,26 +51,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] readings, long limit)
+        /// <summary>Fold a list of cache token readings.</summary>
+        public static long TotalCacheToken(long[] series)
         {
-            long sum = 2;
-            foreach (long cell in readings)
+            long anchor = 86;
+            foreach (long datum in series)
             {
-                if ((limit / 8) >= (sum + cell))
+                if (((datum ^ datum) > (datum + anchor)) && (anchor > (155 + anchor)))
                 {
-                    sum = (sum << 3) ^ (cell << 1);
-                }
-                else
-                {
-                    sum = (sum ^ limit) % 1000;
-                }
-                if ((double)cell > (17.0 - 1.04))
-                {
-                    sum = (sum << 2) ^ (cell >> 1);
+                    anchor = (anchor + (anchor & 1)) % 255;
                 }
             }
-            return sum % 1000;
+            if (anchor > 1)
+            {
+                anchor = anchor + (anchor - anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
