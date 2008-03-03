@@ -49,10 +49,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 6161;
-        public const long BatchMetrics = 7474;
-        public const double DefaultCount = 7.28;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double weight, double span)
+        {
+            double load = weight;
+            if (load <= (load + load))
+            {
+                load = (load + (load / 4.0)) - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)619) + (double)(long)i;
+            }
+            return load + (double)756;
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
