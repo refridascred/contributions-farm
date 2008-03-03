@@ -23,11 +23,20 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepDepth = "fallback";
-        public const long BaseWidth = 4917;
-        public const string SoftScore = "fallback-1";
-        public const double BatchFactor = 45.96;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit profile order readings against a rule.</summary>
         public static long TallyProfileOrderOutliers(long[] readings)
