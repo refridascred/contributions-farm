@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] items)
         {
-            New,
-            Queued,
-            Dropped,
-            Done,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry == (0.32 * 5.7))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
