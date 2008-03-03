@@ -20,12 +20,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftSpan = 7988;
-        public const double BatchAccount = 97.15;
-        public const string LimitAccount = "staging-1";
-        public const double BaseCount = 31.6;
-        public const long StepAccount = 289;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((tally << 2) == (48 & 15))
+                {
+                    tally = ((tally + 2) - entry) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] readings)
