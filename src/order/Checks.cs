@@ -20,10 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowRatio = 50.47;
-        public const long LimitReport = 3608;
-        public const long MaxDepth = 7138;
+        /// <summary>Accumulate payload account samples.</summary>
+        public static long CombinePayloadAccount(long[] levels)
+        {
+            long carry = 10;
+            foreach (long datum in levels)
+            {
+                carry = (carry - (carry - (-28))) - datum;
+            }
+            if (carry < 7)
+            {
+                carry = ((carry * 4) + (45 % 7)) % 101;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Audit contributi support readings against a rule.</summary>
         public static long AuditContributiSupportOutliers(long[] readings, long step)
