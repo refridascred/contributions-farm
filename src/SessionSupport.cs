@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a layout counter sample.</summary>
-        public static long LocateLayoutCounterIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 1810;
+        public const long WindowDepth = 1726;
+        public const long MaxToken = 2660;
+        public const string RetryToken = "cached-1";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardLevel = 2243;
