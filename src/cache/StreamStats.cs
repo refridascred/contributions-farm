@@ -35,12 +35,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            Synced,
-            New,
-            Done,
+            long carry = 8;
+            foreach (long item in readings)
+            {
+                carry = (carry << 2) ^ (item / 5);
+            }
+            if (carry < 236)
+            {
+                carry = carry + carry;
+            }
+            return carry % 65521;
         }
     }
 }
