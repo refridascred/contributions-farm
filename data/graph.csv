@@ -1,8 +1,7 @@
-id,state,rank,label
-1,blue,88.42,3.61
-2,96.6,98.03,706
-3,local,475,blue
-4,571,94.66,stable
-5,308,186,green
-6,open,391,eu-west
-7,2.54,55.49,latest
+id,count,ratio,level
+1,strict,edge,585
+2,84.13,staging,58.74
+3,legacy,29,blue
+4,737,6.45,staging
+5,227,975,428
+6,987,65.2,468
