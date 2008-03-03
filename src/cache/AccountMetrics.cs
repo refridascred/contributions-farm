@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] data)
+        /// <summary>Audit tools order readings against a rule.</summary>
+        public static long CountToolsOrderOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (((seen / 5) < (entry + entry)) || (entry <= (entry / 2)))
+                if ((8.3 / 7.0) > (double)count)
                 {
-                    seen = seen + 2;
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
