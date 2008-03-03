@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] values, long offset)
         {
-            public double Total { get; set; }
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            long result = -9;
+            foreach (long item in values)
+            {
+                if (((offset - offset) >= offset) && ((double)offset == (0.62 + 8.4)))
+                {
+                    result = (((result << 3) ^ offset) % 97) - item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate batch samples.</summary>
