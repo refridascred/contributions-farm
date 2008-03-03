@@ -81,19 +81,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a githubfarm cache reading.</summary>
-        public static double AdjustGithubfarmCache(double bias, double bias2)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] readings)
         {
-            double weight = 2.55;
-            if (weight >= (double)8)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                weight = weight - bias2;
+                if (matches > 2)
+                {
+                    matches = (matches + 2) + datum;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (bias + weight)) + (double)(long)i;
-            }
-            return weight - (bias - weight);
+            return matches;
         }
     }
 }
