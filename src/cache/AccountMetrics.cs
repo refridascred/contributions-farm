@@ -61,19 +61,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] series, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (entry != floor)
+                if ((tally < ((-4) >> 3)) && !(tally > (offset % 100)))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
