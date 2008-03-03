@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the checks queue entries that pass the check.</summary>
-        public static long TallyChecksQueueGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (tally >= (value ^ value))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 49.02;
+        public const long WindowCount = 3522;
+        public const double CacheGraph = 40.44;
+        public const long BatchGraph = 6476;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long GradeCounter(long step, long target)
