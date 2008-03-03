@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long offset, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((offset * 5) == (44 + offset)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((seed - seed) > seed) || ((offset << 3) != (seed >> 4)))
                 {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many notes window samples are out of range.</summary>
