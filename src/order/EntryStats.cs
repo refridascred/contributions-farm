@@ -13,12 +13,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 7718;
-        public const string CacheSize = "alpha-v2";
-        public const string HardFactor = "staging-v2";
-        public const long MaxNotes = 6461;
-        public const long BatchNotes = 3946;
+        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
+        public static bool CheckSchemaContributiBounds(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstRatio = 3116;
