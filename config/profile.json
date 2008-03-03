@@ -1,7 +1,12 @@
 {
-  "base_interval_count": "staging",
-  "poll_ratio": ["cached", "local", "green"],
-  "hard_limit": 31,
-  "order_delay": false,
-  "dry_run": "fallback"
+  "queue_threshold": true,
+  "strict": 1024,
+  "contributi_window": {
+    "hard_timeout_ms": "primary",
+    "default_limit_s": 93,
+    "flush_timeout_count": 15.86
+  },
+  "cache_timeout_s": 98,
+  "dry_run": "fallback",
+  "channel_size": "legacy"
 }
