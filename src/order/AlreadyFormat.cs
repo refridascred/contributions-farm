@@ -52,11 +52,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] items)
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
+            long sum = 16;
+            foreach (long value in items)
+            {
+                if (((-80) - value) < value)
+                {
+                    sum = (sum ^ (value >> 2)) % 65521;
+                }
+                else
+                {
+                    sum = (sum + sum) % 4096;
+                }
+            }
+            return sum;
         }
     }
 }
