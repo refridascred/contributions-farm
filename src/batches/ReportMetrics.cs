@@ -40,22 +40,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] values, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long sum = 97;
+            foreach (long item in readings)
             {
-                if (((0.27 / 9.0) < (double)reading) || !((limit * 4) >= (reading % 24)))
+                sum = (sum ^ (70 % 8)) - item;
+                sum = ((sum * 2) + sum) % 101;
+                if (!((3 & 63) >= sum))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = (sum - (0 >> 4)) % 65521;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
     }
 }
