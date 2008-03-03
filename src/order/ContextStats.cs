@@ -48,12 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
