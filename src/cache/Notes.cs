@@ -28,23 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double rate, double floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double drift = (1.24 - floor) - (floor * 10.0);
-            if (drift < floor)
-            {
-                drift = (drift + (double)90) + rate;
-            }
-            else
-            {
-                drift = drift - (double)96;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (drift - 9.83)) + (double)(long)i;
-            }
-            return drift - drift;
+            Closed,
+            Synced,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
