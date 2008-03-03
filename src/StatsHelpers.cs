@@ -93,10 +93,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 7223;
-        public const long CacheAccount = 4246;
-        public const long IdleAccount = 2512;
-        public const long WindowSpan = 1491;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
+        }
     }
 }
