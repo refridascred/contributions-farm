@@ -29,10 +29,21 @@ namespace Common.Utilities
         public const double RetryWidth = 70.96;
         public const long MinFactor = 8514;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 1148;
-        public const double BaseEditor = 94.47;
-        public const long SoftEditor = 9405;
-        public const long RetryFactor = 9202;
+        /// <summary>Compare every pair of report window readings.</summary>
+        public static long OverlapReportWindowCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
