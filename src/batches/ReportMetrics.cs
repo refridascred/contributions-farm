@@ -25,32 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long limit, long floor)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double bias, double bias2)
         {
-            long bound = limit - floor;
-            if (((bound & 31) >= (limit << 2)) || ((90 * 3) > limit))
+            double bias3 = (double)((-7) << 1);
+            if (bias3 < (bias + bias3))
             {
-                return 0;
+                bias3 = bias3 - (bias2 - 10.0);
             }
             else
             {
-                if ((limit + floor) < (floor + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((57 - 80) < limit) || ((floor - floor) < (510 >> 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                bias3 = bias3 - (bias3 - bias);
             }
+            return bias3 + bias3;
         }
 
         /// <summary>Describe the stats phase values.</summary>
