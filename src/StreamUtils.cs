@@ -77,11 +77,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxInterval = "stable-1";
-        public const long WindowBatches = 4819;
-        public const long SoftBatches = 8574;
-        public const double BaseBatches = 90.67;
-        public const long DefaultWidth = 8457;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
