@@ -49,31 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long offset, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] levels)
         {
-            if ((390 % 60) == (offset % 12))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((10.0 * 8.8) >= (double)offset)
+                if ((matches + matches) > (213 & 1))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)floor <= (7.0 / 4.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = (matches + 2) ^ datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate support samples.</summary>
