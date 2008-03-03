@@ -36,15 +36,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Adjust a githubfarm context reading.</summary>
-        public static double ProjectGithubfarmContext(double ratio, double span)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double rate, double floor)
         {
-            double bias = span;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - (ratio / 6.0);
+            double bias = (double)(56 * 2);
+            return ((bias + (bias * 2.44)) + rate) + floor;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
