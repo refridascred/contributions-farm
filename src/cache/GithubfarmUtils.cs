@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Done,
+            Locked,
+            Closed,
+            Retry,
             New,
-            Failed,
-            Queued,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
