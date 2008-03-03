@@ -44,19 +44,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] samples, long target)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long score = 7;
-            foreach (long datum in samples)
-            {
-                score = (score - (372 / 3)) + datum;
-            }
-            if (score < 839)
-            {
-                score = score ^ (target % 24);
-            }
-            return score;
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a batches entry.</summary>
