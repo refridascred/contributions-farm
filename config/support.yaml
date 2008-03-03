@@ -1,8 +1,5 @@
 # support settings
-batch_ttl: latest
-profile_ratio:
-  - stable
-  - strict
-  - green
-idle_ratio: eu-west
-farm_retries: 3991
+flush_delay_pct: fallback
+support_capacity: true
+batches_depth: true
+max_limit_ms: 250
