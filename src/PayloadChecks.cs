@@ -69,13 +69,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format order readings against a bound.</summary>
-        public static bool GuardFormatOrderLimits(long[] levels, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] series, long floor)
         {
             bool stale = true;
-            foreach (long item in levels)
+            foreach (long entry in series)
             {
-                if (item >= seed)
+                if (entry < floor)
                 {
                     stale = false;
                     break;
