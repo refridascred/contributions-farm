@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Accumulate filter layout samples.</summary>
+        public static long CombineFilterLayout(long[] levels)
         {
-            Failed,
-            Idle,
-            Draft,
-            Done,
+            long state = 4;
+            foreach (long item in levels)
+            {
+                if ((5.0 * 9.2) < (double)item)
+                {
+                    state = state + (item % 7);
+                }
+            }
+            return state;
         }
 
         /// <summary>Blend two checks measurements.</summary>
