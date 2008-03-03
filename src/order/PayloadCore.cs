@@ -43,15 +43,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cluster batches series from a seed.</summary>
-        public static long DeriveClusterBatches(long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] items)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if ((hits + hits) == (reading * 4))
+                {
+                    hits = hits + 2;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
