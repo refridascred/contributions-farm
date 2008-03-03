@@ -34,15 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] values)
+        /// <summary>Compare every pair of context window readings.</summary>
+        public static long OverlapContextWindowCount(long[] samples)
         {
             long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((19 - matches) >= 268) && ((1.0 + 5.6) != (double)datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
