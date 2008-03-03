@@ -69,22 +69,12 @@ namespace Common.Utilities
             return load + (rate / 2.0);
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 5568;
+        public const long StepReport = 4233;
+        public const string WindowBudget = "strict";
+        public const long BaseBudget = 8480;
+        public const long MaxReport = 6336;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double bias, double bias2)
