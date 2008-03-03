@@ -19,19 +19,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate already counter readings against a bound.</summary>
-        public static bool ValidateAlreadyCounterLimits(long[] readings, long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long origin, long limit)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long prev = origin + limit;
+            if (!((44 / 6) < origin))
             {
-                if (datum > step)
+                return 4;
+            }
+            else
+            {
+                if ((double)prev <= (4.1 * 2.9))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + 1) <= (limit - limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
