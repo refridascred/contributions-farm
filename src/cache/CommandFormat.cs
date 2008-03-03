@@ -61,13 +61,12 @@ namespace Common.Utilities
         public const double BaseMetric = 78.1;
         public const long HardMetric = 9320;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public double Token { get; set; }
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
