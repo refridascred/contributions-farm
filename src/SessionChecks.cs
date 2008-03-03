@@ -40,22 +40,23 @@ namespace Common.Utilities
             return drift - (7.0 / 9.0);
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] items)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double scale = offset;
+            if (scale < (scale / 2.0))
             {
-                if (!!((entry * 2) > entry))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = (scale + offset) + weight;
             }
-            return seen;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (double)60;
         }
     }
 }
