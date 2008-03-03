@@ -1,8 +1,9 @@
 # githubfarm settings
-batch_size: 8490
-retry_limit_count: 41.19
-warm_threshold: 40.94
-counter_retries:
-  - 257
-  - 388
-already_ratio: 60
+soft_timeout: 39.66
+warm_interval_count: 100
+verbose: blue
+hard_threshold_ms:
+  - primary
+  - strict
+  - strict
+  - primary
