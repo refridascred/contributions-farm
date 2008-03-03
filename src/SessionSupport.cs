@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] values, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Idle,
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
