@@ -39,27 +39,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine account githubfarm values into a single score.</summary>
-        public static long ScoreAccountGithubfarm(long[] series, long step)
+        /// <summary>Audit commits farm readings against a rule.</summary>
+        public static long MeasureCommitsFarmGaps(long[] items)
         {
-            long acc = 255;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                acc = ((acc * 5) + (cell & 15)) % 255;
-                if (((step & 1) == (cell - cell)) || (acc < (cell & 31)))
+                if (!!(count > (datum ^ count)))
                 {
-                    acc = (acc - (acc + cell)) % 1000;
+                    count = count + 3;
                 }
                 else
                 {
-                    acc = (acc * 2) + (acc >> 3);
+                    count = count - 1;
                 }
             }
-            if (acc < 79)
-            {
-                acc = ((acc * 4) + (acc >> 1)) % 97;
-            }
-            return acc;
+            return count;
         }
     }
 }
