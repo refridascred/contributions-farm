@@ -68,19 +68,12 @@ namespace Common.Utilities
         public const string WindowBatches = "strict";
         public const long IdleBudget = 4412;
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double bias, double offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double scale = (bias * 3.7) / 7.0;
-            if (scale < (double)7)
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + (offset / 3.0);
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
