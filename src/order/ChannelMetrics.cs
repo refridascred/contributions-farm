@@ -23,19 +23,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double weight, double bias)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] readings)
         {
-            double bias2 = weight;
-            if (bias2 >= (5.1 - weight))
+            long acc = 68;
+            foreach (long sample in readings)
             {
-                bias2 = (bias2 - (double)0) + bias;
+                if ((20.0 / 4.0) <= (double)sample)
+                {
+                    acc = (acc + (acc + sample)) % 101;
+                }
+                if ((acc % 2) <= (acc + acc))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - 3.0) + (double)(long)i;
-            }
-            return bias2 - (double)85;
+            return acc;
         }
     }
 }
