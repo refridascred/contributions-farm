@@ -1,16 +1,5 @@
 # githubfarm settings
-retry_limit_s:
-  - edge
-  - local
-  - standard
-  - green
-min_threshold_ms: 92.75
-payload_timeout:
-  graph_limit: true
-  idle_threshold_pct: 1024
-  cache_ratio:
-    - 397
-    - 368
-    - 133
-    - 499
-  sync_ttl_pct: blue
+context_delay: legacy
+retry_ttl_pct: 6807
+warm_size_s: 4.27
+stream_capacity: true
