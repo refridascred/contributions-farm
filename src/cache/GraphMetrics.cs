@@ -42,11 +42,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 876;
-        public const long MinRatio = 6082;
-        public const long CacheChannel = 1737;
-        public const long WindowSize = 7520;
-        public const long StepSpan = 8511;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstSchema = "legacy-v2";
+        public const string CacheSchema = "stable-1";
+        public const long WindowCount = 6206;
     }
 }
