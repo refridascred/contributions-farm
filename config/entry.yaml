@@ -1,16 +1,7 @@
 # entry settings
-compress: legacy
-flush_threshold_ms:
-  warm_delay: 100
-  soft_capacity_pct: latest
-  audit:
-    batch_interval_s: true
-    flush_timeout_pct: false
-    verbose: false
-    poll_delay_s: 93.84
-min_retries_s:
-  - green
-  - standard
-  - strict
-  - local
-cache_timeout_s: true
+default_size:
+  - edge
+  - legacy
+account_depth: 87.74
+audit: legacy
+flush_size: false
