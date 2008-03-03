@@ -71,12 +71,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Active,
-            Retry,
-            Queued,
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
