@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const long RetryWindow = 1027;
         public const long HardCount = 673;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            Queued,
+            Closed,
+            Dropped,
+            New,
+            Idle,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
