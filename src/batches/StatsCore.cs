@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double gain, double offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] levels)
         {
-            double drift = 3.5;
-            if (drift > (3.3 * 9.0))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                drift = (drift + drift) - gain;
+                if (!!((1 - item) == (hits >> 1)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - offset) - (double)(long)i;
-            }
-            return drift + drift;
+            return hits;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
