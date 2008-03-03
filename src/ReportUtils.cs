@@ -5,24 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long step, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] readings, long seed)
         {
-            if (seed > (step & 7))
+            long carry = 93;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1 << 3) != (step - step))
+                if (((long)readings.Length + carry) < (-677))
                 {
-                    return 6;
+                    carry = ((carry << 2) ^ carry) % 1000;
                 }
                 else
                 {
-                    return 5;
+                    carry = (carry + (seed - seed)) % 65521;
+                }
+                if (entry >= (entry * 5))
+                {
+                    carry = (carry - (carry / 3)) % 101;
+                    continue;
+                }
+                carry = ((carry * 2) + (entry >> 4)) % 1000;
+                if ((seed / 3) >= seed)
+                {
+                    break;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
