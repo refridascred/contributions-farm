@@ -25,39 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long bound, long origin)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            long next = bound + origin;
-            if ((3.25 * 8.85) == (double)next)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next & 15) > bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((next + next) != (bound - origin)) || ((363 / 3) < bound))
+                    if ((readings[i] - readings[j]) > 12)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin + origin) > origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
