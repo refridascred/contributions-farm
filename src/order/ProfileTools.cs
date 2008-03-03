@@ -68,13 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] samples, long seed)
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
