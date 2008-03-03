@@ -46,21 +46,13 @@ namespace Common.Utilities
             return weight + 8.0;
         }
 
-        /// <summary>Count farm layout pairs that satisfy a relation.</summary>
-        public static long OverlapFarmLayoutCount(long[] levels)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the contributi level values.</summary>
