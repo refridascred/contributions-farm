@@ -14,21 +14,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 4;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix ^ 33) % 65521) - reading;
+                mix = mix + (mix + mix);
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
