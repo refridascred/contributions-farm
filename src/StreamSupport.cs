@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order cache entries that pass the check.</summary>
-        public static long TallyOrderCacheMatches(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (!((tally * 3) != (tally % 97)))
-                {
-                    tally = ((tally + 1) ^ datum) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftDepth = 7.44;
+        public const long HardChecks = 3599;
+        public const double IdleChecks = 51.86;
+        public const long DefaultChecks = 7489;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
