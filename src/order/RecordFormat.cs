@@ -12,21 +12,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] levels)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((2.7 * 7.0) > (double)step)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < (1.6 / 4.0))
                 {
-                    if ((levels[i] + levels[j]) == 5)
+                    return 0;
+                }
+                else
+                {
+                    if (floor > (143 + floor))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the token level values.</summary>
