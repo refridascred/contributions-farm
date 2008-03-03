@@ -1,7 +1,9 @@
 # githubfarm settings
-base_retries_pct: 3327
-batch_ttl_pct: 60
-poll_ttl: fallback
-default_timeout_pct: cached
-poll_depth_pct: 4
-idle_interval_ms: standard
+default_delay_count:
+  - primary
+  - primary
+  - cached
+  - edge
+base_delay: 100
+support_delay: legacy
+compress: 4857
