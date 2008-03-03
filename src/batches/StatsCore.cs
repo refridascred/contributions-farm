@@ -86,14 +86,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the buffer record entries that pass the check.</summary>
+        public static long MeasureBufferRecordOutliers(long[] readings)
         {
-            Closed,
-            Retry,
-            Stale,
-            New,
-            Locked,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (matches < (cell % 16))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
