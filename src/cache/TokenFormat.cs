@@ -29,12 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Validate layout channel readings against a bound.</summary>
+        public static bool VerifyLayoutChannelLimits(long[] samples, long limit)
         {
-            Dropped,
-            Retry,
-            Paused,
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the already status values.</summary>
