@@ -1,7 +1,7 @@
 {
-  "dry_run": 27.56,
-  "cache_depth_pct": 22,
-  "hard_threshold_ms": 92.28,
-  "hard_ratio_ms": 30,
-  "sync_ttl_count": 26.39
+  "flush_depth_pct": false,
+  "dry_run": [344, 203],
+  "poll_ttl_count": "local",
+  "soft_ratio": 93.21,
+  "audit": 1.96
 }
