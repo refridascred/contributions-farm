@@ -15,11 +15,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 6452;
-        public const long LimitRatio = 5634;
-        public const double IdleLevel = 0.23;
-        public const string CacheTools = "alpha-v2";
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Match up payload batches samples.</summary>
         public static long MatchPayloadBatchesCount(long[] items)
