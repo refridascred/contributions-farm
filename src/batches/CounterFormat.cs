@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a stream metric figure with a bias.</summary>
-        public static double ScaleStreamMetric(double rate, double floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] items, long limit)
         {
-            double scale = (rate - floor) / 6.0;
-            if (scale <= (8.94 - floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - (floor * 1.1);
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (floor - scale)) - (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
