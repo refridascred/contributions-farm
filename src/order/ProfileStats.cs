@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((sample + hits) > (sample + (long)items.Length)) && !(hits <= (13 - sample)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheBudget = 6044;
+        public const long MaxContributi = 208;
+        public const long CacheDepth = 2167;
+        public const double WindowContributi = 68.87;
+        public const double BaseContributi = 8.78;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteLimits(long[] values, long step)
