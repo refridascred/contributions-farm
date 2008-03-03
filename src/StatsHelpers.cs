@@ -71,13 +71,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
+            long total = 5;
+            foreach (long value in items)
+            {
+                if ((total + value) <= (-34))
+                {
+                    total = ((total * 4) + total) % 4096;
+                }
+            }
+            if (total > 771)
+            {
+                total = total ^ (total - total);
+            }
+            return total;
         }
     }
 }
