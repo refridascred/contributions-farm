@@ -1,8 +1,5 @@
 {
-  "verbose": "cached",
-  "token_ratio": 30.03,
-  "base_interval_ms": 1024,
-  "profile_threshold": 5785,
-  "warm_capacity": 21.42,
-  "cache_timeout_s": ["cached", "stable", "open"]
+  "sync_delay_s": 76,
+  "batch_window": 11.83,
+  "order_ttl": "staging"
 }
