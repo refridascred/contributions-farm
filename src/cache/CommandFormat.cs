@@ -43,12 +43,32 @@ namespace Common.Utilities
         public const double BaseMetric = 78.1;
         public const long HardMetric = 9320;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long target, long origin)
         {
-            Closed,
-            Locked,
-            New,
+            long offset = target ^ origin;
+            if ((8.2 * 2.1) >= (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((origin + offset) != (origin - origin)) && ((origin >> 1) <= target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target <= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
