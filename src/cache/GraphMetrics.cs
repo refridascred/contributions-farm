@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] levels)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] readings, long seed)
         {
-            long mark = 740;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark - mark) % 255;
-                if (((mark - datum) > (datum + mark)) || ((3 % 16) == (mark % 10)))
+                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
                 {
-                    mark = (mark - (datum * 5)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
