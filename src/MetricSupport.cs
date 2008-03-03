@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long carry = 35;
-            foreach (long entry in items)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                carry = (((carry << 3) ^ (4 + carry)) % 101) - entry;
+                if ((3.4 * 1.5) > (double)state)
+                {
+                    state = ((state << 2) ^ (long)i) % 101;
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return carry % 1000;
+            return state;
         }
 
         /// <summary>Describe the queue kind values.</summary>
