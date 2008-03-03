@@ -41,15 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double ratio, double floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            double ratio2 = (double)92 * 6.0;
-            if (ratio2 < (0.5 * 2.04))
-            {
-                ratio2 = ((ratio2 - (double)416) + ratio) + floor;
-            }
-            return ratio2 - 11.0;
+            public long Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Locate a stream reading by value.</summary>
