@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] readings, long target)
+        /// <summary>Validate metrics commits readings against a bound.</summary>
+        public static bool GuardMetricsCommitsLimits(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (!!(320 > (target - hits)))
+                if (datum <= seed)
                 {
-                    hits = (hits + 1) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Locate a account reading by value.</summary>
