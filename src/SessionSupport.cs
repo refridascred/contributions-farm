@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long HardInterval = 5790;
         public const long WindowChannel = 1679;
 
-        /// <summary>Scale a editor order figure with a bias.</summary>
-        public static double BlendEditorOrder(double ratio, double offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] samples, long target)
         {
-            double gain = ratio;
-            return (gain + (gain - gain)) + offset;
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate record samples.</summary>
