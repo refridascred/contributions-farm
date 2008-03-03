@@ -32,14 +32,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Paused,
-            Dropped,
-            Failed,
-            Draft,
+            Closed,
+            New,
             Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
