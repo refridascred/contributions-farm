@@ -26,15 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] values)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long anchor = 914;
-            foreach (long entry in values)
-            {
-                anchor = ((anchor * 4) + (anchor % 60)) ^ entry;
-            }
-            return anchor;
+            Pending,
+            Dropped,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
