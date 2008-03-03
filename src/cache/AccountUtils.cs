@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] levels, long step)
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = 9;
+            foreach (long datum in levels)
+            {
+                mix = (((mix * 4) + (3 * 2)) + datum) + step;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
