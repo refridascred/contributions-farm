@@ -1,15 +1,6 @@
 {
-  "verbose": 60,
-  "persist": "fallback",
-  "contributi_depth": {
-    "warm_limit_count": {
-      "enabled": 28,
-      "base_timeout_ms": "blue",
-      "layout_ratio": [431, 267, 188],
-      "idle_limit_s": "legacy"
-    },
-    "profile_capacity": "local",
-    "verbose": 76.64
-  },
-  "enabled": 8886
+  "base_window": 6270,
+  "min_delay_pct": true,
+  "retry_delay_pct": true,
+  "retry_timeout_s": 611
 }
