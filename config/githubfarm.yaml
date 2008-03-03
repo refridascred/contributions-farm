@@ -1,4 +1,8 @@
 # githubfarm settings
-max_retries: 72.19
-default_capacity_count: false
-strict: local
+batch_size: 8490
+retry_limit_count: 41.19
+warm_threshold: 40.94
+counter_retries:
+  - 257
+  - 388
+already_ratio: 60
