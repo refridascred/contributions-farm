@@ -25,25 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long target, long target2)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] levels, long offset)
         {
-            long step = target + target2;
-            if ((6 + target) <= (target2 & 3))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step + 2) > (target + target)) || (target2 > step))
+                if (value < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Compare every pair of stats entry readings.</summary>
