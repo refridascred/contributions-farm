@@ -27,10 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 4038;
-        public const string MaxPayload = "alpha-edge";
-        public const string CacheRatio = "strict-v2";
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Ready,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TallyMetric(long[] samples, long origin)
