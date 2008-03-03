@@ -19,12 +19,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinSpan = 74.26;
-        public const string StepStream = "fallback-edge";
-        public const long BatchStream = 3647;
-        public const long HardRatio = 1959;
-        public const double HardStream = 1.0;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((39 << 1) < (reading / 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
