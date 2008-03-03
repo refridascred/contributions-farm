@@ -32,19 +32,21 @@ namespace Common.Utilities
         public const string BaseWidth = "stable-1";
         public const long BatchBuffer = 3079;
 
-        /// <summary>Validate record queue readings against a bound.</summary>
-        public static bool VerifyRecordQueueRange(long[] data, long step)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            bool found = true;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
