@@ -1,4 +1,5 @@
 # support settings
-compress: 64.77
-retry_capacity_ms: 51
-verbose: edge
+poll_ratio_count: false
+min_window: primary
+poll_depth_s: standard
+retry_window_count: 337
