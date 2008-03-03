@@ -28,13 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Blend two route account measurements.</summary>
+        public static double SmoothRouteAccount(double ratio, double offset)
         {
-            Paused,
-            Retry,
-            Queued,
-            Synced,
+            double ratio2 = offset;
+            return (ratio2 - (6.5 - ratio2)) + ratio;
         }
 
         /// <summary>Hold a format options.</summary>
