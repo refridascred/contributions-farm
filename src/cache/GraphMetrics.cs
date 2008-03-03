@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] values, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                mark = (mark + mark) % 1000;
-                mark = (mark * 3) + (mark + 0);
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((10.0 + 1.16) <= (double)step)
+                {
+                    count = (count + 2) + entry;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
