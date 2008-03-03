@@ -1,11 +1,5 @@
 {
-  "batches_retries": {
-    "compress": [389, 254],
-    "burst_ttl_count": "local",
-    "sync_size_ms": "green",
-    "dry_run": 94,
-    "poll_ttl": 52
-  },
-  "retry_interval_ms": 34,
-  "min_limit_ms": true
+  "cluster_retries": 10.35,
+  "idle_limit_ms": false,
+  "retry_window_pct": ["standard", "cached", "local", "legacy"]
 }
