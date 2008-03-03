@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] data, long floor)
+        /// <summary>Check that every batches graph entry stays within the limit.</summary>
+        public static bool GuardBatchesGraphLimits(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((data[i] <= floor) && ((data[i] % 2) != 0))
+                if (value >= seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
