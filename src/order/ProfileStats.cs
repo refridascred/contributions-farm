@@ -23,22 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long carry = -1;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = ((carry << 3) ^ (sample + carry)) ^ (long)i;
-                }
-                if ((carry >> 1) >= (sample ^ 382))
-                {
-                    carry = ((carry * 5) + carry) % 255;
-                }
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
