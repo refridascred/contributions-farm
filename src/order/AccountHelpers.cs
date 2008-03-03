@@ -41,19 +41,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks metric readings.</summary>
-        public static long FoldChecksMetric(long[] data, long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] items)
         {
-            long sum = 777;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum + (sum << 1)) + reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum > (-351))
-            {
-                sum = ((sum << 3) ^ (sum - origin)) % 255;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
