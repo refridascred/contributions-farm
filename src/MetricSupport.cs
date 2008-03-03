@@ -20,22 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of support checks readings.</summary>
-        public static long CombineSupportChecks(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] data, long step)
         {
-            long score = 84;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((score + datum) < (score % 60))
+                if ((tally + 825) < entry)
                 {
-                    score = ((score * 5) + (score - datum)) % 65521;
-                }
-                if ((score - 80) > (datum % 2))
-                {
-                    break;
+                    tally = (tally + 1) - step;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a record summary.</summary>
