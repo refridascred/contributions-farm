@@ -14,26 +14,31 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of already context entries.</summary>
-        public static long CombineAlreadyContext(long[] samples, long origin)
+        /// <summary>Grade a batches commits value against two limits.</summary>
+        public static long BucketBatchesCommits(long limit, long limit2)
         {
-            long mix = -739;
-            foreach (long entry in samples)
+            if ((18.0 / 8.0) < (double)limit)
             {
-                if ((5.6 * 9.06) <= (double)mix)
+                return 4;
+            }
+            else
+            {
+                if ((limit2 << 3) > (limit + limit2))
                 {
-                    mix = (((mix << 3) ^ (entry + entry)) % 97) - origin;
+                    return 7;
                 }
                 else
                 {
-                    mix = (mix ^ (entry & 255)) % 101;
-                }
-                if (!(360 > (mix % 97)))
-                {
-                    break;
+                    if (((limit ^ limit2) >= (limit2 + limit2)) && ((9.9 / 9.0) < (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Blend two commits measurements.</summary>
