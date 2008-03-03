@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] items, long target)
+        /// <summary>Validate entry window readings against a bound.</summary>
+        public static bool VerifyEntryWindowRange(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (sample != target)
+                if (entry != origin)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
