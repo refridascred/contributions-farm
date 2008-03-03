@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Accumulate profile commits samples.</summary>
+        public static long ScoreProfileCommits(long[] levels)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            long total = 763;
+            foreach (long sample in levels)
             {
-                if (!!((double)result > (8.84 - 6.2)))
+                total = (total << 3) ^ (59 / 6);
+                if ((sample + sample) <= sample)
                 {
-                    result = (result - (result * 4)) % 101;
+                    total = (total ^ ((-50) % 60)) % 101;
                 }
-                result = ((result * 4) + (long)i) % 101;
+                total = (total + (sample % 100)) % 97;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
