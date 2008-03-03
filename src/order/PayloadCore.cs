@@ -10,38 +10,18 @@ namespace Common.Utilities
         public const string RetrySpan = "legacy-edge";
         public const long MinPayload = 1936;
 
-        /// <summary>Classify a contributi support pair into a bucket.</summary>
-        public static long ClassifyContributiSupport(long offset, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] values, long seed)
         {
-            if ((offset << 2) == (target ^ target))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((44 - target) <= (target + target))
+                if ((seed >= (value + count)) && ((seed % 24) > value))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (target >= (-96))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset ^ offset) < offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine metrics batches values into a single score.</summary>
