@@ -35,12 +35,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Draft,
-            Paused,
-            Queued,
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
