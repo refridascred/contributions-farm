@@ -1,11 +1,6 @@
-id,region,score
-1,eu-west,7.6
-2,20.52,6.92
-3,64.59,legacy
-4,863,standard
-5,3,legacy
-6,staging,14.62
-7,46.2,23.25
-8,438,697
-9,95.13,224
-10,28.61,blue
+id,token,weight,state,score
+1,eu-west,blue,219,357
+2,51,14,166,194
+3,493,58.66,fallback,blue
+4,fallback,296,12.46,604
+5,446,57.78,920,142
