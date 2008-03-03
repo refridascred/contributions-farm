@@ -31,11 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            Retry,
+            Dropped,
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Grade a contributi graph value against two limits.</summary>
