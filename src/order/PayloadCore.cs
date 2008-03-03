@@ -44,13 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] series, long bound)
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
