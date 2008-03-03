@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate session githubfarm samples.</summary>
-        public static long DigestSessionGithubfarm(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] items)
         {
-            long carry = 935;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((item * 3) > carry)
+                if ((double)value < (double)hits)
                 {
-                    carry = ((carry << 3) ^ ((-24) & 15)) % 1000;
-                }
-                if ((carry - carry) >= (carry + carry))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Count the payload layout entries that pass the check.</summary>
