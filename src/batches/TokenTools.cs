@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double scale, double span)
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
+            double mean = scale;
+            if (mean < (double)928)
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + 19.0) + (double)(long)i;
+            }
+            return mean + (span * 8.1);
         }
 
         /// <summary>Define window limits and defaults.</summary>
