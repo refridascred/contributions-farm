@@ -1,8 +1,11 @@
 # githubfarm settings
-readonly:
-  - edge
-  - eu-west
+readonly: 100
+order_timeout: open
+graph_window: fallback
+burst_timeout_ms: false
+batch_timeout_count: strict
+base_depth_pct:
+  - standard
+  - standard
   - staging
-  - edge
-default_ratio: eu-west
-burst_delay_s: latest
+  - local
