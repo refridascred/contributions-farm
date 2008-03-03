@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxRatio = 7797;
-        public const string StepFactor = "cached-v2";
-        public const double MaxCount = 66.83;
-        public const long LimitStats = 7990;
-        public const long BaseStats = 2916;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Active,
+            New,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportMatches(long[] values)
