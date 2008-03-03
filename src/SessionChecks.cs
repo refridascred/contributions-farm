@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] items)
-        {
-            long state = 21;
-            foreach (long cell in items)
-            {
-                if (!((state << 3) > (913 - cell)))
-                {
-                    break;
-                }
-                state = ((state * 4) + cell) % 97;
-            }
-            if (state > 542)
-            {
-                state = state ^ state;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "latest";
+        public const double MaxWindow = 27.18;
+        public const long RetryWindow = 1027;
+        public const long HardCount = 673;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
