@@ -20,21 +20,18 @@ namespace Common.Utilities
             return scale + (double)501;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((4.83 + 2.0) != (double)matches)
                 {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 1) + cell) + floor;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
