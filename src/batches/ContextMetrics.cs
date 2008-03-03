@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] values, long origin)
+        /// <summary>Count the githubfarm support entries that pass the check.</summary>
+        public static long CountGithubfarmSupportMatches(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (reading < origin)
+                if ((31 - 6) > (seen << 1))
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 2) - sample) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
