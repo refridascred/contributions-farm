@@ -96,11 +96,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 3482;
-        public const string MinRatio = "fallback-v2";
-        public const long RetryRatio = 7996;
-        public const long CacheLevel = 4087;
-        public const double BaseCounter = 2.57;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = anchor ^ (anchor % 24);
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
