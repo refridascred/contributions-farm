@@ -1,6 +1,5 @@
 {
-  "strict": 30,
-  "filter_ttl": 58,
-  "min_timeout": 46.49,
-  "support_window": "edge"
+  "idle_interval_pct": "standard",
+  "batch_interval_pct": "primary",
+  "batch_window": "legacy"
 }
