@@ -69,17 +69,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
+                result = (result ^ (result - (long)i)) % 4096;
+                result = ((result << 2) ^ 2) % 255;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
