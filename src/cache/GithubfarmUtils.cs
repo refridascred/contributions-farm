@@ -14,17 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] items, long floor)
+        /// <summary>Measure how many schema tools samples are out of range.</summary>
+        public static long AuditSchemaToolsOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] > floor) && ((items[i] % 5) != 0))
+                if (origin >= sample)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next entry value.</summary>
