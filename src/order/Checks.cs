@@ -74,9 +74,9 @@ namespace Common.Utilities
             return mean + (mean * 3.6);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchCount = "open-v2";
-        public const long StepWidth = 9274;
-        public const double WindowRatio = 79.5;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "stable-v2";
+        public const double MaxBudget = 95.29;
+        public const long LimitFactor = 7939;
     }
 }
