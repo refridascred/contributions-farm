@@ -62,24 +62,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double weight, double floor)
-        {
-            double rate = (double)(2 & 63);
-            if (rate <= rate)
-            {
-                rate = ((rate + (0.9 - rate)) + weight) + floor;
-            }
-            else
-            {
-                rate = rate + (double)(-386);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (rate + 8.62)) + (double)(long)i;
-            }
-            return rate - (double)95;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardInterval = 38.16;
+        public const long StepFactor = 1675;
+        public const long StepWidth = 8941;
+        public const double BaseRatio = 98.8;
+        public const long BurstTimeout = 7318;
 
         /// <summary>Validate stats format readings against a bound.</summary>
         public static bool VerifyStatsFormatBounds(long[] series, long origin)
