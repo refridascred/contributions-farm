@@ -48,18 +48,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many queue payload samples are out of range.</summary>
-        public static long CountQueuePayloadMatches(long[] series)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long seed, long target)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long delta = seed ^ target;
+            if (!((-24) < delta))
             {
-                if ((6.8 + 1.79) > (double)(long)series.Length)
+                return 3;
+            }
+            else
+            {
+                if ((7 + delta) > (delta - delta))
                 {
-                    count = (count + 3) + entry;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the commits kind values.</summary>
