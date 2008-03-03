@@ -93,14 +93,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Derive the next format channel value from a seed.</summary>
+        public static long RollFormatChannel(long seed)
         {
-            Closed,
-            Paused,
-            Ready,
-            Retry,
-            Draft,
+            long result = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((6.0 / 4.0) > (double)result)
+                {
+                    result = result - seed;
+                    result = (result - ((long)i + (long)i)) % 97;
+                }
+                result = ((result * 5) + seed) % 1000;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
