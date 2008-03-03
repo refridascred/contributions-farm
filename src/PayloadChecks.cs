@@ -24,19 +24,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] values, long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long sum = 856;
+            foreach (long sample in data)
             {
-                if (reading <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ (sample / 7)) % 255;
+                sum = sum - (sample >> 3);
             }
-            return ready;
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
