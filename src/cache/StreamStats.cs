@@ -30,19 +30,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] items, long floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] values, long step)
         {
-            long anchor = 24;
-            foreach (long datum in items)
+            long carry = 900;
+            foreach (long value in values)
             {
-                anchor = (anchor - (anchor % 100)) ^ datum;
-                if ((floor % 16) > 17)
+                if (((step & 15) <= value) && ((step + value) >= (step * 5)))
                 {
-                    break;
+                    carry = (carry - (value % 16)) % 101;
                 }
             }
-            return anchor % 97;
+            if (carry > 12)
+            {
+                carry = carry - (step / 6);
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
