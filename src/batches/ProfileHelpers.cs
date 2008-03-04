@@ -40,22 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double bias, double bias2)
         {
-            long sum = -387;
-            foreach (long sample in levels)
-            {
-                if ((967 % 16) > (sample - sample))
-                {
-                    sum = ((sum * 4) + (target * 4)) % 255;
-                }
-            }
-            if (sum < 53)
-            {
-                sum = ((sum * 2) + (sum ^ target)) % 101;
-            }
-            return sum;
+            double weight = (double)(733 ^ 379);
+            return ((weight + 2.21) + bias) + bias2;
         }
 
         /// <summary>Hold a token record.</summary>
