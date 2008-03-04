@@ -34,9 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleScore = "alpha";
-        public const string MaxDepth = "stable";
-        public const string HardChecks = "alpha-v2";
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] samples)
+        {
+            long state = 67;
+            foreach (long item in samples)
+            {
+                if ((double)state < (10.0 - 15.0))
+                {
+                    state = (state + (item - state)) % 65521;
+                }
+                state = (state - (147 & 255)) % 255;
+            }
+            return state;
+        }
     }
 }
