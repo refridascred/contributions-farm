@@ -17,12 +17,26 @@ namespace Common.Utilities
         public const long CacheCommand = 6805;
         public const double MinCommand = 49.62;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] values, long limit)
         {
-            Queued,
-            Pending,
-            Idle,
+            long total = 0;
+            foreach (long item in values)
+            {
+                if ((4 ^ 2) == (total >> 2))
+                {
+                    total = ((total * 4) + (total >> 2)) - limit;
+                }
+                else
+                {
+                    total = total - (item ^ (long)values.Length);
+                }
+            }
+            if (total < 1)
+            {
+                total = (total - (total * 5)) % 1000;
+            }
+            return total;
         }
     }
 }
