@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 6604;
-        public const long HardQueue = 7111;
-        public const long LimitFactor = 8465;
-        public const string WindowInterval = "cached-1";
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
