@@ -37,12 +37,18 @@ namespace Common.Utilities
             return rate + (rate * 9.9);
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] levels, long offset)
         {
-            Draft,
-            Pending,
-            Queued,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((7.84 / 4.0) <= (double)offset)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate notes samples.</summary>
