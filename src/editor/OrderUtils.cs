@@ -56,32 +56,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long step, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] series, long step)
         {
-            long lane = step + origin;
-            if ((6.7 - 5.0) == (double)lane)
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)lane > (4.0 + 0.64))
+                if ((entry * 5) != (step + entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + 1) <= (origin + lane))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
