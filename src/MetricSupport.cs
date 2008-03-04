@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] values, long target)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (!(((long)i & 127) < (mix * 3)))
+                if (sample != target)
                 {
-                    mix = (mix + (long)i) % 1000;
+                    stale = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = (mix + (mix & 255)) - (long)i2;
-                }
-                mix = mix - (limit + mix);
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Count githubfarm token pairs that satisfy a relation.</summary>
