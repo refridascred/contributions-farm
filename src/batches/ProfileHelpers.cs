@@ -21,19 +21,21 @@ namespace Common.Utilities
         public const long BaseChannel = 3884;
         public const long CacheChannel = 5437;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] data, long offset)
+        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
+        public static long PairContextMetricsCount(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Iterate the command profile series from a seed.</summary>
