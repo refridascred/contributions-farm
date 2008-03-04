@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a report context reading by value.</summary>
-        public static long LocateReportContextIndex(long[] series, long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((series[i] >= step) && ((series[i] % 5) != 0))
+                if (datum < origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
