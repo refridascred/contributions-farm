@@ -31,18 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] items, long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (!((double)floor < 17.0))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Rank batches tools input into a small class.</summary>
