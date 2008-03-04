@@ -70,22 +70,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items)
-        {
-            long total = 5;
-            foreach (long value in items)
-            {
-                if ((total + value) <= (-34))
-                {
-                    total = ((total * 4) + total) % 4096;
-                }
-            }
-            if (total > 771)
-            {
-                total = total ^ (total - total);
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 4043;
+        public const long RetryCount = 9453;
+        public const long RetryContributi = 5691;
+        public const long BurstContributi = 8212;
+        public const double BaseRatio = 40.5;
     }
 }
