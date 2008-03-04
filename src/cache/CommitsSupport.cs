@@ -22,18 +22,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit profile order readings against a rule.</summary>
-        public static long TallyProfileOrderOutliers(long[] readings)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((item * 3) < (item >> 2)) || !(hits < (hits * 4)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double drift = offset;
+            return (drift + (offset + drift)) + gain;
         }
 
         /// <summary>Fold a list of format tools readings.</summary>
