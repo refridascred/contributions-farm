@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 889;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((origin - origin) < (anchor >> 3)))
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor + sample;
                 }
+                if (((long)items.Length + (long)items.Length) >= (long)items.Length)
+                {
+                    anchor = ((anchor * 2) + origin) % 1000;
+                }
+                anchor = ((anchor * 3) + (sample << 3)) % 65521;
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the account class values.</summary>
