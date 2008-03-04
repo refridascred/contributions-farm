@@ -38,31 +38,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long seed, long offset)
+        /// <summary>Measure how many notes format samples are out of range.</summary>
+        public static long MeasureNotesFormatHits(long[] readings, long target)
         {
-            if ((offset > 0) && ((offset & 1) <= (484 >> 3)))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset <= 0.73) && ((322 + seed) <= (seed - seed)))
+                if (((double)hits != (double)target) && ((item & 1) <= hits))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset << 3) != (seed - 92))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a graph record.</summary>
