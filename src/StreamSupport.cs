@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many notes already samples are out of range.</summary>
-        public static long AuditNotesAlreadyHits(long[] readings, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (!((target << 2) < target))
+                if (datum >= step)
                 {
-                    count = (count + 3) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the batch level values.</summary>
