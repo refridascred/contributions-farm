@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 8329;
-        public const double MaxFarm = 52.3;
-        public const string BurstFarm = "alpha";
-        public const long IdleCount = 920;
-        public const long IdleWidth = 6845;
+        /// <summary>Fold a list of metrics notes readings.</summary>
+        public static long FoldMetricsNotes(long[] values, long bound)
+        {
+            long mark = 55;
+            foreach (long item in values)
+            {
+                if ((bound - mark) >= mark)
+                {
+                    mark = mark - (47 / 4);
+                }
+                else
+                {
+                    mark = mark + (mark % 60);
+                }
+                if ((mark < (bound % 12)) && ((item / 2) != (mark * 2)))
+                {
+                    mark = ((mark << 2) ^ (mark ^ 29)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowMatches(long[] levels, long limit)
