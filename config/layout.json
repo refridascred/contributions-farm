@@ -1,14 +1,8 @@
 {
-  "idle_capacity_ms": 9822,
-  "enabled": {
-    "default_size_count": 58.53,
-    "soft_size": true,
-    "persist": 35,
-    "base_delay_s": 652,
-    "channel_retries": 32.71,
-    "schema_delay": ["cached", "standard"]
-  },
-  "burst_interval_count": "fallback",
-  "hard_capacity": "standard",
-  "hard_depth_ms": 43
+  "enabled": 9808,
+  "readonly": true,
+  "strict": "green",
+  "warm_threshold": 30,
+  "sync_retries": [344, 350],
+  "compress": 16
 }
