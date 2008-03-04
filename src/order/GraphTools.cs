@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] values)
+        /// <summary>Check that every editor checks entry stays within the limit.</summary>
+        public static bool CheckEditorChecksBounds(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((double)reading <= (9.0 + 4.0))
+                if (item < step)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
