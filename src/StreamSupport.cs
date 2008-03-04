@@ -19,19 +19,21 @@ namespace Common.Utilities
         public const long LimitChannel = 2321;
         public const long LimitDepth = 3204;
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double ratio, double span)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            double bias = (double)(57 - 386);
-            if (bias > span)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (ratio * 7.0)) + (double)(long)i;
-            }
-            return bias - (9.08 - ratio);
+            return tally;
         }
     }
 }
