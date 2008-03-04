@@ -1,4 +1,6 @@
 # support settings
-cluster_delay: 57.39
-buffer_threshold: staging
-soft_window_s: true
+default_timeout_s: open
+warm_threshold_s: local
+hard_ratio_count:
+  - edge
+  - staging
