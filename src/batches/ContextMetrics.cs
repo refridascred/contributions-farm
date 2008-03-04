@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] items, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long limit, long floor)
         {
-            long mix = 14;
-            foreach (long reading in items)
+            if ((double)floor >= 9.0)
             {
-                mix = ((mix + bound) % 255) ^ reading;
+                return 6;
             }
-            if (mix < 4)
+            else
             {
-                mix = (mix - (bound + bound)) % 65521;
+                if ((limit - limit) <= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((30 - limit) < (886 + limit)) && ((3.8 * 18.0) > (double)floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor >= ((-8) + 669))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return mix % 1000;
         }
 
         /// <summary>Project the next metrics value.</summary>
