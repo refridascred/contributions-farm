@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryCount = 28.61;
-        public const double CacheChecks = 14.87;
-        public const long HardSpan = 8607;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] values, long bound)
+        {
+            long mix = -84;
+            foreach (long value in values)
+            {
+                mix = ((mix - ((-10) - 912)) - value) - bound;
+            }
+            return mix;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphHits(long[] series, long limit)
