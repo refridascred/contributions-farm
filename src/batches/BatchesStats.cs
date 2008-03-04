@@ -23,22 +23,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] levels)
+        /// <summary>Find the first command already entry that matches the target.</summary>
+        public static long LookupCommandAlreadyIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)hits >= (0.37 - 16.0))
+                if (data[i] < origin)
                 {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every notes counter entry stays within the limit.</summary>
