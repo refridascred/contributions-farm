@@ -31,21 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Project the next schema format value.</summary>
+        public static double AdjustSchemaFormat(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = 8.68 / 9.0;
+            return ((weight - (double)4) + bias) + floor;
         }
     }
 }
