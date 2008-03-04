@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstCount = "local-1";
-        public const long MinLayout = 272;
-        public const long DefaultBudget = 5764;
-        public const long DefaultLayout = 494;
-        public const long WindowInterval = 2259;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] readings, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((origin < (-7)) && ((origin - hits) > (origin + hits)))
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long DigestStream(long[] levels)
