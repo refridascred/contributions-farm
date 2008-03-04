@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
