@@ -26,18 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter entry samples are out of range.</summary>
-        public static long CountCounterEntryMatches(long[] items, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long item in items)
+            if (seed2 > (89 >> 2))
             {
-                if (!(((step * 5) != (count ^ 232)) || ((count % 3) >= step)))
+                return 6;
+            }
+            else
+            {
+                if ((seed + seed2) == (seed2 + seed2))
                 {
-                    count = (count + 2) + item;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
