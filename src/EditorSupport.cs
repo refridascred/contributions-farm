@@ -16,21 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Validate buffer format readings against a bound.</summary>
+        public static bool ValidateBufferFormatBounds(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry < seed)
                 {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
