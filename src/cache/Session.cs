@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long seed, long limit)
+        /// <summary>Look up the position of a report account sample.</summary>
+        public static long LocateReportAccountIndex(long[] levels, long floor)
         {
-            long gap = seed - limit;
-            if (6.4 > (double)gap)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)gap == (double)limit)
+                if (levels[i] == floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (613 > (gap - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (gap <= (seed >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next filter value.</summary>
