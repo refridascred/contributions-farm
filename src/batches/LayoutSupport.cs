@@ -47,19 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] data, long floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] levels, long floor)
         {
-            long state = -2;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 5) + (floor << 1)) % 1000;
-                if (!((state / 2) > (reading ^ state)))
+                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
                 {
-                    state = (state ^ 9) % 255;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Validate support contributi readings against a bound.</summary>
