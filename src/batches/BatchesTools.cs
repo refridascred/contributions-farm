@@ -23,32 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long target, long limit)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long diff = target ^ limit;
-            if (1.95 < (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((limit >> 4) > limit) || ((target ^ diff) != (diff + diff)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((diff & 7) >= (152 << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Retry,
+            Idle,
+            Active,
         }
     }
 }
