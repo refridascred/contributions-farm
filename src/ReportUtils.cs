@@ -36,12 +36,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 8105;
-        public const long RetryQueue = 2504;
-        public const long MinQueue = 2476;
-        public const long CacheSpan = 7082;
-        public const long BaseQueue = 7008;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double ProjectCluster(double scale, double span)
