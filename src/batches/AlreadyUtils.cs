@@ -60,13 +60,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public double Limit { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
