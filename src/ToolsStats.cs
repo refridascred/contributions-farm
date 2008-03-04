@@ -57,12 +57,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 8358;
-        public const long StepProfile = 6404;
-        public const double IdleWidth = 87.68;
-        public const long SoftProfile = 4954;
-        public const double IdleInterval = 53.05;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "local";
+        public const double RetryChecks = 0.36;
+        public const long MaxLevel = 6283;
 
         /// <summary>Check that every window filter entry stays within the limit.</summary>
         public static bool VerifyWindowFilterRange(long[] readings, long limit)
