@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate route filter samples.</summary>
-        public static long FoldRouteFilter(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] series, long floor)
         {
-            long result = -383;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((result > (sample >> 1)) || ((sample << 2) <= (result ^ sample)))
+                if ((3.0 + 7.3) > (16.0 * 6.0))
                 {
-                    result = (result + result) % 1000;
+                    seen = ((seen + 2) + datum) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (result > 43)
-            {
-                result = ((result << 2) ^ (125 << 3)) % 65521;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
