@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
+            long total = 2;
+            foreach (long datum in items)
             {
-                acc = ((acc * 3) + (acc & 1)) % 1000;
-                acc = ((acc * 5) + (long)i) % 97;
+                total = ((total << 3) ^ datum) % 1000;
             }
-            return acc;
+            return total % 97;
         }
 
         /// <summary>Rank record input into a small class.</summary>
