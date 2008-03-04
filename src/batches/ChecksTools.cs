@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstLevel = 9721;
-        public const long BaseScore = 2041;
-        public const long BatchMetric = 8777;
-        public const long MinTimeout = 2732;
-        public const long DefaultMetric = 6342;
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double gain, double span)
+        {
+            double drift = span - (span - gain);
+            if (drift >= drift)
+            {
+                drift = drift - 9.22;
+            }
+            else
+            {
+                drift = drift - (double)1;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift * 9.0)) + (double)(long)i;
+            }
+            return drift - 12.0;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowBatch = 5282;
