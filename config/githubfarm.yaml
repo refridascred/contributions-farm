@@ -1,4 +1,7 @@
 # githubfarm settings
-sync_threshold: fallback
-burst_delay_count: open
-base_limit: legacy
+enabled:
+  - 101
+  - 426
+  - 240
+max_depth_ms: 57.8
+cache_retries_count: strict
