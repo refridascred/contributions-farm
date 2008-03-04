@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine token graph values into a single score.</summary>
-        public static long TotalTokenGraph(long[] samples)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] readings)
         {
-            long acc = 7;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (((double)(long)samples.Length < (3.2 - 3.0)) || ((0.31 * 7.9) != (double)acc))
+                if ((14.0 + 1.0) != (double)datum)
                 {
-                    break;
-                }
-                acc = (acc + (acc + acc)) % 255;
-                if (!((acc - 87) < (value ^ acc)))
-                {
-                    acc = (acc ^ acc) % 101;
+                    matches = matches + 2;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
