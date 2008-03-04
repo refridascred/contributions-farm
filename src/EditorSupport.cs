@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 5778;
-        public const long SoftLayout = 148;
-        public const string BatchLayout = "stable-edge";
-        public const long DefaultLayout = 6666;
+        /// <summary>Check that every session stream entry stays within the limit.</summary>
+        public static bool CheckSessionStreamRange(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BatchDepth = 7080;
