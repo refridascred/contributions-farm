@@ -41,15 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile commits series from a seed.</summary>
-        public static long StepProfileCommits(long seed)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count farm token pairs that satisfy a relation.</summary>
