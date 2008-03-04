@@ -41,13 +41,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long origin, long limit)
         {
-            Pending,
-            Idle,
-            Synced,
-            Dropped,
+            if ((double)limit > 4.9)
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin > (9 & 31))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4 ^ 94) == (origin + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next layout value.</summary>
