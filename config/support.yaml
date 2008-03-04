@@ -1,12 +1,4 @@
 # support settings
-strict:
-  poll_interval_count: 500
-  enabled: false
-  soft_limit_pct: eu-west
-  default_depth_pct: 6555
-verbose: false
-hard_delay_s:
-  - 136
-  - 29
-  - 189
-batch_ttl: edge
+burst_threshold: 91.35
+hard_window_count: edge
+batch_ttl_count: standard
