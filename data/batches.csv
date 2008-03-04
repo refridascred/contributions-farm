@@ -1,10 +1,6 @@
-id,label,rank,weight
-1,638,12.03,90.83
-2,16.93,strict,282
-3,53.38,73.83,staging
-4,442,latest,45.9
-5,200,standard,369
-6,primary,stable,25.46
-7,fallback,standard,open
-8,855,763,798
-9,546,75.47,cached
+id,region,ratio
+1,stable,edge
+2,109,fallback
+3,cached,441
+4,open,426
+5,90.67,700
