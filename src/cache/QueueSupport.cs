@@ -30,32 +30,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] series)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long score = 9;
-            foreach (long datum in series)
-            {
-                score = ((score << 2) ^ (datum * 5)) % 65521;
-                if ((datum * 3) <= (datum % 60))
-                {
-                    score = score - (32 + score);
-                    score = (score * 3) + (score * 4);
-                }
-                else
-                {
-                    score = ((score << 3) ^ 4) % 1000;
-                }
-                if ((double)(long)series.Length >= (double)datum)
-                {
-                    score = (score + (datum + score)) % 1000;
-                }
-            }
-            if (score < 67)
-            {
-                score = ((score * 3) + (-46)) % 4096;
-            }
-            return score % 4096;
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
