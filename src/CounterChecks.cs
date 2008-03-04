@@ -68,14 +68,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Closed,
-            Pending,
-            Failed,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryBudget = 8435;
+        public const long RetryLevel = 6257;
+        public const long DefaultFormat = 1689;
     }
 }
