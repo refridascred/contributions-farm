@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Audit support metric readings against a rule.</summary>
+        public static long MeasureSupportMetricMatches(long[] series, long origin)
         {
-            Queued,
-            Synced,
-            Done,
-            Paused,
-            Failed,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally - 25) > tally)
+                {
+                    tally = ((tally + 1) - value) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
