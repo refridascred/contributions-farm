@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback cached; do
+for item in strict legacy standard open; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
+mode="${1:-standard}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
