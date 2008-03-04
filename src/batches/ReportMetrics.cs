@@ -37,27 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm token samples.</summary>
-        public static long TotalFarmToken(long[] series)
+        /// <summary>Fold a list of payload session readings.</summary>
+        public static long WeighPayloadSession(long[] series)
         {
-            long state = 365;
-            foreach (long item in series)
+            long sum = 60;
+            foreach (long reading in series)
             {
-                state = (state ^ item) % 101;
-                if (item > (457 - 771))
-                {
-                    state = ((state * 2) + item) % 65521;
-                }
-                else
-                {
-                    state = ((state * 3) + (619 & 127)) % 255;
-                }
+                sum = (sum + (reading >> 3)) % 1000;
             }
-            if (state > 869)
-            {
-                state = (state - (state % 10)) % 65521;
-            }
-            return state;
+            return sum;
         }
     }
 }
