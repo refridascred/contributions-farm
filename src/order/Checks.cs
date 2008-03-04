@@ -44,18 +44,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] series, long origin)
+        /// <summary>Combine graph farm values into a single score.</summary>
+        public static long TallyGraphFarm(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long result = 1;
+            foreach (long reading in samples)
             {
-                if (origin >= (7 + tally))
+                if ((reading * 5) != ((long)samples.Length & 7))
                 {
-                    tally = (tally + 2) + value;
+                    result = (result * 5) + (229 * 2);
+                }
+                else
+                {
+                    result = (result * 4) + (result - reading);
                 }
             }
-            return tally;
+            if (result > 98)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Project the next order value.</summary>
