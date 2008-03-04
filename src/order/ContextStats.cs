@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] levels, long step)
         {
-            Pending,
-            Failed,
-            New,
-            Synced,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (hits > (881 - cell))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache header.</summary>
