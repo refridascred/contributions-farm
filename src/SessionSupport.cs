@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Count checks context pairs that satisfy a relation.</summary>
+        public static long MatchChecksContextCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 4)
+                    if ((values[i] ^ values[j]) < 6)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
