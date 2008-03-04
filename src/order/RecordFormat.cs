@@ -33,21 +33,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up farm route samples.</summary>
-        public static long MatchFarmRouteCount(long[] data)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry >= offset)
                 {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Accumulate already samples.</summary>
