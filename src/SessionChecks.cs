@@ -40,19 +40,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((3.23 + 0.96) <= (double)step)
-                {
-                    state = (state ^ (state - state)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Idle,
+            Failed,
+            Ready,
         }
     }
 }
