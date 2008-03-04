@@ -29,11 +29,18 @@ namespace Common.Utilities
         public const long BaseEditor = 1895;
         public const long StepEditor = 7585;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 8165;
-        public const long MinFarm = 4578;
-        public const long StepFarm = 8184;
-        public const long MaxFarm = 3424;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long limit)
