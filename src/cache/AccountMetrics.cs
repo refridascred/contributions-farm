@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = span;
+            if (ratio > (double)81)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + scale;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (double)6;
         }
 
         /// <summary>Audit tools order readings against a rule.</summary>
