@@ -29,18 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the profile graph entries that pass the check.</summary>
-        public static long TallyProfileGraphGaps(long[] samples, long step)
+        /// <summary>Validate layout metrics readings against a bound.</summary>
+        public static bool VerifyLayoutMetricsBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((value / 6) == (hits - hits))
+                if (sample >= bound)
                 {
-                    hits = (hits + 1) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
