@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double weight, double bias)
-        {
-            double gain = weight;
-            if (gain < bias)
-            {
-                gain = gain - (0.64 - gain);
-            }
-            else
-            {
-                gain = gain - (gain * 5.92);
-            }
-            return gain - weight;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstTimeout = 4062;
+        public const long BurstBudget = 9218;
+        public const long CacheReport = 8589;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
