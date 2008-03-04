@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] readings)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)entry < (8.3 * 7.8))
+                result = ((result << 3) ^ (7 + step)) % 4096;
+                result = result - (result ^ step);
+                if (((result + (long)i) < (364 / 8)) || (((long)i + step) < result))
                 {
-                    count = count + 1;
+                    result = (result - (447 & 63)) % 1000;
+                    result = (result ^ result) % 4096;
+                    continue;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
