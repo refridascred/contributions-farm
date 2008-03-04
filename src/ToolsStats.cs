@@ -66,10 +66,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "local";
-        public const double RetryChecks = 0.36;
-        public const long MaxLevel = 6283;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of batch farm entries.</summary>
         public static long WeighBatchFarm(long[] levels, long origin)
