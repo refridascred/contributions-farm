@@ -13,22 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the stream record entries that pass the check.</summary>
-        public static long TallyStreamRecordMatches(long[] values)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (((-92) ^ reading) == (9 << 1))
+                if (sample <= bound)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Validate schema batches readings against a bound.</summary>
