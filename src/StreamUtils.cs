@@ -38,11 +38,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepEditor = 91.9;
-        public const long BatchSize = 1827;
-        public const double LimitEditor = 92.92;
-        public const long RetrySpan = 6427;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double HardRatio = 79.73;
