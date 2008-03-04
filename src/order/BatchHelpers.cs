@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long bound)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Failed,
+            Closed,
+            Active,
+            Retry,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
