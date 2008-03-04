@@ -64,11 +64,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 7780;
-        public const string StepChannel = "staging-edge";
-        public const double SoftChannel = 49.74;
-        public const long HardCount = 3148;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long floor, long step)
