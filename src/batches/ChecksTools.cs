@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value <= (141 * 4)) && ((count * 5) <= count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstLevel = 9721;
+        public const long BaseScore = 2041;
+        public const long BatchMetric = 8777;
+        public const long MinTimeout = 2732;
+        public const long DefaultMetric = 6342;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowBatch = 5282;
