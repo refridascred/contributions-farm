@@ -13,22 +13,37 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long floor, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long target, long bound)
         {
-            if ((floor + 3) <= (step * 2))
+            long lane = target ^ bound;
+            if ((lane << 1) <= (lane ^ target))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((672 & 3) != ((-3) ^ floor))
+                if ((2.0 * 8.5) == (double)target)
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    return 8;
+                    if ((bound * 3) == (lane & 255))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((lane < target) && ((lane + bound) < 76))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
