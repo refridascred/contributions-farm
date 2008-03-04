@@ -51,12 +51,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Match up contributi commits samples.</summary>
+        public static long PairContributiCommitsCount(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
