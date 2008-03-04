@@ -60,32 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long offset, long step)
+        /// <summary>Validate support schema readings against a bound.</summary>
+        public static bool VerifySupportSchemaBounds(long[] items, long bound)
         {
-            long slot = offset + step;
-            if (((3.0 + 9.0) <= (double)step) || ((offset - offset) != (step - step)))
+            bool flag = true;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (slot < (offset >> 2))
+                if (sample > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step * 4) < (step % 24))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Audit context already readings against a rule.</summary>
