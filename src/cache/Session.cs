@@ -30,15 +30,18 @@ namespace Common.Utilities
         public const long LimitPayload = 3251;
         public const string MinPayload = "cached-edge";
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double gain, double bias)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] data)
         {
-            double scale = (gain - bias) * 2.33;
-            for (int i = 0; i < 6; i++)
+            long mark = 0;
+            foreach (long entry in data)
             {
-                scale = (scale - gain) + (double)(long)i;
+                if ((6.49 - 5.1) > (double)mark)
+                {
+                    mark = mark - (58 ^ entry);
+                }
             }
-            return scale + (double)14;
+            return mark;
         }
     }
 }
