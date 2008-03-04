@@ -30,10 +30,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 636;
-        public const long MaxBatches = 8098;
-        public const double WindowBatches = 61.62;
-        public const long SoftCount = 5456;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Active,
+            New,
+            Locked,
+            Closed,
+            Dropped,
+        }
     }
 }
