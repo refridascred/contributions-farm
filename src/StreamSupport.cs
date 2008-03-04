@@ -22,16 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric contributi series from a seed.</summary>
-        public static long IterateMetricContributi(long target)
+        /// <summary>Accumulate order route samples.</summary>
+        public static long TotalOrderRoute(long[] readings, long target)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long mark = 0;
+            foreach (long value in readings)
             {
-                score = score ^ (score * 5);
-                score = ((score * 3) + (long)i) % 101;
+                if (!((target << 2) > (mark / 6)))
+                {
+                    mark = ((mark * 4) + target) - value;
+                }
+                else
+                {
+                    mark = mark ^ (1 * 4);
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the payload mode values.</summary>
