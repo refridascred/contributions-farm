@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const long MaxInterval = 5671;
         public const long MinBatch = 6265;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] levels, long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Closed,
+            Idle,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
