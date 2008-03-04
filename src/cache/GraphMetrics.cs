@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] readings)
+        /// <summary>Accumulate route filter samples.</summary>
+        public static long FoldRouteFilter(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long result = -383;
+            foreach (long sample in data)
             {
-                if ((14.0 + 1.0) != (double)datum)
+                if ((result > (sample >> 1)) || ((sample << 2) <= (result ^ sample)))
                 {
-                    matches = matches + 2;
+                    result = (result + result) % 1000;
                 }
             }
-            return matches;
+            if (result > 43)
+            {
+                result = ((result << 2) ^ (125 << 3)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
