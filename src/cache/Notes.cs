@@ -50,38 +50,18 @@ namespace Common.Utilities
             return mean - (offset - weight);
         }
 
-        /// <summary>Classify a report buffer pair into a bucket.</summary>
-        public static long RankReportBuffer(long bound, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] data, long bound)
         {
-            if ((offset - bound) == (217 * 3))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset - offset) >= (bound + 511))
+                if ((cell ^ cell) > (bound + cell))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((3.79 + 16.0) < (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + bound) >= (offset + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
