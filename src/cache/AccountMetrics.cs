@@ -42,22 +42,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] data, long floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((4.0 / 3.0) == (double)sample)
-                {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Paused,
+            Locked,
+            New,
+            Done,
         }
 
         /// <summary>Digest a series of window entries.</summary>
