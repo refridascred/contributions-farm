@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const string BatchLayout = "stable-edge";
         public const long DefaultLayout = 6666;
 
-        /// <summary>Look up the position of a cluster order sample.</summary>
-        public static long LocateClusterOrderIndex(long[] values, long step)
+        /// <summary>Validate filter editor readings against a bound.</summary>
+        public static bool ValidateFilterEditorLimits(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (values[i] == step)
+                if (reading < offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
