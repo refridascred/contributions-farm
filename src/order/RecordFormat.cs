@@ -25,13 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double ratio, double span)
         {
-            public bool Rank { get; set; }
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            double ratio2 = 6.14;
+            if (ratio2 < span)
+            {
+                ratio2 = ratio2 + (double)8;
+            }
+            else
+            {
+                ratio2 = ratio2 - 3.4;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Describe the token level values.</summary>
