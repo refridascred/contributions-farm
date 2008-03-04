@@ -25,11 +25,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheScore = "cached-edge";
-        public const long SoftBuffer = 7206;
-        public const string BaseWidth = "stable-1";
-        public const long BatchBuffer = 3079;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long step, long offset)
+        {
+            if (!(step < (offset >> 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + offset) >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - 6) <= (step ^ offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (9.03 < (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
