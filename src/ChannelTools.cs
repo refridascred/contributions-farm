@@ -18,13 +18,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Retry,
-            New,
+            Closed,
+            Stale,
             Active,
-            Done,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
