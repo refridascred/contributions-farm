@@ -51,19 +51,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double weight, double offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] data, long limit)
         {
-            double bias = (7.37 - weight) / 2.0;
-            if (bias < (offset * 4.5))
+            long carry = 33;
+            foreach (long item in data)
             {
-                bias = bias - (double)529;
+                if ((item - limit) == (item + item))
+                {
+                    carry = (carry ^ (carry + limit)) % 4096;
+                }
+                if (((double)carry <= 7.9) || ((double)limit != (double)item))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (carry < 57)
             {
-                bias = (bias + (0.04 * 3.0)) + (double)(long)i;
+                carry = ((carry * 2) + (limit << 2)) % 97;
             }
-            return bias - (bias + offset);
+            return carry;
         }
 
         /// <summary>Fold a list of tools commits readings.</summary>
