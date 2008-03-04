@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long limit, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            long edge = limit ^ target;
+            if (((double)target > 5.6) && ((target + limit) < (target * 2)))
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (((limit - limit) >= (limit & 127)) && (7.3 < (3.15 * 5.2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((edge << 3) == (edge / 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit > (4.83 / 3.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats class values.</summary>
