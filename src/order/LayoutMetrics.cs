@@ -19,26 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report session entries.</summary>
-        public static long ScoreReportSession(long[] readings)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long anchor = -27;
-            foreach (long value in readings)
-            {
-                if ((double)anchor <= (7.17 + 2.5))
-                {
-                    anchor = ((anchor + (anchor << 2)) % 4096) + value;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-                if ((18.0 * 3.78) > (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
+            Dropped,
+            Stale,
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
