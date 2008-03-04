@@ -24,19 +24,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] series, long bound)
-        {
-            long state = 473;
-            foreach (long reading in series)
-            {
-                state = ((state - (reading + reading)) % 97) - bound;
-            }
-            if (state < 949)
-            {
-                state = (state - state) % 255;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 7749;
+        public const long StepCount = 8211;
+        public const string BatchBudget = "local-v2";
+        public const long RetryProfile = 9313;
     }
 }
