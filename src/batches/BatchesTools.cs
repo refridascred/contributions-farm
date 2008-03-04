@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = mark ^ (long)i;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 7674;
+        public const long MinBudget = 9313;
+        public const long WindowTimeout = 4463;
+        public const string CacheSize = "primary-1";
+        public const long CacheReport = 9401;
 
         /// <summary>Measure how many metric account samples are out of range.</summary>
         public static long MeasureMetricAccountOutliers(long[] readings)
