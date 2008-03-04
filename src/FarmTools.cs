@@ -21,17 +21,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] series, long floor)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] <= floor)
+                long matches = (long)i;
+                if (!!((matches & 3) >= (acc / 8)))
                 {
-                    return (long)i;
+                    matches = ((matches << 3) ^ (long)i) % 101;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
