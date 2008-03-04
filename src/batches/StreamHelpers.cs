@@ -46,18 +46,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many session buffer samples are out of range.</summary>
-        public static long TallySessionBufferGaps(long[] series)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((474 << 3) == (cell & 15))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
