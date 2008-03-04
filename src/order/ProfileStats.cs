@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate queue token readings against a bound.</summary>
-        public static bool ValidateQueueTokenRange(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 8514;
+        public const string MinEntry = "alpha";
+        public const double DefaultEntry = 43.57;
 
         /// <summary>Look up the position of a route window sample.</summary>
         public static long LocateRouteWindowIndex(long[] samples, long origin)
