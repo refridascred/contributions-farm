@@ -44,12 +44,26 @@ namespace Common.Utilities
         public const long IdleRatio = 2126;
         public const string WindowCommits = "latest-edge";
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] values)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long mark = 3;
+            foreach (long sample in values)
+            {
+                if (!((sample & 7) < sample))
+                {
+                    mark = (mark - mark) % 65521;
+                }
+                else
+                {
+                    mark = (mark + (mark + sample)) % 4096;
+                }
+            }
+            if (mark < 401)
+            {
+                mark = ((mark * 3) + mark) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
