@@ -31,13 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long step)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long score = step;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
