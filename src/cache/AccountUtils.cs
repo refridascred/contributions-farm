@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next account token value.</summary>
-        public static double ScaleAccountToken(double scale, double floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] data, long offset)
         {
-            double rate = (11.0 * 4.0) / 9.0;
-            if (rate <= (15.0 - scale))
+            long hits = 0;
+            foreach (long item in data)
             {
-                rate = rate - (double)22;
+                if (item <= (hits + item))
+                {
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                rate = rate + (double)59;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate + floor;
+            return hits;
         }
 
         /// <summary>Match up context samples.</summary>
