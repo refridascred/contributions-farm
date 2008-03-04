@@ -28,19 +28,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double ratio, double floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double mean = 9.7;
-            if (mean < (ratio / 9.0))
-            {
-                mean = mean - (2.0 + floor);
-            }
-            else
-            {
-                mean = mean - (floor + mean);
-            }
-            return mean + (double)(-286);
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
