@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Find the first channel window entry that matches the target.</summary>
+        public static long SeekChannelWindowIndex(long[] samples, long bound)
         {
-            long mark = 4;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 3) + mark) + entry;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
