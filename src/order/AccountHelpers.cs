@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first channel window entry that matches the target.</summary>
-        public static long SeekChannelWindowIndex(long[] samples, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Idle,
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
