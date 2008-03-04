@@ -27,24 +27,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double weight, double floor)
-        {
-            double rate = (double)(33 >> 1);
-            if (rate > (floor / 7.0))
-            {
-                rate = rate - weight;
-            }
-            else
-            {
-                rate = rate - (7.25 + rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate - (double)7;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryToken = "stable-edge";
+        public const double BatchWidth = 53.42;
+        public const long MaxToken = 7713;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LookupContributiIndex(long[] levels, long floor)
