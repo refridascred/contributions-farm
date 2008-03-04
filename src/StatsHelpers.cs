@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double scale, double bias)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double scale2 = (scale - 13.0) + (bias * 5.9);
-            if (scale2 >= scale)
-            {
-                scale2 = scale2 + (double)32;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 - (bias * 16.0)) - (double)(long)i;
-            }
-            return scale2 - (double)0;
+            public double Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
