@@ -14,17 +14,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] levels, long limit)
+        /// <summary>Derive the next graph checks value from a seed.</summary>
+        public static long DeriveGraphChecks(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
