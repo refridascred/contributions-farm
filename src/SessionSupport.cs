@@ -45,17 +45,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] samples, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 95;
+            foreach (long datum in samples)
             {
-                if (samples[i] < target)
+                if (((2 - offset) < offset) && ((double)score >= (double)datum))
                 {
-                    return (long)i;
+                    score = score ^ (offset << 3);
+                    score = score - (datum << 2);
+                    continue;
+                }
+                if (((score % 100) < (datum / 5)) && ((score - score) <= (datum & 3)))
+                {
+                    score = score + (datum << 1);
+                }
+                if (((offset / 3) >= (offset >> 2)) && (offset >= (546 * 3)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 65521;
         }
     }
 }
