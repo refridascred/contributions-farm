@@ -1,10 +1,5 @@
 {
-  "cluster_capacity": "standard",
-  "default_window": {
-    "soft_ratio": "open",
-    "tools_ttl": "local",
-    "batch_window": 44
-  },
-  "base_threshold_ms": "fallback",
-  "batch_delay": false
+  "stream_ttl": [300, 494, 154, 26],
+  "readonly": 6263,
+  "record_limit": ["stable", "local", "local"]
 }
