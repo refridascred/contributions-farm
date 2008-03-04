@@ -47,13 +47,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] data)
         {
-            Retry,
-            Stale,
-            Pending,
-            Closed,
+            long carry = 10;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = (((carry ^ ((long)data.Length & 1)) % 255) - (long)i) ^ item;
+                }
+                carry = ((carry << 2) ^ (carry - carry)) % 1000;
+            }
+            if (carry > 21)
+            {
+                carry = ((carry * 5) + (carry - carry)) % 4096;
+            }
+            return carry % 97;
         }
     }
 }
