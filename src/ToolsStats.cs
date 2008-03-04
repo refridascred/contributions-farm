@@ -73,32 +73,19 @@ namespace Common.Utilities
         public const long SoftProfile = 4954;
         public const double IdleInterval = 53.05;
 
-        /// <summary>Classify a stream buffer pair into a bucket.</summary>
-        public static long RankStreamBuffer(long step, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] items, long step)
         {
-            long lane = step - floor;
-            if (((lane * 2) != (901 & 31)) || ((lane / 8) > step))
+            bool stale = true;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((7.37 - 20.0) <= (double)step))
+                if (item < step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor != (double)(-1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
