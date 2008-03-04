@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] data)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long target)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((entry + entry) != (long)data.Length) || ((676 ^ tally) <= (157 + (-6)))))
-                {
-                    tally = tally + 3;
-                }
+                mix = (mix - (17 ^ (long)i)) % 4096;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
