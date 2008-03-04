@@ -1,13 +1,5 @@
 {
-  "poll_window_ms": "legacy",
-  "retry_capacity_count": true,
-  "support_window": ["latest", "strict"],
-  "warm_depth_count": 34.35,
-  "base_depth_ms": {
-    "min_ttl_count": "eu-west",
-    "batches_capacity": 100,
-    "already_delay": 15.21,
-    "account_ratio": "edge"
-  },
-  "compress": 4.25
+  "min_delay": "local",
+  "poll_ratio_s": 39.51,
+  "cache_delay": 76.72
 }
