@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultInterval = 4996;
-        public const double DefaultSize = 19.52;
-        public const long WindowNotes = 3767;
-        public const long WindowBudget = 3235;
+        /// <summary>Find the first schema graph entry that matches the target.</summary>
+        public static long SeekSchemaGraphIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
