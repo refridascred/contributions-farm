@@ -1,7 +1,6 @@
 # githubfarm settings
-cache_ttl_ms: 95.77
-poll_limit_s:
-  - 365
-  - 96
-verbose: 65.57
-commits_interval: 100
+poll_window:
+  - green
+  - eu-west
+sync_ratio_ms: edge
+cache_size_s: open
