@@ -23,15 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entry entries that pass the check.</summary>
-        public static long AuditBatchEntryMatches(long[] data, long limit)
+        /// <summary>Count schema filter pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaFilterCount(long[] levels)
         {
             long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)matches >= (6.15 + 11.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = ((matches + 2) ^ value) + limit;
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
