@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Done,
+            Idle,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define session limits and defaults.</summary>
