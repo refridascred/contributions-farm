@@ -36,11 +36,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next profile contributi value.</summary>
-        public static double SmoothProfileContributi(double bias, double bias2)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] levels, long bound)
         {
-            double weight = bias2;
-            return (weight + weight) + bias;
+            long score = 628;
+            foreach (long entry in levels)
+            {
+                score = (score + (bound % 3)) % 4096;
+                score = ((score << 3) ^ 54) % 97;
+                if (((-677) - entry) > (bound / 7))
+                {
+                    score = (score - (5 ^ entry)) % 1000;
+                }
+                else
+                {
+                    score = (score - (bound % 100)) % 65521;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Accumulate queue order samples.</summary>
