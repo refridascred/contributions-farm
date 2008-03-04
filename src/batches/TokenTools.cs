@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
+            public long Weight { get; set; }
             public long Label { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
