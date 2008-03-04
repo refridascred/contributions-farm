@@ -25,25 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
+        public static long CountGithubfarmEntryHits(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                long bound = (result % 7) + ((-771) % 2);
-                if (((long)i % 16) > bound)
+                if (!((3.07 * 9.8) > (double)entry) || (((seen ^ 658) < (66 - 51)) && (entry > 2)))
                 {
-                    result = ((result * 4) + (long)i) % 65521;
+                    seen = seen + 2;
                 }
-                else
-                {
-                    bound = ((bound * 5) + (offset * 5)) % 1000;
-                    bound = ((bound * 5) + (offset + result)) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Project the next layout value.</summary>
