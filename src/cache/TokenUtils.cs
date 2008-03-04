@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - matches) == ((-457) % 12))
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 3328;
+        public const long BurstFactor = 655;
+        public const double IdleSpan = 75.02;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowGaps(long[] items)
