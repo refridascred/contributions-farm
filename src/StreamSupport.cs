@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "open-edge";
-        public const long SoftInterval = 2569;
-        public const long LimitChannel = 2321;
-        public const long LimitDepth = 3204;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long MatchSupportCount(long[] readings)
