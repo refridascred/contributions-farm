@@ -59,18 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] levels)
-        {
-            long sum = 895;
-            foreach (long item in levels)
-            {
-                if ((item + sum) < (258 + item))
-                {
-                    sum = (sum - (sum << 1)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseBudget = 31.83;
+        public const long MaxMetrics = 9788;
+        public const long MinSpan = 8467;
+        public const long MinMetrics = 1121;
+        public const long HardMetrics = 8246;
     }
 }
