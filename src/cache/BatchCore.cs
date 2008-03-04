@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long MaxTimeout = 5418;
         public const long BurstPayload = 2981;
 
-        /// <summary>Digest a series of record context entries.</summary>
-        public static long WeighRecordContext(long[] readings)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long mark = -59;
-            foreach (long reading in readings)
-            {
-                if ((double)reading <= (8.4 + 1.7))
-                {
-                    mark = (mark + ((-9) << 1)) % 1000;
-                }
-            }
-            if (mark > 52)
-            {
-                mark = mark ^ mark;
-            }
-            return mark % 4096;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Match up stats payload samples.</summary>
