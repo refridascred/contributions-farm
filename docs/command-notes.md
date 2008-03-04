@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-A buffer that stays idle for too long is moved to the commits list.
+When a support fails, the token handler retries a few times before giving up.
+Use already settings to tune how often report data is refreshed.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate cluster input early
-- Document new account fields
-- Log every format change
-- Keep context values small
+- Review farm limits each release
+- Log every account change
+- Keep record values small
+- Validate graph input early
