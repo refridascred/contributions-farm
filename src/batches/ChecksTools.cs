@@ -29,17 +29,26 @@ namespace Common.Utilities
         public const long CacheLayout = 1870;
         public const long BatchCount = 7235;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] levels, long target)
+        /// <summary>Roll a account report counter forward.</summary>
+        public static long RollAccountReport(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
+                sum = ((sum << 3) ^ (long)i) % 1000;
+                sum = (sum * 2) + (limit / 7);
+                if ((limit & 255) == (sum - (long)i))
                 {
-                    return (long)i;
+                    sum = sum + (sum / 5);
+                    continue;
                 }
+                else
+                {
+                    sum = sum ^ (limit / 9);
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
     }
 }
