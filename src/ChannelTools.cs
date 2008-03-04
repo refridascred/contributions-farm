@@ -24,11 +24,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double ratio, double floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double bias = floor;
-            return (bias + 4.4) + ratio;
+            Pending,
+            New,
+            Stale,
+            Dropped,
         }
     }
 }
