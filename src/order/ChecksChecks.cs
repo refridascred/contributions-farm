@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            New,
-            Failed,
-            Pending,
-            Queued,
-            Idle,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
