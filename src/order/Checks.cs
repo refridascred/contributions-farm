@@ -28,18 +28,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] items)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen < (seen / 6))
+                if ((data[i] > offset) && ((data[i] % 2) == 0))
                 {
-                    seen = (seen + 3) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
