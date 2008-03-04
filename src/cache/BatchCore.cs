@@ -45,20 +45,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] levels)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long anchor = 990;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor - (sample + sample)) % 4096;
-                anchor = (anchor << 2) ^ (306 & 255);
-                if (((double)anchor <= (double)471) && ((double)sample < (8.0 + 9.0)))
-                {
-                    anchor = (anchor + (anchor & 63)) % 101;
-                }
-            }
-            return anchor % 1000;
+            public double Label { get; set; }
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
