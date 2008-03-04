@@ -46,9 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchStream = 83.48;
-        public const double DefaultBudget = 45.29;
-        public const long HardTimeout = 8004;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 2829;
+        public const long StepFactor = 3392;
+        public const string SoftFormat = "primary";
+        public const double LimitFormat = 87.7;
+        public const string MaxLevel = "alpha-v2";
     }
 }
