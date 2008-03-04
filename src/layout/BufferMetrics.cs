@@ -66,11 +66,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
