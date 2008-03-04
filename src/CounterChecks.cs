@@ -63,9 +63,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 750;
-        public const long CacheAccount = 8243;
-        public const string BaseAccount = "alpha-edge";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (!(((double)hits >= (double)(-47)) || ((double)hits < (5.1 * 8.5))))
+                {
+                    hits = ((hits + 2) ^ sample) + step;
+                }
+            }
+            return hits;
+        }
     }
 }
