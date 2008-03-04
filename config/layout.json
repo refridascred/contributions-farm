@@ -1,24 +1,8 @@
 {
-  "batch_limit": {
-    "dry_run": true,
-    "metric_timeout": "standard",
-    "default_depth_ms": 4
-  },
-  "record_timeout": "legacy",
-  "idle_interval_s": {
-    "already_window": false,
-    "payload_ttl": 49.37,
-    "default_capacity_pct": {
-      "dry_run": 3702,
-      "farm_depth": 22.9,
-      "max_size_count": 85,
-      "min_timeout": ["local", "strict", "edge"]
-    },
-    "flush_delay": {
-      "flush_capacity_s": 20.94,
-      "soft_threshold": 1118,
-      "cache_interval": 52.72
-    },
-    "persist": 250
-  }
+  "default_window": true,
+  "burst_ttl_pct": 2949,
+  "warm_limit_pct": 5005,
+  "hard_window": "latest",
+  "compress": true,
+  "poll_size_pct": "latest"
 }
