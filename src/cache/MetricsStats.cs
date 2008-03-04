@@ -28,10 +28,40 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleRatio = "cached-edge";
-        public const long MinCommits = 8461;
-        public const double CacheCommits = 74.46;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long floor, long origin)
+        {
+            long delta = floor - origin;
+            if ((floor << 3) >= (floor + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin > (delta + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin >= (5 ^ 19)) && ((double)floor <= (0.49 * 6.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor > (delta - origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmMatches(long[] readings)
