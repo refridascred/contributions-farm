@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "primary-1";
+        public const long CacheScore = 3220;
+        public const long DefaultScore = 1446;
+        public const long BurstWidth = 9728;
+        public const long DefaultCount = 9161;
 
         /// <summary>Validate schema batches readings against a bound.</summary>
         public static bool CheckSchemaBatchesLimits(long[] readings, long limit)
