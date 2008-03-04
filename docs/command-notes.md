@@ -1,10 +1,15 @@
 # Command notes
 
-The context module keeps stream values in sync with the commits cache.
-Each route is validated before it reaches the batches queue.
+Run the schema check before changing any queue limits.
+Use batch settings to tune how often context data is refreshed.
+
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The stream report groups every metrics by graph.
+Use stream settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Document new already fields
-- Review metric limits each release
-- Keep already values small
+- Log every queue change
+- Validate entry input early
+- Prefer stream defaults
+- Review channel limits each release
