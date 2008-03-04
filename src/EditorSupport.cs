@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const string BatchLayout = "stable-edge";
         public const long DefaultLayout = 6666;
 
-        /// <summary>Validate filter editor readings against a bound.</summary>
-        public static bool ValidateFilterEditorLimits(long[] data, long offset)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchDepth = 7080;
+        public const string MaxBudget = "cached-v2";
+        public const long MaxScore = 8014;
+        public const long HardSupport = 6182;
 
         /// <summary>Combine filter graph values into a single score.</summary>
         public static long ScoreFilterGraph(long[] series, long step)
