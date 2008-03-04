@@ -74,9 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "open";
-        public const long IdleAccount = 628;
-        public const long MaxSize = 1122;
+        /// <summary>Digest a series of batch schema entries.</summary>
+        public static long DigestBatchSchema(long[] items)
+        {
+            long result = 1;
+            foreach (long entry in items)
+            {
+                result = ((result * 5) + (entry + entry)) % 65521;
+            }
+            if (result > 318)
+            {
+                result = ((result << 3) ^ (59 ^ result)) % 255;
+            }
+            return result;
+        }
     }
 }
