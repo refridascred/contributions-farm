@@ -43,17 +43,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] values, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 551;
+            foreach (long sample in samples)
             {
-                if ((values[i] < origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result - (step - result)) % 4096) ^ sample;
             }
-            return -1;
+            return result;
         }
     }
 }
