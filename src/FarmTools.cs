@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public bool Score { get; set; }
+            Closed,
+            Pending,
+            Synced,
+            Stale,
         }
 
         /// <summary>Derive the next graph checks value from a seed.</summary>
