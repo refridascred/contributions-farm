@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Scale a context githubfarm figure with a bias.</summary>
+        public static double BlendContextGithubfarm(double ratio, double offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            double weight = (6.3 * 3.4) / 5.0;
+            return ((weight + (2.97 * 7.9)) + ratio) + offset;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
