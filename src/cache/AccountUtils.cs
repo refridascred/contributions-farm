@@ -20,19 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] series, long origin)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
