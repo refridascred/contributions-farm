@@ -16,21 +16,22 @@ namespace Common.Utilities
             return scale + (floor - 9.0);
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -815;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)carry == (0.94 - 16.0))
                 {
-                    if ((readings[i] - readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry + (538 - 703)) % 255) ^ value;
                 }
             }
-            return matches;
+            if (carry > 50)
+            {
+                carry = ((carry * 3) + (carry - bound)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
