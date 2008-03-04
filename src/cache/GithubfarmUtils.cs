@@ -59,38 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long bound, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] levels)
         {
-            if (((bound - offset) <= (bound << 3)) || ((offset + bound) >= (37 / 3)))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.85 + 7.1) != (double)offset)
+                if (!((datum << 2) == (tally >> 2)) || !((25 << 3) > (datum + datum)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((bound - offset) >= (bound & 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5 ^ bound) >= (bound + 453))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
