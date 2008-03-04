@@ -81,12 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] data, long limit)
         {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
