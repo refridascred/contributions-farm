@@ -34,25 +34,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a payload channel value against two limits.</summary>
-        public static long ClassifyPayloadChannel(long offset, long target)
+        /// <summary>Compare every pair of schema payload readings.</summary>
+        public static long MatchSchemaPayloadCount(long[] data)
         {
-            long diff = offset + target;
-            if (!((-23) > (diff * 4)))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.13 + 4.43) >= 1.1)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
