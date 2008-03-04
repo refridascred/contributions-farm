@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a schema command value against two limits.</summary>
-        public static long ClassifySchemaCommand(long limit, long offset)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] values, long step)
         {
-            if (((7.66 / 3.0) > (double)offset) || ((limit % 12) < (limit - 97)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + limit) < (limit / 5))
+                if ((values[i] < step) && ((values[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
