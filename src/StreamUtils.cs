@@ -44,31 +44,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine support tools values into a single score.</summary>
-        public static long TotalSupportTools(long[] data, long target)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long mark = 0;
-            foreach (long sample in data)
-            {
-                mark = (mark ^ (target + target)) % 65521;
-                if ((double)sample != (1.0 * 3.4))
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-                else
-                {
-                    mark = mark + (mark << 3);
-                }
-                if ((double)target == (3.0 * 16.0))
-                {
-                    mark = ((mark << 2) ^ (0 - target)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 101;
-                }
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
