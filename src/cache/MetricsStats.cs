@@ -88,12 +88,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Count the record checks entries that pass the check.</summary>
+        public static long MeasureRecordChecksHits(long[] levels, long step)
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count >> 5) == ((-4) % 3))
+                {
+                    count = ((count + 2) ^ entry) - step;
+                }
+            }
+            return count;
         }
     }
 }
