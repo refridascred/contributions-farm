@@ -1,6 +1,10 @@
-id,region,ratio
-1,stable,edge
-2,109,fallback
-3,cached,441
-4,open,426
-5,90.67,700
+id,count,rank
+1,366,469
+2,82.85,431
+3,eu-west,fallback
+4,100,20.6
+5,16.36,78
+6,43.43,798
+7,71.03,65.93
+8,951,521
+9,fallback,238
