@@ -24,10 +24,21 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseSize = "stable-v2";
-        public const double IdleSize = 91.5;
-        public const long MinFarm = 1016;
-        public const long BatchFarm = 8689;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
