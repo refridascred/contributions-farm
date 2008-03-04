@@ -1,5 +1,8 @@
 # support settings
-compress: green
-readonly: cached
-warm_ttl_pct: 9
-poll_timeout_ms: 90
+window_depth: strict
+profile_size: 91.55
+batch_capacity: legacy
+burst_delay_pct:
+  - 499
+  - 209
+  - 175
