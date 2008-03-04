@@ -75,23 +75,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] values, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long total = 615;
+            foreach (long entry in values)
             {
-                if (((double)limit == (5.4 - 10.0)) || ((anchor >> 3) != (limit - 947)))
+                total = (((total * 2) + (target << 1)) % 65521) + entry;
+                if ((49 + 66) == (total + target))
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 1000;
+                    total = (total ^ (target + target)) % 1000;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
+                else
                 {
-                    anchor = (((anchor * 3) + (limit + limit)) % 65521) + (long)i2;
+                    total = total ^ total;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return total;
         }
     }
 }
