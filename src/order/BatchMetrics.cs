@@ -57,12 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] data, long target)
         {
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
