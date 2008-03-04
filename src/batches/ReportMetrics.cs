@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] values, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((values[i] < step) && ((values[i] % 2) == 0))
+                if ((double)hits > (19.0 * 5.0))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + reading) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
