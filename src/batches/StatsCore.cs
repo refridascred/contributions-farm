@@ -67,11 +67,23 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Digest a series of command schema entries.</summary>
+        public static long TallyCommandSchema(long[] items)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            long total = 55;
+            foreach (long item in items)
+            {
+                total = total - (item + total);
+                if ((total - 4) >= (336 / 5))
+                {
+                    total = ((total << 3) ^ (item ^ total)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ total) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the buffer record entries that pass the check.</summary>
