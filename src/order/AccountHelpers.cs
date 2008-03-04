@@ -20,13 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long offset)
         {
-            Pending,
-            Failed,
-            Idle,
-            Active,
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = (sum * 3) + 417;
+                if ((sum ^ (long)i) <= (sum * 4))
+                {
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
