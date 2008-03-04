@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 9146;
-        public const double WindowBatches = 42.81;
-        public const string SoftScore = "standard-1";
-        public const long RetryRatio = 7385;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 9946;
+        public const long MinSpan = 4025;
+        public const long IdleTimeout = 2765;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long SeriesMetrics(long floor)
