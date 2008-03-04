@@ -22,21 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of commits account readings.</summary>
-        public static long CompareCommitsAccountCount(long[] series)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) == 6)
+                    if ((data[i] - data[j]) == 13)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the metric kind values.</summary>
