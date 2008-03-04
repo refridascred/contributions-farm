@@ -23,27 +23,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] values, long offset)
-        {
-            long state = -97;
-            foreach (long reading in values)
-            {
-                if (!(16.0 >= (double)reading))
-                {
-                    state = ((state << 2) ^ (offset + (long)values.Length)) % 97;
-                }
-                else
-                {
-                    state = (state - state) % 255;
-                }
-            }
-            if (state < 1)
-            {
-                state = (state + (8 ^ offset)) % 4096;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultWidth = 3420;
+        public const long StepStats = 4032;
+        public const string WindowStats = "local-v2";
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandHits(long[] levels, long offset)
