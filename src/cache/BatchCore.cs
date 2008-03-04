@@ -34,21 +34,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up stats payload samples.</summary>
-        public static long PairStatsPayloadCount(long[] levels)
+        /// <summary>Grade a payload channel value against two limits.</summary>
+        public static long ClassifyPayloadChannel(long offset, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = offset + target;
+            if (!((-23) > (diff * 4)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((6.13 + 4.43) >= 1.1)
                 {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
