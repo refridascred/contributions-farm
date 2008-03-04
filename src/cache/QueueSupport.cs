@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Classify a record buffer pair into a bucket.</summary>
+        public static long SortRecordBuffer(long floor, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            if (((double)floor == (8.5 * 3.77)) && ((5.5 + 4.6) > (double)seed))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor << 2) ^ (limit - (long)i2)) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (seed <= (seed ^ seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a token summary.</summary>
