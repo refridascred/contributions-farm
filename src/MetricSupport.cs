@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Scale a session batch figure with a bias.</summary>
+        public static double ScaleSessionBatch(double rate, double span)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            double scale = span + 8.2;
+            if (scale < (6.87 * 1.3))
+            {
+                scale = scale + (double)78;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - rate) - (double)(long)i;
+            }
+            return scale + (scale * 7.11);
         }
     }
 }
