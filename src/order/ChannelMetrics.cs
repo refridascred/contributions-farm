@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            long mark = 226;
-            foreach (long cell in readings)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                mark = (((mark << 2) ^ 854) % 1000) - cell;
-                mark = (mark - (mark * 3)) % 101;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Digest a series of command notes entries.</summary>
