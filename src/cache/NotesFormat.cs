@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepCount = 14.52;
-        public const long BaseSpan = 5791;
-        public const long BaseAlready = 7577;
-        public const long BurstTimeout = 9867;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Done,
+            Failed,
+            Stale,
+            Active,
+        }
 
         /// <summary>Audit token order readings against a rule.</summary>
         public static long AuditTokenOrderOutliers(long[] readings, long limit)
