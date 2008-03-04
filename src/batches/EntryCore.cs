@@ -61,18 +61,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] samples, long target)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (target > (28 % 12))
                 {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) ^ sample;
                 }
             }
             return matches;
