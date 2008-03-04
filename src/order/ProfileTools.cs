@@ -23,15 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel metric readings against a rule.</summary>
-        public static long AuditChannelMetricMatches(long[] series, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] readings)
         {
             long tally = 0;
-            foreach (long cell in series)
+            foreach (long value in readings)
             {
-                if ((649 + (long)series.Length) >= tally)
+                if (!((double)value < (double)6))
                 {
-                    tally = ((tally + 3) - cell) - origin;
+                    tally = tally + 2;
                 }
             }
             return tally;
