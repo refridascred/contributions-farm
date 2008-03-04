@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order route samples.</summary>
-        public static long TotalOrderRoute(long[] readings, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] series)
         {
-            long mark = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (!((target << 2) > (mark / 6)))
+                if ((item - item) < (291 << 1))
                 {
-                    mark = ((mark * 4) + target) - value;
-                }
-                else
-                {
-                    mark = mark ^ (1 * 4);
+                    tally = tally + 2;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
