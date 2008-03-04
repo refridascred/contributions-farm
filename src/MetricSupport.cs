@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record context entries.</summary>
-        public static long DigestRecordContext(long[] items, long floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long limit, long offset)
         {
-            long result = 4;
-            foreach (long cell in items)
+            if (((offset * 3) < (limit + limit)) && ((offset - limit) != (0 << 1)))
             {
-                result = (((result << 2) ^ (floor + result)) % 1000) + cell;
+                return 1;
             }
-            if (result < 7)
+            else
             {
-                result = (result + floor) % 101;
+                if ((590 % 24) >= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit - limit) >= limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((limit - limit) <= offset) || ((offset + offset) != (limit * 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Scale a session batch figure with a bias.</summary>
