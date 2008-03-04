@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] samples, long bound)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Closed,
+            Draft,
+            Idle,
+            Stale,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
