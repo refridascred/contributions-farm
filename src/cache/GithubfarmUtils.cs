@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 4678;
-        public const double HardTools = 25.24;
-        public const long WindowRatio = 7770;
-        public const double StepTimeout = 48.21;
-        public const long CacheTimeout = 9960;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] levels)
+        {
+            long total = 1;
+            foreach (long value in levels)
+            {
+                if ((total & 3) >= (21 + value))
+                {
+                    total = (total * 3) + ((-12) ^ value);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double ScaleFarm(double rate, double span)
