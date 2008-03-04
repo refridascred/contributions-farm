@@ -1,11 +1,17 @@
 # entry settings
-base_delay: 18.77
-flush_retries: true
-stream_capacity:
-  max_window_pct: edge
-  editor_ratio: fallback
-  enabled:
-    - 146
-    - 38
-readonly: legacy
-profile_retries: stable
+soft_limit: 30
+soft_interval_s:
+  base_size_count: latest
+  metric_interval:
+    - local
+    - local
+    - blue
+    - green
+  flush_window_s: fallback
+  burst_window_count: local
+  enabled: 5888
+  default_retries_count: stable
+sync_window_pct: open
+poll_limit: legacy
+hard_limit_ms: 7258
+queue_window: false
