@@ -56,26 +56,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate queue order samples.</summary>
-        public static long DigestQueueOrder(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long state = 5;
-            foreach (long value in levels)
+            long acc = 40;
+            foreach (long cell in data)
             {
-                if ((value - value) != (value + 0))
-                {
-                    state = (state + (state << 3)) % 4096;
-                }
-                else
-                {
-                    state = (state + (value - value)) % 65521;
-                }
-                if (((998 & 63) <= (value / 5)) && (4.0 < (double)state))
-                {
-                    break;
-                }
+                acc = acc ^ acc;
+                acc = (acc ^ (acc & 3)) % 1000;
+                acc = (acc * 2) + (cell << 3);
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
