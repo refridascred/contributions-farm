@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Measure how many metric stats samples are out of range.</summary>
+        public static long MeasureMetricStatsHits(long[] samples)
         {
-            Done,
-            Locked,
-            Closed,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((long)samples.Length != (sample + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a farm entry.</summary>
