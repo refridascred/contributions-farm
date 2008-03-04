@@ -40,18 +40,26 @@ namespace Common.Utilities
             return mean + (ratio + 3.1);
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long acc = 76;
+            foreach (long datum in series)
             {
-                if (tally > (sample * 5))
+                if ((acc + offset) > (offset / 5))
                 {
-                    tally = tally + 2;
+                    acc = (acc + (datum - 27)) % 4096;
+                }
+                if (datum < acc)
+                {
+                    acc = acc ^ datum;
+                }
+                if ((4.0 / 8.0) >= (double)datum)
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
