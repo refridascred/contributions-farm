@@ -1,10 +1,7 @@
 # support settings
-filter_retries:
-  - strict
-  - green
-  - edge
-base_retries: 30
-context_limit:
-  - 62
-  - 331
-  - 493
+strict: false
+idle_limit_pct:
+  idle_timeout_count: 1024
+  enabled: 250
+  batch_ratio: eu-west
+default_timeout_count: edge
