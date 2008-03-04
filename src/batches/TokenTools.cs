@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const long BaseNotes = 3861;
         public const string MaxNotes = "stable-edge";
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] items, long bound)
         {
             long count = 0;
-            foreach (long reading in readings)
+            foreach (long item in items)
             {
-                if (356 > (count >> 2))
+                if (92 >= bound)
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) + item;
                 }
             }
             return count;
