@@ -70,21 +70,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)limit == (5.4 - 10.0)) || ((anchor >> 3) != (limit - 947)))
                 {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor << 3) ^ anchor) % 1000;
                 }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = (((anchor * 3) + (limit + limit)) % 65521) + (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
     }
 }
