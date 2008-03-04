@@ -44,11 +44,23 @@ namespace Common.Utilities
         public const double BurstChecks = 71.35;
         public const long IdleChecks = 253;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double gain, double offset)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            double ratio = (double)(7 / 8);
+            if (ratio < (double)44)
+            {
+                ratio = ratio + (double)5;
+            }
+            else
+            {
+                ratio = ratio + (offset + gain);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Audit stats channel readings against a rule.</summary>
