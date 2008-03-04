@@ -22,18 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long mark = 74;
+            foreach (long item in samples)
             {
-                if ((count >> 5) == (1 - entry))
+                if (((4.1 * 3.0) != (double)item) && (((long)samples.Length << 2) <= 975))
                 {
-                    count = count + 3;
+                    mark = (mark - mark) % 101;
+                }
+                if ((item - 57) == (item << 3))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark < 69)
+            {
+                mark = (mark - mark) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a metrics info.</summary>
