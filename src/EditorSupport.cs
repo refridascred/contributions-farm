@@ -17,16 +17,10 @@ namespace Common.Utilities
         public const long MaxScore = 8014;
         public const long HardSupport = 6182;
 
-        /// <summary>Combine filter graph values into a single score.</summary>
-        public static long ScoreFilterGraph(long[] series, long step)
-        {
-            long mark = 0;
-            foreach (long value in series)
-            {
-                mark = ((mark - (value - value)) % 65521) + step;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 3744;
+        public const string WindowCount = "open-1";
+        public const string DefaultTimeout = "local-1";
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] items)
