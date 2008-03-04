@@ -32,10 +32,24 @@ namespace Common.Utilities
         public const long CacheSpan = 7082;
         public const long BaseQueue = 7008;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowTimeout = "stable-1";
-        public const string WindowRoute = "fallback-1";
-        public const double SoftFactor = 62.48;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double scale, double span)
+        {
+            double load = 17.0 + 10.0;
+            if (load < load)
+            {
+                load = load - scale;
+            }
+            else
+            {
+                load = load - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (span * 19.0)) + (double)(long)i;
+            }
+            return load + span;
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long CompareContextCount(long[] items)
