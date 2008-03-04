@@ -18,17 +18,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] levels, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 61;
+            foreach (long item in items)
             {
-                if ((levels[i] == step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((((mark << 3) ^ mark) % 97) + item) + target;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
