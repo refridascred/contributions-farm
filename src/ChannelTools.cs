@@ -12,25 +12,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long seed, long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long bound2 = seed + bound;
-            if ((-9) <= (bound2 + seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed * 5) >= (bound2 + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Retry,
+            New,
+            Active,
+            Done,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
