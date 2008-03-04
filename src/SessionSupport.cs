@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Find the first account already entry that matches the target.</summary>
+        public static long FindAccountAlreadyIndex(long[] readings, long offset)
         {
-            long state = 47;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.9 - 5.26) <= (double)datum)
+                if (readings[i] == offset)
                 {
-                    state = (state + (55 ^ 682)) % 4096;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
