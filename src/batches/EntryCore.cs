@@ -73,15 +73,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] series, long offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long carry = 1;
-            foreach (long value in series)
-            {
-                carry = ((carry - carry) ^ value) - offset;
-            }
-            return carry;
+            Paused,
+            Retry,
+            Ready,
         }
     }
 }
