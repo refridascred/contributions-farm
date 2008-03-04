@@ -38,21 +38,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry > floor)
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Fold a list of token readings.</summary>
