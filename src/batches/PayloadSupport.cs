@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine graph entry values into a single score.</summary>
-        public static long DigestGraphEntry(long[] readings, long floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long total = 8;
-            foreach (long value in readings)
-            {
-                total = (total - (value - 0)) - floor;
-                total = total - (total * 5);
-                if (((1.7 - 4.0) < (double)(long)readings.Length) || ((4.0 + 1.0) < (double)value))
-                {
-                    break;
-                }
-            }
-            if (total > 5)
-            {
-                total = total - (total / 3);
-            }
-            return total;
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine already account values into a single score.</summary>
