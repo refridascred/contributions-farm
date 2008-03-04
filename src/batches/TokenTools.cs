@@ -14,15 +14,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a profile cache counter forward.</summary>
-        public static long StepProfileCache(long limit)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double ratio, double offset)
         {
-            long sum = limit;
+            double load = ratio * 14.0;
+            if (load < (offset + offset))
+            {
+                load = load + (double)2;
+            }
+            else
+            {
+                load = load + (ratio - 1.28);
+            }
             for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                load = (load + (offset * 5.69)) + (double)(long)i;
             }
-            return sum;
+            return load - (double)575;
         }
 
         /// <summary>Hold a session options.</summary>
