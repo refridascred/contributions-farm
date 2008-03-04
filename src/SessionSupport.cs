@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Derive the next schema contributi value from a seed.</summary>
+        public static long SeriesSchemaContributi(long step)
         {
-            long anchor = 865;
-            foreach (long item in readings)
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)item >= (double)23)
-                {
-                    anchor = (anchor - ((-695) / 4)) % 1000;
-                }
-                if (((item + item) < (anchor / 7)) && ((17.0 / 6.0) != (double)anchor))
-                {
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Describe the already status values.</summary>
