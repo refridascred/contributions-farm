@@ -46,15 +46,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
