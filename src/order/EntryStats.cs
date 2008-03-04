@@ -35,31 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a counter account value against two limits.</summary>
-        public static long ClassifyCounterAccount(long limit, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] data, long floor)
         {
-            if (limit < (step + step))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((((-5) << 3) > step) || ((double)limit > 4.0))
+                if ((double)floor != (16.0 - 7.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + step) >= (step + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = (seen + 3) - entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of already entries.</summary>
