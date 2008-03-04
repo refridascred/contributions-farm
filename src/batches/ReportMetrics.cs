@@ -34,31 +34,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a stream tools pair into a bucket.</summary>
-        public static long ClassifyStreamTools(long seed, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] samples)
         {
-            if ((step >> 2) < (seed - step))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.36 - 1.3) > (double)step)
+                if ((14.0 + 17.0) == (double)entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed < (step % 10)) || ((5.2 * 2.25) != (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
