@@ -30,22 +30,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] values)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally >> 5) > tally)
-                {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
