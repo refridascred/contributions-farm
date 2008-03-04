@@ -1,4 +1,4 @@
 # entry settings
-cache_window: false
-session_limit: 20
-record_timeout: false
+soft_retries: fallback
+readonly: stable
+poll_ratio_ms: 42.03
