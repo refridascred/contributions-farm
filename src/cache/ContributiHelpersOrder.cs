@@ -33,12 +33,25 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long step, long limit)
         {
-            Retry,
-            Stale,
-            Pending,
+            long lane = step - limit;
+            if ((limit - lane) <= (lane << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)lane == (1.83 - 1.5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
