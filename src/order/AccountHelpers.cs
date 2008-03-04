@@ -37,12 +37,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheSize = 4453;
-        public const long LimitBudget = 7863;
-        public const long CacheWidth = 9215;
-        public const long RetryBudget = 9571;
-        public const long IdleSpan = 6500;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionHits(long[] readings, long offset)
