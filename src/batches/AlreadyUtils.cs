@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            Closed,
+            Queued,
+            Retry,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the buffer level values.</summary>
