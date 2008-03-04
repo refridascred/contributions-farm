@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 1395;
-        public const string DefaultSize = "strict-v2";
-        public const long DefaultTimeout = 7687;
-        public const string StepReport = "standard-v2";
-        public const long CacheScore = 5542;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryRatio = 28.2;
+        public const long BurstSpan = 2887;
+        public const double WindowFilter = 86.08;
+        public const long BurstDepth = 2314;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
