@@ -34,11 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double ratio, double span)
+        /// <summary>Count profile context pairs that satisfy a relation.</summary>
+        public static long MatchProfileContextCount(long[] series)
         {
-            double load = span;
-            return (load + load) + ratio;
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
