@@ -15,15 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a schema contributi figure with a bias.</summary>
-        public static double AdjustSchemaContributi(double gain, double offset)
+        /// <summary>Count format report pairs that satisfy a relation.</summary>
+        public static long CompareFormatReportCount(long[] levels)
         {
-            double load = gain;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - load) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - (offset - offset);
+            return hits;
         }
 
         /// <summary>Fold a list of account batches readings.</summary>
