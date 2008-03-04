@@ -20,31 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long step, long seed)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if ((2 + seed) <= (step + 848))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((239 + step) < (step % 64)) && ((seed << 1) == (step * 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((9.1 * 2.14) != (double)step) || ((304 + seed) != (step + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Done,
+            Synced,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Derive the next payload queue value from a seed.</summary>
