@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheFactor = "alpha-edge";
-        public const long SoftTools = 8758;
-        public const string LimitTools = "standard-edge";
-        public const long MaxRatio = 2090;
-        public const double HardSpan = 22.07;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public double Count { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool CheckRouteBounds(long[] levels, long target)
