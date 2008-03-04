@@ -49,12 +49,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Compare every pair of payload cache readings.</summary>
+        public static long ComparePayloadCacheCount(long[] samples)
         {
-            public double Label { get; set; }
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
