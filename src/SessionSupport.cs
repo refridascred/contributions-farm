@@ -19,18 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] levels)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((14.0 / 7.0) > (double)seen)
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a window summary.</summary>
