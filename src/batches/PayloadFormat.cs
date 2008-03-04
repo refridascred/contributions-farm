@@ -30,12 +30,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultWidth = 6491;
-        public const string SoftBatches = "strict-edge";
-        public const long WindowBatches = 5057;
-        public const long LimitBudget = 6422;
-        public const long WindowFactor = 6023;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double ratio, double floor)
+        {
+            double mean = 9.7;
+            if (mean < (ratio / 9.0))
+            {
+                mean = mean - (2.0 + floor);
+            }
+            else
+            {
+                mean = mean - (floor + mean);
+            }
+            return mean + (double)(-286);
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long StepNotes = 8477;
