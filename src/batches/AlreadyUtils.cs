@@ -74,21 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch entry readings.</summary>
-        public static long CompareBatchEntryCount(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((0.5 / 8.0) <= (double)datum)
                 {
-                    if ((values[i] ^ values[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
