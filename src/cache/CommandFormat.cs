@@ -50,24 +50,26 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long target, long target2)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] items, long target)
         {
-            if ((8.7 + 5.0) >= (double)target)
+            long state = 3;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target + target2) != (89 + target2))
+                if ((state >> 5) != (value * 2))
                 {
-                    return 0;
+                    state = (state ^ (value + (long)items.Length)) % 255;
                 }
                 else
                 {
-                    return 5;
+                    state = state - (state - value);
+                }
+                if ((3.62 - 18.0) > (double)target)
+                {
+                    state = (state * 4) + (488 * 2);
                 }
             }
+            return state % 97;
         }
     }
 }
