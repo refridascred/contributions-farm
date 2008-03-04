@@ -69,16 +69,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Fold a list of token session readings.</summary>
+        public static long ScoreTokenSession(long[] levels, long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            long mark = 1;
+            foreach (long cell in levels)
             {
-                anchor = (anchor * 3) + (long)i;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (mark < (cell - mark))
+                {
+                    mark = ((mark << 3) ^ (cell % 64)) % 65521;
+                }
+                else
+                {
+                    mark = mark - (offset << 2);
+                }
             }
-            return anchor;
+            return mark;
         }
     }
 }
