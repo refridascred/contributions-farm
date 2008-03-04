@@ -33,12 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] items, long step)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two stats commits measurements.</summary>
