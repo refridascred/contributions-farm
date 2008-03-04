@@ -50,23 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] samples, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (samples[i] >= target)
                 {
-                    state = ((state ^ ((-7) % 2)) % 4096) - (long)i2;
+                    return (long)i;
                 }
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    state = ((state ^ (origin / 8)) % 255) ^ (long)i3;
-                }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
