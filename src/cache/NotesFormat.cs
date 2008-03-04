@@ -14,22 +14,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit token order readings against a rule.</summary>
-        public static long AuditTokenOrderOutliers(long[] readings, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if (limit < bound)
             {
-                if ((double)816 == (double)entry)
+                return 3;
+            }
+            else
+            {
+                if ((limit >> 4) > (bound & 3))
                 {
-                    seen = (seen + 1) - limit;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stats stats.</summary>
