@@ -48,11 +48,23 @@ namespace Common.Utilities
             return (rate - (span + span)) + scale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 728;
-        public const long BaseTimeout = 3569;
-        public const long IdleGraph = 1190;
-        public const long MaxGraph = 1920;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((count + count) <= (55 * 2))
+                {
+                    count = (count + 3) - datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long DefaultFactor = 3898;
