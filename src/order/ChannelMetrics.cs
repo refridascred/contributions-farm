@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mean - (floor + mean);
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] values, long origin)
+        /// <summary>Find the first command farm entry that matches the target.</summary>
+        public static long FindCommandFarmIndex(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > origin)
+                if ((series[i] < bound) && ((series[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Digest a series of session profile entries.</summary>
