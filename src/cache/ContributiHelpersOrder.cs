@@ -46,10 +46,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleScore = 9436;
-        public const long HardLevel = 3200;
-        public const long MinLevel = 215;
-        public const string WindowSize = "open-edge";
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Closed,
+            Locked,
+            Synced,
+            Queued,
+        }
     }
 }
