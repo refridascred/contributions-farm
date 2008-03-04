@@ -37,15 +37,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account profile value.</summary>
-        public static double ProjectAccountProfile(double rate, double bias)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long target, long offset)
         {
-            double scale = bias;
-            if (scale < (double)6)
+            if ((offset - target) >= (offset << 2))
             {
-                scale = (scale + bias) - rate;
+                return 2;
             }
-            return scale - 5.0;
+            else
+            {
+                if ((offset >= target) && (853 < (target + offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)offset == (8.41 * 2.0)) || ((offset - 331) <= offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset > (853 << 1)) && ((31 + 8) < (offset >> 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
