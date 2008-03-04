@@ -30,12 +30,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Match up window stats samples.</summary>
+        public static long OverlapWindowStatsCount(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
