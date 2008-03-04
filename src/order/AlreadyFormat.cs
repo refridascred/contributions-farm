@@ -53,37 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long offset)
+        /// <summary>Rank batches record input into a small class.</summary>
+        public static long RankBatchesRecord(long floor, long bound)
         {
-            long delta = floor ^ offset;
-            if ((double)delta != (3.69 / 3.0))
+            if ((bound >= (12 % 10)) || ((floor >> 3) <= bound))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((delta * 4) >= (2 & 31))
+                if (((bound << 2) >= ((-689) >> 4)) && ((double)bound > (7.99 - 4.3)))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((1.3 * 16.0) != (double)delta)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((279 / 4) < (delta * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
