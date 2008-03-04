@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double ratio, double floor)
         {
-            Stale,
-            Synced,
-            Retry,
-            New,
-            Idle,
+            double scale = (double)31 / 6.0;
+            if (scale > 8.0)
+            {
+                scale = scale - ratio;
+            }
+            return scale + (floor - 9.0);
         }
 
         /// <summary>Describe the token class values.</summary>
