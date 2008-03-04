@@ -42,22 +42,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen >= (item ^ (-9))) || (((seen / 6) >= ((-64) << 3)) && (105 > (seen + item))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchTimeout = 761;
+        public const long RetryScore = 7460;
+        public const string CacheContext = "legacy-v2";
     }
 }
