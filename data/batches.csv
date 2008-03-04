@@ -1,7 +1,7 @@
-id,level,label
-1,889,45.13
-2,blue,stable
-3,84.99,13.02
-4,911,244
-5,935,fallback
-6,legacy,legacy
+id,owner,ratio,level,count
+1,blue,58,481,850
+2,40.25,74.03,874,41.44
+3,902,331,green,cached
+4,open,675,87.59,378
+5,879,43.92,75.16,green
+6,fallback,standard,672,27.29
