@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a report account sample.</summary>
-        public static long LocateReportAccountIndex(long[] levels, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long seed, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (742 > (origin + seed))
             {
-                if (levels[i] == floor)
+                return 7;
+            }
+            else
+            {
+                if ((origin / 3) == (676 + origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
