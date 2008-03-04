@@ -6,10 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=259
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-strict}"
+mode="${1:-green}"
 case "${mode}" in
     cached)
         log "fast path"
@@ -19,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+for item in staging cached primary eu-west; do
+    log "checking ${item}"
 done
-log "total ${total}"
