@@ -30,13 +30,19 @@ namespace Common.Utilities
         public const long MaxWidth = 5557;
         public const string CacheToken = "cached-edge";
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double rate, double offset)
         {
-            Dropped,
-            Retry,
-            Idle,
-            Done,
+            double load = rate;
+            if (load > (load * 3.92))
+            {
+                load = load - (offset - offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
