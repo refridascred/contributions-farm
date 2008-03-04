@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Validate graph buffer readings against a bound.</summary>
+        public static bool GuardGraphBufferRange(long[] samples, long floor)
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
