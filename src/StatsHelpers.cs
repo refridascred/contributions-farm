@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 1378;
-        public const string WindowSpan = "cached-v2";
-        public const long BurstNotes = 3917;
-        public const long RetrySpan = 5273;
-        public const long BaseNotes = 7253;
+        /// <summary>Find the first tools counter entry that matches the target.</summary>
+        public static long SeekToolsCounterIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long SeriesGraph(long offset)
