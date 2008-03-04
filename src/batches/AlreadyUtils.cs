@@ -15,21 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count format report pairs that satisfy a relation.</summary>
-        public static long CompareFormatReportCount(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample != limit)
                 {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
