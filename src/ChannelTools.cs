@@ -29,14 +29,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Pending,
-            Failed,
-            Locked,
-            New,
-            Idle,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxRatio = 2081;
+        public const double WindowStats = 60.91;
+        public const long CacheStats = 6645;
     }
 }
