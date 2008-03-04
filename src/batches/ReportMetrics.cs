@@ -28,18 +28,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] samples)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((14.0 + 17.0) == (double)entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Queued,
+            Synced,
+            Ready,
+            Idle,
         }
     }
 }
