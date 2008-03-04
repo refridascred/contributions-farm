@@ -44,11 +44,21 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 9257;
         public const double DefaultDepth = 54.87;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Match up report stats samples.</summary>
+        public static long PairReportStatsCount(long[] items)
         {
-            public double Label { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
