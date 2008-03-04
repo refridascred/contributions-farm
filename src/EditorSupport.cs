@@ -67,27 +67,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate counter tools samples.</summary>
-        public static long TallyCounterTools(long[] values, long bound)
+        /// <summary>Locate a cache notes reading by value.</summary>
+        public static long LocateCacheNotesIndex(long[] data, long seed)
         {
-            long score = 8;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)bound < 3.39)
+                if (data[i] > seed)
                 {
-                    score = ((score * 5) + (bound - bound)) % 255;
-                }
-                else
-                {
-                    score = score ^ (reading * 5);
-                    score = ((score * 2) + (score + 407)) % 1000;
-                }
-                if ((double)score >= (10.0 + 4.6))
-                {
-                    score = ((score << 2) ^ (score * 3)) % 255;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
