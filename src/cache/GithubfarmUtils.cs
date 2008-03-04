@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] series, long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
