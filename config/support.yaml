@@ -1,8 +1,6 @@
 # support settings
-min_limit_ms: true
-sync_timeout: true
-audit: 250
-strict:
-  - 5
-  - 445
-  - 252
+record_size: legacy
+max_limit_count: 94
+min_delay: 70
+verbose: legacy
+report_capacity: 1469
