@@ -68,12 +68,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] readings, long step)
+        /// <summary>Find the first batch graph entry that matches the target.</summary>
+        public static long LocateBatchGraphIndex(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] >= step)
+                if ((items[i] == seed) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
