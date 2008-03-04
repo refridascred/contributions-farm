@@ -55,14 +55,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] series, long limit)
         {
-            Active,
-            Retry,
-            Draft,
-            Ready,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
