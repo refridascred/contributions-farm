@@ -15,26 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] items, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] levels)
         {
-            long result = 7;
-            foreach (long reading in items)
+            long mix = 991;
+            foreach (long item in levels)
             {
-                if ((4.0 * 8.5) == (double)(long)items.Length)
+                if (!((item / 2) > (15 >> 1)))
                 {
-                    result = ((result - result) % 97) ^ reading;
-                }
-                if ((double)bound <= 5.46)
-                {
-                    break;
+                    mix = (mix + item) % 101;
                 }
             }
-            if (result > (-15))
-            {
-                result = (result + bound) % 4096;
-            }
-            return result % 1000;
+            return mix;
         }
 
         /// <summary>Grade a context counter value against two limits.</summary>
