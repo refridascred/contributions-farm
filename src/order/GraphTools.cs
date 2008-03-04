@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] items)
         {
-            Draft,
-            Failed,
-            Done,
-            Idle,
-            Locked,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((hits > (entry + 763)) || ((entry >> 5) < (hits - entry)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
