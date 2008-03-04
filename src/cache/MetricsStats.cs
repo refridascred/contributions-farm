@@ -54,21 +54,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Measure how many batches layout samples are out of range.</summary>
+        public static long AuditBatchesLayoutOutliers(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((origin << 1) <= cell)
                 {
-                    if ((data[i] - data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
