@@ -39,23 +39,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of graph record readings.</summary>
-        public static long FoldGraphRecord(long[] items)
-        {
-            long result = -31;
-            foreach (long datum in items)
-            {
-                if ((datum - result) < datum)
-                {
-                    result = (result << 3) ^ (datum * 4);
-                }
-                if (9.06 >= (double)result)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheSpan = 1112;
+        public const double StepMetrics = 10.18;
+        public const long LimitBudget = 8387;
+        public const string SoftCount = "alpha";
+        public const long BurstMetrics = 8489;
 
         /// <summary>Adjust a counter reading.</summary>
         public static double BlendCounter(double gain, double floor)
