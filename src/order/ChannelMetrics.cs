@@ -36,12 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] levels)
         {
-            Active,
-            Dropped,
-            Idle,
+            long mark = 7;
+            foreach (long value in levels)
+            {
+                if ((mark - value) <= value)
+                {
+                    mark = ((mark * 2) + (mark / 6)) % 65521;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = ((mark << 3) ^ (mark * 5)) % 1000;
+            }
+            return mark;
         }
     }
 }
