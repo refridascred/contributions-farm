@@ -29,18 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] levels, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((offset + offset) < tally)
+                if (cell > floor)
                 {
-                    tally = (tally + 1) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
