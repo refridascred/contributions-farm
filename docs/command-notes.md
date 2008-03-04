@@ -1,13 +1,11 @@
 # Command notes
 
-The format report groups every command by contributi.
-A context that stays idle for too long is moved to the graph list.
-
-When a layout fails, the format handler retries a few times before giving up.
-The session report groups every batches by notes.
+Keep counter and route names short and lowercase.
+Use profile settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Log every metric change
-- Prefer record defaults
 - Review window limits each release
+- Prefer context defaults
+- Log every filter change
+- Document new route fields
