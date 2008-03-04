@@ -48,11 +48,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 5932;
-        public const long BaseFactor = 3451;
-        public const long BatchWidth = 4112;
-        public const long SoftInterval = 7514;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepEditor = 91.9;
+        public const long BatchSize = 1827;
+        public const double LimitEditor = 92.92;
+        public const long RetrySpan = 6427;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double HardRatio = 79.73;
