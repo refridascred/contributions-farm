@@ -55,11 +55,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSpan = 9689;
-        public const long LimitSession = 5620;
-        public const long BurstSession = 5082;
-        public const double StepBudget = 41.83;
-        public const double BurstRatio = 6.14;
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
