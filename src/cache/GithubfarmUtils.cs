@@ -31,19 +31,13 @@ namespace Common.Utilities
             return bias - 6.55;
         }
 
-        /// <summary>Validate profile commits readings against a bound.</summary>
-        public static bool CheckProfileCommitsLimits(long[] readings, long offset)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
