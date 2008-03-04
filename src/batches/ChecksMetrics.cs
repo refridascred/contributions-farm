@@ -83,22 +83,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit token stats readings against a rule.</summary>
-        public static long TallyTokenStatsHits(long[] readings)
+        /// <summary>Scale a order record figure with a bias.</summary>
+        public static double BlendOrderRecord(double gain, double floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double bias = gain;
+            if (bias >= (gain + bias))
             {
-                if ((count + datum) < datum)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias + 1.4;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias + (bias - gain);
         }
     }
 }
