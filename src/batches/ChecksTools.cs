@@ -34,11 +34,13 @@ namespace Common.Utilities
         public const long CacheLayout = 1870;
         public const long BatchCount = 7235;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultSpan = 3395;
-        public const double MinCount = 33.62;
-        public const string SoftBudget = "cached";
-        public const long WindowEditor = 6945;
-        public const long BatchEditor = 2124;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Closed,
+            Idle,
+            Queued,
+            Draft,
+        }
     }
 }
