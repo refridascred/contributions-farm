@@ -33,20 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits notes entry stays within the limit.</summary>
-        public static bool GuardCommitsNotesLimits(long[] readings, long step)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinBuffer = "strict-v2";
+        public const long StepBuffer = 7075;
+        public const long CacheBuffer = 1764;
+        public const long CacheWidth = 600;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long MeasureAlreadyMatches(long[] samples, long limit)
