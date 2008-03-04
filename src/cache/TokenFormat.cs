@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] series, long limit)
+        /// <summary>Project the next githubfarm graph value.</summary>
+        public static double ScaleGithubfarmGraph(double gain, double offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double drift = offset / 9.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)sample > (double)98) && (sample > limit))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = drift + (double)(long)i;
             }
-            return count;
+            return drift - (gain + drift);
         }
 
         /// <summary>Describe the record mode values.</summary>
