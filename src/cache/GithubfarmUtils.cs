@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Dropped,
-            Locked,
-            Closed,
-            Active,
-            Paused,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 4678;
+        public const double HardTools = 25.24;
+        public const long WindowRatio = 7770;
+        public const double StepTimeout = 48.21;
+        public const long CacheTimeout = 9960;
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double ScaleFarm(double rate, double span)
