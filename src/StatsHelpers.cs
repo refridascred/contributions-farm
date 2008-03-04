@@ -12,15 +12,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] data, long limit)
         {
             long matches = 0;
-            foreach (long entry in items)
+            foreach (long entry in data)
             {
-                if (!!((entry >> 3) == (matches / 7)))
+                if ((entry - 90) != (entry + 0))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 3) + limit;
                 }
             }
             return matches;
