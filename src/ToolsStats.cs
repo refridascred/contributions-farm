@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long origin, long target)
         {
-            Queued,
-            Active,
-            Failed,
-            Closed,
+            long edge = origin - target;
+            if ((663 >= (target - edge)) && ((origin - edge) != (origin + target)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target - target) > edge) || (target >= (5 + origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the farm level values.</summary>
