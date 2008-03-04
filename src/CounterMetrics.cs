@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Idle,
+            Queued,
+            Closed,
+            Done,
             Ready,
-            Synced,
-            Pending,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
