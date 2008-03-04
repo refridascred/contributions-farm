@@ -19,13 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinSpan = "standard-edge";
+        public const long BurstRatio = 1296;
+        public const string BurstSize = "local-1";
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
