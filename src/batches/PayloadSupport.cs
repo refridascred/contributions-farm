@@ -21,31 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metrics queue pair into a bucket.</summary>
-        public static long BucketMetricsQueue(long origin, long bound)
+        /// <summary>Find the first contributi record entry that matches the target.</summary>
+        public static long LocateContributiRecordIndex(long[] samples, long offset)
         {
-            if (origin >= (origin & 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound <= (bound ^ origin))
+                if (samples[i] >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin != (15.0 / 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a report options.</summary>
