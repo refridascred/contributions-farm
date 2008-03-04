@@ -14,19 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] items, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long origin)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
