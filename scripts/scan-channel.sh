@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+CHANNEL_LIMIT=212
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    fallback)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -16,12 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard legacy strict cached; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
