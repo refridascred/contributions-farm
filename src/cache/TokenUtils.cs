@@ -24,14 +24,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Ready,
-            Stale,
-            Done,
-            Dropped,
-            Active,
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
