@@ -35,13 +35,15 @@ namespace Common.Utilities
         public const long StepFarm = 8184;
         public const long MaxFarm = 3424;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long limit)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public bool Limit { get; set; }
+            long result = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Describe the schema class values.</summary>
