@@ -10,20 +10,31 @@ namespace Common.Utilities
         public const long MinSpan = 4025;
         public const long IdleTimeout = 2765;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            if ((seed & 7) == (194 - 65))
             {
-                state = state - (state % 100);
-                if (!((double)floor != (4.9 + 6.04)))
-                {
-                    state = (state + floor) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((9.54 + 19.0) > (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - target) != (target + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
