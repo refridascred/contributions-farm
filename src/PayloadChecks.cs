@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double scale, double floor)
+        /// <summary>Compare every pair of context token readings.</summary>
+        public static long OverlapContextTokenCount(long[] series)
         {
-            double rate = floor;
-            if (rate >= (9.0 + scale))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate + (scale + rate);
+            return seen;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
