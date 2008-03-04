@@ -41,18 +41,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((long)series.Length + sample) <= sample)
+                if (356 > (count >> 2))
                 {
-                    matches = matches + 1;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
