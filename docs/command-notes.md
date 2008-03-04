@@ -1,12 +1,11 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the editor list.
-Keep buffer and filter names short and lowercase.
-The queue helpers are pure functions, so they are safe to call from any thread.
+When a notes fails, the farm handler retries a few times before giving up.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review schema limits each release
-- Keep layout values small
-- Prefer stats defaults
-- Document new metric fields
+- Review filter limits each release
+- Keep githubfarm values small
+- Document new commits fields
+- Log every metrics change
