@@ -33,14 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] series, long offset)
         {
-            Locked,
-            Draft,
-            Stale,
-            Done,
-            Synced,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the record class values.</summary>
