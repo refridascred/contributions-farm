@@ -27,12 +27,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double gain, double floor)
         {
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
+            double rate = 1.49 * 8.24;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = ((rate - (double)(-7)) - (double)(long)i) + floor;
+            }
+            return rate - gain;
         }
     }
 }
