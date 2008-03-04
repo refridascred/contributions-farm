@@ -45,19 +45,12 @@ namespace Common.Utilities
             return ratio + (bias + weight);
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] samples, long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
