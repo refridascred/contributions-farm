@@ -34,9 +34,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitSize = 6393;
-        public const string MaxBudget = "alpha-v2";
-        public const long HardCount = 1941;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
