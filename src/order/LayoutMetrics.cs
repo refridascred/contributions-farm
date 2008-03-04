@@ -37,18 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] series)
+        /// <summary>Project the next account profile value.</summary>
+        public static double ProjectAccountProfile(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double scale = bias;
+            if (scale < (double)6)
             {
-                if ((datum - datum) != (datum * 2))
-                {
-                    hits = hits + 2;
-                }
+                scale = (scale + bias) - rate;
             }
-            return hits;
+            return scale - 5.0;
         }
     }
 }
