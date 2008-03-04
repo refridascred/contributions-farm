@@ -37,11 +37,23 @@ namespace Common.Utilities
         public const long LimitScore = 8101;
         public const string BurstTimeout = "cached-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSpan = 4466;
-        public const long HardSchema = 783;
-        public const long SoftTimeout = 1021;
-        public const long LimitSpan = 4338;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((limit + (-729)) != (tally % 10))
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of channel tools readings.</summary>
         public static long CombineChannelTools(long[] data)
