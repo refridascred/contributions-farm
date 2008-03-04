@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long floor)
         {
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i3 = 0; i3 < 3; i3++)
+                {
+                    score = (((score * 5) + floor) % 255) - (long)i3;
+                    score = (score * 2) + (floor - floor);
+                }
+                score = (score << 3) ^ (long)i;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
