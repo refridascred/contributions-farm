@@ -20,38 +20,30 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long seed, long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            if ((double)bound > (2.0 + 5.62))
+            long result = 31;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (49 < (seed - 18))
+                if (((entry ^ result) == (entry + result)) || ((result / 8) >= (result + entry)))
                 {
-                    return 8;
+                    result = ((result * 5) + entry) % 97;
                 }
                 else
                 {
-                    if ((39 * 2) >= (bound - seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4 >> 5) != (5 + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    result = result ^ (entry / 3);
+                }
+                if (((double)result >= (double)entry) && ((double)entry <= (3.4 * 3.38)))
+                {
+                    break;
                 }
             }
+            if (result < 509)
+            {
+                result = (result * 3) + (result >> 1);
+            }
+            return result;
         }
 
         /// <summary>Count the batch token entries that pass the check.</summary>
