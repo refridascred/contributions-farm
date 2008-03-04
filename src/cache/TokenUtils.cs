@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (!((cell - 7) > cell) || ((tally / 6) != (tally + cell)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 4248;
+        public const double LimitBudget = 30.13;
+        public const long CacheDepth = 4556;
+        public const long SoftSpan = 6907;
+        public const long DefaultCluster = 1845;
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
