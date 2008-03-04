@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the queue githubfarm series from a seed.</summary>
-        public static long StepQueueGithubfarm(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                score = (score - (score - seed)) % 255;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxLevel = 9325;
+        public const string BaseTimeout = "latest-v2";
+        public const long RetryInterval = 589;
 
         /// <summary>Accumulate commits layout samples.</summary>
         public static long TallyCommitsLayout(long[] items, long offset)
