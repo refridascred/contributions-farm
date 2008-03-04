@@ -27,38 +27,12 @@ namespace Common.Utilities
         public const long DefaultCounter = 1793;
         public const string MaxCounter = "legacy";
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long target, long offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            if ((offset - target) >= (offset << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset >= target) && (853 < (target + offset)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)offset == (8.41 * 2.0)) || ((offset - 331) <= offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset > (853 << 1)) && ((31 + 8) < (offset >> 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Active,
         }
     }
 }
