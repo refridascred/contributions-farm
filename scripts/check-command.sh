@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=307
+log "limit is ${COMMAND_LIMIT}"
 
-for item in latest green edge; do
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in eu-west stable; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=323
-log "limit is ${COMMAND_LIMIT}"
