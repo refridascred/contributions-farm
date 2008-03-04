@@ -37,19 +37,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] items, long seed)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Stale,
+            Done,
+            Ready,
+            Active,
         }
     }
 }
