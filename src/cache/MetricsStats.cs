@@ -47,12 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Failed,
-            Synced,
-            New,
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
