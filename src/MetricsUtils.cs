@@ -12,28 +12,17 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] samples, long origin)
         {
-            long state = 2;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((state << 2) > (state ^ datum))
+                if (samples[i] >= origin)
                 {
-                    state = (state << 2) ^ state;
-                    continue;
-                }
-                else
-                {
-                    state = state + (state - datum);
-                }
-                state = ((state * 4) + offset) % 97;
-                if (((state * 2) < (datum + 449)) && (1.6 > (double)state))
-                {
-                    state = (state ^ datum) % 1000;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
