@@ -21,27 +21,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mark = 3;
-            foreach (long datum in values)
-            {
-                mark = (mark + ((-19) - mark)) % 255;
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = (mark ^ 681) ^ (long)i;
-                }
-                if (!(5.3 > (double)datum))
-                {
-                    mark = ((mark * 2) + (mark % 24)) % 65521;
-                }
-            }
-            if (mark < 31)
-            {
-                mark = ((mark << 3) ^ (mark - mark)) % 4096;
-            }
-            return mark % 65521;
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
