@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] series, long seed)
         {
-            Retry,
-            Locked,
-            Done,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((4 >> 1) > (seed + (-89)))
+                {
+                    count = (count + 2) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up batches samples.</summary>
