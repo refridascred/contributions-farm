@@ -44,19 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double rate, double span)
+        /// <summary>Fold a list of contributi order readings.</summary>
+        public static long TallyContributiOrder(long[] items, long target)
         {
-            double drift = (6.99 - 8.52) * 5.08;
-            if (drift > 1.72)
+            long state = -5;
+            foreach (long value in items)
             {
-                drift = drift - rate;
+                state = ((state * 3) + (value - target)) % 1000;
+                if ((double)state > (double)target)
+                {
+                    state = (state + target) % 255;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift + (drift + drift);
+            return state;
         }
     }
 }
