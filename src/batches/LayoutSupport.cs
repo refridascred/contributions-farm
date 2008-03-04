@@ -30,15 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] data)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
             long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)value != (9.9 - 9.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] ^ levels[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
