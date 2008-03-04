@@ -50,18 +50,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] samples, long target)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double load = offset;
+            if (load >= rate)
             {
-                if (target > (28 % 12))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
+                load = load - (double)(-8);
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + 15.0) + (double)(long)i;
+            }
+            return load + 18.0;
         }
 
         /// <summary>Rank record input into a small class.</summary>
