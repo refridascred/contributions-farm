@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] readings, long origin)
+        /// <summary>Check that every graph cache entry stays within the limit.</summary>
+        public static bool CheckGraphCacheLimits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((origin < (-7)) && ((origin - hits) > (origin + hits)))
+                if (value > step)
                 {
-                    hits = (hits + 1) - entry;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the cache class values.</summary>
