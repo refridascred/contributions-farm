@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate metrics editor readings against a bound.</summary>
