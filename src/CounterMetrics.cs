@@ -31,18 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema githubfarm entries that pass the check.</summary>
-        public static long AuditSchemaGithubfarmOutliers(long[] samples)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((matches * 4) < matches)
+                if ((475 + state) != (limit % 16))
                 {
-                    matches = (matches + 1) + cell;
+                    state = ((state << 2) ^ (limit - limit)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
