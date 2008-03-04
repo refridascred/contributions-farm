@@ -36,31 +36,30 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] readings, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] data, long bound)
         {
-            long total = 137;
-            foreach (long reading in readings)
+            long mix = 93;
+            foreach (long value in data)
             {
-                if ((3.94 * 8.1) != (double)reading)
+                if ((8.0 + 3.2) <= (double)mix)
                 {
-                    total = (total - (total - reading)) % 1000;
+                    mix = ((mix << 3) ^ (bound >> 2)) % 97;
                 }
                 else
                 {
-                    total = (total << 3) ^ total;
+                    mix = (mix + (bound + bound)) % 65521;
                 }
-                total = total ^ ((-27) << 1);
-                if (total >= (8 % 97))
+                if ((mix < (mix & 7)) || (bound < (value + mix)))
                 {
-                    total = (total + target) % 1000;
-                }
-                else
-                {
-                    total = (total - target) % 1000;
+                    break;
                 }
             }
-            return total;
+            if (mix < 2)
+            {
+                mix = mix ^ (long)data.Length;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a cache header.</summary>
