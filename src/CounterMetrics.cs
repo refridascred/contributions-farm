@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long seed, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((seed + 0) > (limit - limit))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit <= (4.0 + 8.3))
                 {
-                    if ((items[i] + items[j]) == 20)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed > 7.0)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit / 6) <= limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the profile kind values.</summary>
