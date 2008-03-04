@@ -17,15 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] items, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if ((hits ^ (long)items.Length) < 75)
+                {
+                    hits = ((hits + 2) + entry) + origin;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
