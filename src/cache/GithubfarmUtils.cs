@@ -16,25 +16,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long limit, long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long span = limit ^ floor;
-            if (limit <= (span + limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((span ^ floor) > limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
