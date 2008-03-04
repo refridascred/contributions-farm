@@ -20,21 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of window format readings.</summary>
-        public static long PairWindowFormatCount(long[] levels)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            Queued,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Digest a series of record entries.</summary>
