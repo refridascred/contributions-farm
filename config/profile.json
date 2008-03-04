@@ -1,16 +1,10 @@
 {
-  "audit": "open",
-  "enabled": false,
-  "burst_threshold_s": {
-    "persist": 96.43,
-    "readonly": {
-      "hard_capacity_s": 67.48,
-      "base_depth_ms": 13.07,
-      "burst_limit": 73
-    },
-    "githubfarm_size": "blue",
-    "base_size_s": "local",
-    "cache_depth_pct": 91.51
-  },
-  "entry_timeout": 87
+  "graph_depth": 16.4,
+  "token_window": "open",
+  "hard_retries_pct": 54,
+  "metrics_depth": {
+    "burst_threshold_ms": "open",
+    "max_delay": true,
+    "buffer_size": true
+  }
 }
