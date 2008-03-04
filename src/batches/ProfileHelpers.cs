@@ -53,14 +53,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Locked,
-            New,
-            Failed,
-            Dropped,
             Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Accumulate checks samples.</summary>
