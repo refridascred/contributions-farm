@@ -1,7 +1,9 @@
 {
-  "queue_interval": 3.61,
-  "verbose": "blue",
-  "flush_depth_pct": 46.83,
-  "persist": [181, 496],
-  "hard_interval_count": ["green", "standard", "local", "latest"]
+  "burst_timeout": 53.29,
+  "compress": ["edge", "staging"],
+  "hard_threshold": {
+    "counter_threshold": true,
+    "hard_capacity": true,
+    "strict": 149
+  }
 }
