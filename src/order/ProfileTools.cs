@@ -50,18 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats already samples are out of range.</summary>
-        public static long CountStatsAlreadyGaps(long[] readings)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits - sample) > (510 - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit stats channel readings against a rule.</summary>
