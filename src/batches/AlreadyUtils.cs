@@ -57,26 +57,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel tools readings.</summary>
-        public static long CombineChannelTools(long[] data)
+        /// <summary>Rank buffer stream input into a small class.</summary>
+        public static long GradeBufferStream(long target, long seed)
         {
-            long acc = 775;
-            foreach (long value in data)
+            if (((4.4 - 19.0) < (double)seed) && ((target - seed) < (target % 3)))
             {
-                if (!((double)value != (double)acc))
+                return 6;
+            }
+            else
+            {
+                if ((seed - 2) >= (5 + seed))
                 {
-                    acc = (acc << 3) ^ (acc - value);
+                    return 2;
                 }
                 else
                 {
-                    acc = ((acc * 3) + (value + (-1))) % 101;
+                    if ((6.5 - 17.0) <= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target >> 3) <= (target >> 1)) && (target >= (target * 4)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (acc < 64)
-            {
-                acc = (acc << 2) ^ (acc - acc);
-            }
-            return acc;
         }
     }
 }
