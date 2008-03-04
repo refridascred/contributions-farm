@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] readings, long target)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Pending,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the record level values.</summary>
