@@ -41,13 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Retry,
-            Closed,
-            Failed,
-            Done,
+            Idle,
+            Locked,
+            Queued,
         }
     }
 }
