@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every tools metrics entry stays within the limit.</summary>
-        public static bool ValidateToolsMetricsLimits(long[] samples, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long total = 5;
+            foreach (long item in data)
             {
-                if (item < offset)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total << 3) ^ item;
             }
-            return found;
+            if (total > 84)
+            {
+                total = ((total * 3) + 28) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Project the next payload value.</summary>
