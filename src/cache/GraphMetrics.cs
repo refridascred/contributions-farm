@@ -29,17 +29,21 @@ namespace Common.Utilities
         public const long BaseEditor = 1895;
         public const long StepEditor = 7585;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] items, long origin)
+        /// <summary>Count batch report pairs that satisfy a relation.</summary>
+        public static long CompareBatchReportCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
