@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            Ready,
+            Dropped,
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
