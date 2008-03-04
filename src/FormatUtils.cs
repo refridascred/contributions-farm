@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Locked,
-            Ready,
+            Idle,
             Retry,
-            Dropped,
+            New,
+            Locked,
             Paused,
         }
 
