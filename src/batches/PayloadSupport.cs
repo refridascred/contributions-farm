@@ -49,15 +49,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double rate, double floor)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            double rate2 = (double)(0 ^ 25);
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = ((rate2 + (double)991) + (double)(long)i) - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate2 - rate;
+            return matches;
         }
     }
 }
