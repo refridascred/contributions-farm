@@ -40,17 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] items, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                mix = mix - (limit & 3);
-                mix = (mix ^ (long)i) % 255;
-                mix = ((mix * 2) + (long)i) % 101;
+                if (sample < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
