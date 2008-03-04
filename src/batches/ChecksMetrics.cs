@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] data, long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the route mode values.</summary>
