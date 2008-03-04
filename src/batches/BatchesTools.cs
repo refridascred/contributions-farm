@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first notes buffer entry that matches the target.</summary>
-        public static long FindNotesBufferIndex(long[] values, long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
