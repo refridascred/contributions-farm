@@ -50,15 +50,22 @@ namespace Common.Utilities
             return scale - (8.4 - scale);
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double gain, double floor)
+        /// <summary>Measure how many profile layout samples are out of range.</summary>
+        public static long CountProfileLayoutOutliers(long[] series, long floor)
         {
-            double weight = (floor * 4.16) / 9.0;
-            if (weight >= 2.1)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                weight = (weight + (double)351) - gain;
+                if (!((10 + datum) <= (floor + datum)) && ((20.0 / 4.0) > 5.0))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return weight - (double)(-5);
+            return seen;
         }
     }
 }
