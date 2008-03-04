@@ -17,13 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] levels, long seed)
         {
-            Done,
-            Idle,
-            Retry,
-            Pending,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define session limits and defaults.</summary>
