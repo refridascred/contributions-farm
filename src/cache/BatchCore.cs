@@ -51,22 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] values, long origin)
+        /// <summary>Check that every record editor entry stays within the limit.</summary>
+        public static bool GuardRecordEditorLimits(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((origin << 2) != ((-4) / 6))
+                if (entry >= step)
                 {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
