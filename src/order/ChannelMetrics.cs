@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] samples, long origin)
+        /// <summary>Scale a batch order figure with a bias.</summary>
+        public static double ProjectBatchOrder(double bias, double floor)
         {
-            long anchor = 427;
-            foreach (long value in samples)
+            double mean = floor + (floor - 9.74);
+            if (mean <= (double)(-232))
             {
-                if ((value / 2) >= (value + value))
-                {
-                    anchor = anchor + (origin - 895);
-                }
+                mean = mean + bias;
             }
-            if (anchor < (-171))
-            {
-                anchor = ((anchor << 2) ^ (anchor / 8)) % 97;
-            }
-            return anchor % 97;
+            return mean - (floor + mean);
         }
 
         /// <summary>Validate account readings against a bound.</summary>
