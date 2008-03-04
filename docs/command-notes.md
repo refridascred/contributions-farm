@@ -1,11 +1,11 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Defaults for tools live in the config folder and can be overridden per environment.
+Keep report and command names short and lowercase.
+Use session settings to tune how often order data is refreshed.
+The metrics report groups every cluster by context.
 
 ## Guidelines
 
-- Log every session change
-- Validate command input early
-- Keep filter values small
-- Document new filter fields
+- Document new entry fields
+- Prefer entry defaults
+- Keep githubfarm values small
