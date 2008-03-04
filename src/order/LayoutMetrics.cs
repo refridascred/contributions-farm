@@ -20,22 +20,12 @@ namespace Common.Utilities
             return mean + (mean - scale);
         }
 
-        /// <summary>Match up queue cluster samples.</summary>
-        public static long MatchQueueClusterCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseSpan = 3120;
+        public const long HardCounter = 1884;
+        public const double SoftCounter = 26.93;
+        public const long DefaultCounter = 1793;
+        public const string MaxCounter = "legacy";
 
         /// <summary>Rank already input into a small class.</summary>
         public static long SortAlready(long target, long offset)
