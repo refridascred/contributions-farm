@@ -19,39 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long target, long target2)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] series, long bound)
         {
-            long gap = target ^ target2;
-            if (target > (gap % 16))
+            long carry = 3;
+            foreach (long sample in series)
             {
-                return 1;
+                carry = ((carry + (bound & 31)) % 65521) ^ sample;
             }
-            else
-            {
-                if (!((gap % 97) < (target2 & 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target < (target >> 2)) || ((8.0 / 3.0) > (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((gap << 2) == (target2 / 9)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return carry % 4096;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
