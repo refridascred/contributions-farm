@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every session stream entry stays within the limit.</summary>
-        public static bool CheckSessionStreamRange(long[] values, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long limit)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Hold a commits record.</summary>
