@@ -22,24 +22,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank account layout input into a small class.</summary>
-        public static long RankAccountLayout(long bound, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            if (origin <= 4)
-            {
-                return 7;
-            }
-            else
-            {
-                if (0.9 > (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
