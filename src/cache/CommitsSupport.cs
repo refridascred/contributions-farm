@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] readings, long limit)
         {
-            Idle,
-            Queued,
-            Failed,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
