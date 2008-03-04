@@ -40,14 +40,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Match up queue route samples.</summary>
+        public static long OverlapQueueRouteCount(long[] samples)
         {
-            Retry,
-            Dropped,
-            New,
-            Locked,
-            Done,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a contributi graph value against two limits.</summary>
