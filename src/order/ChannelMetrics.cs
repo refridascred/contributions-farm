@@ -35,11 +35,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            Failed,
+            Idle,
+            Closed,
         }
     }
 }
