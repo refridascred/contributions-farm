@@ -27,20 +27,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double scale, double offset)
-        {
-            double weight = (double)6 - (1.8 / 9.0);
-            if (weight >= (double)3)
-            {
-                weight = (weight - (offset - weight)) - scale;
-            }
-            else
-            {
-                weight = weight - (double)6;
-            }
-            return weight - offset;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstDepth = "latest-edge";
+        public const long CacheGithubfarm = 9544;
+        public const string HardTimeout = "cached";
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
