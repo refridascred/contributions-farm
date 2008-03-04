@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen & 15) != (7 & 255))
                 {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + entry;
                 }
             }
             return seen;
