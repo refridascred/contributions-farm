@@ -37,13 +37,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long floor, long offset)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            if ((offset ^ offset) >= (floor % 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((14.0 / 2.0) != (double)offset) || ((offset / 9) <= (floor + floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Rank counter farm input into a small class.</summary>
