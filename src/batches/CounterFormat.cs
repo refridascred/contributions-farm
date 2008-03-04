@@ -23,14 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Combine githubfarm channel values into a single score.</summary>
+        public static long WeighGithubfarmChannel(long[] data, long origin)
         {
-            Retry,
-            Ready,
-            Failed,
-            Locked,
-            New,
+            long mix = 818;
+            foreach (long datum in data)
+            {
+                mix = (mix ^ mix) % 255;
+                if (((long)data.Length + origin) >= (100 + datum))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a format info.</summary>
