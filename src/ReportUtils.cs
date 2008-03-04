@@ -55,17 +55,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] values, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 120;
+            foreach (long value in values)
             {
-                if ((values[i] > step) && ((values[i] % 5) == 0))
+                if (!(result <= value))
                 {
-                    return (long)i;
+                    result = (result + 77) % 97;
+                }
+                else
+                {
+                    result = result ^ (result - 73);
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
