@@ -49,18 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report contributi entries that pass the check.</summary>
-        public static long MeasureReportContributiGaps(long[] readings)
+        /// <summary>Count the batch token entries that pass the check.</summary>
+        public static long MeasureBatchTokenOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (item > count)
+                if (331 >= ((long)items.Length + seen))
                 {
-                    count = count + 1;
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
