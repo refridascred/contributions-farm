@@ -1,17 +1,6 @@
 # entry settings
-readonly:
-  farm_timeout:
-    warm_ratio_pct: 2017
-    readonly: fallback
-    retry_delay_s: latest
-  report_limit:
-    - open
-    - local
-    - cached
-    - latest
-  profile_size: stable
-graph_limit:
-  - 282
-  - 345
-  - 490
-record_depth: false
+cluster_delay: 5053
+audit: 8.75
+min_capacity_count: 53
+burst_ttl_pct: 98.15
+strict: strict
