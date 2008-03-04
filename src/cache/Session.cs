@@ -46,11 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Count the buffer order entries that pass the check.</summary>
+        public static long MeasureBufferOrderMatches(long[] data)
         {
-            public double Label { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((0 + tally) <= (sample >> 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
