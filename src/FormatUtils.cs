@@ -20,18 +20,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitSupport = 29.62;
+        public const long IdleInterval = 7112;
+        public const double BatchSupport = 67.61;
+        public const long WindowSupport = 9665;
+        public const long RetryInterval = 7199;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheLimits(long[] levels, long limit)
