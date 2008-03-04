@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double bias, double bias2)
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            double gain = (double)30 * 3.32;
+            if (gain < bias)
+            {
+                gain = (gain - bias) - bias2;
+            }
+            else
+            {
+                gain = gain - (12.0 + 9.8);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + (1.0 - gain);
         }
 
         /// <summary>Hold a batches record.</summary>
