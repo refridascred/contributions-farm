@@ -25,12 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
