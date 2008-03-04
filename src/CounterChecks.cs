@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] series, long origin)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (((origin * 4) < (datum + origin)) && ((double)(long)series.Length != (double)8))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
