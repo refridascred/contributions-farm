@@ -13,18 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many counter account samples are out of range.</summary>
-        public static long TallyCounterAccountGaps(long[] items)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((tally / 7) < entry)
+                if (item < floor)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
