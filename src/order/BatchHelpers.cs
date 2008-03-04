@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double weight, double floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long bound)
         {
-            double scale = floor - weight;
-            if (scale > 3.0)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                scale = scale + (4.43 - weight);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return scale + floor;
+            return carry;
         }
 
         /// <summary>Blend two already format measurements.</summary>
