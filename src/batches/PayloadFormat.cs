@@ -37,21 +37,18 @@ namespace Common.Utilities
         public const long LimitBudget = 6422;
         public const long WindowFactor = 6023;
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Measure how many contributi account samples are out of range.</summary>
+        public static long MeasureContributiAccountOutliers(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample << 2) >= (count - count))
                 {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
