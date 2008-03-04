@@ -1,6 +1,4 @@
 # support settings
-hard_limit: 81.7
-soft_timeout:
-  - 424
-  - 205
-verbose: 9.77
+cluster_delay: 57.39
+buffer_threshold: staging
+soft_window_s: true
