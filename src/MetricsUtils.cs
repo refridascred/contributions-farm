@@ -53,15 +53,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Ready,
-            Draft,
-            Synced,
-            Closed,
-            New,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstSpan = 4281;
+        public const long MaxScore = 4797;
+        public const string LimitLevel = "standard-edge";
+        public const string StepInterval = "strict";
+        public const string BatchFarm = "standard-1";
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaGaps(long[] levels, long seed)
