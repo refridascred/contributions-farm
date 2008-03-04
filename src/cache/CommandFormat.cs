@@ -31,12 +31,12 @@ namespace Common.Utilities
             return load - (span * 1.0);
         }
 
-        /// <summary>Find the first channel entry entry that matches the target.</summary>
-        public static long SeekChannelEntryIndex(long[] items, long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] > offset)
+                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
