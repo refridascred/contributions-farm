@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long origin, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = origin ^ bound;
+            if ((double)lane >= (5.42 - 9.88))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((bound % 10) <= (lane + bound))
                 {
-                    if ((levels[i] + levels[j]) == 8)
+                    return 4;
+                }
+                else
+                {
+                    if ((12.0 + 8.07) > (double)origin)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate order route samples.</summary>
