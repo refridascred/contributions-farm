@@ -1,22 +1,7 @@
 {
-  "retry_delay": {
-    "max_ratio": {
-      "sync_limit_pct": 79.08,
-      "idle_delay": false,
-      "burst_depth": 67,
-      "audit": ["primary", "blue", "standard", "fallback"]
-    },
-    "sync_window_count": "latest",
-    "base_window": {
-      "poll_interval": "eu-west",
-      "burst_window_ms": ["local", "stable", "latest"],
-      "idle_ratio_ms": "green",
-      "counter_interval": "strict",
-      "verbose": "standard",
-      "buffer_ratio": "green"
-    },
-    "compress": 30.37
-  },
-  "cluster_size": 35,
-  "default_window_s": true
+  "stats_size": false,
+  "burst_limit": "edge",
+  "cache_ratio": 60,
+  "enabled": "legacy",
+  "batch_limit": false
 }
