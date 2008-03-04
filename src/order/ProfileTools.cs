@@ -52,13 +52,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Count farm token pairs that satisfy a relation.</summary>
+        public static long CompareFarmTokenCount(long[] items)
         {
-            Failed,
-            Draft,
-            Closed,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
