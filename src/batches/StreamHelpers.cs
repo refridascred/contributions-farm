@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long seed, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] samples)
         {
-            if ((bound * 5) < (bound & 1))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(bound <= (seed - seed)))
+                if ((9.0 < (double)matches) || !(matches < (matches + (-203))))
                 {
-                    return 3;
+                    matches = (matches + 3) ^ entry;
                 }
                 else
                 {
-                    if ((bound % 24) == (seed << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of window format readings.</summary>
