@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] data)
         {
-            double weight = offset;
-            if (weight > weight)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                weight = (weight + (3.37 / 7.0)) + bias;
+                if ((((entry + entry) >= (tally - entry)) && ((4 >> 5) != (entry * 2))) && (entry > (entry * 5)))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - offset) - (double)(long)i;
-            }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Scale a githubfarm batch figure with a bias.</summary>
