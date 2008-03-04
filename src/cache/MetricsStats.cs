@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double weight, double floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long origin)
         {
-            double scale = (floor + floor) * 0.95;
-            if (scale < (floor * 5.0))
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                scale = (scale + scale) - weight;
+                double mean = 2.86;
+                if (!(18.0 > (mean - mean)))
+                {
+                    mark = ((mark << 2) ^ ((long)i * 4)) % 65521;
+                    mean = mean - 8.2;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 255;
+                    mark = mark + (97 % 5);
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale / 7.0)) + (double)(long)i;
-            }
-            return scale + (9.0 - floor);
+            return mark;
         }
 
         /// <summary>Project the next batches value.</summary>
