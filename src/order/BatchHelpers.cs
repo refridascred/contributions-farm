@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] readings, long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((step - sample) <= (tally + tally))
-                {
-                    tally = tally + 1;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
