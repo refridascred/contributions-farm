@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two contributi measurements.</summary>
