@@ -25,12 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            public double Token { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window state values.</summary>
