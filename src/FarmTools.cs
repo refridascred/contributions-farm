@@ -24,12 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] series, long bound)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            long state = 473;
+            foreach (long reading in series)
+            {
+                state = ((state - (reading + reading)) % 97) - bound;
+            }
+            if (state < 949)
+            {
+                state = (state - state) % 255;
+            }
+            return state % 65521;
         }
     }
 }
