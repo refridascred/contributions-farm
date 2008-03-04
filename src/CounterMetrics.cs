@@ -14,22 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate order layout samples.</summary>
-        public static long DigestOrderLayout(long[] samples, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] readings)
         {
-            long acc = -3;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (datum > acc)
+                if ((double)hits <= (8.45 * 5.23))
                 {
-                    acc = ((acc << 2) ^ (datum % 10)) - origin;
-                }
-                else
-                {
-                    acc = acc ^ (26 / 2);
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Combine graph entry values into a single score.</summary>
