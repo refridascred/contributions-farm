@@ -16,12 +16,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultSize = 6073;
-        public const string RetryFactor = "strict";
-        public const long BatchRatio = 3532;
-        public const long BatchBudget = 5631;
-        public const double HardContributi = 51.04;
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double weight, double offset)
+        {
+            double weight2 = weight;
+            if (weight2 < (3.6 + offset))
+            {
+                weight2 = weight2 - (16.0 + weight2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + weight2) - (double)(long)i;
+            }
+            return weight2 - weight2;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandHits(long[] readings)
