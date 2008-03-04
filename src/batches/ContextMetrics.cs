@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every tools report entry stays within the limit.</summary>
-        public static bool VerifyToolsReportRange(long[] levels, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long anchor = -737;
+            foreach (long reading in samples)
             {
-                if (item != seed)
+                if (((anchor * 5) > reading) || ((reading + reading) > (reading + anchor)))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor ^ (reading - anchor)) % 1000;
                 }
+                anchor = anchor ^ (reading / 9);
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
