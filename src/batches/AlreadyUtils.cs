@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the commits order series from a seed.</summary>
-        public static long StepCommitsOrder(long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] data, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if ((seen - seen) == (65 >> 5))
+                {
+                    seen = ((seen + 3) + cell) - seed;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
