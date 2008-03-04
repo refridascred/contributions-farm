@@ -23,17 +23,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Look up the position of a report window sample.</summary>
-        public static long SeekReportWindowIndex(long[] series, long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define record limits and defaults.</summary>
