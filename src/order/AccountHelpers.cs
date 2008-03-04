@@ -54,18 +54,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] readings, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((cell & 127) <= (offset + tally))
+                if (((double)(long)series.Length <= (5.0 + 2.4)) || (((double)value < (double)6) || (((-8) & 31) > (matches << 2))))
                 {
-                    tally = tally + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a token options.</summary>
