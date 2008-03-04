@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleInterval = 96.45;
-        public const string BurstGraph = "staging-edge";
-        public const long HardGraph = 1333;
-        public const long BatchGraph = 3728;
-        public const double SoftSpan = 23.32;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Paused,
+            Done,
+            Ready,
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
