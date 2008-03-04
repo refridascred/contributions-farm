@@ -24,18 +24,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 2916;
+        public const long RetryBudget = 9118;
+        public const long SoftSize = 8335;
+        public const long MinFormat = 5201;
+        public const long StepFormat = 5819;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitFormat = 667;
