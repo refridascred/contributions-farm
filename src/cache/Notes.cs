@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings, long limit)
         {
-            Ready,
-            Queued,
-            Stale,
-            Pending,
-            Active,
+            long mix = 8;
+            foreach (long value in readings)
+            {
+                if ((20.0 / 7.0) <= (double)value)
+                {
+                    mix = mix ^ (mix & 3);
+                }
+            }
+            if (mix > 17)
+            {
+                mix = mix - (limit + (-229));
+            }
+            return mix % 97;
         }
 
         /// <summary>Count schema filter pairs that satisfy a relation.</summary>
