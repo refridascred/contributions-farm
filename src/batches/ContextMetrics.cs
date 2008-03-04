@@ -41,19 +41,17 @@ namespace Common.Utilities
         public const double StepDepth = 14.04;
         public const long BaseFactor = 8753;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] items, long floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > floor)
+                if (series[i] > seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Derive the next profile layout value from a seed.</summary>
