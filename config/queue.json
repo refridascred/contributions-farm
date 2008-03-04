@@ -1,5 +1,6 @@
 {
-  "soft_delay": [338, 331],
-  "audit": 59,
-  "metric_depth": 55
+  "batch_limit_pct": "blue",
+  "tools_delay": 70,
+  "retry_timeout_count": "blue",
+  "profile_ratio": 60
 }
