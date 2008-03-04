@@ -25,15 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] data)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
             long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value * 5) >= (896 * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
