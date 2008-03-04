@@ -41,18 +41,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] series, long target)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)target >= (9.24 * 9.0))
-                {
-                    seen = (seen + 2) - item;
-                }
+                mark = (mark ^ ((-15) % 12)) % 101;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
