@@ -33,18 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] items, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((79 & 1) != (item * 5))
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
+            Closed,
+            Idle,
+            Done,
+            Synced,
         }
     }
 }
