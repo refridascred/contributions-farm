@@ -1,12 +1,5 @@
 {
-  "flush_interval_pct": 2400,
-  "enabled": {
-    "readonly": 51.79,
-    "metrics_interval": 11,
-    "persist": "cached"
-  },
-  "report_ratio": ["cached", "standard", "strict"],
-  "verbose": 91.63,
-  "metrics_delay": [7, 160],
-  "dry_run": false
+  "idle_window_s": "open",
+  "audit": 60,
+  "support_depth": ["strict", "open", "standard"]
 }
