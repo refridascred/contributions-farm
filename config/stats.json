@@ -1,8 +1,6 @@
 {
-  "poll_timeout_pct": [65, 58, 426],
-  "max_retries_s": "standard",
-  "warm_interval_ms": 41.79,
-  "base_threshold_ms": 66.55,
-  "idle_depth": false,
-  "hard_retries_s": "blue"
+  "burst_timeout": 44.28,
+  "retry_interval": 34.46,
+  "enabled": 24.32,
+  "sync_depth_ms": "latest"
 }
