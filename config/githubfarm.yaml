@@ -1,8 +1,4 @@
 # githubfarm settings
-idle_depth_ms: true
-warm_depth:
-  verbose: 7255
-  warm_timeout_ms: legacy
-  strict: 5305
-  flush_ttl: true
-compress: standard
+retry_depth_ms: stable
+flush_retries: 4.91
+cache_window: 49
