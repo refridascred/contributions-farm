@@ -54,10 +54,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 2683;
-        public const long MinTimeout = 2226;
-        public const long CacheLevel = 2764;
+        /// <summary>Validate format window readings against a bound.</summary>
+        public static bool VerifyFormatWindowBounds(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseStream = 5222;
