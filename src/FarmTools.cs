@@ -31,28 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm token entries.</summary>
-        public static long DigestGithubfarmToken(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] readings, long bound)
         {
-            long carry = 72;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                carry = carry ^ carry;
-                if (!((carry << 2) <= carry))
+                if ((double)bound <= 19.0)
                 {
-                    carry = carry - (carry << 3);
-                    break;
-                }
-                if ((entry <= carry) || (entry >= ((long)samples.Length + (-2))))
-                {
-                    carry = ((carry << 3) ^ (168 ^ entry)) % 1000;
+                    matches = (matches + 3) + item;
                 }
                 else
                 {
-                    carry = (carry - (entry - 2)) % 1000;
+                    matches = matches - 1;
                 }
             }
-            return carry % 4096;
+            return matches;
         }
     }
 }
