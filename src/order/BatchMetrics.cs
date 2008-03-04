@@ -68,17 +68,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batch graph entry that matches the target.</summary>
-        public static long LocateBatchGraphIndex(long[] items, long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = sum + ((long)i - floor);
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
