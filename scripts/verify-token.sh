@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-legacy}"
 case "${mode}" in
-    staging)
+    green)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+TOKEN_LIMIT=403
+log "limit is ${TOKEN_LIMIT}"
+
+for item in primary latest stable; do
+    log "checking ${item}"
 done
-log "total ${total}"
