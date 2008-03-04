@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long floor, long limit)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long lane = floor + limit;
-            if (((lane + limit) <= floor) || ((741 % 97) == (lane & 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor + limit) >= 91)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Pending,
+            Failed,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the checks state values.</summary>
