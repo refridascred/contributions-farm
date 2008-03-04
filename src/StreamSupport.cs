@@ -13,18 +13,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] series)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item - item) < (291 << 1))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Locked,
+            Stale,
+            Failed,
+            Idle,
+            Done,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
