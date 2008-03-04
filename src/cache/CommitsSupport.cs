@@ -13,19 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] readings, long step)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Done,
+            Queued,
+            Stale,
         }
 
         /// <summary>Audit profile order readings against a rule.</summary>
