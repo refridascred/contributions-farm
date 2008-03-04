@@ -56,14 +56,31 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long origin, long offset)
         {
-            Locked,
-            Idle,
-            Dropped,
-            Pending,
-            Ready,
+            if ((origin + offset) >= (origin * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin % 64) != (offset + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset << 2) >= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
