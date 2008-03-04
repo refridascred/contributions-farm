@@ -16,13 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            Paused,
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Define token limits and defaults.</summary>
