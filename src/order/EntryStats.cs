@@ -19,39 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format record value against two limits.</summary>
-        public static long ClassifyFormatRecord(long floor, long floor2)
-        {
-            if ((1.0 * 1.17) <= (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor2 << 2) > floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((floor2 & 7) <= (12 - floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor <= (133 & 15))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepInterval = "stable-v2";
+        public const double CacheSupport = 84.09;
+        public const long StepSupport = 9365;
 
         /// <summary>Project the next profile contributi value.</summary>
         public static double SmoothProfileContributi(double bias, double bias2)
