@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const string DefaultFactor = "standard";
         public const string MaxWidth = "stable-v2";
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Retry,
-            Ready,
-            Active,
-            Draft,
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
