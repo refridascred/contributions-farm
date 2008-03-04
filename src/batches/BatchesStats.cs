@@ -36,11 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Check that every notes counter entry stays within the limit.</summary>
+        public static bool CheckNotesCounterRange(long[] samples, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
