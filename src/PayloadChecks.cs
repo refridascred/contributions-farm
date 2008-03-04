@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] items)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double scale, double floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double rate = floor;
+            if (rate >= (9.0 + scale))
             {
-                if (!(((476 * 2) < (sample << 2)) && ((7.0 / 3.0) < (double)sample)))
-                {
-                    count = count + 3;
-                }
+                rate = rate + floor;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate + (scale + rate);
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
