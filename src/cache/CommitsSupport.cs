@@ -52,26 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] series, long target)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long total = 40;
-            foreach (long datum in series)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = (((total * 3) + 925) - (long)i2) ^ datum;
-                }
-                if ((15.0 + 5.02) != (double)total)
-                {
-                    total = (total - (total - total)) % 1000;
-                }
-            }
-            if (total < 7)
-            {
-                total = ((total << 2) ^ (target + target)) % 97;
-            }
-            return total;
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
