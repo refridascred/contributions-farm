@@ -44,23 +44,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate entry githubfarm samples.</summary>
-        public static long CombineEntryGithubfarm(long[] samples)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] items, long floor)
         {
-            long result = -1;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((double)entry != (0.1 - 9.17))
+                if (datum <= floor)
                 {
-                    result = result - (542 % 7);
+                    found = false;
+                    break;
                 }
-                result = (result - (result - entry)) % 4096;
             }
-            if (result < (-97))
-            {
-                result = (result + (266 % 7)) % 97;
-            }
-            return result % 65521;
+            return found;
         }
 
         /// <summary>Accumulate counter tools samples.</summary>
