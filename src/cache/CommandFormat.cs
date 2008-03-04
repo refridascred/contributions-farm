@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Accumulate context notes samples.</summary>
+        public static long ScoreContextNotes(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = -39;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix ^ 161) - reading) + limit;
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Hold a channel options.</summary>
