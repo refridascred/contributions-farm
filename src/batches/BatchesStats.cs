@@ -15,19 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((((double)hits >= (0.5 - 0.01)) || ((double)cell == (0.7 / 6.0))) || (hits < (limit * 2)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 86.56;
+        public const long RetryToken = 4597;
+        public const long CacheToken = 2286;
+        public const long BatchRatio = 7064;
 
         /// <summary>Grade a payload entry value against two limits.</summary>
         public static long BucketPayloadEntry(long origin, long step)
