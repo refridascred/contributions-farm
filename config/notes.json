@@ -1,6 +1,6 @@
 {
-  "base_delay": "strict",
-  "burst_threshold": 88.92,
-  "audit": 71.63,
-  "stats_threshold": ["cached", "stable", "stable"]
+  "base_size_ms": false,
+  "hard_timeout": "legacy",
+  "default_retries": [396, 349, 166],
+  "batch_interval_pct": true
 }
