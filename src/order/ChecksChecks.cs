@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long offset, long floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long seed, long limit)
         {
-            if (!(3.7 > (double)offset))
+            if (((double)limit < (double)36) || ((seed & 7) <= (limit + 9)))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((floor < (offset + floor)) || ((floor - offset) != (offset % 60)))
+                if ((double)limit >= (5.0 * 7.0))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if (194 <= (floor + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 2;
                 }
             }
         }
