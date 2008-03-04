@@ -1,6 +1,11 @@
 # support settings
-record_size: legacy
-max_limit_count: 94
-min_delay: 70
-verbose: legacy
-report_capacity: 1469
+default_ttl:
+  - 271
+  - 232
+  - 10
+  - 25
+default_delay_pct: 100
+min_ratio: 11.08
+min_depth_pct: 3715
+idle_threshold_pct: 51
+base_timeout: 3280
