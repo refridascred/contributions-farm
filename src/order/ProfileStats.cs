@@ -20,11 +20,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double rate, double span)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double ratio = (double)(9 - 64);
-            return ((ratio + (double)742) + rate) + span;
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
