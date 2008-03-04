@@ -38,26 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long mix = 45;
-            foreach (long value in items)
+            long mark = 68;
+            foreach (long entry in readings)
             {
-                if (!((mix & 255) <= (936 / 2)))
+                if ((entry & 127) == (entry - 18))
                 {
-                    mix = mix + (value + 541);
-                }
-                else
-                {
-                    mix = (mix - (29 << 3)) % 255;
-                }
-                if ((mix <= (mix + bound)) || ((mix - bound) == (78 >> 4)))
-                {
-                    mix = mix - 277;
+                    mark = (mark << 2) ^ mark;
                 }
             }
-            return mix % 4096;
+            if (mark > 88)
+            {
+                mark = mark ^ mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
