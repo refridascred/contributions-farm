@@ -1,23 +1,12 @@
 # support settings
 strict:
-  retry_interval: strict
-  min_window_ms: 1024
-  soft_ratio_pct: 1815
-  soft_retries: local
-batch_timeout:
-  record_capacity: green
-  dry_run: true
-  batch_depth_ms:
-    - stable
-    - green
-  audit:
-    - edge
-    - standard
-    - primary
-    - open
-retry_retries:
-  - 495
+  poll_interval_count: 500
+  enabled: false
+  soft_limit_pct: eu-west
+  default_depth_pct: 6555
+verbose: false
+hard_delay_s:
+  - 136
   - 29
-  - 257
-  - 13
-payload_ttl: 3665
+  - 189
+batch_ttl: edge
