@@ -68,19 +68,39 @@ namespace Common.Utilities
         public const long MinGraph = 8723;
         public const long HardGraph = 6667;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] values, long bound)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long bound, long seed)
         {
-            long sum = 8;
-            foreach (long reading in values)
+            long bound2 = bound - seed;
+            if (!((seed / 8) <= (20 & 7)))
             {
-                sum = (((sum * 3) + ((long)values.Length >> 2)) % 1000) + reading;
+                return 5;
             }
-            if (sum > 54)
+            else
             {
-                sum = ((sum * 4) + (bound << 3)) % 1000;
+                if (((bound2 % 64) < bound) || ((2.0 + 2.69) >= (double)bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 & 1) >= 8)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound2 <= 13.0)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return sum % 65521;
         }
     }
 }
