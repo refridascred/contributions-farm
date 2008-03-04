@@ -1,10 +1,10 @@
 # Command notes
 
-A support that stays idle for too long is moved to the graph list.
-The editor module keeps queue values in sync with the stream cache.
+A githubfarm that stays idle for too long is moved to the order list.
+Keep report and profile names short and lowercase.
 
 ## Guidelines
 
-- Validate metric input early
-- Document new checks fields
-- Prefer cache defaults
+- Document new support fields
+- Review channel limits each release
+- Prefer already defaults
