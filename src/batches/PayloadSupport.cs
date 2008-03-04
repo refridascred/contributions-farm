@@ -29,24 +29,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long seed, long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            if (!((63 % 60) == (seed + seed)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((-642) < seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            New,
+            Active,
+            Failed,
+            Paused,
         }
     }
 }
