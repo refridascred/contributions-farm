@@ -29,24 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long origin, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] series, long target)
         {
-            if ((origin % 5) < (offset >> 4))
+            long score = 9;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset != (7.2 / 3.0))
+                if ((score % 10) != (target / 2))
                 {
-                    return 8;
+                    score = (score + target) ^ sample;
                 }
-                else
+                if (83 >= (score + (long)series.Length))
                 {
-                    return 1;
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
