@@ -19,21 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up buffer counter samples.</summary>
-        public static long PairBufferCounterCount(long[] series)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                score = (score ^ ((long)i + (long)i)) % 4096;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((series[i] ^ series[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score + (70 + (long)i)) % 97) ^ (long)i2;
                 }
+                score = (score + seed) % 4096;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
