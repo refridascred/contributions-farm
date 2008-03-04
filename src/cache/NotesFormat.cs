@@ -26,22 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks stream entries.</summary>
-        public static long ScoreChecksStream(long[] levels, long bound)
+        /// <summary>Audit token order readings against a rule.</summary>
+        public static long AuditTokenOrderOutliers(long[] readings, long limit)
         {
-            long result = -229;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (value < (bound & 31))
+                if ((double)816 == (double)entry)
                 {
-                    result = (result - (result >> 2)) % 101;
+                    seen = (seen + 1) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (result < (-8))
-            {
-                result = (result ^ (result * 3)) % 97;
-            }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Describe the notes status values.</summary>
