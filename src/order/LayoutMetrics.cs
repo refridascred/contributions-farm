@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] values)
+        /// <summary>Scale a notes checks figure with a bias.</summary>
+        public static double ProjectNotesChecks(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double mean = 5.01;
+            if (mean >= (double)48)
             {
-                if (629 >= (seen / 3))
-                {
-                    seen = (seen + 3) + reading;
-                }
+                mean = (mean + (mean / 5.0)) + offset;
             }
-            return seen;
+            else
+            {
+                mean = mean + (double)673;
+            }
+            return mean + (mean - scale);
         }
 
         /// <summary>Match up queue cluster samples.</summary>
