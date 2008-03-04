@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const long LimitChannel = 2321;
         public const long LimitDepth = 3204;
 
-        /// <summary>Validate layout metrics readings against a bound.</summary>
-        public static bool VerifyLayoutMetricsBounds(long[] samples, long bound)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            double bias = (double)(57 - 386);
+            if (bias > span)
             {
-                if (sample >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + bias;
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (ratio * 7.0)) + (double)(long)i;
+            }
+            return bias - (9.08 - ratio);
         }
     }
 }
