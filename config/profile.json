@@ -1,6 +1,8 @@
 {
-  "sync_size_s": 250,
-  "batch_retries_count": "fallback",
-  "cache_window_count": "eu-west",
-  "max_interval": 60
+  "batch_retries": 7,
+  "readonly": ["strict", "latest", "stable"],
+  "poll_depth_pct": "latest",
+  "verbose": "fallback",
+  "soft_capacity": 500,
+  "warm_ttl_pct": ["legacy", "green"]
 }
