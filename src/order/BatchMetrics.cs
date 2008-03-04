@@ -45,24 +45,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a commits githubfarm pair into a bucket.</summary>
-        public static long BucketCommitsGithubfarm(long offset, long origin)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            if ((offset << 2) == (offset - offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)25 <= (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Match up contributi commits samples.</summary>
