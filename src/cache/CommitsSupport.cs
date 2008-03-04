@@ -36,18 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] values)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (cell >= (7 << 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Retry,
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a notes stats.</summary>
