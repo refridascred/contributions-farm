@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
+            Ready,
+            Failed,
             Idle,
-            Draft,
-            Closed,
-            Queued,
         }
 
         /// <summary>Define format limits and defaults.</summary>
