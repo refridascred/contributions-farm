@@ -19,10 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepInterval = "stable-v2";
-        public const double CacheSupport = 84.09;
-        public const long StepSupport = 9365;
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next profile contributi value.</summary>
         public static double SmoothProfileContributi(double bias, double bias2)
