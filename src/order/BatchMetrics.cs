@@ -37,21 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Count the batch notes entries that pass the check.</summary>
+        public static long AuditBatchNotesOutliers(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((57 + limit) < matches)
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a support snapshot.</summary>
