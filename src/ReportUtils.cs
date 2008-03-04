@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long step, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] readings, long floor)
         {
-            if ((9.5 * 3.15) > (double)step)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((314 - target) != (step << 2)) || ((step - 964) <= target))
+                if (datum >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((69 - step) >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)target > 5.5) && ((target & 1) < (step * 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Adjust a checks reading.</summary>
