@@ -19,18 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] samples)
+        /// <summary>Grade a format record value against two limits.</summary>
+        public static long ClassifyFormatRecord(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((1.0 * 1.17) <= (double)floor)
             {
-                if (8.0 > (double)matches)
+                return 2;
+            }
+            else
+            {
+                if ((floor2 << 2) > floor)
                 {
-                    matches = (matches + 1) ^ datum;
+                    return 6;
+                }
+                else
+                {
+                    if (!((floor2 & 7) <= (12 - floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (floor <= (133 & 15))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
