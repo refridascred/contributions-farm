@@ -1,5 +1,7 @@
 {
-  "warm_capacity_pct": [497, 461],
-  "batch_delay": 5663,
-  "compress": false
+  "base_limit_s": 399,
+  "base_limit": 67.39,
+  "githubfarm_limit": "green",
+  "poll_timeout_s": "legacy",
+  "max_limit_ms": 93
 }
