@@ -58,23 +58,30 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next profile layout value from a seed.</summary>
-        public static long RollProfileLayout(long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            long carry = -391;
+            foreach (long datum in samples)
             {
-                if (((double)step > (7.6 * 9.6)) && ((step * 4) == (anchor + step)))
+                if (((8.1 / 2.0) == (double)carry) && (6.0 <= (double)carry))
                 {
-                    anchor = (anchor + step) % 65521;
+                    carry = (carry * 4) + (datum + carry);
                 }
                 else
                 {
-                    anchor = (anchor ^ (86 + anchor)) % 65521;
+                    carry = ((carry << 3) ^ (datum - datum)) % 101;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (!((datum << 3) > (carry + datum)))
+                {
+                    carry = (carry - datum) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (7 % 3)) % 1000;
+                }
             }
-            return anchor;
+            return carry;
         }
     }
 }
