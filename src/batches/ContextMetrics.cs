@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] levels, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] items, long target)
         {
-            long sum = -688;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((sum + floor) != (sum & 127))
+                if (reading > target)
                 {
-                    sum = ((sum << 2) ^ (sum & 127)) % 255;
-                }
-                else
-                {
-                    sum = (sum * 2) + (sum + cell);
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Validate batch report readings against a bound.</summary>
