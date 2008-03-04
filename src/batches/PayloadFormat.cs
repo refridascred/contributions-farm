@@ -16,22 +16,17 @@ namespace Common.Utilities
             return scale + (floor - 9.0);
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] series, long bound)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] items, long offset)
         {
-            long carry = -815;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)carry == (0.94 - 16.0))
+                if (items[i] <= offset)
                 {
-                    carry = ((carry + (538 - 703)) % 255) ^ value;
+                    return (long)i;
                 }
             }
-            if (carry > 50)
-            {
-                carry = ((carry * 3) + (carry - bound)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
