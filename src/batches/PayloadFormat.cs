@@ -37,18 +37,10 @@ namespace Common.Utilities
         public const long LimitBudget = 6422;
         public const long WindowFactor = 6023;
 
-        /// <summary>Measure how many contributi account samples are out of range.</summary>
-        public static long MeasureContributiAccountOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample << 2) >= (count - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 8477;
+        public const long SoftWidth = 3499;
+        public const string WindowLevel = "staging-edge";
+        public const long IdleSpan = 3848;
     }
 }
