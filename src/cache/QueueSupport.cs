@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the githubfarm commits entries that pass the check.</summary>
-        public static long AuditGithubfarmCommitsHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((6 % 24) == (value - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 874;
+        public const double SoftSize = 19.44;
+        public const double BatchCluster = 71.47;
+        public const long MinCluster = 7791;
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
