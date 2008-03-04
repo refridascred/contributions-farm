@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -597;
+            foreach (long sample in values)
             {
-                if ((series[i] <= bound) && ((series[i] % 5) != 0))
+                if (!((double)score != (5.8 * 4.7)))
                 {
-                    return (long)i;
+                    score = (score - (score + 59)) % 101;
+                }
+                else
+                {
+                    score = score + (sample ^ sample);
                 }
             }
-            return -1;
+            if (score < 41)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
