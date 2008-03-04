@@ -36,10 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseDepth = "open";
-        public const string DefaultAlready = "primary";
-        public const string WindowWidth = "open-v2";
-        public const string CacheSize = "local-edge";
+        /// <summary>Roll a record queue counter forward.</summary>
+        public static long DeriveRecordQueue(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
