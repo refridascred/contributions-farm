@@ -59,13 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Locked,
-            Stale,
-            Done,
-            Draft,
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
