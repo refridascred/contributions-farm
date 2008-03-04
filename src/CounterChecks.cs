@@ -60,10 +60,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchCount = 4426;
-        public const long CacheBudget = 780;
-        public const string StepFactor = "staging-1";
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Idle,
+            New,
+            Queued,
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
