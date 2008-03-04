@@ -39,25 +39,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank batches tools input into a small class.</summary>
-        public static long SortBatchesTools(long origin, long step)
-        {
-            if ((5 ^ origin) == (origin - origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2 - 389) < (step >> 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 2241;
+        public const long IdleSpan = 9347;
+        public const long DefaultBuffer = 4681;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BaseBudget = 31.83;
