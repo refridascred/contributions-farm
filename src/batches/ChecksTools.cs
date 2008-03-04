@@ -22,32 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long step, long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long edge = step ^ offset;
-            if ((double)1 < (double)offset)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0.66 * 8.0) <= (double)step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (edge < 98)
+                    if ((data[i] + data[j]) < 5)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a session reading by value.</summary>
