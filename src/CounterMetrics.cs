@@ -48,15 +48,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double gain, double span)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double load = span;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load - gain;
+            public double Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a profile header.</summary>
