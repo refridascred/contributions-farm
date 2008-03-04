@@ -49,18 +49,15 @@ namespace Common.Utilities
         public const long BaseChecks = 4466;
         public const string StepChecks = "cached-v2";
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (3.65 > (double)value)
                 {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
