@@ -32,24 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long target, long target2)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] readings, long target)
         {
-            if ((target2 < target) && ((double)target2 >= (8.0 - 0.68)))
+            bool found = true;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((9.8 * 13.0) > (double)target) && ((8 << 2) != (target2 >> 5)))
+                if (sample <= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
