@@ -76,14 +76,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Active,
-            Done,
-            Idle,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 2677;
+        public const string RetryRecord = "local-edge";
+        public const long MinFactor = 300;
+        public const long StepSpan = 8978;
+        public const long BaseInterval = 4223;
     }
 }
