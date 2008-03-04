@@ -38,12 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public long Label { get; set; }
+            public string Size { get; set; } = "";
             public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next notes report value.</summary>
