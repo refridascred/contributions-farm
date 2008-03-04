@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] readings)
+        /// <summary>Iterate the tools queue series from a seed.</summary>
+        public static long DeriveToolsQueue(long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(((64 + tally) > datum) || (2 < (datum - tally))))
+                if ((4.49 * 3.2) == (double)(long)i)
                 {
-                    tally = tally + 2;
+                    carry = (carry * 2) + (limit - carry);
                 }
+                carry = ((carry * 2) + (limit / 9)) % 1000;
+                carry = carry + (carry + 199);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Adjust a schema reading.</summary>
