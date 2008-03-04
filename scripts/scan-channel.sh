@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging edge fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
+
+mode="${1:-green}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 6 ]; do
