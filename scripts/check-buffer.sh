@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest cached stable; do
+for item in primary fallback edge eu-west; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=157
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-legacy}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
