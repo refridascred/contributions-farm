@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest edge staging cached; do
+for item in staging primary stable; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=242
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-fallback}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
