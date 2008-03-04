@@ -31,9 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxRatio = 2081;
-        public const double WindowStats = 60.91;
-        public const long CacheStats = 6645;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Queued,
+            Pending,
+            Idle,
+        }
     }
 }
