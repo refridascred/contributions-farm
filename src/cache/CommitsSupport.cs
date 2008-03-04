@@ -13,21 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item > (72 & 1)) || ((tally * 3) < (item + item)))
                 {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Adjust a checks reading.</summary>
