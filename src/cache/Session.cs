@@ -15,15 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next record route value from a seed.</summary>
-        public static long RollRecordRoute(long target)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
