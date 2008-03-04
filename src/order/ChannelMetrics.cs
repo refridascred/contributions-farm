@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if ((double)sum <= (double)(-87))
+                {
+                    sum = ((sum * 3) + (bound + sum)) % 65521;
+                    sum = sum - (sum + sum);
+                }
+                if ((sum + sum) == ((long)i + sum))
+                {
+                    sum = (sum + ((long)i / 7)) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Digest a series of command notes entries.</summary>
