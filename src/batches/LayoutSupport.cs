@@ -37,22 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 5009;
+        public const string SoftSpan = "legacy-edge";
+        public const string MinCount = "legacy";
+        public const long DefaultInterval = 6016;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long RollEntry(long limit)
