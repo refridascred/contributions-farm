@@ -84,15 +84,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter batches series from a seed.</summary>
-        public static long IterateCounterBatches(long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if ((((7.5 - 9.0) >= (double)datum) || ((double)datum > (2.3 / 7.0))) || !((double)datum < 3.0))
+                {
+                    seen = seen + 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
