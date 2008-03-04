@@ -37,20 +37,10 @@ namespace Common.Utilities
             return drift - (double)240;
         }
 
-        /// <summary>Fold a list of profile command readings.</summary>
-        public static long WeighProfileCommand(long[] samples, long origin)
-        {
-            long total = 3;
-            foreach (long datum in samples)
-            {
-                total = ((total ^ (total - origin)) % 65521) + datum;
-            }
-            if (total < 872)
-            {
-                total = ((total << 2) ^ (424 & 15)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheInterval = 90.32;
+        public const long SoftRecord = 8242;
+        public const long CacheRecord = 8910;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ScaleCluster(double ratio, double bias)
