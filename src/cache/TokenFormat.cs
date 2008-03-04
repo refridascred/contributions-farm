@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] samples, long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)(long)samples.Length > 7.62)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = ((seen + 1) + value) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
