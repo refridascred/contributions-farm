@@ -61,10 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardRatio = 79.73;
-        public const long BaseChecks = 4466;
-        public const string StepChecks = "cached-v2";
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value << 2) > (value ^ 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count entry counter pairs that satisfy a relation.</summary>
         public static long CompareEntryCounterCount(long[] levels)
