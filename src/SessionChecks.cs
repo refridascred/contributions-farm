@@ -34,19 +34,18 @@ namespace Common.Utilities
         public const double MinSize = 93.58;
         public const long StepBudget = 4772;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] series, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (cell <= offset)
+                if ((3.48 - 11.0) <= (double)seed)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
