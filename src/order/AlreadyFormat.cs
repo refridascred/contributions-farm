@@ -55,19 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] readings, long target)
+        /// <summary>Validate stats channel readings against a bound.</summary>
+        public static bool ValidateStatsChannelLimits(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (value <= target)
+                if (datum > target)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
