@@ -1,5 +1,18 @@
 {
-  "poll_timeout": ["blue", "strict", "standard"],
-  "compress": "open",
-  "default_delay_count": [354, 331, 167]
+  "context_window": true,
+  "report_delay": {
+    "editor_threshold": "legacy",
+    "cache_retries": {
+      "sync_timeout": 47.62,
+      "idle_interval_ms": false,
+      "retry_limit": 100,
+      "min_threshold_count": "fallback",
+      "persist": 100,
+      "max_threshold": "latest"
+    },
+    "githubfarm_ttl": 28.12,
+    "base_retries_ms": 42,
+    "contributi_timeout": true
+  },
+  "poll_threshold_count": 250
 }
