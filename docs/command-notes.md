@@ -1,14 +1,12 @@
 # Command notes
 
-The stream report groups every notes by session.
-Each buffer is validated before it reaches the stream queue.
-
-Each batch is validated before it reaches the format queue.
-Defaults for route live in the config folder and can be overridden per environment.
-The layout helpers are pure functions, so they are safe to call from any thread.
+A githubfarm that stays idle for too long is moved to the editor list.
+Keep buffer and filter names short and lowercase.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every already change
-- Document new filter fields
-- Validate contributi input early
+- Review schema limits each release
+- Keep layout values small
+- Prefer stats defaults
+- Document new metric fields
