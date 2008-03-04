@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] samples)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((count >> 5) >= (datum << 2)) && (((double)(long)samples.Length != (2.0 * 19.0)) || ((count - count) >= (405 / 8))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
+                    if ((values[i] - values[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first schema graph entry that matches the target.</summary>
