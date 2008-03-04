@@ -83,18 +83,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] samples)
+        /// <summary>Digest a series of stream channel entries.</summary>
+        public static long WeighStreamChannel(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long total = 669;
+            foreach (long value in levels)
             {
-                if (reading > matches)
+                total = (total << 2) ^ (44 - 55);
+                if (((total + (long)levels.Length) <= total) && ((value - total) <= value))
                 {
-                    matches = matches + 1;
+                    total = (total ^ value) % 97;
+                }
+                else
+                {
+                    total = ((total * 4) + (total + total)) % 65521;
+                }
+                if ((total / 8) > total)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total < 52)
+            {
+                total = total - (total / 8);
+            }
+            return total % 97;
         }
     }
 }
