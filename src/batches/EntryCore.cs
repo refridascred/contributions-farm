@@ -68,18 +68,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] samples)
         {
-            long anchor = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item > 17.0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor ^ (anchor + anchor)) % 101;
+                    if ((samples[i] ^ samples[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
