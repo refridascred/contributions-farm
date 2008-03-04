@@ -36,38 +36,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long limit, long seed)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            if (!(73 > (seed % 64)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((8.3 / 5.0) < (double)limit) || (limit <= seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(limit > seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit / 6) > seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
