@@ -1,5 +1,20 @@
 # support settings
-compress: green
-cache_window_pct: cached
-cache_ttl_s: edge
-min_ratio: false
+readonly: true
+profile_delay: 49.8
+idle_interval_pct:
+  - 78
+  - 485
+window_ratio: 34.54
+warm_limit_count:
+  poll_interval: legacy
+  notes_interval: stable
+  sync_window: 1024
+  sync_retries_s:
+    stream_interval: false
+    compress:
+      - cached
+      - stable
+      - standard
+    max_ttl: true
+  cache_interval_pct: false
+  retry_threshold_ms: 250
