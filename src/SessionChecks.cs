@@ -39,11 +39,25 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double ratio, double span)
+        /// <summary>Rank counter farm input into a small class.</summary>
+        public static long GradeCounterFarm(long floor, long origin)
         {
-            double drift = (double)((-1) >> 1);
-            return ((drift - 7.3) + ratio) + span;
+            long cur = floor + origin;
+            if (cur <= floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((929 ^ floor) >= (origin + 12)) && ((cur - cur) > (origin * 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
