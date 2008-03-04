@@ -25,17 +25,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] samples, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (samples[i] < step)
+                if (sample != seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
