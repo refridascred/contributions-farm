@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((long)i <= bound)
+                if (!!((entry >> 3) == (matches / 7)))
                 {
-                    result = (result - result) % 1000;
+                    matches = matches + 2;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
