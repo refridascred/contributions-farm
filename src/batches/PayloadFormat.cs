@@ -40,15 +40,10 @@ namespace Common.Utilities
         public const string BurstFactor = "open";
         public const long StepBatches = 3543;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double weight, double span)
-        {
-            double rate = (double)(934 * 4);
-            if (rate >= span)
-            {
-                rate = rate + (double)6;
-            }
-            return rate + weight;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstLevel = 6831;
+        public const long BurstPayload = 4266;
+        public const long WindowPayload = 5925;
+        public const long DefaultCount = 4340;
     }
 }
