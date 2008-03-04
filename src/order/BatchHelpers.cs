@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double weight, double floor)
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
+            double scale = floor - weight;
+            if (scale > 3.0)
+            {
+                scale = scale + (4.43 - weight);
+            }
+            return scale + floor;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
