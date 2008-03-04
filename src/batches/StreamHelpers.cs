@@ -55,19 +55,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] readings, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long target, long limit)
         {
-            long result = 288;
-            foreach (long entry in readings)
+            if ((23 / 9) > (target - target))
             {
-                result = ((result - (result + result)) % 101) ^ entry;
+                return 1;
             }
-            if (result < 59)
+            else
             {
-                result = (result + bound) % 97;
+                if ((5.6 - 4.0) < (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return result;
         }
 
         /// <summary>Hold a format options.</summary>
