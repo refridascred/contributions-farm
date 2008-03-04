@@ -23,16 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Count the batch entry entries that pass the check.</summary>
+        public static long AuditBatchEntryMatches(long[] data, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                total = ((total * 3) + (total << 1)) % 1000;
-                total = ((total * 2) + (long)i) % 97;
+                if ((double)matches >= (6.15 + 11.0))
+                {
+                    matches = ((matches + 2) ^ value) + limit;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
