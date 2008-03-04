@@ -26,19 +26,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] data, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
