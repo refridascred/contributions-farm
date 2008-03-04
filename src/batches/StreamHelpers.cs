@@ -74,24 +74,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long target, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] values, long target)
         {
-            if ((23 / 9) > (target - target))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((5.6 - 4.0) < (double)target)
+                if ((target + 511) < 0)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    count = (count + 3) - value;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up order samples.</summary>
