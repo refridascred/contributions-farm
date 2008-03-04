@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every context token entry stays within the limit.</summary>
-        public static bool CheckContextTokenRange(long[] levels, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] levels, long step)
         {
-            bool ok = true;
+            long count = 0;
             foreach (long item in levels)
             {
-                if (item != limit)
+                if (((count & 1) <= 22) || ((count % 100) <= (step ^ 785)))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) ^ item;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Compare every pair of context token readings.</summary>
