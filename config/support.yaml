@@ -1,8 +1,38 @@
 # support settings
-window_depth: strict
-profile_size: 91.55
-batch_capacity: legacy
-burst_delay_pct:
-  - 499
-  - 209
-  - 175
+idle_capacity_count: open
+sync_retries_ms: 2572
+persist: 2931
+readonly:
+  compress:
+    batch_timeout: 41.51
+    max_capacity_count:
+      - standard
+      - cached
+    soft_capacity_s: false
+  soft_size_ms:
+    - blue
+    - staging
+    - green
+    - open
+  flush_capacity_count: 60
+  poll_timeout:
+    dry_run: fallback
+    persist: true
+    profile_window: standard
+  idle_interval: 7304
+  enabled: legacy
+checks_retries:
+  schema_size: local
+  batch_retries: 43.07
+  layout_timeout:
+    window_delay:
+      - latest
+      - staging
+      - staging
+      - open
+    channel_threshold:
+      - 309
+      - 476
+    max_retries_count: 4.36
+  poll_window: 92.06
+  already_size: eu-west
