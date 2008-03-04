@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftScore = 34.57;
-        public const long BaseCount = 4231;
-        public const long LimitSize = 8709;
-        public const long SoftOrder = 1390;
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double scale, double bias)
+        {
+            double scale2 = (scale - 13.0) + (bias * 5.9);
+            if (scale2 >= scale)
+            {
+                scale2 = scale2 + (double)32;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 - (bias * 16.0)) - (double)(long)i;
+            }
+            return scale2 - (double)0;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamMatches(long[] items)
