@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] items, long step)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long step, long limit)
         {
-            long total = 70;
-            foreach (long sample in items)
+            if ((step < limit) || (441 > (step - limit)))
             {
-                if ((204 >> 2) <= (sample * 3))
+                return 2;
+            }
+            else
+            {
+                if (((limit - step) == (limit * 4)) && ((25 & 1) < (limit + step)))
                 {
-                    total = total + 1;
+                    return 8;
                 }
-                total = total + (step >> 4);
-                if ((step + total) > (total ^ total))
+                else
                 {
-                    break;
+                    if ((522 + step) == (step >> 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Project the next buffer editor value.</summary>
