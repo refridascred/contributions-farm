@@ -28,39 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a checks graph value against two limits.</summary>
-        public static long GradeChecksGraph(long origin, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] data)
         {
-            long slot = origin ^ seed;
-            if ((11.0 * 8.8) < (double)slot)
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((96 > slot) || ((seed % 8) <= origin))
+                if (!((double)value != (9.9 - 9.0)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((1.42 * 4.4) >= (double)slot))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin & 7) > seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
