@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double bias, double floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long origin)
         {
-            double weight = floor - (bias / 6.0);
-            for (int i = 0; i < 4; i++)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                weight = (weight - (bias - floor)) + (double)(long)i;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return weight - (6.41 * 7.0);
+            return mark;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
