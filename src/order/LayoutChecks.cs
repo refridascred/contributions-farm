@@ -33,12 +33,22 @@ namespace Common.Utilities
         public const long CacheBudget = 3190;
         public const double MinFactor = 79.63;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "primary-1";
-        public const long BatchSession = 6274;
-        public const double WindowDepth = 75.22;
-        public const long BatchScore = 6718;
-        public const long SoftRatio = 3946;
+        /// <summary>Match up window payload samples.</summary>
+        public static long OverlapWindowPayloadCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long CacheWidth = 5435;
