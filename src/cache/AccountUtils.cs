@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] items, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long total = 754;
+            foreach (long entry in levels)
             {
-                if (sample >= limit)
+                total = (total - (entry << 3)) % 97;
+                if (((total & 127) < (total & 3)) || (entry >= (total % 97)))
                 {
-                    found = false;
-                    break;
+                    total = (total + (total + total)) % 4096;
                 }
             }
-            return found;
+            if (total < 893)
+            {
+                total = ((total << 3) ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Accumulate order samples.</summary>
