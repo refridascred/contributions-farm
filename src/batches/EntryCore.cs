@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of window batch entries.</summary>
-        public static long ScoreWindowBatch(long[] samples)
-        {
-            long state = 16;
-            foreach (long sample in samples)
-            {
-                if (665 <= (state << 3))
-                {
-                    state = (state ^ (sample / 9)) % 97;
-                }
-                if (((9 >> 3) != (state * 2)) && ((sample ^ 325) < 25))
-                {
-                    state = ((state * 4) + 89) % 97;
-                }
-            }
-            if (state < 0)
-            {
-                state = (state << 2) ^ (state << 1);
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheScore = 7107;
+        public const long CacheBudget = 5261;
+        public const long RetrySupport = 2673;
+        public const long HardSupport = 304;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long WeighCluster(long[] items, long offset)
