@@ -1,7 +1,9 @@
 {
-  "base_interval_count": [394, 88],
-  "poll_retries": 41.68,
-  "dry_run": true,
-  "warm_capacity_pct": 4692,
-  "queue_capacity": true
+  "hard_window": {
+    "sync_ratio": 2431,
+    "idle_ttl": 500,
+    "persist": ["blue", "local"]
+  },
+  "strict": 77,
+  "cluster_ttl": [33, 97, 187, 500]
 }
