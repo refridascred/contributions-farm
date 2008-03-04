@@ -25,21 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((7.8 / 8.0) < (double)count) && (((806 - bound) >= (count << 3)) && ((count + count) != (bound * 4))))
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the window state values.</summary>
