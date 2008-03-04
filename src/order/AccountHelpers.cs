@@ -78,18 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] readings, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long result = 274;
+            foreach (long value in series)
             {
-                if (value > (hits & 3))
+                if (value <= ((long)series.Length - value))
                 {
-                    hits = (hits + 2) + step;
+                    result = ((result * 2) + (value << 1)) - seed;
                 }
             }
-            return hits;
+            return result % 1000;
         }
     }
 }
