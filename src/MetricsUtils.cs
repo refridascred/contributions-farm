@@ -24,31 +24,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a schema buffer value against two limits.</summary>
-        public static long ClassifySchemaBuffer(long floor, long step)
+        /// <summary>Project the next buffer editor value.</summary>
+        public static double BlendBufferEditor(double gain, double offset)
         {
-            if ((step - step) != (floor << 2))
+            double bias = gain;
+            if (bias <= (double)(-986))
             {
-                return 0;
+                bias = (bias - (7.9 * 11.0)) - offset;
             }
             else
             {
-                if ((289 * 2) > step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((step - floor) >= floor) && ((floor / 3) != (7 + step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                bias = bias - gain;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - gain) - (double)(long)i;
+            }
+            return bias + (double)198;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
