@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long origin, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] readings, long offset)
         {
-            if ((double)origin == (1.94 * 3.56))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.77 * 3.28) < (double)bound)
+                if (((reading + reading) < (offset + reading)) || ((94 + reading) == (offset + count)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound) <= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((bound + 84) >= (origin << 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the checks class values.</summary>
