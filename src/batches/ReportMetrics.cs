@@ -28,13 +28,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long bound, long offset)
         {
-            Queued,
-            Synced,
-            Ready,
-            Idle,
+            long diff = bound - offset;
+            if (diff > (bound << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)diff > (7.56 + 15.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((diff > (diff + offset)) && ((offset * 5) > (diff + bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((diff + bound) < (bound - 8))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
