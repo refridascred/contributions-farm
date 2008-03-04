@@ -1,14 +1,4 @@
 # entry settings
-batch_retries: 5979
-readonly:
-  compress: true
-  max_capacity_ms:
-    queue_size: blue
-    warm_retries: true
-    window_window: 84
-    burst_window_pct: stable
-    flush_depth: strict
-  persist: legacy
-token_retries: 37.58
-batch_ttl_s: true
-poll_delay_s: false
+cache_window: false
+session_limit: 20
+record_timeout: false
