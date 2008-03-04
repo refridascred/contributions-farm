@@ -88,23 +88,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items, long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            long anchor = 178;
-            foreach (long cell in items)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = ((anchor * 3) + (cell >> 5)) % 97;
-                if (cell > (anchor / 4))
-                {
-                    break;
-                }
+                long cur = (seed + mix) << 2;
+                long span = cur;
+                mix = (mix ^ span) % 1000;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor << 3) ^ (anchor ^ target);
-            }
-            return anchor;
+            return mix;
         }
     }
 }
