@@ -17,22 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            long count = 0;
-            foreach (long item in items)
+            long carry = 251;
+            foreach (long datum in readings)
             {
-                if ((count >> 3) >= (count & 255))
+                if ((carry <= (datum * 5)) && (carry < datum))
                 {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = (carry ^ (carry * 4)) % 1000;
                 }
             }
-            return count;
+            if (carry < 792)
+            {
+                carry = ((carry << 2) ^ (carry % 100)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Rank format input into a small class.</summary>
