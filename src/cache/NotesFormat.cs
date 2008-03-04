@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Done,
-            Failed,
-            Stale,
+            Idle,
             Active,
+            New,
+            Closed,
         }
 
         /// <summary>Audit token order readings against a rule.</summary>
