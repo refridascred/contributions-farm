@@ -1,6 +1,17 @@
 {
-  "min_retries_s": 9914,
-  "warm_ratio": 1203,
-  "window_limit": false,
-  "warm_limit": 18
+  "audit": {
+    "batch_capacity": 500,
+    "cluster_retries": {
+      "batch_size_count": [362, 32],
+      "min_interval_pct": ["eu-west", "strict"],
+      "default_delay_s": 9362,
+      "verbose": 30
+    },
+    "sync_threshold_count": 66.7,
+    "tools_delay": 45.55
+  },
+  "default_size": "staging",
+  "default_limit": 500,
+  "flush_timeout_ms": 2,
+  "checks_size": ["blue", "local", "open"]
 }
