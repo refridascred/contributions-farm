@@ -49,20 +49,10 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Blend two stats commits measurements.</summary>
-        public static double AdjustStatsCommits(double rate, double bias)
-        {
-            double scale = bias;
-            if (scale > (bias / 2.0))
-            {
-                scale = (scale - (bias * 8.6)) - rate;
-            }
-            else
-            {
-                scale = scale - (double)27;
-            }
-            return scale - (double)40;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseGraph = "fallback-1";
+        public const double RetryGraph = 48.2;
+        public const long IdleGraph = 6101;
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
