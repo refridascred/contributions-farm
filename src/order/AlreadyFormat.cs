@@ -53,17 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] samples, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long delta = floor ^ offset;
+            if ((double)delta != (3.69 / 3.0))
             {
-                if (samples[i] >= target)
+                return 2;
+            }
+            else
+            {
+                if ((delta * 4) >= (2 & 31))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((1.3 * 16.0) != (double)delta)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((279 / 4) < (delta * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
