@@ -39,21 +39,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Scale a layout filter figure with a bias.</summary>
+        public static double ScaleLayoutFilter(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = bias;
+            if (scale > bias)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (scale - scale) - weight;
             }
-            return seen;
+            return scale - (8.4 - scale);
         }
 
         /// <summary>Adjust a counter reading.</summary>
