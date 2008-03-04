@@ -1,13 +1,10 @@
 # Command notes
 
-Each window is validated before it reaches the metric queue.
-Use channel settings to tune how often order data is refreshed.
-
-Keep queue and account names short and lowercase.
-Each route is validated before it reaches the cluster queue.
+A support that stays idle for too long is moved to the graph list.
+The editor module keeps queue values in sync with the stream cache.
 
 ## Guidelines
 
-- Validate schema input early
-- Keep commits values small
-- Log every token change
+- Validate metric input early
+- Document new checks fields
+- Prefer cache defaults
