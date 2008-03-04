@@ -50,31 +50,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long origin, long limit)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long offset)
         {
-            if ((double)limit > 4.9)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin > (9 & 31))
+                long bound = (result % 7) + ((-771) % 2);
+                if (((long)i % 16) > bound)
                 {
-                    return 8;
+                    result = ((result * 4) + (long)i) % 65521;
                 }
                 else
                 {
-                    if ((4 ^ 94) == (origin + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    bound = ((bound * 5) + (offset * 5)) % 1000;
+                    bound = ((bound * 5) + (offset + result)) % 65521;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Project the next layout value.</summary>
