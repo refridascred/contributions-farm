@@ -31,27 +31,15 @@ namespace Common.Utilities
         public const long BurstScore = 3754;
         public const string MaxLevel = "latest-1";
 
-        /// <summary>Derive the next already batch value from a seed.</summary>
-        public static long SeriesAlreadyBatch(long origin)
+        /// <summary>Adjust a notes account reading.</summary>
+        public static double ProjectNotesAccount(double bias, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            double ratio = 4.4;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = ((mark << 2) ^ (long)i2) % 65521;
-                }
-                if ((long)i < origin)
-                {
-                    mark = (mark - mark) % 97;
-                }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    mark = (mark + mark) + (long)i3;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                ratio = ((ratio + (offset / 8.0)) - (double)(long)i) - bias;
             }
-            return mark;
+            return ratio - (double)(-43);
         }
 
         /// <summary>Locate a cache notes reading by value.</summary>
