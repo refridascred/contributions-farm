@@ -89,18 +89,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] items, long origin)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin <= (reading << 1)) || (((reading / 2) != (reading - 21)) || (((long)items.Length & 15) != (reading - (long)items.Length))))
+                if (samples[i] > origin)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
