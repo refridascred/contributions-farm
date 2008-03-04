@@ -46,17 +46,21 @@ namespace Common.Utilities
         public const long MinGraph = 8723;
         public const long HardGraph = 6667;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long step)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result ^ (result - (long)i)) % 4096;
-                result = ((result << 2) ^ 2) % 255;
-                result = ((result * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
