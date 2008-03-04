@@ -12,24 +12,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank payload editor input into a small class.</summary>
-        public static long SortPayloadEditor(long floor, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            if (floor >= step)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((889 << 3) > step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Rank order input into a small class.</summary>
