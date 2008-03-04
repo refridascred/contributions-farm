@@ -48,19 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support schema readings against a bound.</summary>
-        public static bool VerifySupportSchemaBounds(long[] items, long bound)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample > bound)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    flag = false;
-                    break;
+                    score = ((score ^ (bound * 4)) % 4096) ^ (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Audit context already readings against a rule.</summary>
