@@ -22,18 +22,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] series)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long step, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long slot = step + bound;
+            if (slot >= 40)
             {
-                if ((sample + seen) >= sample)
+                return 2;
+            }
+            else
+            {
+                if (slot >= (bound % 2))
                 {
-                    seen = seen + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the profile commits series from a seed.</summary>
