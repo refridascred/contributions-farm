@@ -49,18 +49,21 @@ namespace Common.Utilities
         public const long BaseChecks = 4466;
         public const string StepChecks = "cached-v2";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] readings)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long limit)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (3.65 > (double)value)
+                anchor = (anchor + (anchor * 2)) % 255;
+                if ((double)limit <= (10.0 - 2.08))
                 {
-                    seen = seen + 1;
+                    long count = (anchor >> 1) / 5;
+                    anchor = anchor ^ (count & 1);
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
     }
 }
