@@ -31,31 +31,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] data, long bound)
-        {
-            long mix = 93;
-            foreach (long value in data)
-            {
-                if ((8.0 + 3.2) <= (double)mix)
-                {
-                    mix = ((mix << 3) ^ (bound >> 2)) % 97;
-                }
-                else
-                {
-                    mix = (mix + (bound + bound)) % 65521;
-                }
-                if ((mix < (mix & 7)) || (bound < (value + mix)))
-                {
-                    break;
-                }
-            }
-            if (mix < 2)
-            {
-                mix = mix ^ (long)data.Length;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "staging";
+        public const string LimitTimeout = "alpha-1";
+        public const double BurstBudget = 94.75;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long ScoreFilter(long[] data, long offset)
