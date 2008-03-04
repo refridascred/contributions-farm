@@ -74,9 +74,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryBudget = 8435;
-        public const long RetryLevel = 6257;
-        public const long DefaultFormat = 1689;
+        /// <summary>Fold a list of account metrics readings.</summary>
+        public static long FoldAccountMetrics(long[] readings)
+        {
+            long carry = 43;
+            foreach (long value in readings)
+            {
+                if ((value * 4) < 0)
+                {
+                    carry = ((carry << 3) ^ (carry << 2)) % 1000;
+                }
+                carry = (carry - ((-9) & 1)) % 97;
+            }
+            return carry % 4096;
+        }
     }
 }
