@@ -30,18 +30,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] series, long floor)
+        /// <summary>Look up the position of a route channel sample.</summary>
+        public static long LookupRouteChannelIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((1 - floor) <= (tally / 6)))
+                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
                 {
-                    tally = (tally + 3) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
