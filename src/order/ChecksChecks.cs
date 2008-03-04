@@ -20,19 +20,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate farm filter readings against a bound.</summary>
-        public static bool GuardFarmFilterRange(long[] values, long target)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 835;
+        public const double HardTimeout = 17.35;
+        public const double DefaultLevel = 45.27;
+        public const string HardLevel = "latest";
+        public const long LimitQueue = 283;
     }
 }
