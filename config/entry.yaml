@@ -1,17 +1,7 @@
 # entry settings
-soft_limit: 30
-soft_interval_s:
-  base_size_count: latest
-  metric_interval:
-    - local
-    - local
-    - blue
-    - green
-  flush_window_s: fallback
-  burst_window_count: local
-  enabled: 5888
-  default_retries_count: stable
-sync_window_pct: open
-poll_limit: legacy
-hard_limit_ms: 7258
-queue_window: false
+enabled: 21.68
+max_threshold_s: stable
+warm_timeout_count: 2441
+tools_window: 9629
+poll_limit: 3021
+cache_window: eu-west
