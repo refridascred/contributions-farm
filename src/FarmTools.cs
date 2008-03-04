@@ -21,24 +21,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long floor, long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            if ((2.65 + 5.2) < (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((step % 7) >= step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
