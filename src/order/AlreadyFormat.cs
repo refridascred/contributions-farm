@@ -26,39 +26,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long step, long step2)
-        {
-            if (!((step + step) >= 60))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step2 >> 1) >= step2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step << 2) <= (step2 ^ step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step >= (step + step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 7632;
+        public const double SoftWidth = 87.33;
+        public const long BaseRatio = 3432;
+        public const long LimitInterval = 2929;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LookupCommitsIndex(long[] series, long origin)
