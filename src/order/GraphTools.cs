@@ -34,11 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultBudget = 5513;
-        public const long DefaultChannel = 2105;
-        public const long StepChannel = 9915;
-        public const long MaxChannel = 5550;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading <= (9.0 + 4.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
