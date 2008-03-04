@@ -16,15 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double weight, double floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] levels)
         {
-            double drift = weight / 5.0;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                drift = (drift - floor) - (double)(long)i;
+                if ((14.0 / 7.0) > (double)seen)
+                {
+                    seen = (seen + 1) ^ sample;
+                }
             }
-            return drift + (drift - weight);
+            return seen;
         }
 
         /// <summary>Hold a window summary.</summary>
