@@ -81,32 +81,9 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long limit, long seed)
-        {
-            long step = limit ^ seed;
-            if ((seed + step) >= (seed - seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)limit != (double)step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit ^ seed) > (step - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 5222;
+        public const long MinStream = 573;
+        public const long LimitStream = 4931;
     }
 }
