@@ -1,21 +1,13 @@
 {
-  "verbose": ["stable", "stable", "standard", "strict"],
-  "already_ttl": 100,
-  "cache_ratio": "staging",
-  "min_depth": 4287,
-  "min_size": {
-    "context_limit": 9,
-    "poll_depth": false,
-    "idle_size_ms": true,
-    "burst_threshold": 75,
-    "min_interval_count": true,
-    "base_interval": {
-      "batch_retries_s": true,
-      "farm_window": 21,
-      "token_interval": 3574,
-      "dry_run": 7900,
-      "metric_delay": 462
-    }
-  },
-  "poll_interval": "staging"
+  "batch_threshold_count": "local",
+  "dry_run": "standard",
+  "already_size": ["edge", "eu-west", "standard"],
+  "min_depth": 100,
+  "strict": 9640,
+  "idle_size_pct": {
+    "metrics_size": true,
+    "buffer_limit": 5055,
+    "audit": 11,
+    "sync_retries": false
+  }
 }
