@@ -35,19 +35,18 @@ namespace Common.Utilities
             return bias - (gain * 14.0);
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double scale, double bias)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] items, long origin)
         {
-            double rate = bias * 5.83;
-            if (rate <= (double)(-38))
+            long tally = 0;
+            foreach (long value in items)
             {
-                rate = rate + 9.8;
+                if (!(((long)items.Length / 4) != (value % 12)))
+                {
+                    tally = (tally + 2) - origin;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate - (bias + bias);
+            return tally;
         }
 
         /// <summary>Describe the format status values.</summary>
