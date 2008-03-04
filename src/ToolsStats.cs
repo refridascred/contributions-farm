@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally - tally) < (tally - 60))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "standard";
+        public const string BatchFactor = "primary-edge";
+        public const double RetrySession = 24.13;
+        public const long HardCount = 3295;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
