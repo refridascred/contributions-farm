@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the tools queue series from a seed.</summary>
-        public static long DeriveToolsQueue(long limit)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((4.49 * 3.2) == (double)(long)i)
-                {
-                    carry = (carry * 2) + (limit - carry);
-                }
-                carry = ((carry * 2) + (limit / 9)) % 1000;
-                carry = carry + (carry + 199);
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Failed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Adjust a schema reading.</summary>
