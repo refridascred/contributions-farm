@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long offset)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = (((acc << 2) ^ offset) % 255) ^ (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
