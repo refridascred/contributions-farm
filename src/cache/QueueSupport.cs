@@ -30,12 +30,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] series, long floor)
         {
-            Ready,
-            Done,
-            New,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((1 - floor) <= (tally / 6)))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
