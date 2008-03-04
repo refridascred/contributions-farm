@@ -20,19 +20,31 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double weight, double span)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long floor, long seed)
         {
-            double mean = weight;
-            if (mean < (mean / 7.0))
+            if (!(seed >= (369 & 15)))
             {
-                mean = (mean + mean) + span;
+                return 3;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean + weight) + (double)(long)i;
+                if (floor < (704 % 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor ^ floor) >= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return mean + mean;
         }
 
         /// <summary>Digest a series of record entries.</summary>
