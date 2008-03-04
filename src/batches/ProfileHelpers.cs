@@ -19,19 +19,38 @@ namespace Common.Utilities
         public const long BaseChannel = 3884;
         public const long CacheChannel = 5437;
 
-        /// <summary>Digest a series of order batches entries.</summary>
-        public static long TotalOrderBatches(long[] samples, long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long seed, long origin)
         {
-            long result = 1;
-            foreach (long reading in samples)
+            if ((5.0 * 2.1) > (12.0 + 9.0))
             {
-                result = (((result << 2) ^ result) % 101) - floor;
-                if ((reading / 5) != (reading + (-39)))
+                return 5;
+            }
+            else
+            {
+                if (72 > (origin & 127))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin ^ origin) > (seed ^ 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed < (72 + 54))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Iterate the command profile series from a seed.</summary>
