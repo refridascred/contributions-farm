@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long SoftSpan = 6907;
         public const long DefaultCluster = 1845;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowQueue = 93.91;
-        public const string CacheFactor = "cached-v2";
-        public const string MaxQueue = "cached-1";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] data, long offset)
+        {
+            long total = 68;
+            foreach (long entry in data)
+            {
+                if ((double)entry < 4.81)
+                {
+                    total = (((total << 2) ^ (total - (-884))) % 97) + offset;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long FoldBatch(long[] data, long step)
