@@ -38,12 +38,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
+            Idle,
+            Dropped,
+            Closed,
+            Synced,
         }
     }
 }
