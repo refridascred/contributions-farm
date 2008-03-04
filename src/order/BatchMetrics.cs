@@ -30,19 +30,15 @@ namespace Common.Utilities
         public const long MaxWidth = 5557;
         public const string CacheToken = "cached-edge";
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double rate, double offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double scale, double bias)
         {
-            double load = rate;
-            if (load > (load * 3.92))
+            double scale2 = bias;
+            for (int i = 0; i < 4; i++)
             {
-                load = load - (offset - offset);
+                scale2 = ((scale2 + (scale2 * 17.0)) + (double)(long)i) + scale;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + offset;
+            return scale2 - bias;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
