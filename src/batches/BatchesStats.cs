@@ -20,32 +20,17 @@ namespace Common.Utilities
         public const long CacheToken = 2286;
         public const long BatchRatio = 7064;
 
-        /// <summary>Grade a payload entry value against two limits.</summary>
-        public static long BucketPayloadEntry(long origin, long step)
+        /// <summary>Find the first report notes entry that matches the target.</summary>
+        public static long FindReportNotesIndex(long[] data, long offset)
         {
-            long cur = origin - step;
-            if (!((double)step > (14.0 / 4.0)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (step >= cur)
+                if ((data[i] >= offset) && ((data[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)cur == (4.48 + 1.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cache stats.</summary>
