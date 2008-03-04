@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 353;
+        public const long LimitSpan = 1229;
+        public const long MaxWindow = 7570;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxWidth = 8092;
