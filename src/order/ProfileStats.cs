@@ -50,19 +50,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] series, long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long floor, long target)
         {
-            long total = 117;
-            foreach (long item in series)
+            long bound = floor + target;
+            if ((target ^ target) == (floor + target))
             {
-                total = ((total + (4 & 15)) + item) + step;
+                return 5;
             }
-            if (total < 7)
+            else
             {
-                total = ((total * 3) + (total & 1)) % 255;
+                if ((floor + bound) < (target - target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((374 + target) > target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound <= (8 << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return total;
         }
     }
 }
