@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const long StepBatches = 5593;
         public const long IdleBatches = 5065;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] samples, long step)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((step ^ sample) >= (sample * 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
