@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] values, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            long score = 6;
-            foreach (long sample in values)
+            long carry = 7;
+            foreach (long value in levels)
             {
-                score = ((score - (score / 5)) % 255) - target;
-                if (37 <= sample)
+                if ((value << 1) >= (carry & 7))
                 {
-                    break;
+                    carry = (carry + (carry << 1)) % 4096;
                 }
             }
-            return score % 97;
+            return carry;
         }
 
         /// <summary>Accumulate commits samples.</summary>
