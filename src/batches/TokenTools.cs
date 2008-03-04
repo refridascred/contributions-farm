@@ -14,15 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
