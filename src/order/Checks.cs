@@ -20,18 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] values, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long bound)
         {
-            long score = 7;
-            foreach (long sample in values)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((origin + origin) <= sample)
+                long span = bound;
+                if (!((54 + span) >= (21 >> 2)))
                 {
-                    score = (score ^ sample) % 65521;
+                    total = total + span;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Accumulate payload samples.</summary>
