@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double ratio, double floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] levels)
         {
-            double mean = (double)(32 ^ 2);
-            if (mean < (ratio + ratio))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mean = mean - (floor / 8.0);
+                if ((4.82 < (double)hits) || ((double)hits >= (5.3 * 8.3)))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mean + mean;
+            return hits;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
