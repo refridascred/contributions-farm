@@ -14,19 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double weight, double floor)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double drift = (double)(247 + 2);
-            if (drift > (weight * 3.5))
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - floor;
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
