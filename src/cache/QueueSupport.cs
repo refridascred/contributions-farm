@@ -19,39 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long floor, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long bound = floor ^ target;
-            if ((bound < (bound + 88)) || (bound <= (bound >> 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor < (88 + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target * 3) == ((-1) >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor >> 2) <= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
