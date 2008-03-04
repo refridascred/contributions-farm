@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of stream notes readings.</summary>
-        public static long WeighStreamNotes(long[] items, long bound)
-        {
-            long total = 8;
-            foreach (long cell in items)
-            {
-                if ((bound >> 5) < (bound * 2))
-                {
-                    total = (((total * 5) + total) % 1000) - cell;
-                }
-                if (total > (total >> 5))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRecord = "legacy-edge";
+        public const long RetryRecord = 5920;
+        public const long BaseRecord = 5261;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadRange(long[] readings, long step)
