@@ -20,13 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long bound, long limit)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
+            if (bound > (limit % 12))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound > (bound - limit)) || ((limit / 8) < (limit & 127)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a stream snapshot.</summary>
