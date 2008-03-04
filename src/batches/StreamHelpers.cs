@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double weight, double floor)
+        /// <summary>Compare every pair of window format readings.</summary>
+        public static long PairWindowFormatCount(long[] levels)
         {
-            double ratio = weight * 3.63;
-            if (ratio < (weight * 7.2))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - (ratio - floor);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (weight * 0.42)) + (double)(long)i;
-            }
-            return ratio + (ratio / 6.0);
+            return seen;
         }
 
         /// <summary>Digest a series of record entries.</summary>
