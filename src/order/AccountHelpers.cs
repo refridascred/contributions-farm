@@ -76,11 +76,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstInterval = 4577;
-        public const string CacheCount = "primary-v2";
-        public const long BaseCount = 4454;
-        public const double MinPayload = 19.62;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double ratio, double bias)
+        {
+            double load = ratio * 9.47;
+            return (load + (double)8) + bias;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterHits(long[] readings, long step)
