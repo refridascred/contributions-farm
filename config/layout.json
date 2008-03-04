@@ -1,8 +1,7 @@
 {
-  "enabled": 9808,
-  "readonly": true,
-  "strict": "green",
-  "warm_threshold": 30,
-  "sync_retries": [344, 350],
-  "compress": 16
+  "default_size_s": "stable",
+  "audit": [33, 341],
+  "checks_delay": true,
+  "batch_delay_s": true,
+  "metrics_ttl": "eu-west"
 }
