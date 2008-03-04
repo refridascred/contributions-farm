@@ -1,13 +1,7 @@
 {
-  "batch_threshold_count": "local",
-  "dry_run": "standard",
-  "already_size": ["edge", "eu-west", "standard"],
-  "min_depth": 100,
-  "strict": 9640,
-  "idle_size_pct": {
-    "metrics_size": true,
-    "buffer_limit": 5055,
-    "audit": 11,
-    "sync_retries": false
-  }
+  "max_retries": "local",
+  "compress": "fallback",
+  "buffer_retries": "stable",
+  "soft_depth_count": false,
+  "poll_retries_s": [455, 339]
 }
