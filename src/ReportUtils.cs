@@ -38,18 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] series)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((10.0 + 2.6) != (double)cell)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Scale a cache window figure with a bias.</summary>
