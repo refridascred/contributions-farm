@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a tools commits pair into a bucket.</summary>
-        public static long RankToolsCommits(long floor, long target)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            if ((target - target) == (floor % 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(target >= (floor / 7)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor >> 2) > (target / 6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
