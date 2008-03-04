@@ -27,12 +27,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long target, long bound)
         {
-            Draft,
-            Done,
-            Retry,
+            if (((bound << 3) <= (bound >> 1)) && ((bound + bound) <= (target + target)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound - bound) > bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
