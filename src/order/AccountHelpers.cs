@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Draft,
-            Idle,
+            Active,
+            Done,
             Dropped,
-            Ready,
             Queued,
+            Closed,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
