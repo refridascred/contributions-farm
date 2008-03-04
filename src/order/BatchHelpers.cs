@@ -27,11 +27,15 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
+            long score = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
