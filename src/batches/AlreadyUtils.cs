@@ -15,12 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Scale a schema contributi figure with a bias.</summary>
+        public static double AdjustSchemaContributi(double gain, double offset)
         {
-            Synced,
-            Pending,
-            Stale,
+            double load = gain;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - (offset - offset);
         }
 
         /// <summary>Fold a list of account batches readings.</summary>
