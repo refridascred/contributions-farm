@@ -48,12 +48,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheScore = 73.3;
-        public const long BaseFactor = 2931;
-        public const long WindowRatio = 8478;
-        public const long HardFactor = 9902;
-        public const string IdleScore = "fallback";
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] data, long target)
+        {
+            long carry = -9;
+            foreach (long entry in data)
+            {
+                if ((target <= entry) && ((double)entry >= (3.9 + 8.7)))
+                {
+                    carry = (carry ^ (target ^ target)) % 97;
+                }
+                else
+                {
+                    carry = (carry * 3) + (entry + entry);
+                }
+                if (!((target / 2) > (target / 4)))
+                {
+                    break;
+                }
+            }
+            if (carry > (-379))
+            {
+                carry = (carry - carry) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long WeighRecord(long[] readings)
