@@ -45,13 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Count the checks support entries that pass the check.</summary>
+        public static long TallyChecksSupportHits(long[] data, long seed)
         {
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches ^ seed) != (item / 7))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
