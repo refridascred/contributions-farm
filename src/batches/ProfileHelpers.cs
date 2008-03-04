@@ -34,11 +34,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 1632;
-        public const long RetryEditor = 3270;
-        public const string HardRatio = "staging-v2";
-        public const string WindowEditor = "strict";
+        /// <summary>Iterate the command profile series from a seed.</summary>
+        public static long SeriesCommandProfile(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiGaps(long[] levels)
