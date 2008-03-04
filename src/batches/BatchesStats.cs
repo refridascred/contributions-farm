@@ -20,18 +20,21 @@ namespace Common.Utilities
         public const long CacheToken = 2286;
         public const long BatchRatio = 7064;
 
-        /// <summary>Measure how many account command samples are out of range.</summary>
-        public static long AuditAccountCommandGaps(long[] series, long limit)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit < seen) || ((6.71 / 8.0) == (double)sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((items[i] + items[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a cache stats.</summary>
