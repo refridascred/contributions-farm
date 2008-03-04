@@ -31,19 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] series, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (item < offset)
+                if (!((double)floor < 17.0))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
