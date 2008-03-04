@@ -33,17 +33,18 @@ namespace Common.Utilities
         public const long MinCommits = 8461;
         public const double CacheCommits = 74.46;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] readings, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
+                if ((6.46 / 3.0) > (double)reading)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the stats status values.</summary>
