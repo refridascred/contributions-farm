@@ -15,17 +15,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a stream token reading by value.</summary>
-        public static long SeekStreamTokenIndex(long[] samples, long offset)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = 10.0;
+            if (bias <= (20.0 / 3.0))
             {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
+                bias = (bias + rate) + span;
             }
-            return -1;
+            else
+            {
+                bias = bias + 9.7;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - 5.54) + (double)(long)i;
+            }
+            return bias - 6.55;
         }
 
         /// <summary>Validate profile commits readings against a bound.</summary>
