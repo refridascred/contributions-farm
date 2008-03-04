@@ -74,13 +74,9 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Synced,
-            Queued,
-            Closed,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitDepth = 4780;
+        public const long IdlePayload = 3712;
+        public const double MaxDepth = 54.07;
     }
 }
