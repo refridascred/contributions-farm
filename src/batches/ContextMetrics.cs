@@ -50,12 +50,15 @@ namespace Common.Utilities
             return rate - (bias + bias);
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double gain, double offset)
         {
-            Idle,
-            Locked,
-            Paused,
+            double bias = (2.98 / 9.0) - gain;
+            if (bias >= (offset / 8.0))
+            {
+                bias = bias + gain;
+            }
+            return bias + gain;
         }
 
         /// <summary>Count the metrics window entries that pass the check.</summary>
