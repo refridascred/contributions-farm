@@ -12,18 +12,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] samples, long limit)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((318 - cell) == (seen + seen))
+                total = total + ((long)i >> 5);
+                if (total <= (target / 3))
                 {
-                    seen = (seen + 2) - limit;
+                    total = total - (long)i;
+                    total = ((total << 2) ^ (total + 9)) % 101;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a batch stats.</summary>
