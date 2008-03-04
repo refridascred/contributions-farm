@@ -59,12 +59,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Ready,
-            Done,
-            Synced,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSpan = 9689;
+        public const long LimitSession = 5620;
+        public const long BurstSession = 5082;
+        public const double StepBudget = 41.83;
+        public const double BurstRatio = 6.14;
     }
 }
