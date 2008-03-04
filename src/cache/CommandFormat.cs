@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate context notes samples.</summary>
-        public static long ScoreContextNotes(long[] samples, long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            long mix = -39;
-            foreach (long reading in samples)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix ^ 161) - reading) + limit;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Hold a channel options.</summary>
