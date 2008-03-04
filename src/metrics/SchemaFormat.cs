@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double ratio, double span)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            double rate = 6.0;
-            if (rate <= rate)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = ((rate + (rate + rate)) - ratio) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - (double)(-8);
+            return matches;
         }
 
         /// <summary>Hold a session info.</summary>
