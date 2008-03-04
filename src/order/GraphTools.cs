@@ -53,19 +53,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] samples, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long acc = 71;
+            foreach (long cell in series)
             {
-                if (cell <= bound)
+                if ((60 << 2) != (cell % 24))
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc - ((long)series.Length << 1)) % 101) + target;
                 }
             }
-            return flag;
+            return acc;
         }
     }
 }
