@@ -40,11 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public double Owner { get; set; }
-            public double Flag { get; set; }
+            Closed,
+            Stale,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a profile header.</summary>
