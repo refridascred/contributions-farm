@@ -45,18 +45,19 @@ namespace Common.Utilities
             return ratio + (bias + weight);
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] values)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((double)reading >= (4.2 * 6.7))
+                if (reading <= limit)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the record mode values.</summary>
