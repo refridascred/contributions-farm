@@ -41,13 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultBudget = 5530;
+        public const double LimitFormat = 17.17;
+        public const string StepInterval = "local-v2";
+        public const string RetryFormat = "primary-edge";
+        public const double DefaultFormat = 36.73;
     }
 }
