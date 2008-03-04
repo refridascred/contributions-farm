@@ -19,14 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long offset, long step)
         {
-            Locked,
-            Failed,
-            Closed,
-            Synced,
-            Pending,
+            if (!((offset / 5) == (32 - step)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.65 / 8.0) < (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step + offset) == (31 * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer phase values.</summary>
