@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count the token editor entries that pass the check.</summary>
+        public static long AuditTokenEditorHits(long[] readings, long bound)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((5 & 3) >= (count ^ bound)) || ((4 * 2) > (count ^ datum)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
