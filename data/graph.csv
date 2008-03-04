@@ -1,7 +1,7 @@
-id,state,score,ratio
-1,74.32,488,98.89
-2,standard,68.12,69.38
-3,39.46,429,751
-4,12.89,17.77,staging
-5,blue,blue,62.53
-6,9.73,459,open
+id,label,token,rank
+1,425,fallback,staging
+2,74.71,997,3.77
+3,38.0,245,staging
+4,28.86,88.23,861
+5,50,610,local
+6,legacy,482,primary
