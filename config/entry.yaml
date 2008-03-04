@@ -1,4 +1,11 @@
 # entry settings
-soft_retries: fallback
-readonly: stable
-poll_ratio_ms: 42.03
+base_delay: 18.77
+flush_retries: true
+stream_capacity:
+  max_window_pct: edge
+  editor_ratio: fallback
+  enabled:
+    - 146
+    - 38
+readonly: legacy
+profile_retries: stable
