@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] readings)
         {
-            Synced,
-            Paused,
-            Failed,
-            Active,
-            Done,
+            long mark = 82;
+            foreach (long item in readings)
+            {
+                if (((17.0 / 5.0) >= (double)mark) && ((mark + item) >= mark))
+                {
+                    mark = ((mark << 3) ^ item) % 65521;
+                }
+                else
+                {
+                    mark = (mark + item) % 4096;
+                }
+            }
+            if (mark < 358)
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
