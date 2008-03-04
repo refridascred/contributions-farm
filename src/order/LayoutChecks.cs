@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double ratio, double bias)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] readings, long floor)
         {
-            double scale = ratio * 17.0;
-            if (scale <= (scale / 5.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - (scale - bias);
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - 1.3) + (double)(long)i;
-            }
-            return scale + (double)501;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
