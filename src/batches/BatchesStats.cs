@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every graph buffer entry stays within the limit.</summary>
-        public static bool VerifyGraphBufferLimits(long[] values, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Paused,
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
