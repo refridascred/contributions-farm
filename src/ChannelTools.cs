@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                long next = carry;
-                carry = (carry + (carry ^ next)) % 255;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstCount = "local-1";
+        public const long MinLayout = 272;
+        public const long DefaultBudget = 5764;
+        public const long DefaultLayout = 494;
+        public const long WindowInterval = 2259;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] items, long target)
