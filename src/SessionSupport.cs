@@ -36,32 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches command value against two limits.</summary>
-        public static long GradeBatchesCommand(long floor, long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] samples, long target)
         {
-            long delta = floor - origin;
-            if ((70 ^ origin) >= (975 - floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor < (delta / 7)) || (4.27 < (double)origin))
+                if (samples[i] < target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - origin) == (floor % 60))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
