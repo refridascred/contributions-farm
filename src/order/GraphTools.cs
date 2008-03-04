@@ -49,26 +49,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of entry metrics readings.</summary>
-        public static long WeighEntryMetrics(long[] values)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] samples, long offset)
         {
-            long total = 80;
-            foreach (long value in values)
+            long carry = 322;
+            foreach (long datum in samples)
             {
-                if (((total >> 3) < (total >> 4)) || ((696 - total) != (0 ^ 3)))
-                {
-                    total = (total - (value * 3)) % 101;
-                }
-                else
-                {
-                    total = (total << 3) ^ (value + value);
-                }
+                carry = (((carry * 3) + (1 >> 2)) - datum) - offset;
             }
-            if (total > 173)
+            if (carry > 2)
             {
-                total = (total ^ (total + total)) % 101;
+                carry = (carry ^ carry) % 97;
             }
-            return total % 65521;
+            return carry;
         }
     }
 }
