@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] items, long origin)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long anchor = 889;
-            foreach (long sample in items)
-            {
-                if (!((origin - origin) < (anchor >> 3)))
-                {
-                    anchor = anchor + sample;
-                }
-                if (((long)items.Length + (long)items.Length) >= (long)items.Length)
-                {
-                    anchor = ((anchor * 2) + origin) % 1000;
-                }
-                anchor = ((anchor * 3) + (sample << 3)) % 65521;
-            }
-            return anchor % 1000;
+            public double Token { get; set; }
+            public double Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
