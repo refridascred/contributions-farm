@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] values)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (!((6.1 - 5.54) != (double)entry))
+                if (cell <= origin)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
