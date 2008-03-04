@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double gain, double bias)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] samples, long target)
         {
-            double mean = bias;
-            if (mean > (gain - gain))
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                mean = mean - (gain / 9.0);
+                if (datum <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - (double)12;
+            return flag;
         }
 
         /// <summary>Digest a series of account entries.</summary>
