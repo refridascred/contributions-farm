@@ -1,7 +1,8 @@
 {
-  "default_size_s": "stable",
-  "audit": [33, 341],
-  "checks_delay": true,
-  "batch_delay_s": true,
-  "metrics_ttl": "eu-west"
+  "contributi_interval": "staging",
+  "default_capacity_ms": ["strict", "strict", "eu-west"],
+  "max_timeout_pct": false,
+  "hard_limit_count": 76.6,
+  "strict": true,
+  "burst_window_s": 34.94
 }
