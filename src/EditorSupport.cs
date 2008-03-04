@@ -63,13 +63,32 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long limit, long seed)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            long step = limit ^ seed;
+            if ((seed + step) >= (seed - seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)limit != (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit ^ seed) > (step - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
