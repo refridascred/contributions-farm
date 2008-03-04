@@ -45,12 +45,13 @@ namespace Common.Utilities
             return ratio + (bias + weight);
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the record mode values.</summary>
