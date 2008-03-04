@@ -37,12 +37,20 @@ namespace Common.Utilities
             return drift - (double)240;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 9586;
-        public const long IdleFactor = 7455;
-        public const long BatchWidth = 8537;
-        public const long IdleRatio = 2126;
-        public const string WindowCommits = "latest-edge";
+        /// <summary>Fold a list of profile command readings.</summary>
+        public static long WeighProfileCommand(long[] samples, long origin)
+        {
+            long total = 3;
+            foreach (long datum in samples)
+            {
+                total = ((total ^ (total - origin)) % 65521) + datum;
+            }
+            if (total < 872)
+            {
+                total = ((total << 2) ^ (424 & 15)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long CombineAccount(long[] values)
