@@ -55,31 +55,26 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long origin, long offset)
+        /// <summary>Fold a list of entry metrics readings.</summary>
+        public static long WeighEntryMetrics(long[] values)
         {
-            if ((origin + offset) >= (origin * 2))
+            long total = 80;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin % 64) != (offset + origin))
+                if (((total >> 3) < (total >> 4)) || ((696 - total) != (0 ^ 3)))
                 {
-                    return 5;
+                    total = (total - (value * 3)) % 101;
                 }
                 else
                 {
-                    if ((offset << 2) >= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = (total << 3) ^ (value + value);
                 }
             }
+            if (total > 173)
+            {
+                total = (total ^ (total + total)) % 101;
+            }
+            return total % 65521;
         }
     }
 }
