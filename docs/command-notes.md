@@ -1,11 +1,13 @@
 # Command notes
 
-When a commits fails, the layout handler retries a few times before giving up.
-Use account settings to tune how often channel data is refreshed.
-When a batch fails, the metrics handler retries a few times before giving up.
+The format report groups every command by contributi.
+A context that stays idle for too long is moved to the graph list.
+
+When a layout fails, the format handler retries a few times before giving up.
+The session report groups every batches by notes.
 
 ## Guidelines
 
-- Log every report change
-- Keep command values small
-- Validate queue input early
+- Log every metric change
+- Prefer record defaults
+- Review window limits each release
