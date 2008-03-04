@@ -56,21 +56,19 @@ namespace Common.Utilities
         public const long MinGraph = 8723;
         public const long HardGraph = 6667;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 8;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (((sum * 3) + ((long)values.Length >> 2)) % 1000) + reading;
             }
-            return tally;
+            if (sum > 54)
+            {
+                sum = ((sum * 4) + (bound << 3)) % 1000;
+            }
+            return sum % 65521;
         }
     }
 }
