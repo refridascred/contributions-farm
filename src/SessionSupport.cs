@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] series, long floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((floor - sample) == (sample + hits)) || ((floor - sample) > ((-1) - sample)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
