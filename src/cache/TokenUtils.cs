@@ -16,15 +16,18 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Measure how many counter entry samples are out of range.</summary>
+        public static long CountCounterEntryMatches(long[] items, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (!(((step * 5) != (count ^ 232)) || ((count % 3) >= step)))
+                {
+                    count = (count + 2) + item;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Adjust a order reading.</summary>
