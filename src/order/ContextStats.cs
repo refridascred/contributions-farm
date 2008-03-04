@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepTimeout = 9402;
-        public const long BaseChannel = 2730;
-        public const string MaxChannel = "standard";
-        public const long MinChannel = 4490;
-        public const long HardChannel = 3973;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Validate tools record readings against a bound.</summary>
         public static bool GuardToolsRecordLimits(long[] items, long origin)
