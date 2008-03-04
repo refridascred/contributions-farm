@@ -62,10 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheEntry = 43.62;
-        public const long HardDepth = 5796;
-        public const double CacheInterval = 17.82;
-        public const double LimitEntry = 13.71;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] samples, long seed)
+        {
+            long acc = 8;
+            foreach (long cell in samples)
+            {
+                acc = ((acc << 2) ^ (cell * 5)) - seed;
+            }
+            return acc;
+        }
     }
 }
