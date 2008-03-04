@@ -1,6 +1,23 @@
 # support settings
-default_timeout_s: open
-warm_threshold_s: local
-hard_ratio_count:
-  - edge
-  - staging
+strict:
+  retry_interval: strict
+  min_window_ms: 1024
+  soft_ratio_pct: 1815
+  soft_retries: local
+batch_timeout:
+  record_capacity: green
+  dry_run: true
+  batch_depth_ms:
+    - stable
+    - green
+  audit:
+    - edge
+    - standard
+    - primary
+    - open
+retry_retries:
+  - 495
+  - 29
+  - 257
+  - 13
+payload_ttl: 3665
