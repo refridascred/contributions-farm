@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] data, long target)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item - 83) != (target - item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
