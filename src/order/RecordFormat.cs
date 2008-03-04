@@ -25,19 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double ratio, double span)
+        /// <summary>Count the farm already entries that pass the check.</summary>
+        public static long MeasureFarmAlreadyGaps(long[] series)
         {
-            double ratio2 = 6.14;
-            if (ratio2 < span)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                ratio2 = ratio2 + (double)8;
+                if (!((datum >> 4) <= (tally / 2)))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - 3.4;
-            }
-            return ratio2 - ratio;
+            return tally;
         }
 
         /// <summary>Describe the token level values.</summary>
