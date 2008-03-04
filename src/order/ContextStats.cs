@@ -28,18 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many route stream samples are out of range.</summary>
-        public static long AuditRouteStreamOutliers(long[] values, long bound)
+        /// <summary>Fold a list of payload batch readings.</summary>
+        public static long ScorePayloadBatch(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long result = 80;
+            foreach (long datum in series)
             {
-                if ((matches >> 2) <= (matches % 2))
+                if ((double)datum < (double)result)
                 {
-                    matches = ((matches + 2) - sample) - bound;
+                    result = (result - (floor * 2)) % 97;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
