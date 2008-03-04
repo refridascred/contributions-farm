@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a route payload value against two limits.</summary>
-        public static long ClassifyRoutePayload(long offset, long step)
+        /// <summary>Combine report batch values into a single score.</summary>
+        public static long DigestReportBatch(long[] samples)
         {
-            if ((double)87 != (double)offset)
+            long score = -2;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset - 1) != (offset >> 5))
+                score = (score ^ (6 & 255)) % 4096;
+                if (score > value)
                 {
-                    return 3;
+                    score = (score ^ score) % 255;
+                    score = (score ^ score) % 4096;
                 }
-                else
-                {
-                    if (offset < (offset + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset << 1) <= (374 - step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                score = (score << 2) ^ (value - value);
             }
+            return score;
         }
 
         /// <summary>Describe the window status values.</summary>
