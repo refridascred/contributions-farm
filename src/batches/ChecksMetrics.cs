@@ -34,19 +34,15 @@ namespace Common.Utilities
             return ratio + (13.0 + bias);
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] items, long step)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double gain, double bias)
         {
-            bool found = true;
-            foreach (long reading in items)
+            double mean = (gain + bias) / 8.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (reading <= step)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean + (double)(long)i;
             }
-            return found;
+            return mean - (5.24 - gain);
         }
 
         /// <summary>Blend two stats commits measurements.</summary>
