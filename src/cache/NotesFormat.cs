@@ -21,11 +21,17 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepLevel = 8349;
-        public const long CacheBudget = 2231;
-        public const double HardTools = 17.92;
-        public const long BurstTools = 7803;
-        public const long BatchTools = 8921;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
