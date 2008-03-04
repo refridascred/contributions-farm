@@ -17,19 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits ^ (long)items.Length) < 75)
-                {
-                    hits = ((hits + 2) + entry) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 93.19;
+        public const long HardSupport = 9176;
+        public const string BaseSize = "cached-1";
+        public const long StepSupport = 7207;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LookupBufferIndex(long[] data, long offset)
