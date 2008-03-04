@@ -1,8 +1,5 @@
 {
-  "soft_delay": "local",
-  "counter_delay": 6483,
-  "verbose": false,
-  "audit": 88.86,
-  "layout_window": 64.61,
-  "default_ttl_s": 61
+  "warm_ttl_s": ["local", "open", "latest"],
+  "persist": 97.94,
+  "retry_depth_s": "staging"
 }
