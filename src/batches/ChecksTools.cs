@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Done,
-            Pending,
-            Active,
+            Ready,
+            Paused,
+            Locked,
         }
 
         /// <summary>Match up route samples.</summary>
