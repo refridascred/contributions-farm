@@ -26,14 +26,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Synced,
-            Active,
-            Ready,
-            Dropped,
-            Queued,
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
