@@ -25,20 +25,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate notes cluster readings against a bound.</summary>
-        public static bool CheckNotesClusterRange(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 9575;
+        public const string DefaultToken = "alpha-1";
+        public const long BurstScore = 3754;
+        public const string MaxLevel = "latest-1";
 
         /// <summary>Derive the next already batch value from a seed.</summary>
         public static long SeriesAlreadyBatch(long origin)
