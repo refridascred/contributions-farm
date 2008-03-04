@@ -1,7 +1,5 @@
 # entry settings
-retry_size: primary
-notes_delay: 21
-flush_depth: strict
-flush_threshold_ms: eu-west
-metric_capacity: fallback
-layout_interval: 100
+queue_interval: false
+idle_retries: 464
+idle_interval: 8051
+batch_ttl: 73
