@@ -53,17 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] readings, long floor)
+        /// <summary>Project the next profile contributi value.</summary>
+        public static double SmoothProfileContributi(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = bias2;
+            return (weight + weight) + bias;
         }
 
         /// <summary>Accumulate queue order samples.</summary>
