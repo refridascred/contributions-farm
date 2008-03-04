@@ -64,23 +64,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double bias, double floor)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            double bias2 = 11.0;
-            if (bias2 <= bias)
-            {
-                bias2 = bias2 + (5.67 + 0.89);
-            }
-            else
-            {
-                bias2 = bias2 - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 + floor;
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
