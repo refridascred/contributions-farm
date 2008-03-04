@@ -23,19 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of graph record entries.</summary>
-        public static long FoldGraphRecord(long[] values)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
-            long mark = 6;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark + (mark >> 5);
-                if (reading > (mark & 127))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark + (mark + reading);
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Blend two record measurements.</summary>
