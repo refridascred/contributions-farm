@@ -14,26 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long total = 234;
-            foreach (long reading in series)
-            {
-                if ((double)total > (double)reading)
-                {
-                    total = (total + (total >> 1)) % 1000;
-                }
-                else
-                {
-                    total = (total << 3) ^ (reading & 1);
-                }
-            }
-            if (total > 5)
-            {
-                total = (total << 3) ^ (total - 154);
-            }
-            return total;
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
