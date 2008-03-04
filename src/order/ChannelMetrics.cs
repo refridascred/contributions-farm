@@ -31,10 +31,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 60.85;
-        public const long IdleRecord = 8730;
-        public const long CacheDepth = 1267;
-        public const long MaxCount = 5203;
+        /// <summary>Validate githubfarm batch readings against a bound.</summary>
+        public static bool VerifyGithubfarmBatchLimits(long[] data, long step)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
