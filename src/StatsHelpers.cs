@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double weight = floor - ratio;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (8.3 + ratio)) - (double)(long)i;
-            }
-            return weight + (double)57;
+            Pending,
+            Locked,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
