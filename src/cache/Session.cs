@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long limit, long target)
+        /// <summary>Check that every cache filter entry stays within the limit.</summary>
+        public static bool VerifyCacheFilterRange(long[] values, long origin)
         {
-            long edge = limit ^ target;
-            if (((double)target > 5.6) && ((target + limit) < (target * 2)))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit - limit) >= (limit & 127)) && (7.3 < (3.15 * 5.2)))
+                if (cell != origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((edge << 3) == (edge / 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit > (4.83 / 3.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
