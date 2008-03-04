@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first batches layout entry that matches the target.</summary>
-        public static long SeekBatchesLayoutIndex(long[] readings, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (readings[i] < bound)
+                if (entry <= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the buffer status values.</summary>
