@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Iterate the account batches series from a seed.</summary>
+        public static long DeriveAccountBatches(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Locate a stream token reading by value.</summary>
