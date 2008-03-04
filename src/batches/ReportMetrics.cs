@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] series, long floor)
         {
-            long total = 97;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((double)total >= 11.0)
+                if (value < floor)
                 {
-                    total = (total - (item - 6)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
