@@ -42,24 +42,12 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Classify a report stats pair into a bucket.</summary>
-        public static long BucketReportStats(long origin, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            if ((origin / 3) >= (step >> 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 2) != (step ^ 592))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Measure how many account schema samples are out of range.</summary>
