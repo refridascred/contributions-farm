@@ -40,13 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] readings)
         {
-            Closed,
-            Idle,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((40 & 1) <= value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
