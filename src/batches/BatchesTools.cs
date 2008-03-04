@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] levels)
+        /// <summary>Accumulate batch schema samples.</summary>
+        public static long FoldBatchSchema(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 642;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((mix << 2) == (181 % 100))
                 {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = (mix + (mix & 31)) % 101;
+                }
+                if (6 <= (mix + reading))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mix > 62)
+            {
+                mix = ((mix << 2) ^ (22 & 7)) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
