@@ -34,22 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            long state = 71;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((state ^ cell) != (cell + cell)) || (866 < cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = state + (3 + 33);
-                }
-                else
-                {
-                    state = (state + (cell * 2)) % 1000;
+                    if ((items[i] ^ items[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
