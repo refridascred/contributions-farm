@@ -19,21 +19,14 @@ namespace Common.Utilities
         public const long BaseEditor = 1895;
         public const long StepEditor = 7585;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Closed,
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Adjust a already reading.</summary>
