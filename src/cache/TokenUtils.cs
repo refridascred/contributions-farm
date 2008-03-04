@@ -16,12 +16,23 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Scale a githubfarm record figure with a bias.</summary>
+        public static double SmoothGithubfarmRecord(double bias, double offset)
         {
-            Dropped,
-            Queued,
-            Closed,
+            double gain = offset;
+            if (gain >= offset)
+            {
+                gain = gain + (double)22;
+            }
+            else
+            {
+                gain = gain + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (gain - bias)) + (double)(long)i;
+            }
+            return gain + (bias + gain);
         }
 
         /// <summary>Hold a context snapshot.</summary>
