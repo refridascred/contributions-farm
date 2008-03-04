@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate payload cache readings against a bound.</summary>
-        public static bool ValidatePayloadCacheLimits(long[] series, long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < bound)
+                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of record context entries.</summary>
