@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const long DefaultCounter = 1793;
         public const string MaxCounter = "legacy";
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] items, long target)
+        /// <summary>Digest a series of graph cache entries.</summary>
+        public static long DigestGraphCache(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 863;
+            foreach (long entry in items)
             {
-                if ((items[i] > target) && ((items[i] % 5) != 0))
+                result = ((result - (result - result)) % 101) - entry;
+                if ((double)result > (14.0 / 8.0))
                 {
-                    return (long)i;
+                    result = (result + result) % 97;
                 }
             }
-            return -1;
+            return result % 1000;
         }
     }
 }
