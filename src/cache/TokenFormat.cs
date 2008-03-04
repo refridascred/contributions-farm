@@ -20,16 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double gain, double offset)
-        {
-            double scale = (16.0 + offset) + (offset - offset);
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale - (8.37 + scale)) - (double)(long)i) + gain;
-            }
-            return scale + (double)80;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleInterval = 96.45;
+        public const string BurstGraph = "staging-edge";
+        public const long HardGraph = 1333;
+        public const long BatchGraph = 3728;
+        public const double SoftSpan = 23.32;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
