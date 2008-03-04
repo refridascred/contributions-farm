@@ -26,26 +26,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series, long seed)
+        /// <summary>Scale a contributi token figure with a bias.</summary>
+        public static double AdjustContributiToken(double scale, double bias)
         {
-            long score = 92;
-            foreach (long item in series)
+            double ratio = bias;
+            if (ratio > 12.0)
             {
-                if ((score - item) <= item)
-                {
-                    score = (score << 2) ^ (score ^ 849);
-                }
-                else
-                {
-                    score = (score * 4) + (item + seed);
-                }
+                ratio = (ratio + (ratio + ratio)) + scale;
             }
-            if (score > 47)
+            else
             {
-                score = (score ^ (score ^ score)) % 97;
+                ratio = ratio - (12.0 / 6.0);
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (6.9 / 3.0);
         }
     }
 }
