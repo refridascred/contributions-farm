@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 9146;
+        public const double WindowBatches = 42.81;
+        public const string SoftScore = "standard-1";
+        public const long RetryRatio = 7385;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long SeriesMetrics(long floor)
