@@ -66,9 +66,21 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheRatio = 4315;
-        public const long BaseDepth = 5709;
-        public const double MinCount = 41.34;
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
