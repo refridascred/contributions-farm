@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in open fallback; do
+    log "checking ${item}"
+done
+
+mode="${1:-green}"
 case "${mode}" in
-    latest)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in stable latest; do
-    log "checking ${item}"
-done
