@@ -27,19 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] samples, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
