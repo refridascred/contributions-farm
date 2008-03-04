@@ -18,17 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first order cluster entry that matches the target.</summary>
-        public static long LookupOrderClusterIndex(long[] series, long origin)
+        /// <summary>Rank account format input into a small class.</summary>
+        public static long GradeAccountFormat(long bound, long bound2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long bound3 = bound - bound2;
+            if ((double)bound < (double)bound2)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if (!((bound3 << 1) < (bound3 - (-3))))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
