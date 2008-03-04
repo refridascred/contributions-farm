@@ -1,12 +1,7 @@
 {
-  "verbose": "strict",
-  "batch_limit_count": {
-    "persist": 60.09,
-    "stats_limit": true,
-    "max_timeout_s": "open",
-    "burst_size": 97,
-    "queue_size": 48,
-    "compress": 52
-  },
-  "sync_ttl_s": 52
+  "githubfarm_limit": ["fallback", "legacy", "edge", "latest"],
+  "strict": 37,
+  "poll_limit_count": 90.09,
+  "audit": 7168,
+  "sync_capacity_count": 100
 }
