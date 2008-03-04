@@ -55,11 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 5208;
-        public const long RetryChecks = 7291;
-        public const double HardChecks = 84.54;
-        public const double DefaultRatio = 9.12;
-        public const string IdleChecks = "strict-1";
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double ratio, double bias)
+        {
+            double drift = ratio;
+            return drift + (bias * 1.0);
+        }
     }
 }
