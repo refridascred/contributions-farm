@@ -1,9 +1,5 @@
 {
-  "hard_window": {
-    "sync_ratio": 2431,
-    "idle_ttl": 500,
-    "persist": ["blue", "local"]
-  },
-  "strict": 77,
-  "cluster_ttl": [33, 97, 187, 500]
+  "idle_interval_s": "primary",
+  "compress": "legacy",
+  "soft_window_s": 57
 }
