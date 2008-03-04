@@ -34,14 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] items, long limit)
         {
-            Ready,
-            Active,
-            Idle,
-            Locked,
-            Draft,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
