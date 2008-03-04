@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Failed,
-            Ready,
-            Synced,
-            Dropped,
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Match up support samples.</summary>
