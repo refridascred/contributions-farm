@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double scale, double floor)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)target == (4.2 + 8.0))
-                {
-                    acc = ((acc << 2) ^ (long)i) % 101;
-                    break;
-                }
-                else
-                {
-                    acc = (acc ^ 64) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            double gain = (floor - floor) - floor;
+            return (gain + gain) + scale;
         }
 
         /// <summary>Look up the position of a cluster order sample.</summary>
