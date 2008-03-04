@@ -16,17 +16,19 @@ namespace Common.Utilities
             return mean - (floor + mean);
         }
 
-        /// <summary>Find the first command farm entry that matches the target.</summary>
-        public static long FindCommandFarmIndex(long[] series, long bound)
+        /// <summary>Accumulate layout editor samples.</summary>
+        public static long FoldLayoutEditor(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 8;
+            foreach (long entry in series)
             {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result ^ (60 + seed)) - entry;
             }
-            return -1;
+            if (result < 8)
+            {
+                result = (result ^ ((-1) & 127)) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Digest a series of session profile entries.</summary>
