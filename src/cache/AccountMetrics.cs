@@ -71,19 +71,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate report editor readings against a bound.</summary>
-        public static bool CheckReportEditorBounds(long[] series, long limit)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double bias = gain * 6.8;
+            if (bias > (floor - bias))
             {
-                if (entry >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias - (double)3;
             }
-            return ready;
+            else
+            {
+                bias = bias + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - 6.39;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
