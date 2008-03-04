@@ -1,8 +1,6 @@
 {
-  "contributi_interval": "staging",
-  "default_capacity_ms": ["strict", "strict", "eu-west"],
-  "max_timeout_pct": false,
-  "hard_limit_count": 76.6,
-  "strict": true,
-  "burst_window_s": 34.94
+  "cache_threshold": 15.45,
+  "warm_delay_pct": "fallback",
+  "payload_size": false,
+  "idle_window_ms": "green"
 }
