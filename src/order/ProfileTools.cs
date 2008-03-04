@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!((double)value < (double)6))
+                if ((sample + seen) >= sample)
                 {
-                    tally = tally + 2;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the profile commits series from a seed.</summary>
