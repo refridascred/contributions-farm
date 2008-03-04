@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] series, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] data, long origin)
         {
-            long acc = 2;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                acc = ((acc + (entry + 228)) % 4096) - offset;
+                if ((entry & 15) < seen)
+                {
+                    seen = (seen + 1) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Find the first batches layout entry that matches the target.</summary>
