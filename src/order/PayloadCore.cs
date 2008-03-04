@@ -42,13 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long bound)
         {
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
