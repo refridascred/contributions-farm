@@ -22,19 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] series, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long step, long offset)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long edge = step ^ offset;
+            if ((double)1 < (double)offset)
             {
-                if (reading >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((0.66 * 8.0) <= (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (edge < 98)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Locate a session reading by value.</summary>
