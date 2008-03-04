@@ -16,17 +16,18 @@ namespace Common.Utilities
             return scale + (floor - 9.0);
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] items, long offset)
+        /// <summary>Combine account notes values into a single score.</summary>
+        public static long WeighAccountNotes(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 31;
+            foreach (long entry in items)
             {
-                if (items[i] <= offset)
+                if (entry < score)
                 {
-                    return (long)i;
+                    score = (score + (575 >> 5)) % 97;
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
