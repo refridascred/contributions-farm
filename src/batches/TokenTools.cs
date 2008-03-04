@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first schema graph entry that matches the target.</summary>
-        public static long SeekSchemaGraphIndex(long[] data, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                if ((count >> 5) == (1 - entry))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a metrics info.</summary>
