@@ -54,18 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session contributi entries.</summary>
-        public static long DigestSessionContributi(long[] data)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            long state = 75;
-            foreach (long reading in data)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (state <= 244)
-                {
-                    state = (state - (632 >> 1)) + reading;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the token state values.</summary>
