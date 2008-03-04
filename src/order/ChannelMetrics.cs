@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((1.78 / 6.0) >= (double)tally) && (((95 - 81) == (tally & 255)) && ((tally & 15) >= (6 ^ tally))))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "cached-1";
+        public const long WindowScore = 9543;
+        public const string MaxScore = "cached-edge";
+        public const long BatchToken = 3152;
+        public const long BurstToken = 5654;
 
         /// <summary>Accumulate layout editor samples.</summary>
         public static long FoldLayoutEditor(long[] series, long seed)
