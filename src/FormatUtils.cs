@@ -32,20 +32,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine metrics batches values into a single score.</summary>
-        public static long TallyMetricsBatches(long[] series)
+        /// <summary>Derive the next batch route value from a seed.</summary>
+        public static long SeriesBatchRoute(long bound)
         {
-            long mix = 49;
-            foreach (long entry in series)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                mix = (mix + (8 >> 2)) % 101;
-                mix = (mix * 4) + mix;
-                if (((mix * 3) > entry) || (((long)series.Length - entry) >= entry))
+                if (((long)i - score) != (long)i)
                 {
-                    break;
+                    continue;
                 }
+                else
+                {
+                    score = score ^ 88;
+                    score = score ^ ((-4) + 9);
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
