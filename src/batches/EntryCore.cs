@@ -18,38 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long step, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] items, long offset)
         {
-            if (!(step < (offset >> 5)))
+            long total = -48;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + offset) >= step)
+                if (!((offset * 4) == (total >> 5)))
                 {
-                    return 4;
+                    total = (total - (offset - total)) % 65521;
+                    continue;
                 }
                 else
                 {
-                    if ((offset - 6) <= (step ^ offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (9.03 < (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = (total - (offset + (long)items.Length)) % 97;
+                }
+                if ((offset < (cell - cell)) || ((double)offset > (3.0 - 1.29)))
+                {
+                    total = total ^ (total - total);
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the checks status values.</summary>
