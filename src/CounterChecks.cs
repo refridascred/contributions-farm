@@ -60,12 +60,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardSpan = 6993;
-        public const long MaxRoute = 687;
-        public const long LimitBudget = 7176;
-        public const double WindowRoute = 64.74;
-        public const long BatchBudget = 1275;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchCount = 4426;
+        public const long CacheBudget = 780;
+        public const string StepFactor = "staging-1";
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
