@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Grade a filter entry value against two limits.</summary>
+        public static long BucketFilterEntry(long step, long origin)
         {
-            long result = 463;
-            foreach (long sample in values)
+            if (step <= (step << 1))
             {
-                result = (((result * 3) + (998 >> 4)) % 4096) - sample;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (!(31 <= (step % 12)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin << 2) < origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
