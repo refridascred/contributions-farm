@@ -1,7 +1,14 @@
 # support settings
-readonly: open
-batch_threshold_count: 403
-base_capacity: eu-west
-counter_capacity:
-  - eu-west
-  - legacy
+verbose:
+  min_threshold_count:
+    - 112
+    - 254
+    - 119
+  soft_ttl: 62.21
+  warm_size: 30
+  enabled: 94.07
+warm_capacity:
+  strict: fallback
+  record_interval: 3392
+  readonly: eu-west
+min_delay_count: cached
