@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many order record samples are out of range.</summary>
-        public static long MeasureOrderRecordMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (count < (long)items.Length)
-                {
-                    count = (count + 1) - datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 8329;
+        public const double MaxFarm = 52.3;
+        public const string BurstFarm = "alpha";
+        public const long IdleCount = 920;
+        public const long IdleWidth = 6845;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowMatches(long[] levels, long limit)
