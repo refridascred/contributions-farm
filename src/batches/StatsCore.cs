@@ -37,10 +37,13 @@ namespace Common.Utilities
             return drift - (double)240;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheInterval = 90.32;
-        public const long SoftRecord = 8242;
-        public const long CacheRecord = 8910;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Retry,
+            Stale,
+            Done,
+        }
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ScaleCluster(double ratio, double bias)
