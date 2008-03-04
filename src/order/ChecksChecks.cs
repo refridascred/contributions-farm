@@ -15,18 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] data, long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.3 + 5.87) > (double)step)
+                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
                 {
-                    tally = (tally + 3) - item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the format counter entries that pass the check.</summary>
