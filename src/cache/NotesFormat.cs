@@ -25,13 +25,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepLevel = 8349;
+        public const long CacheBudget = 2231;
+        public const double HardTools = 17.92;
+        public const long BurstTools = 7803;
+        public const long BatchTools = 8921;
     }
 }
