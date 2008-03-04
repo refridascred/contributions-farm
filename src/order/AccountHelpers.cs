@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] items, long seed)
         {
-            Locked,
-            Synced,
-            Queued,
-            Draft,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((double)value == (0.4 + 20.0))
+                {
+                    matches = (matches + 2) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
