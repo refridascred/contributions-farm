@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] values, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((4.83 + 2.0) != (double)matches)
-                {
-                    matches = ((matches + 1) + cell) + floor;
-                }
-            }
-            return matches;
+            New,
+            Active,
+            Done,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
