@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] readings, long target)
+        /// <summary>Validate stats window readings against a bound.</summary>
+        public static bool CheckStatsWindowRange(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
+                if (reading >= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count the format counter entries that pass the check.</summary>
