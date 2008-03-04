@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const string BatchWindow = "local-v2";
         public const long CacheWindow = 3262;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
