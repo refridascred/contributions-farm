@@ -1,19 +1,7 @@
 {
-  "soft_capacity_count": {
-    "graph_retries": 12.87,
-    "metrics_retries": 51.69,
-    "compress": 85.92,
-    "flush_threshold_ms": {
-      "persist": "strict",
-      "poll_depth_pct": "eu-west",
-      "cluster_retries": "fallback",
-      "default_interval_s": "staging",
-      "flush_size_s": "stable"
-    },
-    "default_limit_count": false,
-    "retry_delay_count": "edge"
-  },
-  "batch_size_ms": "eu-west",
-  "burst_delay_s": 60,
-  "metrics_limit": 57
+  "flush_timeout_ms": "local",
+  "cache_retries": "legacy",
+  "contributi_delay": "blue",
+  "min_ratio_count": 60,
+  "burst_interval_pct": ["eu-west", "cached"]
 }
