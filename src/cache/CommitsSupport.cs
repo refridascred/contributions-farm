@@ -31,11 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double gain, double offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] values)
         {
-            double drift = offset;
-            return (drift + (offset + drift)) + gain;
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (cell >= (7 << 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of format tools readings.</summary>
