@@ -64,12 +64,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
