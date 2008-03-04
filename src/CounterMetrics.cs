@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 49.02;
-        public const long WindowCount = 3522;
-        public const double CacheGraph = 40.44;
-        public const long BatchGraph = 6476;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long GradeEntry(long step, long seed)
