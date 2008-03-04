@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] values, long bound)
         {
-            Retry,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((bound + matches) == (sample + (long)values.Length)) && ((double)sample != (double)matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
