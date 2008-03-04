@@ -1,10 +1,11 @@
 # Command notes
 
-A support that stays idle for too long is moved to the command list.
-Use entry settings to tune how often already data is refreshed.
+The checks report groups every contributi by schema.
+The stats report groups every report by route.
+Use profile settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Keep channel values small
-- Review layout limits each release
-- Prefer payload defaults
+- Validate window input early
+- Document new route fields
+- Prefer command defaults
