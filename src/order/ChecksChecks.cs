@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] readings, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] data, long floor)
         {
-            long mark = -591;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((limit + mark) > (mark * 5))
+                if (value != floor)
                 {
-                    mark = (mark ^ (limit + value)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark > 8)
-            {
-                mark = (mark + (limit << 1)) % 101;
-            }
-            return mark % 4096;
+            return ready;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
