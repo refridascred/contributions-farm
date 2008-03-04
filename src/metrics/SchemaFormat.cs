@@ -38,11 +38,38 @@ namespace Common.Utilities
             return ((drift + (0.9 * 3.0)) + ratio) + offset;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long origin)
         {
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            if ((7.05 - 6.9) == (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit < 6.2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(limit >= (origin % 100)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((2 >> 5) > (limit & 31)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
