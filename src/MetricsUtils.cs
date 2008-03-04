@@ -32,23 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer editor value.</summary>
-        public static double BlendBufferEditor(double gain, double offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] values)
         {
-            double bias = gain;
-            if (bias <= (double)(-986))
+            long acc = 56;
+            foreach (long value in values)
             {
-                bias = (bias - (7.9 * 11.0)) - offset;
+                acc = (acc * 3) + (value << 3);
             }
-            else
-            {
-                bias = bias - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - gain) - (double)(long)i;
-            }
-            return bias + (double)198;
+            return acc;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
