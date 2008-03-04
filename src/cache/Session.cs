@@ -25,22 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] levels)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((4.82 < (double)hits) || ((double)hits >= (5.3 * 8.3)))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
