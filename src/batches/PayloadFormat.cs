@@ -22,21 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (8.1 - ratio) + (double)482;
+            if (rate < (span * 4.71))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate - (double)5;
             }
-            return tally;
+            return rate + (rate * 9.9);
         }
 
         /// <summary>Describe the metric kind values.</summary>
