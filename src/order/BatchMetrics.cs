@@ -32,11 +32,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 501;
-        public const long CacheBatches = 4082;
-        public const string CacheWidth = "fallback-v2";
-        public const long MaxDepth = 9672;
+        /// <summary>Classify a commits githubfarm pair into a bucket.</summary>
+        public static long BucketCommitsGithubfarm(long offset, long origin)
+        {
+            if ((offset << 2) == (offset - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)25 <= (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Match up contributi commits samples.</summary>
         public static long PairContributiCommitsCount(long[] readings)
