@@ -1,7 +1,14 @@
 {
-  "max_retries": "local",
-  "compress": "fallback",
-  "buffer_retries": "stable",
-  "soft_depth_count": false,
-  "poll_retries_s": [455, 339]
+  "readonly": "eu-west",
+  "poll_capacity_pct": ["primary", "strict"],
+  "warm_capacity": 49.93,
+  "warm_size_pct": "standard",
+  "stats_window": {
+    "hard_limit_s": 6568,
+    "record_delay": "primary",
+    "context_limit": false,
+    "idle_retries": ["blue", "cached"],
+    "sync_ratio_pct": true
+  },
+  "farm_threshold": "latest"
 }
