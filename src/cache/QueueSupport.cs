@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double WindowFilter = 86.08;
         public const long BurstDepth = 2314;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
             public long Limit { get; set; }
-            public long Offset { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
