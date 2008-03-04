@@ -53,23 +53,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double gain, double floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] samples, long target)
         {
-            double bias = gain * 6.8;
-            if (bias > (floor - bias))
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                bias = bias - (double)3;
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - 6.39;
+            return ready;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
