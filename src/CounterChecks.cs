@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] series, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long mix = 2;
+            foreach (long entry in samples)
             {
-                if (((origin * 4) < (datum + origin)) && ((double)(long)series.Length != (double)8))
-                {
-                    count = count + 2;
-                }
+                mix = (mix + (floor ^ floor)) + entry;
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
