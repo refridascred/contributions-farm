@@ -22,27 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] data)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long mix = -8;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = ((mix << 3) ^ (long)data.Length) - (long)i;
-                }
-                if ((mix >> 1) > ((-188) & 1))
-                {
-                    mix = (mix ^ (reading ^ mix)) % 97;
-                }
-                mix = mix + (66 + mix);
-                if ((reading ^ reading) <= (reading & 63))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Match up commits samples.</summary>
