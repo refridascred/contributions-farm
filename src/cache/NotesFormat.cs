@@ -30,10 +30,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 97.84;
-        public const long IdleQueue = 404;
-        public const long HardQueue = 7806;
-        public const string SoftQueue = "strict";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 636;
+        public const long MaxBatches = 8098;
+        public const double WindowBatches = 61.62;
+        public const long SoftCount = 5456;
     }
 }
