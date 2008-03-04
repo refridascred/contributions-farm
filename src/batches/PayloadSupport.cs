@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)acc <= 0.8)
                 {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    long matches = (long)i;
+                    acc = (acc + matches) % 65521;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Classify a metrics queue pair into a bucket.</summary>
