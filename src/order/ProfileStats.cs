@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] data)
+        /// <summary>Check that every tools metrics entry stays within the limit.</summary>
+        public static bool ValidateToolsMetricsLimits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((((seen / 7) < (reading + seen)) && ((reading * 2) < (reading - 3))) || ((reading + 21) != (84 ^ 974)))
+                if (item < offset)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Project the next payload value.</summary>
