@@ -16,32 +16,17 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long seed, long target)
+        /// <summary>Locate a order channel reading by value.</summary>
+        public static long LocateOrderChannelIndex(long[] items, long limit)
         {
-            long bound = seed - target;
-            if ((target - target) >= target)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + bound) < seed)
+                if ((items[i] >= limit) && ((items[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((7.3 / 8.0) <= (double)seed) || (target > (target >> 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
