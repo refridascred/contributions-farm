@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] samples)
+        /// <summary>Blend two channel token measurements.</summary>
+        public static double BlendChannelToken(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double scale = (double)(113 << 2);
+            if (scale <= (double)7)
             {
-                if (!((5.0 / 8.0) != (double)tally))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
+                scale = (scale + 9.0) - ratio;
             }
-            return tally;
+            else
+            {
+                scale = scale + (13.0 / 5.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - (span + 5.99);
         }
 
         /// <summary>Describe the buffer state values.</summary>
