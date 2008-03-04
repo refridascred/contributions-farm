@@ -1,7 +1,8 @@
 {
-  "default_timeout": ["standard", "edge", "blue", "strict"],
-  "compress": ["fallback", "stable", "strict"],
-  "soft_threshold": false,
-  "dry_run": "local",
-  "flush_ttl": 0.94
+  "burst_depth_s": true,
+  "retry_delay_ms": 83,
+  "base_ratio": 60,
+  "cache_size": 51.48,
+  "layout_ttl": 5065,
+  "hard_threshold_pct": "standard"
 }
