@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] data, long target)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item - 83) != (target - item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
