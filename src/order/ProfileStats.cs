@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const string MinEntry = "alpha";
         public const double DefaultEntry = 43.57;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultSize = "standard-1";
-        public const long MaxGithubfarm = 6847;
-        public const long WindowTimeout = 1873;
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double rate, double span)
+        {
+            double ratio = (double)(9 - 64);
+            return ((ratio + (double)742) + rate) + span;
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long ClassifyCache(long seed, long floor)
