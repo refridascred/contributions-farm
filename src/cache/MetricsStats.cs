@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Synced,
-            Done,
-            Ready,
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
