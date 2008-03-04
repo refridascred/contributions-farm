@@ -39,13 +39,34 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Accumulate session cache samples.</summary>
+        public static long DigestSessionCache(long[] readings)
         {
-            Draft,
-            Pending,
-            Paused,
-            Active,
+            long result = 40;
+            foreach (long sample in readings)
+            {
+                if ((sample + 7) == (result / 5))
+                {
+                    result = ((result * 2) + (92 << 2)) % 255;
+                    break;
+                }
+                if (((sample % 97) > ((-90) - 175)) || ((5.56 + 15.0) >= (double)sample))
+                {
+                    result = (result + (sample - result)) % 255;
+                    result = result + (sample & 63);
+                    break;
+                }
+                else
+                {
+                    result = ((result * 3) + (result & 15)) % 4096;
+                }
+                result = (result << 2) ^ (result + 893);
+            }
+            if (result > 3)
+            {
+                result = ((result << 2) ^ (result & 15)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
