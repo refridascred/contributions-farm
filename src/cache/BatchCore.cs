@@ -19,20 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context stream values into a single score.</summary>
-        public static long TotalContextStream(long[] items, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] samples)
         {
-            long mix = 1;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mix = (((mix - (mix >> 4)) % 255) + entry) + offset;
-                mix = (mix ^ 75) % 4096;
+                if ((entry ^ entry) != (entry & 255))
+                {
+                    count = count + 3;
+                }
             }
-            if (mix < 8)
-            {
-                mix = ((mix << 3) ^ (87 / 9)) % 255;
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
