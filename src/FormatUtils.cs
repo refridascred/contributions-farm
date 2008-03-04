@@ -32,24 +32,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next batch route value from a seed.</summary>
-        public static long SeriesBatchRoute(long bound)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((long)i - score) != (long)i)
-                {
-                    continue;
-                }
-                else
-                {
-                    score = score ^ 88;
-                    score = score ^ ((-4) + 9);
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
