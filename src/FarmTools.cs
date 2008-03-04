@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum < step)
                 {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Rank already format input into a small class.</summary>
