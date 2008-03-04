@@ -36,14 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Validate entry profile readings against a bound.</summary>
+        public static bool VerifyEntryProfileBounds(long[] samples, long floor)
         {
-            Stale,
-            Retry,
-            Pending,
-            Synced,
-            Ready,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a notes stats.</summary>
