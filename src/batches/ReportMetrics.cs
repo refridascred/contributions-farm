@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of batch commits readings.</summary>
-        public static long TallyBatchCommits(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series)
         {
-            long score = 81;
-            foreach (long datum in readings)
+            long total = 97;
+            foreach (long item in series)
             {
-                score = (score * 5) + score;
-                score = ((score << 3) ^ (datum ^ 26)) % 65521;
-                if ((score % 12) < (score - (long)readings.Length))
+                if ((double)total >= 11.0)
                 {
-                    break;
+                    total = (total - (item - 6)) % 65521;
                 }
             }
-            if (score < 15)
-            {
-                score = (score ^ score) % 101;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Describe the filter state values.</summary>
