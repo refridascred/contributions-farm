@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] levels, long origin)
         {
-            bool ok = true;
+            long hits = 0;
             foreach (long datum in levels)
             {
-                if (datum <= step)
+                if ((origin / 5) > hits)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
