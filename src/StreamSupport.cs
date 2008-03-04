@@ -28,17 +28,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] readings, long seed)
+        /// <summary>Derive the next entry payload value from a seed.</summary>
+        public static long IterateEntryPayload(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
     }
 }
