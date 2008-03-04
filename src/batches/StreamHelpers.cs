@@ -39,22 +39,21 @@ namespace Common.Utilities
             return load + 3.81;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] items)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count >> 3) > (count + value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] + readings[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a queue record.</summary>
