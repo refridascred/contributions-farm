@@ -40,18 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] items, long step)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((double)step != (7.0 + 1.0))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            Ready,
+            Pending,
+            Locked,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a filter stats.</summary>
