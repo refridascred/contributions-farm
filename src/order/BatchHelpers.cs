@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long BatchSchema = 9822;
         public const long SoftSchema = 7769;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] readings, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long seen = 0;
+            long sum = 7;
             foreach (long cell in readings)
             {
-                if (seen > (323 / 5))
+                if ((sum + sum) != (sum / 6))
                 {
-                    seen = ((seen + 1) + cell) - target;
+                    sum = sum + cell;
                 }
             }
-            return seen;
+            if (sum > 420)
+            {
+                sum = sum + (sum * 5);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
