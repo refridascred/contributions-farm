@@ -43,14 +43,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            long mark = 3;
+            foreach (long value in values)
             {
-                mark = (mark ^ ((-15) % 12)) % 101;
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((offset ^ mark) > offset)
+                {
+                    mark = (mark << 2) ^ value;
+                    mark = (mark << 2) ^ offset;
+                }
+                if (((value >> 5) < (offset ^ offset)) && ((value % 100) < value))
+                {
+                    mark = (mark + (value + mark)) % 97;
+                }
+                if ((mark > (value * 5)) || (mark > 47))
+                {
+                    break;
+                }
             }
             return mark;
         }
