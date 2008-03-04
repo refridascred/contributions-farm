@@ -29,25 +29,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a context counter value against two limits.</summary>
-        public static long SortContextCounter(long origin, long limit)
+        /// <summary>Fold a list of account batches readings.</summary>
+        public static long TotalAccountBatches(long[] values, long step)
         {
-            long gap = origin + limit;
-            if (!(gap >= limit))
+            long score = 28;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - origin) <= (origin >> 5))
+                if (step >= score)
                 {
-                    return 0;
+                    score = score ^ (348 * 2);
                 }
-                else
+                if (datum < step)
                 {
-                    return 6;
+                    break;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
