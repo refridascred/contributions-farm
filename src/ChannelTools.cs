@@ -26,26 +26,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] values, long limit)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long total = 0;
-            foreach (long item in values)
-            {
-                if ((4 ^ 2) == (total >> 2))
-                {
-                    total = ((total * 4) + (total >> 2)) - limit;
-                }
-                else
-                {
-                    total = total - (item ^ (long)values.Length);
-                }
-            }
-            if (total < 1)
-            {
-                total = (total - (total * 5)) % 1000;
-            }
-            return total;
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
