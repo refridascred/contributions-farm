@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] levels)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count >= (count - (long)levels.Length)) || ((cell + cell) < count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a account token pair into a bucket.</summary>
