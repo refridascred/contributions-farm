@@ -24,31 +24,12 @@ namespace Common.Utilities
         public const long StepWindow = 3736;
         public const string SoftSpan = "standard";
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long seed, long origin)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            if (!(origin <= seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin <= (890 + origin)) && ((8.0 * 1.0) > (4.0 * 8.92)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - origin) != (907 << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Rank account cluster input into a small class.</summary>
