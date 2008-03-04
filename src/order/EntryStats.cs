@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] items, long seed)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double weight, double span)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double drift = weight;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell < seed)
-                {
-                    matches = matches + 1;
-                }
+                drift = ((drift - (double)3) + (double)(long)i) - span;
             }
-            return matches;
+            return drift - drift;
         }
 
         /// <summary>Match up support samples.</summary>
