@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Measure how many entry metrics samples are out of range.</summary>
+        public static long MeasureEntryMetricsHits(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                anchor = anchor - (anchor / 9);
-                long step = (origin + origin) << 1;
-                if (step < (origin >> 3))
+                if ((double)matches == (double)889)
                 {
-                    step = (step * 3) + 862;
+                    matches = (matches + 1) + cell;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the checks class values.</summary>
