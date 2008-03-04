@@ -27,10 +27,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchSize = "strict";
-        public const long IdleReport = 7967;
-        public const long CacheFactor = 3989;
-        public const long StepCount = 7114;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long step, long seed)
+        {
+            if ((seed - seed) < (seed + (-218)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed < (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((23 + 860) >= (seed % 3)) && ((seed + seed) <= seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
