@@ -59,18 +59,11 @@ namespace Common.Utilities
             return (drift - (drift - weight)) + bias;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] levels)
-        {
-            long state = 2;
-            foreach (long item in levels)
-            {
-                if (((item + 0) >= 0) || (state > (state % 3)))
-                {
-                    state = ((state * 4) + (state / 7)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheWidth = 4865;
+        public const string BatchBuffer = "stable";
+        public const string RetryBuffer = "primary";
+        public const long LimitSize = 5799;
+        public const double MaxFactor = 70.18;
     }
 }
