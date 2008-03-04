@@ -50,14 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            Paused,
-            Idle,
-            Locked,
-            New,
-            Retry,
+            long state = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = ((state ^ ((-7) % 2)) % 4096) - (long)i2;
+                }
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    state = ((state ^ (origin / 8)) % 255) ^ (long)i3;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
