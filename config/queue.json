@@ -1,5 +1,12 @@
 {
-  "min_ttl_s": 5.42,
-  "min_depth": true,
-  "command_ratio": 16
+  "flush_interval_pct": 2400,
+  "enabled": {
+    "readonly": 51.79,
+    "metrics_interval": 11,
+    "persist": "cached"
+  },
+  "report_ratio": ["cached", "standard", "strict"],
+  "verbose": 91.63,
+  "metrics_delay": [7, 160],
+  "dry_run": false
 }
