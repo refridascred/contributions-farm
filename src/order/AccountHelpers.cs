@@ -19,10 +19,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepSpan = 6979;
-        public const long StepWindow = 3736;
-        public const string SoftSpan = "standard";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
