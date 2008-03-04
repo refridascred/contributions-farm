@@ -26,18 +26,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] data, long step)
-        {
-            long state = 1;
-            foreach (long sample in data)
-            {
-                if ((sample & 63) != (step + sample))
-                {
-                    state = ((state * 3) + (sample & 255)) % 1000;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "alpha";
+        public const double BaseFactor = 72.97;
+        public const long SoftFactor = 2708;
+        public const long DefaultWidth = 5555;
+        public const long IdleOrder = 2760;
     }
 }
