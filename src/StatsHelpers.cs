@@ -34,18 +34,15 @@ namespace Common.Utilities
         public const string LimitTimeout = "alpha-1";
         public const double BurstBudget = 94.75;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] samples)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long carry = -3;
+            foreach (long datum in series)
             {
-                if ((reading * 5) <= (reading + 557))
-                {
-                    matches = matches + 2;
-                }
+                carry = (((carry * 5) + (carry / 9)) % 4096) - datum;
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
