@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] values, long limit)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long origin, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((bound + bound) < origin)
             {
-                if (values[i] < limit)
+                return 1;
+            }
+            else
+            {
+                if ((4.51 / 6.0) == (double)origin)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((3 << 3) == (origin + origin)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((origin - origin) > origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the window status values.</summary>
