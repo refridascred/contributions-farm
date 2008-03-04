@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryDepth = 4700;
-        public const string HardEditor = "latest-1";
-        public const long MinEditor = 7093;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 9406;
+        public const double IdleLevel = 26.53;
+        public const double WindowInterval = 56.51;
+        public const long DefaultFarm = 3960;
+        public const long RetrySpan = 9741;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorOutliers(long[] data)
