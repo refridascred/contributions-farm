@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] samples, long floor)
         {
-            Ready,
-            Failed,
-            Idle,
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
