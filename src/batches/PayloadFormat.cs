@@ -37,23 +37,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] data)
-        {
-            long carry = 10;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = (((carry ^ ((long)data.Length & 1)) % 255) - (long)i) ^ item;
-                }
-                carry = ((carry << 2) ^ (carry - carry)) % 1000;
-            }
-            if (carry > 21)
-            {
-                carry = ((carry * 5) + (carry - carry)) % 4096;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 7632;
+        public const double WindowCommand = 63.48;
+        public const string SoftCount = "open-v2";
     }
 }
