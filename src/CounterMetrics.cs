@@ -48,15 +48,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next payload queue value from a seed.</summary>
-        public static long StepPayloadQueue(long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double gain, double span)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            double load = span;
+            for (int i = 0; i < 3; i++)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                load = (load + span) + (double)(long)i;
             }
-            return mix;
+            return load - gain;
         }
 
         /// <summary>Describe the payload mode values.</summary>
