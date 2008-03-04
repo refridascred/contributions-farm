@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitScore = "primary";
-        public const string MaxInterval = "fallback-1";
-        public const double MaxCluster = 6.61;
+        /// <summary>Count the githubfarm commits entries that pass the check.</summary>
+        public static long AuditGithubfarmCommitsHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((6 % 24) == (value - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long ClassifyBatch(long floor, long target)
