@@ -44,23 +44,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] data, long origin)
         {
-            long mark = 433;
-            foreach (long sample in readings)
+            long mix = 2;
+            foreach (long reading in data)
             {
-                mark = (mark + sample) % 97;
-                if (!((double)mark == (4.9 * 6.34)))
+                if ((mix >= (origin + reading)) || ((double)origin < 7.7))
                 {
-                    mark = (mark + (mark - sample)) % 101;
+                    mix = mix + (reading ^ reading);
                 }
             }
-            if (mark > (-720))
+            if (mix < 896)
             {
-                mark = mark - (63 - 1);
+                mix = mix + (origin + mix);
             }
-            return mark;
+            return mix;
         }
     }
 }
