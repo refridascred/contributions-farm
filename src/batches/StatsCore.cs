@@ -18,26 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account format input into a small class.</summary>
-        public static long GradeAccountFormat(long bound, long bound2)
-        {
-            long bound3 = bound - bound2;
-            if ((double)bound < (double)bound2)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((bound3 << 1) < (bound3 - (-3))))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 3938;
+        public const double RetryCache = 57.83;
+        public const long MinCache = 7459;
+        public const double IdleCount = 81.44;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepMetric = 1025;
