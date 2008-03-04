@@ -14,15 +14,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double gain, double floor)
         {
-            long acc = 18;
-            foreach (long entry in items)
+            double scale = floor;
+            if (scale <= (gain * 5.91))
             {
-                acc = (acc - (acc - (long)items.Length)) ^ entry;
+                scale = scale + (gain - scale);
             }
-            return acc % 97;
+            else
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale / 5.0)) + (double)(long)i;
+            }
+            return scale - (gain / 6.0);
         }
 
         /// <summary>Digest a series of queue entries.</summary>
