@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of window route readings.</summary>
-        public static long ScoreWindowRoute(long[] values, long floor)
-        {
-            long result = 465;
-            foreach (long datum in values)
-            {
-                if ((double)result == (double)187)
-                {
-                    result = (result + (floor + floor)) % 1000;
-                }
-                else
-                {
-                    result = result + (datum - datum);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftRatio = 7864;
+        public const long MinSize = 8173;
+        public const long BaseBudget = 7849;
+        public const double BaseProfile = 35.23;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsMatches(long[] levels, long offset)
