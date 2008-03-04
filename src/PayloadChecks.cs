@@ -65,11 +65,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            Retry,
+            Done,
+            Paused,
         }
 
         /// <summary>Check that every schema editor entry stays within the limit.</summary>
