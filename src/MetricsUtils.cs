@@ -52,38 +52,18 @@ namespace Common.Utilities
         public const string StepInterval = "strict";
         public const string BatchFarm = "standard-1";
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long offset, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] levels)
         {
-            if (offset < (origin % 5))
+            long sum = 895;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin > 11.0)
+                if ((item + sum) < (258 + item))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset ^ offset) >= (offset / 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((9.0 * 4.0) >= (double)origin) || ((origin ^ offset) <= (origin + origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = (sum - (sum << 1)) % 1000;
                 }
             }
+            return sum;
         }
     }
 }
