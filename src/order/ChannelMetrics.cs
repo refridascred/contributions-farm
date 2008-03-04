@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of graph farm entries.</summary>
-        public static long TotalGraphFarm(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] samples, long origin)
         {
-            long score = 1;
-            foreach (long item in samples)
+            long acc = 124;
+            foreach (long datum in samples)
             {
-                if (score < (score + 3))
-                {
-                    score = ((score - (48 & 1)) % 101) + item;
-                }
+                acc = ((acc + acc) + datum) + origin;
             }
-            if (score < 1)
-            {
-                score = ((score * 5) + (286 ^ score)) % 97;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the format kind values.</summary>
