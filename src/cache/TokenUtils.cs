@@ -33,12 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] items)
         {
-            Stale,
-            Locked,
-            Retry,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((seen ^ seen) > (reading - reading))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
