@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowSpan = 2302;
-        public const long BurstAccount = 5617;
-        public const long BatchAccount = 8632;
-        public const string BurstFactor = "strict";
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long RankRecord(long bound, long offset)
