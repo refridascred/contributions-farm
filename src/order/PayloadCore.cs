@@ -16,19 +16,26 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double weight, double offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] values, long offset)
         {
-            double weight2 = weight;
-            if (weight2 < (3.6 + offset))
+            long state = -97;
+            foreach (long reading in values)
             {
-                weight2 = weight2 - (16.0 + weight2);
+                if (!(16.0 >= (double)reading))
+                {
+                    state = ((state << 2) ^ (offset + (long)values.Length)) % 97;
+                }
+                else
+                {
+                    state = (state - state) % 255;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (state < 1)
             {
-                weight2 = (weight2 + weight2) - (double)(long)i;
+                state = (state + (8 ^ offset)) % 4096;
             }
-            return weight2 - weight2;
+            return state % 4096;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
