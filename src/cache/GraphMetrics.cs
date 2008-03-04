@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long offset, long offset2)
+        /// <summary>Combine token graph values into a single score.</summary>
+        public static long TotalTokenGraph(long[] samples)
         {
-            long step = offset ^ offset2;
-            if ((1.8 - 7.83) < (double)offset)
+            long acc = 7;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step <= offset2) || ((double)offset == (6.1 - 9.11)))
+                if (((double)(long)samples.Length < (3.2 - 3.0)) || ((0.31 * 7.9) != (double)acc))
                 {
-                    return 1;
+                    break;
                 }
-                else
+                acc = (acc + (acc + acc)) % 255;
+                if (!((acc - 87) < (value ^ acc)))
                 {
-                    if (offset >= (step & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = (acc ^ acc) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
