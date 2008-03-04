@@ -48,23 +48,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double gain, double offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            double ratio = (double)(7 / 8);
-            if (ratio < (double)44)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = ratio + (double)5;
+                score = (score * 4) + ((-724) + score);
+                if (!(bound < ((long)i - bound)))
+                {
+                    score = ((score << 3) ^ ((-39) >> 4)) % 1000;
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio + (offset + gain);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - gain;
+            return score;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
