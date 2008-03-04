@@ -57,11 +57,18 @@ namespace Common.Utilities
         public const long CacheSpan = 5496;
         public const string SoftCount = "local";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultSpan = "latest-v2";
-        public const long IdleBatches = 4552;
-        public const long CacheBatches = 7116;
-        public const long SoftWidth = 7899;
-        public const long LimitBatches = 5076;
+        /// <summary>Count the metrics window entries that pass the check.</summary>
+        public static long AuditMetricsWindowMatches(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (!(((offset % 5) <= (reading + 538)) || ((reading + offset) >= reading)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
