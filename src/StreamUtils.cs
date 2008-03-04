@@ -14,14 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Failed,
-            Stale,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 509;
+        public const long SoftChecks = 1946;
+        public const long DefaultChecks = 7785;
+        public const long RetryChecks = 729;
+        public const long BaseInterval = 8769;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportRange(long[] series, long target)
