@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const long MaxScore = 8014;
         public const long HardSupport = 6182;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Validate notes cluster readings against a bound.</summary>
+        public static bool CheckNotesClusterRange(long[] values, long limit)
         {
-            Active,
-            Ready,
-            Done,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up filter samples.</summary>
