@@ -1,9 +1,4 @@
 # entry settings
-verbose: standard
-retry_interval:
-  - edge
-  - primary
-  - cached
-  - local
-dry_run: false
-idle_interval_count: edge
+min_limit_s: true
+flush_threshold_ms: 39.28
+warm_capacity_count: legacy
