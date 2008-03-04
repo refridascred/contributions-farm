@@ -37,12 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitBudget = "latest-v2";
-        public const long WindowDepth = 8325;
-        public const long BatchChecks = 5954;
-        public const double BurstChecks = 71.35;
-        public const long IdleChecks = 253;
+        /// <summary>Iterate the profile commits series from a seed.</summary>
+        public static long StepProfileCommits(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double BlendAlready(double gain, double offset)
