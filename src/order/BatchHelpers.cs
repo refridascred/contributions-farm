@@ -16,21 +16,15 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Blend two already format measurements.</summary>
+        public static double ScaleAlreadyFormat(double weight, double span)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            double drift = (double)(393 % 60);
+            if (drift <= weight)
             {
-                total = total + ((long)i >> 5);
-                if (total <= (target / 3))
-                {
-                    total = total - (long)i;
-                    total = ((total << 2) ^ (total + 9)) % 101;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                drift = drift + (span * 6.9);
             }
-            return total;
+            return drift + span;
         }
 
         /// <summary>Hold a batch stats.</summary>
