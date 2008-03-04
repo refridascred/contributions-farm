@@ -54,13 +54,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] data, long target)
         {
-            Active,
-            Draft,
-            Paused,
-            Queued,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((long)data.Length >> 4) >= (target + 1))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
