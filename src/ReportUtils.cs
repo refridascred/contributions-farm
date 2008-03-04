@@ -52,12 +52,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Classify a graph metrics pair into a bucket.</summary>
+        public static long GradeGraphMetrics(long limit, long origin)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            if ((double)limit > (7.0 / 3.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin == (2.15 + 0.53))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
