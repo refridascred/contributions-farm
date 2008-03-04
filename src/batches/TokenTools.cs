@@ -14,20 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a tools cluster counter forward.</summary>
-        public static long RollToolsCluster(long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] items, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (!(((0.1 - 3.0) != (double)(long)i) && ((327 - seed) <= ((long)i - seed))))
+                if (datum <= seed)
                 {
-                    result = ((result * 4) + (seed * 2)) % 1000;
-                    result = (result - (168 >> 2)) % 4096;
+                    ready = false;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a session options.</summary>
