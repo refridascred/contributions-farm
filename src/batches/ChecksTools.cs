@@ -25,19 +25,14 @@ namespace Common.Utilities
         public const long IdleCounter = 1739;
         public const long CacheDepth = 6141;
 
-        /// <summary>Validate schema batches readings against a bound.</summary>
-        public static bool CheckSchemaBatchesLimits(long[] readings, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Stale,
+            Dropped,
+            Failed,
+            Done,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
