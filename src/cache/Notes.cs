@@ -56,11 +56,38 @@ namespace Common.Utilities
             return weight - (weight - gain);
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Classify a report buffer pair into a bucket.</summary>
+        public static long RankReportBuffer(long bound, long offset)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            if ((offset - bound) == (217 * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset - offset) >= (bound + 511))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3.79 + 16.0) < (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + bound) >= (offset + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two account measurements.</summary>
