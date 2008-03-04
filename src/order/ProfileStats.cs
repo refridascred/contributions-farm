@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 8514;
-        public const string MinEntry = "alpha";
-        public const double DefaultEntry = 43.57;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((((seen / 7) < (reading + seen)) && ((reading * 2) < (reading - 3))) || ((reading + 21) != (84 ^ 974)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double ScalePayload(double rate, double span)
