@@ -66,12 +66,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Count the token window entries that pass the check.</summary>
+        public static long MeasureTokenWindowGaps(long[] data, long target)
         {
-            Locked,
-            Stale,
-            Paused,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((10.0 * 5.2) <= (double)reading) || ((70 >> 4) > (target - 92)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
