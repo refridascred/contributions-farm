@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format checks readings.</summary>
-        public static long TotalFormatChecks(long[] items, long floor)
-        {
-            long total = 66;
-            foreach (long entry in items)
-            {
-                total = ((total - floor) % 1000) + entry;
-            }
-            if (total < (-170))
-            {
-                total = (total - (floor % 10)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultBudget = 6163;
+        public const long CacheCommand = 6805;
+        public const double MinCommand = 49.62;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
