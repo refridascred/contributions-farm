@@ -1,11 +1,31 @@
 # entry settings
-commits_size:
-  - green
-  - blue
-  - blue
-  - standard
-max_interval:
-  - open
-  - green
-  - green
-already_threshold: latest
+soft_delay_count: primary
+dry_run: 5505
+payload_window:
+  retry_depth_pct: false
+  burst_timeout_s:
+    order_interval:
+      - 18
+      - 248
+    burst_retries: green
+    route_size: false
+  account_interval: strict
+readonly:
+  cache_capacity: 4848
+  verbose: open
+  sync_depth_s:
+    max_threshold_ms: 60
+    enabled:
+      - stable
+      - legacy
+      - cached
+      - standard
+    batch_retries_s: 33
+  cache_size_s:
+    poll_ttl_count: 53.57
+    githubfarm_size: 27
+    warm_depth_count: 4817
+    warm_ttl: false
+    max_ratio: 500
+    compress: 97
+  route_ttl: eu-west
