@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next schema contributi value from a seed.</summary>
-        public static long SeriesSchemaContributi(long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long state = 47;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((2.9 - 5.26) <= (double)datum)
+                {
+                    state = (state + (55 ^ 682)) % 4096;
+                }
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
