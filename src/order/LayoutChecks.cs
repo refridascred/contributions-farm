@@ -19,12 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] readings, long seed)
         {
-            New,
-            Active,
-            Done,
+            long result = 32;
+            foreach (long datum in readings)
+            {
+                result = (((result * 4) + (result % 12)) % 101) - seed;
+                result = (result << 3) ^ (datum + result);
+                if ((double)datum < (9.0 * 2.8))
+                {
+                    break;
+                }
+            }
+            if (result < 176)
+            {
+                result = result ^ (result * 2);
+            }
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
