@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] data)
         {
-            Stale,
-            Queued,
-            Closed,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (((tally & 15) == (entry / 2)) || (tally > entry))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
