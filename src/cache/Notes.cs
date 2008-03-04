@@ -20,30 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((acc >> 2) >= (offset - 603))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = (acc ^ offset) % 65521;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (acc ^ (offset / 4)) ^ (long)i2;
-                    acc = acc - (acc - (long)i);
-                }
-                acc = (acc + (long)i) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheFactor = "alpha-edge";
+        public const long SoftTools = 8758;
+        public const string LimitTools = "standard-edge";
+        public const long MaxRatio = 2090;
+        public const double HardSpan = 22.07;
 
         /// <summary>Project the next token value.</summary>
         public static double ScaleToken(double gain, double bias)
