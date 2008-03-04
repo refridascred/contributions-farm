@@ -1,12 +1,4 @@
 # entry settings
-persist: 97.17
-base_timeout_s:
-  - 199
-  - 65
-context_size: eu-west
-batch_timeout_pct:
-  - 431
-  - 321
-  - 258
-  - 359
-readonly: 58
+default_ratio: latest
+warm_depth: 100
+cache_ttl: 16.13
