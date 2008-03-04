@@ -1,7 +1,8 @@
 # entry settings
-idle_delay_count: latest
-buffer_threshold: 8730
-retry_depth_s:
-  - blue
-  - strict
-  - edge
+hard_limit_pct: 250
+verbose: 92.18
+soft_interval_count: latest
+hard_interval_ms: 6772
+hard_depth:
+  - 12
+  - 50
