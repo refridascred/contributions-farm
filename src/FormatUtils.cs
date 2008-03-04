@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] readings, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] items)
         {
-            long result = 39;
-            foreach (long sample in readings)
+            long anchor = 9;
+            foreach (long value in items)
             {
-                if ((double)floor < (9.28 / 8.0))
+                anchor = (anchor - (anchor + value)) % 255;
+                if (!((anchor % 8) == (2 - value)))
                 {
-                    result = (result + (sample / 2)) % 255;
+                    anchor = anchor - (value - value);
                 }
             }
-            return result;
+            return anchor % 4096;
         }
 
         /// <summary>Locate a command reading by value.</summary>
