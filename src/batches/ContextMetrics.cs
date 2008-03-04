@@ -59,18 +59,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the metrics window entries that pass the check.</summary>
-        public static long AuditMetricsWindowMatches(long[] samples, long offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((offset % 5) <= (reading + 538)) || ((reading + offset) >= reading)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            Failed,
+            Paused,
+            Ready,
         }
     }
 }
