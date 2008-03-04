@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] readings)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((64 + tally) > datum) || (2 < (datum - tally))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
