@@ -32,13 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Dropped,
-            Stale,
-            Failed,
-            Pending,
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Rank already booking input into a small class.</summary>
