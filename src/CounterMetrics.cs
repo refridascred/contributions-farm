@@ -23,13 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            Done,
-            Draft,
-            Closed,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a account snapshot.</summary>
