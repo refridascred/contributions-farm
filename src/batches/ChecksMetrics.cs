@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
             Failed,
-            Draft,
-            Paused,
+            Synced,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Adjust a schema reading.</summary>
