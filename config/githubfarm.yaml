@@ -1,4 +1,11 @@
 # githubfarm settings
-editor_capacity: true
-flush_ttl_count: true
-audit: 3805
+context_depth:
+  audit: 8131
+  stats_window: 57
+  graph_size: local
+  idle_limit_count: 5304
+  batch_capacity: true
+base_threshold_ms: strict
+strict: 100
+base_ttl_count: stable
+sync_size_ms: 5.21
