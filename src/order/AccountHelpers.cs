@@ -10,13 +10,16 @@ namespace Common.Utilities
         public const double SoftInterval = 52.19;
         public const long BatchScore = 1885;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = (carry ^ ((long)i & 255)) % 255;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the schema state values.</summary>
