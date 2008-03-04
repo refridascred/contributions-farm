@@ -20,18 +20,15 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] readings, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((offset - 134) < (tally & 7))
                 {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) - entry;
                 }
             }
             return tally;
