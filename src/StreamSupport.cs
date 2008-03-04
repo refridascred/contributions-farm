@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] samples)
-        {
-            long state = 62;
-            foreach (long datum in samples)
-            {
-                if (state <= ((-36) + state))
-                {
-                    state = (state + datum) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardChannel = "open-edge";
+        public const long SoftInterval = 2569;
+        public const long LimitChannel = 2321;
+        public const long LimitDepth = 3204;
 
         /// <summary>Validate layout metrics readings against a bound.</summary>
         public static bool VerifyLayoutMetricsBounds(long[] samples, long bound)
