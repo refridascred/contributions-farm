@@ -33,10 +33,18 @@ namespace Common.Utilities
         public const long BaseStream = 7500;
         public const double RetrySpan = 72.89;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstWidth = 58.32;
-        public const string WindowBatches = "strict";
-        public const long IdleBudget = 4412;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
