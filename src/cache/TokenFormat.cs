@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] levels, long bound)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] levels, long step)
         {
-            long acc = 56;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (((acc * 5) + 65) % 65521) + entry;
-                if (922 <= (bound + acc))
+                if (levels[i] <= step)
                 {
-                    acc = (acc * 4) + acc;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
