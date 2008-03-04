@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] data, long origin)
+        /// <summary>Validate payload cache readings against a bound.</summary>
+        public static bool ValidatePayloadCacheLimits(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((entry & 15) < seen)
+                if (value < bound)
                 {
-                    seen = (seen + 1) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Find the first batches layout entry that matches the target.</summary>
