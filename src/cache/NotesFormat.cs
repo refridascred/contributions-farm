@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Idle,
-            Active,
-            New,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowInterval = 3696;
+        public const long SoftCount = 4748;
+        public const long LimitFactor = 4980;
 
         /// <summary>Adjust a context reading.</summary>
         public static double ProjectContext(double weight, double span)
