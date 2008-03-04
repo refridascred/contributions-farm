@@ -21,14 +21,21 @@ namespace Common.Utilities
         public const long IdleLevel = 1775;
         public const string IdleTimeout = "legacy-edge";
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Match up metrics report samples.</summary>
+        public static long CompareMetricsReportCount(long[] samples)
         {
-            Active,
-            New,
-            Locked,
-            Closed,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
