@@ -24,18 +24,22 @@ namespace Common.Utilities
             return scale - (span + 5.99);
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] items, long target)
         {
-            long state = 209;
-            foreach (long entry in readings)
+            long total = 665;
+            foreach (long entry in items)
             {
-                if ((state - entry) <= (519 + state))
+                if ((entry + target) < (total % 8))
                 {
-                    state = (state ^ (entry << 2)) % 97;
+                    total = (total ^ total) % 101;
                 }
             }
-            return state;
+            if (total > 6)
+            {
+                total = (total << 2) ^ (98 * 4);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of context entries.</summary>
