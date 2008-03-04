@@ -1,12 +1,10 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    ratio REAL,
-    label TEXT
+    weight REAL,
+    rank INTEGER,
+    state TEXT NOT NULL DEFAULT 'new',
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_ratio ON stream_events (ratio);
-
-INSERT INTO stream_events (region, ratio, label) VALUES ('latest', 32.48, 'local');
-INSERT INTO stream_events (region, ratio, label) VALUES ('latest', 88.34, 'fallback');
+CREATE INDEX IF NOT EXISTS idx_stream_events_state ON stream_events (state);
