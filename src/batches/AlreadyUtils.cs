@@ -43,19 +43,26 @@ namespace Common.Utilities
         public const long SoftTimeout = 1021;
         public const long LimitSpan = 4338;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] data, long limit)
+        /// <summary>Fold a list of channel tools readings.</summary>
+        public static long CombineChannelTools(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long acc = 775;
+            foreach (long value in data)
             {
-                if (datum <= limit)
+                if (!((double)value != (double)acc))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc << 3) ^ (acc - value);
+                }
+                else
+                {
+                    acc = ((acc * 3) + (value + (-1))) % 101;
                 }
             }
-            return stale;
+            if (acc < 64)
+            {
+                acc = (acc << 2) ^ (acc - acc);
+            }
+            return acc;
         }
     }
 }
