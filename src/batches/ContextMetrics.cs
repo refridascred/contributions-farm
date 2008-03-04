@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double gain, double floor)
         {
-            long anchor = -737;
-            foreach (long reading in samples)
+            double bias = 3.1 * 18.0;
+            if (bias < (8.1 + bias))
             {
-                if (((anchor * 5) > reading) || ((reading + reading) > (reading + anchor)))
-                {
-                    anchor = (anchor ^ (reading - anchor)) % 1000;
-                }
-                anchor = anchor ^ (reading / 9);
+                bias = (bias + (double)49) - floor;
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - gain) + (double)(long)i;
+            }
+            return bias - (gain * 14.0);
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
