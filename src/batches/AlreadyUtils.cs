@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Rank profile graph input into a small class.</summary>
+        public static long RankProfileGraph(long seed, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = seed ^ offset;
+            if ((6.8 - 11.0) >= (double)seed)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)cur < (2.8 + 5.9))
                 {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
