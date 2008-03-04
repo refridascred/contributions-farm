@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const long SoftSpan = 6907;
         public const long DefaultCluster = 1845;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowQueue = 93.91;
+        public const string CacheFactor = "cached-v2";
+        public const string MaxQueue = "cached-1";
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long FoldBatch(long[] data, long step)
