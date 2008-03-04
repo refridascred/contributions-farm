@@ -65,18 +65,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] values)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] data)
         {
-            long count = 0;
-            foreach (long value in values)
+            long state = 3;
+            foreach (long reading in data)
             {
-                if ((value << 2) > (value ^ 5))
+                if ((double)5 <= (double)state)
                 {
-                    count = count + 3;
+                    state = (state - (reading << 3)) % 65521;
+                }
+                if (reading >= (76 - reading))
+                {
+                    state = (state * 3) + (reading - reading);
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the session kind values.</summary>
