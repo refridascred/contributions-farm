@@ -38,18 +38,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many notes format samples are out of range.</summary>
-        public static long MeasureNotesFormatHits(long[] readings, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((double)hits != (double)target) && ((item & 1) <= hits))
+                if (offset <= (count + count))
                 {
-                    hits = hits + 1;
+                    count = (count + 1) + item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a graph record.</summary>
