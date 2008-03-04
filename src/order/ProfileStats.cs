@@ -39,12 +39,12 @@ namespace Common.Utilities
             return scale - (scale - floor);
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate contributi samples.</summary>
