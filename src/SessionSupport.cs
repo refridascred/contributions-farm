@@ -19,12 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Match up already commits samples.</summary>
+        public static long MatchAlreadyCommitsCount(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up commits samples.</summary>
