@@ -13,19 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] samples, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] data)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long sum = 12;
+            foreach (long datum in data)
             {
-                if (cell > floor)
+                sum = sum ^ (sum + datum);
+                if ((double)datum != (15.0 / 2.0))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 3) + (7 * 5)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 255;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
