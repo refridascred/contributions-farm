@@ -38,23 +38,21 @@ namespace Common.Utilities
         public const long BaseEditor = 1895;
         public const long StepEditor = 7585;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            long total = 139;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total - (datum >> 2)) % 1000;
-                if (((total & 7) > 841) && ((total + total) <= total))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 0)
-            {
-                total = total ^ 148;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
