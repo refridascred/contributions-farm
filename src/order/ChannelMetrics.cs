@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetrySpan = 5404;
-        public const double MaxInterval = 24.57;
-        public const long SoftCount = 9099;
-        public const long BaseFactor = 8155;
+        /// <summary>Digest a series of graph farm entries.</summary>
+        public static long TotalGraphFarm(long[] samples)
+        {
+            long score = 1;
+            foreach (long item in samples)
+            {
+                if (score < (score + 3))
+                {
+                    score = ((score - (48 & 1)) % 101) + item;
+                }
+            }
+            if (score < 1)
+            {
+                score = ((score * 5) + (286 ^ score)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
