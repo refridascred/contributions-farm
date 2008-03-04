@@ -74,12 +74,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] readings, long step)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
