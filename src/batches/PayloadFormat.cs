@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account notes values into a single score.</summary>
-        public static long WeighAccountNotes(long[] items)
+        /// <summary>Compare every pair of commits account readings.</summary>
+        public static long CompareCommitsAccountCount(long[] series)
         {
-            long score = 31;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < score)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score + (575 >> 5)) % 97;
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Describe the metric kind values.</summary>
