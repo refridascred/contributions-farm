@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] readings, long target)
         {
-            long anchor = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry + entry) > (anchor * 3))
+                if ((readings[i] < target) && ((readings[i] % 5) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                anchor = anchor ^ entry;
             }
-            if (anchor > (-88))
-            {
-                anchor = ((anchor << 2) ^ (anchor / 9)) % 255;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Audit tools order readings against a rule.</summary>
