@@ -76,15 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double weight, double span)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double weight2 = (weight + span) + (double)84;
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 - (double)313) + (double)(long)i;
-            }
-            return weight2 - (weight + span);
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
