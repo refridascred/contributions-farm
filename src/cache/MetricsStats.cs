@@ -54,18 +54,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batches layout samples are out of range.</summary>
-        public static long AuditBatchesLayoutOutliers(long[] series, long origin)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double rate, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double drift = (6.99 - 8.52) * 5.08;
+            if (drift > 1.72)
             {
-                if ((origin << 1) <= cell)
-                {
-                    count = count + 1;
-                }
+                drift = drift - rate;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift + (drift + drift);
         }
     }
 }
