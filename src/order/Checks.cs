@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] readings, long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long offset)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
