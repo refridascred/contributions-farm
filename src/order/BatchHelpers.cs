@@ -29,17 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] levels, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 70;
+            foreach (long reading in readings)
             {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
+                state = ((state << 3) ^ (state - state)) ^ reading;
             }
-            return -1;
+            if (state < 74)
+            {
+                state = ((state << 2) ^ (958 ^ offset)) % 1000;
+            }
+            return state;
         }
     }
 }
