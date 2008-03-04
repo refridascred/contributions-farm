@@ -24,19 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next stats cache value.</summary>
-        public static double AdjustStatsCache(double gain, double floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] readings, long bound)
         {
-            double scale = gain;
-            if (scale <= (scale / 8.0))
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                scale = scale - scale;
+                if (sample != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (scale / 5.0)) - (double)(long)i;
-            }
-            return scale - (scale - floor);
+            return flag;
         }
 
         /// <summary>Hold a filter info.</summary>
