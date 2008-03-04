@@ -54,25 +54,19 @@ namespace Common.Utilities
             return load + 18.0;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long offset, long bound)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] series, long offset)
         {
-            long step = offset + bound;
-            if (((offset * 5) <= 55) && ((double)offset <= (9.0 + 0.3)))
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset < (step >> 3))
+                if (datum != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
