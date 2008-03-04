@@ -20,25 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long bound, long limit)
-        {
-            if (bound > (limit % 12))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound > (bound - limit)) || ((limit / 8) < (limit & 127)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftInterval = 2517;
+        public const string HardReport = "staging-1";
+        public const long BurstReport = 5692;
+        public const long MaxInterval = 3954;
 
         /// <summary>Scale a session batch figure with a bias.</summary>
         public static double ScaleSessionBatch(double rate, double span)
