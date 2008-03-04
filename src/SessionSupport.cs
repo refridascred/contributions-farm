@@ -45,28 +45,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] samples, long offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long score = 95;
-            foreach (long datum in samples)
-            {
-                if (((2 - offset) < offset) && ((double)score >= (double)datum))
-                {
-                    score = score ^ (offset << 3);
-                    score = score - (datum << 2);
-                    continue;
-                }
-                if (((score % 100) < (datum / 5)) && ((score - score) <= (datum & 3)))
-                {
-                    score = score + (datum << 1);
-                }
-                if (((offset / 3) >= (offset >> 2)) && (offset >= (546 * 3)))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Synced,
+            Active,
+            Retry,
+            Queued,
+            Paused,
         }
     }
 }
