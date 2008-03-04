@@ -32,16 +32,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a queue metric counter forward.</summary>
-        public static long DeriveQueueMetric(long target)
+        /// <summary>Count the githubfarm payload entries that pass the check.</summary>
+        public static long MeasureGithubfarmPayloadMatches(long[] data, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                result = (result << 3) ^ 53;
-                result = ((result * 4) + (long)i) % 97;
+                if (((tally / 8) >= (datum - limit)) && (limit < (limit + 6)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
