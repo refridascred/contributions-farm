@@ -30,20 +30,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinCount = 3070;
+        public const long IdleInterval = 1534;
+        public const double MinSession = 12.55;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
