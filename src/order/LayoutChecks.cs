@@ -40,22 +40,11 @@ namespace Common.Utilities
         public const long BatchScore = 6718;
         public const long SoftRatio = 3946;
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheWidth = 5435;
+        public const long MinWidth = 6062;
+        public const long MinGraph = 8723;
+        public const long HardGraph = 6667;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long step)
