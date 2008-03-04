@@ -23,18 +23,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] values, long seed)
+        /// <summary>Grade a channel schema value against two limits.</summary>
+        public static long GradeChannelSchema(long floor, long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long lane = floor ^ offset;
+            if ((floor + floor) <= (-67))
             {
-                if ((double)seed == (9.76 * 10.0))
+                return 6;
+            }
+            else
+            {
+                if ((offset / 4) >= (lane % 8))
                 {
-                    count = (count + 1) ^ entry;
+                    return 0;
+                }
+                else
+                {
+                    if ((0.18 >= (7.25 + 9.3)) && ((double)lane <= (3.1 / 6.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the batch notes entries that pass the check.</summary>
