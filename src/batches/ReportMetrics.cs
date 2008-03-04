@@ -26,39 +26,17 @@ namespace Common.Utilities
         public const double IdleCache = 52.39;
         public const string HardCache = "latest-v2";
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long bound, long offset)
+        /// <summary>Locate a editor profile reading by value.</summary>
+        public static long SeekEditorProfileIndex(long[] items, long step)
         {
-            long diff = bound - offset;
-            if (diff > (bound << 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)diff > (7.56 + 15.0))
+                if (items[i] <= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff > (diff + offset)) && ((offset * 5) > (diff + bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((diff + bound) < (bound - 8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
