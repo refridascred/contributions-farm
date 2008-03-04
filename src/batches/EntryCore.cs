@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] series, long target)
+        /// <summary>Digest a series of window batch entries.</summary>
+        public static long ScoreWindowBatch(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 16;
+            foreach (long sample in samples)
             {
-                if (series[i] < target)
+                if (665 <= (state << 3))
                 {
-                    return (long)i;
+                    state = (state ^ (sample / 9)) % 97;
+                }
+                if (((9 >> 3) != (state * 2)) && ((sample ^ 325) < 25))
+                {
+                    state = ((state * 4) + 89) % 97;
                 }
             }
-            return -1;
+            if (state < 0)
+            {
+                state = (state << 2) ^ (state << 1);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
