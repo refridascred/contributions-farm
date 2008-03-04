@@ -46,25 +46,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank counter farm input into a small class.</summary>
-        public static long GradeCounterFarm(long floor, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] series)
         {
-            long cur = floor + origin;
-            if (cur <= floor)
+            long carry = 494;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((929 ^ floor) >= (origin + 12)) && ((cur - cur) > (origin * 2)))
+                if ((415 - sample) >= (carry & 255))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    carry = (carry - (carry >> 5)) % 65521;
                 }
             }
+            if (carry > 4)
+            {
+                carry = (carry + carry) % 101;
+            }
+            return carry;
         }
     }
 }
