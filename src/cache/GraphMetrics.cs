@@ -44,18 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((count ^ count) != (count - count))
+                if (!(5 <= (item ^ seed)))
                 {
-                    count = (count + 3) ^ cell;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the schema class values.</summary>
