@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long MaxInterval = 5671;
         public const long MinBatch = 6265;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] readings, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= seed)
+                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a commits entry.</summary>
