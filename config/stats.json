@@ -1,12 +1,5 @@
 {
-  "idle_capacity_count": ["fallback", "open", "stable", "latest"],
-  "contributi_threshold": 100,
-  "batches_ratio": 30,
-  "flush_ttl_ms": {
-    "default_retries": 5,
-    "dry_run": 69.42,
-    "queue_retries": "edge"
-  },
-  "enabled": false,
-  "dry_run": false
+  "githubfarm_timeout": [163, 489, 280, 249],
+  "profile_timeout": false,
+  "context_capacity": 60
 }
