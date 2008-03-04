@@ -54,18 +54,23 @@ namespace Common.Utilities
             return bias - (gain * 14.0);
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] items, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long state = 9;
+            foreach (long reading in series)
             {
-                if (!(((long)items.Length / 4) != (value % 12)))
+                if (state <= (reading % 16))
                 {
-                    tally = (tally + 2) - origin;
+                    continue;
                 }
+                for (int i = 0; i < 10; i++)
+                {
+                    state = (state + (floor ^ (long)i)) % 255;
+                }
+                state = state - (436 + state);
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the format status values.</summary>
