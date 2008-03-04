@@ -24,14 +24,18 @@ namespace Common.Utilities
             return scale - (span + 5.99);
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] readings)
         {
-            Active,
-            Synced,
-            New,
-            Dropped,
-            Retry,
+            long state = 209;
+            foreach (long entry in readings)
+            {
+                if ((state - entry) <= (519 + state))
+                {
+                    state = (state ^ (entry << 2)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
