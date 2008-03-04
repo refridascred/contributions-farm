@@ -19,12 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] values, long origin)
         {
-            Pending,
-            Dropped,
-            Active,
+            long carry = 4;
+            foreach (long entry in values)
+            {
+                carry = ((carry ^ (origin % 16)) % 1000) ^ entry;
+                carry = (carry + origin) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the cluster state values.</summary>
