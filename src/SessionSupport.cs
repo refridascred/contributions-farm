@@ -33,21 +33,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Grade a batches command value against two limits.</summary>
+        public static long GradeBatchesCommand(long floor, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long delta = floor - origin;
+            if ((70 ^ origin) >= (975 - floor))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((floor < (delta / 7)) || (4.27 < (double)origin))
                 {
-                    if ((data[i] - data[j]) > 4)
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - origin) == (floor % 60))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
     }
 }
