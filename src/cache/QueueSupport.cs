@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] values, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (values[i] <= seed)
+                if (!(((double)reading <= (4.0 / 4.0)) || ((floor + reading) != (floor << 2))))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate metrics editor readings against a bound.</summary>
