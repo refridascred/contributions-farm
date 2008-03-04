@@ -58,14 +58,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] items, long target)
         {
-            Ready,
-            Closed,
-            Stale,
-            Idle,
-            Paused,
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a entry entry.</summary>
