@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] values, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] series, long limit)
         {
-            long mix = 3;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)mix > (17.0 / 7.0))
+                if (matches <= 4)
                 {
-                    mix = ((mix << 2) ^ (mix - step)) - sample;
+                    matches = ((matches + 1) + sample) - limit;
                 }
             }
-            if (mix < 1)
-            {
-                mix = (mix ^ (step % 100)) % 255;
-            }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
