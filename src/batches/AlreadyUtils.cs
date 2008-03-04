@@ -39,16 +39,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 3) + limit) % 101;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Draft,
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
