@@ -1,6 +1,8 @@
 {
-  "warm_interval_s": "legacy",
-  "max_capacity": "stable",
-  "strict": false,
-  "readonly": false
+  "verbose": 98.33,
+  "notes_timeout": "open",
+  "default_delay": 50.51,
+  "retry_threshold": "local",
+  "flush_ratio_s": "blue",
+  "stats_ratio": "stable"
 }
