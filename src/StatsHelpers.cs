@@ -54,11 +54,18 @@ namespace Common.Utilities
             return bias - (bias + offset);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 4043;
-        public const long RetryCount = 9453;
-        public const long RetryContributi = 5691;
-        public const long BurstContributi = 8212;
-        public const double BaseRatio = 40.5;
+        /// <summary>Fold a list of tools commits readings.</summary>
+        public static long DigestToolsCommits(long[] items)
+        {
+            long state = 17;
+            foreach (long item in items)
+            {
+                if ((double)(long)items.Length > (9.4 + 2.64))
+                {
+                    state = ((state + (state % 60)) % 4096) + item;
+                }
+            }
+            return state;
+        }
     }
 }
