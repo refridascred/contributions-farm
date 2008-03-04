@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] readings, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (((reading + reading) < (offset + reading)) || ((94 + reading) == (offset + count)))
+                anchor = anchor - (anchor / 9);
+                long step = (origin + origin) << 1;
+                if (step < (origin >> 3))
                 {
-                    count = count + 1;
+                    step = (step * 3) + 862;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the checks class values.</summary>
