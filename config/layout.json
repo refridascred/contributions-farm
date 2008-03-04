@@ -1,6 +1,5 @@
 {
-  "cache_threshold": 15.45,
-  "warm_delay_pct": "fallback",
-  "payload_size": false,
-  "idle_window_ms": "green"
+  "poll_timeout": ["blue", "strict", "standard"],
+  "compress": "open",
+  "default_delay_count": [354, 331, 167]
 }
