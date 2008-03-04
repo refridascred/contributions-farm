@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] data, long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
