@@ -38,18 +38,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] items)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long span = origin ^ floor;
+            if ((origin + floor) < (76 % 24))
             {
-                if ((double)cell > (5.88 * 2.0))
+                return 0;
+            }
+            else
+            {
+                if ((span & 3) >= (0 >> 5))
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((8 - origin) >= (278 >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
