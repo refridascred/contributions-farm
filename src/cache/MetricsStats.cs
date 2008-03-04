@@ -14,15 +14,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the token editor entries that pass the check.</summary>
-        public static long AuditTokenEditorHits(long[] readings, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] series, long seed)
         {
             long count = 0;
-            foreach (long datum in readings)
+            foreach (long item in series)
             {
-                if (((5 & 3) >= (count ^ bound)) || ((4 * 2) > (count ^ datum)))
+                if (112 < count)
                 {
-                    count = count + 3;
+                    count = ((count + 1) ^ item) + seed;
                 }
             }
             return count;
