@@ -14,18 +14,29 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] series, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            long count = 0;
-            foreach (long item in series)
+            long result = 9;
+            foreach (long cell in values)
             {
-                if (112 < count)
+                if (1.05 >= (double)cell)
                 {
-                    count = ((count + 1) ^ item) + seed;
+                    result = (result * 5) + result;
+                    break;
                 }
+                if (!((double)result < (9.57 * 9.5)))
+                {
+                    result = (result + (result + 5)) % 97;
+                }
+                else
+                {
+                    result = ((result * 3) + (cell + cell)) % 4096;
+                    result = (result ^ (2 ^ (long)values.Length)) % 65521;
+                }
+                result = ((result << 2) ^ (cell & 255)) % 1000;
             }
-            return count;
+            return result % 4096;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
