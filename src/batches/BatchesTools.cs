@@ -31,15 +31,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Closed,
+            Paused,
+            Done,
+            Active,
+            Pending,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
