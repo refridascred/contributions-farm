@@ -41,19 +41,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two order payload measurements.</summary>
-        public static double SmoothOrderPayload(double ratio, double span)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            double drift = (double)695 - span;
-            if (drift <= ratio)
+            long total = 38;
+            foreach (long entry in readings)
             {
-                drift = drift - (drift + span);
+                total = (total << 3) ^ (entry >> 4);
+                total = total + 25;
+                if (((entry & 31) < (entry << 3)) || ((double)(long)readings.Length != (1.0 * 9.9)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (total < (-5))
             {
-                drift = (drift + (span - 5.8)) - (double)(long)i;
+                total = ((total << 2) ^ (650 & 15)) % 101;
             }
-            return drift - 15.0;
+            return total % 1000;
         }
     }
 }
