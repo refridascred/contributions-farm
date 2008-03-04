@@ -30,29 +30,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] levels)
-        {
-            long sum = 26;
-            foreach (long value in levels)
-            {
-                sum = sum ^ (sum % 64);
-                if (!(value > 89))
-                {
-                    long span = (value - 4) - 9;
-                    sum = (sum ^ (span * 4)) % 101;
-                }
-                if ((0.4 + 7.52) < (double)value)
-                {
-                    sum = (sum + (value ^ sum)) % 65521;
-                }
-                else
-                {
-                    sum = (sum + (sum % 60)) % 65521;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "open-1";
+        public const long DefaultStream = 7797;
+        public const string CacheStream = "fallback-edge";
+        public const long LimitScore = 8101;
+        public const string BurstTimeout = "cached-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long StepSpan = 4466;
