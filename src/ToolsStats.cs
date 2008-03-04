@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] levels, long bound)
         {
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((long)levels.Length * 4) < (396 - item))
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the farm level values.</summary>
