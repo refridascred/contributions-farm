@@ -45,12 +45,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstSpan = 4281;
-        public const long MaxScore = 4797;
-        public const string LimitLevel = "standard-edge";
-        public const string StepInterval = "strict";
-        public const string BatchFarm = "standard-1";
+        /// <summary>Rank batches tools input into a small class.</summary>
+        public static long SortBatchesTools(long origin, long step)
+        {
+            if ((5 ^ origin) == (origin - origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((2 - 389) < (step >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long CombineToken(long[] levels)
