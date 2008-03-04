@@ -21,17 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] values, long target)
+        /// <summary>Combine already account values into a single score.</summary>
+        public static long WeighAlreadyAccount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 6;
+            foreach (long sample in levels)
             {
-                if (values[i] <= target)
+                if ((sample ^ result) == (long)levels.Length)
                 {
-                    return (long)i;
+                    result = result + result;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the layout phase values.</summary>
