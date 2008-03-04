@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] items)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((seen & 15) != (7 & 255))
+                if (value < bound)
                 {
-                    seen = (seen + 3) + entry;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count report token pairs that satisfy a relation.</summary>
