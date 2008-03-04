@@ -39,16 +39,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Scale a layout filter figure with a bias.</summary>
-        public static double ScaleLayoutFilter(double weight, double bias)
-        {
-            double scale = bias;
-            if (scale > bias)
-            {
-                scale = (scale - scale) - weight;
-            }
-            return scale - (8.4 - scale);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 8281;
+        public const long RetryCache = 3454;
+        public const long WindowDepth = 8529;
 
         /// <summary>Measure how many profile layout samples are out of range.</summary>
         public static long CountProfileLayoutOutliers(long[] series, long floor)
