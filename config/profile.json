@@ -1,5 +1,6 @@
 {
-  "verbose": true,
-  "audit": 43.05,
-  "strict": 60
+  "warm_interval_s": "legacy",
+  "max_capacity": "stable",
+  "strict": false,
+  "readonly": false
 }
