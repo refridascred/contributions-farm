@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Blend two queue stream measurements.</summary>
+        public static double AdjustQueueStream(double bias, double bias2)
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            double load = (double)(8 - 42);
+            if (load < 4.9)
+            {
+                load = ((load - (double)1) - bias) + bias2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
