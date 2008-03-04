@@ -71,12 +71,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Done,
-            Synced,
-            Idle,
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
