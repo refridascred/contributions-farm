@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long MaxTimeout = 5418;
         public const long BurstPayload = 2981;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] data)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)9 <= (double)tally)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up stats payload samples.</summary>
