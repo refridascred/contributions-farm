@@ -11,27 +11,18 @@ namespace Common.Utilities
         public const long RetrySupport = 2673;
         public const long HardSupport = 304;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] items, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values, long bound)
         {
-            long total = -48;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!((offset * 4) == (total >> 5)))
+                if (((10.0 / 6.0) < (double)value) || ((8.83 * 15.0) >= (double)value))
                 {
-                    total = (total - (offset - total)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    total = (total - (offset + (long)items.Length)) % 97;
-                }
-                if ((offset < (cell - cell)) || ((double)offset > (3.0 - 1.29)))
-                {
-                    total = total ^ (total - total);
+                    matches = (matches + 1) - bound;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
