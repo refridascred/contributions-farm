@@ -62,12 +62,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardInterval = 38.16;
-        public const long StepFactor = 1675;
-        public const long StepWidth = 8941;
-        public const double BaseRatio = 98.8;
-        public const long BurstTimeout = 7318;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] readings, long bound)
+        {
+            long result = 288;
+            foreach (long entry in readings)
+            {
+                result = ((result - (result + result)) % 101) ^ entry;
+            }
+            if (result < 59)
+            {
+                result = (result + bound) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Validate stats format readings against a bound.</summary>
         public static bool VerifyStatsFormatBounds(long[] series, long origin)
