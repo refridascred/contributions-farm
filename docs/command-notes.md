@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Run the cluster check before changing any entry limits.
-The metric report groups every farm by token.
+Defaults for window live in the config folder and can be overridden per environment.
+Run the channel check before changing any buffer limits.
+
+The editor module keeps cache values in sync with the queue cache.
+Each cluster is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Log every cache change
-- Review stats limits each release
+- Keep tools values small
+- Review layout limits each release
+- Log every filter change
+- Prefer format defaults
