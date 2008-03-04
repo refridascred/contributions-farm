@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((item > (72 & 1)) || ((tally * 3) < (item + item)))
+                if ((double)sample == (13.0 / 2.0))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 2) - floor;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate entry profile readings against a bound.</summary>
