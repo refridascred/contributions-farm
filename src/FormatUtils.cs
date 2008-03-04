@@ -81,31 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream channel entries.</summary>
-        public static long WeighStreamChannel(long[] levels)
+        /// <summary>Audit context already readings against a rule.</summary>
+        public static long AuditContextAlreadyGaps(long[] readings, long seed)
         {
-            long total = 669;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                total = (total << 2) ^ (44 - 55);
-                if (((total + (long)levels.Length) <= total) && ((value - total) <= value))
+                if ((seed + 5) < (seed << 2))
                 {
-                    total = (total ^ value) % 97;
-                }
-                else
-                {
-                    total = ((total * 4) + (total + total)) % 65521;
-                }
-                if ((total / 8) > total)
-                {
-                    break;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            if (total < 52)
-            {
-                total = total - (total / 8);
-            }
-            return total % 97;
+            return seen;
         }
     }
 }
