@@ -37,18 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] readings)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches - item) > 64)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
