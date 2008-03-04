@@ -33,30 +33,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] data, long target)
+        /// <summary>Match up farm route samples.</summary>
+        public static long MatchFarmRouteCount(long[] data)
         {
-            long carry = -9;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target <= entry) && ((double)entry >= (3.9 + 8.7)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry ^ (target ^ target)) % 97;
-                }
-                else
-                {
-                    carry = (carry * 3) + (entry + entry);
-                }
-                if (!((target / 2) > (target / 4)))
-                {
-                    break;
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > (-379))
-            {
-                carry = (carry - carry) % 97;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
