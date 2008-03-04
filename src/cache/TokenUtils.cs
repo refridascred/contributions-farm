@@ -13,39 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long target, long bound)
+        /// <summary>Measure how many counter account samples are out of range.</summary>
+        public static long TallyCounterAccountGaps(long[] items)
         {
-            long lane = target ^ bound;
-            if ((lane << 1) <= (lane ^ target))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((2.0 * 8.5) == (double)target)
+                if ((tally / 7) < entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound * 3) == (lane & 255))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((lane < target) && ((lane + bound) < 76))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
