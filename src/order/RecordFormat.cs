@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxLevel = 9325;
-        public const string BaseTimeout = "latest-v2";
-        public const long RetryInterval = 589;
+        /// <summary>Grade a stream farm value against two limits.</summary>
+        public static long SortStreamFarm(long origin, long target)
+        {
+            if (!((origin - target) >= origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin - target) >= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(origin >= (target * 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((target - 80) < (4 / 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate commits layout samples.</summary>
         public static long TallyCommitsLayout(long[] items, long offset)
