@@ -1,7 +1,11 @@
 {
-  "enabled": 88,
-  "min_window_count": true,
-  "cache_interval_count": true,
-  "base_window_pct": 2,
-  "compress": 30
+  "buffer_ttl": ["stable", "latest"],
+  "default_ttl": {
+    "poll_retries": "green",
+    "min_interval_s": "primary",
+    "dry_run": 105
+  },
+  "default_timeout_s": 100,
+  "commits_timeout": 3513,
+  "retry_limit_ms": 64.75
 }
