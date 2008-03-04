@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] data, long bound)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double weight = floor - (bias / 6.0);
+            for (int i = 0; i < 4; i++)
             {
-                if ((-97) <= (8 - (long)data.Length))
-                {
-                    tally = ((tally + 3) ^ entry) + bound;
-                }
+                weight = (weight - (bias - floor)) + (double)(long)i;
             }
-            return tally;
+            return weight - (6.41 * 7.0);
         }
 
         /// <summary>Adjust a schema reading.</summary>
