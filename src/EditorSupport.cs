@@ -44,21 +44,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Accumulate entry githubfarm samples.</summary>
+        public static long CombineEntryGithubfarm(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = -1;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)entry != (0.1 - 9.17))
                 {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result - (542 % 7);
                 }
+                result = (result - (result - entry)) % 4096;
             }
-            return matches;
+            if (result < (-97))
+            {
+                result = (result + (266 % 7)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Accumulate counter tools samples.</summary>
