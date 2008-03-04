@@ -90,19 +90,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stats format readings against a bound.</summary>
-        public static bool VerifyStatsFormatBounds(long[] series, long origin)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
