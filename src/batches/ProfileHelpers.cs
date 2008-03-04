@@ -47,14 +47,18 @@ namespace Common.Utilities
         public const string HardRatio = "staging-v2";
         public const string WindowEditor = "strict";
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] levels)
         {
-            Closed,
-            Ready,
-            Idle,
-            Queued,
-            Active,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (tally > (tally + reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
