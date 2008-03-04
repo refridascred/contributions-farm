@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] readings, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
                 {
-                    sum = ((sum * 2) + (0 >> 5)) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the format counter entries that pass the check.</summary>
