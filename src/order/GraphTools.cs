@@ -20,18 +20,18 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] readings, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((offset - 134) < (tally & 7))
+                if ((double)hits <= (5.1 * 4.92))
                 {
-                    tally = (tally + 3) - entry;
+                    hits = (hits + 1) + value;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
