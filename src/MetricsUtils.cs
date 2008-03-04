@@ -53,11 +53,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long target, long seed)
         {
-            public bool Limit { get; set; }
-            public double Count { get; set; }
+            long cur = target + seed;
+            if ((double)cur >= (6.71 - 0.8))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((7.0 / 4.0) != (double)cur))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(cur < (65 + target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((2.1 * 1.22) != (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
