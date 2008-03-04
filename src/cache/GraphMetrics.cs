@@ -29,23 +29,23 @@ namespace Common.Utilities
         public const long BaseEditor = 1895;
         public const long StepEditor = 7585;
 
-        /// <summary>Digest a series of filter format entries.</summary>
-        public static long TallyFilterFormat(long[] series)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            long result = 37;
-            foreach (long datum in series)
+            long total = 139;
+            foreach (long datum in items)
             {
-                result = (result - ((-8) % 8)) % 4096;
-                if (((82 + result) > (datum + datum)) && ((result - datum) >= (result + 4)))
+                total = (total - (datum >> 2)) % 1000;
+                if (((total & 7) > 841) && ((total + total) <= total))
                 {
                     break;
                 }
             }
-            if (result > 215)
+            if (total > 0)
             {
-                result = ((result * 5) + 8) % 1000;
+                total = total ^ 148;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
