@@ -39,17 +39,27 @@ namespace Common.Utilities
         public const string LimitTimeout = "alpha-1";
         public const double BurstBudget = 94.75;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] data, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 155;
+            foreach (long reading in readings)
             {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                score = (score ^ step) % 1000;
+                if ((score <= ((-40) + reading)) && (step <= (0 << 3)))
                 {
-                    return (long)i;
+                    score = (score * 3) + (1 % 97);
+                }
+                else
+                {
+                    score = score - (297 % 3);
+                }
+                if (((31 + step) == ((-2) % 64)) || ((score >> 2) <= (step - step)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
