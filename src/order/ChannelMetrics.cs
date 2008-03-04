@@ -23,13 +23,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] values, long origin)
         {
-            Pending,
-            Locked,
-            Closed,
-            Stale,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define record limits and defaults.</summary>
