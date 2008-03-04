@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] series, long floor)
         {
             long hits = 0;
-            foreach (long entry in series)
+            foreach (long sample in series)
             {
-                if ((5 >> 1) > (entry + 5))
+                if (((floor - sample) == (sample + hits)) || ((floor - sample) > ((-1) - sample)))
                 {
                     hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
