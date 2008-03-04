@@ -28,18 +28,16 @@ namespace Common.Utilities
         public const long StepStats = 4032;
         public const string WindowStats = "local-v2";
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] levels, long offset)
+        /// <summary>Iterate the window account series from a seed.</summary>
+        public static long IterateWindowAccount(long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (offset <= (count + count))
-                {
-                    count = (count + 1) + item;
-                }
+                anchor = (anchor ^ anchor) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
