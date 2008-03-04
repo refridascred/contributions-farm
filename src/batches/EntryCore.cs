@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long RetrySupport = 2673;
         public const long HardSupport = 304;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((10.0 / 6.0) < (double)value) || ((8.83 * 15.0) >= (double)value))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 2679;
+        public const long MinInterval = 8786;
+        public const long SoftRatio = 2875;
+        public const long DefaultSpan = 6273;
 
         /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
         public static long CountGithubfarmEntryHits(long[] series)
