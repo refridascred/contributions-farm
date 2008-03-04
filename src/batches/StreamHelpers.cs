@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double rate, double span)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            double mean = (7.54 + rate) + (rate * 9.03);
+            if (mean <= rate)
+            {
+                mean = (mean - rate) - span;
+            }
+            else
+            {
+                mean = mean - (double)(-753);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (mean + 7.0)) - (double)(long)i;
+            }
+            return mean - (mean / 8.0);
         }
 
         /// <summary>Compare every pair of window format readings.</summary>
