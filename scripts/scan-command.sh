@@ -7,11 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in fallback local edge; do
+for item in legacy standard strict primary; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=499
+log "limit is ${COMMAND_LIMIT}"
