@@ -23,13 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Paused,
-            Idle,
-            Draft,
             Done,
+            Queued,
+            Closed,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the schema state values.</summary>
