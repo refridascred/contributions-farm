@@ -20,14 +20,29 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long offset)
         {
-            Draft,
-            Synced,
-            Stale,
-            Ready,
-            Idle,
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((acc >> 2) >= (offset - 603))
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                else
+                {
+                    acc = (acc ^ offset) % 65521;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = (acc ^ (offset / 4)) ^ (long)i2;
+                    acc = acc - (acc - (long)i);
+                }
+                acc = (acc + (long)i) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Project the next token value.</summary>
