@@ -1,7 +1,5 @@
 {
-  "strict": false,
-  "format_capacity": ["fallback", "blue", "blue", "cached"],
-  "hard_ttl_count": "open",
-  "retry_timeout": true,
-  "verbose": true
+  "window_ttl": [208, 272, 17, 347],
+  "poll_ratio_pct": 36,
+  "burst_limit": false
 }
