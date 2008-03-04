@@ -38,15 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the command profile series from a seed.</summary>
-        public static long SeriesCommandProfile(long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((double)count < 6.59)
+                {
+                    count = (count + 1) - datum;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
