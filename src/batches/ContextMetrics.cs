@@ -41,17 +41,12 @@ namespace Common.Utilities
         public const double StepDepth = 14.04;
         public const long BaseFactor = 8753;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] series, long seed)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Failed,
         }
 
         /// <summary>Derive the next profile layout value from a seed.</summary>
