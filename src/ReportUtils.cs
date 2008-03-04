@@ -53,22 +53,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Digest a series of session commits entries.</summary>
+        public static long TotalSessionCommits(long[] levels, long limit)
         {
-            long result = 120;
-            foreach (long value in values)
+            long sum = 709;
+            foreach (long cell in levels)
             {
-                if (!(result <= value))
+                if (cell < (sum - cell))
                 {
-                    result = (result + 77) % 97;
-                }
-                else
-                {
-                    result = result ^ (result - 73);
+                    sum = ((sum << 2) ^ (9 - 9)) - limit;
                 }
             }
-            return result;
+            return sum;
         }
     }
 }
