@@ -27,32 +27,11 @@ namespace Common.Utilities
             return ((ratio + (double)742) + rate) + span;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long seed, long floor)
-        {
-            if (floor < (floor + seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed + (-640)) <= (seed - floor)) || ((floor - seed) >= (159 * 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor % 64) <= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardCount = 8143;
+        public const long WindowChecks = 3750;
+        public const string BaseChecks = "staging-1";
+        public const long BurstDepth = 3480;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long SortRoute(long floor, long target)
