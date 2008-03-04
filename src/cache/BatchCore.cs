@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] series, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (!((((long)series.Length + seen) >= (5 & 1)) && ((datum / 9) == ((-1) - step))))
+                if (datum > seed)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
