@@ -74,19 +74,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account metrics readings.</summary>
-        public static long FoldAccountMetrics(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] levels, long origin)
         {
-            long carry = 43;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if ((value * 4) < 0)
+                if (value > origin)
                 {
-                    carry = ((carry << 3) ^ (carry << 2)) % 1000;
+                    ready = false;
+                    break;
                 }
-                carry = (carry - ((-9) & 1)) % 97;
             }
-            return carry % 4096;
+            return ready;
         }
     }
 }
