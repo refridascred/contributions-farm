@@ -15,18 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] readings, long step)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits * 5) == (sample << 1))
-                {
-                    hits = (hits + 3) - step;
-                }
-            }
-            return hits;
+            Done,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
