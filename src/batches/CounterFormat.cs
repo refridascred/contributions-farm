@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] samples, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long bound)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (value > step)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = (mix + (bound % 12)) % 1000;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Describe the record status values.</summary>
