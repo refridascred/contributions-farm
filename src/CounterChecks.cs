@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark + (long)i) % 101;
-                mark = ((mark * 4) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Match up token samples.</summary>
