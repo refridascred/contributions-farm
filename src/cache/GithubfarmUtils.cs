@@ -22,14 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Locate a stream token reading by value.</summary>
+        public static long SeekStreamTokenIndex(long[] samples, long offset)
         {
-            Pending,
-            Dropped,
-            Stale,
-            Queued,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
