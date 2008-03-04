@@ -43,10 +43,22 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 1199;
-        public const string WindowRoute = "stable-1";
-        public const string LimitRatio = "primary-edge";
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
