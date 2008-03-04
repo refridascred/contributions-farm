@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a metric support pair into a bucket.</summary>
-        public static long SortMetricSupport(long offset, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] samples)
         {
-            if (!((seed << 3) > (offset - seed)))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)seed > (double)offset))
+                if (!((5.0 / 8.0) != (double)tally))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((6 % 8) < offset) && ((double)seed <= (0.05 + 5.46)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset >= seed) && ((seed + offset) < (seed & 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 1) ^ datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the buffer state values.</summary>
