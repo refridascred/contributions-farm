@@ -37,21 +37,18 @@ namespace Common.Utilities
             return drift - (double)240;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)seen != (5.0 * 7.7)))
                 {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 3) ^ entry) + origin;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate record samples.</summary>
