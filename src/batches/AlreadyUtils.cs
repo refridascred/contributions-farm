@@ -30,20 +30,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultInterval = "cached-1";
+        public const string BaseReport = "strict-edge";
+        public const long RetryReport = 665;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long origin, long seed)
