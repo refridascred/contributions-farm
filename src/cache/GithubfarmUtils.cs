@@ -47,22 +47,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples, long step)
+        /// <summary>Validate metric githubfarm readings against a bound.</summary>
+        public static bool VerifyMetricGithubfarmRange(long[] samples, long bound)
         {
-            long anchor = -90;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((double)step < 5.8)
+                if (value <= bound)
                 {
-                    anchor = ((anchor * 3) + (step / 8)) ^ cell;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 973)
-            {
-                anchor = ((anchor << 3) ^ step) % 4096;
-            }
-            return anchor;
+            return ok;
         }
     }
 }
