@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph counter entries that pass the check.</summary>
-        public static long AuditGraphCounterOutliers(long[] data, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (((double)target == (0.96 * 18.0)) || ((hits - 5) >= target))
+                if ((tally + entry) > (tally * 3))
                 {
-                    hits = (hits + 2) ^ entry;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
