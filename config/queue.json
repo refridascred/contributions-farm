@@ -1,8 +1,13 @@
 {
-  "burst_depth_s": true,
-  "retry_delay_ms": 83,
-  "base_ratio": 60,
-  "cache_size": 51.48,
-  "layout_ttl": 5065,
-  "hard_threshold_pct": "standard"
+  "enabled": 15,
+  "verbose": true,
+  "dry_run": {
+    "hard_threshold": 65,
+    "cache_capacity_count": {
+      "batch_depth_count": "legacy",
+      "default_interval": "eu-west",
+      "notes_ttl": true
+    },
+    "persist": 1994
+  }
 }
