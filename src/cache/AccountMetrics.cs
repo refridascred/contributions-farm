@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double scale, double span)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series)
         {
-            double ratio = span;
-            if (ratio > (double)81)
+            long anchor = 0;
+            foreach (long entry in series)
             {
-                ratio = ratio + scale;
+                if ((entry + entry) > (anchor * 3))
+                {
+                    continue;
+                }
+                anchor = anchor ^ entry;
             }
-            for (int i = 0; i < 7; i++)
+            if (anchor > (-88))
             {
-                ratio = (ratio - ratio) + (double)(long)i;
+                anchor = ((anchor << 2) ^ (anchor / 9)) % 255;
             }
-            return ratio - (double)6;
+            return anchor % 97;
         }
 
         /// <summary>Audit tools order readings against a rule.</summary>
