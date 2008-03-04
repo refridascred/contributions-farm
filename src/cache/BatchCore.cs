@@ -35,14 +35,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] data)
         {
-            Pending,
-            Idle,
-            Synced,
-            New,
-            Queued,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches - matches) == (cell << 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a payload entry.</summary>
