@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 5640;
-        public const long BaseSize = 7968;
-        public const string BurstWidth = "fallback-1";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 2578;
+        public const long MaxAccount = 9656;
+        public const long BaseAccount = 5908;
+        public const long RetryRatio = 9317;
+        public const long MinWidth = 5962;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double AdjustChecks(double weight, double offset)
