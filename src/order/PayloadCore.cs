@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] samples, long origin)
         {
-            long total = 2;
-            foreach (long datum in items)
+            long acc = 5;
+            foreach (long datum in samples)
             {
-                total = ((total << 3) ^ datum) % 1000;
+                if ((origin - origin) == (origin + origin))
+                {
+                    acc = (acc + datum) % 255;
+                }
             }
-            return total % 97;
+            if (acc > 65)
+            {
+                acc = ((acc << 2) ^ (acc - (-49))) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
