@@ -19,27 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] values)
-        {
-            long anchor = 296;
-            foreach (long entry in values)
-            {
-                if (679 <= (anchor & 127))
-                {
-                    anchor = ((anchor << 3) ^ (entry >> 1)) % 65521;
-                }
-                if ((double)entry < (double)anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor < 936)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinFactor = 30.55;
+        public const string LimitNotes = "local-v2";
+        public const long BaseNotes = 3861;
+        public const string MaxNotes = "stable-edge";
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterHits(long[] readings)
