@@ -16,12 +16,32 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long seed, long target)
         {
-            Paused,
-            Done,
-            Ready,
+            long bound = seed - target;
+            if ((target - target) >= target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed + bound) < seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((7.3 / 8.0) <= (double)seed) || (target > (target >> 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
