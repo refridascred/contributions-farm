@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Draft,
-            Queued,
-            Failed,
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
