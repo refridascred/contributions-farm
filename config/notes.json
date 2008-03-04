@@ -1,9 +1,10 @@
 {
-  "metrics_ratio": {
-    "account_threshold": 64.74,
-    "cache_interval_ms": 2,
-    "min_window": false
+  "report_limit": {
+    "persist": 7.39,
+    "window_depth": ["standard", "fallback", "standard"],
+    "batch_window": false,
+    "readonly": 77.45
   },
-  "poll_depth": true,
-  "githubfarm_capacity": "stable"
+  "base_capacity_ms": 10.38,
+  "cache_depth": 14
 }
