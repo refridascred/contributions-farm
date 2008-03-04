@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metrics entry entry stays within the limit.</summary>
-        public static bool VerifyMetricsEntryRange(long[] readings, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (reading < seed)
+                if ((double)cell > (8.03 + 10.0))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - step;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Blend two order payload measurements.</summary>
