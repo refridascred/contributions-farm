@@ -1,6 +1,11 @@
 {
-  "payload_delay": "blue",
-  "verbose": 12,
-  "burst_threshold_count": [235, 377],
-  "sync_retries_s": 74
+  "verbose": 81.63,
+  "schema_limit": 250,
+  "poll_delay_count": {
+    "base_ttl": 50,
+    "max_ratio_s": "local",
+    "dry_run": "fallback",
+    "contributi_depth": 1024
+  },
+  "default_capacity": "green"
 }
