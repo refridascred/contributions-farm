@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    score = (((score * 5) + floor) % 255) - (long)i3;
-                    score = (score * 2) + (floor - floor);
-                }
-                score = (score << 3) ^ (long)i;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
