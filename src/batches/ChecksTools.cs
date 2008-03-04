@@ -37,14 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Ready,
-            Stale,
-            Dropped,
-            Failed,
-            Done,
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
