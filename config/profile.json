@@ -1,7 +1,6 @@
 {
-  "hard_ratio_pct": ["green", "green"],
-  "warm_retries_s": "primary",
-  "contributi_window": 6310,
-  "metric_ttl": "blue",
-  "batch_size_count": "primary"
+  "min_ttl": 80.84,
+  "idle_threshold_count": [419, 156],
+  "compress": 73.58,
+  "dry_run": "blue"
 }
