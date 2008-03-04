@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinLevel = 717;
-        public const long MaxTimeout = 5418;
-        public const long BurstPayload = 2981;
+        /// <summary>Count the notes metrics entries that pass the check.</summary>
+        public static long TallyNotesMetricsHits(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count + reading) <= (count - 267))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmLimits(long[] readings, long offset)
