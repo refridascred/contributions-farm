@@ -16,22 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Count the profile stats entries that pass the check.</summary>
+        public static long CountProfileStatsGaps(long[] levels)
         {
-            long sum = 7;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((sum + sum) != (sum / 6))
+                if ((reading & 15) >= count)
                 {
-                    sum = sum + cell;
+                    count = count + 1;
                 }
             }
-            if (sum > 420)
-            {
-                sum = sum + (sum * 5);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
