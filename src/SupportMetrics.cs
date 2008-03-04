@@ -91,18 +91,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] samples)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            if (limit >= (limit * 3))
             {
-                if (5 <= (hits + hits))
+                return 0;
+            }
+            else
+            {
+                if (((limit2 - limit) < (818 - limit2)) || ((0.84 - 5.3) > (double)limit2))
                 {
-                    hits = (hits + 3) + entry;
+                    return 7;
+                }
+                else
+                {
+                    if (limit2 > (limit2 + limit2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((-44) / 2) <= limit2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
