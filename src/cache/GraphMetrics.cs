@@ -36,19 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] series, long bound)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double mean = bias;
+            return mean + (ratio + 3.1);
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
