@@ -38,19 +38,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double gain, double span)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] series, long target)
         {
-            double scale = (double)(84 << 1);
-            if (scale > (scale / 3.0))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                scale = ((scale - 3.33) + gain) - span;
+                if ((((target - 948) >= datum) && ((datum % 2) >= target)) && ((datum * 5) == (427 + seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + (double)19;
+            return seen;
         }
 
         /// <summary>Check that every notes counter entry stays within the limit.</summary>
