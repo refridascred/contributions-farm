@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count checks context pairs that satisfy a relation.</summary>
-        public static long MatchChecksContextCount(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((5 >> 1) > (entry + 5))
                 {
-                    if ((values[i] ^ values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
