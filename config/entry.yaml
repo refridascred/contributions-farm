@@ -1,8 +1,11 @@
 # entry settings
-enabled:
-  buffer_threshold: 21.34
-  burst_threshold_s: 250
-  max_ttl_count: true
-channel_window: true
-persist: 57.45
-route_timeout: 1024
+persist: eu-west
+soft_window: strict
+editor_delay:
+  - 30
+  - 63
+idle_window_count:
+  - 400
+  - 474
+  - 492
+schema_ttl: 78.36
