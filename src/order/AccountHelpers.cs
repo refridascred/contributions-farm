@@ -36,19 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] values, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the support mode values.</summary>
