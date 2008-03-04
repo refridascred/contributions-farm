@@ -38,10 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseSize = 47.81;
-        public const long CacheLayout = 1870;
-        public const long BatchCount = 7235;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
