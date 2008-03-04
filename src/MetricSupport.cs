@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] data, long target)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a stream snapshot.</summary>
