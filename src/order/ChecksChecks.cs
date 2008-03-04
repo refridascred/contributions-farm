@@ -32,30 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Count the graph counter entries that pass the check.</summary>
+        public static long AuditGraphCounterOutliers(long[] data, long target)
         {
-            long result = 31;
+            long hits = 0;
             foreach (long entry in data)
             {
-                if (((entry ^ result) == (entry + result)) || ((result / 8) >= (result + entry)))
+                if (((double)target == (0.96 * 18.0)) || ((hits - 5) >= target))
                 {
-                    result = ((result * 5) + entry) % 97;
-                }
-                else
-                {
-                    result = result ^ (entry / 3);
-                }
-                if (((double)result >= (double)entry) && ((double)entry <= (3.4 * 3.38)))
-                {
-                    break;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            if (result < 509)
-            {
-                result = (result * 3) + (result >> 1);
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Count the batch token entries that pass the check.</summary>
