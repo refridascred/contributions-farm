@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] values)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double rate, double span)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double mean = rate;
+            if (mean >= (rate * 2.84))
             {
-                if ((entry + seen) <= entry)
-                {
-                    seen = seen + 2;
-                }
+                mean = mean - (double)43;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (span - 5.1)) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
