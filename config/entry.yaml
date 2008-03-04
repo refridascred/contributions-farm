@@ -1,8 +1,29 @@
 # entry settings
-hard_limit_pct: 250
-verbose: 92.18
-soft_interval_count: latest
-hard_interval_ms: 6772
-hard_depth:
-  - 12
-  - 50
+enabled: 30
+readonly:
+  soft_limit: standard
+  support_depth:
+    - stable
+    - latest
+  cache_timeout_pct: 941
+  max_window: legacy
+  warm_timeout_s: 83
+  session_limit: latest
+cluster_interval: false
+compress:
+  idle_timeout_pct: open
+  verbose: local
+  context_retries: 19.77
+  enabled:
+    warm_depth: 80.14
+    already_ratio: 250
+    payload_depth: 100
+    default_delay_ms:
+      - green
+      - standard
+      - standard
+    min_timeout_s: 30
+soft_ratio_ms:
+  - eu-west
+  - standard
+  - primary
