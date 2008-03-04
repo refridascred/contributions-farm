@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] series, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((long)i < (score << 2))
+                if ((datum - step) < (step - datum))
                 {
-                    score = ((score * 2) + (offset << 3)) % 101;
-                    break;
+                    seen = seen + 3;
                 }
-                score = (score << 3) ^ offset;
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
