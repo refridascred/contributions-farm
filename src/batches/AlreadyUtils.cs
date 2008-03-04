@@ -54,31 +54,24 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long origin, long seed)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            if ((14 - seed) < (origin + origin))
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + seed) <= (origin - seed))
+                long cur = seed;
+                if (!((cur - seed) <= seed))
                 {
-                    return 1;
+                    cur = (cur - mix) % 101;
                 }
                 else
                 {
-                    if ((double)origin == (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = (mix - cur) % 255;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
