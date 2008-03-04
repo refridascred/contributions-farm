@@ -39,22 +39,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] readings, long bound)
+        /// <summary>Rank already format input into a small class.</summary>
+        public static long GradeAlreadyFormat(long target, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((37 - target) < (target + 1))
             {
-                if ((double)bound <= 19.0)
+                return 6;
+            }
+            else
+            {
+                if ((4.8 - 3.25) < (double)target)
                 {
-                    matches = (matches + 3) + item;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
