@@ -66,18 +66,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] samples, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long score = 44;
+            foreach (long datum in readings)
             {
-                if (((matches - 0) < item) && ((double)limit == (19.0 * 9.0)))
+                if (datum < (682 - step))
                 {
-                    matches = matches + 3;
+                    score = (score - (score + 6)) % 97;
+                }
+                if (!((5.33 - 2.9) > (double)step))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 4096;
         }
     }
 }
