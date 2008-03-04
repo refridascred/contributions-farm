@@ -40,17 +40,26 @@ namespace Common.Utilities
         public const long StepChannel = 9915;
         public const long MaxChannel = 5550;
 
-        /// <summary>Locate a graph window reading by value.</summary>
-        public static long SeekGraphWindowIndex(long[] samples, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 6;
+            foreach (long value in series)
             {
-                if (samples[i] <= origin)
+                if ((value & 7) > acc)
                 {
-                    return (long)i;
+                    acc = (acc - (value + acc)) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 4096;
                 }
             }
-            return -1;
+            if (acc < (-401))
+            {
+                acc = (acc - (605 + acc)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
