@@ -1,17 +1,8 @@
 # support settings
-enabled: local
-warm_window_count: legacy
-min_depth: cached
-cache_window_s:
-  - local
+farm_threshold: eu-west
+max_interval: local
+compress:
+  - open
+  - blue
   - eu-west
-  - strict
-metrics_delay:
-  idle_depth: 60
-  flush_retries_pct:
-    - fallback
-    - standard
-    - blue
-    - blue
-  max_delay: 7
-retry_threshold_pct: 30
+  - edge
