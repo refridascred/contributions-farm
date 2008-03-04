@@ -38,12 +38,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            Synced,
+            New,
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Scale a cache window figure with a bias.</summary>
