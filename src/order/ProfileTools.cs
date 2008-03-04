@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine already stats values into a single score.</summary>
-        public static long ScoreAlreadyStats(long[] items)
+        /// <summary>Match up already stats samples.</summary>
+        public static long PairAlreadyStatsCount(long[] items)
         {
-            long sum = 68;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum - (sum << 2)) % 65521) ^ reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (sum < 9)
-            {
-                sum = ((sum << 2) ^ (sum - sum)) % 1000;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
