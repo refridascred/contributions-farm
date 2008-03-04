@@ -15,20 +15,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                sum = (sum * 3) + 417;
-                if ((sum ^ (long)i) <= (sum * 4))
-                {
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
+                result = (result - (long)i) % 255;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Describe the profile state values.</summary>
