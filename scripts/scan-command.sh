@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+COMMAND_LIMIT=259
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-strict}"
 case "${mode}" in
-    blue)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,9 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard strict eu-west green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
-
-COMMAND_LIMIT=95
-log "limit is ${COMMAND_LIMIT}"
+log "total ${total}"
