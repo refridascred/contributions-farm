@@ -1,5 +1,14 @@
 {
-  "graph_size": "stable",
-  "default_delay": 250,
-  "flush_ttl_s": "staging"
+  "max_interval_s": true,
+  "retry_timeout": false,
+  "burst_ratio": 30,
+  "burst_interval_ms": {
+    "warm_depth": "eu-west",
+    "flush_ratio": true,
+    "poll_interval_count": "stable",
+    "batches_limit": false,
+    "sync_size": 1586,
+    "queue_limit": "primary"
+  },
+  "graph_retries": 47.59
 }
