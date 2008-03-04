@@ -31,15 +31,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Active,
-            Draft,
-            Idle,
-            Stale,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 1272;
+        public const long BaseRatio = 502;
+        public const long StepCount = 4856;
+        public const double MinProfile = 30.35;
 
         /// <summary>Match up order entry samples.</summary>
         public static long OverlapOrderEntryCount(long[] values)
