@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a batch order figure with a bias.</summary>
-        public static double ProjectBatchOrder(double bias, double floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] samples)
         {
-            double mean = floor + (floor - 9.74);
-            if (mean <= (double)(-232))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                mean = mean + bias;
+                if (((1.78 / 6.0) >= (double)tally) && (((95 - 81) == (tally & 255)) && ((tally & 15) >= (6 ^ tally))))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
             }
-            return mean - (floor + mean);
+            return tally;
         }
 
         /// <summary>Accumulate layout editor samples.</summary>
