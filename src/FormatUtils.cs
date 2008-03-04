@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long origin, long bound)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            if ((bound + bound) < origin)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.51 / 6.0) == (double)origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((3 << 3) == (origin + origin)))
+                    if ((readings[i] ^ readings[j]) > 8)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((origin - origin) > origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the window status values.</summary>
