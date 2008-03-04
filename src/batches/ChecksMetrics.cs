@@ -64,19 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] series, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (entry < limit)
+                if (sample <= bound)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Scale a order record figure with a bias.</summary>
