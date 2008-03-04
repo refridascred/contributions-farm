@@ -37,15 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Ready,
-            Retry,
-            Locked,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleInterval = 330;
+        public const string BatchCount = "strict-edge";
+        public const long BurstGithubfarm = 7945;
+        public const long IdleGithubfarm = 9257;
+        public const double DefaultDepth = 54.87;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
