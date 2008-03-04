@@ -33,15 +33,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] series, long bound)
+        /// <summary>Audit batch token readings against a rule.</summary>
+        public static long MeasureBatchTokenMatches(long[] samples)
         {
             long count = 0;
-            foreach (long datum in series)
+            foreach (long reading in samples)
             {
-                if ((datum << 1) > (datum * 2))
+                if (reading < (reading - reading))
                 {
-                    count = (count + 3) + bound;
+                    count = count + 3;
                 }
             }
             return count;
