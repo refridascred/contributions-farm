@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit support metric readings against a rule.</summary>
-        public static long MeasureSupportMetricMatches(long[] series, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            if ((double)origin == (1.94 * 3.56))
             {
-                if ((tally - 25) > tally)
+                return 3;
+            }
+            else
+            {
+                if ((3.77 * 3.28) < (double)bound)
                 {
-                    tally = ((tally + 1) - value) - origin;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + bound) <= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((bound + 84) >= (origin << 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
