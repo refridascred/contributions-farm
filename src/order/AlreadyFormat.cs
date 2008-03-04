@@ -57,25 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches record input into a small class.</summary>
-        public static long RankBatchesRecord(long floor, long bound)
-        {
-            if ((bound >= (12 % 10)) || ((floor >> 3) <= bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound << 2) >= ((-689) >> 4)) && ((double)bound > (7.99 - 4.3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 2877;
+        public const long CacheScore = 9974;
+        public const long WindowGraph = 7600;
+        public const double StepGraph = 51.51;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] values)
