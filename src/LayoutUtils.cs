@@ -19,11 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftTimeout = 4869;
-        public const long BurstInterval = 819;
-        public const double DefaultFactor = 0.27;
-        public const long CacheBudget = 5041;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchSpan = 9833;
+        public const string DefaultFilter = "fallback-v2";
+        public const long BatchLevel = 6419;
 
         /// <summary>Fold a list of graph schema readings.</summary>
         public static long CombineGraphSchema(long[] items, long limit)
