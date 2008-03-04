@@ -14,18 +14,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine already account values into a single score.</summary>
-        public static long WeighAlreadyAccount(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] data)
         {
-            long result = 6;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((sample ^ result) == (long)levels.Length)
+                if ((tally + tally) >= item)
                 {
-                    result = result + result;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the layout phase values.</summary>
