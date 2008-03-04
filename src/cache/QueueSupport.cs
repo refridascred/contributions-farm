@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (readings[i] >= limit)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (limit - (long)i2)) % 4096;
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a token summary.</summary>
