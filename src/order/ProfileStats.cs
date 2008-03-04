@@ -33,21 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 82;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry + ((-3) / 8)) + value;
+                carry = (carry + carry) % 65521;
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
