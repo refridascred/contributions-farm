@@ -1,14 +1,11 @@
 # Command notes
 
-The counter report groups every counter by session.
-A command that stays idle for too long is moved to the metrics list.
-Each report is validated before it reaches the cache queue.
-
-Run the report check before changing any stream limits.
-Keep stats and metric names short and lowercase.
+A entry that stays idle for too long is moved to the record list.
+When a counter fails, the schema handler retries a few times before giving up.
+The graph report groups every support by cluster.
 
 ## Guidelines
 
-- Keep order values small
-- Log every filter change
-- Document new record fields
+- Prefer report defaults
+- Validate profile input early
+- Document new commits fields
