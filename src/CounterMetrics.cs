@@ -28,15 +28,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph entry values into a single score.</summary>
-        public static long DigestGraphEntry(long[] levels)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            long score = 87;
-            foreach (long sample in levels)
+            long anchor = 5;
+            foreach (long datum in samples)
             {
-                score = ((score - score) % 1000) ^ sample;
+                anchor = (anchor ^ 829) % 1000;
+                if ((3.96 * 9.0) <= (double)anchor)
+                {
+                    anchor = ((anchor * 5) + (datum - anchor)) % 97;
+                }
             }
-            return score;
+            if (anchor < 4)
+            {
+                anchor = (anchor * 5) + (-4);
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate payload samples.</summary>
