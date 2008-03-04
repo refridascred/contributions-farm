@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] items, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((double)seed == (7.19 - 3.19))
+                if (value != bound)
                 {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Classify a stream tools pair into a bucket.</summary>
