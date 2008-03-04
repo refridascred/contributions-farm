@@ -49,21 +49,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] items)
+        /// <summary>Validate filter account readings against a bound.</summary>
+        public static bool VerifyFilterAccountLimits(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry > target)
                 {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
