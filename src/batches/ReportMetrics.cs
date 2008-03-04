@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] series, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (((7.8 / 8.0) < (double)count) && (((806 - bound) >= (count << 3)) && ((count + count) != (bound * 4))))
+                if ((double)seed == (7.19 - 3.19))
                 {
-                    count = (count + 1) + reading;
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
