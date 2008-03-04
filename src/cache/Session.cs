@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            Locked,
+            Pending,
+            Closed,
+            Paused,
+            Failed,
         }
 
         /// <summary>Derive the next record route value from a seed.</summary>
