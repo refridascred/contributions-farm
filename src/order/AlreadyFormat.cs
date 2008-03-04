@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a queue checks reading by value.</summary>
-        public static long LocateQueueChecksIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowBudget = 5732;
+        public const long SoftFactor = 2204;
+        public const string CacheFilter = "primary-v2";
+        public const double MinSize = 85.33;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
