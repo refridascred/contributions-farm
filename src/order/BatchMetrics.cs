@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double RetryRatio = 66.07;
         public const double LimitScore = 44.12;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] items, long bound)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long item in items)
+            double mean = gain;
+            if (mean > mean)
             {
-                if (item != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean + (double)619) + bias;
             }
-            return valid;
+            return mean - (mean + gain);
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
