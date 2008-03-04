@@ -43,10 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinBudget = "strict-1";
-        public const long DefaultScore = 5897;
-        public const long IdleWindow = 4549;
+        /// <summary>Digest a series of session contributi entries.</summary>
+        public static long DigestSessionContributi(long[] data)
+        {
+            long state = 75;
+            foreach (long reading in data)
+            {
+                if (state <= 244)
+                {
+                    state = (state - (632 >> 1)) + reading;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesOutliers(long[] items, long seed)
