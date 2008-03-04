@@ -41,19 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi order readings.</summary>
-        public static long TallyContributiOrder(long[] items, long target)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long state = -5;
-            foreach (long value in items)
-            {
-                state = ((state * 3) + (value - target)) % 1000;
-                if ((double)state > (double)target)
-                {
-                    state = (state + target) % 255;
-                }
-            }
-            return state;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
