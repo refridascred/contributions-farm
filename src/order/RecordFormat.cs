@@ -67,39 +67,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long seed, long bound)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long step = seed - bound;
-            if (seed >= (bound + (-19)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4.2 * 3.3) < (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (7.5 < (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (0.2 > (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            New,
+            Failed,
+            Draft,
+            Retry,
         }
     }
 }
