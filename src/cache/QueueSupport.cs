@@ -30,18 +30,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((double)seen != (4.0 - 0.71))
+                if (item >= bound)
                 {
-                    seen = (seen + 1) ^ sample;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
