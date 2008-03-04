@@ -21,19 +21,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((39 << 1) < (reading / 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 21.93;
+        public const string DefaultTools = "local-edge";
+        public const double HardTools = 49.62;
+        public const double BurstRatio = 40.79;
+        public const long LimitTools = 251;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
