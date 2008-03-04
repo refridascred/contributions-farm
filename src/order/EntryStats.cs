@@ -39,12 +39,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheSpan = 1112;
-        public const double StepMetrics = 10.18;
-        public const long LimitBudget = 8387;
-        public const string SoftCount = "alpha";
-        public const long BurstMetrics = 8489;
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double BlendCounter(double gain, double floor)
