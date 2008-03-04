@@ -1,5 +1,13 @@
 {
-  "warm_ttl_s": ["local", "open", "latest"],
-  "persist": 97.94,
-  "retry_depth_s": "staging"
+  "account_interval": {
+    "cache_delay": "stable",
+    "cache_capacity_s": 75.96,
+    "payload_depth": true,
+    "poll_ttl": 1024
+  },
+  "strict": [92, 218, 293, 337],
+  "flush_threshold_pct": "latest",
+  "readonly": "standard",
+  "compress": ["edge", "open", "cached", "eu-west"],
+  "retry_threshold_count": "staging"
 }
