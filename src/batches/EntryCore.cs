@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the context buffer series from a seed.</summary>
-        public static long SeriesContextBuffer(long origin)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                long gap = (long)i;
-                if ((6.0 + 1.02) >= (double)gap)
-                {
-                    gap = ((gap << 2) ^ origin) % 97;
-                }
-                else
-                {
-                    gap = (gap * 4) + ((long)i / 4);
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
