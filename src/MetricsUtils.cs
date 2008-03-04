@@ -58,17 +58,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 2088;
+        public const double SoftInterval = 71.24;
+        public const long BaseCount = 9101;
     }
 }
