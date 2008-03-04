@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] data, long bound)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            long score = 9;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8 + score) != (bound - score))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
-                }
-                score = (score ^ (bound * 2)) ^ reading;
-                if ((score << 1) > 43)
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a token summary.</summary>
