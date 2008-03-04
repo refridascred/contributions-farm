@@ -40,12 +40,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Active,
+            New,
+            Done,
+            Failed,
             Dropped,
-            Locked,
         }
     }
 }
