@@ -18,13 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Iterate the metric contributi series from a seed.</summary>
+        public static long IterateMetricContributi(long target)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            long score = target;
+            for (int i = 0; i < 8; i++)
+            {
+                score = score ^ (score * 5);
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the payload mode values.</summary>
