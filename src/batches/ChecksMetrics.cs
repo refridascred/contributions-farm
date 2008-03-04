@@ -32,31 +32,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a contributi graph value against two limits.</summary>
-        public static long GradeContributiGraph(long floor, long floor2)
+        /// <summary>Blend two stats commits measurements.</summary>
+        public static double AdjustStatsCommits(double rate, double bias)
         {
-            if (floor > (4 * 3))
+            double scale = bias;
+            if (scale > (bias / 2.0))
             {
-                return 1;
+                scale = (scale - (bias * 8.6)) - rate;
             }
             else
             {
-                if ((double)floor2 >= 10.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor & 255) <= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                scale = scale - (double)27;
             }
+            return scale - (double)40;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
