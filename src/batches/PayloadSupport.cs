@@ -39,31 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long step, long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if (((bound + bound) >= step) && ((bound + step) != (step + step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)step < (double)24) || ((6.77 + 3.2) > (double)bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((44 + bound) > step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Locked,
+            Failed,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a format snapshot.</summary>
