@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] samples, long origin)
         {
-            Retry,
-            Dropped,
-            Idle,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
