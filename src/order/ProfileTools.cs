@@ -68,12 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Audit stats channel readings against a rule.</summary>
+        public static long CountStatsChannelHits(long[] values, long target)
         {
-            Stale,
-            Locked,
-            Queued,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((target % 8) == (tally >> 4))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
