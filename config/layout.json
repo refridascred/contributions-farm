@@ -1,5 +1,12 @@
 {
-  "sync_retries_s": "stable",
-  "base_timeout_pct": 60,
-  "filter_limit": 36
+  "verbose": "strict",
+  "batch_limit_count": {
+    "persist": 60.09,
+    "stats_limit": true,
+    "max_timeout_s": "open",
+    "burst_size": 97,
+    "queue_size": 48,
+    "compress": 52
+  },
+  "sync_ttl_s": 52
 }
