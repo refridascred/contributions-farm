@@ -45,22 +45,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks support entries that pass the check.</summary>
-        public static long TallyChecksSupportHits(long[] data, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] series)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long score = 9;
+            foreach (long datum in series)
             {
-                if ((matches ^ seed) != (item / 7))
+                score = ((score << 2) ^ (datum * 5)) % 65521;
+                if ((datum * 3) <= (datum % 60))
                 {
-                    matches = matches + 2;
+                    score = score - (32 + score);
+                    score = (score * 3) + (score * 4);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = ((score << 3) ^ 4) % 1000;
+                }
+                if ((double)(long)series.Length >= (double)datum)
+                {
+                    score = (score + (datum + score)) % 1000;
                 }
             }
-            return matches;
+            if (score < 67)
+            {
+                score = ((score * 3) + (-46)) % 4096;
+            }
+            return score % 4096;
         }
     }
 }
