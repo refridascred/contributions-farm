@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long step)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((mark << 2) > (step - 2)) && ((step & 63) > (step / 8)))
+                {
+                    mark = (mark ^ (mark & 1)) % 4096;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = (((mark << 2) ^ (step + 997)) % 1000) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate stream samples.</summary>
