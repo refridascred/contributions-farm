@@ -31,11 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema format value.</summary>
-        public static double AdjustSchemaFormat(double bias, double floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            double weight = 8.68 / 9.0;
-            return ((weight - (double)4) + bias) + floor;
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                long slot = (floor << 2) >> 4;
+                if ((floor >> 5) <= ((long)i * 2))
+                {
+                    mark = (mark + mark) % 255;
+                    slot = ((slot << 2) ^ ((long)i - (long)i)) % 4096;
+                    break;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = (((mark << 2) ^ (slot ^ floor)) % 101) ^ (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
