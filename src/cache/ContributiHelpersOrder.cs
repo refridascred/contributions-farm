@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const string BatchWindow = "local-v2";
         public const long CacheWindow = 3262;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
