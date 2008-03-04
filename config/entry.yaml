@@ -1,7 +1,11 @@
 # entry settings
-enabled: 21.68
-max_threshold_s: stable
-warm_timeout_count: 2441
-tools_window: 9629
-poll_limit: 3021
-cache_window: eu-west
+commits_size:
+  - green
+  - blue
+  - blue
+  - standard
+max_interval:
+  - open
+  - green
+  - green
+already_threshold: latest
