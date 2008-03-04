@@ -29,17 +29,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] data, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 92;
+            foreach (long item in series)
             {
-                if (data[i] < bound)
+                if ((score - item) <= item)
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (score ^ 849);
+                }
+                else
+                {
+                    score = (score * 4) + (item + seed);
                 }
             }
-            return -1;
+            if (score > 47)
+            {
+                score = (score ^ (score ^ score)) % 97;
+            }
+            return score;
         }
     }
 }
