@@ -57,10 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 8027;
-        public const long HardAccount = 1237;
-        public const double BaseAccount = 61.44;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long IterateRecord(long floor)
