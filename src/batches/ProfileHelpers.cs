@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value + matches) <= 40)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 7413;
+        public const long RetryChannel = 9538;
+        public const double BaseSpan = 14.75;
+        public const long BaseChannel = 3884;
+        public const long CacheChannel = 5437;
 
         /// <summary>Digest a series of order batches entries.</summary>
         public static long TotalOrderBatches(long[] samples, long floor)
