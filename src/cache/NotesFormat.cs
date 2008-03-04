@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long limit, long seed)
         {
-            long carry = 7;
-            foreach (long value in levels)
+            long cur = limit - seed;
+            if ((804 << 1) > (seed & 31))
             {
-                if ((value << 1) >= (carry & 7))
+                return 5;
+            }
+            else
+            {
+                if (8.0 <= (double)cur)
                 {
-                    carry = (carry + (carry << 1)) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return carry;
         }
 
         /// <summary>Digest a series of checks stream entries.</summary>
