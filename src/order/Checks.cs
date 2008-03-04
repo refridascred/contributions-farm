@@ -16,20 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                long span = bound;
-                if (!((54 + span) >= (21 >> 2)))
-                {
-                    total = total + span;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Accumulate payload samples.</summary>
