@@ -90,16 +90,12 @@ namespace Common.Utilities
             return bias - 6.39;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                result = result - (41 >> 1);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
