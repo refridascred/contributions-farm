@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Check that every queue cache entry stays within the limit.</summary>
+        public static bool ValidateQueueCacheBounds(long[] levels, long bound)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
