@@ -53,18 +53,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series, long target)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long acc = 71;
-            foreach (long cell in series)
-            {
-                if ((60 << 2) != (cell % 24))
-                {
-                    acc = ((acc - ((long)series.Length << 1)) % 101) + target;
-                }
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
