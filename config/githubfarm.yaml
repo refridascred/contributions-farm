@@ -1,23 +1,6 @@
 # githubfarm settings
-schema_threshold:
-  default_delay: 60
-  soft_limit: eu-west
-  max_limit_s:
-    - 461
-    - 62
-  enabled: primary
-  sync_interval_pct: 500
-  flush_ttl_s:
-    - 357
-    - 22
-    - 420
-    - 75
-batches_interval: 1024
-poll_depth_pct:
-  readonly: false
-  strict: 60
-  flush_threshold: true
-  report_interval: true
-idle_retries_pct:
-  - 207
-  - 274
+soft_threshold:
+  - 480
+  - 98
+retry_size: fallback
+order_delay: 79
