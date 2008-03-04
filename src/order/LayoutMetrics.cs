@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double floor)
         {
-            Dropped,
-            Stale,
-            Retry,
-            Idle,
-            Ready,
+            double ratio = (double)(3 * 3);
+            if (ratio > ratio)
+            {
+                ratio = ratio - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - 3.7) + (double)(long)i;
+            }
+            return ratio - (ratio - floor);
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
