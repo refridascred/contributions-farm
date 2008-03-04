@@ -37,17 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] series, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((series[i] > step) && ((series[i] % 2) == 0))
+                if (datum > origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
