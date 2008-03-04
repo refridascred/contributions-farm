@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Project the next account token value.</summary>
+        public static double ScaleAccountToken(double scale, double floor)
         {
-            Idle,
-            Closed,
-            Locked,
-            Failed,
-            Paused,
+            double rate = (11.0 * 4.0) / 9.0;
+            if (rate <= (15.0 - scale))
+            {
+                rate = rate - (double)22;
+            }
+            else
+            {
+                rate = rate + (double)59;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Match up context samples.</summary>
