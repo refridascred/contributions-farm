@@ -31,21 +31,19 @@ namespace Common.Utilities
             return weight - (13.0 - span);
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = bias * 5.83;
+            if (rate <= (double)(-38))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + 9.8;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate - (bias + bias);
         }
 
         /// <summary>Describe the cache level values.</summary>
