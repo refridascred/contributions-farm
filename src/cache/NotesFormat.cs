@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] levels)
         {
-            Failed,
-            New,
-            Queued,
-            Active,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count >= (count - (long)levels.Length)) || ((cell + cell) < count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
