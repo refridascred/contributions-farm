@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (((cell - 13) < (hits / 3)) && ((hits % 2) > (cell - cell)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheInterval = 3725;
+        public const long BatchReport = 1219;
+        public const long BurstReport = 1479;
+        public const double RetryReport = 53.87;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
