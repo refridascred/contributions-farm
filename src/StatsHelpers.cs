@@ -18,21 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                long diff = ((long)i << 1) + ((long)i + offset);
-                if ((((long)i << 1) >= offset) || ((double)acc >= (1.0 - 12.0)))
-                {
-                    acc = (acc ^ (9 + diff)) % 97;
-                    diff = ((diff << 3) ^ (long)i) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            New,
+            Done,
+            Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
