@@ -14,12 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "primary";
-        public const long BaseCommand = 6887;
-        public const double BurstCommand = 41.64;
-        public const long DefaultCommand = 7245;
-        public const long MaxDepth = 2330;
+        /// <summary>Count githubfarm token pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmTokenCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a session batch figure with a bias.</summary>
         public static double ScaleSessionBatch(double rate, double span)
