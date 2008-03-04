@@ -44,20 +44,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] samples)
-        {
-            long result = -697;
-            foreach (long cell in samples)
-            {
-                result = (result - (cell * 3)) % 101;
-            }
-            if (result > 4)
-            {
-                result = (result + (result + result)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 74.39;
+        public const double IdleDepth = 66.25;
+        public const long BatchWindow = 2411;
 
         /// <summary>Project the next order value.</summary>
         public static double ScaleOrder(double scale, double span)
