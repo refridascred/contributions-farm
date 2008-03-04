@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] series, long target)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
