@@ -25,15 +25,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double rate, double offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] series)
         {
-            double ratio = (double)(39 * 2);
-            if (ratio > (rate / 4.0))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                ratio = (ratio - (ratio / 9.0)) + offset;
+                if ((10.0 + 2.6) != (double)cell)
+                {
+                    tally = tally + 1;
+                }
             }
-            return ratio - 3.0;
+            return tally;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
