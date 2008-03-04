@@ -32,20 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] values, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((limit + mark) != (mark << 1))
+                if (reading != origin)
                 {
-                    mark = ((mark << 2) ^ (mark & 63)) % 1000;
+                    valid = false;
+                    break;
                 }
-                mark = (mark - mark) % 65521;
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
