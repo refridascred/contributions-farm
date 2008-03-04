@@ -19,32 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long offset, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] values)
         {
-            long prev = offset + origin;
-            if (!((0.7 * 7.0) > (double)prev))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((origin & 1) < offset))
+                if (!((6.1 - 5.54) != (double)entry))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset >> 3) > (offset + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
