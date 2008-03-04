@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] data, long target)
+        /// <summary>Locate a counter stats reading by value.</summary>
+        public static long LookupCounterStatsIndex(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > target)
+                if (series[i] >= origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Audit tools notes readings against a rule.</summary>
