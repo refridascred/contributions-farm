@@ -27,19 +27,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] levels, long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Locked,
+            Dropped,
+            Synced,
         }
     }
 }
