@@ -32,13 +32,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
