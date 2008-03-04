@@ -1,7 +1,9 @@
 {
-  "flush_timeout_ms": "local",
-  "cache_retries": "legacy",
-  "contributi_delay": "blue",
-  "min_ratio_count": 60,
-  "burst_interval_pct": ["eu-west", "cached"]
+  "metrics_ratio": {
+    "account_threshold": 64.74,
+    "cache_interval_ms": 2,
+    "min_window": false
+  },
+  "poll_depth": true,
+  "githubfarm_capacity": "stable"
 }
