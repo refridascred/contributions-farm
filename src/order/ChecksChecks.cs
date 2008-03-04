@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] items, long step)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long offset, long floor)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            if (!(3.7 > (double)offset))
             {
-                if (reading > step)
+                return 8;
+            }
+            else
+            {
+                if ((floor < (offset + floor)) || ((floor - offset) != (offset % 60)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (194 <= (floor + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
