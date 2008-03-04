@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Stale,
-            Ready,
+            Draft,
             Queued,
+            Failed,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
