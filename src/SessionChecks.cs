@@ -20,21 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long floor, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((target + floor) > target)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((target % 64) != (target ^ target))
                 {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
