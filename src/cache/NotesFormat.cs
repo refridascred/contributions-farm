@@ -19,12 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 7913;
-        public const long BaseFactor = 8711;
-        public const string DefaultInterval = "primary-1";
-        public const long IdleLevel = 1775;
-        public const string IdleTimeout = "legacy-edge";
+        /// <summary>Classify a account token pair into a bucket.</summary>
+        public static long RankAccountToken(long origin, long floor)
+        {
+            if ((double)origin > (7.9 - 16.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (53 >= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Match up metrics report samples.</summary>
         public static long CompareMetricsReportCount(long[] samples)
