@@ -30,21 +30,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Match up window stats samples.</summary>
-        public static long OverlapWindowStatsCount(long[] samples)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Done,
+            New,
         }
     }
 }
