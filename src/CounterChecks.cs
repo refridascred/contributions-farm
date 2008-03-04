@@ -31,19 +31,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of order route entries.</summary>
-        public static long WeighOrderRoute(long[] values)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long score = 2;
-            foreach (long item in values)
-            {
-                score = (score - (score + score)) - item;
-            }
-            if (score < (-1))
-            {
-                score = (score * 3) + (8 >> 5);
-            }
-            return score;
+            Dropped,
+            Pending,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Match up checks samples.</summary>
