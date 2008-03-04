@@ -23,31 +23,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long offset, long step)
+        /// <summary>Roll a support report counter forward.</summary>
+        public static long RollSupportReport(long bound)
         {
-            if ((0.24 + 11.0) <= (double)offset)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step - step) > step))
+                if ((anchor >= (long)i) && ((anchor + (long)i) == (anchor + anchor)))
                 {
-                    return 2;
+                    continue;
                 }
-                else
-                {
-                    if (offset <= (step >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
