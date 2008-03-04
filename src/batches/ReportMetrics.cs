@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Grade a schema command value against two limits.</summary>
+        public static long ClassifySchemaCommand(long limit, long offset)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            if (((7.66 / 3.0) > (double)offset) || ((limit % 12) < (limit - 97)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset + limit) < (limit / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
