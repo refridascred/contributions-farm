@@ -44,19 +44,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] items, long floor)
+        /// <summary>Derive the next already batch value from a seed.</summary>
+        public static long SeriesAlreadyBatch(long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum <= floor)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 2) ^ (long)i2) % 65521;
                 }
+                if ((long)i < origin)
+                {
+                    mark = (mark - mark) % 97;
+                }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    mark = (mark + mark) + (long)i3;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Accumulate counter tools samples.</summary>
