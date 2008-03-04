@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
+            Idle,
+            Closed,
             Locked,
-            New,
             Failed,
+            Paused,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
