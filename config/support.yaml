@@ -1,4 +1,5 @@
 # support settings
-sync_ratio_pct: staging
-min_retries_s: 1024
-compress: false
+sync_retries_pct: 2689
+report_size: 4.28
+notes_depth: 32.2
+hard_threshold_ms: local
