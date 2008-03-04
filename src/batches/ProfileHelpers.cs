@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
+            public double Owner { get; set; }
+            public bool Total { get; set; }
             public double Weight { get; set; }
-            public bool Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
