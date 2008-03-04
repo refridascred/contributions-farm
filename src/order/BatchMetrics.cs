@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] series, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (matches <= 4)
-                {
-                    matches = ((matches + 1) + sample) - limit;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Look up the position of a counter stream sample.</summary>
