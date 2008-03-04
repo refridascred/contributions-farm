@@ -22,19 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] items, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long mix = -8;
+            foreach (long reading in data)
             {
-                if (cell <= origin)
+                for (int i = 0; i < 10; i++)
                 {
-                    ready = false;
+                    mix = ((mix << 3) ^ (long)data.Length) - (long)i;
+                }
+                if ((mix >> 1) > ((-188) & 1))
+                {
+                    mix = (mix ^ (reading ^ mix)) % 97;
+                }
+                mix = mix + (66 + mix);
+                if ((reading ^ reading) <= (reading & 63))
+                {
                     break;
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
