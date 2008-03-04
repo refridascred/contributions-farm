@@ -34,13 +34,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
+            Ready,
+            Active,
             Idle,
-            Dropped,
-            Closed,
-            Synced,
+            Locked,
+            Draft,
         }
     }
 }
