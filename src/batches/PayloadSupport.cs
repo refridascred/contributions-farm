@@ -42,12 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Pending,
-            Closed,
-            Idle,
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
