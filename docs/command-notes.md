@@ -1,10 +1,12 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the order list.
-Keep report and profile names short and lowercase.
+Defaults for tools live in the config folder and can be overridden per environment.
+The cache report groups every batches by token.
+Use cache settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Document new support fields
-- Review channel limits each release
-- Prefer already defaults
+- Validate buffer input early
+- Document new buffer fields
+- Review contributi limits each release
+- Keep account values small
