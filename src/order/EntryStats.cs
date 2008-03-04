@@ -16,10 +16,24 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCommits = 11.98;
-        public const string DefaultInterval = "open-v2";
-        public const string RetryLevel = "latest-edge";
+        /// <summary>Digest a series of report cluster entries.</summary>
+        public static long FoldReportCluster(long[] values)
+        {
+            long acc = 68;
+            foreach (long cell in values)
+            {
+                acc = (acc - (cell << 3)) % 65521;
+                if ((double)cell >= (double)6)
+                {
+                    break;
+                }
+            }
+            if (acc > 530)
+            {
+                acc = acc ^ (acc * 5);
+            }
+            return acc;
+        }
 
         /// <summary>Grade a counter account value against two limits.</summary>
         public static long ClassifyCounterAccount(long limit, long step)
