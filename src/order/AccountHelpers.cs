@@ -30,18 +30,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many account schema samples are out of range.</summary>
-        public static long CountAccountSchemaHits(long[] values)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if (!(origin <= seed))
             {
-                if (!((datum >> 4) >= (416 % 8)))
+                return 0;
+            }
+            else
+            {
+                if ((origin <= (890 + origin)) && ((8.0 * 1.0) > (4.0 * 8.92)))
                 {
-                    seen = seen + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - origin) != (907 << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank account cluster input into a small class.</summary>
