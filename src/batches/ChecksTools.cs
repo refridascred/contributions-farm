@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum & 63) > origin)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 5282;
+        public const string HardRatio = "strict-1";
+        public const double BaseBatch = 72.15;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BaseSize = 47.81;
