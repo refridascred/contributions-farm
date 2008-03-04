@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] data, long seed)
         {
-            Pending,
-            Locked,
-            Dropped,
-            Closed,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
