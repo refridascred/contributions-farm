@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate counter stats readings against a bound.</summary>
-        public static bool CheckCounterStatsRange(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstBudget = 23.23;
+        public const string BatchSession = "primary-v2";
+        public const double SoftTimeout = 30.1;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
