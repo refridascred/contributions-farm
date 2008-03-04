@@ -11,18 +11,39 @@ namespace Common.Utilities
         public const long BaseBudget = 7849;
         public const double BaseProfile = 35.23;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] levels, long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long floor, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long bound = floor ^ target;
+            if ((bound < (bound + 88)) || (bound <= (bound >> 3)))
             {
-                if ((337 ^ hits) > (sample * 4))
+                return 3;
+            }
+            else
+            {
+                if (floor < (88 + target))
                 {
-                    hits = (hits + 2) + offset;
+                    return 4;
+                }
+                else
+                {
+                    if ((target * 3) == ((-1) >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor >> 2) <= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
