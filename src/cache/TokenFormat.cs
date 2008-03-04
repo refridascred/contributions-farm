@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long acc = 18;
+            foreach (long reading in readings)
+            {
+                if ((acc & 63) < (reading + 9))
+                {
+                    acc = acc + acc;
+                }
+                if ((5.18 - 2.02) > (double)reading)
+                {
+                    acc = ((acc * 5) + (reading & 255)) % 4096;
+                }
+                acc = ((acc * 4) + reading) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
