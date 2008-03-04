@@ -1,14 +1,12 @@
 # entry settings
-poll_capacity: 7535
-compress: 10.37
-payload_window:
-  base_retries_count: 73
-  payload_window: green
-  sync_threshold: 60
-counter_interval:
-  - local
-  - local
-idle_ttl_ms: local
-default_capacity:
-  - primary
-  - primary
+persist: 97.17
+base_timeout_s:
+  - 199
+  - 65
+context_size: eu-west
+batch_timeout_pct:
+  - 431
+  - 321
+  - 258
+  - 359
+readonly: 58
