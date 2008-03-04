@@ -1,10 +1,7 @@
-id,level,weight
-1,894,45.85
-2,legacy,edge
-3,815,179
-4,973,103
-5,primary,0
-6,157,91.95
-7,56.24,primary
-8,874,legacy
-9,10.55,stable
+id,level,count,active
+1,eu-west,59.95,primary
+2,345,673,strict
+3,latest,80.98,edge
+4,local,835,primary
+5,424,130,edge
+6,804,27.62,893
