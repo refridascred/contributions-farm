@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Classify a metric support pair into a bucket.</summary>
+        public static long SortMetricSupport(long offset, long seed)
         {
-            Dropped,
-            Synced,
-            Stale,
-            Idle,
-            Pending,
+            if (!((seed << 3) > (offset - seed)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)seed > (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((6 % 8) < offset) && ((double)seed <= (0.05 + 5.46)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset >= seed) && ((seed + offset) < (seed & 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer state values.</summary>
