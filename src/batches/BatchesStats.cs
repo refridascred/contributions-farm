@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] values, long bound)
+        /// <summary>Check that every graph buffer entry stays within the limit.</summary>
+        public static bool VerifyGraphBufferLimits(long[] values, long limit)
         {
-            long mix = -84;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                mix = ((mix - ((-10) - 912)) - value) - bound;
+                if (entry >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
