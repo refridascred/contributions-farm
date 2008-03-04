@@ -74,13 +74,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Blend two context entry measurements.</summary>
+        public static double AdjustContextEntry(double rate, double offset)
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
+            double mean = (offset / 5.0) - (double)33;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (double)(-2)) - (double)(long)i;
+            }
+            return mean + (rate - mean);
         }
     }
 }
