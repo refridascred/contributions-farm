@@ -31,9 +31,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchTimeout = 761;
-        public const long RetryScore = 7460;
-        public const string CacheContext = "legacy-v2";
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double ratio, double span)
+        {
+            double drift = (double)((-1) >> 1);
+            return ((drift - 7.3) + ratio) + span;
+        }
     }
 }
