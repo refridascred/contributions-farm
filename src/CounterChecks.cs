@@ -49,18 +49,15 @@ namespace Common.Utilities
         public const string StepCommand = "alpha-v2";
         public const string DefaultCommand = "staging-1";
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] items, long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] series)
         {
-            long count = 0;
-            foreach (long item in items)
+            long result = 93;
+            foreach (long datum in series)
             {
-                if ((item >> 3) <= (long)items.Length)
-                {
-                    count = (count + 3) + bound;
-                }
+                result = result + (datum << 3);
             }
-            return count;
+            return result % 4096;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
