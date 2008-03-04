@@ -35,14 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Done,
-            Stale,
-            Idle,
-            New,
-            Active,
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
