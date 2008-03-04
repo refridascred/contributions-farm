@@ -31,12 +31,13 @@ namespace Common.Utilities
         public const string BaseWidth = "stable-1";
         public const long BatchBuffer = 3079;
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public string Size { get; set; } = "";
+            Pending,
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
