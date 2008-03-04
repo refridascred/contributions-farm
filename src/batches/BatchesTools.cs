@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Retry,
-            New,
-            Synced,
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
