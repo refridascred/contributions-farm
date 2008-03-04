@@ -31,19 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long target)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
