@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate tools record readings against a bound.</summary>
-        public static bool GuardToolsRecordLimits(long[] items, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (reading < origin)
+                if (datum < step)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Fold a list of payload batch readings.</summary>
