@@ -15,16 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                result = (result - (long)i) % 255;
-                result = ((result * 2) + (long)i) % 97;
+                if ((double)matches > 8.85)
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the profile state values.</summary>
