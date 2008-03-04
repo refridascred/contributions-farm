@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] data, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long mark = -260;
+            foreach (long sample in data)
             {
-                if (entry <= target)
+                if ((mark % 16) != (mark * 4))
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark << 3) ^ (sample & 127)) % 1000;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + sample)) % 4096;
                 }
             }
-            return stale;
+            if (mark > 71)
+            {
+                mark = (mark ^ mark) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the route mode values.</summary>
