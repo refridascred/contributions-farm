@@ -19,11 +19,40 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinFactor = 30.55;
-        public const string LimitNotes = "local-v2";
-        public const long BaseNotes = 3861;
-        public const string MaxNotes = "stable-edge";
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long target, long target2)
+        {
+            long gap = target ^ target2;
+            if (target > (gap % 16))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((gap % 97) < (target2 & 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target < (target >> 2)) || ((8.0 / 3.0) > (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((gap << 2) == (target2 / 9)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsOutliers(long[] items, long bound)
