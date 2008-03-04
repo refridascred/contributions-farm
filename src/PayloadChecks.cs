@@ -65,12 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] levels)
         {
-            Retry,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!(datum >= (seen + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every schema editor entry stays within the limit.</summary>
