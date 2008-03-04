@@ -56,39 +56,13 @@ namespace Common.Utilities
             return scale - (double)40;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long seed, long offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long delta = seed ^ offset;
-            if (((22 / 7) <= (offset + offset)) && ((8 / 2) < offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed > 499) || ((seed + delta) > (delta - 8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)offset >= (double)delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset - offset) > (delta % 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Scale a order record figure with a bias.</summary>
