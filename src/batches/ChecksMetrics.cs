@@ -65,15 +65,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two context entry measurements.</summary>
-        public static double AdjustContextEntry(double rate, double offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] series, long offset)
         {
-            double mean = (offset / 5.0) - (double)33;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                mean = (mean + (double)(-2)) - (double)(long)i;
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + (rate - mean);
+            return found;
         }
     }
 }
