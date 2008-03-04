@@ -21,12 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first contributi record entry that matches the target.</summary>
-        public static long LocateContributiRecordIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] >= offset)
+                if (values[i] <= target)
                 {
                     return (long)i;
                 }
