@@ -39,14 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Dropped,
-            Stale,
-            Done,
-            Ready,
-            Active,
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
