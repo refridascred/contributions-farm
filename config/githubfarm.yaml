@@ -1,4 +1,23 @@
 # githubfarm settings
-idle_timeout_pct: 4446
-persist: standard
-record_ratio: latest
+schema_threshold:
+  default_delay: 60
+  soft_limit: eu-west
+  max_limit_s:
+    - 461
+    - 62
+  enabled: primary
+  sync_interval_pct: 500
+  flush_ttl_s:
+    - 357
+    - 22
+    - 420
+    - 75
+batches_interval: 1024
+poll_depth_pct:
+  readonly: false
+  strict: 60
+  flush_threshold: true
+  report_interval: true
+idle_retries_pct:
+  - 207
+  - 274
