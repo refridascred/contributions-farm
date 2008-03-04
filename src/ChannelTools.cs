@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double rate, double span)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] samples, long step)
         {
-            double ratio = rate + (span + span);
-            if (ratio <= rate)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - (double)65;
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + 9.6;
+            return -1;
         }
 
         /// <summary>Describe the token level values.</summary>
