@@ -1,5 +1,6 @@
 {
-  "warm_ttl_ms": 32.46,
-  "persist": true,
-  "warm_threshold": false
+  "payload_delay": "blue",
+  "verbose": 12,
+  "burst_threshold_count": [235, 377],
+  "sync_retries_s": 74
 }
