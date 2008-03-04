@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a notes checks figure with a bias.</summary>
-        public static double ProjectNotesChecks(double scale, double offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double mean = 5.01;
-            if (mean >= (double)48)
-            {
-                mean = (mean + (mean / 5.0)) + offset;
-            }
-            else
-            {
-                mean = mean + (double)673;
-            }
-            return mean + (mean - scale);
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
