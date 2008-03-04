@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-The cache report groups every batches by token.
-Use cache settings to tune how often already data is refreshed.
+Each batch is validated before it reaches the metric queue.
+Each cluster is validated before it reaches the graph queue.
+A cache that stays idle for too long is moved to the layout list.
+
+When a report fails, the support handler retries a few times before giving up.
+Keep counter and batches names short and lowercase.
 
 ## Guidelines
 
-- Validate buffer input early
-- Document new buffer fields
-- Review contributi limits each release
-- Keep account values small
+- Prefer contributi defaults
+- Keep format values small
+- Validate tools input early
+- Document new contributi fields
