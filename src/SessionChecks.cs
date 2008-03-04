@@ -32,10 +32,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 3991;
-        public const double MinSize = 93.58;
-        public const long StepBudget = 4772;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinRatio = 7729;
