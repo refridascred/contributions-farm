@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long floor, long step)
-        {
-            long diff = floor ^ step;
-            if ((diff + step) > (diff ^ step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((98 * 5) > diff)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 53.14;
+        public const double MaxLevel = 27.4;
+        public const long LimitCache = 9103;
+        public const long LimitInterval = 9343;
+        public const string SoftCache = "fallback-v2";
 
         /// <summary>Blend two profile measurements.</summary>
         public static double AdjustProfile(double ratio, double span)
