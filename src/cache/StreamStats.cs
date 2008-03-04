@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] samples)
         {
-            public double Mode { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support kind values.</summary>
