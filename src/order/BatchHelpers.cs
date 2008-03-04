@@ -40,12 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Stale,
-            Queued,
+            Failed,
+            Dropped,
             Active,
+            New,
         }
     }
 }
