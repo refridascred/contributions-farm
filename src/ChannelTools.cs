@@ -23,21 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 398;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc << 2) ^ (value + value)) % 4096;
             }
-            return seen;
+            if (acc < 560)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc;
         }
     }
 }
