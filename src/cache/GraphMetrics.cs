@@ -48,12 +48,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepInterval = 21.06;
-        public const string MaxMetric = "alpha";
-        public const long BurstFactor = 1803;
-        public const long CacheBudget = 7673;
-        public const double DefaultTimeout = 53.36;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MinSpan = 9689;
