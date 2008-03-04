@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result << 3) ^ (7 + step)) % 4096;
-                result = result - (result ^ step);
-                if (((result + (long)i) < (364 / 8)) || (((long)i + step) < result))
-                {
-                    result = (result - (447 & 63)) % 1000;
-                    result = (result ^ result) % 4096;
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
