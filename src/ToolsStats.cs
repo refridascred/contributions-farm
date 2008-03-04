@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] levels, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (((long)levels.Length * 4) < (396 - item))
+                if ((tally - tally) < (tally - 60))
                 {
-                    count = (count + 1) + bound;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the farm level values.</summary>
