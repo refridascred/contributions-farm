@@ -1,9 +1,11 @@
 # support settings
-dry_run: latest
-cluster_capacity:
-  - open
-  - blue
-sync_threshold_s: 1024
-commits_window: local
-base_capacity: 68
-stream_ratio: local
+max_capacity_s: 23.02
+soft_ttl:
+  burst_capacity: false
+  context_threshold: true
+  poll_retries_ms: latest
+  max_retries_ms: 60
+  support_capacity: cached
+  burst_threshold_ms: 500
+warm_interval_pct: false
+enabled: 500
