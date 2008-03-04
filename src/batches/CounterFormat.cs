@@ -17,19 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] levels, long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Define session limits and defaults.</summary>
