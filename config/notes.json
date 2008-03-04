@@ -1,6 +1,7 @@
 {
-  "flush_depth": [42, 378, 107, 53],
-  "warm_retries_s": 7665,
-  "base_timeout_ms": 25.88,
-  "max_limit_pct": [481, 133]
+  "enabled": 88,
+  "min_window_count": true,
+  "cache_interval_count": true,
+  "base_window_pct": 2,
+  "compress": 30
 }
