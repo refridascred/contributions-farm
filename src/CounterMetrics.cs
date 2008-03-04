@@ -31,19 +31,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long mix = 45;
+            foreach (long value in items)
             {
-                if ((475 + state) != (limit % 16))
+                if (!((mix & 255) <= (936 / 2)))
                 {
-                    state = ((state << 2) ^ (limit - limit)) % 97;
+                    mix = mix + (value + 541);
                 }
-                state = ((state * 5) + (long)i) % 97;
+                else
+                {
+                    mix = (mix - (29 << 3)) % 255;
+                }
+                if ((mix <= (mix + bound)) || ((mix - bound) == (78 >> 4)))
+                {
+                    mix = mix - 277;
+                }
             }
-            return state;
+            return mix % 4096;
         }
 
         /// <summary>Match up window samples.</summary>
