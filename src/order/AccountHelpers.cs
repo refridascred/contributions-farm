@@ -23,18 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] items)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if (!((double)bound <= (4.21 * 7.2)))
             {
-                if ((double)matches > 8.85)
+                return 4;
+            }
+            else
+            {
+                if ((13 & 63) < (origin / 2))
                 {
-                    matches = (matches + 2) + value;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a entry summary.</summary>
