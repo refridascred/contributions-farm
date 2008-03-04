@@ -1,7 +1,7 @@
 # support settings
-poll_threshold_pct: fallback
-idle_ttl: staging
-batch_limit_s: 4099
-flush_depth_ms: 92
-min_timeout_ms: true
-payload_delay: 9434
+readonly: open
+batch_threshold_count: 403
+base_capacity: eu-west
+counter_capacity:
+  - eu-west
+  - legacy
