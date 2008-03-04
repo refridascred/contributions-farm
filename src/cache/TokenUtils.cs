@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 4248;
-        public const double LimitBudget = 30.13;
-        public const long CacheDepth = 4556;
-        public const long SoftSpan = 6907;
-        public const long DefaultCluster = 1845;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double gain, double offset)
+        {
+            double scale = (double)(95 - 843);
+            if (scale >= scale)
+            {
+                scale = scale - (gain * 0.8);
+            }
+            else
+            {
+                scale = scale + (double)85;
+            }
+            return scale - (offset / 9.0);
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long CombineTools(long[] data, long offset)
