@@ -31,20 +31,17 @@ namespace Common.Utilities
             return load - (span * 1.0);
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Find the first channel entry entry that matches the target.</summary>
+        public static long SeekChannelEntryIndex(long[] items, long offset)
         {
-            long mix = 9;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix - (cell + cell)) % 65521;
-                mix = (mix + (mix & 63)) % 1000;
-                if (!((cell - mix) < (46 % 5)))
+                if (items[i] > offset)
                 {
-                    mix = mix + cell;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
