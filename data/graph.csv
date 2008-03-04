@@ -1,10 +1,7 @@
-id,score,state
-1,671,eu-west
-2,latest,64.52
-3,open,local
-4,staging,47.2
-5,5.48,235
-6,eu-west,strict
-7,stable,24.45
-8,open,4.24
-9,green,937
+id,token,state
+1,528,35.67
+2,77.05,edge
+3,296,207
+4,legacy,340
+5,eu-west,stable
+6,29.53,staging
