@@ -55,19 +55,9 @@ namespace Common.Utilities
         public const double RetryChecks = 0.36;
         public const long MaxLevel = 6283;
 
-        /// <summary>Check that every window filter entry stays within the limit.</summary>
-        public static bool VerifyWindowFilterRange(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 3360;
+        public const long LimitSpan = 852;
+        public const long HardFactor = 342;
     }
 }
