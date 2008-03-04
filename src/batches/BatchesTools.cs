@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] levels, long offset)
         {
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)offset >= 17.0)
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
