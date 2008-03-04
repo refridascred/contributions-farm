@@ -1,9 +1,8 @@
 # githubfarm settings
-persist: false
-flush_interval: 36.29
-poll_threshold_ms: true
-retry_timeout_pct: 89.33
-burst_capacity:
-  - 332
-  - 108
-  - 377
+idle_depth_ms: true
+warm_depth:
+  verbose: 7255
+  warm_timeout_ms: legacy
+  strict: 5305
+  flush_ttl: true
+compress: standard
