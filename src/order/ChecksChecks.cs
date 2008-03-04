@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long seed, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] readings, long limit)
         {
-            if (((double)limit < (double)36) || ((seed & 7) <= (limit + 9)))
+            long mark = -591;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit >= (5.0 * 7.0))
+                if ((limit + mark) > (mark * 5))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    mark = (mark ^ (limit + value)) % 4096;
                 }
             }
+            if (mark > 8)
+            {
+                mark = (mark + (limit << 1)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
