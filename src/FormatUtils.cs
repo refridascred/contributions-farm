@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine report batch values into a single score.</summary>
-        public static long DigestReportBatch(long[] samples)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long limit)
         {
-            long score = -2;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score ^ (6 & 255)) % 4096;
-                if (score > value)
+                if (values[i] < limit)
                 {
-                    score = (score ^ score) % 255;
-                    score = (score ^ score) % 4096;
+                    return (long)i;
                 }
-                score = (score << 2) ^ (value - value);
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the window status values.</summary>
