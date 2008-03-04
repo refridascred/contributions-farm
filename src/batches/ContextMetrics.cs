@@ -50,15 +50,13 @@ namespace Common.Utilities
             return rate - (bias + bias);
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double gain, double offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double bias = (2.98 / 9.0) - gain;
-            if (bias >= (offset / 8.0))
-            {
-                bias = bias + gain;
-            }
-            return bias + gain;
+            Ready,
+            Pending,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the metrics window entries that pass the check.</summary>
