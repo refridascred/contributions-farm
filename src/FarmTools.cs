@@ -30,19 +30,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] samples)
-        {
-            long state = 67;
-            foreach (long item in samples)
-            {
-                if ((double)state < (10.0 - 15.0))
-                {
-                    state = (state + (item - state)) % 65521;
-                }
-                state = (state - (147 & 255)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchSpan = 1494;
+        public const long MinWindow = 1522;
+        public const long SoftWindow = 3055;
     }
 }
