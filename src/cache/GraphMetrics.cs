@@ -43,17 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] data, long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the schema class values.</summary>
