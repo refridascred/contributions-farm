@@ -48,11 +48,15 @@ namespace Common.Utilities
         public const string WindowRoute = "stable-1";
         public const string LimitRatio = "primary-edge";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftTimeout = 2867;
-        public const string MinSupport = "alpha-v2";
-        public const long MaxWidth = 2281;
-        public const long IdleSpan = 746;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Locked,
+            Paused,
+            New,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Check that every schema editor entry stays within the limit.</summary>
         public static bool GuardSchemaEditorBounds(long[] series, long bound)
