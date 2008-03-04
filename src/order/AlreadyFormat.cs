@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double bias, double offset)
+        /// <summary>Count the already format entries that pass the check.</summary>
+        public static long AuditAlreadyFormatMatches(long[] readings, long bound)
         {
-            double load = (double)(48 / 7);
-            if (load < (double)21)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                load = (load + bias) + offset;
+                if (!(tally >= (5 - 422)))
+                {
+                    tally = ((tally + 1) - sample) + bound;
+                }
             }
-            return load - 6.73;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
