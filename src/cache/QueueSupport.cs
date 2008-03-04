@@ -33,18 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batch token readings against a rule.</summary>
-        public static long MeasureBatchTokenMatches(long[] samples)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (reading < (reading - reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
