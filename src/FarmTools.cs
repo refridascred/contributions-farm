@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((mark << 2) > (step - 2)) && ((step & 63) > (step / 8)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark ^ (mark & 1)) % 4096;
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = (((mark << 2) ^ (step + 997)) % 1000) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
