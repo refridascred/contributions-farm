@@ -62,19 +62,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] items, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (item <= target)
+                if (((matches / 6) != (limit / 9)) && ((1.1 - 8.0) < (double)entry))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a entry entry.</summary>
