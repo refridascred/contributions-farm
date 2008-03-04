@@ -49,17 +49,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Fold a list of graph record readings.</summary>
+        public static long FoldGraphRecord(long[] items)
         {
-            long acc = 40;
-            foreach (long cell in data)
+            long result = -31;
+            foreach (long datum in items)
             {
-                acc = acc ^ acc;
-                acc = (acc ^ (acc & 3)) % 1000;
-                acc = (acc * 2) + (cell << 3);
+                if ((datum - result) < datum)
+                {
+                    result = (result << 3) ^ (datum * 4);
+                }
+                if (9.06 >= (double)result)
+                {
+                    break;
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Adjust a counter reading.</summary>
