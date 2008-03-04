@@ -1,5 +1,5 @@
 {
-  "default_interval_s": 250,
-  "cache_interval_s": [382, 284, 298, 337],
-  "poll_timeout": [417, 222, 274, 103]
+  "sync_retries_s": "stable",
+  "base_timeout_pct": 60,
+  "filter_limit": 36
 }
