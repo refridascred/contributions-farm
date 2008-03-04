@@ -50,31 +50,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long target, long seed)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            if ((target << 3) <= (346 / 6))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((target - seed) == ((-98) & 63)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((-98) << 1) >= (target ^ seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
