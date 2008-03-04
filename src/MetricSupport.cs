@@ -20,11 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftInterval = 2517;
-        public const string HardReport = "staging-1";
-        public const long BurstReport = 5692;
-        public const long MaxInterval = 3954;
+        /// <summary>Digest a series of record context entries.</summary>
+        public static long DigestRecordContext(long[] items, long floor)
+        {
+            long result = 4;
+            foreach (long cell in items)
+            {
+                result = (((result << 2) ^ (floor + result)) % 1000) + cell;
+            }
+            if (result < 7)
+            {
+                result = (result + floor) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Scale a session batch figure with a bias.</summary>
         public static double ScaleSessionBatch(double rate, double span)
