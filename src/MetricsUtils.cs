@@ -33,12 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowBudget = 67.1;
-        public const double SoftFactor = 37.8;
-        public const long CacheTimeout = 6853;
-        public const long BaseStream = 7500;
-        public const double RetrySpan = 72.89;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Locked,
+            Draft,
+            Stale,
+            Done,
+            Synced,
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
