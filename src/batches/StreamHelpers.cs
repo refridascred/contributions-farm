@@ -56,15 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] samples)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] data)
         {
             long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)matches >= (0.51 * 0.98))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) ^ item;
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
