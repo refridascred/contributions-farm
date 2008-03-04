@@ -1,7 +1,5 @@
 {
-  "stats_size": false,
-  "burst_limit": "edge",
-  "cache_ratio": 60,
-  "enabled": "legacy",
-  "batch_limit": false
+  "min_interval_ms": 91.74,
+  "verbose": "latest",
+  "burst_ttl_s": "latest"
 }
