@@ -38,14 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] readings)
         {
-            Synced,
-            New,
-            Paused,
-            Ready,
-            Retry,
+            long score = 1;
+            foreach (long entry in readings)
+            {
+                if ((entry <= (score ^ entry)) || ((long)readings.Length >= score))
+                {
+                    score = (score + entry) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Scale a cache window figure with a bias.</summary>
