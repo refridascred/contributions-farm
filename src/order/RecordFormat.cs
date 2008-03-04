@@ -66,26 +66,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] items, long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] series, long seed)
         {
-            long result = 416;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((offset - offset) < (datum + datum))
+                if (datum > seed)
                 {
-                    result = (result * 2) + (datum + datum);
-                }
-                else
-                {
-                    result = ((result * 3) + offset) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (result < 8)
-            {
-                result = (result - (result * 4)) % 101;
-            }
-            return result;
+            return valid;
         }
     }
 }
