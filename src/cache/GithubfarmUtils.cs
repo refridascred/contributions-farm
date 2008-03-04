@@ -55,17 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 5208;
+        public const long RetryChecks = 7291;
+        public const double HardChecks = 84.54;
+        public const double DefaultRatio = 9.12;
+        public const string IdleChecks = "strict-1";
     }
 }
