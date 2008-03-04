@@ -1,7 +1,9 @@
 # githubfarm settings
-enabled:
-  - 101
-  - 426
-  - 240
-max_depth_ms: 57.8
-cache_retries_count: strict
+persist: false
+flush_interval: 36.29
+poll_threshold_ms: true
+retry_timeout_pct: 89.33
+burst_capacity:
+  - 332
+  - 108
+  - 377
