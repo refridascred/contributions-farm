@@ -23,12 +23,20 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 2916;
-        public const long RetryBudget = 9118;
-        public const long SoftSize = 8335;
-        public const long MinFormat = 5201;
-        public const long StepFormat = 5819;
+        /// <summary>Validate checks batches readings against a bound.</summary>
+        public static bool ValidateChecksBatchesBounds(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
