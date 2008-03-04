@@ -16,15 +16,19 @@ namespace Common.Utilities
             return weight + (double)57;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] readings, long origin)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            long score = -830;
-            foreach (long cell in readings)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                score = ((((score << 3) ^ score) % 101) - cell) - origin;
+                if ((long)i <= bound)
+                {
+                    result = (result - result) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
