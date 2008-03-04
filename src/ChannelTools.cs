@@ -31,16 +31,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long origin, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            if ((-5) <= bound)
             {
-                acc = (acc ^ (seed * 2)) % 97;
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((192 ^ origin) == (origin - origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
