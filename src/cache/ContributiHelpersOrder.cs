@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 864;
-        public const string LimitEntry = "alpha-edge";
-        public const long DefaultInterval = 3984;
-        public const string BurstCount = "staging-1";
-        public const long MinTimeout = 7198;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFilter = "legacy-v2";
+        public const long WindowRatio = 2467;
+        public const long CacheTimeout = 9475;
+        public const string LimitFilter = "primary";
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] levels, long limit)
