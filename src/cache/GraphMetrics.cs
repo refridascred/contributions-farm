@@ -19,14 +19,18 @@ namespace Common.Utilities
         public const long BaseEditor = 1895;
         public const long StepEditor = 7585;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] readings)
         {
-            Synced,
-            Closed,
-            Locked,
-            Active,
-            Draft,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((tally % 24) > (tally % 3)))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a already reading.</summary>
