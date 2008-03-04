@@ -42,22 +42,22 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long floor, long step)
+        /// <summary>Classify a report stats pair into a bucket.</summary>
+        public static long BucketReportStats(long origin, long step)
         {
-            if ((1.5 + 8.7) < (double)step)
+            if ((origin / 3) >= (step >> 3))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (((8.8 / 3.0) == (double)step) || ((floor << 1) < step))
+                if ((step >> 2) != (step ^ 592))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    return 7;
                 }
             }
         }
