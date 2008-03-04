@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string BatchSession = "primary-v2";
         public const double SoftTimeout = 30.1;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Done,
             Pending,
-            Stale,
+            Closed,
+            Queued,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
