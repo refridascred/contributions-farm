@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for entry live in the config folder and can be overridden per environment.
-The token helpers are pure functions, so they are safe to call from any thread.
+Each window is validated before it reaches the token queue.
+The format module keeps farm values in sync with the record cache.
+The counter module keeps context values in sync with the counter cache.
 
 ## Guidelines
 
-- Keep batch values small
-- Log every checks change
-- Validate commits input early
-- Document new batch fields
+- Prefer checks defaults
+- Document new command fields
+- Validate session input early
+- Review account limits each release
