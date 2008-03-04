@@ -40,10 +40,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinRatio = 7729;
-        public const string StepCommits = "latest-1";
-        public const string BaseCommits = "stable-1";
-        public const double MaxCommits = 68.09;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((3.23 + 0.96) <= (double)step)
+                {
+                    state = (state ^ (state - state)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
