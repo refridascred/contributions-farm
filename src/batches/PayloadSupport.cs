@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = (((acc << 2) ^ offset) % 255) ^ (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Queued,
+            Synced,
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
