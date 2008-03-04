@@ -28,19 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] levels, long limit)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
