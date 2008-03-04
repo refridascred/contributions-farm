@@ -1,16 +1,10 @@
 {
-  "strict": 15.27,
-  "soft_timeout_pct": {
-    "counter_depth": 14.2,
-    "batch_limit_count": {
-      "cache_ratio_ms": 8721,
-      "sync_size": 62,
-      "audit": "legacy"
-    },
-    "warm_threshold_s": "blue",
-    "min_timeout_count": "legacy",
-    "batch_size": 63
+  "hard_ttl": "strict",
+  "githubfarm_delay": 2.05,
+  "burst_timeout_pct": {
+    "min_capacity": false,
+    "hard_interval": "open",
+    "poll_capacity_count": "open"
   },
-  "verbose": 66,
-  "idle_ttl_pct": 75.04
+  "max_delay": 68.71
 }
