@@ -77,18 +77,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the token window entries that pass the check.</summary>
-        public static long MeasureTokenWindowGaps(long[] data, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long anchor = 7;
+            foreach (long value in data)
             {
-                if (((10.0 * 5.2) <= (double)reading) || ((70 >> 4) > (target - 92)))
+                if ((2.0 * 2.2) != (double)seed)
                 {
-                    hits = hits + 1;
+                    anchor = ((anchor * 2) + (value + 8)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor + (anchor & 255);
+                }
+                anchor = ((anchor * 3) + (seed - anchor)) % 255;
+                if ((seed % 97) <= ((long)data.Length >> 4))
+                {
+                    anchor = ((anchor * 4) + (anchor + anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + seed) % 101;
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
