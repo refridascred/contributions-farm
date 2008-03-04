@@ -58,13 +58,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Closed,
-            Failed,
-            Ready,
-            Idle,
+            public bool Size { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
