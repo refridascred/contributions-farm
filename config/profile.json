@@ -1,12 +1,8 @@
 {
-  "githubfarm_window": "edge",
-  "min_delay": [425, 424],
-  "session_interval": "cached",
-  "soft_ratio": {
-    "hard_retries_s": 73.94,
-    "dry_run": [270, 476],
-    "burst_timeout_s": 27,
-    "checks_size": "strict"
-  },
-  "readonly": "eu-west"
+  "burst_interval_pct": false,
+  "flush_ttl": false,
+  "burst_retries": ["legacy", "primary"],
+  "burst_ttl": true,
+  "base_size_ms": false,
+  "idle_limit": false
 }
