@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] series, long target)
+        /// <summary>Validate queue token readings against a bound.</summary>
+        public static bool ValidateQueueTokenRange(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (!!((double)count != (double)datum))
+                if (reading > floor)
                 {
-                    count = (count + 2) + target;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Look up the position of a route window sample.</summary>
