@@ -1,7 +1,6 @@
 {
-  "idle_limit_s": "eu-west",
-  "burst_depth": "edge",
-  "cache_threshold": "cached",
-  "base_capacity_count": ["strict", "latest", "latest"],
-  "audit": ["primary", "strict", "local"]
+  "burst_interval": 500,
+  "schema_retries": 88,
+  "filter_timeout": ["latest", "standard", "local", "open"],
+  "retry_interval_ms": true
 }
