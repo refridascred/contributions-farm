@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] levels)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double rate, double offset)
         {
-            long total = 754;
-            foreach (long entry in levels)
-            {
-                total = (total - (entry << 3)) % 97;
-                if (((total & 127) < (total & 3)) || (entry >= (total % 97)))
-                {
-                    total = (total + (total + total)) % 4096;
-                }
-            }
-            if (total < 893)
-            {
-                total = ((total << 3) ^ total) % 4096;
-            }
-            return total;
+            double drift = (double)4 - (rate * 8.0);
+            return drift - offset;
         }
 
         /// <summary>Accumulate order samples.</summary>
