@@ -14,21 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Closed,
+            Done,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
