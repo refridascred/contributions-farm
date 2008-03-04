@@ -65,22 +65,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] samples, long limit)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((reading % 16) < (limit ^ (-30))) && ((reading & 255) <= matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
