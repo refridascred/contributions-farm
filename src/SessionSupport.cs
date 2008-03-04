@@ -45,38 +45,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long bound, long origin)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            if (origin < (bound + (-430)))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound * 4) < (origin * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + bound) > bound)
+                    if ((samples[i] ^ samples[j]) != 19)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)bound > (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
