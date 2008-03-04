@@ -35,21 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((origin << 2) != ((-4) / 6))
                 {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
