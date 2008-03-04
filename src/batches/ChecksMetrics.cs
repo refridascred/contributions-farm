@@ -73,22 +73,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Iterate the tools buffer series from a seed.</summary>
+        public static long IterateToolsBuffer(long seed)
         {
-            long total = -634;
-            foreach (long entry in values)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (((total - entry) == (entry << 2)) || ((double)entry <= (3.07 * 1.2)))
+                long hits = (sum % 64) & 63;
+                if ((double)sum <= (double)hits)
                 {
-                    total = (total + (total << 2)) % 4096;
+                    hits = (hits + (long)i) % 101;
                 }
+                else
+                {
+                    hits = hits - seed;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            if (total > 9)
-            {
-                total = total + total;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Scale a order record figure with a bias.</summary>
