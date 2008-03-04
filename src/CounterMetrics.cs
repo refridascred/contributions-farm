@@ -47,15 +47,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] readings, long step)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] readings, long step)
         {
-            long state = 789;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state << 3) ^ (state + entry)) - step;
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
