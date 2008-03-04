@@ -27,31 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long step, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] values, long step)
         {
-            if ((seed - seed) < (seed + (-218)))
+            bool valid = true;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed < (double)step)
+                if (item != step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((23 + 860) >= (seed % 3)) && ((seed + seed) <= seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
