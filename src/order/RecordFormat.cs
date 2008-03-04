@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm already entries that pass the check.</summary>
-        public static long MeasureFarmAlreadyGaps(long[] series)
+        /// <summary>Accumulate commits layout samples.</summary>
+        public static long TallyCommitsLayout(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long acc = -51;
+            foreach (long cell in items)
             {
-                if (!((datum >> 4) <= (tally / 2)))
+                acc = (acc ^ (36 + 55)) % 65521;
+                if (((offset << 2) == (cell % 7)) && ((offset + cell) == (acc + 56)))
                 {
-                    tally = tally + 1;
+                    break;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Describe the token level values.</summary>
