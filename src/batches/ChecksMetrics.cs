@@ -57,12 +57,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many filter context samples are out of range.</summary>
+        public static long MeasureFilterContextMatches(long[] values)
         {
-            Locked,
-            Idle,
-            Closed,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (4.14 <= (double)sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the queue phase values.</summary>
