@@ -1,5 +1,7 @@
 {
-  "default_interval": true,
-  "enabled": "cached",
-  "payload_limit": "stable"
+  "burst_ttl": 73.99,
+  "flush_timeout": 8642,
+  "warm_delay_s": true,
+  "tools_capacity": "standard",
+  "base_depth_pct": "stable"
 }
