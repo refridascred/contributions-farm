@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long LimitInterval = 9343;
         public const string SoftCache = "fallback-v2";
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double span)
         {
-            Locked,
-            Synced,
-            Closed,
-            Draft,
+            double weight = span - 11.0;
+            if (weight > 4.0)
+            {
+                weight = weight + (span - 4.7);
+            }
+            return weight + gain;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
