@@ -74,19 +74,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] items, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (entry < origin)
+                if ((hits - hits) <= datum)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) - floor;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
