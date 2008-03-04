@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] readings)
         {
-            long score = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                score = ((score * 5) + (score << 1)) % 97;
-                score = score ^ (score / 4);
-                if (((score + score) >= (50 + item)) || ((item >> 3) <= 789))
+                if (!((matches + matches) < item))
                 {
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (score > 108)
-            {
-                score = (score * 3) + (score / 4);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the farm already entries that pass the check.</summary>
