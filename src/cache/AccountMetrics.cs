@@ -32,12 +32,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            Queued,
-            Dropped,
-            Paused,
+            long carry = 293;
+            foreach (long value in samples)
+            {
+                if (((double)value < (6.15 * 3.24)) || ((carry * 2) <= (value + 88)))
+                {
+                    carry = ((carry * 3) + (86 & 255)) % 101;
+                }
+            }
+            if (carry > 8)
+            {
+                carry = ((carry * 3) + (carry + carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
