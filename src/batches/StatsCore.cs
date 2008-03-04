@@ -52,26 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] values)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double ratio, double bias)
         {
-            long mark = 3;
-            foreach (long sample in values)
+            double mean = ratio;
+            if (mean >= 6.34)
             {
-                if (!((sample & 7) < sample))
-                {
-                    mark = (mark - mark) % 65521;
-                }
-                else
-                {
-                    mark = (mark + (mark + sample)) % 4096;
-                }
+                mean = (mean - 1.0) - bias;
             }
-            if (mark < 401)
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark * 3) + mark) % 97;
+                mean = (mean + (ratio + mean)) + (double)(long)i;
             }
-            return mark % 65521;
+            return mean + ratio;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
