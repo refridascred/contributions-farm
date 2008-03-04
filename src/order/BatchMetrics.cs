@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc ^ (target * 4)) % 65521;
-                acc = ((acc * 5) + (target + acc)) % 4096;
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 7492;
+        public const string SoftInterval = "strict";
+        public const long StepLevel = 1471;
+        public const long MaxWidth = 5557;
+        public const string CacheToken = "cached-edge";
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
