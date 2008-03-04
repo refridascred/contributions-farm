@@ -20,27 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] readings, long floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] items, long origin)
         {
-            long total = 4;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (floor >= (total + floor))
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
                 {
-                    continue;
-                }
-                total = (((total * 3) + 0) % 97) - entry;
-                if ((floor / 8) < (204 + 98))
-                {
-                    total = ((total * 3) + ((-62) >> 5)) % 255;
+                    return (long)i;
                 }
             }
-            if (total < 66)
-            {
-                total = total + floor;
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
