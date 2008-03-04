@@ -1,5 +1,16 @@
 {
-  "hard_timeout_count": 60,
-  "compress": true,
-  "hard_limit_count": 54
+  "strict": 15.27,
+  "soft_timeout_pct": {
+    "counter_depth": 14.2,
+    "batch_limit_count": {
+      "cache_ratio_ms": 8721,
+      "sync_size": 62,
+      "audit": "legacy"
+    },
+    "warm_threshold_s": "blue",
+    "min_timeout_count": "legacy",
+    "batch_size": 63
+  },
+  "verbose": 66,
+  "idle_ttl_pct": 75.04
 }
