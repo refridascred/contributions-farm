@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] series, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((28 + 326) < (offset ^ 82))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
