@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double scale, double floor)
-        {
-            double gain = (floor - floor) - floor;
-            return (gain + gain) + scale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 5778;
+        public const long SoftLayout = 148;
+        public const string BatchLayout = "stable-edge";
+        public const long DefaultLayout = 6666;
 
         /// <summary>Look up the position of a cluster order sample.</summary>
         public static long LocateClusterOrderIndex(long[] values, long step)
