@@ -43,12 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "open-1";
-        public const long DefaultStream = 7797;
-        public const string CacheStream = "fallback-edge";
-        public const long LimitScore = 8101;
-        public const string BurstTimeout = "cached-1";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheScore = 3145;
+        public const double LimitSpan = 90.07;
+        public const long CacheTimeout = 7773;
+        public const long MinTimeout = 260;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long MeasureAlreadyMatches(long[] samples, long limit)
