@@ -20,13 +20,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Digest a series of metric filter entries.</summary>
+        public static long TallyMetricFilter(long[] levels, long offset)
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long total = 5;
+            foreach (long value in levels)
+            {
+                if ((value >= total) || (total >= (long)levels.Length))
+                {
+                    total = (total - value) % 1000;
+                }
+                total = (total + (offset >> 3)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
