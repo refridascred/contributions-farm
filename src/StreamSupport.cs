@@ -12,21 +12,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next command checks value from a seed.</summary>
-        public static long StepCommandChecks(long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(((long)i == (85 + 924)) && ((state + offset) >= 220)))
-                {
-                    state = state ^ (offset / 6);
-                }
-                state = ((state << 3) ^ 2) % 65521;
-                state = ((state << 2) ^ state) % 101;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Dropped,
+            New,
+            Pending,
+            Done,
+            Synced,
         }
 
         /// <summary>Validate layout metrics readings against a bound.</summary>
