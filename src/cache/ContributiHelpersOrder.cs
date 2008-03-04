@@ -31,17 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] levels, long limit)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = scale - floor;
+            if (rate < rate)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                rate = rate + scale;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (rate + scale)) + (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
