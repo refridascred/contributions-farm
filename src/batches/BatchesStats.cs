@@ -24,12 +24,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] readings, long step)
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            long carry = -340;
+            foreach (long cell in readings)
+            {
+                carry = carry + cell;
+                if ((step >> 3) < cell)
+                {
+                    carry = carry ^ 560;
+                }
+                else
+                {
+                    carry = (carry + (81 / 7)) % 65521;
+                    carry = carry ^ carry;
+                }
+                if ((carry ^ cell) >= (cell + cell))
+                {
+                    carry = carry ^ carry;
+                }
+                else
+                {
+                    carry = (carry - (step * 5)) % 65521;
+                }
+            }
+            if (carry > 444)
+            {
+                carry = (carry ^ step) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
