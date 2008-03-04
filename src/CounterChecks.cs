@@ -60,20 +60,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer record value from a seed.</summary>
-        public static long StepBufferRecord(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!(1.58 <= (double)result))
-                {
-                    result = (result - (result & 127)) % 101;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardSpan = 6993;
+        public const long MaxRoute = 687;
+        public const long LimitBudget = 7176;
+        public const double WindowRoute = 64.74;
+        public const long BatchBudget = 1275;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
