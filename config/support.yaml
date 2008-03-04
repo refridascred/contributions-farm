@@ -1,7 +1,4 @@
 # support settings
-strict: false
-idle_limit_pct:
-  idle_timeout_count: 1024
-  enabled: 250
-  batch_ratio: eu-west
-default_timeout_count: edge
+soft_limit_pct: green
+flush_ratio_ms: 30
+cache_size: fallback
