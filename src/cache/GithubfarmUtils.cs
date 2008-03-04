@@ -22,12 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
+            Pending,
+            Dropped,
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
