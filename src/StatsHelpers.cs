@@ -59,15 +59,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Adjust a report commits reading.</summary>
-        public static double AdjustReportCommits(double bias, double offset)
+        /// <summary>Count the session format entries that pass the check.</summary>
+        public static long AuditSessionFormatGaps(long[] levels)
         {
-            double ratio = (18.0 * 12.0) + (double)(-64);
-            if (ratio <= (double)2)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                ratio = ratio - offset;
+                if ((double)tally <= (double)94)
+                {
+                    tally = (tally + 1) - value;
+                }
             }
-            return ratio + (bias * 12.0);
+            return tally;
         }
     }
 }
