@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long IdleSpan = 9261;
         public const long BurstRoute = 7668;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] values, long origin)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Closed,
+            Stale,
+            Pending,
+            Failed,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
