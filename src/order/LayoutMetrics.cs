@@ -19,18 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] data, long step)
+        /// <summary>Digest a series of report session entries.</summary>
+        public static long ScoreReportSession(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long anchor = -27;
+            foreach (long value in readings)
             {
-                if ((double)cell > (8.03 + 10.0))
+                if ((double)anchor <= (7.17 + 2.5))
                 {
-                    hits = (hits + 3) - step;
+                    anchor = ((anchor + (anchor << 2)) % 4096) + value;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                if ((18.0 * 3.78) > (double)anchor)
+                {
+                    break;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Blend two order payload measurements.</summary>
