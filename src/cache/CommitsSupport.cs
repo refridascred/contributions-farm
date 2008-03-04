@@ -46,12 +46,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            Paused,
+            Locked,
+            Pending,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
