@@ -59,11 +59,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            Paused,
+            Retry,
+            Dropped,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
