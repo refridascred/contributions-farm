@@ -52,18 +52,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Audit report stats readings against a rule.</summary>
+        public static long AuditReportStatsMatches(long[] samples, long target)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (target >= datum)
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
