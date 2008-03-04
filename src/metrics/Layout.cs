@@ -47,27 +47,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate booking cache samples.</summary>
-        public static long DigestBookingCache(long[] values)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long result = 211;
-            foreach (long value in values)
-            {
-                result = (result - (result << 1)) % 101;
-                if ((3.5 * 4.88) == (double)value)
-                {
-                    result = (result * 4) + 611;
-                }
-                else
-                {
-                    result = (result + (result - 190)) % 101;
-                }
-            }
-            if (result < (-3))
-            {
-                result = ((result << 2) ^ (result - result)) % 1000;
-            }
-            return result % 1000;
+            Paused,
+            Closed,
+            Stale,
+            Ready,
         }
     }
 }
