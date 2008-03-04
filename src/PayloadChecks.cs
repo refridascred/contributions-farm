@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] levels, long step)
+        /// <summary>Compare every pair of batches account readings.</summary>
+        public static long PairBatchesAccountCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count & 1) <= 22) || ((count % 100) <= (step ^ 785)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) ^ item;
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of context token readings.</summary>
