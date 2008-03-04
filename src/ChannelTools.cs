@@ -19,22 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Match up buffer counter samples.</summary>
+        public static long PairBufferCounterCount(long[] series)
         {
-            long carry = -4;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((long)levels.Length - reading) <= carry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry * 5) + carry) % 101;
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < (-15))
-            {
-                carry = ((carry << 2) ^ (carry << 3)) % 101;
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
