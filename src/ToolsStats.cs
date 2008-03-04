@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long origin, long target)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long edge = origin - target;
-            if ((663 >= (target - edge)) && ((origin - edge) != (origin + target)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((target - target) > edge) || (target >= (5 + origin)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the farm level values.</summary>
