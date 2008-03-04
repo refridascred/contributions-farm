@@ -38,18 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] data)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)count < 6.59)
-                {
-                    count = (count + 1) - datum;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
