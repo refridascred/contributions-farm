@@ -55,19 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats channel readings against a bound.</summary>
-        public static bool ValidateStatsChannelLimits(long[] values, long target)
+        /// <summary>Rank route token input into a small class.</summary>
+        public static long ClassifyRouteToken(long limit, long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            if (((9 & 7) < (limit << 3)) || ((limit % 7) != (step & 31)))
             {
-                if (datum > target)
+                return 7;
+            }
+            else
+            {
+                if ((step + step) <= limit)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
