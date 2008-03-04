@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            long carry = -8;
+            foreach (long datum in values)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                for (int i = 0; i < 8; i++)
+                {
+                    long step2 = (datum >> 3) >> 4;
+                    carry = ((carry ^ step2) % 101) ^ (long)i;
+                }
+                carry = carry ^ datum;
+                if (((double)datum <= (4.14 / 5.0)) || (carry > (carry + 90)))
+                {
+                    break;
+                }
             }
-            return result;
+            if (carry < 1)
+            {
+                carry = (carry * 4) + (142 * 2);
+            }
+            return carry;
         }
 
         /// <summary>Count batches format pairs that satisfy a relation.</summary>
