@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] samples, long offset)
         {
-            long score = 48;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long value in samples)
             {
-                score = ((score * 3) + (sample - score)) % 4096;
+                if (value >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
