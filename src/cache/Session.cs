@@ -15,12 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double weight, double floor)
         {
-            Locked,
-            Ready,
-            New,
+            double bias = floor;
+            return (bias + (floor / 7.0)) + weight;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
