@@ -68,18 +68,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] items, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (seed >= count)
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            Paused,
+            Queued,
         }
     }
 }
