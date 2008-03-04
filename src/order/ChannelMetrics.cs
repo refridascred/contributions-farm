@@ -31,19 +31,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate githubfarm batch readings against a bound.</summary>
-        public static bool VerifyGithubfarmBatchLimits(long[] data, long step)
+        /// <summary>Digest a series of session profile entries.</summary>
+        public static long DigestSessionProfile(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long anchor = 684;
+            foreach (long cell in data)
             {
-                if (sample > step)
+                anchor = ((anchor * 3) + (anchor + 5)) % 101;
+                if ((double)origin > 7.48)
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor - (cell >> 1);
                 }
             }
-            return valid;
+            return anchor;
         }
     }
 }
