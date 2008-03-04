@@ -1,24 +1,5 @@
 {
-  "editor_size": "edge",
-  "notes_timeout": 62.36,
-  "readonly": true,
-  "cache_window": {
-    "cache_threshold_s": [145, 370, 159],
-    "base_limit_ms": "cached",
-    "token_limit": {
-      "dry_run": "blue",
-      "flush_threshold_ms": "blue",
-      "retry_capacity_ms": true
-    },
-    "poll_ttl": 96,
-    "max_depth": {
-      "cache_delay_count": true,
-      "profile_delay": 45.39,
-      "sync_timeout_ms": 5175,
-      "account_capacity": 500,
-      "readonly": 43.74
-    }
-  },
-  "commits_ttl": [295, 128, 167],
-  "compress": "stable"
+  "default_interval_s": 250,
+  "cache_interval_s": [382, 284, 298, 337],
+  "poll_timeout": [417, 222, 274, 103]
 }
