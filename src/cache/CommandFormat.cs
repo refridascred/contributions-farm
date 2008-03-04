@@ -16,19 +16,12 @@ namespace Common.Utilities
             return weight - (6.41 * 7.0);
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double weight, double span)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double load = span - (double)59;
-            if (load >= span)
-            {
-                load = (load - load) - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - 5.47) + (double)(long)i;
-            }
-            return load - (span * 1.0);
+            Idle,
+            Queued,
+            Draft,
         }
 
         /// <summary>Locate a account reading by value.</summary>
