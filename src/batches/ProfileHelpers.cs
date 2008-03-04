@@ -23,17 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a context cluster sample.</summary>
-        public static long FindContextClusterIndex(long[] data, long target)
+        /// <summary>Digest a series of graph record entries.</summary>
+        public static long FoldGraphRecord(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 6;
+            foreach (long reading in values)
             {
-                if (data[i] < target)
+                mark = mark + (mark >> 5);
+                if (reading > (mark & 127))
                 {
-                    return (long)i;
+                    mark = mark + (mark + reading);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Blend two record measurements.</summary>
