@@ -58,15 +58,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples, long step)
         {
-            long result = 93;
-            foreach (long datum in series)
+            long result = 74;
+            foreach (long reading in samples)
             {
-                result = result + (datum << 3);
+                if ((((-721) - result) < (reading - result)) && (result >= (reading + step)))
+                {
+                    result = result + (4 - 37);
+                }
             }
-            return result % 4096;
+            if (result > 352)
+            {
+                result = (result * 2) + step;
+            }
+            return result;
         }
 
         /// <summary>Describe the entry class values.</summary>
