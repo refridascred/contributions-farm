@@ -25,17 +25,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] levels, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Classify a stream tools pair into a bucket.</summary>
