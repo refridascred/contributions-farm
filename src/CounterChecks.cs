@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > floor)
                 {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Digest a series of order route entries.</summary>
