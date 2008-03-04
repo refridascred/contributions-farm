@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long seed, long limit)
         {
-            Locked,
-            Pending,
-            Closed,
-            Paused,
-            Failed,
+            long gap = seed - limit;
+            if (6.4 > (double)gap)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)gap == (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (613 > (gap - limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (gap <= (seed >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two already measurements.</summary>
