@@ -28,23 +28,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long anchor = 5;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor ^ 829) % 1000;
-                if ((3.96 * 9.0) <= (double)anchor)
-                {
-                    anchor = ((anchor * 5) + (datum - anchor)) % 97;
-                }
-            }
-            if (anchor < 4)
-            {
-                anchor = (anchor * 5) + (-4);
-            }
-            return anchor;
+            Idle,
+            Failed,
+            Queued,
+            Retry,
+            Active,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
