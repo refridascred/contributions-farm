@@ -52,21 +52,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Closed,
+            Stale,
+            Idle,
+            Paused,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
