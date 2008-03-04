@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] readings)
-        {
-            long anchor = 35;
-            foreach (long reading in readings)
-            {
-                anchor = anchor + reading;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxScore = 5471;
+        public const double IdleRatio = 58.3;
+        public const string StepWindow = "staging-v2";
+        public const long HardWindow = 4017;
+        public const long MaxLevel = 2535;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double AdjustCache(double rate, double span)
