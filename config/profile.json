@@ -1,8 +1,7 @@
 {
-  "verbose": 98.33,
-  "notes_timeout": "open",
-  "default_delay": 50.51,
-  "retry_threshold": "local",
-  "flush_ratio_s": "blue",
-  "stats_ratio": "stable"
+  "strict": false,
+  "format_capacity": ["fallback", "blue", "blue", "cached"],
+  "hard_ttl_count": "open",
+  "retry_timeout": true,
+  "verbose": true
 }
