@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long seed, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] series)
         {
-            if ((seed + 0) > (limit - limit))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit <= (4.0 + 8.3))
+                if ((((sample + hits) != (hits + 21)) || (sample <= (hits - 9))) && ((hits & 63) >= (hits << 3)))
                 {
-                    return 4;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((double)seed > 7.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit / 6) <= limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the profile kind values.</summary>
