@@ -26,31 +26,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long offset, long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            if (offset > (seed & 255))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + 9) <= (90 / 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + seed) == ((-85) + 442))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Done,
+            Paused,
         }
     }
 }
