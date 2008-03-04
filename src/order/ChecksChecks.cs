@@ -13,18 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] samples, long origin)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (!(sample < (count % 7)))
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate farm filter readings against a bound.</summary>
