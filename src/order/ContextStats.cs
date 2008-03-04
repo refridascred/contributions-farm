@@ -41,22 +41,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the githubfarm payload entries that pass the check.</summary>
-        public static long MeasureGithubfarmPayloadMatches(long[] data, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long mix = -4;
+            foreach (long reading in values)
             {
-                if (((tally / 8) >= (datum - limit)) && (limit < (limit + 6)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix << 3) ^ reading) % 101;
             }
-            return tally;
+            if (mix < (-225))
+            {
+                mix = (mix - (mix / 8)) % 4096;
+            }
+            return mix % 4096;
         }
     }
 }
