@@ -37,11 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Validate metric filter readings against a bound.</summary>
+        public static bool GuardMetricFilterBounds(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
