@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] samples, long origin)
         {
-            double scale = (weight * 2.0) - (double)305;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                scale = (scale + (weight - bias)) + (double)(long)i;
+                if ((double)(long)samples.Length > 7.62)
+                {
+                    seen = ((seen + 1) + value) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale + scale;
+            return seen;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
