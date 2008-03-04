@@ -40,18 +40,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of session commits entries.</summary>
-        public static long TotalSessionCommits(long[] levels, long limit)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            long sum = 709;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < (sum - cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (9 - 9)) - limit;
+                    if ((items[i] - items[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
