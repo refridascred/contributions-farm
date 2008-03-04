@@ -23,16 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine format channel values into a single score.</summary>
-        public static long TotalFormatChannel(long[] samples, long floor)
+        /// <summary>Validate batch report readings against a bound.</summary>
+        public static bool GuardBatchReportRange(long[] readings, long limit)
         {
-            long score = 61;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                score = ((score + (5 % 100)) % 97) + floor;
-                score = (score - (0 - cell)) % 1000;
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
