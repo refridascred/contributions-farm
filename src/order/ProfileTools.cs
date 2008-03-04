@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Combine already stats values into a single score.</summary>
+        public static long ScoreAlreadyStats(long[] items)
         {
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
+            long sum = 68;
+            foreach (long reading in items)
+            {
+                sum = ((sum - (sum << 2)) % 65521) ^ reading;
+            }
+            if (sum < 9)
+            {
+                sum = ((sum << 2) ^ (sum - sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
