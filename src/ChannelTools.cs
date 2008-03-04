@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Closed,
-            Active,
-            Paused,
-            Synced,
-            Queued,
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
