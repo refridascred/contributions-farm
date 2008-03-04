@@ -19,19 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format cache entry stays within the limit.</summary>
-        public static bool ValidateFormatCacheRange(long[] series, long limit)
+        /// <summary>Combine context stream values into a single score.</summary>
+        public static long TotalContextStream(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long item in series)
+            long mix = 1;
+            foreach (long entry in items)
             {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (((mix - (mix >> 4)) % 255) + entry) + offset;
+                mix = (mix ^ 75) % 4096;
             }
-            return found;
+            if (mix < 8)
+            {
+                mix = ((mix << 3) ^ (87 / 9)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of schema payload readings.</summary>
