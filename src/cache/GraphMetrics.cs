@@ -29,21 +29,23 @@ namespace Common.Utilities
         public const long BaseEditor = 1895;
         public const long StepEditor = 7585;
 
-        /// <summary>Count batch report pairs that satisfy a relation.</summary>
-        public static long CompareBatchReportCount(long[] values)
+        /// <summary>Digest a series of filter format entries.</summary>
+        public static long TallyFilterFormat(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 37;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = (result - ((-8) % 8)) % 4096;
+                if (((82 + result) > (datum + datum)) && ((result - datum) >= (result + 4)))
                 {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (result > 215)
+            {
+                result = ((result * 5) + 8) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
