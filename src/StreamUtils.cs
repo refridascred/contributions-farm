@@ -54,17 +54,11 @@ namespace Common.Utilities
         public const long IdleGraph = 1190;
         public const long MaxGraph = 1920;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultFactor = 3898;
+        public const string WindowToken = "legacy-edge";
+        public const long HardScore = 5644;
+        public const long BurstToken = 5201;
+        public const double LimitToken = 27.28;
     }
 }
