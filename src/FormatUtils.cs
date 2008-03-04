@@ -19,21 +19,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of batches channel readings.</summary>
-        public static long OverlapBatchesChannelCount(long[] values)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (items[i] <= bound)
                 {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
