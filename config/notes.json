@@ -1,5 +1,7 @@
 {
-  "readonly": 28.78,
-  "hard_timeout_count": 61,
-  "cache_depth": 37
+  "farm_ratio": 76.36,
+  "audit": 0.48,
+  "batch_window_count": [403, 36, 230, 31],
+  "verbose": "latest",
+  "contributi_size": 1
 }
