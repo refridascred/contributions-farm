@@ -1,20 +1,6 @@
 {
-  "warm_interval": ["cached", "latest"],
-  "burst_delay": "stable",
-  "audit": {
-    "default_ratio_count": {
-      "base_window_count": false,
-      "retry_limit_ms": "primary",
-      "hard_limit": 18,
-      "min_depth_pct": true,
-      "hard_ttl_pct": 56.88,
-      "batch_threshold": [68, 415, 102]
-    },
-    "readonly": 2.39,
-    "dry_run": 12.72,
-    "min_depth_pct": ["green", "open"],
-    "min_threshold_pct": false
-  },
-  "cluster_ttl": "cached",
-  "flush_ttl": 85.89
+  "min_retries_s": 9914,
+  "warm_ratio": 1203,
+  "window_limit": false,
+  "warm_limit": 18
 }
