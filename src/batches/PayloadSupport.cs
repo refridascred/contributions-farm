@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Combine graph entry values into a single score.</summary>
+        public static long DigestGraphEntry(long[] readings, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            long total = 8;
+            foreach (long value in readings)
             {
-                if ((double)acc <= 0.8)
+                total = (total - (value - 0)) - floor;
+                total = total - (total * 5);
+                if (((1.7 - 4.0) < (double)(long)readings.Length) || ((4.0 + 1.0) < (double)value))
                 {
-                    long matches = (long)i;
-                    acc = (acc + matches) % 65521;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            if (total > 5)
+            {
+                total = total - (total / 3);
+            }
+            return total;
         }
 
         /// <summary>Combine already account values into a single score.</summary>
