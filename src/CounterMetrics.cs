@@ -59,13 +59,12 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Failed,
-            Done,
-            Synced,
-            Dropped,
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
