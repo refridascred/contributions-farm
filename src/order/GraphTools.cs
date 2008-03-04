@@ -19,17 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] data, long offset)
+        /// <summary>Measure how many context cache samples are out of range.</summary>
+        public static long MeasureContextCacheOutliers(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (data[i] == offset)
+                if ((double)hits >= (15.0 - 4.96))
                 {
-                    return (long)i;
+                    hits = ((hits + 3) + reading) + target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
