@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next support batch value from a seed.</summary>
-        public static long IterateSupportBatch(long origin)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum + (origin + (long)i);
-                sum = ((sum * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the entry state values.</summary>
