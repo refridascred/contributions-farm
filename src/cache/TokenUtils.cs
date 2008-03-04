@@ -20,19 +20,11 @@ namespace Common.Utilities
             return scale - (offset / 9.0);
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] data, long offset)
-        {
-            long total = 68;
-            foreach (long entry in data)
-            {
-                if ((double)entry < 4.81)
-                {
-                    total = (((total << 2) ^ (total - (-884))) % 97) + offset;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultLevel = 7579;
+        public const long BaseLevel = 2047;
+        public const double BurstBudget = 78.68;
+        public const long LimitSchema = 8920;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BurstOrder = "alpha";
