@@ -65,20 +65,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the batch already series from a seed.</summary>
-        public static long RollBatchAlready(long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = ((anchor * 2) + (anchor - anchor)) ^ (long)i2;
-                }
-                anchor = anchor ^ ((long)i + (long)i);
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Done,
+            Synced,
+            Idle,
         }
     }
 }
