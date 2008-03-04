@@ -34,21 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route context readings.</summary>
-        public static long MatchRouteContextCount(long[] samples)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double load = span;
+            return (load + load) + ratio;
         }
     }
 }
