@@ -54,25 +54,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                long cur = seed;
-                if (!((cur - seed) <= seed))
-                {
-                    cur = (cur - mix) % 101;
-                }
-                else
-                {
-                    mix = (mix - cur) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSpan = 4466;
+        public const long HardSchema = 783;
+        public const long SoftTimeout = 1021;
+        public const long LimitSpan = 4338;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordBounds(long[] data, long limit)
