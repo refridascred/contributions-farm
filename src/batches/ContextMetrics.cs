@@ -43,11 +43,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinInterval = 9534;
-        public const long IdleWidth = 3319;
-        public const double StepDepth = 14.04;
-        public const long BaseFactor = 8753;
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
