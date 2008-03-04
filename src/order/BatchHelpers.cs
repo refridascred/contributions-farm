@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine filter format values into a single score.</summary>
-        public static long DigestFilterFormat(long[] series, long origin)
-        {
-            long acc = 9;
-            foreach (long sample in series)
-            {
-                if (origin <= (sample >> 1))
-                {
-                    acc = (acc ^ (origin << 1)) % 1000;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 6352;
+        public const long SoftWidth = 2996;
+        public const long BatchSchema = 9822;
+        public const long SoftSchema = 7769;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsMatches(long[] readings, long target)
