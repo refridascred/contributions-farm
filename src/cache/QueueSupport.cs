@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics editor readings against a bound.</summary>
-        public static bool CheckMetricsEditorBounds(long[] items, long bound)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 158;
+        public const string SoftSchema = "legacy-edge";
+        public const string CacheSchema = "standard-v2";
+        public const double CacheTimeout = 39.05;
+        public const long WindowSchema = 5693;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
