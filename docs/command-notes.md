@@ -1,13 +1,16 @@
 # Command notes
 
-The batch module keeps metrics values in sync with the metrics cache.
-Keep schema and counter names short and lowercase.
+The githubfarm module keeps order values in sync with the entry cache.
+A record that stays idle for too long is moved to the window list.
+The account helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-Keep stats and buffer names short and lowercase.
+Defaults for window live in the config folder and can be overridden per environment.
+Defaults for format live in the config folder and can be overridden per environment.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate metrics input early
-- Document new report fields
-- Keep context values small
+- Validate farm input early
+- Log every batches change
+- Keep stats values small
+- Document new checks fields
