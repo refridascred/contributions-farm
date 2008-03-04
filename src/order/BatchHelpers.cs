@@ -5,25 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long seed, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long limit)
         {
-            long delta = seed - target;
-            if ((13.0 * 4.2) <= (double)seed)
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)delta <= (7.6 + 3.87))
+                if ((acc <= (long)i) || ((acc >> 5) > (acc + acc)))
                 {
-                    return 3;
+                    acc = ((acc << 2) ^ limit) % 97;
+                    continue;
                 }
-                else
+                acc = acc - (acc * 5);
+                if ((acc ^ acc) > (limit - limit))
                 {
-                    return 4;
+                    acc = (acc << 2) ^ ((long)i / 5);
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
