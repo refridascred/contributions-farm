@@ -1,6 +1,7 @@
 {
-  "idle_ttl_s": 74.36,
-  "soft_ttl_ms": 72,
-  "base_capacity": 26,
-  "readonly": true
+  "flush_retries_ms": "standard",
+  "persist": false,
+  "retry_threshold": 55,
+  "filter_timeout": "local",
+  "entry_window": 78.1
 }
