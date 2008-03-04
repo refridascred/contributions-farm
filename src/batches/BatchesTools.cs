@@ -24,18 +24,10 @@ namespace Common.Utilities
         public const long MinRatio = 4890;
         public const long MaxRatio = 2749;
 
-        /// <summary>Measure how many metric account samples are out of range.</summary>
-        public static long MeasureMetricAccountOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seen & 15) != (seen - seen))
-                {
-                    seen = (seen + 1) - entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 4150;
+        public const long MinPayload = 2094;
+        public const long BurstTimeout = 1638;
+        public const string BurstPayload = "fallback-v2";
     }
 }
