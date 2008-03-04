@@ -48,15 +48,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public double Region { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
