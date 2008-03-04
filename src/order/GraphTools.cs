@@ -56,13 +56,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
+            Locked,
+            Idle,
+            Dropped,
+            Pending,
+            Ready,
         }
     }
 }
