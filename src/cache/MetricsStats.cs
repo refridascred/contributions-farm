@@ -46,13 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            Failed,
+            Synced,
+            New,
         }
     }
 }
