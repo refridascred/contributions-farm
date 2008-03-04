@@ -1,6 +1,7 @@
 # entry settings
-contributi_threshold: 5
-persist: 30
-warm_ratio: open
-min_timeout_pct: 1679
-soft_interval_count: 250
+retry_size: primary
+notes_delay: 21
+flush_depth: strict
+flush_threshold_ms: eu-west
+metric_capacity: fallback
+layout_interval: 100
