@@ -48,15 +48,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Locked,
-            Idle,
-            Active,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepInterval = 21.06;
+        public const string MaxMetric = "alpha";
+        public const long BurstFactor = 1803;
+        public const long CacheBudget = 7673;
+        public const double DefaultTimeout = 53.36;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MinSpan = 9689;
