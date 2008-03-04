@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double weight, double span)
         {
-            Ready,
-            Done,
-            Locked,
-            Retry,
-            Queued,
+            double mean = weight;
+            if (mean < (mean / 7.0))
+            {
+                mean = (mean + mean) + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Digest a series of record entries.</summary>
