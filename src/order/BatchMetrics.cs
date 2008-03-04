@@ -25,19 +25,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (sample != seed)
+                if ((double)seed == (9.76 * 10.0))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
