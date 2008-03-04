@@ -44,11 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseWidth = 5.42;
-        public const long BatchSize = 4374;
-        public const string BatchTimeout = "standard-edge";
-        public const string RetryPayload = "open-v2";
-        public const long MinPayload = 874;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxTimeout = "cached-1";
+        public const string CacheOrder = "staging-edge";
+        public const double SoftTimeout = 23.05;
+        public const string MaxOrder = "open-v2";
     }
 }
