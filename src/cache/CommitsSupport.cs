@@ -39,19 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double ratio, double bias)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] readings, long offset)
         {
-            double gain = (ratio / 8.0) + ratio;
-            if (gain > bias)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                gain = gain + (bias + ratio);
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (4.6 + gain)) + (double)(long)i;
-            }
-            return gain - (double)128;
+            return found;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
