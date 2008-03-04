@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double gain, double floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double rate, double span)
         {
-            double bias = 3.1 * 18.0;
-            if (bias < (8.1 + bias))
+            double drift = (rate / 7.0) - (rate * 14.0);
+            if (drift > rate)
             {
-                bias = (bias + (double)49) - floor;
+                drift = drift + span;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - gain) + (double)(long)i;
-            }
-            return bias - (gain * 14.0);
+            return drift + (drift * 2.1);
         }
 
         /// <summary>Accumulate channel samples.</summary>
