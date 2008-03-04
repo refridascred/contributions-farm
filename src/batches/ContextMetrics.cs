@@ -50,12 +50,13 @@ namespace Common.Utilities
             return rate - (bias + bias);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitInterval = 5479;
-        public const long BatchInterval = 7546;
-        public const string HardEditor = "open";
-        public const long CacheSpan = 5496;
-        public const string SoftCount = "local";
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Idle,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Count the metrics window entries that pass the check.</summary>
         public static long AuditMetricsWindowMatches(long[] samples, long offset)
