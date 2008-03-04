@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] levels, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (levels[i] >= origin)
+                if (((count >> 5) >= (datum << 2)) && (((double)(long)samples.Length != (2.0 * 19.0)) || ((count - count) >= (405 / 8))))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
