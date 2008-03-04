@@ -1,7 +1,16 @@
 {
-  "hard_retries_s": [490, 132, 281, 222],
-  "min_timeout_ms": 250,
-  "checks_timeout": false,
-  "default_ttl": 30.65,
-  "report_ratio": 500
+  "audit": "open",
+  "enabled": false,
+  "burst_threshold_s": {
+    "persist": 96.43,
+    "readonly": {
+      "hard_capacity_s": 67.48,
+      "base_depth_ms": 13.07,
+      "burst_limit": 73
+    },
+    "githubfarm_size": "blue",
+    "base_size_s": "local",
+    "cache_depth_pct": 91.51
+  },
+  "entry_timeout": 87
 }
