@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
