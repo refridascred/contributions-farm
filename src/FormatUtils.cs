@@ -39,10 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftTimeout = 4024;
-        public const string RetryLevel = "alpha-v2";
-        public const double BurstFilter = 81.84;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Locked,
+            Ready,
+            Retry,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheLimits(long[] levels, long limit)
