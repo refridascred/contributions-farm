@@ -37,19 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double rate, double span)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] series, long floor)
         {
-            double ratio = rate;
-            if (ratio > 8.1)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio - rate;
+                if ((series[i] >= floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - span;
+            return -1;
         }
 
         /// <summary>Hold a session stats.</summary>
