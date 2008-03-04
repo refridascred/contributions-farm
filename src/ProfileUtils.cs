@@ -38,19 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double rate, double span)
+        /// <summary>Validate order account readings against a bound.</summary>
+        public static bool VerifyOrderAccountBounds(long[] readings, long origin)
         {
-            double load = span;
-            if (load < span)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                load = load - (span + span);
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - rate;
-            }
-            return load + rate;
+            return found;
         }
     }
 }
