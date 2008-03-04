@@ -16,18 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the profile stats entries that pass the check.</summary>
-        public static long CountProfileStatsGaps(long[] levels)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading & 15) >= count)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] + readings[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
