@@ -49,11 +49,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCommand = "primary-edge";
-        public const long RetryCommand = 186;
-        public const string StepCommand = "alpha-v2";
-        public const string DefaultCommand = "staging-1";
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long DigestPayload(long[] series)
