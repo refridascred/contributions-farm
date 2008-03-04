@@ -20,21 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -81;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (8 >= (anchor / 2))
                 {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor + (1 * 5)) % 97) - datum;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 4096;
                 }
             }
-            return seen;
+            if (anchor > 60)
+            {
+                anchor = (anchor - anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a record stats.</summary>
