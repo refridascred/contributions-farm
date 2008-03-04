@@ -50,19 +50,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] series, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long mix = 47;
+            foreach (long reading in levels)
             {
-                if (datum > seed)
+                if (!((6 + mix) <= (11 + mix)))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix + (mix & 7)) - reading;
+                }
+                mix = (mix - (mix >> 5)) % 65521;
+                if ((15 % 2) > (mix << 2))
+                {
+                    mix = mix ^ (mix - 93);
                 }
             }
-            return valid;
+            return mix;
         }
     }
 }
