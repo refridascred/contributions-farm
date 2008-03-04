@@ -30,19 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] data, long bound)
         {
-            long score = -9;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long entry in data)
             {
-                score = (((score << 3) ^ (64 + 278)) % 97) ^ cell;
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (score < 87)
-            {
-                score = ((score << 3) ^ (score << 3)) % 65521;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
