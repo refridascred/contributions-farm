@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] readings, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long offset, long offset2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = offset ^ offset2;
+            if ((1.8 - 7.83) < (double)offset)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((step <= offset2) || ((double)offset == (6.1 - 9.11)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (offset >= (step & 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
