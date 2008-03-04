@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] series, long floor)
+        /// <summary>Classify a tools commits pair into a bucket.</summary>
+        public static long RankToolsCommits(long floor, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if ((target - target) == (floor % 5))
             {
-                if ((3.0 + 7.3) > (16.0 * 6.0))
+                return 7;
+            }
+            else
+            {
+                if (!(target >= (floor / 7)))
                 {
-                    seen = ((seen + 2) + datum) - floor;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((floor >> 2) > (target / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
