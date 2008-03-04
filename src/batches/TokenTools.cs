@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] series, long bound)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long carry = 3;
-            foreach (long sample in series)
-            {
-                carry = ((carry + (bound & 31)) % 65521) ^ sample;
-            }
-            return carry % 4096;
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a route record.</summary>
