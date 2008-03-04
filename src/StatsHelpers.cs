@@ -54,21 +54,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up notes context samples.</summary>
-        public static long MatchNotesContextCount(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 86;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = (anchor - (entry + 90)) % 1000;
+                if (((anchor >> 4) != (entry - offset)) && ((86 >> 4) > (offset & 31)))
                 {
-                    if ((levels[i] - levels[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor ^ anchor) % 101;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Accumulate format samples.</summary>
