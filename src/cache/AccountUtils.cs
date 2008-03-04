@@ -15,12 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            Synced,
-            New,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
