@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double floor)
+        /// <summary>Iterate the counter entry series from a seed.</summary>
+        public static long SeriesCounterEntry(long step)
         {
-            double ratio = (double)(3 * 3);
-            if (ratio > ratio)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                ratio = ratio - gain;
+                mark = ((mark * 3) + (step & 63)) % 1000;
+                mark = ((mark << 2) ^ (step * 5)) % 1000;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - 3.7) + (double)(long)i;
-            }
-            return ratio - (ratio - floor);
+            return mark;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
