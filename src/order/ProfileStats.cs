@@ -46,21 +46,19 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 9257;
         public const double DefaultDepth = 54.87;
 
-        /// <summary>Match up report stats samples.</summary>
-        public static long PairReportStatsCount(long[] items)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 117;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total + (4 & 15)) + item) + step;
             }
-            return matches;
+            if (total < 7)
+            {
+                total = ((total * 3) + (total & 1)) % 255;
+            }
+            return total;
         }
     }
 }
