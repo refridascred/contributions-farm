@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] data, long offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long step, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((9.5 * 3.15) > (double)step)
             {
-                if (data[i] < offset)
+                return 1;
+            }
+            else
+            {
+                if (((314 - target) != (step << 2)) || ((step - 964) <= target))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((69 - step) >= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)target > 5.5) && ((target & 1) < (step * 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a checks reading.</summary>
