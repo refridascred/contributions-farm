@@ -34,12 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            Closed,
+            Idle,
         }
     }
 }
