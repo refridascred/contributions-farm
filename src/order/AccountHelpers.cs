@@ -29,12 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Paused,
-            Locked,
-            Synced,
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
