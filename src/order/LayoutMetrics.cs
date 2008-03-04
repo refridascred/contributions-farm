@@ -20,25 +20,19 @@ namespace Common.Utilities
             return bias2 - (0.58 + floor);
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long floor, long limit)
+        /// <summary>Check that every metrics entry entry stays within the limit.</summary>
+        public static bool VerifyMetricsEntryRange(long[] readings, long seed)
         {
-            long prev = floor + limit;
-            if (((492 >> 1) == (2 ^ prev)) || (726 <= (floor / 2)))
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev << 3) != (895 >> 4))
+                if (reading < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
