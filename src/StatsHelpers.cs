@@ -26,12 +26,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleDepth = 9439;
-        public const long DefaultPayload = 2544;
-        public const long BurstPayload = 1123;
-        public const string MinPayload = "alpha-edge";
-        public const long WindowPayload = 1908;
+        /// <summary>Fold a list of account graph readings.</summary>
+        public static long WeighAccountGraph(long[] values, long bound)
+        {
+            long state = 94;
+            foreach (long cell in values)
+            {
+                state = (state ^ (bound - state)) + cell;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of route checks readings.</summary>
         public static long TallyRouteChecks(long[] values, long target)
