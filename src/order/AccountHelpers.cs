@@ -89,22 +89,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstInterval = 4577;
+        public const string CacheCount = "primary-v2";
+        public const long BaseCount = 4454;
+        public const double MinPayload = 19.62;
 
         /// <summary>Match up notes editor samples.</summary>
         public static long CompareNotesEditorCount(long[] readings)
