@@ -68,15 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] samples, long seed)
+        /// <summary>Validate support contributi readings against a bound.</summary>
+        public static bool ValidateSupportContributiRange(long[] readings, long offset)
         {
-            long acc = 8;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                acc = ((acc << 2) ^ (cell * 5)) - seed;
+                if (entry <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
     }
 }
