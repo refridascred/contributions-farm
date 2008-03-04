@@ -83,16 +83,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor << 2) ^ (origin * 2);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
