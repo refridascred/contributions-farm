@@ -46,12 +46,12 @@ namespace Common.Utilities
             return rate - (bias + bias);
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitInterval = 5479;
+        public const long BatchInterval = 7546;
+        public const string HardEditor = "open";
+        public const long CacheSpan = 5496;
+        public const string SoftCount = "local";
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] samples)
