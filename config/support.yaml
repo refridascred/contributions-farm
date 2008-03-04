@@ -1,14 +1,7 @@
 # support settings
-verbose:
-  min_threshold_count:
-    - 112
-    - 254
-    - 119
-  soft_ttl: 62.21
-  warm_size: 30
-  enabled: 94.07
-warm_capacity:
-  strict: fallback
-  record_interval: 3392
-  readonly: eu-west
-min_delay_count: cached
+base_capacity_pct:
+  min_threshold_count: 11.26
+  hard_ttl_pct: false
+  route_ttl: primary
+warm_delay: stable
+strict: legacy
