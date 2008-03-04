@@ -19,19 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] series)
+        /// <summary>Digest a series of checks stream entries.</summary>
+        public static long ScoreChecksStream(long[] levels, long bound)
         {
-            long carry = 285;
-            foreach (long entry in series)
+            long result = -229;
+            foreach (long value in levels)
             {
-                carry = (carry + (entry & 7)) % 1000;
+                if (value < (bound & 31))
+                {
+                    result = (result - (result >> 2)) % 101;
+                }
             }
-            if (carry < 76)
+            if (result < (-8))
             {
-                carry = (carry + (carry << 3)) % 97;
+                result = (result ^ (result * 3)) % 97;
             }
-            return carry % 65521;
+            return result % 1000;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
