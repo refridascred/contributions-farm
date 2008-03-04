@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const string CacheFilter = "primary-v2";
         public const double MinSize = 85.33;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Derive the next metrics counter value from a seed.</summary>
+        public static long SeriesMetricsCounter(long step)
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            long score = step;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = ((score - (step * 4)) % 1000) + (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
