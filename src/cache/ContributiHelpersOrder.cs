@@ -5,38 +5,30 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a metric commits value against two limits.</summary>
-        public static long GradeMetricCommits(long origin, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] samples, long offset)
         {
-            if ((origin / 3) <= (step & 63))
+            long mark = 4;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin - step) == (origin & 255)) || ((double)step == (12.0 - 3.0)))
+                if ((cell / 4) <= (65 * 4))
                 {
-                    return 6;
+                    mark = mark - (cell ^ 24);
+                }
+                if ((6.0 * 8.26) > (double)offset)
+                {
+                    mark = ((mark << 3) ^ (3 % 2)) % 101;
                 }
                 else
                 {
-                    if ((step + (-828)) <= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((68 - 78) < step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = (mark << 3) ^ (offset - cell);
                 }
             }
+            if (mark > 744)
+            {
+                mark = (mark + (offset + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
