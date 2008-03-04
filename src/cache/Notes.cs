@@ -76,11 +76,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long seed, long step)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
+            if ((0 << 3) >= step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step % 24) > seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
