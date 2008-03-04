@@ -35,19 +35,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] levels, long target)
+        /// <summary>Adjust a format route reading.</summary>
+        public static double SmoothFormatRoute(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            double mean = (double)(3 - 322);
+            if (mean <= mean)
             {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + (weight - mean);
             }
-            return stale;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean - (offset - weight);
         }
 
         /// <summary>Classify a report buffer pair into a bucket.</summary>
