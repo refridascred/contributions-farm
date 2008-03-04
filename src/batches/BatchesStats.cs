@@ -52,19 +52,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes counter entry stays within the limit.</summary>
-        public static bool CheckNotesCounterRange(long[] samples, long bound)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
