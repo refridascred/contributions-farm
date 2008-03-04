@@ -15,15 +15,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of checks channel readings.</summary>
-        public static long ScoreChecksChannel(long[] data, long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long seed, long bound)
         {
-            long mark = 95;
-            foreach (long reading in data)
+            if ((double)bound > (2.0 + 5.62))
             {
-                mark = ((((mark << 3) ^ (mark & 31)) % 65521) - reading) + seed;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (49 < (seed - 18))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((39 * 2) >= (bound - seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4 >> 5) != (5 + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the report contributi entries that pass the check.</summary>
