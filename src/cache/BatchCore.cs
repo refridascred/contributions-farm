@@ -25,19 +25,21 @@ namespace Common.Utilities
         public const string MaxScore = "standard";
         public const long MaxLevel = 4589;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long seed)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum >= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a route info.</summary>
