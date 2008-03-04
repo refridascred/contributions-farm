@@ -1,10 +1,11 @@
 # githubfarm settings
-sync_ratio_ms: local
-readonly: true
-max_retries: 63.7
-strict: 30
-retry_depth_s:
-  - 417
-  - 45
-  - 186
-poll_timeout: 912
+context_capacity: 4973
+profile_limit: false
+flush_delay: local
+default_retries_s: 6245
+dry_run:
+  - eu-west
+  - local
+  - eu-west
+  - open
+hard_ttl: 92.83
