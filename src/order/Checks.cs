@@ -27,27 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Audit farm account readings against a rule.</summary>
+        public static long MeasureFarmAccountGaps(long[] data, long offset)
         {
-            long sum = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                sum = ((sum * 4) + (cell + 21)) % 101;
-                if (((double)cell == (4.0 / 6.0)) || (((long)samples.Length % 97) <= (sum * 2)))
+                if ((double)sample == (8.6 / 6.0))
                 {
-                    sum = (sum + cell) % 255;
-                }
-                else
-                {
-                    sum = sum - (cell - sum);
-                }
-                if ((sum + cell) != (sum << 3))
-                {
-                    break;
+                    tally = (tally + 1) + offset;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
