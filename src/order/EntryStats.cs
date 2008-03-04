@@ -16,23 +16,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Digest a series of report cluster entries.</summary>
-        public static long FoldReportCluster(long[] values)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] readings, long seed)
         {
-            long acc = 68;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                acc = (acc - (cell << 3)) % 65521;
-                if ((double)cell >= (double)6)
+                if (item >= seed)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (acc > 530)
-            {
-                acc = acc ^ (acc * 5);
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
