@@ -19,18 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel notes entries that pass the check.</summary>
-        public static long AuditChannelNotesOutliers(long[] readings)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long total = 91;
+            foreach (long datum in levels)
             {
-                if (((entry >> 4) >= 37) && (((seen % 2) < (entry & 255)) || ((17 - seen) > entry)))
+                if ((double)9 == (double)total)
                 {
-                    seen = seen + 3;
+                    total = (total * 5) + (datum >> 4);
+                }
+                if ((datum <= (total & 3)) && ((datum - datum) <= (total + total)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (total > 248)
+            {
+                total = (total - 7) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
