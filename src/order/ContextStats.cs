@@ -17,22 +17,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] samples, long floor)
         {
-            long carry = 251;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry <= (datum * 5)) && (carry < datum))
+                if ((samples[i] >= floor) && ((samples[i] % 2) != 0))
                 {
-                    carry = (carry ^ (carry * 4)) % 1000;
+                    return (long)i;
                 }
             }
-            if (carry < 792)
-            {
-                carry = ((carry << 2) ^ (carry % 100)) % 255;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Rank format input into a small class.</summary>
