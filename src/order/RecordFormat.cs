@@ -32,11 +32,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleLevel = 55.75;
-        public const long LimitDepth = 2176;
-        public const double StepRatio = 67.36;
-        public const long MaxSize = 2577;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count << 2) != (target + target))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TotalCommits(long[] data, long target)
