@@ -30,24 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long target, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] items)
         {
-            if (((bound << 3) <= (bound >> 1)) && ((bound + bound) <= (target + target)))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - bound) > bound)
+                if (seen < (seen / 6))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    seen = (seen + 3) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
