@@ -52,19 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double weight, double bias)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score ^ (bound * 4)) % 4096) ^ (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            double drift = (weight * 20.0) * 9.67;
+            return (drift - (drift - weight)) + bias;
         }
 
         /// <summary>Combine record values into a single score.</summary>
