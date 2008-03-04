@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultBatch = "primary-1";
-        public const long CacheScore = 3220;
-        public const long DefaultScore = 1446;
-        public const long BurstWidth = 9728;
-        public const long DefaultCount = 9161;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinTimeout = 48.73;
+        public const long HardCounter = 3549;
+        public const long IdleCounter = 1739;
+        public const long CacheDepth = 6141;
 
         /// <summary>Validate schema batches readings against a bound.</summary>
         public static bool CheckSchemaBatchesLimits(long[] readings, long limit)
