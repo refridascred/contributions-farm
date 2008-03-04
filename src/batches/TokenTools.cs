@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Roll a profile cache counter forward.</summary>
