@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] values)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            long mark = 24;
+            foreach (long entry in values)
+            {
+                if ((double)mark >= (1.52 / 3.0))
+                {
+                    mark = (mark ^ entry) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
