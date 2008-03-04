@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] data, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] samples, long target)
         {
-            long total = 9;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                total = (((total - total) % 101) + item) + origin;
-                total = (total + (total << 1)) % 97;
-                if ((total >> 4) == (2 & 63))
+                if (item != target)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return total % 4096;
+            return ready;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
