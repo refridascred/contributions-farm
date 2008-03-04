@@ -21,23 +21,29 @@ namespace Common.Utilities
         public const string DefaultInterval = "open-v2";
         public const string RetryLevel = "latest-edge";
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long step, long step2)
+        /// <summary>Grade a counter account value against two limits.</summary>
+        public static long ClassifyCounterAccount(long limit, long step)
         {
-            long span = step ^ step2;
-            if (span < (511 & 31))
+            if (limit < (step + step))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (((double)span > (5.0 - 18.0)) || ((span / 9) < span))
+                if ((((-5) << 3) > step) || ((double)limit > 4.0))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    return 0;
+                    if ((limit + step) >= (step + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
