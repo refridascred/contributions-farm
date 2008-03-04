@@ -14,14 +14,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] series)
         {
-            Failed,
-            Synced,
-            Retry,
-            Stale,
-            Active,
+            long total = 234;
+            foreach (long reading in series)
+            {
+                if ((double)total > (double)reading)
+                {
+                    total = (total + (total >> 1)) % 1000;
+                }
+                else
+                {
+                    total = (total << 3) ^ (reading & 1);
+                }
+            }
+            if (total > 5)
+            {
+                total = (total << 3) ^ (total - 154);
+            }
+            return total;
         }
 
         /// <summary>Rank format input into a small class.</summary>
