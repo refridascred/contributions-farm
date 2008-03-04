@@ -50,19 +50,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] data)
         {
-            long acc = 59;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                acc = (acc * 3) + (entry + 6);
+                if ((0 % 3) < (seen + seen))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (acc > (-548))
-            {
-                acc = (acc ^ (acc >> 3)) % 4096;
-            }
-            return acc;
+            return seen;
         }
     }
 }
