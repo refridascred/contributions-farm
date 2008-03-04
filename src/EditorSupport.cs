@@ -31,11 +31,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 9575;
-        public const string DefaultToken = "alpha-1";
-        public const long BurstScore = 3754;
-        public const string MaxLevel = "latest-1";
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Active,
+            Draft,
+            Idle,
+            Stale,
+            New,
+        }
 
         /// <summary>Match up order entry samples.</summary>
         public static long OverlapOrderEntryCount(long[] values)
