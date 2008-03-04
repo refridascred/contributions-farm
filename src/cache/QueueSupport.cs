@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] levels, long floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((double)reading <= (4.0 / 4.0)) || ((floor + reading) != (floor << 2))))
+                if (readings[i] >= limit)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a token summary.</summary>
