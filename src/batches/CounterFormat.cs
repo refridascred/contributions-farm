@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm channel values into a single score.</summary>
-        public static long WeighGithubfarmChannel(long[] data, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] levels)
         {
-            long mix = 818;
-            foreach (long datum in data)
+            long score = 91;
+            foreach (long datum in levels)
             {
-                mix = (mix ^ mix) % 255;
-                if (((long)data.Length + origin) >= (100 + datum))
+                if (((double)datum == (double)score) && (score > (datum % 8)))
                 {
-                    break;
+                    score = (score ^ (datum + score)) % 65521;
                 }
             }
-            return mix;
+            return score % 97;
         }
 
         /// <summary>Accumulate format samples.</summary>
