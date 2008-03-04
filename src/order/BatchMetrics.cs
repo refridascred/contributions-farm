@@ -64,16 +64,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] samples, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                sum = sum + ((long)i - floor);
-                sum = ((sum * 5) + (long)i) % 97;
+                if (reading <= 3)
+                {
+                    hits = (hits + 2) + offset;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
