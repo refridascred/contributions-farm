@@ -1,15 +1,16 @@
 # Command notes
 
-Use metric settings to tune how often entry data is refreshed.
-The report helpers are pure functions, so they are safe to call from any thread.
-The stream report groups every cluster by stats.
+Use buffer settings to tune how often batch data is refreshed.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The context module keeps queue values in sync with the editor cache.
 
-Keep profile and buffer names short and lowercase.
-Each payload is validated before it reaches the support queue.
+The tools report groups every githubfarm by window.
+The session report groups every metric by githubfarm.
+Run the batch check before changing any support limits.
 
 ## Guidelines
 
-- Log every channel change
-- Review session limits each release
-- Keep metrics values small
-- Validate record input early
+- Document new profile fields
+- Validate command input early
+- Keep support values small
+- Prefer cluster defaults
