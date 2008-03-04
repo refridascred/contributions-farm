@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 158;
-        public const string SoftSchema = "legacy-edge";
-        public const string CacheSchema = "standard-v2";
-        public const double CacheTimeout = 39.05;
-        public const long WindowSchema = 5693;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
