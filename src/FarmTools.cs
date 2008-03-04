@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
