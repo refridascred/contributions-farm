@@ -47,22 +47,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many profile layout samples are out of range.</summary>
-        public static long CountProfileLayoutOutliers(long[] series, long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double load = rate;
+            if (load < 3.5)
             {
-                if (!((10 + datum) <= (floor + datum)) && ((20.0 / 4.0) > 5.0))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = load - load;
             }
-            return seen;
+            return load - offset;
         }
     }
 }
