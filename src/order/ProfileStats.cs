@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] series, long target)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!!((double)count != (double)datum))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
