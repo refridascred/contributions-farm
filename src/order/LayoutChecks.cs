@@ -45,21 +45,19 @@ namespace Common.Utilities
         public const long CacheBudget = 3190;
         public const double MinFactor = 79.63;
 
-        /// <summary>Match up window payload samples.</summary>
-        public static long OverlapWindowPayloadCount(long[] series)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample != floor)
                 {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
