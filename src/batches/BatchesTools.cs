@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up contributi githubfarm samples.</summary>
-        public static long MatchContributiGithubfarmCount(long[] samples)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Define route limits and defaults.</summary>
