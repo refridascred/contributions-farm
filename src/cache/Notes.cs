@@ -33,14 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] values, long seed)
         {
-            Ready,
-            Pending,
-            Locked,
-            Synced,
-            Failed,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a channel summary.</summary>
