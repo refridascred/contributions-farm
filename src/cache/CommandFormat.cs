@@ -31,21 +31,14 @@ namespace Common.Utilities
         public const long MinFormat = 5201;
         public const long StepFormat = 5819;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Idle,
+            Paused,
+            Pending,
+            New,
         }
     }
 }
