@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const double SoftInterval = 52.19;
         public const long BatchScore = 1885;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstDepth = "latest-edge";
-        public const long CacheGithubfarm = 9544;
-        public const string HardTimeout = "cached";
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
