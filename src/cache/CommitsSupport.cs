@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate graph buffer readings against a bound.</summary>
-        public static bool GuardGraphBufferRange(long[] samples, long floor)
+        /// <summary>Measure how many route command samples are out of range.</summary>
+        public static long MeasureRouteCommandMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (entry > floor)
+                if ((tally - tally) <= tally)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
