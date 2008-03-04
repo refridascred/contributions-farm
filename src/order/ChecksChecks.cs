@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] levels)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long offset)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((tally + entry) > (tally * 3))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = tally + 2;
+                    sum = ((sum * 2) + (0 >> 5)) ^ (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the format counter entries that pass the check.</summary>
