@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((4 >> 1) < (9 - item))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 3387;
+        public const string IdleDepth = "strict-v2";
+        public const long IdleAccount = 8260;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long SeriesGraph(long offset)
