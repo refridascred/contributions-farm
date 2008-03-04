@@ -20,12 +20,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Paused,
-            New,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BaseWidth = 5.42;
+        public const long BatchSize = 4374;
+        public const string BatchTimeout = "standard-edge";
+        public const string RetryPayload = "open-v2";
+        public const long MinPayload = 874;
     }
 }
