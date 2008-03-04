@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long origin)
         {
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                long next = carry;
+                carry = (carry + (carry ^ next)) % 255;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the cluster status values.</summary>
