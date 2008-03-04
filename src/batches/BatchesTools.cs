@@ -31,14 +31,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Closed,
-            Paused,
-            Done,
+            Retry,
+            Ready,
             Active,
-            Pending,
+            Draft,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
