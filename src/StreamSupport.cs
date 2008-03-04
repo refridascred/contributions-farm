@@ -28,22 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the layout format entries that pass the check.</summary>
-        public static long MeasureLayoutFormatMatches(long[] data)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((cell >> 4) >= (81 >> 1))
+                if ((datum + 23) >= (long)levels.Length)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
