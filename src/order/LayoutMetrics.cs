@@ -27,13 +27,17 @@ namespace Common.Utilities
         public const long DefaultCounter = 1793;
         public const string MaxCounter = "legacy";
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] items, long target)
         {
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
