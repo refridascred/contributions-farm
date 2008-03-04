@@ -27,24 +27,18 @@ namespace Common.Utilities
         public const long IdlePayload = 662;
         public const double BurstPayload = 83.54;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long step, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] levels)
         {
-            if (((-688) + seed) != (61 + seed))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step % 5) <= (step % 60))
+                if ((value - 4) != (32 % 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
