@@ -40,17 +40,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] samples, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 0;
+            foreach (long item in series)
             {
-                if (samples[i] == bound)
+                if ((double)item > 17.0)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (anchor + anchor)) % 101;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
