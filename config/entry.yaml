@@ -1,29 +1,14 @@
 # entry settings
-enabled: 30
-readonly:
-  soft_limit: standard
-  support_depth:
-    - stable
-    - latest
-  cache_timeout_pct: 941
-  max_window: legacy
-  warm_timeout_s: 83
-  session_limit: latest
-cluster_interval: false
-compress:
-  idle_timeout_pct: open
-  verbose: local
-  context_retries: 19.77
-  enabled:
-    warm_depth: 80.14
-    already_ratio: 250
-    payload_depth: 100
-    default_delay_ms:
-      - green
-      - standard
-      - standard
-    min_timeout_s: 30
-soft_ratio_ms:
-  - eu-west
+default_retries_ms: false
+batch_threshold: open
+min_retries_pct:
+  - 365
+  - 134
+session_depth:
+  - latest
   - standard
-  - primary
+  - open
+flush_size_pct:
+  - 326
+  - 403
+  - 83
