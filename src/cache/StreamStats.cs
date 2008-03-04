@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 1838;
-        public const string SoftRoute = "fallback-1";
-        public const long IdleSpan = 9261;
-        public const long BurstRoute = 7668;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public double Mode { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
