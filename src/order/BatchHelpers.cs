@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 6352;
-        public const long SoftWidth = 2996;
-        public const long BatchSchema = 9822;
-        public const long SoftSchema = 7769;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((step - sample) <= (tally + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long WeighContributi(long[] readings)
