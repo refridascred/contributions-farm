@@ -1,12 +1,19 @@
 {
-  "base_delay": 4216,
-  "min_depth": 97,
-  "max_depth_count": "cached",
-  "warm_depth_s": {
-    "warm_depth_count": 60,
-    "audit": 92.74,
-    "queue_size": 68.39
-  },
-  "readonly": 100,
-  "min_threshold_ms": ["strict", "staging", "fallback", "legacy"]
+  "format_size": [57, 352, 10],
+  "cluster_size": "strict",
+  "verbose": 36,
+  "base_timeout_s": {
+    "enabled": "cached",
+    "base_depth": 23,
+    "commits_timeout": {
+      "burst_capacity_pct": false,
+      "soft_interval": 66.04,
+      "channel_delay": false,
+      "soft_threshold_s": 72.77,
+      "default_timeout": 51.04,
+      "cache_retries_ms": 28.68
+    },
+    "poll_retries": 55.64,
+    "min_window_ms": [209, 354, 324]
+  }
 }
