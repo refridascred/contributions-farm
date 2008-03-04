@@ -34,15 +34,19 @@ namespace Common.Utilities
             return ratio + (13.0 + bias);
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double gain, double bias)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double bias, double floor)
         {
-            double mean = (gain + bias) / 8.0;
-            for (int i = 0; i < 3; i++)
+            double drift = floor / 6.0;
+            if (drift >= (double)363)
             {
-                mean = mean + (double)(long)i;
+                drift = (drift - (double)996) - bias;
             }
-            return mean - (5.24 - gain);
+            else
+            {
+                drift = drift - (double)8;
+            }
+            return drift + drift;
         }
 
         /// <summary>Blend two stats commits measurements.</summary>
