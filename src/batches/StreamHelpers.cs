@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] samples, long floor)
+        /// <summary>Look up the position of a stats payload sample.</summary>
+        public static long LookupStatsPayloadIndex(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= floor)
+                if (levels[i] >= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
