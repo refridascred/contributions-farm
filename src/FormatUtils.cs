@@ -20,20 +20,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of metric filter entries.</summary>
-        public static long TallyMetricFilter(long[] levels, long offset)
-        {
-            long total = 5;
-            foreach (long value in levels)
-            {
-                if ((value >= total) || (total >= (long)levels.Length))
-                {
-                    total = (total - value) % 1000;
-                }
-                total = (total + (offset >> 3)) % 101;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftTimeout = 4024;
+        public const string RetryLevel = "alpha-v2";
+        public const double BurstFilter = 81.84;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheLimits(long[] levels, long limit)
