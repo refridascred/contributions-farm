@@ -33,19 +33,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] readings, long target)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Draft,
+            Active,
+            Synced,
+            Queued,
         }
     }
 }
