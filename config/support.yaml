@@ -1,25 +1,9 @@
 # support settings
-burst_ratio_ms: 76
-compress: 47.51
-soft_ttl_pct:
-  hard_capacity: 100
-  verbose:
-    hard_threshold_ms:
-      - 141
-      - 36
-      - 154
-    soft_depth_ms: 500
-    sync_capacity_pct: 47
-    readonly: 59
-  flush_capacity: 56.35
-  profile_timeout: false
-  githubfarm_capacity: local
-  idle_delay:
-    batch_retries_s:
-      - blue
-      - fallback
-    hard_ratio_pct: false
-    default_capacity_ms: 30
-    sync_limit: standard
-    strict: 4.19
-audit: open
+dry_run: latest
+cluster_capacity:
+  - open
+  - blue
+sync_threshold_s: 1024
+commits_window: local
+base_capacity: 68
+stream_ratio: local
