@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 7674;
-        public const long MinBudget = 9313;
-        public const long WindowTimeout = 4463;
-        public const string CacheSize = "primary-1";
-        public const long CacheReport = 9401;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 5230;
+        public const long MaxScore = 4931;
+        public const long MinRatio = 4890;
+        public const long MaxRatio = 2749;
 
         /// <summary>Measure how many metric account samples are out of range.</summary>
         public static long MeasureMetricAccountOutliers(long[] readings)
