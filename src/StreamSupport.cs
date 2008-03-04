@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long limit)
+        /// <summary>Measure how many notes already samples are out of range.</summary>
+        public static long AuditNotesAlreadyHits(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (data[i] <= limit)
+                if (!((target << 2) < target))
                 {
-                    return (long)i;
+                    count = (count + 3) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the batch level values.</summary>
