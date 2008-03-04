@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const long SoftCount = 9099;
         public const long BaseFactor = 8155;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Failed,
-            Draft,
+            Queued,
             New,
-            Ready,
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the batches state values.</summary>
