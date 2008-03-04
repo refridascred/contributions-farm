@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "stable-edge";
-        public const double BatchWidth = 53.42;
-        public const long MaxToken = 7713;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Synced,
+            Done,
+            Ready,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string IdleRatio = "cached-edge";
