@@ -1,13 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
+    active INTEGER NOT NULL DEFAULT 1,
     ratio REAL,
-    state TEXT NOT NULL DEFAULT 'new',
-    active INTEGER NOT NULL DEFAULT 1
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
+CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
 
-INSERT INTO commits_records (ratio, state, active) VALUES (23.85, 'strict', 8);
-INSERT INTO commits_records (ratio, state, active) VALUES (74.16, 'latest', 56);
-INSERT INTO commits_records (ratio, state, active) VALUES (63.17, 'green', 97);
+INSERT INTO commits_records (active, ratio, count) VALUES (95, 59.76, 79);
+INSERT INTO commits_records (active, ratio, count) VALUES (13, 77.41, 11);
