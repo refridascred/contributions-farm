@@ -40,24 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long floor, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] values)
         {
-            if ((offset ^ offset) >= (floor % 7))
+            long sum = 929;
+            foreach (long item in values)
             {
-                return 6;
+                sum = ((sum ^ 59) % 101) + item;
             }
-            else
-            {
-                if (((14.0 / 2.0) != (double)offset) || ((offset / 9) <= (floor + floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Rank counter farm input into a small class.</summary>
