@@ -39,17 +39,19 @@ namespace Common.Utilities
         public const string LimitTimeout = "alpha-1";
         public const double BurstBudget = 94.75;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] readings, long floor)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (7.37 - weight) / 2.0;
+            if (bias < (offset * 4.5))
             {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
+                bias = bias - (double)529;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (0.04 * 3.0)) + (double)(long)i;
+            }
+            return bias - (bias + offset);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
