@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchDepth = 7080;
-        public const string MaxBudget = "cached-v2";
-        public const long MaxScore = 8014;
-        public const long HardSupport = 6182;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Validate notes cluster readings against a bound.</summary>
         public static bool CheckNotesClusterRange(long[] values, long limit)
