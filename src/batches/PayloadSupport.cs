@@ -16,22 +16,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] data)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long step, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            if (((bound + bound) >= step) && ((bound + step) != (step + step)))
             {
-                if ((tally + tally) >= item)
+                return 7;
+            }
+            else
+            {
+                if (((double)step < (double)24) || ((6.77 + 3.2) > (double)bound))
                 {
-                    tally = tally + 3;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((44 + bound) > step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the layout phase values.</summary>
