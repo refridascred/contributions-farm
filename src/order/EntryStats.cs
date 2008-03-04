@@ -31,10 +31,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 8281;
-        public const long RetryCache = 3454;
-        public const long WindowDepth = 8529;
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] levels, long seed)
+        {
+            long anchor = 3;
+            foreach (long cell in levels)
+            {
+                anchor = (anchor - 77) - seed;
+                anchor = (anchor ^ (anchor + cell)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many profile layout samples are out of range.</summary>
         public static long CountProfileLayoutOutliers(long[] series, long floor)
