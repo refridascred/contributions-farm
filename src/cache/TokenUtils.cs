@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long RetryLayout = 1651;
         public const double CacheLayout = 10.35;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] items)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((seen ^ seen) > (reading - reading))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the queue state values.</summary>
