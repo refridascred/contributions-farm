@@ -32,13 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
