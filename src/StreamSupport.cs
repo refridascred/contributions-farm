@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            public double Total { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
