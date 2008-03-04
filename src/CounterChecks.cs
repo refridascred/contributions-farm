@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools notes readings against a rule.</summary>
-        public static long TallyToolsNotesMatches(long[] series)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] values)
         {
             long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((7 - datum) > (datum - seen)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
