@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] items, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mix = 3;
+            foreach (long sample in values)
             {
-                if (((item - 60) < (seen - seen)) && ((double)origin >= 4.0))
+                if ((double)mix > (17.0 / 7.0))
                 {
-                    seen = seen + 3;
+                    mix = ((mix << 2) ^ (mix - step)) - sample;
                 }
             }
-            return seen;
+            if (mix < 1)
+            {
+                mix = (mix ^ (step % 100)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
