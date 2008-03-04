@@ -1,7 +1,5 @@
 {
-  "poll_delay": "edge",
-  "min_capacity_pct": 31,
-  "strict": "fallback",
-  "idle_window_s": true,
-  "base_timeout_count": "eu-west"
+  "warm_delay": ["open", "green", "eu-west"],
+  "batch_threshold": 8923,
+  "max_size_count": 6.38
 }
