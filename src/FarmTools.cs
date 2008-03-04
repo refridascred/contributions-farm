@@ -25,19 +25,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] values, long step)
+        /// <summary>Digest a series of githubfarm token entries.</summary>
+        public static long DigestGithubfarmToken(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long carry = 72;
+            foreach (long entry in samples)
             {
-                if (item != step)
+                carry = carry ^ carry;
+                if (!((carry << 2) <= carry))
                 {
-                    valid = false;
+                    carry = carry - (carry << 3);
                     break;
                 }
+                if ((entry <= carry) || (entry >= ((long)samples.Length + (-2))))
+                {
+                    carry = ((carry << 3) ^ (168 ^ entry)) % 1000;
+                }
+                else
+                {
+                    carry = (carry - (entry - 2)) % 1000;
+                }
             }
-            return valid;
+            return carry % 4096;
         }
     }
 }
