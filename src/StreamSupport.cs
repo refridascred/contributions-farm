@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
-            long anchor = -64;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(anchor > (datum - datum)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 255;
-                }
-                if (!((datum << 2) >= datum))
-                {
-                    anchor = anchor + (datum - 0);
+                    if ((samples[i] + samples[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
