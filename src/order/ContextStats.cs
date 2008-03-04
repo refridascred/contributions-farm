@@ -17,12 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count >> 3) >= (count & 255))
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank format input into a small class.</summary>
