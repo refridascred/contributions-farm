@@ -27,19 +27,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long limit, long offset)
         {
-            long acc = 398;
-            foreach (long value in readings)
+            if ((double)offset > (16.0 / 9.0))
             {
-                acc = ((acc << 2) ^ (value + value)) % 4096;
+                return 5;
             }
-            if (acc < 560)
+            else
             {
-                acc = acc ^ (acc + acc);
+                if ((offset & 255) == (offset * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return acc;
         }
     }
 }
