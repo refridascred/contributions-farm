@@ -27,15 +27,12 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public bool Token { get; set; }
+            public double Limit { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
