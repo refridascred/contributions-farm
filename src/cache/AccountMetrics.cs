@@ -46,22 +46,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] samples, long origin)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long result = 4;
-            foreach (long value in samples)
-            {
-                if (value <= (origin >> 4))
-                {
-                    result = result ^ (result / 7);
-                }
-                if ((origin / 4) <= 7)
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
