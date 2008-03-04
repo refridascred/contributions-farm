@@ -15,19 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] samples, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (value != floor)
+                if (!(sample < (count % 7)))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + origin;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Validate farm filter readings against a bound.</summary>
