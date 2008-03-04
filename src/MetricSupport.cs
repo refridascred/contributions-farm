@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long StepBatches = 5593;
         public const long IdleBatches = 5065;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] samples, long step)
+        /// <summary>Validate cluster batch readings against a bound.</summary>
+        public static bool ValidateClusterBatchBounds(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((step ^ sample) >= (sample * 4))
+                if (cell < step)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
