@@ -42,17 +42,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] levels, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
+                if ((double)target >= (9.24 * 9.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate support contributi readings against a bound.</summary>
