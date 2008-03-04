@@ -1,12 +1,5 @@
 {
-  "persist": false,
-  "soft_ttl": {
-    "readonly": 60.06,
-    "idle_ratio": 6159,
-    "idle_interval": "blue",
-    "retry_interval_s": "local"
-  },
-  "sync_delay": 7259,
-  "dry_run": "legacy",
-  "command_limit": ["primary", "latest"]
+  "graph_size": "stable",
+  "default_delay": 250,
+  "flush_ttl_s": "staging"
 }
