@@ -48,18 +48,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cache notes reading by value.</summary>
-        public static long LocateCacheNotesIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 2683;
+        public const long MinTimeout = 2226;
+        public const long CacheLevel = 2764;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseStream = 5222;
