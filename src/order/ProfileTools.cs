@@ -61,15 +61,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] items, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((5 / 2) != (cell - cell))
+                {
+                    count = (count + 1) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
