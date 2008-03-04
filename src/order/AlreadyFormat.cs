@@ -57,14 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] readings, long target)
         {
-            Queued,
-            Failed,
-            Synced,
-            Ready,
-            Draft,
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
