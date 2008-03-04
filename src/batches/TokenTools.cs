@@ -19,13 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] series)
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-            public double Size { get; set; }
-            public double Count { get; set; }
+            long result = 98;
+            foreach (long value in series)
+            {
+                result = (result << 2) ^ (value >> 5);
+                if (!(value <= (result - 93)))
+                {
+                    result = (result * 4) + ((long)series.Length + result);
+                }
+                else
+                {
+                    result = ((result * 5) + result) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a route record.</summary>
