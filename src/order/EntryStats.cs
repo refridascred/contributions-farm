@@ -75,11 +75,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double ratio, double offset)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] items, long limit)
         {
-            double bias = (double)((-1) << 3);
-            return ((bias - 4.9) + ratio) + offset;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
