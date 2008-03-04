@@ -39,13 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] series, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
