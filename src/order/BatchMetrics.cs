@@ -39,11 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepCount = 5357;
-        public const long BurstAlready = 1846;
-        public const long WindowCount = 111;
-        public const string MinWidth = "local-v2";
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
