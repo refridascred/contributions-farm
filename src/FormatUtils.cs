@@ -32,11 +32,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Combine metrics batches values into a single score.</summary>
+        public static long TallyMetricsBatches(long[] series)
         {
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
+            long mix = 49;
+            foreach (long entry in series)
+            {
+                mix = (mix + (8 >> 2)) % 101;
+                mix = (mix * 4) + mix;
+                if (((mix * 3) > entry) || (((long)series.Length - entry) >= entry))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
