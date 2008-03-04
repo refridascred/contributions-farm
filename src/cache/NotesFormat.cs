@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((origin ^ (long)i) == (anchor + origin))
-                {
-                    break;
-                }
-                anchor = (anchor ^ (origin - (long)i)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepCount = 14.52;
+        public const long BaseSpan = 5791;
+        public const long BaseAlready = 7577;
+        public const long BurstTimeout = 9867;
 
         /// <summary>Audit token order readings against a rule.</summary>
         public static long AuditTokenOrderOutliers(long[] readings, long limit)
