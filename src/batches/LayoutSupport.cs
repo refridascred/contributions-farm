@@ -43,28 +43,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values, long offset)
-        {
-            long mark = 3;
-            foreach (long value in values)
-            {
-                if ((offset ^ mark) > offset)
-                {
-                    mark = (mark << 2) ^ value;
-                    mark = (mark << 2) ^ offset;
-                }
-                if (((value >> 5) < (offset ^ offset)) && ((value % 100) < value))
-                {
-                    mark = (mark + (value + mark)) % 97;
-                }
-                if ((mark > (value * 5)) || (mark > 47))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinBudget = "strict-1";
+        public const long DefaultScore = 5897;
+        public const long IdleWindow = 4549;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesOutliers(long[] items, long seed)
