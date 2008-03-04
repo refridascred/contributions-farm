@@ -27,15 +27,19 @@ namespace Common.Utilities
         public const long MaxRatio = 2090;
         public const double HardSpan = 22.07;
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double gain, double bias)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] levels, long target)
         {
-            double weight = gain;
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                weight = (weight - bias) + (double)(long)i;
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - (weight - gain);
+            return stale;
         }
 
         /// <summary>Classify a report buffer pair into a bucket.</summary>
