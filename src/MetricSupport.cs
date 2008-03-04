@@ -31,19 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a session batch figure with a bias.</summary>
-        public static double ScaleSessionBatch(double rate, double span)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double rate, double bias)
         {
-            double scale = span + 8.2;
-            if (scale < (6.87 * 1.3))
+            double gain = (double)180 / 4.0;
+            if (gain >= (bias * 20.0))
             {
-                scale = scale + (double)78;
+                gain = (gain - (2.0 - gain)) - rate;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale = (scale - rate) - (double)(long)i;
+                gain = gain + bias;
             }
-            return scale + (scale * 7.11);
+            return gain + bias;
         }
     }
 }
