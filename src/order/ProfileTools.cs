@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] series)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((count - count) <= (count / 7))
+                if ((long)i < (score << 2))
                 {
-                    count = (count + 2) + item;
+                    score = ((score * 2) + (offset << 3)) % 101;
+                    break;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = (score << 3) ^ offset;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
