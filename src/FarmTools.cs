@@ -13,15 +13,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            long score = 20;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((97 * 5) < (score - cell))
+                {
+                    score = (score << 3) ^ (score << 1);
+                }
+                else
+                {
+                    score = (score + (score * 4)) % 255;
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
