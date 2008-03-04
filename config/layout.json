@@ -1,7 +1,8 @@
 {
-  "flush_retries_ms": "standard",
-  "persist": false,
-  "retry_threshold": 55,
-  "filter_timeout": "local",
-  "entry_window": 78.1
+  "soft_delay": "local",
+  "counter_delay": 6483,
+  "verbose": false,
+  "audit": 88.86,
+  "layout_window": 64.61,
+  "default_ttl_s": 61
 }
