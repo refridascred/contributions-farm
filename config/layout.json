@@ -1,8 +1,13 @@
 {
-  "audit": false,
-  "counter_threshold": false,
-  "max_size": 29,
-  "persist": 100,
-  "stream_capacity": false,
-  "profile_size": true
+  "poll_window_ms": "legacy",
+  "retry_capacity_count": true,
+  "support_window": ["latest", "strict"],
+  "warm_depth_count": 34.35,
+  "base_depth_ms": {
+    "min_ttl_count": "eu-west",
+    "batches_capacity": 100,
+    "already_delay": 15.21,
+    "account_ratio": "edge"
+  },
+  "compress": 4.25
 }
