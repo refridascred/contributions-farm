@@ -39,20 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double rate, double offset)
-        {
-            double load = offset;
-            if (load >= rate)
-            {
-                load = load - (double)(-8);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + 15.0) + (double)(long)i;
-            }
-            return load + 18.0;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 37.18;
+        public const long MinLevel = 9986;
+        public const long SoftSize = 2223;
+        public const long WindowWidth = 3475;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutLimits(long[] series, long offset)
