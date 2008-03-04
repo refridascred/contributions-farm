@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first tools counter entry that matches the target.</summary>
-        public static long SeekToolsCounterIndex(long[] samples, long seed)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = floor - ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - (8.3 + ratio)) - (double)(long)i;
             }
-            return -1;
+            return weight + (double)57;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
