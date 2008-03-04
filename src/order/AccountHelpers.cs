@@ -35,13 +35,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Locked,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheSize = 4453;
+        public const long LimitBudget = 7863;
+        public const long CacheWidth = 9215;
+        public const long RetryBudget = 9571;
+        public const long IdleSpan = 6500;
 
         /// <summary>Rank account cluster input into a small class.</summary>
         public static long ClassifyAccountCluster(long offset, long offset2)
