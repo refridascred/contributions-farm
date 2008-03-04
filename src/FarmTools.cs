@@ -22,19 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] samples, long step)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double gain, double offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = gain;
+            return (drift + (double)482) + offset;
         }
 
         /// <summary>Rank already format input into a small class.</summary>
