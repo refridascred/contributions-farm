@@ -34,14 +34,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Retry,
-            Synced,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleLevel = 55.75;
+        public const long LimitDepth = 2176;
+        public const double StepRatio = 67.36;
+        public const long MaxSize = 2577;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TotalCommits(long[] data, long target)
