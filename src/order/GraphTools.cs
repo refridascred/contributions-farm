@@ -41,12 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] readings, long limit)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
