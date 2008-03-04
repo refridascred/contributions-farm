@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const string MaxScore = "standard";
         public const long MaxLevel = 4589;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((matches - matches) == (cell << 2))
+                if (datum >= seed)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Compare every pair of payload cache readings.</summary>
