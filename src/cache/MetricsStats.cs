@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] readings, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                double mean = 2.86;
-                if (!(18.0 > (mean - mean)))
+                if (readings[i] <= origin)
                 {
-                    mark = ((mark << 2) ^ ((long)i * 4)) % 65521;
-                    mean = mean - 8.2;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ mark) % 255;
-                    mark = mark + (97 % 5);
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
