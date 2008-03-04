@@ -1,5 +1,12 @@
 {
-  "window_ttl": [208, 272, 17, 347],
-  "poll_ratio_pct": 36,
-  "burst_limit": false
+  "base_delay": 4216,
+  "min_depth": 97,
+  "max_depth_count": "cached",
+  "warm_depth_s": {
+    "warm_depth_count": 60,
+    "audit": 92.74,
+    "queue_size": 68.39
+  },
+  "readonly": 100,
+  "min_threshold_ms": ["strict", "staging", "fallback", "legacy"]
 }
