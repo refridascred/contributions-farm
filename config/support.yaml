@@ -1,6 +1,6 @@
 # support settings
-burst_ttl_pct: 2223
-queue_retries: 85
-order_delay: 100
-strict: true
-audit: local
+hard_limit: 81.7
+soft_timeout:
+  - 424
+  - 205
+verbose: 9.77
