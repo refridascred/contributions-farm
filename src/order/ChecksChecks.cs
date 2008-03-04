@@ -50,18 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] data, long offset)
+        /// <summary>Count the format counter entries that pass the check.</summary>
+        public static long AuditFormatCounterOutliers(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((sample >> 2) > (tally ^ offset))
+                if ((431 ^ item) >= (7 << 3))
                 {
-                    tally = tally + 3;
+                    count = (count + 3) - limit;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
