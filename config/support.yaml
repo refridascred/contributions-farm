@@ -1,40 +1,8 @@
 # support settings
-persist:
-  base_ratio: 3712
-  format_size:
-    checks_size: 75.09
-    checks_window: true
-    soft_window: 60
-    warm_timeout_ms:
-      - 410
-      - 17
-      - 240
-    idle_retries_pct: true
-    batch_retries_count: 82
-  persist:
-    - 69
-    - 99
-    - 23
-  hard_ratio_pct: 250
-payload_delay: stable
-warm_threshold: 6090
-contributi_window:
-  - legacy
-  - local
-max_ratio_pct: blue
-flush_delay_ms:
-  burst_depth: 100
-  base_limit_s: 14.68
-  cache_interval_ms:
-    - standard
-    - open
-    - primary
-  report_window:
-    support_delay:
-      - 294
-      - 209
-    warm_ratio: eu-west
-    verbose: false
-    default_limit_count: cached
-    idle_depth_s: false
-    cluster_depth: open
+default_timeout_s: 6034
+audit: 250
+hard_ttl_ms: standard
+max_window_ms:
+  - 385
+  - 357
+base_timeout_ms: 15
