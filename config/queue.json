@@ -1,7 +1,10 @@
 {
-  "idle_timeout_pct": "edge",
-  "audit": ["primary", "primary", "blue", "blue"],
-  "batch_retries": "cached",
-  "hard_limit": "local",
-  "metric_ratio": 91
+  "window_timeout": 95.29,
+  "audit": {
+    "verbose": 100,
+    "compress": true,
+    "persist": 8513
+  },
+  "githubfarm_interval": ["latest", "legacy"],
+  "batch_window_ms": 52.84
 }
