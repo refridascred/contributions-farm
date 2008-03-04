@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowTimeout = 1895;
-        public const string LimitFilter = "standard-v2";
-        public const string StepSize = "legacy-edge";
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long PairNotesCount(long[] series)
