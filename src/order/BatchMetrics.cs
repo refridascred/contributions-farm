@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double scale, double bias)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] data, long limit)
         {
-            double scale2 = bias;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                scale2 = ((scale2 + (scale2 * 17.0)) + (double)(long)i) + scale;
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale2 - bias;
+            return ready;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
