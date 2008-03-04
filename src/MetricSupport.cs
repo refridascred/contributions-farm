@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long limit, long offset)
-        {
-            if (((offset * 3) < (limit + limit)) && ((offset - limit) != (0 << 1)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((590 % 24) >= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit - limit) >= limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit - limit) <= offset) || ((offset + offset) != (limit * 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "primary";
+        public const long BaseCommand = 6887;
+        public const double BurstCommand = 41.64;
+        public const long DefaultCommand = 7245;
+        public const long MaxDepth = 2330;
 
         /// <summary>Scale a session batch figure with a bias.</summary>
         public static double ScaleSessionBatch(double rate, double span)
