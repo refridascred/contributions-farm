@@ -43,15 +43,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] data, long limit)
         {
-            long result = 551;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                result = ((result - (step - result)) % 4096) ^ sample;
+                if (((limit ^ seen) >= (seen + (long)data.Length)) || ((limit & 63) == ((long)data.Length * 4)))
+                {
+                    seen = (seen + 2) + entry;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
