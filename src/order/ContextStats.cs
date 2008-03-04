@@ -32,18 +32,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] series, long offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally - tally) < (offset ^ tally))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
