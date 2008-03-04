@@ -62,31 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] values, long origin)
+        /// <summary>Measure how many account schema samples are out of range.</summary>
+        public static long CountAccountSchemaHits(long[] values)
         {
-            long sum = 30;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (!(item <= (origin & 63)))
+                if (!((datum >> 4) >= (416 % 8)))
                 {
-                    continue;
-                }
-                sum = sum + (item + 892);
-                if ((item < origin) || ((sum & 3) == (sum * 3)))
-                {
-                    sum = (sum ^ (origin / 8)) % 101;
-                }
-                else
-                {
-                    sum = sum ^ (595 - 6);
+                    seen = seen + 2;
                 }
             }
-            if (sum > 96)
-            {
-                sum = (sum ^ origin) % 97;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
