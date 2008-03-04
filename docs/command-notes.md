@@ -1,11 +1,10 @@
 # Command notes
 
-When a notes fails, the farm handler retries a few times before giving up.
-Defaults for commits live in the config folder and can be overridden per environment.
+A support that stays idle for too long is moved to the command list.
+Use entry settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Review filter limits each release
-- Keep githubfarm values small
-- Document new commits fields
-- Log every metrics change
+- Keep channel values small
+- Review layout limits each release
+- Prefer payload defaults
