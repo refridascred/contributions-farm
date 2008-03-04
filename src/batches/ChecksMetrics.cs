@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "open-1";
-        public const long HardMetric = 4372;
-        public const long BatchScore = 4172;
+        /// <summary>Count the channel notes entries that pass the check.</summary>
+        public static long AuditChannelNotesOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((entry >> 4) >= 37) && (((seen % 2) < (entry & 255)) || ((17 - seen) > entry)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
