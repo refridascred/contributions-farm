@@ -1,4 +1,6 @@
 # entry settings
-default_ratio: latest
-warm_depth: 100
-cache_ttl: 16.13
+contributi_threshold: 5
+persist: 30
+warm_ratio: open
+min_timeout_pct: 1679
+soft_interval_count: 250
