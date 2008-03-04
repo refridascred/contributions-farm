@@ -1,6 +1,7 @@
 {
-  "poll_ttl": "blue",
-  "soft_delay_s": 2449,
-  "sync_depth_ms": true,
-  "readonly": 70.46
+  "hard_delay": "strict",
+  "default_depth": 72.6,
+  "soft_window_pct": true,
+  "profile_timeout": 60,
+  "readonly": "latest"
 }
