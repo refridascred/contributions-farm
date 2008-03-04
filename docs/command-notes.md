@@ -1,12 +1,14 @@
 # Command notes
 
-When a support fails, the token handler retries a few times before giving up.
-Use already settings to tune how often report data is refreshed.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+The counter report groups every counter by session.
+A command that stays idle for too long is moved to the metrics list.
+Each report is validated before it reaches the cache queue.
+
+Run the report check before changing any stream limits.
+Keep stats and metric names short and lowercase.
 
 ## Guidelines
 
-- Review farm limits each release
-- Log every account change
-- Keep record values small
-- Validate graph input early
+- Keep order values small
+- Log every filter change
+- Document new record fields
