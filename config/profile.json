@@ -1,6 +1,5 @@
 {
-  "hard_delay": false,
-  "farm_limit": "stable",
-  "schema_threshold": 1402,
-  "flush_interval_count": 4451
+  "verbose": true,
+  "audit": 43.05,
+  "strict": 60
 }
