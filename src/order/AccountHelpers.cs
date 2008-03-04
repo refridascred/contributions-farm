@@ -10,16 +10,13 @@ namespace Common.Utilities
         public const double SoftInterval = 52.19;
         public const long BatchScore = 1885;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = (carry ^ ((long)i & 255)) % 255;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Pending,
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the schema state values.</summary>
