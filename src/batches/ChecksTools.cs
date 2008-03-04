@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double gain, double span)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] series, long step)
         {
-            double drift = span - (span - gain);
-            if (drift >= drift)
+            long mix = 29;
+            foreach (long reading in series)
             {
-                drift = drift - 9.22;
+                if (((long)series.Length < (step ^ reading)) || (4.0 < (double)step))
+                {
+                    mix = (mix * 3) + (7 * 5);
+                }
             }
-            else
+            if (mix > 408)
             {
-                drift = drift - (double)1;
+                mix = ((mix * 5) + (mix + 5)) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift * 9.0)) + (double)(long)i;
-            }
-            return drift - 12.0;
+            return mix % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
