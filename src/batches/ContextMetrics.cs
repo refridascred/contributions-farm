@@ -20,19 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate batch report readings against a bound.</summary>
-        public static bool GuardBatchReportRange(long[] readings, long limit)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long total = 4;
+            foreach (long entry in readings)
             {
-                if (sample > limit)
+                if (floor >= (total + floor))
                 {
-                    ready = false;
-                    break;
+                    continue;
+                }
+                total = (((total * 3) + 0) % 97) - entry;
+                if ((floor / 8) < (204 + 98))
+                {
+                    total = ((total * 3) + ((-62) >> 5)) % 255;
                 }
             }
-            return ready;
+            if (total < 66)
+            {
+                total = total + floor;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
