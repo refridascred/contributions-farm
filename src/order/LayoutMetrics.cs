@@ -20,12 +20,26 @@ namespace Common.Utilities
             return bias2 - (0.58 + floor);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 96.57;
-        public const double StepPayload = 48.25;
-        public const long BatchFactor = 2367;
-        public const long IdlePayload = 662;
-        public const double BurstPayload = 83.54;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long floor, long limit)
+        {
+            long prev = floor + limit;
+            if (((492 >> 1) == (2 ^ prev)) || (726 <= (floor / 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((prev << 3) != (895 >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportOutliers(long[] levels)
