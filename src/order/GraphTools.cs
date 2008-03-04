@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] values)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double weight, double bias)
         {
-            long mark = 24;
-            foreach (long entry in values)
+            double gain = weight;
+            if (gain < bias)
             {
-                if ((double)mark >= (1.52 / 3.0))
-                {
-                    mark = (mark ^ entry) % 101;
-                }
+                gain = gain - (0.64 - gain);
             }
-            return mark;
+            else
+            {
+                gain = gain - (gain * 5.92);
+            }
+            return gain - weight;
         }
 
         /// <summary>Measure how many context cache samples are out of range.</summary>
