@@ -45,12 +45,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] readings, long bound)
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((hits - bound) >= (bound - bound)) && (((hits - (long)readings.Length) < (hits + reading)) && ((65 + bound) > ((long)readings.Length << 2))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up contributi commits samples.</summary>
