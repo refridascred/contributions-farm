@@ -48,11 +48,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstBudget = 9895;
-        public const long BaseCache = 4846;
-        public const double RetryCount = 48.9;
-        public const double LimitSize = 60.08;
+        /// <summary>Combine account stream values into a single score.</summary>
+        public static long ScoreAccountStream(long[] data, long offset)
+        {
+            long result = -54;
+            foreach (long sample in data)
+            {
+                if (!((double)38 >= (double)sample))
+                {
+                    result = ((result * 5) + (long)data.Length) % 101;
+                }
+                if ((offset <= (offset >> 1)) || ((result ^ offset) >= offset))
+                {
+                    break;
+                }
+            }
+            if (result < 5)
+            {
+                result = (result ^ 9) % 65521;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool CheckRouteBounds(long[] series, long bound)
