@@ -71,10 +71,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 7915;
-        public const long HardBatch = 9284;
-        public const long SoftBatch = 9538;
-        public const long IdleInterval = 7157;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long origin, long bound)
+        {
+            if (3 > (41 + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound << 1) < bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((717 > (origin + bound)) || ((double)29 > (double)bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin + bound) < (origin % 7)) || ((origin + (-63)) > (17 / 9)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
