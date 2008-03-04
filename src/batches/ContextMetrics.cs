@@ -46,21 +46,11 @@ namespace Common.Utilities
             return rate - (bias + bias);
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
