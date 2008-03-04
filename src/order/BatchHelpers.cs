@@ -29,19 +29,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] readings, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] levels, long offset)
         {
-            long state = 70;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                state = ((state << 3) ^ (state - state)) ^ reading;
+                if ((offset + offset) < tally)
+                {
+                    tally = (tally + 1) + datum;
+                }
             }
-            if (state < 74)
-            {
-                state = ((state << 2) ^ (958 ^ offset)) % 1000;
-            }
-            return state;
+            return tally;
         }
     }
 }
