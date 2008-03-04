@@ -13,19 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] values, long bound)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Validate schema batches readings against a bound.</summary>
