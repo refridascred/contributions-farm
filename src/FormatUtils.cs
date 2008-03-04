@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double ratio, double bias)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double drift = bias;
-            if (drift <= (double)(-4))
-            {
-                drift = drift - (ratio / 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (ratio / 3.0)) + (double)(long)i;
-            }
-            return drift + (bias * 11.0);
+            Retry,
+            Pending,
+            Locked,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
