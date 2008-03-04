@@ -1,10 +1,6 @@
-id,weight,count,label,state
-1,green,261,47,507
-2,29.73,259,545,14.18
-3,local,14.41,86.48,535
-4,primary,standard,standard,292
-5,edge,91.5,610,78
-6,primary,stable,27.27,eu-west
-7,547,894,434,fallback
-8,local,stable,latest,23.88
-9,47.27,primary,strict,strict
+id,state,weight,ratio
+1,58.93,943,18.55
+2,44,843,964
+3,green,fallback,60.62
+4,76.69,554,fallback
+5,stable,latest,634
