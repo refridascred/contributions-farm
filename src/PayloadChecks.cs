@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            New,
-            Stale,
-            Active,
-            Queued,
+            long anchor = 35;
+            foreach (long reading in readings)
+            {
+                anchor = anchor + reading;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
