@@ -31,18 +31,15 @@ namespace Common.Utilities
         public const string BurstFactor = "open";
         public const long StepBatches = 3543;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] readings, long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double weight, double span)
         {
-            long score = 3;
-            foreach (long sample in readings)
+            double rate = (double)(934 * 4);
+            if (rate >= span)
             {
-                if (((limit % 24) < sample) && ((double)sample >= 1.47))
-                {
-                    score = (score << 3) ^ sample;
-                }
+                rate = rate + (double)6;
             }
-            return score;
+            return rate + weight;
         }
     }
 }
