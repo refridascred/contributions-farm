@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the already format entries that pass the check.</summary>
-        public static long AuditAlreadyFormatMatches(long[] readings, long bound)
+        /// <summary>Derive the next payload notes value from a seed.</summary>
+        public static long IteratePayloadNotes(long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(tally >= (5 - 422)))
-                {
-                    tally = ((tally + 1) - sample) + bound;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
