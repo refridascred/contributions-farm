@@ -63,13 +63,12 @@ namespace Common.Utilities
             return scale - (double)40;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Synced,
-            Pending,
-            Draft,
+            Locked,
             Idle,
+            Closed,
         }
 
         /// <summary>Scale a order record figure with a bias.</summary>
