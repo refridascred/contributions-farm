@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 3387;
-        public const string IdleDepth = "strict-v2";
-        public const long IdleAccount = 8260;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 1378;
+        public const string WindowSpan = "cached-v2";
+        public const long BurstNotes = 3917;
+        public const long RetrySpan = 5273;
+        public const long BaseNotes = 7253;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long SeriesGraph(long offset)
