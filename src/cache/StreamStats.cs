@@ -30,11 +30,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] items, long floor)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
+            long anchor = 24;
+            foreach (long datum in items)
+            {
+                anchor = (anchor - (anchor % 100)) ^ datum;
+                if ((floor % 16) > 17)
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
