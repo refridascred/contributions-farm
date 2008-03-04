@@ -44,22 +44,31 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] samples)
+        /// <summary>Combine support tools values into a single score.</summary>
+        public static long TotalSupportTools(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mark = 0;
+            foreach (long sample in data)
             {
-                if ((cell ^ cell) < (cell << 2))
+                mark = (mark ^ (target + target)) % 65521;
+                if ((double)sample != (1.0 * 3.4))
                 {
-                    hits = hits + 3;
+                    mark = (mark << 3) ^ mark;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = mark + (mark << 3);
+                }
+                if ((double)target == (3.0 * 16.0))
+                {
+                    mark = ((mark << 2) ^ (0 - target)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 101;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
