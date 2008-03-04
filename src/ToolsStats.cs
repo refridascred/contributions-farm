@@ -40,12 +40,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long limit)
         {
-            Synced,
-            Closed,
-            Locked,
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)carry < (4.4 * 7.76))
+                {
+                    carry = (carry ^ limit) % 65521;
+                    continue;
+                }
+                if ((-778) > (limit + 400))
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
