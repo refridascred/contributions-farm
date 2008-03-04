@@ -14,22 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] data)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double weight, double floor)
         {
-            long anchor = 1;
-            foreach (long entry in data)
+            double drift = (double)(247 + 2);
+            if (drift > (weight * 3.5))
             {
-                if (anchor <= (entry ^ anchor))
-                {
-                    anchor = (anchor ^ 453) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + entry) % 101;
-                }
+                drift = drift + drift;
             }
-            return anchor;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - floor;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
