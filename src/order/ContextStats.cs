@@ -32,13 +32,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Roll a queue metric counter forward.</summary>
+        public static long DeriveQueueMetric(long target)
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            long result = target;
+            for (int i = 0; i < 22; i++)
+            {
+                result = (result << 3) ^ 53;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
