@@ -63,19 +63,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 750;
+        public const long CacheAccount = 8243;
+        public const string BaseAccount = "alpha-edge";
     }
 }
