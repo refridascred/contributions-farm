@@ -20,12 +20,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitSupport = 29.62;
-        public const long IdleInterval = 7112;
-        public const double BatchSupport = 67.61;
-        public const long WindowSupport = 9665;
-        public const long RetryInterval = 7199;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheLimits(long[] levels, long limit)
