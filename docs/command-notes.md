@@ -1,10 +1,14 @@
 # Command notes
 
-Keep notes and stats names short and lowercase.
-Run the notes check before changing any metrics limits.
+The githubfarm report groups every contributi by profile.
+A format that stays idle for too long is moved to the stats list.
+Each metric is validated before it reaches the channel queue.
+
+Run the batch check before changing any batches limits.
+Run the format check before changing any payload limits.
 
 ## Guidelines
 
-- Review metric limits each release
-- Keep metrics values small
-- Log every contributi change
+- Validate token input early
+- Prefer filter defaults
+- Keep payload values small
