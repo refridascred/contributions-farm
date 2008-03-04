@@ -48,20 +48,12 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftFactor = 5332;
+        public const long CacheSpan = 4943;
+        public const string SoftTimeout = "cached-v2";
+        public const long DefaultSize = 9392;
+        public const double MaxCounter = 85.34;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricHits(long[] levels)
