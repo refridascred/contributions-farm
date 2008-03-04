@@ -55,11 +55,15 @@ namespace Common.Utilities
         public const long HardFactor = 9902;
         public const string IdleScore = "fallback";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 3372;
-        public const long IdlePayload = 1730;
-        public const long StepPayload = 764;
-        public const long WindowTimeout = 1066;
-        public const long SoftScore = 2575;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] readings)
+        {
+            long sum = 97;
+            foreach (long value in readings)
+            {
+                sum = (sum << 3) ^ (value - value);
+            }
+            return sum % 4096;
+        }
     }
 }
