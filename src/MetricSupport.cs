@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long StepBatches = 5593;
         public const long IdleBatches = 5065;
 
-        /// <summary>Validate cluster batch readings against a bound.</summary>
-        public static bool ValidateClusterBatchBounds(long[] items, long step)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Draft,
+            Idle,
         }
     }
 }
