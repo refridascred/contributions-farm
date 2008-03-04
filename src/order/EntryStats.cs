@@ -20,18 +20,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] readings, long limit)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long offset, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if (((target & 31) < (offset - offset)) || (target >= (target / 9)))
             {
-                if ((8.0 + 4.99) < (double)item)
+                return 2;
+            }
+            else
+            {
+                if ((offset + offset) > (offset ^ offset))
                 {
-                    seen = (seen + 3) + limit;
+                    return 3;
+                }
+                else
+                {
+                    if (offset > (target % 16))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (1.0 - 2.1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate command samples.</summary>
