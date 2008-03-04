@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 19.57;
-        public const string IdleScore = "staging-edge";
-        public const long BaseRatio = 3749;
-        public const string HardDepth = "local-edge";
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 3) + (acc & 1)) % 1000;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long seed, long floor)
