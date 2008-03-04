@@ -39,23 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] readings, long limit)
+        /// <summary>Digest a series of order route entries.</summary>
+        public static long WeighOrderRoute(long[] values)
         {
-            long result = -118;
-            foreach (long cell in readings)
+            long score = 2;
+            foreach (long item in values)
             {
-                if (cell >= (result % 8))
-                {
-                    result = (result + (result + cell)) - limit;
-                    result = (result + (long)readings.Length) % 101;
-                }
-                if (!(13.0 < (double)result))
-                {
-                    result = ((result << 3) ^ ((-4) * 2)) % 255;
-                }
+                score = (score - (score + score)) - item;
             }
-            return result;
+            if (score < (-1))
+            {
+                score = (score * 3) + (8 >> 5);
+            }
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
