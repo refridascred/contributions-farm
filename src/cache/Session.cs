@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long seed, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            if (742 > (origin + seed))
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((origin / 3) == (676 + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the stats class values.</summary>
