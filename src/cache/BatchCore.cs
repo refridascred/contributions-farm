@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinLevel = 717;
+        public const long MaxTimeout = 5418;
+        public const long BurstPayload = 2981;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
