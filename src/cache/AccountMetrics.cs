@@ -45,19 +45,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next notes report value.</summary>
-        public static double ScaleNotesReport(double scale, double span)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double gain = (double)(4 % 7);
-            if (gain > scale)
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (scale + span)) + (double)(long)i;
-            }
-            return gain + (gain + scale);
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
