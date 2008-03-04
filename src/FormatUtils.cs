@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double ratio, double bias)
         {
-            long anchor = 9;
-            foreach (long value in items)
+            double drift = bias;
+            if (drift <= (double)(-4))
             {
-                anchor = (anchor - (anchor + value)) % 255;
-                if (!((anchor % 8) == (2 - value)))
-                {
-                    anchor = anchor - (value - value);
-                }
+                drift = drift - (ratio / 4.0);
             }
-            return anchor % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (ratio / 3.0)) + (double)(long)i;
+            }
+            return drift + (bias * 11.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
