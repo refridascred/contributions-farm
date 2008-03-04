@@ -39,13 +39,15 @@ namespace Common.Utilities
         public const long LimitPayload = 3251;
         public const string MinPayload = "cached-edge";
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double gain, double bias)
         {
-            Dropped,
-            Queued,
-            Synced,
-            Retry,
+            double scale = (gain - bias) * 2.33;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale + (double)14;
         }
     }
 }
