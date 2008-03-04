@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double ratio, double span)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double weight = 14.0;
-            if (weight > ratio)
-            {
-                weight = weight - (double)864;
-            }
-            else
-            {
-                weight = weight - (span + 4.0);
-            }
-            return weight - (ratio + span);
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
