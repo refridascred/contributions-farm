@@ -23,17 +23,12 @@ namespace Common.Utilities
         public const double BatchWidth = 53.42;
         public const long MaxToken = 7713;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] levels, long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
