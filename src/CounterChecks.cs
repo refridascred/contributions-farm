@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a counter stats reading by value.</summary>
-        public static long LookupCounterStatsIndex(long[] series, long origin)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                mark = (mark + (long)i) % 101;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Match up token samples.</summary>
