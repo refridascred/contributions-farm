@@ -1,11 +1,7 @@
 {
-  "verbose": 81.63,
-  "schema_limit": 250,
-  "poll_delay_count": {
-    "base_ttl": 50,
-    "max_ratio_s": "local",
-    "dry_run": "fallback",
-    "contributi_depth": 1024
-  },
-  "default_capacity": "green"
+  "sync_delay_s": "fallback",
+  "flush_capacity_ms": 5281,
+  "hard_ttl_count": "legacy",
+  "compress": "fallback",
+  "notes_size": 13.06
 }
