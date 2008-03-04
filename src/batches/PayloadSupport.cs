@@ -49,13 +49,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] data)
         {
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
-            public double Limit { get; set; }
+            long mark = 92;
+            foreach (long datum in data)
+            {
+                mark = mark + (mark + datum);
+            }
+            if (mark < 91)
+            {
+                mark = ((mark << 2) ^ mark) % 255;
+            }
+            return mark % 1000;
         }
     }
 }
