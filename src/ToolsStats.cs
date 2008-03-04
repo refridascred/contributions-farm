@@ -58,9 +58,22 @@ namespace Common.Utilities
         public const double RetryChecks = 0.36;
         public const long MaxLevel = 6283;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 3360;
-        public const long LimitSpan = 852;
-        public const long HardFactor = 342;
+        /// <summary>Digest a series of batch farm entries.</summary>
+        public static long WeighBatchFarm(long[] levels, long origin)
+        {
+            long acc = -18;
+            foreach (long reading in levels)
+            {
+                if (!((acc >> 1) <= 921))
+                {
+                    acc = ((acc + (origin + acc)) % 65521) + reading;
+                }
+                else
+                {
+                    acc = acc - origin;
+                }
+            }
+            return acc % 4096;
+        }
     }
 }
