@@ -12,24 +12,18 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Grade a schema checks value against two limits.</summary>
-        public static long ClassifySchemaChecks(long offset, long offset2)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] levels, long limit)
         {
-            if (offset > (offset - offset))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset * 4) >= (offset - offset))
+                if ((68 % 8) > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 3) ^ datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
