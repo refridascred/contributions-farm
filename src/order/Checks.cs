@@ -35,21 +35,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = -697;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result - (cell * 3)) % 101;
             }
-            return seen;
+            if (result > 4)
+            {
+                result = (result + (result + result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
