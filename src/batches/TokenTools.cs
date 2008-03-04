@@ -29,12 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheSpan = 4455;
+        public const string IdleWidth = "fallback-1";
+        public const long BatchDepth = 1343;
+        public const long HardLevel = 3446;
+        public const double HardFilter = 14.0;
     }
 }
