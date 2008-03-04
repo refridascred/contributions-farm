@@ -16,12 +16,19 @@ namespace Common.Utilities
             return weight - (6.41 * 7.0);
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double offset)
         {
-            Idle,
-            Queued,
-            Draft,
+            double load = offset + 0.9;
+            if (load < (bias + offset))
+            {
+                load = load - (double)89;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (bias + 8.1);
         }
 
         /// <summary>Define format limits and defaults.</summary>
