@@ -65,26 +65,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] items, long offset)
         {
-            long state = 52;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)reading == (2.3 + 4.73)) || ((0.28 / 7.0) >= (double)reading))
+                if (items[i] > offset)
                 {
-                    state = (state * 2) + (754 + state);
-                }
-                else
-                {
-                    state = (state * 3) + (54 ^ reading);
+                    return (long)i;
                 }
             }
-            if (state < 6)
-            {
-                state = ((state << 3) ^ (long)items.Length) % 255;
-            }
-            return state;
+            return -1;
         }
     }
 }
