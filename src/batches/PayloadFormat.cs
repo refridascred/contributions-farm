@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long floor, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = floor ^ step;
+            if ((diff + step) > (diff ^ step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((98 * 5) > diff)
                 {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two profile measurements.</summary>
