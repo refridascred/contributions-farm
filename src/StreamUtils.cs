@@ -48,18 +48,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit report stats readings against a rule.</summary>
-        public static long AuditReportStatsMatches(long[] samples, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (target >= datum)
+                if ((cell ^ cell) < (cell << 2))
                 {
-                    count = count + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
