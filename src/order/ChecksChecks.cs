@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account notes counter forward.</summary>
-        public static long RollAccountNotes(long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] data, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((3.3 + 5.87) > (double)step)
+                {
+                    tally = (tally + 3) - item;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count the format counter entries that pass the check.</summary>
