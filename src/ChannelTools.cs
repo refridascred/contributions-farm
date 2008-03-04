@@ -37,13 +37,14 @@ namespace Common.Utilities
             return ratio - (double)27;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
             Pending,
+            Failed,
+            Locked,
             New,
-            Stale,
-            Dropped,
+            Idle,
         }
     }
 }
