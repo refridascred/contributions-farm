@@ -46,11 +46,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultBudget = 5530;
-        public const double LimitFormat = 17.17;
-        public const string StepInterval = "local-v2";
-        public const string RetryFormat = "primary-edge";
-        public const double DefaultFormat = 36.73;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally - tally) < (offset ^ tally))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
+        }
     }
 }
