@@ -40,18 +40,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] readings, long seed)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((double)reading > 8.0) && ((209 ^ reading) != (reading + 749)))
-                {
-                    tally = (tally + 1) - seed;
-                }
-            }
-            return tally;
+            Ready,
+            Stale,
+            Done,
+            Dropped,
+            Active,
         }
     }
 }
