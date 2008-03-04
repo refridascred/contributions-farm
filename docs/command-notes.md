@@ -1,11 +1,11 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the editor list.
-Run the commits check before changing any report limits.
+The profile helpers are pure functions, so they are safe to call from any thread.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review batch limits each release
-- Prefer commits defaults
-- Document new profile fields
+- Log every session change
+- Validate command input early
 - Keep filter values small
+- Document new filter fields
