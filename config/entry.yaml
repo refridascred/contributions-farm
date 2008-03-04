@@ -1,6 +1,7 @@
 # entry settings
-cluster_delay: 5053
-audit: 8.75
-min_capacity_count: 53
-burst_ttl_pct: 98.15
-strict: strict
+stream_delay: true
+flush_ratio_s:
+  - blue
+  - open
+entry_size: primary
+verbose: latest
