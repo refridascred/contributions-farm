@@ -25,18 +25,38 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of payload batch readings.</summary>
-        public static long ScorePayloadBatch(long[] series, long floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long limit, long seed)
         {
-            long result = 80;
-            foreach (long datum in series)
+            if (!(73 > (seed % 64)))
             {
-                if ((double)datum < (double)result)
+                return 8;
+            }
+            else
+            {
+                if (((8.3 / 5.0) < (double)limit) || (limit <= seed))
                 {
-                    result = (result - (floor * 2)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if (!(limit > seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit / 6) > seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
