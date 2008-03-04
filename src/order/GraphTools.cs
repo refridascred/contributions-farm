@@ -55,11 +55,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
+            Active,
+            Retry,
+            Draft,
+            Ready,
+            Locked,
         }
     }
 }
