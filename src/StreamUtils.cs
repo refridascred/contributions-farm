@@ -21,19 +21,15 @@ namespace Common.Utilities
         public const long RetryChecks = 729;
         public const long BaseInterval = 8769;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] series, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long carry = 4;
+            foreach (long entry in data)
             {
-                if (datum < target)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry ^ carry) % 255) ^ entry;
             }
-            return ok;
+            return carry % 65521;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
