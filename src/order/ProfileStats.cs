@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const string MinEntry = "alpha";
         public const double DefaultEntry = 43.57;
 
-        /// <summary>Look up the position of a route window sample.</summary>
-        public static long LocateRouteWindowIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultSize = "standard-1";
+        public const long MaxGithubfarm = 6847;
+        public const long WindowTimeout = 1873;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long ClassifyCache(long seed, long floor)
