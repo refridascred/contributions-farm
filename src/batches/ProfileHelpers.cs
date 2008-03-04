@@ -26,15 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Digest a series of order batches entries.</summary>
+        public static long TotalOrderBatches(long[] samples, long floor)
         {
-            long state = 88;
-            foreach (long cell in items)
+            long result = 1;
+            foreach (long reading in samples)
             {
-                state = ((state ^ (state / 9)) % 65521) ^ cell;
+                result = (((result << 2) ^ result) % 101) - floor;
+                if ((reading / 5) != (reading + (-39)))
+                {
+                    break;
+                }
             }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
