@@ -17,15 +17,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Digest a series of command notes entries.</summary>
+        public static long DigestCommandNotes(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long mark = 72;
+            foreach (long reading in readings)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (((reading << 1) == (reading * 5)) && ((2.7 + 20.0) >= (double)mark))
+                {
+                    mark = (mark - (reading << 3)) % 4096;
+                }
+                else
+                {
+                    mark = (mark + (-986)) % 101;
+                }
+                if ((4 > (mark + (-8))) && (4 > (mark + reading)))
+                {
+                    mark = (mark * 4) + mark;
+                }
+                else
+                {
+                    mark = ((mark * 3) + 159) % 101;
+                    mark = ((mark * 5) + (reading % 7)) % 1000;
+                }
+                mark = mark - reading;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
