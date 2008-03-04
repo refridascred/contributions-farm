@@ -23,19 +23,12 @@ namespace Common.Utilities
         public const long BatchBudget = 5631;
         public const double HardContributi = 51.04;
 
-        /// <summary>Validate window checks readings against a bound.</summary>
-        public static bool CheckWindowChecksLimits(long[] readings, long floor)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
