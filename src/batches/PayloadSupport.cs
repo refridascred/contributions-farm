@@ -29,10 +29,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "open-edge";
-        public const string MaxOrder = "primary-v2";
-        public const string StepRatio = "standard-v2";
-        public const long LimitOrder = 1818;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long seed, long origin)
+        {
+            if (!((63 % 60) == (seed + seed)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((-642) < seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
