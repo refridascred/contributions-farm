@@ -22,23 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long sum = 12;
-            foreach (long datum in data)
-            {
-                sum = sum ^ (sum + datum);
-                if ((double)datum != (15.0 / 2.0))
-                {
-                    sum = ((sum * 3) + (7 * 5)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 255;
-                }
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
