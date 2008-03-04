@@ -50,19 +50,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] samples, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (entry > target)
+                if ((4.0 / 3.0) == (double)sample)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
