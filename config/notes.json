@@ -1,7 +1,13 @@
 {
-  "format_depth": 20.2,
-  "persist": 31.28,
-  "burst_size": [407, 347, 283, 75],
-  "window_window": 1024,
-  "route_window": "standard"
+  "retry_depth_s": "local",
+  "checks_interval": {
+    "flush_interval_ms": ["open", "strict", "green"],
+    "max_ratio_ms": "blue",
+    "retry_ratio_pct": 66.43,
+    "githubfarm_capacity": [346, 339],
+    "enabled": ["edge", "edge"],
+    "idle_retries_count": "cached"
+  },
+  "persist": 60,
+  "burst_depth": "standard"
 }
