@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] samples, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] levels)
         {
-            long acc = -874;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((((long)samples.Length / 8) >= (seed >> 2)) && ((double)seed <= 8.5))
+                if (tally > (88 & 15))
                 {
-                    acc = (acc ^ (887 >> 1)) % 65521;
-                }
-                if ((sample + acc) <= (266 ^ seed))
-                {
-                    break;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the channel class values.</summary>
