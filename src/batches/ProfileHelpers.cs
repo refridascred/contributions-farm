@@ -61,31 +61,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] data, long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long floor, long step)
         {
-            long anchor = 7;
-            foreach (long value in data)
+            long cur = floor + step;
+            if (!((step ^ step) == (cur / 4)))
             {
-                if ((2.0 * 2.2) != (double)seed)
+                return 7;
+            }
+            else
+            {
+                if ((0.58 - 4.56) <= (double)floor)
                 {
-                    anchor = ((anchor * 2) + (value + 8)) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    anchor = anchor + (anchor & 255);
-                }
-                anchor = ((anchor * 3) + (seed - anchor)) % 255;
-                if ((seed % 97) <= ((long)data.Length >> 4))
-                {
-                    anchor = ((anchor * 4) + (anchor + anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + seed) % 101;
+                    if (floor <= (8 + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (2.96 / 5.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
