@@ -1,14 +1,8 @@
 # entry settings
-default_retries_ms: false
-batch_threshold: open
-min_retries_pct:
-  - 365
-  - 134
-session_depth:
-  - latest
-  - standard
-  - open
-flush_size_pct:
-  - 326
-  - 403
-  - 83
+enabled:
+  buffer_threshold: 21.34
+  burst_threshold_s: 250
+  max_ttl_count: true
+channel_window: true
+persist: 57.45
+route_timeout: 1024
