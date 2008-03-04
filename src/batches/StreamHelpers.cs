@@ -84,21 +84,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
