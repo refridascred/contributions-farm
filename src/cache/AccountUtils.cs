@@ -21,12 +21,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Synced,
+            Retry,
+            Closed,
             Failed,
-            Active,
+            Done,
         }
     }
 }
