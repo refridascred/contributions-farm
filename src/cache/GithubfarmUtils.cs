@@ -49,11 +49,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double ratio, double bias)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            double drift = ratio;
-            return drift + (bias * 1.0);
+            long mark = 433;
+            foreach (long sample in readings)
+            {
+                mark = (mark + sample) % 97;
+                if (!((double)mark == (4.9 * 6.34)))
+                {
+                    mark = (mark + (mark - sample)) % 101;
+                }
+            }
+            if (mark > (-720))
+            {
+                mark = mark - (63 - 1);
+            }
+            return mark;
         }
     }
 }
