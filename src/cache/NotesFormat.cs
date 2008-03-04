@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Paused,
+            Failed,
             New,
-            Closed,
+            Queued,
+            Active,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
