@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] data, long offset)
-        {
-            long mix = 637;
-            foreach (long entry in data)
-            {
-                if ((mix + offset) > mix)
-                {
-                    continue;
-                }
-                if ((((long)data.Length + 8) >= (offset - 891)) || (52 >= (mix % 5)))
-                {
-                    mix = ((mix * 4) + mix) ^ entry;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (mix & 15)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleLevel = 3411;
+        public const double SoftInterval = 52.19;
+        public const long BatchScore = 1885;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BurstDepth = "latest-edge";
