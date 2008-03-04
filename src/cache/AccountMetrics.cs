@@ -38,19 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] items, long origin)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Fold a list of metric readings.</summary>
