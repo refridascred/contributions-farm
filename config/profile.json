@@ -1,5 +1,6 @@
 {
-  "min_interval_ms": 91.74,
-  "verbose": "latest",
-  "burst_ttl_s": "latest"
+  "hard_delay": false,
+  "farm_limit": "stable",
+  "schema_threshold": 1402,
+  "flush_interval_count": 4451
 }
