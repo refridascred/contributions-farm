@@ -14,12 +14,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 509;
-        public const long SoftChecks = 1946;
-        public const long DefaultChecks = 7785;
-        public const long RetryChecks = 729;
-        public const long BaseInterval = 8769;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items)
+        {
+            long acc = 18;
+            foreach (long entry in items)
+            {
+                acc = (acc - (acc - (long)items.Length)) ^ entry;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long WeighQueue(long[] data)
