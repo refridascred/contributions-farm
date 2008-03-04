@@ -48,24 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long limit, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] data, long floor)
         {
-            if (target >= 19)
+            long state = -2;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit <= target)
+                state = ((state * 5) + (floor << 1)) % 1000;
+                if (!((state / 2) > (reading ^ state)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    state = (state ^ 9) % 255;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Validate support contributi readings against a bound.</summary>
