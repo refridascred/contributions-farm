@@ -19,38 +19,19 @@ namespace Common.Utilities
         public const long BaseChannel = 3884;
         public const long CacheChannel = 5437;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long seed, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] data, long offset)
         {
-            if ((5.0 * 2.1) > (12.0 + 9.0))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (72 > (origin & 127))
+                if (cell > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin ^ origin) > (seed ^ 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed < (72 + 54))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Iterate the command profile series from a seed.</summary>
