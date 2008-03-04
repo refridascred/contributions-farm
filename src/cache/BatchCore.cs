@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the notes metrics entries that pass the check.</summary>
-        public static long TallyNotesMetricsHits(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((count + reading) <= (count - 267))
+                if (!((((long)series.Length + seen) >= (5 & 1)) && ((datum / 9) == ((-1) - step))))
                 {
-                    count = count + 3;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
