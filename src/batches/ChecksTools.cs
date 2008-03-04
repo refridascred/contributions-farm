@@ -19,16 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] values, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] readings, long limit)
         {
-            long carry = 4;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                carry = ((carry ^ (origin % 16)) % 1000) ^ entry;
-                carry = (carry + origin) % 4096;
+                if ((2.9 + 3.26) > (double)reading)
+                {
+                    tally = (tally + 2) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the cluster state values.</summary>
