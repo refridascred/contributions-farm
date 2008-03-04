@@ -1,6 +1,7 @@
 {
-  "strict": true,
-  "retry_depth": 93.28,
-  "hard_capacity_count": [422, 282],
-  "default_delay_pct": 3400
+  "idle_timeout_pct": "edge",
+  "audit": ["primary", "primary", "blue", "blue"],
+  "batch_retries": "cached",
+  "hard_limit": "local",
+  "metric_ratio": 91
 }
