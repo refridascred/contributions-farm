@@ -35,12 +35,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] readings, long limit)
         {
-            Stale,
-            Closed,
-            Failed,
+            long result = -118;
+            foreach (long cell in readings)
+            {
+                if (cell >= (result % 8))
+                {
+                    result = (result + (result + cell)) - limit;
+                    result = (result + (long)readings.Length) % 101;
+                }
+                if (!(13.0 < (double)result))
+                {
+                    result = ((result << 3) ^ ((-4) * 2)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
