@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] readings, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            long mix = 8;
-            foreach (long value in readings)
+            long score = 48;
+            foreach (long sample in samples)
             {
-                if ((20.0 / 7.0) <= (double)value)
-                {
-                    mix = mix ^ (mix & 3);
-                }
+                score = ((score * 3) + (sample - score)) % 4096;
             }
-            if (mix > 17)
-            {
-                mix = mix - (limit + (-229));
-            }
-            return mix % 97;
+            return score;
         }
 
         /// <summary>Count schema filter pairs that satisfy a relation.</summary>
