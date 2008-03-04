@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a route layout reading.</summary>
-        public static double ScaleRouteLayout(double bias, double floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] values)
         {
-            double bias2 = (double)616 * 2.0;
-            if (bias2 <= bias2)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                bias2 = (bias2 - floor) - bias;
+                if (629 >= (seen / 3))
+                {
+                    seen = (seen + 3) + reading;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)9;
-            }
-            return bias2 - (0.58 + floor);
+            return seen;
         }
 
         /// <summary>Check that every metrics entry entry stays within the limit.</summary>
