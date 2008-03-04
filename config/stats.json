@@ -1,7 +1,12 @@
 {
-  "sync_delay_s": "fallback",
-  "flush_capacity_ms": 5281,
-  "hard_ttl_count": "legacy",
-  "compress": "fallback",
-  "notes_size": 13.06
+  "idle_capacity_count": ["fallback", "open", "stable", "latest"],
+  "contributi_threshold": 100,
+  "batches_ratio": 30,
+  "flush_ttl_ms": {
+    "default_retries": 5,
+    "dry_run": 69.42,
+    "queue_retries": "edge"
+  },
+  "enabled": false,
+  "dry_run": false
 }
