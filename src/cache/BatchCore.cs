@@ -21,12 +21,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 21.93;
-        public const string DefaultTools = "local-edge";
-        public const double HardTools = 49.62;
-        public const double BurstRatio = 40.79;
-        public const long LimitTools = 251;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
