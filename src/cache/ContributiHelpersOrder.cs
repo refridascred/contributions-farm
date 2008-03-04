@@ -33,25 +33,21 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long step, long limit)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            long lane = step - limit;
-            if ((limit - lane) <= (lane << 2))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)lane == (1.83 - 1.5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
