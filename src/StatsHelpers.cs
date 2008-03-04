@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftScore = 34.57;
+        public const long BaseCount = 4231;
+        public const long LimitSize = 8709;
+        public const long SoftOrder = 1390;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamMatches(long[] items)
