@@ -23,32 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a channel schema value against two limits.</summary>
-        public static long GradeChannelSchema(long floor, long offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long lane = floor ^ offset;
-            if ((floor + floor) <= (-67))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset / 4) >= (lane % 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((0.18 >= (7.25 + 9.3)) && ((double)lane <= (3.1 / 6.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Idle,
+            Done,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
