@@ -16,39 +16,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long seed, long floor)
-        {
-            if ((332 + seed) <= (seed >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor > (7.2 + 7.7)) && ((seed + 4) < (floor * 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed >= (floor - seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)25 <= (double)seed) || (15.0 > (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultSize = 6073;
+        public const string RetryFactor = "strict";
+        public const long BatchRatio = 3532;
+        public const long BatchBudget = 5631;
+        public const double HardContributi = 51.04;
 
         /// <summary>Validate window checks readings against a bound.</summary>
         public static bool CheckWindowChecksLimits(long[] readings, long floor)
