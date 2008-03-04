@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] readings, long offset)
+        /// <summary>Check that every format cache entry stays within the limit.</summary>
+        public static bool ValidateFormatCacheRange(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (reading <= offset)
+                if (item <= limit)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Compare every pair of schema payload readings.</summary>
