@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a support report counter forward.</summary>
-        public static long RollSupportReport(long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] series, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((anchor >= (long)i) && ((anchor + (long)i) == (anchor + anchor)))
+                if (reading >= floor)
                 {
-                    continue;
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Locate a session reading by value.</summary>
