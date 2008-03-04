@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] series)
-        {
-            long mix = 22;
-            foreach (long cell in series)
-            {
-                mix = ((mix * 3) + (mix + (long)series.Length)) - cell;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryCount = 28.61;
+        public const double CacheChecks = 14.87;
+        public const long HardSpan = 8607;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphHits(long[] series, long limit)
