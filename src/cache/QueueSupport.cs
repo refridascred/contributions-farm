@@ -46,11 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultFactor = 9189;
-        public const long StepToken = 6055;
-        public const long LimitToken = 2158;
-        public const string MaxTimeout = "stable-edge";
-        public const double HardToken = 55.73;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
