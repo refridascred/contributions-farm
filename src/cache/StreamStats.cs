@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample >= (3.6 * 3.2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 1838;
+        public const string SoftRoute = "fallback-1";
+        public const long IdleSpan = 9261;
+        public const long BurstRoute = 7668;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsBounds(long[] values, long origin)
