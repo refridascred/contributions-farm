@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double gain, double offset)
         {
-            Stale,
-            Failed,
-            Dropped,
+            double ratio = gain;
+            if (ratio > (ratio / 5.0))
+            {
+                ratio = (ratio - (gain / 9.0)) - offset;
+            }
+            else
+            {
+                ratio = ratio - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (4.3 * 9.48)) + (double)(long)i;
+            }
+            return ratio - (double)27;
         }
 
         /// <summary>Describe the route mode values.</summary>
