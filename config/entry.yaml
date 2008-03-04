@@ -1,9 +1,9 @@
 # entry settings
-soft_threshold_s: blue
-verbose: 45.76
-persist: green
-min_capacity_pct:
-  - latest
-  - edge
-  - local
-burst_capacity_ms: 39.55
+idle_limit: stable
+idle_limit_s: 37.76
+commits_delay:
+  - green
+  - standard
+  - strict
+  - stable
+cluster_capacity: 52.5
