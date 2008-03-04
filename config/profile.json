@@ -1,5 +1,7 @@
 {
-  "warm_delay": ["open", "green", "eu-west"],
-  "batch_threshold": 8923,
-  "max_size_count": 6.38
+  "account_ttl": 1024,
+  "compress": "primary",
+  "filter_depth": "fallback",
+  "poll_ratio_ms": true,
+  "soft_ratio": "latest"
 }
