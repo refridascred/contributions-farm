@@ -10,26 +10,19 @@ namespace Common.Utilities
         public const string LimitFilter = "standard-v2";
         public const string StepSize = "legacy-edge";
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] series, long bound)
         {
-            long score = -597;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (!((double)score != (5.8 * 4.7)))
+                if (value <= bound)
                 {
-                    score = (score - (score + 59)) % 101;
-                }
-                else
-                {
-                    score = score + (sample ^ sample);
+                    found = false;
+                    break;
                 }
             }
-            if (score < 41)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
