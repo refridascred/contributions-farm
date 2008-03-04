@@ -26,17 +26,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] readings, long offset)
+        /// <summary>Combine filter graph values into a single score.</summary>
+        public static long ScoreFilterGraph(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 0;
+            foreach (long value in series)
             {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark - (value - value)) % 65521) + step;
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Match up filter samples.</summary>
