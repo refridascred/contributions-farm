@@ -49,19 +49,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double rate, double floor)
         {
-            long mark = 92;
-            foreach (long datum in data)
+            double rate2 = (double)(0 ^ 25);
+            for (int i = 0; i < 4; i++)
             {
-                mark = mark + (mark + datum);
+                rate2 = ((rate2 + (double)991) + (double)(long)i) - floor;
             }
-            if (mark < 91)
-            {
-                mark = ((mark << 2) ^ mark) % 255;
-            }
-            return mark % 1000;
+            return rate2 - rate;
         }
     }
 }
