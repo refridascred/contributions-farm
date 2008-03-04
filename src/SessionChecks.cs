@@ -32,12 +32,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Rank account layout input into a small class.</summary>
+        public static long RankAccountLayout(long bound, long origin)
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            if (origin <= 4)
+            {
+                return 7;
+            }
+            else
+            {
+                if (0.9 > (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the command status values.</summary>
