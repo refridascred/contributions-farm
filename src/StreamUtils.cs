@@ -53,23 +53,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] data)
-        {
-            long state = 3;
-            foreach (long reading in data)
-            {
-                if ((double)5 <= (double)state)
-                {
-                    state = (state - (reading << 3)) % 65521;
-                }
-                if (reading >= (76 - reading))
-                {
-                    state = (state * 3) + (reading - reading);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 728;
+        public const long BaseTimeout = 3569;
+        public const long IdleGraph = 1190;
+        public const long MaxGraph = 1920;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LocateQueueIndex(long[] samples, long origin)
