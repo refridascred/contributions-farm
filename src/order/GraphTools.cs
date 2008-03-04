@@ -40,26 +40,14 @@ namespace Common.Utilities
         public const long StepChannel = 9915;
         public const long MaxChannel = 5550;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long acc = 6;
-            foreach (long value in series)
-            {
-                if ((value & 7) > acc)
-                {
-                    acc = (acc - (value + acc)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 4096;
-                }
-            }
-            if (acc < (-401))
-            {
-                acc = (acc - (605 + acc)) % 1000;
-            }
-            return acc % 4096;
+            Queued,
+            Failed,
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
