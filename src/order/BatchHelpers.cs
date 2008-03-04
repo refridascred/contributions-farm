@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheTimeout = 35.39;
-        public const long DefaultSession = 2406;
-        public const long MaxSession = 7891;
-        public const string BaseLevel = "cached-1";
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((318 - cell) == (seen + seen))
+                {
+                    seen = (seen + 2) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] series, long seed)
