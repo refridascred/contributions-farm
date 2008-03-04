@@ -20,11 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double weight, double offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            double scale = 8.47;
-            return (scale + (scale - weight)) + offset;
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+                if (43 > ((long)i - acc))
+                {
+                    acc = ((acc * 5) + (acc / 6)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
