@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate command already readings against a bound.</summary>
-        public static bool VerifyCommandAlreadyBounds(long[] values, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long mark = 4;
+            foreach (long entry in readings)
             {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 3) + mark) + entry;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
