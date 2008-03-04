@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 1395;
+        public const string DefaultSize = "strict-v2";
+        public const long DefaultTimeout = 7687;
+        public const string StepReport = "standard-v2";
+        public const long CacheScore = 5542;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
