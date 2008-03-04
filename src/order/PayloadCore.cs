@@ -30,19 +30,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] samples, long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (entry != floor)
+                if (value > origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
