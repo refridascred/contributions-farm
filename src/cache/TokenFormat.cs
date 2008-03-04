@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next githubfarm graph value.</summary>
-        public static double ScaleGithubfarmGraph(double gain, double offset)
+        /// <summary>Project the next githubfarm channel value.</summary>
+        public static double SmoothGithubfarmChannel(double ratio, double bias)
         {
-            double drift = offset / 9.0;
-            for (int i = 0; i < 7; i++)
+            double mean = bias;
+            for (int i = 0; i < 9; i++)
             {
-                drift = drift + (double)(long)i;
+                mean = (mean - (bias * 6.9)) + (double)(long)i;
             }
-            return drift - (gain + drift);
+            return mean - (ratio / 6.0);
         }
 
         /// <summary>Describe the record mode values.</summary>
