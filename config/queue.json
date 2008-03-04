@@ -1,6 +1,17 @@
 {
-  "strict": 56,
-  "compress": "stable",
-  "already_threshold": 17,
-  "max_ttl": ["open", "legacy", "local"]
+  "verbose": {
+    "cache_delay_count": [479, 262, 315, 311],
+    "persist": "local",
+    "idle_window": true,
+    "warm_window_count": "cached",
+    "flush_ratio_ms": {
+      "audit": 7898,
+      "queue_timeout": 63.42,
+      "compress": "latest",
+      "poll_interval_s": "edge",
+      "poll_retries_ms": "primary"
+    }
+  },
+  "hard_limit": [5, 211, 32, 109],
+  "hard_timeout_s": false
 }
