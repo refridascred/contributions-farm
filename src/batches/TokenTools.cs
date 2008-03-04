@@ -19,24 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] series)
-        {
-            long result = 98;
-            foreach (long value in series)
-            {
-                result = (result << 2) ^ (value >> 5);
-                if (!(value <= (result - 93)))
-                {
-                    result = (result * 4) + ((long)series.Length + result);
-                }
-                else
-                {
-                    result = ((result * 5) + result) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultInterval = 4996;
+        public const double DefaultSize = 19.52;
+        public const long WindowNotes = 3767;
+        public const long WindowBudget = 3235;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
