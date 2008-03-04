@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 7492;
-        public const string SoftInterval = "strict";
-        public const long StepLevel = 1471;
-        public const long MaxWidth = 5557;
-        public const string CacheToken = "cached-edge";
+        /// <summary>Look up the position of a counter stream sample.</summary>
+        public static long FindCounterStreamIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double SmoothBatch(double scale, double bias)
