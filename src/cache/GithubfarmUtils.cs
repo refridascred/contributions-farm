@@ -19,23 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double rate, double span)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double bias = 10.0;
-            if (bias <= (20.0 / 3.0))
-            {
-                bias = (bias + rate) + span;
-            }
-            else
-            {
-                bias = bias + 9.7;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - 5.54) + (double)(long)i;
-            }
-            return bias - 6.55;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a route snapshot.</summary>
