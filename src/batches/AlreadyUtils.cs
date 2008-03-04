@@ -30,10 +30,29 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultInterval = "cached-1";
-        public const string BaseReport = "strict-edge";
-        public const long RetryReport = 665;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] levels)
+        {
+            long sum = 26;
+            foreach (long value in levels)
+            {
+                sum = sum ^ (sum % 64);
+                if (!(value > 89))
+                {
+                    long span = (value - 4) - 9;
+                    sum = (sum ^ (span * 4)) % 101;
+                }
+                if ((0.4 + 7.52) < (double)value)
+                {
+                    sum = (sum + (value ^ sum)) % 65521;
+                }
+                else
+                {
+                    sum = (sum + (sum % 60)) % 65521;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long origin, long seed)
