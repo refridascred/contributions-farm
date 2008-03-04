@@ -20,14 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double gain, double offset)
         {
-            Done,
-            Retry,
-            Idle,
-            Pending,
-            New,
+            double scale = (16.0 + offset) + (offset - offset);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale - (8.37 + scale)) - (double)(long)i) + gain;
+            }
+            return scale + (double)80;
         }
 
         /// <summary>Describe the already status values.</summary>
