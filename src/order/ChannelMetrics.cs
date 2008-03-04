@@ -45,31 +45,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long result = 2;
-            foreach (long reading in series)
-            {
-                if ((result - reading) == (reading + 25))
-                {
-                    result = (result * 4) + (result + reading);
-                    continue;
-                }
-                else
-                {
-                    result = ((result << 3) ^ 623) % 65521;
-                }
-                if ((51 - result) != (result ^ reading))
-                {
-                    result = (result - (reading + reading)) % 101;
-                }
-            }
-            if (result < 161)
-            {
-                result = result - (result >> 5);
-            }
-            return result % 1000;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
