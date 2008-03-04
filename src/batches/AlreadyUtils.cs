@@ -15,11 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a session checks reading.</summary>
-        public static double SmoothSessionChecks(double scale, double floor)
+        /// <summary>Measure how many commits contributi samples are out of range.</summary>
+        public static long MeasureCommitsContributiMatches(long[] items, long seed)
         {
-            double bias = (floor - 1.0) - scale;
-            return bias + (2.88 + scale);
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((count < (seed << 1)) || ((seed + count) != (4 ^ count))) || (((seed - sample) > (2 ^ sample)) && (seed >= (seed * 2))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of account batches readings.</summary>
