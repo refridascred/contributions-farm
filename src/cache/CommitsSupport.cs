@@ -68,18 +68,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] levels)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((((7.5 - 9.0) >= (double)datum) || ((double)datum > (2.3 / 7.0))) || !((double)datum < 3.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
