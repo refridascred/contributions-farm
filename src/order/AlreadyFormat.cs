@@ -77,18 +77,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] items, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.2 <= (double)value) || ((value / 2) > (value << 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) - offset;
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
