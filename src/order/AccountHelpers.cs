@@ -43,14 +43,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double gain, double bias)
         {
-            Idle,
-            Pending,
-            Locked,
-            Paused,
-            Dropped,
+            double ratio = bias;
+            if (ratio < 1.0)
+            {
+                ratio = ratio + (bias + 5.7);
+            }
+            return ratio - (gain * 3.76);
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
