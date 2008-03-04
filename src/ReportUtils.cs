@@ -24,19 +24,20 @@ namespace Common.Utilities
         public const long CacheSpan = 7082;
         public const long BaseQueue = 7008;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] items, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long anchor = 1;
+            foreach (long sample in values)
             {
-                if (entry > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = anchor - sample;
+                anchor = anchor ^ sample;
             }
-            return flag;
+            if (anchor < 4)
+            {
+                anchor = (anchor + (9 / 7)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of session commits entries.</summary>
