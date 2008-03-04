@@ -27,18 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit farm account readings against a rule.</summary>
-        public static long MeasureFarmAccountGaps(long[] data, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((double)sample == (8.6 / 6.0))
+                if (reading != step)
                 {
-                    tally = (tally + 1) + offset;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
