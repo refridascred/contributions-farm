@@ -67,19 +67,19 @@ namespace Common.Utilities
         public const long SoftProfile = 4954;
         public const double IdleInterval = 53.05;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] items, long step)
+        /// <summary>Check that every window filter entry stays within the limit.</summary>
+        public static bool VerifyWindowFilterRange(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (item < step)
+                if (sample >= limit)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
