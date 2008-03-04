@@ -31,12 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] samples)
         {
-            Active,
-            Draft,
-            Synced,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)4 < (double)entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
