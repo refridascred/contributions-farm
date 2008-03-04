@@ -20,18 +20,21 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Measure how many context cache samples are out of range.</summary>
-        public static long MeasureContextCacheOutliers(long[] levels, long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)hits >= (15.0 - 4.96))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = ((hits + 3) + reading) + target;
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
