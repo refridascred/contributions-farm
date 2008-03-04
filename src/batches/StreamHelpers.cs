@@ -47,12 +47,23 @@ namespace Common.Utilities
             return ratio + (ratio / 6.0);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "fallback";
-        public const double LimitCache = 93.1;
-        public const long RetryLevel = 6606;
-        public const long HardCache = 9883;
-        public const string DefaultCache = "legacy-v2";
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] data, long seed)
+        {
+            long score = 65;
+            foreach (long sample in data)
+            {
+                if (((sample << 1) < 550) && ((seed & 7) < seed))
+                {
+                    score = (score * 3) + score;
+                }
+                else
+                {
+                    score = ((score * 2) + (83 % 16)) % 255;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
