@@ -59,11 +59,13 @@ namespace Common.Utilities
             return (drift - (drift - weight)) + bias;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheWidth = 4865;
-        public const string BatchBuffer = "stable";
-        public const string RetryBuffer = "primary";
-        public const long LimitSize = 5799;
-        public const double MaxFactor = 70.18;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Retry,
+            Draft,
+            Done,
+            Idle,
+        }
     }
 }
