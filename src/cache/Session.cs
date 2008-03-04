@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Idle,
-            Dropped,
-            Pending,
-            Synced,
+            Queued,
+            Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
