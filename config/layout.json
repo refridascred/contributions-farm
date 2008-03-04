@@ -1,7 +1,6 @@
 {
-  "account_window": ["green", "staging", "blue", "primary"],
-  "strict": 500,
-  "batches_retries": "eu-west",
-  "cache_delay_count": 500,
-  "flush_delay": "legacy"
+  "idle_ttl_s": 74.36,
+  "soft_ttl_ms": 72,
+  "base_capacity": 26,
+  "readonly": true
 }
