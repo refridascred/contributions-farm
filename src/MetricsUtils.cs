@@ -50,39 +50,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long target, long seed)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] items, long bound)
         {
-            long cur = target + seed;
-            if ((double)cur >= (6.71 - 0.8))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((7.0 / 4.0) != (double)cur))
+                if ((items[i] == bound) && ((items[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(cur < (65 + target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((2.1 * 1.22) != (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
