@@ -46,21 +46,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                score = (score * 4) + ((-724) + score);
-                if (!(bound < ((long)i - bound)))
-                {
-                    score = ((score << 3) ^ ((-39) >> 4)) % 1000;
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Failed,
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
