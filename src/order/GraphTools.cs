@@ -48,14 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Queued,
-            Failed,
-            Active,
-            Closed,
-            Idle,
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a cluster info.</summary>
