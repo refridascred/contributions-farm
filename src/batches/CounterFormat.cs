@@ -33,30 +33,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] levels, long seed)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long anchor = 9;
-            foreach (long reading in levels)
-            {
-                if (!((anchor << 1) < reading))
-                {
-                    anchor = (anchor << 2) ^ (seed - seed);
-                }
-                else
-                {
-                    anchor = anchor ^ (reading & 1);
-                }
-                if ((double)reading > (7.5 - 1.88))
-                {
-                    break;
-                }
-            }
-            if (anchor < 178)
-            {
-                anchor = (anchor ^ (anchor % 5)) % 97;
-            }
-            return anchor;
+            New,
+            Queued,
+            Synced,
+            Closed,
         }
     }
 }
