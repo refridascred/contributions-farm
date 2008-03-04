@@ -19,13 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Look up the position of a route window sample.</summary>
+        public static long LocateRouteWindowIndex(long[] samples, long origin)
         {
-            Locked,
-            Dropped,
-            Stale,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a filter info.</summary>
