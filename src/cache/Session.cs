@@ -49,39 +49,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long target, long floor)
-        {
-            if ((target + target) <= (800 / 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor * 5) > (floor % 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((1.97 - 3.03) < (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((2.2 / 5.0) != (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitLevel = 35.12;
+        public const long BurstChannel = 5343;
+        public const double StepChannel = 20.14;
+        public const long MaxChannel = 3336;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TallyCluster(long[] data)
