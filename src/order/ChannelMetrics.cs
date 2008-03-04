@@ -25,14 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Draft,
             Failed,
-            Locked,
-            Pending,
-            Closed,
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the batches state values.</summary>
