@@ -36,24 +36,11 @@ namespace Common.Utilities
             return ((drift + (0.9 * 3.0)) + ratio) + offset;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long step, long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            if ((step ^ step) > ((-77) + step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (step >= (floor & 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
