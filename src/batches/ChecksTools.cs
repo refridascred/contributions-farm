@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] data, long step)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
