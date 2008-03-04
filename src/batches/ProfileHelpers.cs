@@ -47,12 +47,14 @@ namespace Common.Utilities
         public const string HardRatio = "staging-v2";
         public const string WindowEditor = "strict";
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Synced,
-            Draft,
+            Closed,
+            Ready,
             Idle,
+            Queued,
+            Active,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
