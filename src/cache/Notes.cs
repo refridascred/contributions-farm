@@ -16,21 +16,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count schema filter pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaFilterCount(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 125;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state << 3) ^ sample;
+                state = (state * 4) + ((long)levels.Length * 2);
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
