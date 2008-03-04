@@ -26,24 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long seed, long seed2)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            if (seed2 > (89 >> 2))
+            long state = 23;
+            foreach (long value in series)
             {
-                return 6;
+                state = (((state * 4) + (state - state)) % 65521) + value;
             }
-            else
+            if (state > 47)
             {
-                if ((seed + seed2) == (seed2 + seed2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
+                state = (state - (state / 8)) % 255;
             }
+            return state;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
