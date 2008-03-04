@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] levels, long offset)
+        /// <summary>Blend two profile batch measurements.</summary>
+        public static double ProjectProfileBatch(double gain, double span)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double drift = (gain - gain) * 8.2;
+            if (drift < 1.0)
             {
-                if ((double)offset >= 17.0)
-                {
-                    count = (count + 1) + value;
-                }
+                drift = (drift + drift) - span;
             }
-            return count;
+            else
+            {
+                drift = drift - (double)(-375);
+            }
+            return drift - 7.51;
         }
 
         /// <summary>Measure how many metric account samples are out of range.</summary>
