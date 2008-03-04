@@ -1,17 +1,7 @@
 {
-  "warm_size": {
-    "retry_capacity_s": {
-      "default_threshold_count": "open",
-      "metric_ratio": 30,
-      "warm_limit_pct": 60,
-      "soft_size": ["standard", "standard"],
-      "retry_interval_ms": 7479,
-      "context_timeout": 98.05
-    },
-    "default_ttl_count": 77,
-    "commits_depth": 60
-  },
-  "retry_window_count": "staging",
-  "dry_run": [488, 190, 475],
-  "strict": "staging"
+  "poll_delay": "edge",
+  "min_capacity_pct": 31,
+  "strict": "fallback",
+  "idle_window_s": true,
+  "base_timeout_count": "eu-west"
 }
