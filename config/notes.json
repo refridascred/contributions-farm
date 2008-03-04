@@ -1,13 +1,11 @@
 {
-  "retry_depth_s": "local",
-  "checks_interval": {
-    "flush_interval_ms": ["open", "strict", "green"],
-    "max_ratio_ms": "blue",
-    "retry_ratio_pct": 66.43,
-    "githubfarm_capacity": [346, 339],
-    "enabled": ["edge", "edge"],
-    "idle_retries_count": "cached"
-  },
-  "persist": 60,
-  "burst_depth": "standard"
+  "dry_run": true,
+  "flush_retries_ms": 53.9,
+  "profile_retries": "blue",
+  "min_size": {
+    "poll_size": 500,
+    "poll_retries_pct": "cached",
+    "persist": true,
+    "queue_depth": "latest"
+  }
 }
