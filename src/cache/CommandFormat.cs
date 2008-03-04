@@ -38,11 +38,21 @@ namespace Common.Utilities
         public const long MinFormat = 5201;
         public const long StepFormat = 5819;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 667;
-        public const long WindowDepth = 5183;
-        public const string BurstInterval = "fallback";
-        public const string DefaultCount = "open";
-        public const long MaxFormat = 2890;
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
