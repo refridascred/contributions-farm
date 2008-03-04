@@ -54,24 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route token input into a small class.</summary>
-        public static long ClassifyRouteToken(long limit, long step)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] series, long origin)
         {
-            if (((9 & 7) < (limit << 3)) || ((limit % 7) != (step & 31)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + step) <= limit)
+                if ((series[i] < origin) && ((series[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of batch schema entries.</summary>
