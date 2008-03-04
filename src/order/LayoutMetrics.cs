@@ -34,22 +34,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] readings, long limit)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double bias = (floor / 6.0) * 8.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((item << 1) >= (limit % 5))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = ((bias - (double)791) - (double)(long)i) + rate;
             }
-            return hits;
+            return bias + bias;
         }
     }
 }
