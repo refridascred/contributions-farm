@@ -1,4 +1,22 @@
 # githubfarm settings
-burst_threshold: open
-window_size: true
-cache_window_pct: 100
+compress: stable
+min_ttl:
+  farm_size: standard
+  hard_retries:
+    retry_ratio_s: false
+    idle_size_pct:
+      - 399
+      - 168
+      - 123
+      - 404
+    readonly: 500
+    max_threshold: cached
+    base_depth_count: open
+  retry_timeout:
+    flush_delay: open
+    report_threshold: latest
+    persist: edge
+    burst_timeout_count: false
+    base_size_s: 71
+    cache_timeout: 1024
+max_delay_count: legacy
