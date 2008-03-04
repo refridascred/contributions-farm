@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] values, long seed)
+        /// <summary>Validate counter stats readings against a bound.</summary>
+        public static bool CheckCounterStatsRange(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((values[i] <= seed) && ((values[i] % 3) == 0))
+                if (datum <= floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the queue class values.</summary>
