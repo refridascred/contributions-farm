@@ -19,13 +19,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Retry,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepSpan = 6979;
+        public const long StepWindow = 3736;
+        public const string SoftSpan = "standard";
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long RankMetric(long seed, long origin)
