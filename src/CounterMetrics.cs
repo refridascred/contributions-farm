@@ -53,21 +53,39 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = offset ^ target;
+            if ((offset & 1) >= (offset - target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((gap - offset) != (261 ^ 754))
                 {
-                    if ((data[i] ^ data[j]) != 11)
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)target <= (0.5 + 3.0)))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((target + target) == (gap % 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
