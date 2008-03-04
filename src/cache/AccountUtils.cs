@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowTimeout = 1895;
+        public const string LimitFilter = "standard-v2";
+        public const string StepSize = "legacy-edge";
 
         /// <summary>Combine account values into a single score.</summary>
         public static long ScoreAccount(long[] values)
