@@ -65,22 +65,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] readings, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] samples, long floor)
         {
-            long score = 44;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (datum < (682 - step))
+                if (entry != floor)
                 {
-                    score = (score - (score + 6)) % 97;
-                }
-                if (!((5.33 - 2.9) > (double)step))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return score % 4096;
+            return flag;
         }
     }
 }
