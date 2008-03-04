@@ -82,21 +82,18 @@ namespace Common.Utilities
         public const long BaseCount = 4454;
         public const double MinPayload = 19.62;
 
-        /// <summary>Match up notes editor samples.</summary>
-        public static long CompareNotesEditorCount(long[] readings)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value > (hits & 3))
                 {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + step;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
