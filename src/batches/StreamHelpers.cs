@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] samples)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((9.0 < (double)matches) || !(matches < (matches + (-203))))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Compare every pair of window format readings.</summary>
