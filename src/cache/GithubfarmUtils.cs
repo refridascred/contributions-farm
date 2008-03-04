@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseGraph = 40.06;
-        public const long RetryTimeout = 5675;
-        public const long IdleFactor = 7299;
-        public const double MinGraph = 39.88;
-        public const long HardGraph = 7585;
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
