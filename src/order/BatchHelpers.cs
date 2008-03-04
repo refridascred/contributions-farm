@@ -29,18 +29,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] values)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long carry = 86;
+            foreach (long reading in samples)
             {
-                if ((double)count <= 7.62)
+                if (!!((3.86 - 3.2) <= (double)carry))
                 {
-                    count = (count + 1) + datum;
+                    carry = (carry ^ carry) % 4096;
+                }
+                if (carry > (carry / 2))
+                {
+                    carry = (carry * 4) + (reading - carry);
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
