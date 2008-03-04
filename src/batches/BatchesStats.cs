@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Locked,
-            Pending,
-            Retry,
-            Queued,
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
