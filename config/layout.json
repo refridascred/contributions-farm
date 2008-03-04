@@ -1,5 +1,8 @@
 {
-  "sync_timeout": 6627,
-  "batch_size": 3826,
-  "cache_depth": 93.06
+  "min_capacity": ["blue", "standard", "fallback"],
+  "warm_ratio_pct": "staging",
+  "stream_interval": false,
+  "sync_limit": 1547,
+  "base_ttl_pct": [437, 75, 144],
+  "route_timeout": "fallback"
 }
