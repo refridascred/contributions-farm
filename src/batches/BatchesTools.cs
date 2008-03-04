@@ -33,18 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] values, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((bound + matches) == (sample + (long)values.Length)) && ((double)sample != (double)matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Active,
+            Idle,
+            Locked,
         }
     }
 }
