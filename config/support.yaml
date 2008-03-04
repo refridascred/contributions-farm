@@ -1,8 +1,29 @@
 # support settings
-default_timeout_s: 6034
-audit: 250
-hard_ttl_ms: standard
-max_window_ms:
-  - 385
-  - 357
-base_timeout_ms: 15
+checks_depth:
+  base_timeout: 8444
+  hard_limit_pct: 1024
+  burst_ttl: staging
+batch_threshold: 96.09
+window_capacity:
+  max_delay: edge
+  warm_delay: primary
+  max_limit_count: 40.83
+  cache_retries_pct: edge
+  buffer_capacity:
+    verbose: 100
+    default_size_count: strict
+    default_window: staging
+  min_window: false
+soft_capacity_pct: true
+burst_retries_ms:
+  idle_interval_s: legacy
+  dry_run:
+    - 464
+    - 415
+    - 311
+    - 198
+  soft_delay_count:
+    profile_size: true
+    entry_ttl: 8790
+    flush_capacity: 100
+report_timeout: false
