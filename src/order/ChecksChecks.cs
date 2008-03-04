@@ -15,14 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Fold a list of checks channel readings.</summary>
+        public static long ScoreChecksChannel(long[] data, long seed)
         {
-            Retry,
-            Stale,
-            Failed,
-            Pending,
-            Idle,
+            long mark = 95;
+            foreach (long reading in data)
+            {
+                mark = ((((mark << 3) ^ (mark & 31)) % 65521) - reading) + seed;
+            }
+            return mark;
         }
 
         /// <summary>Count the report contributi entries that pass the check.</summary>
