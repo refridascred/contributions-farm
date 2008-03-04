@@ -28,19 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] series, long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Active,
+            Stale,
         }
     }
 }
