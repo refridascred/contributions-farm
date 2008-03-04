@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Grade a route payload value against two limits.</summary>
+        public static long ClassifyRoutePayload(long offset, long step)
         {
-            Retry,
-            Pending,
-            Locked,
-            Idle,
-            Ready,
+            if ((double)87 != (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset - 1) != (offset >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset < (offset + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset << 1) <= (374 - step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
