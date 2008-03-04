@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinTimeout = 48.73;
-        public const long HardCounter = 3549;
-        public const long IdleCounter = 1739;
-        public const long CacheDepth = 6141;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Pending,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
