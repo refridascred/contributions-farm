@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 5418;
         public const long BurstPayload = 2981;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((double)9 <= (double)tally)
+                if (reading <= offset)
                 {
-                    tally = (tally + 2) ^ cell;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Match up stats payload samples.</summary>
