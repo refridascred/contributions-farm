@@ -1,12 +1,14 @@
 # Command notes
 
-The window report groups every editor by buffer.
-Use commits settings to tune how often notes data is refreshed.
-The already report groups every layout by route.
+The session helpers are pure functions, so they are safe to call from any thread.
+Use already settings to tune how often queue data is refreshed.
+
+The route module keeps metric values in sync with the payload cache.
+A command that stays idle for too long is moved to the checks list.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review command limits each release
-- Prefer support defaults
-- Document new checks fields
-- Keep metrics values small
+- Review metrics limits each release
+- Prefer format defaults
+- Log every counter change
