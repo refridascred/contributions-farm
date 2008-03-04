@@ -15,12 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] samples, long floor)
         {
-            Stale,
-            Queued,
-            Done,
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the format counter entries that pass the check.</summary>
