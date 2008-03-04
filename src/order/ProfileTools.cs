@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const double BurstLevel = 96.65;
         public const long SoftBatch = 1907;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinDepth = 5839;
-        public const double BaseDepth = 63.48;
-        public const long LimitGithubfarm = 6911;
+        /// <summary>Audit channel metric readings against a rule.</summary>
+        public static long AuditChannelMetricMatches(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((649 + (long)series.Length) >= tally)
+                {
+                    tally = ((tally + 3) - cell) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long OverlapGithubfarmCount(long[] values)
