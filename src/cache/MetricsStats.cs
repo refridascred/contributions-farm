@@ -45,39 +45,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long floor, long origin)
+        /// <summary>Accumulate graph editor samples.</summary>
+        public static long FoldGraphEditor(long[] data)
         {
-            long delta = floor - origin;
-            if ((floor << 3) >= (floor + origin))
+            long result = 32;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin > (delta + origin))
+                if ((result + result) >= item)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin >= (5 ^ 19)) && ((double)floor <= (0.49 * 6.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor > (delta - origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    result = (result << 3) ^ result;
                 }
             }
+            if (result > 48)
+            {
+                result = ((result << 2) ^ (result & 3)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
