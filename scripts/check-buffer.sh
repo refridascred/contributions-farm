@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in strict fallback staging; do
+for item in blue strict local; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=24
-log "limit is ${BUFFER_LIMIT}"
