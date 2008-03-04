@@ -1,10 +1,8 @@
 {
-  "report_limit": {
-    "persist": 7.39,
-    "window_depth": ["standard", "fallback", "standard"],
-    "batch_window": false,
-    "readonly": 77.45
-  },
-  "base_capacity_ms": 10.38,
-  "cache_depth": 14
+  "batches_depth": 250,
+  "flush_timeout_ms": 2.26,
+  "cache_limit": "blue",
+  "queue_limit": "stable",
+  "enabled": true,
+  "warm_interval_count": 250
 }
