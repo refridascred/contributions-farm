@@ -73,12 +73,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long offset, long bound)
         {
-            Paused,
-            Retry,
-            Ready,
+            long step = offset + bound;
+            if (((offset * 5) <= 55) && ((double)offset <= (9.0 + 0.3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset < (step >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
