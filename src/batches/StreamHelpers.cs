@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a stats payload sample.</summary>
-        public static long LookupStatsPayloadIndex(long[] levels, long step)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = offset;
+            if (weight > weight)
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (3.37 / 7.0)) + bias;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - offset) - (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Project the next order value.</summary>
