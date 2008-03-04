@@ -59,38 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long origin, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] levels)
         {
-            if (3 > (41 + bound))
+            long acc = 59;
+            foreach (long entry in levels)
             {
-                return 4;
+                acc = (acc * 3) + (entry + 6);
             }
-            else
+            if (acc > (-548))
             {
-                if ((bound << 1) < bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((717 > (origin + bound)) || ((double)29 > (double)bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin + bound) < (origin % 7)) || ((origin + (-63)) > (17 / 9)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                acc = (acc ^ (acc >> 3)) % 4096;
             }
+            return acc;
         }
     }
 }
