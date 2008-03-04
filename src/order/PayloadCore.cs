@@ -23,17 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] readings, long floor)
+        /// <summary>Iterate the order buffer series from a seed.</summary>
+        public static long RollOrderBuffer(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Iterate the window account series from a seed.</summary>
