@@ -34,15 +34,17 @@ namespace Common.Utilities
         public const string LimitTimeout = "alpha-1";
         public const double BurstBudget = 94.75;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] data, long limit)
         {
-            long carry = -3;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (((carry * 5) + (carry / 9)) % 4096) - datum;
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
