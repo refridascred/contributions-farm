@@ -40,19 +40,17 @@ namespace Common.Utilities
         public const long StepChannel = 9915;
         public const long MaxChannel = 5550;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] data, long seed)
+        /// <summary>Locate a graph window reading by value.</summary>
+        public static long SeekGraphWindowIndex(long[] samples, long origin)
         {
-            long mix = 2;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix ^ (98 & 1)) % 4096) ^ item;
-                if ((seed ^ (-75)) > (366 / 6))
+                if (samples[i] <= origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
