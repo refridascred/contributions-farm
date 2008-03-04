@@ -1,7 +1,10 @@
-id,score,state,owner,token
-1,125,cached,578,85.83
-2,primary,178,17.66,strict
-3,878,61.22,standard,452
-4,primary,763,84.78,211
-5,643,94.21,38.83,936
-6,801,153,902,846
+id,label,rank,weight
+1,638,12.03,90.83
+2,16.93,strict,282
+3,53.38,73.83,staging
+4,442,latest,45.9
+5,200,standard,369
+6,primary,stable,25.46
+7,fallback,standard,open
+8,855,763,798
+9,546,75.47,cached
