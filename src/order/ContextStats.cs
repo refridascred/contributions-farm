@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long floor, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
+            long lane = floor + limit;
+            if (((lane + limit) <= floor) || ((741 % 97) == (lane & 3)))
             {
-                sum = ((sum * 2) + (sum ^ origin)) % 65521;
-                sum = ((sum * 2) + (long)i) % 97;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if ((floor + limit) >= 91)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Locate a route reading by value.</summary>
