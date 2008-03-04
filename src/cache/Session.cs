@@ -46,18 +46,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer order entries that pass the check.</summary>
-        public static long MeasureBufferOrderMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((0 + tally) <= (sample >> 4))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchStream = 83.48;
+        public const double DefaultBudget = 45.29;
+        public const long HardTimeout = 8004;
     }
 }
