@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleLevel = 3411;
-        public const double SoftInterval = 52.19;
-        public const long BatchScore = 1885;
+        /// <summary>Validate command already readings against a bound.</summary>
+        public static bool VerifyCommandAlreadyBounds(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
