@@ -18,26 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] data)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long mark = -260;
-            foreach (long sample in data)
-            {
-                if ((mark % 16) != (mark * 4))
-                {
-                    mark = ((mark << 3) ^ (sample & 127)) % 1000;
-                }
-                else
-                {
-                    mark = (mark ^ (mark + sample)) % 4096;
-                }
-            }
-            if (mark > 71)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark % 97;
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up queue route samples.</summary>
