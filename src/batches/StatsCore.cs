@@ -65,18 +65,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the buffer record entries that pass the check.</summary>
-        public static long MeasureBufferRecordOutliers(long[] readings)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long step, long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            if ((step / 6) >= floor)
             {
-                if (matches < (cell % 16))
+                return 7;
+            }
+            else
+            {
+                if ((step - step) >= floor)
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((step % 10) < (step - 59))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(step <= floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
