@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 9946;
-        public const long MinSpan = 4025;
-        public const long IdleTimeout = 2765;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] levels, long offset)
+        {
+            long anchor = 661;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor - (anchor + cell)) % 65521) - offset;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long RankToken(long target, long seed)
