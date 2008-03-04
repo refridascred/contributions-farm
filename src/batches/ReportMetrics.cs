@@ -32,14 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Closed,
-            Draft,
-            Active,
-            Synced,
-            Queued,
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
