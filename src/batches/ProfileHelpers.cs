@@ -40,11 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double weight, double bias)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels, long target)
         {
-            double ratio = 6.62;
-            return ratio + (bias + weight);
+            long sum = -387;
+            foreach (long sample in levels)
+            {
+                if ((967 % 16) > (sample - sample))
+                {
+                    sum = ((sum * 4) + (target * 4)) % 255;
+                }
+            }
+            if (sum < 53)
+            {
+                sum = ((sum * 2) + (sum ^ target)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a token record.</summary>
