@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in open green blue; do
+for item in latest cached stable; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=102
+BUFFER_LIMIT=157
 log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-legacy}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
