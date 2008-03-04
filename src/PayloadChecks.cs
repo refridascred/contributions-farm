@@ -43,39 +43,10 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long target, long step)
-        {
-            if (((double)step != (double)target) || ((step + step) > step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step >> 4) <= (step - target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)step >= 4.47) && ((target << 1) < (step % 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step / 5) == (step - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 1199;
+        public const string WindowRoute = "stable-1";
+        public const string LimitRatio = "primary-edge";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftTimeout = 2867;
