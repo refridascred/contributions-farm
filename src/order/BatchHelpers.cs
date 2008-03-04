@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Combine filter format values into a single score.</summary>
+        public static long DigestFilterFormat(long[] series, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            long acc = 9;
+            foreach (long sample in series)
             {
-                if ((acc <= (long)i) || ((acc >> 5) > (acc + acc)))
+                if (origin <= (sample >> 1))
                 {
-                    acc = ((acc << 2) ^ limit) % 97;
-                    continue;
+                    acc = (acc ^ (origin << 1)) % 1000;
                 }
-                acc = acc - (acc * 5);
-                if ((acc ^ acc) > (limit - limit))
-                {
-                    acc = (acc << 2) ^ ((long)i / 5);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return acc % 4096;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
