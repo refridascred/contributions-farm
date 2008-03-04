@@ -19,24 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double bias, double bias2)
-        {
-            double gain = (double)30 * 3.32;
-            if (gain < bias)
-            {
-                gain = (gain - bias) - bias2;
-            }
-            else
-            {
-                gain = gain - (12.0 + 9.8);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain + (1.0 - gain);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "open-1";
+        public const long HardMetric = 4372;
+        public const long BatchScore = 4172;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
