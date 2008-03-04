@@ -66,13 +66,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] items, long offset)
         {
-            New,
-            Failed,
-            Draft,
-            Retry,
+            long result = 416;
+            foreach (long datum in items)
+            {
+                if ((offset - offset) < (datum + datum))
+                {
+                    result = (result * 2) + (datum + datum);
+                }
+                else
+                {
+                    result = ((result * 3) + offset) % 101;
+                }
+            }
+            if (result < 8)
+            {
+                result = (result - (result * 4)) % 101;
+            }
+            return result;
         }
     }
 }
