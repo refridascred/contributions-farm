@@ -83,22 +83,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch farm entries.</summary>
-        public static long WeighBatchFarm(long[] levels, long origin)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long acc = -18;
-            foreach (long reading in levels)
-            {
-                if (!((acc >> 1) <= 921))
-                {
-                    acc = ((acc + (origin + acc)) % 65521) + reading;
-                }
-                else
-                {
-                    acc = acc - origin;
-                }
-            }
-            return acc % 4096;
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
