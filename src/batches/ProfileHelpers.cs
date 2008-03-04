@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] series, long target)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long carry = 90;
-            foreach (long item in series)
-            {
-                if ((item <= (carry * 3)) || ((target / 9) >= (item / 9)))
-                {
-                    carry = ((carry * 5) + item) % 65521;
-                }
-                if (!((item + target) < (target - 79)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public double Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
