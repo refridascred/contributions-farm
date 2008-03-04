@@ -38,14 +38,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] items)
         {
-            Done,
-            Idle,
-            Paused,
-            Pending,
-            New,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell > (5.88 * 2.0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
