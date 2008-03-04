@@ -74,11 +74,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
