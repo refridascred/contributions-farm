@@ -24,22 +24,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] levels, long limit)
         {
-            long score = 20;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((97 * 5) < (score - cell))
+                if (levels[i] == limit)
                 {
-                    score = (score << 3) ^ (score << 1);
-                }
-                else
-                {
-                    score = (score + (score * 4)) % 255;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
