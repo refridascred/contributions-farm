@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] readings, long bound)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)bound > (7.5 / 6.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) ^ entry;
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the account class values.</summary>
