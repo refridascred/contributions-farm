@@ -35,10 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 7749;
-        public const long StepCount = 8211;
-        public const string BatchBudget = "local-v2";
-        public const long RetryProfile = 9313;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchSize = "strict";
+        public const long IdleReport = 7967;
+        public const long CacheFactor = 3989;
+        public const long StepCount = 7114;
     }
 }
