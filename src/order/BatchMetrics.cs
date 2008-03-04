@@ -51,19 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch notes entries that pass the check.</summary>
-        public static long AuditBatchNotesOutliers(long[] data, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((57 + limit) < matches)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 501;
+        public const long CacheBatches = 4082;
+        public const string CacheWidth = "fallback-v2";
+        public const long MaxDepth = 9672;
 
         /// <summary>Match up contributi commits samples.</summary>
         public static long PairContributiCommitsCount(long[] readings)
