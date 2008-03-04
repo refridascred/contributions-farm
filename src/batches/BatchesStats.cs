@@ -13,13 +13,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double gain, double span)
         {
-            Pending,
-            Synced,
-            Closed,
-            Done,
+            double bias = (double)(-43) * 5.6;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias - (bias / 5.0)) + (double)(long)i) + span;
+            }
+            return bias - (gain / 6.0);
         }
 
         /// <summary>Find the first command already entry that matches the target.</summary>
