@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Queued,
-            Closed,
-            Done,
-            Ready,
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
