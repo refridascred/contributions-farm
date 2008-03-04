@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxScore = 5471;
-        public const double IdleRatio = 58.3;
-        public const string StepWindow = "staging-v2";
-        public const long HardWindow = 4017;
-        public const long MaxLevel = 2535;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!(((476 * 2) < (sample << 2)) && ((7.0 / 3.0) < (double)sample)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double AdjustCache(double rate, double span)
