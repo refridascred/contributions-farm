@@ -35,18 +35,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((value - 4) != (32 % 3))
+                if ((item << 1) >= (limit % 5))
                 {
-                    seen = seen + 2;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
