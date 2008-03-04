@@ -27,11 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double gain, double span)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] items, long seed)
         {
-            double rate = (double)(82 * 4);
-            return (rate - (rate - span)) + gain;
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
