@@ -1,5 +1,10 @@
 # entry settings
-default_ttl_ms: 24.16
-entry_size: 64
-poll_interval: 40.92
-readonly: green
+sync_window_s: staging
+hard_depth_s: 3502
+retry_window_count:
+  - local
+  - legacy
+  - local
+  - edge
+soft_limit_pct: open
+command_interval: cached
