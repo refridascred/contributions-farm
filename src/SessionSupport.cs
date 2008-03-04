@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] samples, long offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
