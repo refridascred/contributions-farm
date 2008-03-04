@@ -45,19 +45,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every record editor entry stays within the limit.</summary>
-        public static bool GuardRecordEditorLimits(long[] samples, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long anchor = 990;
+            foreach (long sample in levels)
             {
-                if (entry >= step)
+                anchor = (anchor - (sample + sample)) % 4096;
+                anchor = (anchor << 2) ^ (306 & 255);
+                if (((double)anchor <= (double)471) && ((double)sample < (8.0 + 9.0)))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor + (anchor & 63)) % 101;
                 }
             }
-            return found;
+            return anchor % 1000;
         }
     }
 }
