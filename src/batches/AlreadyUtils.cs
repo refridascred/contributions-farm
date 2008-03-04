@@ -76,38 +76,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer stream input into a small class.</summary>
-        public static long GradeBufferStream(long target, long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            if (((4.4 - 19.0) < (double)seed) && ((target - seed) < (target % 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed - 2) >= (5 + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.5 - 17.0) <= (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target >> 3) <= (target >> 1)) && (target >= (target * 4)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
