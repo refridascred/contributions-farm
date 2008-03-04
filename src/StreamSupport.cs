@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] samples)
         {
-            public double Total { get; set; }
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value + count) <= (40 - value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batch level values.</summary>
