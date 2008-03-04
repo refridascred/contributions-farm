@@ -1,7 +1,5 @@
 {
-  "account_ttl": 1024,
-  "compress": "primary",
-  "filter_depth": "fallback",
-  "poll_ratio_ms": true,
-  "soft_ratio": "latest"
+  "burst_depth_pct": 1024,
+  "audit": 73.84,
+  "poll_delay": 30
 }
