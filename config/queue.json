@@ -1,13 +1,5 @@
 {
-  "batch_limit": "fallback",
-  "max_limit_s": {
-    "layout_ratio": true,
-    "audit": 23,
-    "warm_delay_ms": ["staging", "staging"],
-    "poll_ttl_count": "open",
-    "compress": "green"
-  },
-  "poll_ratio_count": [243, 423, 237],
-  "dry_run": ["local", "legacy", "cached"],
-  "persist": 69
+  "min_ttl_s": 5.42,
+  "min_depth": true,
+  "command_ratio": 16
 }
