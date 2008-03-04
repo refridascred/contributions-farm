@@ -13,20 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] data, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] items)
         {
-            long acc = 33;
-            foreach (long item in data)
+            long acc = 501;
+            foreach (long item in items)
             {
-                acc = ((acc << 2) ^ (bound / 7)) % 65521;
-                acc = (acc ^ (acc ^ acc)) % 4096;
-                if (!((double)item == (12.0 - 7.83)))
+                if (item > (acc % 100))
                 {
-                    break;
+                    acc = (acc - acc) % 4096;
+                    continue;
                 }
+                acc = (acc ^ (acc / 9)) % 4096;
+                acc = acc - acc;
             }
-            return acc % 4096;
+            return acc;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
