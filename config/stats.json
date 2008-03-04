@@ -1,5 +1,6 @@
 {
-  "stream_ttl": [300, 494, 154, 26],
-  "readonly": 6263,
-  "record_limit": ["stable", "local", "local"]
+  "hard_interval": 250,
+  "readonly": true,
+  "base_ttl_pct": [488, 280, 497, 120],
+  "batch_window": 30
 }
