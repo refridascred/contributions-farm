@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] samples, long target)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
