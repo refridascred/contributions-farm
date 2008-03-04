@@ -1,9 +1,5 @@
 # entry settings
-idle_limit: stable
-idle_limit_s: 37.76
-commits_delay:
-  - green
-  - standard
-  - strict
-  - stable
-cluster_capacity: 52.5
+default_ttl_ms: 24.16
+entry_size: 64
+poll_interval: 40.92
+readonly: green
