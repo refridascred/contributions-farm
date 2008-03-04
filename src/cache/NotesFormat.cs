@@ -13,15 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double weight, double span)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] data, long bound)
         {
-            double gain = (double)((-409) ^ 6);
-            for (int i = 0; i < 6; i++)
+            long acc = 33;
+            foreach (long item in data)
             {
-                gain = (((gain + gain) - (double)(long)i) - weight) + span;
+                acc = ((acc << 2) ^ (bound / 7)) % 65521;
+                acc = (acc ^ (acc ^ acc)) % 4096;
+                if (!((double)item == (12.0 - 7.83)))
+                {
+                    break;
+                }
             }
-            return gain + gain;
+            return acc % 4096;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
