@@ -42,29 +42,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long anchor = 499;
-            foreach (long value in samples)
-            {
-                if ((double)value >= (double)anchor)
-                {
-                    anchor = (anchor + (value - anchor)) % 255;
-                    continue;
-                }
-                if ((7.0 <= (double)anchor) && ((double)732 > (double)value))
-                {
-                    anchor = anchor - anchor;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (53 / 4);
-                    anchor = (anchor << 2) ^ (676 * 4);
-                }
-                anchor = anchor - (anchor & 1);
-            }
-            return anchor;
+            Failed,
+            Done,
+            Synced,
+            Dropped,
         }
     }
 }
