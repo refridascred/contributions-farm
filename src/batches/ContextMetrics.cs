@@ -20,22 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the account window entries that pass the check.</summary>
-        public static long AuditAccountWindowOutliers(long[] readings)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double bias, double span)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double weight = 2.0 / 3.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((reading + 0) < (reading + tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = ((weight + (weight * 6.7)) - (double)(long)i) - bias;
             }
-            return tally;
+            return weight - (13.0 - span);
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
