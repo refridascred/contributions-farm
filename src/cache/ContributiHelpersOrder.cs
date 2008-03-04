@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFilter = "legacy-v2";
-        public const long WindowRatio = 2467;
-        public const long CacheTimeout = 9475;
-        public const string LimitFilter = "primary";
+        /// <summary>Grade a metric commits value against two limits.</summary>
+        public static long GradeMetricCommits(long origin, long step)
+        {
+            if ((origin / 3) <= (step & 63))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin - step) == (origin & 255)) || ((double)step == (12.0 - 3.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step + (-828)) <= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((68 - 78) < step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] levels, long limit)
