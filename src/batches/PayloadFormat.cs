@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double ratio, double floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double scale = (double)31 / 6.0;
-            if (scale > 8.0)
-            {
-                scale = scale - ratio;
-            }
-            return scale + (floor - 9.0);
+            Draft,
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Combine account notes values into a single score.</summary>
