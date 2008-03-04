@@ -12,11 +12,25 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchSpan = 2.81;
-        public const string BurstDepth = "stable";
-        public const long IdleRoute = 5424;
-        public const double CacheSpan = 96.24;
+        /// <summary>Rank payload editor input into a small class.</summary>
+        public static long SortPayloadEditor(long floor, long step)
+        {
+            if (floor >= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((889 << 3) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long ClassifyOrder(long target, long limit)
