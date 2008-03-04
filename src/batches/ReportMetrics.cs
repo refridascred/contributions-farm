@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] values, long floor)
+        /// <summary>Fold a list of batch commits readings.</summary>
+        public static long TallyBatchCommits(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long score = 81;
+            foreach (long datum in readings)
             {
-                if ((double)hits > (19.0 * 5.0))
+                score = (score * 5) + score;
+                score = ((score << 3) ^ (datum ^ 26)) % 65521;
+                if ((score % 12) < (score - (long)readings.Length))
                 {
-                    hits = ((hits + 1) + reading) - floor;
+                    break;
                 }
             }
-            return hits;
+            if (score < 15)
+            {
+                score = (score ^ score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
