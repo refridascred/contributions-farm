@@ -31,18 +31,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] data, long floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)floor != (16.0 - 7.0))
-                {
-                    seen = (seen + 3) - entry;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of graph record readings.</summary>
