@@ -50,21 +50,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 667;
+        public const long WindowDepth = 5183;
+        public const string BurstInterval = "fallback";
+        public const string DefaultCount = "open";
+        public const long MaxFormat = 2890;
     }
 }
