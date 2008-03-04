@@ -13,12 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Pending,
-            Closed,
-            Queued,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the filter level values.</summary>
