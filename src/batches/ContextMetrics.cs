@@ -35,24 +35,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next profile metric value from a seed.</summary>
-        public static long StepProfileMetric(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if (anchor <= (step - step))
-                {
-                    anchor = anchor + (long)i;
-                }
-                if ((double)(long)i < (double)6)
-                {
-                    anchor = (anchor + anchor) % 255;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinInterval = 9534;
+        public const long IdleWidth = 3319;
+        public const double StepDepth = 14.04;
+        public const long BaseFactor = 8753;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmBounds(long[] items, long floor)
