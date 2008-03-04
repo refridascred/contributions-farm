@@ -14,10 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 5890;
-        public const double IdleTimeout = 93.33;
-        public const long BurstSize = 7582;
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesMatches(long[] levels)
