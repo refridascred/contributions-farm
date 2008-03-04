@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const long BaseEditor = 1895;
         public const long StepEditor = 7585;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] levels, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - sample) >= (tally * 5))
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 8165;
+        public const long MinFarm = 4578;
+        public const long StepFarm = 8184;
+        public const long MaxFarm = 3424;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
