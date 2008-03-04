@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-Run the channel check before changing any buffer limits.
-
-The editor module keeps cache values in sync with the queue cache.
-Each cluster is validated before it reaches the graph queue.
+When a commits fails, the layout handler retries a few times before giving up.
+Use account settings to tune how often channel data is refreshed.
+When a batch fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep tools values small
-- Review layout limits each release
-- Log every filter change
-- Prefer format defaults
+- Log every report change
+- Keep command values small
+- Validate queue input early
