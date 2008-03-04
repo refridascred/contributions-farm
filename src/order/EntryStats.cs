@@ -33,18 +33,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout support readings against a rule.</summary>
-        public static long TallyLayoutSupportGaps(long[] values)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long step, long step2)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long span = step ^ step2;
+            if (span < (511 & 31))
             {
-                if ((double)sample > (17.0 / 5.0))
+                return 8;
+            }
+            else
+            {
+                if (((double)span > (5.0 - 18.0)) || ((span / 9) < span))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of already entries.</summary>
