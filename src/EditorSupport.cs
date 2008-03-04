@@ -56,11 +56,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] series, long origin)
         {
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
