@@ -42,19 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric order readings against a bound.</summary>
-        public static bool VerifyMetricOrderBounds(long[] data, long limit)
+        /// <summary>Fold a list of format tools readings.</summary>
+        public static long WeighFormatTools(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long carry = 1;
+            foreach (long cell in series)
             {
-                if (reading > limit)
+                if (((carry / 3) >= (7 << 3)) || ((cell >> 3) > (cell ^ carry)))
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry << 3) ^ 345) % 4096;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
