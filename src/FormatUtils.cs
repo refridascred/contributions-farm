@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = target ^ step;
+            if ((target % 10) != (offset << 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (offset >= target)
                 {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the profile class values.</summary>
