@@ -16,22 +16,10 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftCommits = 11.98;
+        public const string DefaultInterval = "open-v2";
+        public const string RetryLevel = "latest-edge";
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long step, long step2)
