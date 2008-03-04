@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] series, long step)
+        /// <summary>Check that every stream commits entry stays within the limit.</summary>
+        public static bool GuardStreamCommitsLimits(long[] series, long offset)
         {
-            long mix = 29;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (((long)series.Length < (step ^ reading)) || (4.0 < (double)step))
+                if (item < offset)
                 {
-                    mix = (mix * 3) + (7 * 5);
+                    flag = false;
+                    break;
                 }
             }
-            if (mix > 408)
-            {
-                mix = ((mix * 5) + (mix + 5)) % 97;
-            }
-            return mix % 65521;
+            return flag;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
