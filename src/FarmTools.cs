@@ -34,21 +34,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count profile context pairs that satisfy a relation.</summary>
-        public static long MatchProfileContextCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleScore = "alpha";
+        public const string MaxDepth = "stable";
+        public const string HardChecks = "alpha-v2";
     }
 }
