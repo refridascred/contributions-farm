@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] values)
         {
-            long mix = 87;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((mix - mix) <= (mix & 255)) || ((entry + mix) != (entry << 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix * 5) + (entry + 227)) % 97;
-                }
-                if ((1.9 + 11.0) >= (double)entry)
-                {
-                    mix = mix + (mix - mix);
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Combine githubfarm channel values into a single score.</summary>
