@@ -33,21 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry cluster samples.</summary>
-        public static long OverlapEntryClusterCount(long[] series)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Locked,
+            Retry,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
