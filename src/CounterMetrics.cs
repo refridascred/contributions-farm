@@ -14,21 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Accumulate order layout samples.</summary>
+        public static long DigestOrderLayout(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -3;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum > acc)
                 {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 2) ^ (datum % 10)) - origin;
+                }
+                else
+                {
+                    acc = acc ^ (26 / 2);
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
