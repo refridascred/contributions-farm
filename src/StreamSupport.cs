@@ -27,14 +27,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Pending,
-            Locked,
-            Retry,
             Closed,
-            Done,
+            Stale,
+            Dropped,
         }
     }
 }
