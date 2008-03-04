@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
