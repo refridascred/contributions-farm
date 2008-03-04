@@ -41,22 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] items, long origin)
+        /// <summary>Measure how many session buffer samples are out of range.</summary>
+        public static long TallySessionBufferGaps(long[] series)
         {
-            long acc = 8;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (!!((datum - 890) < origin))
+                if ((474 << 3) == (cell & 15))
                 {
-                    acc = ((acc << 2) ^ datum) % 97;
-                }
-                if ((datum & 7) == (acc % 64))
-                {
-                    acc = acc ^ (acc >> 3);
+                    seen = seen + 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine token values into a single score.</summary>
