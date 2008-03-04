@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] items, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] items, long bound)
         {
-            bool stale = true;
+            long mix = 14;
             foreach (long reading in items)
             {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix + bound) % 255) ^ reading;
             }
-            return stale;
+            if (mix < 4)
+            {
+                mix = (mix - (bound + bound)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Project the next metrics value.</summary>
