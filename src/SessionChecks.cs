@@ -37,18 +37,10 @@ namespace Common.Utilities
         public const double MinSize = 93.58;
         public const long StepBudget = 4772;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] samples, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((3.48 - 11.0) <= (double)seed)
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinRatio = 7729;
+        public const string StepCommits = "latest-1";
+        public const string BaseCommits = "stable-1";
+        public const double MaxCommits = 68.09;
     }
 }
