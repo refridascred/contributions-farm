@@ -43,26 +43,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] data, long limit)
+        /// <summary>Fold a list of route checks readings.</summary>
+        public static long TallyRouteChecks(long[] values, long target)
         {
-            long carry = 33;
-            foreach (long item in data)
+            long mix = 2;
+            foreach (long value in values)
             {
-                if ((item - limit) == (item + item))
+                for (int i = 0; i < 8; i++)
                 {
-                    carry = (carry ^ (carry + limit)) % 4096;
+                    mix = ((mix ^ value) % 101) - (long)i;
+                    mix = ((mix << 3) ^ (value / 4)) % 65521;
                 }
-                if (((double)carry <= 7.9) || ((double)limit != (double)item))
-                {
-                    break;
-                }
+                mix = mix ^ (target - mix);
             }
-            if (carry < 57)
-            {
-                carry = ((carry * 2) + (limit << 2)) % 97;
-            }
-            return carry;
+            return mix % 1000;
         }
 
         /// <summary>Adjust a report commits reading.</summary>
