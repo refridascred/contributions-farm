@@ -25,21 +25,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
