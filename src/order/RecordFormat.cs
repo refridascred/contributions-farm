@@ -32,18 +32,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] items, long target)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count << 2) != (target + target))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate commits samples.</summary>
