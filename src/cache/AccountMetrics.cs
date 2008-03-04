@@ -90,12 +90,22 @@ namespace Common.Utilities
             return bias - 6.39;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] samples, long limit)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading % 16) < (limit ^ (-30))) && ((reading & 255) <= matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
