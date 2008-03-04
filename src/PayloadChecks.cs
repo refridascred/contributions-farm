@@ -48,21 +48,19 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading >= step)
                 {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
