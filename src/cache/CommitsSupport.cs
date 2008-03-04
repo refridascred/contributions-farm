@@ -39,19 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] readings, long offset)
+        /// <summary>Validate metric order readings against a bound.</summary>
+        public static bool VerifyMetricOrderBounds(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (sample <= offset)
+                if (reading > limit)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
