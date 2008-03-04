@@ -43,22 +43,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] data, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] values, long origin)
         {
-            long mix = 2;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix >= (origin + reading)) || ((double)origin < 7.7))
+                if ((values[i] < origin) && ((values[i] % 2) == 0))
                 {
-                    mix = mix + (reading ^ reading);
+                    return (long)i;
                 }
             }
-            if (mix < 896)
-            {
-                mix = mix + (origin + mix);
-            }
-            return mix;
+            return -1;
         }
     }
 }
