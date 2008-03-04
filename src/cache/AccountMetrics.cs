@@ -65,21 +65,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 5;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (((sum - 8) % 65521) + cell) - floor;
             }
-            return hits;
+            return sum;
         }
     }
 }
