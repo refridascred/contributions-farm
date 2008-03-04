@@ -52,19 +52,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate filter account readings against a bound.</summary>
-        public static bool VerifyFilterAccountLimits(long[] data, long target)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
