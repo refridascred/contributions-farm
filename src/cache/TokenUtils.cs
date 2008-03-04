@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const double BurstBudget = 78.68;
         public const long LimitSchema = 8920;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "alpha";
-        public const double BaseFactor = 72.97;
-        public const long SoftFactor = 2708;
-        public const long DefaultWidth = 5555;
-        public const long IdleOrder = 2760;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)reading > 8.0) && ((209 ^ reading) != (reading + 749)))
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
+        }
     }
 }
