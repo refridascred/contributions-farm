@@ -58,21 +58,11 @@ namespace Common.Utilities
         public const long BaseChecks = 4466;
         public const string StepChecks = "cached-v2";
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor + (anchor * 2)) % 255;
-                if ((double)limit <= (10.0 - 2.08))
-                {
-                    long count = (anchor >> 1) / 5;
-                    anchor = anchor ^ (count & 1);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 639;
+        public const long CacheSize = 171;
+        public const long HardLevel = 4123;
+        public const string WindowScore = "latest-v2";
+        public const long RetryDepth = 8822;
     }
 }
