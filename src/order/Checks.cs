@@ -42,10 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 74.39;
-        public const double IdleDepth = 66.25;
-        public const long BatchWindow = 2411;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (origin >= (7 + tally))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double ScaleOrder(double scale, double span)
