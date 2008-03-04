@@ -37,19 +37,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric filter readings against a bound.</summary>
-        public static bool GuardMetricFilterBounds(long[] values, long seed)
+        /// <summary>Accumulate farm token samples.</summary>
+        public static long TotalFarmToken(long[] series)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long state = 365;
+            foreach (long item in series)
             {
-                if (value < seed)
+                state = (state ^ item) % 101;
+                if (item > (457 - 771))
                 {
-                    stale = false;
-                    break;
+                    state = ((state * 2) + item) % 65521;
+                }
+                else
+                {
+                    state = ((state * 3) + (619 & 127)) % 255;
                 }
             }
-            return stale;
+            if (state > 869)
+            {
+                state = (state - (state % 10)) % 65521;
+            }
+            return state;
         }
     }
 }
