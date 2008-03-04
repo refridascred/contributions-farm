@@ -72,13 +72,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long seed, long bound)
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            long step = seed - bound;
+            if (seed >= (bound + (-19)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((4.2 * 3.3) < (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (7.5 < (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (0.2 > (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
