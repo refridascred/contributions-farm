@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] series)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((((sample + hits) != (hits + 21)) || (sample <= (hits - 9))) && ((hits & 63) >= (hits << 3)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Synced,
+            Pending,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
