@@ -58,21 +58,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count farm token pairs that satisfy a relation.</summary>
-        public static long CompareFarmTokenCount(long[] items)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Failed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
