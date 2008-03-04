@@ -22,14 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] series, long offset)
         {
-            Ready,
-            Dropped,
-            Stale,
-            Queued,
-            Retry,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
