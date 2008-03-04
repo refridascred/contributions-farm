@@ -18,20 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile commits samples.</summary>
-        public static long ScoreProfileCommits(long[] levels)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] values)
         {
-            long total = 763;
-            foreach (long sample in levels)
+            long anchor = 296;
+            foreach (long entry in values)
             {
-                total = (total << 3) ^ (59 / 6);
-                if ((sample + sample) <= sample)
+                if (679 <= (anchor & 127))
                 {
-                    total = (total ^ ((-50) % 60)) % 101;
+                    anchor = ((anchor << 3) ^ (entry >> 1)) % 65521;
                 }
-                total = (total + (sample % 100)) % 97;
+                if ((double)entry < (double)anchor)
+                {
+                    break;
+                }
             }
-            return total;
+            if (anchor < 936)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
