@@ -23,12 +23,11 @@ namespace Common.Utilities
         public const long BatchBudget = 5631;
         public const double HardContributi = 51.04;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
