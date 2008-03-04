@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next payload notes value from a seed.</summary>
-        public static long IteratePayloadNotes(long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] items, long target)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Hold a token options.</summary>
