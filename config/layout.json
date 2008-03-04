@@ -1,13 +1,8 @@
 {
-  "account_interval": {
-    "cache_delay": "stable",
-    "cache_capacity_s": 75.96,
-    "payload_depth": true,
-    "poll_ttl": 1024
-  },
-  "strict": [92, 218, 293, 337],
-  "flush_threshold_pct": "latest",
-  "readonly": "standard",
-  "compress": ["edge", "open", "cached", "eu-west"],
-  "retry_threshold_count": "staging"
+  "enabled": 49,
+  "flush_ttl_ms": "cached",
+  "cache_delay": 60,
+  "strict": "fallback",
+  "burst_size": "stable",
+  "retry_retries_count": "standard"
 }
