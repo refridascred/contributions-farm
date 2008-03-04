@@ -36,12 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Failed,
+            Active,
+            Dropped,
             Idle,
-            Closed,
         }
     }
 }
