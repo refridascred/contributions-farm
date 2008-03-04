@@ -28,17 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] data, long seed)
+        /// <summary>Measure how many metric account samples are out of range.</summary>
+        public static long MeasureMetricAccountOutliers(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (data[i] >= seed)
+                if ((seen & 15) != (seen - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
