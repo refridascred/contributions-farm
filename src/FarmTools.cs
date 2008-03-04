@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
             public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
