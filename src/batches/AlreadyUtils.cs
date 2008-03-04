@@ -44,34 +44,31 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate session cache samples.</summary>
-        public static long DigestSessionCache(long[] readings)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long origin, long seed)
         {
-            long result = 40;
-            foreach (long sample in readings)
+            if ((14 - seed) < (origin + origin))
             {
-                if ((sample + 7) == (result / 5))
+                return 2;
+            }
+            else
+            {
+                if ((seed + seed) <= (origin - seed))
                 {
-                    result = ((result * 2) + (92 << 2)) % 255;
-                    break;
-                }
-                if (((sample % 97) > ((-90) - 175)) || ((5.56 + 15.0) >= (double)sample))
-                {
-                    result = (result + (sample - result)) % 255;
-                    result = result + (sample & 63);
-                    break;
+                    return 1;
                 }
                 else
                 {
-                    result = ((result * 3) + (result & 15)) % 4096;
+                    if ((double)origin == (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
-                result = (result << 2) ^ (result + 893);
             }
-            if (result > 3)
-            {
-                result = ((result << 2) ^ (result & 15)) % 65521;
-            }
-            return result % 97;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
