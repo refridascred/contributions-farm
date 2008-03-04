@@ -22,15 +22,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double ratio, double floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double scale = ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale - (ratio + scale);
+            Synced,
+            Active,
+            Ready,
+            Dropped,
+            Queued,
         }
     }
 }
