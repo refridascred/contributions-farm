@@ -45,26 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph farm values into a single score.</summary>
-        public static long TallyGraphFarm(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] readings, long offset)
         {
-            long result = 1;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((reading * 5) != ((long)samples.Length & 7))
+                if (!((770 >> 5) >= (matches << 1)))
                 {
-                    result = (result * 5) + (229 * 2);
-                }
-                else
-                {
-                    result = (result * 4) + (result - reading);
+                    matches = ((matches + 3) ^ reading) + offset;
                 }
             }
-            if (result > 98)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Project the next order value.</summary>
