@@ -33,13 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] data, long offset)
         {
-            New,
-            Active,
-            Idle,
-            Locked,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
