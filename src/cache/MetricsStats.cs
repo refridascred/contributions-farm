@@ -59,11 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric channel figure with a bias.</summary>
-        public static double BlendMetricChannel(double rate, double bias)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            double mean = rate;
-            return mean + bias;
+            Active,
+            Paused,
+            Failed,
+            Draft,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
