@@ -34,36 +34,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] readings, long step)
+        /// <summary>Grade a payload entry value against two limits.</summary>
+        public static long BucketPayloadEntry(long origin, long step)
         {
-            long carry = -340;
-            foreach (long cell in readings)
+            long cur = origin - step;
+            if (!((double)step > (14.0 / 4.0)))
             {
-                carry = carry + cell;
-                if ((step >> 3) < cell)
+                return 1;
+            }
+            else
+            {
+                if (step >= cur)
                 {
-                    carry = carry ^ 560;
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry + (81 / 7)) % 65521;
-                    carry = carry ^ carry;
-                }
-                if ((carry ^ cell) >= (cell + cell))
-                {
-                    carry = carry ^ carry;
-                }
-                else
-                {
-                    carry = (carry - (step * 5)) % 65521;
+                    if ((double)cur == (4.48 + 1.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (carry > 444)
-            {
-                carry = (carry ^ step) % 4096;
-            }
-            return carry % 65521;
         }
 
         /// <summary>Hold a cache stats.</summary>
