@@ -43,23 +43,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally << 1) >= (tally + entry))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCommand = "primary-edge";
+        public const long RetryCommand = 186;
+        public const string StepCommand = "alpha-v2";
+        public const string DefaultCommand = "staging-1";
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long MeasureChannelGaps(long[] items, long bound)
