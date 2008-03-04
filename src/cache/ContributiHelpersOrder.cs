@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] levels)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum < 18)
+                if (((0 + bound) < (long)i) || (((long)i >> 1) < (7 >> 3)))
                 {
-                    count = count + 1;
+                    sum = (sum << 2) ^ (59 - (long)i);
                 }
+                long tally = (bound * 5) << 2;
+                if (sum <= (tally / 3))
+                {
+                    sum = ((sum << 2) ^ ((long)i + (long)i)) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Match up channel samples.</summary>
