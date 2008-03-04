@@ -28,19 +28,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double ratio, double floor)
+        /// <summary>Count the layout format entries that pass the check.</summary>
+        public static long MeasureLayoutFormatMatches(long[] data)
         {
-            double mean = ratio;
-            if (mean < mean)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                mean = (mean + (double)6) - floor;
+                if ((cell >> 4) >= (81 >> 1))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (double)3;
+            return tally;
         }
     }
 }
