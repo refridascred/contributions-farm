@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] readings)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (((-676) / 9) >= entry)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Digest a series of token entries.</summary>
