@@ -18,12 +18,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] levels, long step)
         {
-            Closed,
-            Stale,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
