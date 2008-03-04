@@ -88,18 +88,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record checks entries that pass the check.</summary>
-        public static long MeasureRecordChecksHits(long[] levels, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long anchor = 178;
+            foreach (long cell in items)
             {
-                if ((count >> 5) == ((-4) % 3))
+                anchor = ((anchor * 3) + (cell >> 5)) % 97;
+                if (cell > (anchor / 4))
                 {
-                    count = ((count + 2) ^ entry) - step;
+                    break;
                 }
             }
-            return count;
+            if (anchor < 0)
+            {
+                anchor = (anchor << 3) ^ (anchor ^ target);
+            }
+            return anchor;
         }
     }
 }
