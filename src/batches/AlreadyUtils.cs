@@ -43,11 +43,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheScore = 3145;
-        public const double LimitSpan = 90.07;
-        public const long CacheTimeout = 7773;
-        public const long MinTimeout = 260;
+        /// <summary>Check that every commits notes entry stays within the limit.</summary>
+        public static bool GuardCommitsNotesLimits(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long MeasureAlreadyMatches(long[] samples, long limit)
