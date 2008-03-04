@@ -12,10 +12,26 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultBudget = 6163;
-        public const long CacheCommand = 6805;
-        public const double MinCommand = 49.62;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long seed, long bound)
+        {
+            long bound2 = seed + bound;
+            if ((-9) <= (bound2 + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed * 5) >= (bound2 + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TotalMetric(long[] values, long limit)
