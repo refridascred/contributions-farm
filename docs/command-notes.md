@@ -1,11 +1,10 @@
 # Command notes
 
-Run the record check before changing any cluster limits.
-The githubfarm report groups every already by route.
+Each report is validated before it reaches the queue queue.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every commits change
-- Review tools limits each release
-- Document new payload fields
-- Prefer format defaults
+- Document new format fields
+- Log every metrics change
+- Validate format input early
