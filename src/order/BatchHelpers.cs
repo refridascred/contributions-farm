@@ -33,10 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitDepth = 94.5;
-        public const long StepGithubfarm = 2033;
-        public const double BurstGithubfarm = 27.19;
-        public const long SoftGithubfarm = 9296;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((double)count <= 7.62)
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
+        }
     }
 }
