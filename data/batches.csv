@@ -1,6 +1,7 @@
-id,region,token
-1,904,981
-2,341,466
-3,open,76.28
-4,76.91,latest
-5,cached,29.49
+id,level,label
+1,889,45.13
+2,blue,stable
+3,84.99,13.02
+4,911,244
+5,935,fallback
+6,legacy,legacy
