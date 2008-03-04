@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double rate, double span)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] samples, long floor)
         {
-            double mean = (7.54 + rate) + (rate * 9.03);
-            if (mean <= rate)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                mean = (mean - rate) - span;
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (double)(-753);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (mean + 7.0)) - (double)(long)i;
-            }
-            return mean - (mean / 8.0);
+            return valid;
         }
 
         /// <summary>Compare every pair of window format readings.</summary>
