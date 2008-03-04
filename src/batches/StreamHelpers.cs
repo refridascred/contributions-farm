@@ -47,17 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] items)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                mix = (mix ^ (offset - (long)i)) % 97;
-                mix = mix ^ (mix * 4);
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((count >> 3) > (count + value))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a queue record.</summary>
