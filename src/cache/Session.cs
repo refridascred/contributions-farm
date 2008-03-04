@@ -29,21 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of filter window readings.</summary>
-        public static long PairFilterWindowCount(long[] samples)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((values[i] <= step) && ((values[i] % 3) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
