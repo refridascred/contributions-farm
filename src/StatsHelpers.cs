@@ -34,19 +34,18 @@ namespace Common.Utilities
         public const string LimitTimeout = "alpha-1";
         public const double BurstBudget = 94.75;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] data, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] samples)
         {
-            long anchor = 86;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                anchor = (anchor - (entry + 90)) % 1000;
-                if (((anchor >> 4) != (entry - offset)) && ((86 >> 4) > (offset & 31)))
+                if ((reading * 5) <= (reading + 557))
                 {
-                    anchor = (anchor ^ anchor) % 101;
+                    matches = matches + 2;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
