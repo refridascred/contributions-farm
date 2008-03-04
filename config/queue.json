@@ -1,5 +1,7 @@
 {
-  "default_size": 30,
-  "hard_size_s": 30,
-  "stats_threshold": [395, 290, 267]
+  "base_interval_count": [394, 88],
+  "poll_retries": 41.68,
+  "dry_run": true,
+  "warm_capacity_pct": 4692,
+  "queue_capacity": true
 }
