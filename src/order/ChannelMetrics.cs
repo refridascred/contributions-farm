@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] samples, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] samples, long origin)
         {
-            long acc = 124;
-            foreach (long datum in samples)
+            long anchor = 427;
+            foreach (long value in samples)
             {
-                acc = ((acc + acc) + datum) + origin;
+                if ((value / 2) >= (value + value))
+                {
+                    anchor = anchor + (origin - 895);
+                }
             }
-            return acc;
+            if (anchor < (-171))
+            {
+                anchor = ((anchor << 2) ^ (anchor / 8)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a report window sample.</summary>
