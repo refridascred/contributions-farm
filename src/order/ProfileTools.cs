@@ -43,11 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] series, long floor)
         {
-            public double Level { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count farm token pairs that satisfy a relation.</summary>
