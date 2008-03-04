@@ -31,11 +31,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "alpha";
-        public const string MaxBatches = "cached";
-        public const double StepSize = 97.75;
-        public const string BurstFactor = "open";
-        public const long StepBatches = 3543;
+        public const long DefaultWidth = 6491;
+        public const string SoftBatches = "strict-edge";
+        public const long WindowBatches = 5057;
+        public const long LimitBudget = 6422;
+        public const long WindowFactor = 6023;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long PairCounterCount(long[] values)
