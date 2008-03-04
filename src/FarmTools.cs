@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
-            {
-                long matches = (long)i;
-                if (!!((matches & 3) >= (acc / 8)))
-                {
-                    matches = ((matches << 3) ^ (long)i) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Rank format input into a small class.</summary>
