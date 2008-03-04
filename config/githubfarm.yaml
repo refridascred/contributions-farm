@@ -1,11 +1,10 @@
 # githubfarm settings
-checks_threshold: 54
-min_delay: true
-payload_interval: 11
-dry_run: 357
-min_timeout_ms:
-  - latest
-  - stable
-  - legacy
-  - staging
-window_window: 250
+sync_ratio_ms: local
+readonly: true
+max_retries: 63.7
+strict: 30
+retry_depth_s:
+  - 417
+  - 45
+  - 186
+poll_timeout: 912
