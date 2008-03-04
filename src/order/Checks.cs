@@ -57,18 +57,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] items)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9.65 * 9.2) <= (double)datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
