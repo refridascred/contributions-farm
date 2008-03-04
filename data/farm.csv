@@ -1,11 +1,6 @@
-id,count,state,score
-1,latest,open,96.49
-2,71.48,887,47.25
-3,12.74,eu-west,444
-4,standard,171,23
-5,eu-west,staging,eu-west
-6,133,64.98,72.68
-7,11.76,standard,strict
-8,open,118,legacy
-9,749,72.57,43.54
-10,880,986,60.97
+id,token,rank
+1,primary,blue
+2,913,144
+3,18.2,986
+4,44.46,120
+5,944,standard
