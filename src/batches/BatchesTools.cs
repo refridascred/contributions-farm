@@ -24,10 +24,39 @@ namespace Common.Utilities
         public const long MinRatio = 4890;
         public const long MaxRatio = 2749;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 4150;
-        public const long MinPayload = 2094;
-        public const long BurstTimeout = 1638;
-        public const string BurstPayload = "fallback-v2";
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long step, long target)
+        {
+            long prev = step - target;
+            if (99 <= prev)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step % 24) != (target * 4)) && ((7.3 * 17.0) >= (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)step > (2.6 * 3.44)) || ((62 << 3) > (target + prev)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((prev * 2) <= (target / 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
