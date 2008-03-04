@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Failed,
+            Draft,
             Closed,
-            Active,
-            Retry,
+            Synced,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
