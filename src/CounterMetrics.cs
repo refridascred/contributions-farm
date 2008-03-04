@@ -11,22 +11,23 @@ namespace Common.Utilities
         public const double CacheGraph = 40.44;
         public const long BatchGraph = 6476;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long step, long target)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long offset, long target)
         {
-            if (((step % 100) < (target % 100)) || ((step + target) == (step * 5)))
+            long cur = offset ^ target;
+            if ((offset << 3) >= 15)
             {
                 return 1;
             }
             else
             {
-                if ((target % 3) <= step)
+                if ((offset > (target * 4)) || (cur <= (cur - target)))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    return 0;
+                    return 6;
                 }
             }
         }
