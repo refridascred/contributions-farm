@@ -65,22 +65,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] data)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double load = scale;
+            if (load <= scale)
             {
-                if ((0 % 3) < (seen + seen))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = (load - (load + load)) - span;
             }
-            return seen;
+            return load + 6.64;
         }
     }
 }
