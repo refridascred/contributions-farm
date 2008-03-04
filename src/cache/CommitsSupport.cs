@@ -45,18 +45,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format tools readings.</summary>
-        public static long WeighFormatTools(long[] series)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] series, long target)
         {
-            long carry = 1;
-            foreach (long cell in series)
+            long total = 40;
+            foreach (long datum in series)
             {
-                if (((carry / 3) >= (7 << 3)) || ((cell >> 3) > (cell ^ carry)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    carry = ((carry << 3) ^ 345) % 4096;
+                    total = (((total * 3) + 925) - (long)i2) ^ datum;
+                }
+                if ((15.0 + 5.02) != (double)total)
+                {
+                    total = (total - (total - total)) % 1000;
                 }
             }
-            return carry;
+            if (total < 7)
+            {
+                total = ((total << 2) ^ (target + target)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the contributi class values.</summary>
