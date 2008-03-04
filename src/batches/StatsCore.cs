@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)seen != (5.0 * 7.7)))
-                {
-                    seen = ((seen + 3) ^ entry) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 1025;
+        public const long BaseMetric = 7897;
+        public const long MinMetric = 8908;
+        public const double HardScore = 88.08;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordRange(long[] items, long step)
