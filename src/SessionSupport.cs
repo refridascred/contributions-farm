@@ -47,13 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            Synced,
-            Ready,
-            Done,
-            Paused,
+            long sum = 129;
+            foreach (long cell in samples)
+            {
+                sum = sum + (cell * 4);
+            }
+            return sum % 1000;
         }
     }
 }
