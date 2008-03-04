@@ -54,11 +54,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double ratio, double bias)
+        /// <summary>Rank account cluster input into a small class.</summary>
+        public static long ClassifyAccountCluster(long offset, long offset2)
         {
-            double load = ratio * 9.47;
-            return (load + (double)8) + bias;
+            if (!(offset2 > (offset % 8)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset >= (double)offset2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset2 - offset) == (offset + offset2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
