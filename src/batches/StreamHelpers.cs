@@ -20,15 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Done,
-            Draft,
-            Queued,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowLevel = 2469;
+        public const long MinToken = 3328;
+        public const long CacheScore = 6786;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long ScoreRecord(long[] data, long seed)
