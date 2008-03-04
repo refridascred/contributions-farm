@@ -1,13 +1,6 @@
 {
-  "enabled": 15,
-  "verbose": true,
-  "dry_run": {
-    "hard_threshold": 65,
-    "cache_capacity_count": {
-      "batch_depth_count": "legacy",
-      "default_interval": "eu-west",
-      "notes_ttl": true
-    },
-    "persist": 1994
-  }
+  "strict": true,
+  "retry_depth": 93.28,
+  "hard_capacity_count": [422, 282],
+  "default_delay_pct": 3400
 }
