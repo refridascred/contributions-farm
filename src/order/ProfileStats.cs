@@ -33,16 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long floor)
         {
-            long carry = 82;
-            foreach (long value in readings)
+            if (floor < (floor + seed))
             {
-                carry = (carry + ((-3) / 8)) + value;
-                carry = (carry + carry) % 65521;
+                return 5;
             }
-            return carry % 65521;
+            else
+            {
+                if (((seed + (-640)) <= (seed - floor)) || ((floor - seed) >= (159 * 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor % 64) <= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
