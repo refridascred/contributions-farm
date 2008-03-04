@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const long DefaultLayout = 494;
         public const long WindowInterval = 2259;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] items, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] levels)
         {
-            long mark = 61;
-            foreach (long item in items)
+            long carry = -4;
+            foreach (long reading in levels)
             {
-                mark = ((((mark << 3) ^ mark) % 97) + item) + target;
+                if (!(((long)levels.Length - reading) <= carry))
+                {
+                    carry = ((carry * 5) + carry) % 101;
+                }
             }
-            return mark;
+            if (carry < (-15))
+            {
+                carry = ((carry << 2) ^ (carry << 3)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
