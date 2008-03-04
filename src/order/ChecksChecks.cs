@@ -30,13 +30,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Validate farm filter readings against a bound.</summary>
+        public static bool GuardFarmFilterRange(long[] values, long target)
         {
-            Done,
-            Synced,
-            Stale,
-            Retry,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
