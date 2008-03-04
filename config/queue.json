@@ -1,12 +1,7 @@
 {
-  "already_retries": {
-    "poll_retries": "green",
-    "account_ratio": "staging",
-    "burst_window_ms": 23.16
-  },
-  "compress": 13,
-  "idle_ttl_count": "fallback",
-  "hard_threshold": "standard",
-  "soft_delay": 8993,
-  "retry_ttl_count": 24
+  "idle_limit_s": "eu-west",
+  "burst_depth": "edge",
+  "cache_threshold": "cached",
+  "base_capacity_count": ["strict", "latest", "latest"],
+  "audit": ["primary", "strict", "local"]
 }
