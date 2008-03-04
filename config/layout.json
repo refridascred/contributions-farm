@@ -1,8 +1,7 @@
 {
-  "default_window": true,
-  "burst_ttl_pct": 2949,
-  "warm_limit_pct": 5005,
-  "hard_window": "latest",
-  "compress": true,
-  "poll_size_pct": "latest"
+  "account_window": ["green", "staging", "blue", "primary"],
+  "strict": 500,
+  "batches_retries": "eu-west",
+  "cache_delay_count": 500,
+  "flush_delay": "legacy"
 }
