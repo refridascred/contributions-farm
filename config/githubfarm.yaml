@@ -1,8 +1,4 @@
 # githubfarm settings
-burst_delay_ms: strict
-sync_window_pct:
-  - eu-west
-  - stable
-  - staging
-  - local
-burst_retries: 2.78
+idle_timeout_pct: 4446
+persist: standard
+record_ratio: latest
