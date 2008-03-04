@@ -23,17 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] samples, long step)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
