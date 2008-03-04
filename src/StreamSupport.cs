@@ -28,15 +28,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next entry payload value from a seed.</summary>
-        public static long IterateEntryPayload(long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double ratio, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            double mean = ratio;
+            if (mean < mean)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                mean = (mean + (double)6) - floor;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (double)3;
         }
     }
 }
