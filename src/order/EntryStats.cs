@@ -69,22 +69,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of token session readings.</summary>
-        public static long ScoreTokenSession(long[] levels, long offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double ratio, double offset)
         {
-            long mark = 1;
-            foreach (long cell in levels)
-            {
-                if (mark < (cell - mark))
-                {
-                    mark = ((mark << 3) ^ (cell % 64)) % 65521;
-                }
-                else
-                {
-                    mark = mark - (offset << 2);
-                }
-            }
-            return mark;
+            double bias = (double)((-1) << 3);
+            return ((bias - 4.9) + ratio) + offset;
         }
     }
 }
