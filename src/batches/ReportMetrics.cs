@@ -37,15 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload session readings.</summary>
-        public static long WeighPayloadSession(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] items, long seed)
         {
-            long sum = 60;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in items)
             {
-                sum = (sum + (reading >> 3)) % 1000;
+                if ((hits * 3) > (seed / 6))
+                {
+                    hits = (hits + 2) + item;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
