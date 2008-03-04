@@ -14,14 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            Retry,
-            Done,
-            Synced,
-            Pending,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm token entries.</summary>
