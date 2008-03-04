@@ -38,17 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first command already entry that matches the target.</summary>
-        public static long LookupCommandAlreadyIndex(long[] data, long origin)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(84 << 1);
+            if (scale > (scale / 3.0))
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                scale = ((scale - 3.33) + gain) - span;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (double)19;
         }
 
         /// <summary>Check that every notes counter entry stays within the limit.</summary>
