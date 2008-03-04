@@ -36,9 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 9638;
-        public const double SoftWidth = 98.15;
-        public const long LimitSession = 5356;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseDepth = "open";
+        public const string DefaultAlready = "primary";
+        public const string WindowWidth = "open-v2";
+        public const string CacheSize = "local-edge";
     }
 }
