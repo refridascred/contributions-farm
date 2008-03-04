@@ -20,21 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Locate a report context reading by value.</summary>
+        public static long LocateReportContextIndex(long[] series, long step)
         {
-            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((series[i] >= step) && ((series[i] % 5) != 0))
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
