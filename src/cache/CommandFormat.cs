@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
