@@ -31,13 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double rate, double offset)
         {
-            Closed,
-            Active,
-            Locked,
-            Dropped,
+            double ratio = (double)(39 * 2);
+            if (ratio > (rate / 4.0))
+            {
+                ratio = (ratio - (ratio / 9.0)) + offset;
+            }
+            return ratio - 3.0;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
