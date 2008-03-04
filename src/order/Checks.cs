@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (!(((entry + entry) != (long)data.Length) || ((676 ^ tally) <= (157 + (-6)))))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
