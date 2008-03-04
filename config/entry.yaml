@@ -1,19 +1,7 @@
 # entry settings
-dry_run: eu-west
-burst_depth: green
-soft_retries_s: false
-retry_limit_count: 81
-commits_interval:
-  filter_threshold: 63.17
-  notes_limit:
-    - 179
-    - 28
-  burst_delay_ms:
-    batches_ratio: strict
-    audit: primary
-    strict: 8568
-    tools_window: 1546
-    stream_capacity: 60
-  stats_threshold: true
-  idle_ratio_s: 9823
-  verbose: 53.0
+idle_delay_count: latest
+buffer_threshold: 8730
+retry_depth_s:
+  - blue
+  - strict
+  - edge
