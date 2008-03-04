@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] items)
+        /// <summary>Iterate the queue githubfarm series from a seed.</summary>
+        public static long StepQueueGithubfarm(long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (3.47 <= (double)seen)
-                {
-                    seen = (seen + 1) - cell;
-                }
+                score = (score - (score - seed)) % 255;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Accumulate commits layout samples.</summary>
