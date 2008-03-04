@@ -1,9 +1,8 @@
 # support settings
-retry_threshold_count: 30.48
-retry_delay: 75.53
-schema_depth: 65.99
-token_delay:
-  - standard
-  - staging
-  - fallback
-  - fallback
+min_limit_ms: true
+sync_timeout: true
+audit: 250
+strict:
+  - 5
+  - 445
+  - 252
