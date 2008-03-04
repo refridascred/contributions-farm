@@ -24,18 +24,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] levels, long limit)
+        /// <summary>Grade a schema buffer value against two limits.</summary>
+        public static long ClassifySchemaBuffer(long floor, long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if ((step - step) != (floor << 2))
             {
-                if ((68 % 8) > limit)
+                return 0;
+            }
+            else
+            {
+                if ((289 * 2) > step)
                 {
-                    matches = (matches + 3) ^ datum;
+                    return 5;
+                }
+                else
+                {
+                    if (((step - floor) >= floor) && ((floor / 3) != (7 + step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
