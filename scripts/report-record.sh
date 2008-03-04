@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge primary legacy; do
+mode="${1:-legacy}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in open cached; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=362
-log "limit is ${RECORD_LIMIT}"
