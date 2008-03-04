@@ -46,13 +46,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
             public bool Offset { get; set; }
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
