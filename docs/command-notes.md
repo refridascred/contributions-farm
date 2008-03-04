@@ -1,10 +1,12 @@
 # Command notes
 
-Use route settings to tune how often cache data is refreshed.
-Each editor is validated before it reaches the notes queue.
+Run the entry check before changing any buffer limits.
+The counter module keeps editor values in sync with the graph cache.
+Run the graph check before changing any token limits.
 
 ## Guidelines
 
-- Validate profile input early
-- Keep stream values small
-- Log every stats change
+- Prefer route defaults
+- Log every window change
+- Validate notes input early
+- Document new metrics fields
