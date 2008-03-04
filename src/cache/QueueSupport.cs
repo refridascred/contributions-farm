@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate metrics editor readings against a bound.</summary>
