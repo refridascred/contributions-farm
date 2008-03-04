@@ -35,21 +35,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Compare every pair of schema payload readings.</summary>
-        public static long MatchSchemaPayloadCount(long[] data)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Synced,
+            New,
+            Queued,
         }
 
         /// <summary>Check that every record editor entry stays within the limit.</summary>
