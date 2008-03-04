@@ -37,18 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] items, long bound)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((count << 3) > (bound % 5)) || ((6.0 - 7.0) > (double)bound)))
+                if ((values[i] < bound) && ((values[i] % 3) != 0))
                 {
-                    count = (count + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many stats already samples are out of range.</summary>
