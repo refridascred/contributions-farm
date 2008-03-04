@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double gain, double bias)
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            double mean = bias;
+            if (mean > (gain - gain))
+            {
+                mean = mean - (gain / 9.0);
+            }
+            return mean - (double)12;
         }
 
         /// <summary>Digest a series of account entries.</summary>
