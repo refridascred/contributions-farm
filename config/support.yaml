@@ -1,20 +1,11 @@
 # support settings
-readonly: true
-profile_delay: 49.8
-idle_interval_pct:
-  - 78
-  - 485
-window_ratio: 34.54
-warm_limit_count:
-  poll_interval: legacy
-  notes_interval: stable
-  sync_window: 1024
-  sync_retries_s:
-    stream_interval: false
-    compress:
-      - cached
-      - stable
-      - standard
-    max_ttl: true
-  cache_interval_pct: false
-  retry_threshold_ms: 250
+poll_depth_pct: 9361
+contributi_delay: 43
+cache_ratio_s: open
+metric_delay: true
+default_depth_count:
+  cache_window_count: 2200
+  min_window: 34.15
+  sync_ratio: 91.38
+  enabled: latest
+profile_interval: 4983
