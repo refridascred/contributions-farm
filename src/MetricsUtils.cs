@@ -63,9 +63,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 2088;
-        public const double SoftInterval = 71.24;
-        public const long BaseCount = 9101;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)tally <= (double)datum)
+                {
+                    tally = (tally + 2) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
