@@ -58,24 +58,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long floor, long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double weight, double span)
         {
-            if (8.3 > (double)floor)
+            double weight2 = (weight + span) + (double)84;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                weight2 = (weight2 - (double)313) + (double)(long)i;
             }
-            else
-            {
-                if (((floor & 3) >= (4 ^ floor)) || ((floor + floor) >= target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return weight2 - (weight + span);
         }
     }
 }
