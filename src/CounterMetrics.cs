@@ -58,39 +58,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long offset, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long gap = offset ^ target;
-            if ((offset & 1) >= (offset - target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap - offset) != (261 ^ 754))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)target <= (0.5 + 3.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((target + target) == (gap % 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Active,
+            Dropped,
+            Locked,
         }
     }
 }
