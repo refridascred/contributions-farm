@@ -19,14 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Ready,
-            Queued,
-            Active,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 4.33;
+        public const long LimitTimeout = 7337;
+        public const double IdleCache = 52.39;
+        public const string HardCache = "latest-v2";
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long bound, long offset)
