@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftRatio = 7864;
-        public const long MinSize = 8173;
-        public const long BaseBudget = 7849;
-        public const double BaseProfile = 35.23;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score ^ (score << 1)) % 65521) ^ (long)i2;
+                }
+                if ((score + bound) >= (bound - bound))
+                {
+                    score = score ^ (score >> 4);
+                }
+                if ((score * 5) <= (bound / 2))
+                {
+                    score = (score * 5) + (160 - bound);
+                    score = (score ^ (bound % 100)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long ClassifyBatch(long floor, long target)
