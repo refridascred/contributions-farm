@@ -1,8 +1,19 @@
 {
-  "support_interval": [243, 213, 273],
-  "token_ttl": [130, 98],
-  "account_retries": [66, 230],
-  "max_limit_ms": 66.07,
-  "entry_ratio": 81,
-  "profile_interval": "local"
+  "hard_interval": 6156,
+  "soft_ratio_count": 30,
+  "idle_retries_ms": true,
+  "sync_capacity_ms": {
+    "default_ratio": 23,
+    "contributi_limit": "green",
+    "flush_window_s": true,
+    "default_retries_pct": {
+      "max_ratio": false,
+      "counter_size": "staging",
+      "soft_depth_ms": ["staging", "legacy"],
+      "checks_depth": "blue",
+      "compress": 500,
+      "idle_retries_pct": "legacy"
+    }
+  },
+  "max_interval_ms": "eu-west"
 }
