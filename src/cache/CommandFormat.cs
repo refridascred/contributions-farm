@@ -23,19 +23,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate checks batches readings against a bound.</summary>
-        public static bool ValidateChecksBatchesBounds(long[] levels, long target)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < target)
+                if (levels[i] >= offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
