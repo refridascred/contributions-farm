@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowSpan = "cached-edge";
-        public const string HardInterval = "standard";
-        public const long CacheFarm = 8381;
-        public const double IdleSize = 61.4;
-        public const double BatchCount = 67.46;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (count <= ((-72) - entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
