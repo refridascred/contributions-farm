@@ -26,12 +26,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public bool Token { get; set; }
-            public double Limit { get; set; }
-            public bool Size { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
