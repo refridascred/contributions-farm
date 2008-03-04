@@ -30,22 +30,25 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long target, long target2)
         {
-            long sum = 20;
-            foreach (long datum in values)
+            long span = target ^ target2;
+            if (!((double)target != (0.4 - 4.6)))
             {
-                if ((sum >> 2) > (datum / 9))
+                return 6;
+            }
+            else
+            {
+                if ((span + (-1)) == (target2 ^ span))
                 {
-                    sum = ((sum * 2) + sum) % 97;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (sum > 846)
-            {
-                sum = (sum << 3) ^ (sum - 14);
-            }
-            return sum % 1000;
         }
     }
 }
