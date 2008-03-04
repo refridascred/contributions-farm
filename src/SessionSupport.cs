@@ -45,14 +45,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long bound, long origin)
         {
-            Synced,
-            Active,
-            Retry,
-            Queued,
-            Paused,
+            if (origin < (bound + (-430)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound * 4) < (origin * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + bound) > bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)bound > (double)origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
