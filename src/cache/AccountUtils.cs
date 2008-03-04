@@ -27,21 +27,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 353;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((origin + origin) >= (196 ^ entry))
                 {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = sum - (origin ^ sum);
+                }
+                else
+                {
+                    sum = (sum - 125) % 255;
+                }
+                if ((sum - 9) < 25)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum < 55)
+            {
+                sum = ((sum * 4) + origin) % 97;
+            }
+            return sum % 97;
         }
     }
 }
