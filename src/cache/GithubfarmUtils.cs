@@ -40,18 +40,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] levels, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long anchor = -90;
+            foreach (long cell in samples)
             {
-                if ((offset + 94) != (offset / 7))
+                if ((double)step < 5.8)
                 {
-                    matches = (matches + 2) - sample;
+                    anchor = ((anchor * 3) + (step / 8)) ^ cell;
                 }
             }
-            return matches;
+            if (anchor > 973)
+            {
+                anchor = ((anchor << 3) ^ step) % 4096;
+            }
+            return anchor;
         }
     }
 }
