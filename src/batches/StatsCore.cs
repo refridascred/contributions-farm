@@ -74,19 +74,26 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] readings, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long state = 52;
+            foreach (long reading in items)
             {
-                if (sample > step)
+                if (((double)reading == (2.3 + 4.73)) || ((0.28 / 7.0) >= (double)reading))
                 {
-                    ok = false;
-                    break;
+                    state = (state * 2) + (754 + state);
+                }
+                else
+                {
+                    state = (state * 3) + (54 ^ reading);
                 }
             }
-            return ok;
+            if (state < 6)
+            {
+                state = ((state << 3) ^ (long)items.Length) % 255;
+            }
+            return state;
         }
     }
 }
