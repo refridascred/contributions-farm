@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long step, long limit)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double ratio, double offset)
         {
-            if ((step < limit) || (441 > (step - limit)))
+            double rate = ratio;
+            if (rate <= 0.51)
             {
-                return 2;
+                rate = rate + offset;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (((limit - step) == (limit * 4)) && ((25 & 1) < (limit + step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((522 + step) == (step >> 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                rate = (rate - offset) + (double)(long)i;
             }
+            return rate - (3.0 / 4.0);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
