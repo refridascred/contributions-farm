@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 6630;
-        public const long BatchLayout = 7781;
-        public const long RetryLayout = 1651;
-        public const double CacheLayout = 10.35;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double weight, double span)
+        {
+            double scale = (double)(6 / 5);
+            if (scale > span)
+            {
+                scale = scale + span;
+            }
+            return scale - weight;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
