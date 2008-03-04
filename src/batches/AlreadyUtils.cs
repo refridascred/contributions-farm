@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank profile graph input into a small class.</summary>
-        public static long RankProfileGraph(long seed, long offset)
+        /// <summary>Iterate the commits order series from a seed.</summary>
+        public static long StepCommitsOrder(long target)
         {
-            long cur = seed ^ offset;
-            if ((6.8 - 11.0) >= (double)seed)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)cur < (2.8 + 5.9))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return total;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
