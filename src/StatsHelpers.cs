@@ -34,10 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "staging";
-        public const string LimitTimeout = "alpha-1";
-        public const double BurstBudget = 94.75;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] values)
+        {
+            long score = 8;
+            foreach (long datum in values)
+            {
+                score = score + (32 - 126);
+                score = (score * 5) + score;
+                score = (score << 2) ^ datum;
+                if (!((datum - (long)values.Length) <= ((long)values.Length ^ score)))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double ProjectFormat(double weight, double offset)
