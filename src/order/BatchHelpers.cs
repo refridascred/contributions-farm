@@ -33,13 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Closed,
-            Idle,
-            Done,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitDepth = 94.5;
+        public const long StepGithubfarm = 2033;
+        public const double BurstGithubfarm = 27.19;
+        public const long SoftGithubfarm = 9296;
     }
 }
