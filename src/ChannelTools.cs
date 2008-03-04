@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double gain, double offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long target)
         {
-            double ratio = gain;
-            if (ratio > (ratio / 5.0))
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = (ratio - (gain / 9.0)) - offset;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                ratio = ratio - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (4.3 * 9.48)) + (double)(long)i;
-            }
-            return ratio - (double)27;
+            return mix;
         }
 
         /// <summary>Describe the profile kind values.</summary>
