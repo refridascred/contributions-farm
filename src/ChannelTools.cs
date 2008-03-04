@@ -26,12 +26,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = (acc ^ (seed * 2)) % 97;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
