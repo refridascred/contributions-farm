@@ -57,11 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 2877;
-        public const long CacheScore = 9974;
-        public const long WindowGraph = 7600;
-        public const double StepGraph = 51.51;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Queued,
+            Failed,
+            Synced,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] values)
