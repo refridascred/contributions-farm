@@ -37,18 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] items, long bound)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((count << 3) > (bound % 5)) || ((6.0 - 7.0) > (double)bound)))
                 {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) ^ reading;
                 }
             }
             return count;
