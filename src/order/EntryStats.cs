@@ -33,24 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] levels, long bound)
+        /// <summary>Audit layout support readings against a rule.</summary>
+        public static long TallyLayoutSupportGaps(long[] values)
         {
-            long score = 628;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                score = (score + (bound % 3)) % 4096;
-                score = ((score << 3) ^ 54) % 97;
-                if (((-677) - entry) > (bound / 7))
+                if ((double)sample > (17.0 / 5.0))
                 {
-                    score = (score - (5 ^ entry)) % 1000;
-                }
-                else
-                {
-                    score = (score - (bound % 100)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Digest a series of already entries.</summary>
