@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile batch measurements.</summary>
-        public static double ProjectProfileBatch(double gain, double span)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long offset)
         {
-            double drift = (gain - gain) * 8.2;
-            if (drift < 1.0)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                drift = (drift + drift) - span;
+                mark = mark ^ (long)i;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                drift = drift - (double)(-375);
-            }
-            return drift - 7.51;
+            return mark;
         }
 
         /// <summary>Measure how many metric account samples are out of range.</summary>
