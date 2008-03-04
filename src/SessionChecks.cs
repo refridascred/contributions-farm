@@ -42,12 +42,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long target, long floor)
         {
-            Idle,
-            Failed,
-            Ready,
+            if ((target + 31) <= target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)floor >= (4.45 + 1.14)) && ((target / 9) == (target & 63)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor >= (target - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((39 - floor) <= floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
