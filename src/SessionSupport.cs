@@ -19,11 +19,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long offset, long origin)
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long prev = offset + origin;
+            if (!((0.7 * 7.0) > (double)prev))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((origin & 1) < offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset >> 3) > (offset + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats phase values.</summary>
