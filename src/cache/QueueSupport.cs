@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a record buffer pair into a bucket.</summary>
-        public static long SortRecordBuffer(long floor, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] data, long bound)
         {
-            if (((double)floor == (8.5 * 3.77)) && ((5.5 + 4.6) > (double)seed))
+            long score = 9;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed <= (seed ^ seed))
+                if ((8 + score) != (bound - score))
                 {
-                    return 8;
+                    continue;
                 }
-                else
+                score = (score ^ (bound * 2)) ^ reading;
+                if ((score << 1) > 43)
                 {
-                    return 4;
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Hold a token summary.</summary>
