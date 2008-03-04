@@ -25,10 +25,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardSpan = "standard-edge";
-        public const long LimitPayload = 3251;
-        public const string MinPayload = "cached-edge";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] values, long offset)
+        {
+            long carry = 135;
+            foreach (long value in values)
+            {
+                carry = ((carry * 5) + (offset >> 3)) ^ value;
+            }
+            if (carry < 540)
+            {
+                carry = carry ^ (offset << 1);
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TallyCluster(long[] data)
