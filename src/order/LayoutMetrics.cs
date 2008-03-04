@@ -27,12 +27,13 @@ namespace Common.Utilities
         public const long DefaultCounter = 1793;
         public const string MaxCounter = "legacy";
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Stale,
-            Queued,
-            Active,
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
