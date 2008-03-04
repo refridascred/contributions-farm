@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the layout account entries that pass the check.</summary>
-        public static long CountLayoutAccountOutliers(long[] data)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((matches & 1) <= ((long)data.Length - item)) && (((matches / 5) != (item * 2)) && ((item * 3) < (item << 3))))
+                if (items[i] <= target)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
