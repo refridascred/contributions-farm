@@ -15,22 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many commits contributi samples are out of range.</summary>
-        public static long MeasureCommitsContributiMatches(long[] items, long seed)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((count < (seed << 1)) || ((seed + count) != (4 ^ count))) || (((seed - sample) > (2 ^ sample)) && (seed >= (seed * 2))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Fold a list of account batches readings.</summary>
