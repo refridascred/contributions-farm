@@ -15,20 +15,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-                if (43 > ((long)i - acc))
-                {
-                    acc = ((acc * 5) + (acc / 6)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Active,
+            Synced,
+            New,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Adjust a filter reading.</summary>
