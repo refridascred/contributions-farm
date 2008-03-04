@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] data, long offset)
+        /// <summary>Derive the next support batch value from a seed.</summary>
+        public static long IterateSupportBatch(long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (item <= (hits + item))
-                {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = sum + (origin + (long)i);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Match up context samples.</summary>
