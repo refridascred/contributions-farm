@@ -1,11 +1,11 @@
 # Command notes
 
-Keep report and command names short and lowercase.
-Use session settings to tune how often order data is refreshed.
-The metrics report groups every cluster by context.
+Run the record check before changing any cluster limits.
+The githubfarm report groups every already by route.
 
 ## Guidelines
 
-- Document new entry fields
-- Prefer entry defaults
-- Keep githubfarm values small
+- Log every commits change
+- Review tools limits each release
+- Document new payload fields
+- Prefer format defaults
