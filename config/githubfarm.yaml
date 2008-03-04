@@ -1,6 +1,7 @@
 # githubfarm settings
-poll_window:
-  - green
-  - eu-west
-sync_ratio_ms: edge
-cache_size_s: open
+dry_run: 2984
+default_interval_s: 4671
+retry_ratio: 27.56
+payload_ttl: 84.26
+compress: 45.08
+base_threshold_count: 100
