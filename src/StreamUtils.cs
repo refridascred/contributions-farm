@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] values)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mix = 93;
+            foreach (long cell in readings)
             {
-                if (value < (72 << 3))
-                {
-                    seen = seen + 3;
-                }
+                mix = (((mix + (mix % 3)) % 97) ^ cell) - offset;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
