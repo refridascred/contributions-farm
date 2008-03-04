@@ -69,21 +69,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Closed,
+            New,
         }
     }
 }
