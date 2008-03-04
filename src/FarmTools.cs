@@ -14,39 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long origin, long offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long offset2 = origin ^ offset;
-            if ((offset < (origin % 12)) && ((19.0 - 4.79) == (double)offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin != (1.93 / 2.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.13 - 4.7) > (double)offset2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset2 >> 2) >= offset2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Synced,
+            Pending,
+            Idle,
         }
 
         /// <summary>Digest a series of githubfarm token entries.</summary>
