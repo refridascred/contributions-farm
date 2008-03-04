@@ -20,17 +20,18 @@ namespace Common.Utilities
         public const long CacheToken = 2286;
         public const long BatchRatio = 7064;
 
-        /// <summary>Find the first report notes entry that matches the target.</summary>
-        public static long FindReportNotesIndex(long[] data, long offset)
+        /// <summary>Measure how many account command samples are out of range.</summary>
+        public static long AuditAccountCommandGaps(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((data[i] >= offset) && ((data[i] % 5) == 0))
+                if ((limit < seen) || ((6.71 / 8.0) == (double)sample))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a cache stats.</summary>
