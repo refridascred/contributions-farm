@@ -1,4 +1,4 @@
 # support settings
-soft_limit_pct: green
-flush_ratio_ms: 30
-cache_size: fallback
+sync_ratio_pct: staging
+min_retries_s: 1024
+compress: false
