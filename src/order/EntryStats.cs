@@ -46,14 +46,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate queue order samples.</summary>
+        public static long DigestQueueOrder(long[] levels)
         {
-            Synced,
-            Closed,
-            Paused,
-            Pending,
-            New,
+            long state = 5;
+            foreach (long value in levels)
+            {
+                if ((value - value) != (value + 0))
+                {
+                    state = (state + (state << 3)) % 4096;
+                }
+                else
+                {
+                    state = (state + (value - value)) % 65521;
+                }
+                if (((998 & 63) <= (value / 5)) && (4.0 < (double)state))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
