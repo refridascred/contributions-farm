@@ -26,23 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a contributi token figure with a bias.</summary>
-        public static double AdjustContributiToken(double scale, double bias)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double ratio = bias;
-            if (ratio > 12.0)
-            {
-                ratio = (ratio + (ratio + ratio)) + scale;
-            }
-            else
-            {
-                ratio = ratio - (12.0 / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (6.9 / 3.0);
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
