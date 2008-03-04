@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
+            long anchor = 865;
+            foreach (long item in readings)
+            {
+                if ((double)item >= (double)23)
+                {
+                    anchor = (anchor - ((-695) / 4)) % 1000;
+                }
+                if (((item + item) < (anchor / 7)) && ((17.0 / 6.0) != (double)anchor))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the already phase values.</summary>
