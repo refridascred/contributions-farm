@@ -31,22 +31,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine schema contributi values into a single score.</summary>
-        public static long TotalSchemaContributi(long[] items)
-        {
-            long mark = -4;
-            foreach (long datum in items)
-            {
-                if (datum <= (mark * 3))
-                {
-                    mark = (mark * 5) + (mark + datum);
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark + datum)) % 4096;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 9638;
+        public const double SoftWidth = 98.15;
+        public const long LimitSession = 5356;
     }
 }
