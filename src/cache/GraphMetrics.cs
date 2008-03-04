@@ -48,11 +48,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long origin, long bound)
         {
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
+            if ((bound ^ origin) <= 275)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.53 * 9.32) != (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin % 8) >= (bound - bound)) || ((bound + origin) > (bound - bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
