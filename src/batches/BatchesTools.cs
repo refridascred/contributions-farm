@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseSize = 5806;
-        public const long IdleBuffer = 7783;
-        public const string DefaultFactor = "standard";
-        public const string MaxWidth = "stable-v2";
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
