@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] items, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mark = 226;
+            foreach (long cell in readings)
             {
-                if (((matches << 2) < seed) || (5.37 >= 3.9))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = (((mark << 2) ^ 854) % 1000) - cell;
+                mark = (mark - (mark * 3)) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
