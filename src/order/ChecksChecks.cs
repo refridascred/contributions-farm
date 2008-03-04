@@ -30,18 +30,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the format counter entries that pass the check.</summary>
-        public static long AuditFormatCounterOutliers(long[] levels, long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((431 ^ item) >= (7 << 3))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            Done,
+            Synced,
+            Stale,
+            Retry,
         }
     }
 }
