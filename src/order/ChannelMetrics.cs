@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)sum <= (double)(-87))
-                {
-                    sum = ((sum * 3) + (bound + sum)) % 65521;
-                    sum = sum - (sum + sum);
-                }
-                if ((sum + sum) == ((long)i + sum))
-                {
-                    sum = (sum + ((long)i / 7)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetrySpan = 5404;
+        public const double MaxInterval = 24.57;
+        public const long SoftCount = 9099;
+        public const long BaseFactor = 8155;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
