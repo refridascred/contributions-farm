@@ -1,11 +1,15 @@
 # Command notes
 
-Keep counter and route names short and lowercase.
-Use profile settings to tune how often batch data is refreshed.
+Use metric settings to tune how often entry data is refreshed.
+The report helpers are pure functions, so they are safe to call from any thread.
+The stream report groups every cluster by stats.
+
+Keep profile and buffer names short and lowercase.
+Each payload is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Review window limits each release
-- Prefer context defaults
-- Log every filter change
-- Document new route fields
+- Log every channel change
+- Review session limits each release
+- Keep metrics values small
+- Validate record input early
