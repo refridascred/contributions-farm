@@ -29,26 +29,10 @@ namespace Common.Utilities
         public const long CacheLayout = 1870;
         public const long BatchCount = 7235;
 
-        /// <summary>Roll a account report counter forward.</summary>
-        public static long RollAccountReport(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum << 3) ^ (long)i) % 1000;
-                sum = (sum * 2) + (limit / 7);
-                if ((limit & 255) == (sum - (long)i))
-                {
-                    sum = sum + (sum / 5);
-                    continue;
-                }
-                else
-                {
-                    sum = sum ^ (limit / 9);
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultCounter = "legacy";
+        public const long WindowCounter = 92;
+        public const long CacheCounter = 8834;
+        public const long MinCounter = 7594;
     }
 }
