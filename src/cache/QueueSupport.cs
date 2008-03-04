@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryRatio = 28.2;
-        public const long BurstSpan = 2887;
-        public const double WindowFilter = 86.08;
-        public const long BurstDepth = 2314;
+        /// <summary>Audit checks support readings against a rule.</summary>
+        public static long MeasureChecksSupportGaps(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (0 < entry)
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
