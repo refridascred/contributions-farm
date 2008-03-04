@@ -67,38 +67,11 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long limit, long floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            if ((17.0 - 6.5) < (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((floor * 3) != (limit + limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit / 8) <= limit) || ((limit + (-8)) <= 532))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((870 ^ 9) > limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the buffer record entries that pass the check.</summary>
