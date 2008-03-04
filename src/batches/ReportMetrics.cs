@@ -19,13 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
+            Ready,
             Queued,
-            Dropped,
-            Failed,
-            Closed,
+            Active,
+            New,
         }
 
         /// <summary>Describe the account status values.</summary>
