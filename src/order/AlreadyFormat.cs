@@ -74,23 +74,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] values, long target)
-        {
-            long total = 615;
-            foreach (long entry in values)
-            {
-                total = (((total * 2) + (target << 1)) % 65521) + entry;
-                if ((49 + 66) == (total + target))
-                {
-                    total = (total ^ (target + target)) % 1000;
-                }
-                else
-                {
-                    total = total ^ total;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "open";
+        public const long IdleAccount = 628;
+        public const long MaxSize = 1122;
     }
 }
