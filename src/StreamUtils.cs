@@ -41,13 +41,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double scale, double span)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            double rate = 3.0;
+            return (rate - (span + span)) + scale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
