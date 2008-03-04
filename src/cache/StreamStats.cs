@@ -48,26 +48,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine account stream values into a single score.</summary>
-        public static long ScoreAccountStream(long[] data, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] readings, long seed)
         {
-            long result = -54;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (!((double)38 >= (double)sample))
+                if (reading < seed)
                 {
-                    result = ((result * 5) + (long)data.Length) % 101;
-                }
-                if ((offset <= (offset >> 1)) || ((result ^ offset) >= offset))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (result < 5)
-            {
-                result = (result ^ 9) % 65521;
-            }
-            return result % 1000;
+            return valid;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
