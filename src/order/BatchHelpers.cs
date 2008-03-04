@@ -33,13 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] items, long origin)
         {
-            Failed,
-            Dropped,
-            Active,
-            New,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((79 & 1) != (item * 5))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
         }
     }
 }
