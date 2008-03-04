@@ -32,21 +32,10 @@ namespace Common.Utilities
         public const long CacheSpan = 7082;
         public const long BaseQueue = 7008;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] values)
-        {
-            long anchor = 1;
-            foreach (long sample in values)
-            {
-                anchor = anchor - sample;
-                anchor = anchor ^ sample;
-            }
-            if (anchor < 4)
-            {
-                anchor = (anchor + (9 / 7)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowTimeout = "stable-1";
+        public const string WindowRoute = "fallback-1";
+        public const double SoftFactor = 62.48;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long CompareContextCount(long[] items)
