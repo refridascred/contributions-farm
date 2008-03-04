@@ -1,6 +1,6 @@
-id,state,weight,ratio
-1,58.93,943,18.55
-2,44,843,964
-3,green,fallback,60.62
-4,76.69,554,fallback
-5,stable,latest,634
+id,weight,label,count,region
+1,634,279,94.0,23
+2,staging,32.37,168,staging
+3,923,62,latest,green
+4,512,561,11.55,green
+5,51.68,cached,413,green
