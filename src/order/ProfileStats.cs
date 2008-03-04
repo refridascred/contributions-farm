@@ -39,12 +39,13 @@ namespace Common.Utilities
             return scale - (scale - floor);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleInterval = 330;
-        public const string BatchCount = "strict-edge";
-        public const long BurstGithubfarm = 7945;
-        public const long IdleGithubfarm = 9257;
-        public const double DefaultDepth = 54.87;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] series, long step)
