@@ -47,22 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Derive the next payload queue value from a seed.</summary>
+        public static long StepPayloadQueue(long target)
         {
-            long mark = 68;
-            foreach (long entry in readings)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((entry & 127) == (entry - 18))
-                {
-                    mark = (mark << 2) ^ mark;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (mark > 88)
-            {
-                mark = mark ^ mark;
-            }
-            return mark % 97;
+            return mix;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
