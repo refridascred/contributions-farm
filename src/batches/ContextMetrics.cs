@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double bias, double span)
+        /// <summary>Check that every tools report entry stays within the limit.</summary>
+        public static bool VerifyToolsReportRange(long[] levels, long seed)
         {
-            double weight = 2.0 / 3.0;
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                weight = ((weight + (weight * 6.7)) - (double)(long)i) - bias;
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight - (13.0 - span);
+            return ok;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
