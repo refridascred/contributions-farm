@@ -66,21 +66,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = 11.0;
+            if (bias2 <= bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = bias2 + (5.67 + 0.89);
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 + floor;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
