@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Queued,
-            Draft,
-            Done,
-            New,
-            Failed,
+            Retry,
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
