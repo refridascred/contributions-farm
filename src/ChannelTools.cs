@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardScore = "staging-edge";
-        public const long MinSpan = 7242;
-        public const long BaseScore = 9716;
-        public const long DefaultTimeout = 5293;
-        public const long BaseDepth = 830;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Closed,
+            Active,
+            Paused,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
