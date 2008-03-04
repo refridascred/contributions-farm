@@ -26,12 +26,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            Idle,
+            Retry,
+            Locked,
         }
     }
 }
