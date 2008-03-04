@@ -45,19 +45,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double ratio, double bias)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] readings, long step)
         {
-            double mean = ratio;
-            if (mean >= 6.34)
+            long state = 11;
+            foreach (long entry in readings)
             {
-                mean = (mean - 1.0) - bias;
+                state = (((state ^ state) % 4096) + entry) + step;
+                state = ((state * 3) + 68) % 255;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (ratio + mean)) + (double)(long)i;
-            }
-            return mean + ratio;
+            return state % 97;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
