@@ -42,38 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long target, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] series)
         {
-            if ((target + 31) <= target)
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)floor >= (4.45 + 1.14)) && ((target / 9) == (target & 63)))
+                if ((seen >= (item ^ (-9))) || (((seen / 6) >= ((-64) << 3)) && (105 > (seen + item))))
                 {
-                    return 8;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (floor >= (target - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((39 - floor) <= floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
