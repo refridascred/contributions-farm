@@ -1,17 +1,12 @@
 {
-  "audit": {
-    "batch_capacity": 500,
-    "cluster_retries": {
-      "batch_size_count": [362, 32],
-      "min_interval_pct": ["eu-west", "strict"],
-      "default_delay_s": 9362,
-      "verbose": 30
-    },
-    "sync_threshold_count": 66.7,
-    "tools_delay": 45.55
+  "warm_depth_count": {
+    "hard_window": "fallback",
+    "default_limit_count": "primary",
+    "account_depth": false,
+    "cache_ttl": "standard",
+    "soft_ttl_count": 17.53
   },
-  "default_size": "staging",
-  "default_limit": 500,
-  "flush_timeout_ms": 2,
-  "checks_size": ["blue", "local", "open"]
+  "verbose": 76.55,
+  "soft_limit_s": 500,
+  "dry_run": 2.24
 }
