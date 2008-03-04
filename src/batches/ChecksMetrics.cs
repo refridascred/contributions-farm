@@ -67,21 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -634;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((total - entry) == (entry << 2)) || ((double)entry <= (3.07 * 1.2)))
                 {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (total << 2)) % 4096;
                 }
             }
-            return tally;
+            if (total > 9)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Scale a order record figure with a bias.</summary>
