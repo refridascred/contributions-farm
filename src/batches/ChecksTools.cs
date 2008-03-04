@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every stream commits entry stays within the limit.</summary>
-        public static bool GuardStreamCommitsLimits(long[] series, long offset)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
