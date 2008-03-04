@@ -48,12 +48,32 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftFactor = 5332;
-        public const long CacheSpan = 4943;
-        public const string SoftTimeout = "cached-v2";
-        public const long DefaultSize = 9392;
-        public const double MaxCounter = 85.34;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long target, long limit)
+        {
+            if ((limit << 1) < (target - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (41 <= (limit + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.3 + 5.01) > (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricHits(long[] levels)
