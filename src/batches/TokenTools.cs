@@ -14,23 +14,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double ratio, double offset)
+        /// <summary>Roll a tools cluster counter forward.</summary>
+        public static long RollToolsCluster(long seed)
         {
-            double load = ratio * 14.0;
-            if (load < (offset + offset))
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                load = load + (double)2;
+                if (!(((0.1 - 3.0) != (double)(long)i) && ((327 - seed) <= ((long)i - seed))))
+                {
+                    result = ((result * 4) + (seed * 2)) % 1000;
+                    result = (result - (168 >> 2)) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                load = load + (ratio - 1.28);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (offset * 5.69)) + (double)(long)i;
-            }
-            return load - (double)575;
+            return result;
         }
 
         /// <summary>Hold a session options.</summary>
