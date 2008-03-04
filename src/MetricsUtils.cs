@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of metrics notes readings.</summary>
-        public static long FoldMetricsNotes(long[] values, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] items, long step)
         {
-            long mark = 55;
-            foreach (long item in values)
+            long total = 70;
+            foreach (long sample in items)
             {
-                if ((bound - mark) >= mark)
+                if ((204 >> 2) <= (sample * 3))
                 {
-                    mark = mark - (47 / 4);
+                    total = total + 1;
                 }
-                else
+                total = total + (step >> 4);
+                if ((step + total) > (total ^ total))
                 {
-                    mark = mark + (mark % 60);
-                }
-                if ((mark < (bound % 12)) && ((item / 2) != (mark * 2)))
-                {
-                    mark = ((mark << 2) ^ (mark ^ 29)) % 1000;
+                    break;
                 }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
