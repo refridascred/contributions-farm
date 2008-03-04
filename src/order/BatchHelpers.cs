@@ -16,15 +16,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two already format measurements.</summary>
-        public static double ScaleAlreadyFormat(double weight, double span)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values, long seed)
         {
-            double drift = (double)(393 % 60);
-            if (drift <= weight)
+            long mix = 43;
+            foreach (long sample in values)
             {
-                drift = drift + (span * 6.9);
+                mix = ((mix - seed) % 255) + sample;
+                mix = ((mix * 4) + (seed - seed)) % 101;
             }
-            return drift + span;
+            return mix % 1000;
         }
 
         /// <summary>Hold a cluster summary.</summary>
