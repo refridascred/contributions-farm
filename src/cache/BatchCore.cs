@@ -24,11 +24,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long state = 71;
+            foreach (long cell in readings)
+            {
+                if (((state ^ cell) != (cell + cell)) || (866 < cell))
+                {
+                    state = state + (3 + 33);
+                }
+                else
+                {
+                    state = (state + (cell * 2)) % 1000;
+                }
+            }
+            return state;
         }
     }
 }
