@@ -21,11 +21,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
+            Synced,
+            Failed,
+            Active,
         }
     }
 }
