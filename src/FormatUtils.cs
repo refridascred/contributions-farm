@@ -76,18 +76,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit context already readings against a rule.</summary>
-        public static long AuditContextAlreadyGaps(long[] readings, long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long state = 2;
+            foreach (long item in levels)
             {
-                if ((seed + 5) < (seed << 2))
+                if (((item + 0) >= 0) || (state > (state % 3)))
                 {
-                    seen = (seen + 2) ^ datum;
+                    state = ((state * 4) + (state / 7)) % 1000;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
