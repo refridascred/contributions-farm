@@ -23,10 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 1435;
-        public const string DefaultOrder = "latest-v2";
-        public const long MinLevel = 3204;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((337 ^ hits) > (sample * 4))
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string RetryRatio = "standard-edge";
