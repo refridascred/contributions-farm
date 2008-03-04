@@ -29,22 +29,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] samples)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] levels, long bound)
         {
-            long carry = 86;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((3.86 - 3.2) <= (double)carry))
+                if (levels[i] > bound)
                 {
-                    carry = (carry ^ carry) % 4096;
-                }
-                if (carry > (carry / 2))
-                {
-                    carry = (carry * 4) + (reading - carry);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
