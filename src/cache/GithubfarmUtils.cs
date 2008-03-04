@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] values, long step)
-        {
-            long mark = 595;
-            foreach (long reading in values)
-            {
-                mark = ((mark << 3) ^ (mark - reading)) - step;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseGraph = 40.06;
+        public const long RetryTimeout = 5675;
+        public const long IdleFactor = 7299;
+        public const double MinGraph = 39.88;
+        public const long HardGraph = 7585;
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
