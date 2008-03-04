@@ -20,31 +20,23 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long floor, long seed)
+        /// <summary>Scale a githubfarm batch figure with a bias.</summary>
+        public static double ScaleGithubfarmBatch(double gain, double span)
         {
-            if (!(seed >= (369 & 15)))
+            double load = 7.41 + (double)270;
+            if (load > span)
             {
-                return 3;
+                load = (load + (double)100) + gain;
             }
             else
             {
-                if (floor < (704 % 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor ^ floor) >= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                load = load - (8.78 * 10.0);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + 3.81;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
