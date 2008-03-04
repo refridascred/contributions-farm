@@ -1,8 +1,5 @@
 {
-  "burst_interval_pct": false,
-  "flush_ttl": false,
-  "burst_retries": ["legacy", "primary"],
-  "burst_ttl": true,
-  "base_size_ms": false,
-  "idle_limit": false
+  "hard_timeout_count": 60,
+  "compress": true,
+  "hard_limit_count": 54
 }
