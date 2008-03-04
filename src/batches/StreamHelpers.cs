@@ -48,12 +48,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] items, long origin)
         {
-            Failed,
-            Retry,
-            Pending,
+            long acc = 8;
+            foreach (long datum in items)
+            {
+                if (!!((datum - 890) < origin))
+                {
+                    acc = ((acc << 2) ^ datum) % 97;
+                }
+                if ((datum & 7) == (acc % 64))
+                {
+                    acc = acc ^ (acc >> 3);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Combine token values into a single score.</summary>
