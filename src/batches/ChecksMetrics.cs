@@ -49,10 +49,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseGraph = "fallback-1";
-        public const double RetryGraph = 48.2;
-        public const long IdleGraph = 6101;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Idle,
+            New,
+            Active,
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
