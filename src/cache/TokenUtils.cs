@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double gain, double offset)
+        /// <summary>Classify a stream token pair into a bucket.</summary>
+        public static long GradeStreamToken(long origin, long target)
         {
-            double scale = (double)(95 - 843);
-            if (scale >= scale)
+            long gap = origin + target;
+            if (((gap + target) <= gap) || ((target * 3) < gap))
             {
-                scale = scale - (gain * 0.8);
+                return 8;
             }
             else
             {
-                scale = scale + (double)85;
+                if (((origin + origin) <= (gap / 3)) && ((double)target <= (9.71 + 5.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin % 10) >= 88)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return scale - (offset / 9.0);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
