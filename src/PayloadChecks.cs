@@ -48,31 +48,12 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long target, long limit)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            if ((limit << 1) < (target - limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (41 <= (limit + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.3 + 5.01) > (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
