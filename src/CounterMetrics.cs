@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
             Done,
-            Synced,
-            Dropped,
             Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Derive the next payload queue value from a seed.</summary>
