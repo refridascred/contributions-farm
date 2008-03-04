@@ -47,22 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] data, long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long offset)
         {
-            long score = 65;
-            foreach (long sample in data)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (((sample << 1) < 550) && ((seed & 7) < seed))
-                {
-                    score = (score * 3) + score;
-                }
-                else
-                {
-                    score = ((score * 2) + (83 % 16)) % 255;
-                }
+                mix = (mix ^ (offset - (long)i)) % 97;
+                mix = mix ^ (mix * 4);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Hold a queue record.</summary>
