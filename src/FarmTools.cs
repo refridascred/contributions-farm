@@ -13,18 +13,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many metric stats samples are out of range.</summary>
-        public static long MeasureMetricStatsHits(long[] samples)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((long)samples.Length != (sample + seen))
-                {
-                    seen = seen + 3;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a farm entry.</summary>
