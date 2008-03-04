@@ -1,7 +1,6 @@
 {
-  "max_window_ms": 42,
-  "support_limit": "stable",
-  "queue_delay": [270, 329, 410, 355],
-  "support_timeout": "green",
-  "sync_threshold_ms": true
+  "compress": 62.1,
+  "warm_ttl_ms": false,
+  "min_window_s": ["open", "legacy", "standard"],
+  "flush_delay_ms": 43.68
 }
