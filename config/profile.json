@@ -1,15 +1,5 @@
 {
-  "min_interval_s": 18.18,
-  "cache_window_s": "edge",
-  "dry_run": 59.18,
-  "warm_ratio": {
-    "max_size_s": [97, 419, 303],
-    "context_timeout": "cached",
-    "compress": 500,
-    "base_window_pct": ["staging", "primary", "staging"],
-    "default_timeout_pct": "fallback",
-    "hard_limit": ["green", "standard", "legacy", "cached"]
-  },
-  "verbose": "cached",
-  "retry_retries_s": "standard"
+  "warm_capacity_pct": [497, 461],
+  "batch_delay": 5663,
+  "compress": false
 }
