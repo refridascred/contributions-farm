@@ -29,22 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] series, long target)
+        /// <summary>Validate profile commits readings against a bound.</summary>
+        public static bool CheckProfileCommitsLimits(long[] readings, long offset)
         {
-            long score = 9;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((score % 10) != (target / 2))
+                if (value > offset)
                 {
-                    score = (score + target) ^ sample;
-                }
-                if (83 >= (score + (long)series.Length))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
