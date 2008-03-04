@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowLevel = 2469;
-        public const long MinToken = 3328;
-        public const long CacheScore = 6786;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Ready,
+            Done,
+            Locked,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long ScoreRecord(long[] data, long seed)
