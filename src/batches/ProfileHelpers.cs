@@ -48,14 +48,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 1632;
+        public const long RetryEditor = 3270;
+        public const string HardRatio = "staging-v2";
+        public const string WindowEditor = "strict";
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
