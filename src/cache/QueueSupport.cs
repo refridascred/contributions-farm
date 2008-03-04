@@ -21,12 +21,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Look up the position of a route channel sample.</summary>
-        public static long LookupRouteChannelIndex(long[] readings, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
+                if (levels[i] <= offset)
                 {
                     return (long)i;
                 }
