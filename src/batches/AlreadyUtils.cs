@@ -32,22 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account batches readings.</summary>
-        public static long TotalAccountBatches(long[] values, long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] samples, long seed)
         {
-            long score = 28;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (step >= score)
+                if (sample >= seed)
                 {
-                    score = score ^ (348 * 2);
-                }
-                if (datum < step)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return score % 4096;
+            return stale;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
