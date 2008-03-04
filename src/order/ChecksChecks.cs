@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats window readings against a bound.</summary>
-        public static bool CheckStatsWindowRange(long[] items, long target)
+        /// <summary>Roll a account notes counter forward.</summary>
+        public static long RollAccountNotes(long origin)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long score = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Count the format counter entries that pass the check.</summary>
