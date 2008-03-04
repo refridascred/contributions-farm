@@ -61,12 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] items, long bound)
         {
-            Idle,
-            New,
-            Queued,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((item >> 3) <= (long)items.Length)
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
