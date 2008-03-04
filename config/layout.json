@@ -1,5 +1,12 @@
 {
-  "min_delay": "local",
-  "poll_ratio_s": 39.51,
-  "cache_delay": 76.72
+  "audit": "stable",
+  "poll_ttl_count": 71.0,
+  "base_window": "open",
+  "flush_interval_s": {
+    "flush_capacity_count": 70,
+    "support_ratio": 100,
+    "batch_retries": false
+  },
+  "idle_ttl_s": "edge",
+  "route_delay": "latest"
 }
