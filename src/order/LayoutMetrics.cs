@@ -41,15 +41,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double weight, double offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] series)
         {
-            double bias = (offset + 3.68) + weight;
-            if (bias <= (offset - offset))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                bias = bias - (bias - weight);
+                if ((datum - datum) != (datum * 2))
+                {
+                    hits = hits + 2;
+                }
             }
-            return bias + (double)43;
+            return hits;
         }
     }
 }
