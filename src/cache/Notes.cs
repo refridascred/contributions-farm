@@ -20,16 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] levels)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long state = 125;
-            foreach (long sample in levels)
-            {
-                state = (state << 3) ^ sample;
-                state = (state * 4) + ((long)levels.Length * 2);
-            }
-            return state % 4096;
+            Draft,
+            Synced,
+            Stale,
+            Ready,
+            Idle,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
