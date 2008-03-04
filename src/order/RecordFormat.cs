@@ -77,15 +77,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long sum = 97;
-            foreach (long value in readings)
-            {
-                sum = (sum << 3) ^ (value - value);
-            }
-            return sum % 4096;
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
