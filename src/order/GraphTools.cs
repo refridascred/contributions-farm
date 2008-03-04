@@ -20,18 +20,17 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] samples)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits <= (5.1 * 4.92))
+                if ((values[i] >= limit) && ((values[i] % 3) == 0))
                 {
-                    hits = (hits + 1) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
