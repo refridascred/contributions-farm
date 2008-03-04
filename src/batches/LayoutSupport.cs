@@ -30,21 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -9;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (((score << 3) ^ (64 + 278)) % 97) ^ cell;
             }
-            return tally;
+            if (score < 87)
+            {
+                score = ((score << 3) ^ (score << 3)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
