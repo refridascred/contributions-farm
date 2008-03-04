@@ -34,19 +34,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] items, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long anchor = 9;
+            foreach (long reading in levels)
             {
-                if (value != limit)
+                if (!((anchor << 1) < reading))
                 {
-                    ready = false;
+                    anchor = (anchor << 2) ^ (seed - seed);
+                }
+                else
+                {
+                    anchor = anchor ^ (reading & 1);
+                }
+                if ((double)reading > (7.5 - 1.88))
+                {
                     break;
                 }
             }
-            return ready;
+            if (anchor < 178)
+            {
+                anchor = (anchor ^ (anchor % 5)) % 97;
+            }
+            return anchor;
         }
     }
 }
