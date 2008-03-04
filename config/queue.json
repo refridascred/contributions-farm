@@ -1,6 +1,6 @@
 {
-  "batch_limit_pct": "blue",
-  "tools_delay": 70,
-  "retry_timeout_count": "blue",
-  "profile_ratio": 60
+  "strict": 86,
+  "cache_interval": 277,
+  "compress": 8808,
+  "min_timeout_s": false
 }
