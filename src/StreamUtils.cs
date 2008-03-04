@@ -89,13 +89,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] items, long origin)
         {
-            Locked,
-            Active,
-            Idle,
-            Paused,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((origin <= (reading << 1)) || (((reading / 2) != (reading - 21)) || (((long)items.Length & 15) != (reading - (long)items.Length))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
