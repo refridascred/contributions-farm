@@ -20,38 +20,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long offset, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] items)
         {
-            if (((target & 31) < (offset - offset)) || (target >= (target / 9)))
+            long state = 576;
+            foreach (long item in items)
             {
-                return 2;
+                state = ((state - state) % 4096) ^ item;
             }
-            else
+            if (state > 6)
             {
-                if ((offset + offset) > (offset ^ offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset > (target % 16))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (1.0 - 2.1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                state = (state * 4) + state;
             }
+            return state;
         }
 
         /// <summary>Accumulate command samples.</summary>
