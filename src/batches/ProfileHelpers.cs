@@ -64,19 +64,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (tally > (tally + reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 7780;
+        public const string StepChannel = "staging-edge";
+        public const double SoftChannel = 49.74;
+        public const long HardCount = 3148;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long floor, long step)
