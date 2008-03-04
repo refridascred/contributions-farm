@@ -1,11 +1,6 @@
 {
-  "dry_run": true,
-  "flush_retries_ms": 53.9,
-  "profile_retries": "blue",
-  "min_size": {
-    "poll_size": 500,
-    "poll_retries_pct": "cached",
-    "persist": true,
-    "queue_depth": "latest"
-  }
+  "poll_ttl": "blue",
+  "soft_delay_s": 2449,
+  "sync_depth_ms": true,
+  "readonly": 70.46
 }
