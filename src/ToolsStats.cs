@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double RetrySession = 24.13;
         public const long HardCount = 3295;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] readings)
         {
-            Idle,
-            Retry,
-            Synced,
-            Closed,
+            long mix = 5;
+            foreach (long item in readings)
+            {
+                mix = ((mix + mix) % 4096) + item;
+            }
+            if (mix > 6)
+            {
+                mix = (mix + (mix << 1)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
