@@ -31,13 +31,17 @@ namespace Common.Utilities
         public const long MinCommits = 8461;
         public const double CacheCommits = 74.46;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] samples, long origin)
         {
-            Active,
-            Paused,
-            Failed,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two checks measurements.</summary>
