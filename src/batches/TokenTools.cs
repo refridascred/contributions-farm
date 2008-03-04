@@ -30,25 +30,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long target, long target2)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] values)
         {
-            long span = target ^ target2;
-            if (!((double)target != (0.4 - 4.6)))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((span + (-1)) == (target2 ^ span))
+                if ((tally >> 5) > tally)
                 {
-                    return 7;
+                    tally = (tally + 1) + value;
                 }
                 else
                 {
-                    return 4;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
