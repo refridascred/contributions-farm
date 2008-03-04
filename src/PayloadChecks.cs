@@ -74,19 +74,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema editor entry stays within the limit.</summary>
-        public static bool GuardSchemaEditorBounds(long[] series, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (item < bound)
+                if (entry < origin)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
