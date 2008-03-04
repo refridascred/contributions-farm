@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the account batches series from a seed.</summary>
-        public static long DeriveAccountBatches(long bound)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Dropped,
+            Locked,
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Locate a stream token reading by value.</summary>
