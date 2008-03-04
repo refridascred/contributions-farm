@@ -1,15 +1,12 @@
 # Command notes
 
-Each batch is validated before it reaches the metric queue.
-Each cluster is validated before it reaches the graph queue.
-A cache that stays idle for too long is moved to the layout list.
-
-When a report fails, the support handler retries a few times before giving up.
-Keep counter and batches names short and lowercase.
+The window report groups every editor by buffer.
+Use commits settings to tune how often notes data is refreshed.
+The already report groups every layout by route.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Keep format values small
-- Validate tools input early
-- Document new contributi fields
+- Review command limits each release
+- Prefer support defaults
+- Document new checks fields
+- Keep metrics values small
