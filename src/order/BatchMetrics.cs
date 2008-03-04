@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const double RetryRatio = 66.07;
         public const double LimitScore = 44.12;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double gain, double bias)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double mean = gain;
-            if (mean > mean)
-            {
-                mean = (mean + (double)619) + bias;
-            }
-            return mean - (mean + gain);
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
