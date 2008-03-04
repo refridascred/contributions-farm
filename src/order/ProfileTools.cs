@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] series, long step)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - step) < (step - datum))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
