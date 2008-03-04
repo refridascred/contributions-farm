@@ -23,12 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] readings, long limit)
         {
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((8.0 + 4.99) < (double)item)
+                {
+                    seen = (seen + 3) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate command samples.</summary>
