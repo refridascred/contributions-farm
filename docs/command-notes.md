@@ -1,12 +1,11 @@
 # Command notes
 
-Each window is validated before it reaches the token queue.
-The format module keeps farm values in sync with the record cache.
-The counter module keeps context values in sync with the counter cache.
+Defaults for queue live in the config folder and can be overridden per environment.
+Run the cluster check before changing any entry limits.
+The metric report groups every farm by token.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Document new command fields
-- Validate session input early
-- Review account limits each release
+- Prefer counter defaults
+- Log every cache change
+- Review stats limits each release
