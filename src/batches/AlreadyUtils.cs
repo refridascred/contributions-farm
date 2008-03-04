@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data, long limit)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long anchor = 17;
-            foreach (long item in data)
-            {
-                anchor = ((anchor - 3) % 97) ^ item;
-                anchor = ((anchor << 3) ^ (limit * 2)) % 97;
-            }
-            return anchor % 1000;
+            Failed,
+            Draft,
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Fold a list of record readings.</summary>
