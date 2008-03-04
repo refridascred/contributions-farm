@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] levels, long step)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (hits > (881 - cell))
-                {
-                    hits = (hits + 1) + step;
-                }
-            }
-            return hits;
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a cache header.</summary>
