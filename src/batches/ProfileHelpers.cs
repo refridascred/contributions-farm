@@ -37,11 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double bias, double bias2)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] items)
         {
-            double weight = (double)(733 ^ 379);
-            return ((weight + 2.21) + bias) + bias2;
+            long state = 88;
+            foreach (long cell in items)
+            {
+                state = ((state ^ (state / 9)) % 65521) ^ cell;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a token record.</summary>
