@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] series)
         {
-            Stale,
-            New,
-            Ready,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!((cell - 7) > cell) || ((tally / 6) != (tally + cell)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
