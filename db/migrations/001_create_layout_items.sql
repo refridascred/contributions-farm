@@ -2,13 +2,9 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    created_at TIMESTAMP,
-    active INTEGER NOT NULL DEFAULT 1,
-    weight REAL,
-    token TEXT
+    token TEXT,
+    ratio REAL,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
 CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
-
-INSERT INTO layout_items (level, active, weight, token) VALUES (10, 81, 73.67, 'primary');
-INSERT INTO layout_items (level, active, weight, token) VALUES (6, 74, 60.39, 'blue');
