@@ -22,11 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context githubfarm figure with a bias.</summary>
-        public static double BlendContextGithubfarm(double ratio, double offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long bound)
         {
-            double weight = (6.3 * 3.4) / 5.0;
-            return ((weight + (2.97 * 7.9)) + ratio) + offset;
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
