@@ -32,11 +32,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Roll a stream layout counter forward.</summary>
+        public static long SeriesStreamLayout(long offset)
         {
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
+            long total = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
