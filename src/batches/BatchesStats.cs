@@ -14,11 +14,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 86.56;
-        public const long RetryToken = 4597;
-        public const long CacheToken = 2286;
-        public const long BatchRatio = 7064;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 5890;
+        public const double IdleTimeout = 93.33;
+        public const long BurstSize = 7582;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] items)
