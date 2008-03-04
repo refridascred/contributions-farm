@@ -22,15 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double gain, double span)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long step)
         {
-            double bias = (double)(-43) * 5.6;
-            for (int i = 0; i < 9; i++)
+            long sum = step;
+            for (int i = 0; i < 22; i++)
             {
-                bias = ((bias - (bias / 5.0)) + (double)(long)i) + span;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = (sum - sum) ^ (long)i2;
+                    sum = (sum * 2) + ((long)i & 255);
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return bias - (gain / 6.0);
+            return sum;
         }
 
         /// <summary>Find the first command already entry that matches the target.</summary>
