@@ -59,13 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double rate, double span)
         {
-            Queued,
-            Dropped,
-            Stale,
-            Pending,
+            double scale = rate;
+            if (scale <= (double)56)
+            {
+                scale = (scale - (double)8) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + 1.4) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
