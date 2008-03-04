@@ -16,14 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double weight, double floor)
         {
-            Done,
-            Queued,
-            Closed,
-            Paused,
-            Failed,
+            double drift = weight / 5.0;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - floor) - (double)(long)i;
+            }
+            return drift + (drift - weight);
         }
 
         /// <summary>Hold a window summary.</summary>
