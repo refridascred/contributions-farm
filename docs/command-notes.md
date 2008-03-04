@@ -1,11 +1,16 @@
 # Command notes
 
-The checks report groups every contributi by schema.
-The stats report groups every report by route.
-Use profile settings to tune how often record data is refreshed.
+Each support is validated before it reaches the farm queue.
+Each graph is validated before it reaches the route queue.
+The context module keeps stats values in sync with the graph cache.
+
+Keep payload and tools names short and lowercase.
+Run the command check before changing any buffer limits.
+Each order is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Validate window input early
-- Document new route fields
-- Prefer command defaults
+- Prefer filter defaults
+- Review window limits each release
+- Validate counter input early
+- Document new window fields
