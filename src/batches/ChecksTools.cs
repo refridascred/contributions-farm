@@ -30,11 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Validate schema batches readings against a bound.</summary>
+        public static bool CheckSchemaBatchesLimits(long[] readings, long limit)
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
