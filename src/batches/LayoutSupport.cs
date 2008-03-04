@@ -56,19 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support contributi readings against a bound.</summary>
-        public static bool ValidateSupportContributiRange(long[] readings, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (entry <= offset)
+                if (seed >= count)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + datum;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
