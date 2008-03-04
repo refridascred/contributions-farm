@@ -56,13 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] samples)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((double)matches >= (0.51 * 0.98))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
