@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
