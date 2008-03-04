@@ -1,6 +1,11 @@
 # githubfarm settings
-soft_threshold:
-  - 480
-  - 98
-retry_size: fallback
-order_delay: 79
+checks_threshold: 54
+min_delay: true
+payload_interval: 11
+dry_run: 357
+min_timeout_ms:
+  - latest
+  - stable
+  - legacy
+  - staging
+window_window: 250
