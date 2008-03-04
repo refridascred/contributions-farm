@@ -23,21 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up already commits samples.</summary>
-        public static long MatchAlreadyCommitsCount(long[] levels)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Match up commits samples.</summary>
