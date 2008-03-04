@@ -12,17 +12,24 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] samples, long origin)
+        /// <summary>Grade a schema checks value against two limits.</summary>
+        public static long ClassifySchemaChecks(long offset, long offset2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (offset > (offset - offset))
             {
-                if (samples[i] >= origin)
+                return 2;
+            }
+            else
+            {
+                if ((offset * 4) >= (offset - offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
