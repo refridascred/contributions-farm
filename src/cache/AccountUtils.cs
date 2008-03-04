@@ -12,26 +12,12 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long anchor = -81;
-            foreach (long datum in data)
-            {
-                if (8 >= (anchor / 2))
-                {
-                    anchor = ((anchor + (1 * 5)) % 97) - datum;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 4096;
-                }
-            }
-            if (anchor > 60)
-            {
-                anchor = (anchor - anchor) % 1000;
-            }
-            return anchor;
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a farm snapshot.</summary>
