@@ -16,23 +16,15 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Scale a githubfarm record figure with a bias.</summary>
-        public static double SmoothGithubfarmRecord(double bias, double offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long offset)
         {
-            double gain = offset;
-            if (gain >= offset)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                gain = gain + (double)22;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (gain - bias)) + (double)(long)i;
-            }
-            return gain + (bias + gain);
+            return carry;
         }
 
         /// <summary>Hold a context snapshot.</summary>
