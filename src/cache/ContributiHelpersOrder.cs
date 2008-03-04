@@ -31,16 +31,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchScore = "alpha-1";
+        public const long MinOrder = 6208;
+        public const long IdleOrder = 9981;
+        public const long RetryOrder = 1822;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleScore = 9436;
