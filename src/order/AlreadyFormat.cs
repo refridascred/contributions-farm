@@ -20,29 +20,35 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long bound, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long step, long step2)
         {
-            long offset2 = bound + offset;
-            if ((offset ^ offset2) != (offset2 & 127))
+            if (!((step + step) >= 60))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (((offset + bound) != (bound * 2)) && ((double)offset >= (7.0 + 9.48)))
+                if ((step2 >> 1) >= step2)
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)bound >= (14.0 + 14.0))
+                    if ((step << 2) <= (step2 ^ step))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 2;
+                        if (step >= (step + step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
