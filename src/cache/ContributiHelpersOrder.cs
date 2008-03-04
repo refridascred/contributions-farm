@@ -31,19 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double scale, double floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double rate = scale - floor;
-            if (rate < rate)
-            {
-                rate = rate + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (rate + scale)) + (double)(long)i;
-            }
-            return rate + floor;
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
