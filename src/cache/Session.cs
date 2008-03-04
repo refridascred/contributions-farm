@@ -30,11 +30,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 2829;
-        public const long StepFactor = 3392;
-        public const string SoftFormat = "primary";
-        public const double LimitFormat = 87.7;
-        public const string MaxLevel = "alpha-v2";
+        /// <summary>Measure how many contributi queue samples are out of range.</summary>
+        public static long CountContributiQueueHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((double)tally >= (double)reading) && ((15.0 / 2.0) > (double)reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
