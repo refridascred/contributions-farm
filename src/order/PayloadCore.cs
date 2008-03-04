@@ -38,12 +38,31 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long seed, long offset)
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            if ((offset > 0) && ((offset & 1) <= (484 >> 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)offset <= 0.73) && ((322 + seed) <= (seed - seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset << 3) != (seed - 92))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph record.</summary>
