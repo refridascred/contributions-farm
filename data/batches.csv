@@ -1,7 +1,10 @@
-id,label,owner,level,state
-1,77.82,64.55,stable,189
-2,29.27,edge,250,green
-3,948,97.8,staging,480
-4,standard,593,274,strict
-5,684,91.77,62.87,51.8
-6,75.4,56,959,772
+id,weight,count,label,state
+1,green,261,47,507
+2,29.73,259,545,14.18
+3,local,14.41,86.48,535
+4,primary,standard,standard,292
+5,edge,91.5,610,78
+6,primary,stable,27.27,eu-west
+7,547,894,434,fallback
+8,local,stable,latest,23.88
+9,47.27,primary,strict,strict
