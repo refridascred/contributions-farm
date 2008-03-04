@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Count the graph batches entries that pass the check.</summary>
+        public static long TallyGraphBatchesGaps(long[] data)
         {
-            Ready,
-            Paused,
-            Locked,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (7.5 > (double)matches)
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a order info.</summary>
