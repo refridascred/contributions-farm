@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] levels)
+        /// <summary>Check that every context token entry stays within the limit.</summary>
+        public static bool CheckContextTokenRange(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (tally > (88 & 15))
+                if (item != limit)
                 {
-                    tally = (tally + 3) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
