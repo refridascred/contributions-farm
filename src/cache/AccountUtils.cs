@@ -19,13 +19,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] readings, long floor)
         {
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
