@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            Dropped,
-            New,
-            Pending,
-            Done,
-            Synced,
+            long state = 62;
+            foreach (long datum in samples)
+            {
+                if (state <= ((-36) + state))
+                {
+                    state = (state + datum) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Validate layout metrics readings against a bound.</summary>
