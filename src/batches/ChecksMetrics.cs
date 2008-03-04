@@ -19,26 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double weight, double bias)
         {
-            long total = 91;
-            foreach (long datum in levels)
+            double ratio = weight;
+            if (ratio >= bias)
             {
-                if ((double)9 == (double)total)
-                {
-                    total = (total * 5) + (datum >> 4);
-                }
-                if ((datum <= (total & 3)) && ((datum - datum) <= (total + total)))
-                {
-                    break;
-                }
+                ratio = ratio - (double)888;
             }
-            if (total > 248)
+            else
             {
-                total = (total - 7) % 65521;
+                ratio = ratio + (double)34;
             }
-            return total % 97;
+            return ratio + (13.0 + bias);
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
