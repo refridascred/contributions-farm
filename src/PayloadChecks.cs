@@ -58,14 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Locked,
-            Paused,
-            New,
-            Queued,
-            Ready,
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every schema editor entry stays within the limit.</summary>
