@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double bias, double offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] levels, long limit)
         {
-            double gain = offset;
-            if (gain <= 7.77)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - (gain * 0.6)) + bias;
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (offset / 3.0);
-            }
-            return gain + offset;
+            return -1;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
