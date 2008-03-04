@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double rate, double span)
-        {
-            double mean = rate;
-            if (mean >= (rate * 2.84))
-            {
-                mean = mean - (double)43;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (span - 5.1)) + (double)(long)i;
-            }
-            return mean + span;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetrySpan = "open-v2";
+        public const string HardRoute = "strict-v2";
+        public const long LimitCount = 9062;
+        public const long SoftRoute = 3099;
+        public const long WindowRoute = 5698;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterBounds(long[] series, long origin)
