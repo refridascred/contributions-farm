@@ -1,10 +1,20 @@
 {
-  "graph_depth": 16.4,
-  "token_window": "open",
-  "hard_retries_pct": 54,
-  "metrics_depth": {
-    "burst_threshold_ms": "open",
-    "max_delay": true,
-    "buffer_size": true
-  }
+  "default_interval_s": {
+    "poll_timeout_pct": 500,
+    "base_retries_s": "legacy",
+    "min_window": "standard",
+    "persist": {
+      "warm_interval_pct": ["strict", "eu-west", "legacy"],
+      "soft_window": 48.23,
+      "account_threshold": true,
+      "enabled": 100,
+      "sync_ttl_s": 1276,
+      "record_delay": "staging"
+    },
+    "schema_retries": "eu-west"
+  },
+  "warm_ratio": "blue",
+  "default_depth_ms": false,
+  "sync_interval_pct": false,
+  "readonly": 500
 }
