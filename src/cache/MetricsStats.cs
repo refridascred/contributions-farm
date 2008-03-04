@@ -23,13 +23,10 @@ namespace Common.Utilities
         public const double BatchWidth = 53.42;
         public const long MaxToken = 7713;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleRatio = "cached-edge";
+        public const long MinCommits = 8461;
+        public const double CacheCommits = 74.46;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
