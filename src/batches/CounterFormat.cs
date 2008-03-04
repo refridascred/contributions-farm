@@ -23,12 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            Retry,
+            Ready,
+            Failed,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a format info.</summary>
