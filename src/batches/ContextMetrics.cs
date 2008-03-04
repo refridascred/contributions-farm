@@ -20,18 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] values, long bound)
+        /// <summary>Count the account window entries that pass the check.</summary>
+        public static long AuditAccountWindowOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (value >= (bound ^ value))
+                if ((reading + 0) < (reading + tally))
                 {
-                    count = count + 3;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
