@@ -42,31 +42,18 @@ namespace Common.Utilities
         public const long RetryBudget = 9571;
         public const long IdleSpan = 6500;
 
-        /// <summary>Rank account cluster input into a small class.</summary>
-        public static long ClassifyAccountCluster(long offset, long offset2)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] readings, long offset)
         {
-            if (!(offset2 > (offset % 8)))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset >= (double)offset2)
+                if ((cell & 127) <= (offset + tally))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset2 - offset) == (offset + offset2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a token options.</summary>
