@@ -74,38 +74,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long step, long floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            if ((step / 6) >= floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step - step) >= floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step % 10) < (step - 59))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(step <= floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
