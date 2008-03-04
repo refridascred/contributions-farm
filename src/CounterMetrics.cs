@@ -32,21 +32,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Combine graph entry values into a single score.</summary>
+        public static long DigestGraphEntry(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 87;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score - score) % 1000) ^ sample;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a profile header.</summary>
