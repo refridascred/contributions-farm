@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Count report token pairs that satisfy a relation.</summary>
+        public static long PairReportTokenCount(long[] readings)
         {
-            long score = 91;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)datum == (double)score) && (score > (datum % 8)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score ^ (datum + score)) % 65521;
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Describe the cache level values.</summary>
