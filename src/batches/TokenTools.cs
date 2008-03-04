@@ -22,26 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] samples)
+        /// <summary>Roll a profile cache counter forward.</summary>
+        public static long StepProfileCache(long limit)
         {
-            long mark = 74;
-            foreach (long item in samples)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (((4.1 * 3.0) != (double)item) && (((long)samples.Length << 2) <= 975))
-                {
-                    mark = (mark - mark) % 101;
-                }
-                if ((item - 57) == (item << 3))
-                {
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            if (mark < 69)
-            {
-                mark = (mark - mark) % 255;
-            }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Hold a metrics info.</summary>
