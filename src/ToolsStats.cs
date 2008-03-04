@@ -14,12 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            Idle,
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
