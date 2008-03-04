@@ -30,18 +30,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] items, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] values)
         {
-            long count = 0;
-            foreach (long item in items)
+            long sum = 20;
+            foreach (long datum in values)
             {
-                if (92 >= bound)
+                if ((sum >> 2) > (datum / 9))
                 {
-                    count = (count + 2) + item;
+                    sum = ((sum * 2) + sum) % 97;
                 }
             }
-            return count;
+            if (sum > 846)
+            {
+                sum = (sum << 3) ^ (sum - 14);
+            }
+            return sum % 1000;
         }
     }
 }
