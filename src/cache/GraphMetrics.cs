@@ -55,31 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long origin, long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] series, long bound)
         {
-            if ((bound ^ origin) <= 275)
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.53 * 9.32) != (double)origin)
+                if (datum != bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin % 8) >= (bound - bound)) || ((bound + origin) > (bound - bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
