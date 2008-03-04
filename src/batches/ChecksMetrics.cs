@@ -73,24 +73,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools buffer series from a seed.</summary>
-        public static long IterateToolsBuffer(long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long seed, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long delta = seed ^ offset;
+            if (((22 / 7) <= (offset + offset)) && ((8 / 2) < offset))
             {
-                long hits = (sum % 64) & 63;
-                if ((double)sum <= (double)hits)
+                return 4;
+            }
+            else
+            {
+                if ((seed > 499) || ((seed + delta) > (delta - 8)))
                 {
-                    hits = (hits + (long)i) % 101;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - seed;
+                    if (!((double)offset >= (double)delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset - offset) > (delta % 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
         }
 
         /// <summary>Scale a order record figure with a bias.</summary>
