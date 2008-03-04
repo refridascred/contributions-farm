@@ -40,23 +40,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double scale, double span)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double load = 17.0 + 10.0;
-            if (load < load)
-            {
-                load = load - scale;
-            }
-            else
-            {
-                load = load - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (span * 19.0)) + (double)(long)i;
-            }
-            return load + span;
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
