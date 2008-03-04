@@ -27,21 +27,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 1)
+                    if ((samples[i] - samples[j]) != 3)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
