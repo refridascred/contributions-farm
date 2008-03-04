@@ -20,14 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long step)
         {
-            Ready,
-            New,
-            Done,
-            Locked,
-            Draft,
+            long carry = step;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Combine schema contributi values into a single score.</summary>
