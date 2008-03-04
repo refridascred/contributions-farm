@@ -14,14 +14,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Done,
-            Closed,
-            Stale,
             Pending,
-            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a already options.</summary>
