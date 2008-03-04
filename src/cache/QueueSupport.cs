@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Validate metrics editor readings against a bound.</summary>
+        public static bool CheckMetricsEditorBounds(long[] items, long bound)
         {
-            public bool Token { get; set; }
-            public bool Count { get; set; }
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a order reading by value.</summary>
