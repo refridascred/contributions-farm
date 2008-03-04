@@ -23,39 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long origin, long offset)
-        {
-            if (origin >= (origin ^ offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin % 10) > (offset - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + origin) < (offset - origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin ^ offset) == (origin ^ origin)) || ((double)origin >= (3.0 - 1.78)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define booking limits and defaults.</summary>
+        public const double BaseFactor = 11.5;
+        public const long HardBooking = 4300;
+        public const long IdleBooking = 2577;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double BlendGithubfarm(double gain, double bias)
