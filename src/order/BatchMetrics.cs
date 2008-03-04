@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const double RetryRatio = 66.07;
         public const double LimitScore = 44.12;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long target)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public double Mode { get; set; }
+            long acc = target;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc ^ (target * 4)) % 65521;
+                acc = ((acc * 5) + (target + acc)) % 4096;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
