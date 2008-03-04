@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double weight, double span)
-        {
-            double drift = weight;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift - (double)3) + (double)(long)i) - span;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 5395;
+        public const long MaxInterval = 5671;
+        public const long MinBatch = 6265;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportLimits(long[] readings, long seed)
