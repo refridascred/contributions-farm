@@ -42,12 +42,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two account measurements.</summary>
