@@ -49,15 +49,14 @@ namespace Common.Utilities
         public const string MinCount = "legacy";
         public const long DefaultInterval = 6016;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Pending,
+            Failed,
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
