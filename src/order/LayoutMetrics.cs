@@ -41,24 +41,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double weight, double offset)
         {
-            long total = 38;
-            foreach (long entry in readings)
+            double bias = (offset + 3.68) + weight;
+            if (bias <= (offset - offset))
             {
-                total = (total << 3) ^ (entry >> 4);
-                total = total + 25;
-                if (((entry & 31) < (entry << 3)) || ((double)(long)readings.Length != (1.0 * 9.9)))
-                {
-                    break;
-                }
+                bias = bias - (bias - weight);
             }
-            if (total < (-5))
-            {
-                total = ((total << 2) ^ (650 & 15)) % 101;
-            }
-            return total % 1000;
+            return bias + (double)43;
         }
     }
 }
