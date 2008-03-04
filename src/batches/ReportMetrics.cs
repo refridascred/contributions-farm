@@ -37,18 +37,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] items, long seed)
+        /// <summary>Classify a stream tools pair into a bucket.</summary>
+        public static long ClassifyStreamTools(long seed, long step)
         {
-            long hits = 0;
-            foreach (long item in items)
+            if ((step >> 2) < (seed - step))
             {
-                if ((hits * 3) > (seed / 6))
+                return 1;
+            }
+            else
+            {
+                if ((9.36 - 1.3) > (double)step)
                 {
-                    hits = (hits + 2) + item;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed < (step % 10)) || ((5.2 * 2.25) != (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
