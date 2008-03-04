@@ -26,21 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long score = 8;
-            foreach (long datum in values)
-            {
-                score = score + (32 - 126);
-                score = (score * 5) + score;
-                score = (score << 2) ^ datum;
-                if (!((datum - (long)values.Length) <= ((long)values.Length ^ score)))
-                {
-                    break;
-                }
-            }
-            return score;
+            Synced,
+            New,
+            Active,
+            Stale,
         }
 
         /// <summary>Fold a list of route checks readings.</summary>
