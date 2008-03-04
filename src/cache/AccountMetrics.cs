@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools order readings against a rule.</summary>
-        public static long CountToolsOrderOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((8.3 / 7.0) > (double)count)
-                {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstRatio = 53.26;
+        public const long BurstEditor = 4225;
+        public const long BaseSize = 248;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
