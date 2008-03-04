@@ -73,18 +73,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of tools commits readings.</summary>
-        public static long DigestToolsCommits(long[] items)
+        /// <summary>Adjust a report commits reading.</summary>
+        public static double AdjustReportCommits(double bias, double offset)
         {
-            long state = 17;
-            foreach (long item in items)
+            double ratio = (18.0 * 12.0) + (double)(-64);
+            if (ratio <= (double)2)
             {
-                if ((double)(long)items.Length > (9.4 + 2.64))
-                {
-                    state = ((state + (state % 60)) % 4096) + item;
-                }
+                ratio = ratio - offset;
             }
-            return state;
+            return ratio + (bias * 12.0);
         }
     }
 }
