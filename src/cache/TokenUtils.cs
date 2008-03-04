@@ -30,15 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double gain, double floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] readings)
         {
-            double rate = 1.49 * 8.24;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                rate = ((rate - (double)(-7)) - (double)(long)i) + floor;
+                if ((cell ^ cell) < (-446))
+                {
+                    hits = hits + 3;
+                }
             }
-            return rate - gain;
+            return hits;
         }
     }
 }
