@@ -14,15 +14,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Compare every pair of filter window readings.</summary>
