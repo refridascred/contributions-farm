@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleSpan = 6620;
-        public const double RetryRatio = 66.07;
-        public const double LimitScore = 44.12;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((item - 60) < (seen - seen)) && ((double)origin >= 4.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long RollStream(long target)
