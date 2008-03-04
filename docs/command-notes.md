@@ -1,10 +1,14 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-The token report groups every channel by session.
+The stream report groups every notes by session.
+Each buffer is validated before it reaches the stream queue.
+
+Each batch is validated before it reaches the format queue.
+Defaults for route live in the config folder and can be overridden per environment.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Validate counter input early
-- Keep graph values small
+- Log every already change
+- Document new filter fields
+- Validate contributi input early
