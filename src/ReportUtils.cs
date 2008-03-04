@@ -43,13 +43,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Scale a cache window figure with a bias.</summary>
+        public static double ProjectCacheWindow(double bias, double bias2)
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            double ratio = bias2 - (double)8;
+            if (ratio < (ratio - ratio))
+            {
+                ratio = ratio - (bias + 4.51);
+            }
+            else
+            {
+                ratio = ratio + (double)148;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)0) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Classify a graph metrics pair into a bucket.</summary>
