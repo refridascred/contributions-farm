@@ -48,17 +48,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] series, long origin)
+        /// <summary>Accumulate counter tools samples.</summary>
+        public static long TallyCounterTools(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 8;
+            foreach (long reading in values)
             {
-                if ((series[i] == origin) && ((series[i] % 5) == 0))
+                if ((double)bound < 3.39)
                 {
-                    return (long)i;
+                    score = ((score * 5) + (bound - bound)) % 255;
+                }
+                else
+                {
+                    score = score ^ (reading * 5);
+                    score = ((score * 2) + (score + 407)) % 1000;
+                }
+                if ((double)score >= (10.0 + 4.6))
+                {
+                    score = ((score << 2) ^ (score * 3)) % 255;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
