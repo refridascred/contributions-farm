@@ -47,10 +47,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 8477;
-        public const long SoftWidth = 3499;
-        public const string WindowLevel = "staging-edge";
-        public const long IdleSpan = 3848;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Retry,
+            Stale,
+            Pending,
+            Closed,
+        }
     }
 }
