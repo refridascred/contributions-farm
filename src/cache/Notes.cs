@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit graph queue readings against a rule.</summary>
-        public static long AuditGraphQueueOutliers(long[] samples, long target)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item << 1) < (7 % 3))
-                {
-                    seen = (seen + 1) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Queued,
+            Stale,
+            Pending,
+            Active,
         }
 
         /// <summary>Count schema filter pairs that satisfy a relation.</summary>
