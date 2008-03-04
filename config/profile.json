@@ -1,10 +1,7 @@
 {
-  "hard_ttl": "strict",
-  "githubfarm_delay": 2.05,
-  "burst_timeout_pct": {
-    "min_capacity": false,
-    "hard_interval": "open",
-    "poll_capacity_count": "open"
-  },
-  "max_delay": 68.71
+  "hard_retries_s": [490, 132, 281, 222],
+  "min_timeout_ms": 250,
+  "checks_timeout": false,
+  "default_ttl": 30.65,
+  "report_ratio": 500
 }
