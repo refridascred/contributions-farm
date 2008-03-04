@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary fallback local green; do
+for item in fallback cached; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=139
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
