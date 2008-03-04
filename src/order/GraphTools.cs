@@ -62,17 +62,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] series, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long target, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((target << 3) <= (346 / 6))
             {
-                if (series[i] > limit)
+                return 6;
+            }
+            else
+            {
+                if (!((target - seed) == ((-98) & 63)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((-98) << 1) >= (target ^ seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
