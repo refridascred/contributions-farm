@@ -14,29 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry << 2) ^ 91) % 1000;
-                if (step > (step & 63))
-                {
-                    carry = (carry * 4) + (7 >> 3);
-                    carry = ((carry << 2) ^ (step & 7)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry ^ 963)) % 65521;
-                }
-                if (9.0 >= (double)carry)
-                {
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Failed,
+            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
