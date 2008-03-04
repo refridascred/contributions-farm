@@ -75,17 +75,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] items, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = (floor * 4.16) / 9.0;
+            if (weight >= 2.1)
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (double)351) - gain;
             }
-            return -1;
+            return weight - (double)(-5);
         }
     }
 }
