@@ -11,23 +11,29 @@ namespace Common.Utilities
         public const double CacheGraph = 40.44;
         public const long BatchGraph = 6476;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long offset, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long step, long seed)
         {
-            long cur = offset ^ target;
-            if ((offset << 3) >= 15)
+            if ((2 + seed) <= (step + 848))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((offset > (target * 4)) || (cur <= (cur - target)))
+                if (((239 + step) < (step % 64)) && ((seed << 1) == (step * 2)))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    return 6;
+                    if (((9.1 * 2.14) != (double)step) || ((304 + seed) != (step + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
