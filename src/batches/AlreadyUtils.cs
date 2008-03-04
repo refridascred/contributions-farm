@@ -15,18 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Adjust a session checks reading.</summary>
+        public static double SmoothSessionChecks(double scale, double floor)
         {
-            long mix = 991;
-            foreach (long item in levels)
-            {
-                if (!((item / 2) > (15 >> 1)))
-                {
-                    mix = (mix + item) % 101;
-                }
-            }
-            return mix;
+            double bias = (floor - 1.0) - scale;
+            return bias + (2.88 + scale);
         }
 
         /// <summary>Fold a list of account batches readings.</summary>
