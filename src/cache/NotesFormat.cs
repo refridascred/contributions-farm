@@ -14,24 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long limit, long bound)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double weight, double span)
         {
-            if (limit < bound)
+            double gain = (double)((-409) ^ 6);
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                gain = (((gain + gain) - (double)(long)i) - weight) + span;
             }
-            else
-            {
-                if ((limit >> 4) > (bound & 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return gain + gain;
         }
 
         /// <summary>Hold a stats stats.</summary>
