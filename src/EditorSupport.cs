@@ -31,15 +31,21 @@ namespace Common.Utilities
         public const long BurstScore = 3754;
         public const string MaxLevel = "latest-1";
 
-        /// <summary>Adjust a notes account reading.</summary>
-        public static double ProjectNotesAccount(double bias, double offset)
+        /// <summary>Match up order entry samples.</summary>
+        public static long OverlapOrderEntryCount(long[] values)
         {
-            double ratio = 4.4;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ((ratio + (offset / 8.0)) - (double)(long)i) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio - (double)(-43);
+            return matches;
         }
 
         /// <summary>Locate a cache notes reading by value.</summary>
