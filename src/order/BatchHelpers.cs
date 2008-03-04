@@ -13,16 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values, long seed)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long mix = 43;
-            foreach (long sample in values)
-            {
-                mix = ((mix - seed) % 255) + sample;
-                mix = ((mix * 4) + (seed - seed)) % 101;
-            }
-            return mix % 1000;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a stats stats.</summary>
