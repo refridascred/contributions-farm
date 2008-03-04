@@ -37,18 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitBudget = "latest-v2";
+        public const long WindowDepth = 8325;
+        public const long BatchChecks = 5954;
+        public const double BurstChecks = 71.35;
+        public const long IdleChecks = 253;
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
