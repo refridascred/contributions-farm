@@ -20,22 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count githubfarm token pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmTokenCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 2770;
+        public const long BurstBudget = 6391;
+        public const long StepBatches = 5593;
+        public const long IdleBatches = 5065;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
