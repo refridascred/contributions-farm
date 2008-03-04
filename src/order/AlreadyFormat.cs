@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double bias, double offset)
         {
-            public double Count { get; set; }
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            double load = (double)(48 / 7);
+            if (load < (double)21)
+            {
+                load = (load + bias) + offset;
+            }
+            return load - 6.73;
         }
 
         /// <summary>Define account limits and defaults.</summary>
