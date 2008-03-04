@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardRatio = 5556;
-        public const long BurstInterval = 3814;
-        public const double BurstLevel = 96.65;
-        public const long SoftBatch = 1907;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count - count) <= (count / 7))
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit channel metric readings against a rule.</summary>
         public static long AuditChannelMetricMatches(long[] series, long origin)
