@@ -37,19 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double rate, double bias)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] readings)
         {
-            double gain = (double)180 / 4.0;
-            if (gain >= (bias * 20.0))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                gain = (gain - (2.0 - gain)) - rate;
+                if ((matches - item) > 64)
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            return gain + bias;
+            return matches;
         }
     }
 }
