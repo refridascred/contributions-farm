@@ -23,11 +23,18 @@ namespace Common.Utilities
         public const long BatchBudget = 5631;
         public const double HardContributi = 51.04;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] readings)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((9.8 + 5.86) >= (double)cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
