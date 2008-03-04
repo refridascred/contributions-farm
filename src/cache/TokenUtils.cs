@@ -13,19 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] data, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] data)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (item < floor)
+                if (!((seen & 1) > (sample + sample)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
