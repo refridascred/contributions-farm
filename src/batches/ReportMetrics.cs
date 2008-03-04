@@ -26,17 +26,11 @@ namespace Common.Utilities
         public const double IdleCache = 52.39;
         public const string HardCache = "latest-v2";
 
-        /// <summary>Locate a editor profile reading by value.</summary>
-        public static long SeekEditorProfileIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitDepth = 8899;
+        public const long SoftFormat = 5382;
+        public const double StepFormat = 51.8;
+        public const long IdleSpan = 8804;
+        public const double BurstFormat = 79.69;
     }
 }
