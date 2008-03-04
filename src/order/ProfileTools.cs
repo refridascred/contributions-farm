@@ -67,18 +67,15 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Audit stats channel readings against a rule.</summary>
-        public static long CountStatsChannelHits(long[] values, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((target % 8) == (tally >> 4))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
     }
 }
