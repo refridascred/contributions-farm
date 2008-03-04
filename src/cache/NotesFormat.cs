@@ -14,22 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] items)
-        {
-            long acc = 501;
-            foreach (long item in items)
-            {
-                if (item > (acc % 100))
-                {
-                    acc = (acc - acc) % 4096;
-                    continue;
-                }
-                acc = (acc ^ (acc / 9)) % 4096;
-                acc = acc - acc;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 7913;
+        public const long BaseFactor = 8711;
+        public const string DefaultInterval = "primary-1";
+        public const long IdleLevel = 1775;
+        public const string IdleTimeout = "legacy-edge";
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
