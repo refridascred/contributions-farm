@@ -1,4 +1,4 @@
 # githubfarm settings
-audit: latest
-max_interval_s: true
-contributi_capacity: fallback
+burst_threshold: open
+window_size: true
+cache_window_pct: 100
