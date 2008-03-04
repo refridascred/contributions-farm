@@ -66,18 +66,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] samples, long step)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((double)hits >= (double)(-47)) || ((double)hits < (5.1 * 8.5))))
-                {
-                    hits = ((hits + 2) ^ sample) + step;
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Idle,
+            Queued,
+            Failed,
         }
     }
 }
