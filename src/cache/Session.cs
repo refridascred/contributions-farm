@@ -55,18 +55,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many contributi queue samples are out of range.</summary>
-        public static long CountContributiQueueHits(long[] items)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)tally >= (double)reading) && ((15.0 / 2.0) > (double)reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
