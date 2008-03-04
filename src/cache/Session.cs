@@ -34,13 +34,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Dropped,
-            Ready,
-            Done,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardSpan = "standard-edge";
+        public const long LimitPayload = 3251;
+        public const string MinPayload = "cached-edge";
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
