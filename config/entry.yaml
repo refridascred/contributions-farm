@@ -1,10 +1,17 @@
 # entry settings
-sync_window_s: staging
-hard_depth_s: 3502
-retry_window_count:
-  - local
-  - legacy
-  - local
-  - edge
-soft_limit_pct: open
-command_interval: cached
+readonly:
+  farm_timeout:
+    warm_ratio_pct: 2017
+    readonly: fallback
+    retry_delay_s: latest
+  report_limit:
+    - open
+    - local
+    - cached
+    - latest
+  profile_size: stable
+graph_limit:
+  - 282
+  - 345
+  - 490
+record_depth: false
