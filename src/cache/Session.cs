@@ -25,19 +25,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] values, long offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long target, long floor)
         {
-            long carry = 135;
-            foreach (long value in values)
+            if ((target + target) <= (800 / 6))
             {
-                carry = ((carry * 5) + (offset >> 3)) ^ value;
+                return 8;
             }
-            if (carry < 540)
+            else
             {
-                carry = carry ^ (offset << 1);
+                if ((floor * 5) > (floor % 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((1.97 - 3.03) < (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((2.2 / 5.0) != (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return carry % 4096;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
