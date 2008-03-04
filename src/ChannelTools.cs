@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] samples, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the record class values.</summary>
