@@ -13,11 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
