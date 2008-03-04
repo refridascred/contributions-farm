@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultRecord = "legacy-edge";
-        public const long RetryRecord = 5920;
-        public const long BaseRecord = 5261;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Idle,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadRange(long[] readings, long step)
