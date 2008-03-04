@@ -46,22 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch token entries that pass the check.</summary>
-        public static long MeasureBatchTokenOutliers(long[] items)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (331 >= ((long)items.Length + seen))
+                if ((sample >> 2) > (tally ^ offset))
                 {
-                    seen = (seen + 3) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
