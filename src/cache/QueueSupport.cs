@@ -33,11 +33,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] levels)
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)seen != (4.0 - 0.71))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
         }
     }
 }
