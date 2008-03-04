@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] samples, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] levels)
         {
-            long mark = 4;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((cell / 4) <= (65 * 4))
+                if (datum < 18)
                 {
-                    mark = mark - (cell ^ 24);
-                }
-                if ((6.0 * 8.26) > (double)offset)
-                {
-                    mark = ((mark << 3) ^ (3 % 2)) % 101;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (offset - cell);
+                    count = count + 1;
                 }
             }
-            if (mark > 744)
-            {
-                mark = (mark + (offset + mark)) % 4096;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Match up channel samples.</summary>
