@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a stream token pair into a bucket.</summary>
-        public static long GradeStreamToken(long origin, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] samples, long floor)
         {
-            long gap = origin + target;
-            if (((gap + target) <= gap) || ((target * 3) < gap))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin + origin) <= (gap / 3)) && ((double)target <= (9.71 + 5.0)))
+                if ((cell - matches) == ((-457) % 12))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin % 10) >= 88)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = (matches + 1) + floor;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
