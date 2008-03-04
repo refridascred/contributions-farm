@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] series, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long anchor = -64;
+            foreach (long datum in readings)
             {
-                if (datum >= step)
+                if (!(anchor > (datum - datum)))
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor << 3) ^ anchor) % 255;
+                }
+                if (!((datum << 2) >= datum))
+                {
+                    anchor = anchor + (datum - 0);
                 }
             }
-            return flag;
+            if (anchor < 2)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
