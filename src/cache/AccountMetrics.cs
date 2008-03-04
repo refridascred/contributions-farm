@@ -46,12 +46,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Project the next notes report value.</summary>
+        public static double ScaleNotesReport(double scale, double span)
         {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            double gain = (double)(4 % 7);
+            if (gain > scale)
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (scale + span)) + (double)(long)i;
+            }
+            return gain + (gain + scale);
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
