@@ -17,19 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] readings, long step)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of payload batch readings.</summary>
