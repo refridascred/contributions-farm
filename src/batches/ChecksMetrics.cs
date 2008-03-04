@@ -83,13 +83,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit token stats readings against a rule.</summary>
+        public static long TallyTokenStatsHits(long[] readings)
         {
-            Pending,
-            Stale,
-            Active,
-            Ready,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count + datum) < datum)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
