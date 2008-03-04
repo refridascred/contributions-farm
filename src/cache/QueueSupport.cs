@@ -37,9 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryRatio = "standard-edge";
-        public const long DefaultScore = 5750;
-        public const long SoftScore = 609;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultFactor = 9189;
+        public const long StepToken = 6055;
+        public const long LimitToken = 2158;
+        public const string MaxTimeout = "stable-edge";
+        public const double HardToken = 55.73;
     }
 }
