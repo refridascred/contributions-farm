@@ -1,11 +1,13 @@
 # githubfarm settings
-context_capacity: 4973
-profile_limit: false
-flush_delay: local
-default_retries_s: 6245
-dry_run:
-  - eu-west
-  - local
-  - eu-west
-  - open
-hard_ttl: 92.83
+default_limit_ms: standard
+hard_capacity: 51.81
+flush_window: 69
+schema_size: 60
+audit:
+  dry_run: 11.03
+  persist: 73
+  already_window: true
+  flush_retries: eu-west
+max_window_s:
+  - 459
+  - 216
