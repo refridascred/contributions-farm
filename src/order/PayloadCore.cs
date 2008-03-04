@@ -38,18 +38,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] readings)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((9.8 + 5.86) >= (double)cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
