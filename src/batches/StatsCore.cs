@@ -53,16 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] readings, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] items, long step)
         {
-            long state = 11;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in items)
             {
-                state = (((state ^ state) % 4096) + entry) + step;
-                state = ((state * 3) + 68) % 255;
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
