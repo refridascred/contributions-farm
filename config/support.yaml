@@ -1,7 +1,7 @@
 # support settings
-base_capacity_pct:
-  min_threshold_count: 11.26
-  hard_ttl_pct: false
-  route_ttl: primary
-warm_delay: stable
-strict: legacy
+filter_ratio: 57.12
+idle_limit_pct: 5966
+dry_run: standard
+cache_interval_s: cached
+batch_delay_s: 1024
+layout_timeout: legacy
