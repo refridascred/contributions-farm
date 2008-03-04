@@ -73,22 +73,38 @@ namespace Common.Utilities
         public const string StepInterval = "strict";
         public const string BatchFarm = "standard-1";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] levels, long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            if (offset < (origin % 5))
             {
-                if ((double)tally <= (double)datum)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin > 11.0)
                 {
-                    tally = (tally + 2) - seed;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((offset ^ offset) >= (offset / 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((9.0 * 4.0) >= (double)origin) || ((origin ^ offset) <= (origin + origin)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
