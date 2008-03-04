@@ -19,21 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                score = (score ^ ((long)i + (long)i)) % 4096;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = ((score + (70 + (long)i)) % 97) ^ (long)i2;
-                }
-                score = (score + seed) % 4096;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Active,
+            Ready,
+            Failed,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
