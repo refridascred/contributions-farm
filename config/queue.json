@@ -1,5 +1,5 @@
 {
-  "idle_window_s": "open",
-  "audit": 60,
-  "support_depth": ["strict", "open", "standard"]
+  "default_size": 30,
+  "hard_size_s": 30,
+  "stats_threshold": [395, 290, 267]
 }
