@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] series, long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry > offset)
+                long diff = ((long)i << 1) + ((long)i + offset);
+                if ((((long)i << 1) >= offset) || ((double)acc >= (1.0 - 12.0)))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc ^ (9 + diff)) % 97;
+                    diff = ((diff << 3) ^ (long)i) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Fold a list of token readings.</summary>
