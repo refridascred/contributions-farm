@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Pending,
+            Active,
         }
 
         /// <summary>Match up route samples.</summary>
