@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long limit, long seed)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long origin)
         {
-            long cur = limit - seed;
-            if ((804 << 1) > (seed & 31))
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (8.0 <= (double)cur)
+                if ((origin ^ (long)i) == (anchor + origin))
                 {
-                    return 8;
+                    break;
                 }
-                else
-                {
-                    return 4;
-                }
+                anchor = (anchor ^ (origin - (long)i)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Audit token order readings against a rule.</summary>
