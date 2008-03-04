@@ -1,12 +1,7 @@
 {
-  "editor_interval": "standard",
-  "strict": {
-    "poll_limit_s": 17.76,
-    "tools_depth": "stable",
-    "retry_ttl": 563,
-    "cache_threshold_pct": false,
-    "soft_size": "primary"
-  },
-  "soft_limit_ms": "stable",
-  "soft_size": false
+  "format_depth": 20.2,
+  "persist": 31.28,
+  "burst_size": [407, 347, 283, 75],
+  "window_window": 1024,
+  "route_window": "standard"
 }
