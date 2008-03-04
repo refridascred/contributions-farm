@@ -79,18 +79,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] series, long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long result = 274;
-            foreach (long value in series)
-            {
-                if (value <= ((long)series.Length - value))
-                {
-                    result = ((result * 2) + (value << 1)) - seed;
-                }
-            }
-            return result % 1000;
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
