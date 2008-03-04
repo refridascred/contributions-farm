@@ -1,5 +1,6 @@
 {
-  "idle_interval_s": "primary",
-  "compress": "legacy",
-  "soft_window_s": 57
+  "strict": 56,
+  "compress": "stable",
+  "already_threshold": 17,
+  "max_ttl": ["open", "legacy", "local"]
 }
