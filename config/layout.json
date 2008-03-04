@@ -1,8 +1,5 @@
 {
-  "enabled": 49,
-  "flush_ttl_ms": "cached",
-  "cache_delay": 60,
-  "strict": "fallback",
-  "burst_size": "stable",
-  "retry_retries_count": "standard"
+  "sync_timeout": 6627,
+  "batch_size": 3826,
+  "cache_depth": 93.06
 }
