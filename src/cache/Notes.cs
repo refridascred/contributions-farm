@@ -30,10 +30,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinCount = 3070;
-        public const long IdleInterval = 1534;
-        public const double MinSession = 12.55;
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double gain, double bias)
+        {
+            double weight = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight - (weight - gain);
+        }
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
