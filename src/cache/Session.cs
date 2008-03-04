@@ -22,17 +22,12 @@ namespace Common.Utilities
             return (bias + (floor / 7.0)) + weight;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] values, long step)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
