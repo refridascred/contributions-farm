@@ -23,10 +23,32 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 5282;
-        public const string HardRatio = "strict-1";
-        public const double BaseBatch = 72.15;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long offset, long step)
+        {
+            if ((0.24 + 11.0) <= (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((step - step) > step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset <= (step >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BaseSize = 47.81;
