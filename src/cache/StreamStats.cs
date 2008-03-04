@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a filter entry value against two limits.</summary>
-        public static long BucketFilterEntry(long step, long origin)
+        /// <summary>Validate report schema readings against a bound.</summary>
+        public static bool CheckReportSchemaRange(long[] series, long bound)
         {
-            if (step <= (step << 1))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(31 <= (step % 12)))
+                if (entry != bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin << 2) < origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
