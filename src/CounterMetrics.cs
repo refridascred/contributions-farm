@@ -39,12 +39,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] readings, long step)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
+            long state = 789;
+            foreach (long entry in readings)
+            {
+                state = ((state << 3) ^ (state + entry)) - step;
+            }
+            return state;
         }
     }
 }
