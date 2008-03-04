@@ -40,11 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double weight, double floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double ratio, double floor)
         {
-            double bias = floor;
-            return (bias + (floor / 7.0)) + weight;
+            double mean = (double)(32 ^ 2);
+            if (mean < (ratio + ratio))
+            {
+                mean = mean - (floor / 8.0);
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
