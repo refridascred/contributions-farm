@@ -28,18 +28,11 @@ namespace Common.Utilities
         public const long SoftRatio = 3169;
         public const long SoftOrder = 3036;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] levels)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + 23) >= (long)levels.Length)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double gain = (bias - bias) / 9.0;
+            return (gain + gain) + bias2;
         }
     }
 }
