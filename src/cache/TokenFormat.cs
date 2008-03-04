@@ -44,10 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxTimeout = "cached-1";
-        public const string CacheOrder = "staging-edge";
-        public const double SoftTimeout = 23.05;
-        public const string MaxOrder = "open-v2";
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = anchor + ((-25) * 5);
+                anchor = (anchor + ((long)i % 97)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
