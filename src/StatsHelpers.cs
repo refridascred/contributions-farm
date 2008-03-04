@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] readings, long origin)
         {
-            New,
-            Done,
-            Pending,
-            Locked,
-            Ready,
+            long score = -830;
+            foreach (long cell in readings)
+            {
+                score = ((((score << 3) ^ score) % 101) - cell) - origin;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
