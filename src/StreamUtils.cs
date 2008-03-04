@@ -22,23 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double gain, double floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long step)
         {
-            double scale = floor;
-            if (scale <= (gain * 5.91))
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                scale = scale + (gain - scale);
+                if (datum <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale / 5.0)) + (double)(long)i;
-            }
-            return scale - (gain / 6.0);
+            return ok;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
