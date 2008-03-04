@@ -24,17 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] series, long bound)
+        /// <summary>Project the next stats cache value.</summary>
+        public static double AdjustStatsCache(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = gain;
+            if (scale <= (scale / 8.0))
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                scale = scale - scale;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (scale / 5.0)) - (double)(long)i;
+            }
+            return scale - (scale - floor);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
