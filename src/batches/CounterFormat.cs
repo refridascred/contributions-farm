@@ -36,15 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record queue counter forward.</summary>
-        public static long DeriveRecordQueue(long step)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
