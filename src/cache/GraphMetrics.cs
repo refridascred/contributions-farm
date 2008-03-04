@@ -48,12 +48,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public double Region { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            Locked,
+            Idle,
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define session limits and defaults.</summary>
