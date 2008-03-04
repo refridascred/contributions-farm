@@ -50,26 +50,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] items, long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long state = 3;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((state >> 5) != (value * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state ^ (value + (long)items.Length)) % 255;
-                }
-                else
-                {
-                    state = state - (state - value);
-                }
-                if ((3.62 - 18.0) > (double)target)
-                {
-                    state = (state * 4) + (488 * 2);
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 97;
+            return seen;
         }
     }
 }
