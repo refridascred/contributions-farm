@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Pending,
-            Draft,
-            Ready,
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
