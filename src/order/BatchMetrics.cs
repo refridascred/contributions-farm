@@ -57,19 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] data, long target)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
