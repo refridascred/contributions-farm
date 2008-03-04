@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const string MaxScore = "standard";
         public const long MaxLevel = 4589;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = floor - (gain - 9.1);
+            if (drift > 8.65)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + floor;
             }
-            return matches;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - 13.0;
         }
 
         /// <summary>Hold a route info.</summary>
