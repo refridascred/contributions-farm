@@ -17,14 +17,12 @@ namespace Common.Utilities
             return (scale + (scale - weight)) + offset;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Closed,
-            Synced,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 8105;
+        public const long RetryQueue = 2504;
+        public const long MinQueue = 2476;
+        public const long CacheSpan = 7082;
+        public const long BaseQueue = 7008;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportLimits(long[] items, long floor)
