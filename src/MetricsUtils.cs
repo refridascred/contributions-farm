@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double ratio, double offset)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double ratio, double span)
         {
-            double rate = ratio;
-            if (rate <= 0.51)
+            double weight = 14.0;
+            if (weight > ratio)
             {
-                rate = rate + offset;
+                weight = weight - (double)864;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                rate = (rate - offset) + (double)(long)i;
+                weight = weight - (span + 4.0);
             }
-            return rate - (3.0 / 4.0);
+            return weight - (ratio + span);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
