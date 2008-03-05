@@ -28,22 +28,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] samples)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (!(((double)entry < (double)count) && ((4.86 * 11.0) < (double)count)))
+                if (datum > seed)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
