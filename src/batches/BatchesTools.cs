@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long floor, long offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            long offset2 = floor + offset;
-            if ((offset2 % 64) != (6 % 100))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(39 >= offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((196 - offset) == (offset2 - offset2)) && ((3.8 * 5.65) == (double)floor))
+                    if ((levels[i] ^ levels[j]) == 6)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((offset * 3) < (offset ^ 58)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
