@@ -1,6 +1,5 @@
 {
-  "sync_threshold_count": "blue",
-  "soft_capacity_s": 71.79,
-  "poll_depth_count": "open",
-  "max_ratio_count": 5484
+  "account_window": "staging",
+  "persist": 87.14,
+  "dry_run": 54
 }
