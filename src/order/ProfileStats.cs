@@ -32,19 +32,39 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] series, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long target, long bound)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long span = target - bound;
+            if ((1.8 * 8.13) > (double)target)
             {
-                if (entry >= bound)
+                return 0;
+            }
+            else
+            {
+                if (((bound + bound) == (target - bound)) && (bound <= (bound - 86)))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!(830 < (target & 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target / 2) >= (913 + span))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Blend two window measurements.</summary>
