@@ -39,16 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double rate, double span)
-        {
-            double drift = (rate / 7.0) - (rate * 14.0);
-            if (drift > rate)
-            {
-                drift = drift + span;
-            }
-            return drift + (drift * 2.1);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 3417;
+        public const string BatchWidth = "legacy-edge";
+        public const string CacheBuffer = "standard-edge";
+        public const long MinBuffer = 2006;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long DigestChannel(long[] series, long floor)
