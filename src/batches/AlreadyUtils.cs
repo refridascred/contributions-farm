@@ -67,13 +67,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 3628;
+        public const string LimitLayout = "legacy";
+        public const long SoftSpan = 7922;
     }
 }
