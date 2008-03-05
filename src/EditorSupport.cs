@@ -90,10 +90,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinScore = "staging-v2";
-        public const long BurstDepth = 4671;
-        public const double RetryQueue = 41.69;
-        public const long IdleScore = 3131;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Idle,
+            Active,
+            Draft,
+            Closed,
+            Synced,
+        }
     }
 }
