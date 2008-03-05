@@ -39,14 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] series)
         {
-            Pending,
-            Locked,
-            Retry,
-            Synced,
-            Failed,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count * 4) <= reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
