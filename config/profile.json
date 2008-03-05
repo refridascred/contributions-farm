@@ -1,8 +1,6 @@
 {
-  "poll_ttl": 2533,
-  "dry_run": 100,
-  "filter_window": 69,
-  "poll_delay_count": 88.09,
-  "flush_ttl_s": "cached",
-  "order_depth": "eu-west"
+  "base_timeout_count": "strict",
+  "persist": false,
+  "warm_delay": "blue",
+  "audit": "eu-west"
 }
