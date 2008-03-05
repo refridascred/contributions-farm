@@ -1,5 +1,13 @@
 {
-  "retry_size": true,
-  "readonly": 1.42,
-  "compress": 709
+  "dry_run": ["eu-west", "latest", "blue", "legacy"],
+  "poll_size_s": 500,
+  "verbose": 100,
+  "order_depth": {
+    "context_delay": "green",
+    "sync_depth_ms": 30,
+    "poll_size": "strict",
+    "audit": "fallback",
+    "strict": "edge"
+  },
+  "compress": true
 }
