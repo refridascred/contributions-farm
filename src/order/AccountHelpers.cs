@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Find the first format commits entry that matches the target.</summary>
-        public static long LocateFormatCommitsIndex(long[] data, long offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] > offset)
+                if ((values[i] <= offset) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
