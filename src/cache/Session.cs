@@ -41,32 +41,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long offset, long floor)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long slot = offset - floor;
-            if ((2.0 < (double)slot) && ((offset - 2) >= (floor & 1)))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor - slot) == (floor >> 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset >= (double)743)
+                    if ((series[i] + series[j]) != 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
