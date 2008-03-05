@@ -1,6 +1,7 @@
 {
-  "base_size_ms": false,
-  "hard_timeout": "legacy",
-  "default_retries": [396, 349, 166],
-  "batch_interval_pct": true
+  "dry_run": "eu-west",
+  "warm_interval_count": 66.34,
+  "route_ratio": 83.22,
+  "cache_size": 30,
+  "stream_depth": [46, 94, 327, 22]
 }
