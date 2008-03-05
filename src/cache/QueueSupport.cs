@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc * 4) + (24 ^ acc)) - (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
