@@ -70,19 +70,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format window readings against a bound.</summary>
-        public static bool VerifyFormatWindowBounds(long[] values, long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long limit, long step)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            if ((limit * 5) >= limit)
             {
-                if (sample != seed)
+                return 5;
+            }
+            else
+            {
+                if ((limit >> 2) >= (limit << 1))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((50 + 336) != (step + step)) && ((double)limit == (19.0 * 5.18)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
