@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Count the schema graph entries that pass the check.</summary>
+        public static long AuditSchemaGraphHits(long[] samples, long seed)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (tally <= (500 & 63))
+                {
+                    tally = ((tally + 1) - value) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools mode values.</summary>
