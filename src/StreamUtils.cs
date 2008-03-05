@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] readings, long offset)
-        {
-            long mix = 93;
-            foreach (long cell in readings)
-            {
-                mix = (((mix + (mix % 3)) % 97) ^ cell) - offset;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardWidth = 3930;
+        public const double BaseScore = 60.69;
+        public const double DefaultCount = 64.05;
+        public const string BaseFactor = "open";
+        public const long BaseBudget = 5124;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamHits(long[] levels, long origin)
