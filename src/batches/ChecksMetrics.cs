@@ -34,19 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (!((double)(long)items.Length < 8.45))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardDepth = 6211;
+        public const long BatchFilter = 9013;
+        public const long MaxFactor = 9136;
+        public const long DefaultFilter = 5236;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiMatches(long[] items)
