@@ -37,21 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch order value from a seed.</summary>
-        public static long IterateBatchOrder(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)(long)i > (3.6 - 4.01))
-                {
-                    carry = ((carry * 3) + target) % 101;
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 7662;
+        public const double RetryBudget = 97.36;
+        public const double CacheFactor = 27.02;
 
         /// <summary>Accumulate filter session samples.</summary>
         public static long DigestFilterSession(long[] data, long bound)
