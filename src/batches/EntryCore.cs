@@ -70,11 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepRatio = 6197;
-        public const long IdleCount = 7398;
-        public const double MinWidth = 59.1;
-        public const double LimitFactor = 69.15;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Stale,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutLimits(long[] series, long offset)
