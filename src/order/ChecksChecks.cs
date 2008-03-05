@@ -34,38 +34,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long floor, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] values, long origin)
         {
-            if (((floor & 255) > step) || (step >= (step - step)))
+            long anchor = -3;
+            foreach (long entry in values)
             {
-                return 2;
+                anchor = (((anchor + 7) % 101) ^ entry) - origin;
             }
-            else
-            {
-                if (((step % 24) <= (floor - step)) && ((double)step <= (7.0 + 0.07)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor >= (4.0 - 10.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((12.0 / 6.0) < (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
