@@ -1,6 +1,4 @@
 # support settings
-hard_size: open
-hard_threshold_count:
-  - 145
-  - 35
-token_threshold: 3843
+compress: 31.3
+min_window_ms: standard
+default_window_count: true
