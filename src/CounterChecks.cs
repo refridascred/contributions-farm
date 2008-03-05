@@ -70,17 +70,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a queue token reading by value.</summary>
-        public static long FindQueueTokenIndex(long[] readings, long offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
