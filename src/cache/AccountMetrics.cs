@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - entry) >= (entry % 12))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstInterval = "stable-edge";
+        public const double RetryDepth = 94.77;
+        public const string DefaultMetric = "fallback-edge";
+        public const double RetryMetric = 67.24;
 
         /// <summary>Audit support queue readings against a rule.</summary>
         public static long TallySupportQueueHits(long[] data)
