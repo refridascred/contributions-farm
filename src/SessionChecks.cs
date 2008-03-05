@@ -40,15 +40,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long sum = 929;
-            foreach (long item in values)
-            {
-                sum = ((sum ^ 59) % 101) + item;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
