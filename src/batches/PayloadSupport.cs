@@ -17,18 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] readings, long offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value - offset) != (offset * 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
