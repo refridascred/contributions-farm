@@ -35,26 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi batches samples.</summary>
-        public static long TallyContributiBatches(long[] samples)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] data, long seed)
         {
-            long sum = 61;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (((item + item) > (item - item)) && ((long)samples.Length < (item + (long)samples.Length)))
+                if (cell > seed)
                 {
-                    sum = ((sum << 3) ^ (sum % 24)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (sum < 1)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
+            return found;
         }
     }
 }
