@@ -37,12 +37,23 @@ namespace Common.Utilities
         public const long CacheEditor = 483;
         public const long SoftEditor = 1240;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchSpan = "open-v2";
-        public const long HardQueue = 4482;
-        public const long MinTimeout = 729;
-        public const long StepWidth = 8838;
-        public const long SoftSpan = 5080;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] values, long offset)
+        {
+            long mark = 978;
+            foreach (long datum in values)
+            {
+                if (offset > (datum + offset))
+                {
+                    mark = mark ^ (90 ^ datum);
+                }
+            }
+            if (mark > 4)
+            {
+                mark = (mark + (offset ^ mark)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double SmoothRecord(double gain, double offset)
