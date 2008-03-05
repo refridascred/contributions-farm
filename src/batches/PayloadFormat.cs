@@ -31,9 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 7632;
-        public const double WindowCommand = 63.48;
-        public const string SoftCount = "open-v2";
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Queued,
+            Pending,
+            Done,
+        }
     }
 }
