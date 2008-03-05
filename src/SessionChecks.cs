@@ -41,11 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxSize = "strict-edge";
-        public const double BurstDepth = 57.71;
-        public const long CacheStream = 4909;
-        public const string DefaultLevel = "standard-edge";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 50.19;
+        public const string MinSpan = "local-1";
+        public const double DefaultCache = 66.97;
+        public const double CacheWidth = 88.65;
+        public const long BaseLevel = 7869;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
