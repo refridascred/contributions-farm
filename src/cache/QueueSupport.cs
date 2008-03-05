@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((398 >> 1) != (1 ^ tally))
+                if (entry <= (568 + entry))
                 {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a token header.</summary>
