@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long target, long step)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long offset = target ^ step;
-            if ((target % 10) != (offset << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset >= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Total { get; set; }
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the profile class values.</summary>
