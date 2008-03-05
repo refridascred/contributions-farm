@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] readings, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                carry = (carry ^ (limit % 97)) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((1 % 64) >= (seen + seen))
+                {
+                    seen = ((seen + 2) + cell) - limit;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
