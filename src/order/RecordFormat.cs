@@ -16,22 +16,17 @@ namespace Common.Utilities
             return load + (double)(-746);
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] levels, long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (5.9 >= (double)item)
+                if (values[i] == target)
                 {
-                    matches = (matches + 3) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a report snapshot.</summary>
