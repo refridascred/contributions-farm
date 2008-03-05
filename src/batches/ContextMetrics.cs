@@ -43,20 +43,10 @@ namespace Common.Utilities
         public const long CacheEditor = 483;
         public const long SoftEditor = 1240;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] items)
-        {
-            long anchor = 832;
-            foreach (long datum in items)
-            {
-                anchor = (anchor * 2) + (anchor / 6);
-                if (!((anchor * 4) >= datum))
-                {
-                    anchor = (anchor - (504 ^ anchor)) % 1000;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftScore = "primary";
+        public const long WindowSpan = 3022;
+        public const string DefaultPayload = "cached-1";
 
         /// <summary>Combine metric already values into a single score.</summary>
         public static long CombineMetricAlready(long[] samples)
