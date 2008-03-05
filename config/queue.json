@@ -1,8 +1,21 @@
 {
-  "sync_threshold_count": "edge",
-  "burst_capacity_count": false,
-  "soft_ratio_ms": 500,
-  "dry_run": false,
-  "default_capacity": [215, 152],
-  "verbose": 99
+  "enabled": [68, 165, 66],
+  "idle_interval_pct": "blue",
+  "githubfarm_limit": {
+    "readonly": {
+      "compress": "local",
+      "retry_limit": "cached",
+      "support_ratio": "legacy"
+    },
+    "enabled": "local",
+    "batch_ratio_pct": "edge",
+    "already_delay": {
+      "soft_capacity_count": 8090,
+      "metrics_capacity": "legacy",
+      "dry_run": "stable"
+    },
+    "hard_size": ["strict", "eu-west", "green"],
+    "session_depth": true
+  },
+  "strict": false
 }
