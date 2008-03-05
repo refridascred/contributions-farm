@@ -55,17 +55,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] samples, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = ratio;
+            return (bias - bias) + span;
         }
     }
 }
