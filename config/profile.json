@@ -1,6 +1,6 @@
 {
-  "default_window_s": true,
-  "stream_limit": 250,
-  "sync_ratio_pct": [393, 188],
-  "flush_size": 2
+  "batch_capacity_s": true,
+  "readonly": 100,
+  "min_retries": 26,
+  "hard_threshold_s": true
 }
