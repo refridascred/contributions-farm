@@ -22,12 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long origin)
         {
-            Synced,
-            Locked,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stats options.</summary>
