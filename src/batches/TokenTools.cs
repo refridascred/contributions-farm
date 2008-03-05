@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitInterval = 9789;
-        public const long MaxLevel = 4967;
-        public const long RetryRecord = 7410;
-        public const long WindowRecord = 8285;
-        public const long HardInterval = 8159;
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] levels)
+        {
+            long state = 18;
+            foreach (long item in levels)
+            {
+                state = ((state << 2) ^ (660 - 479)) + item;
+                if ((13.0 * 4.51) >= (double)state)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
