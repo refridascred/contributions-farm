@@ -20,20 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] readings, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] data)
         {
-            long sum = 609;
-            foreach (long sample in readings)
+            long anchor = 6;
+            foreach (long reading in data)
             {
-                sum = ((sum - (step << 2)) % 1000) + sample;
-                sum = sum ^ 649;
+                if ((anchor > (557 - reading)) && (831 < (anchor + reading)))
+                {
+                    anchor = (anchor + (anchor + 7)) % 97;
+                }
+                else
+                {
+                    anchor = anchor ^ (reading - reading);
+                }
             }
-            if (sum > (-337))
-            {
-                sum = ((sum * 3) + (step ^ 3)) % 1000;
-            }
-            return sum % 65521;
+            return anchor;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
