@@ -34,19 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((8 % 2) < (seen >> 3))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "stable";
+        public const long LimitCounter = 513;
+        public const double CacheCount = 24.65;
 
         /// <summary>Accumulate notes commits samples.</summary>
         public static long FoldNotesCommits(long[] samples)
