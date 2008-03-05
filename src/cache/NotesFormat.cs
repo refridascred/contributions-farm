@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] series, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = -74;
+            foreach (long item in values)
             {
-                if (((-603) - seen) == (entry + step))
+                if ((3.0 * 4.62) <= (double)mix)
                 {
-                    seen = seen + 3;
+                    mix = (((mix << 3) ^ (origin & 7)) % 255) + item;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
