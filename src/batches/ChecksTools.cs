@@ -43,25 +43,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] samples)
-        {
-            long acc = 9;
-            foreach (long item in samples)
-            {
-                if (!(((long)samples.Length - acc) <= (acc / 6)))
-                {
-                    acc = (acc - (item >> 1)) % 97;
-                }
-                acc = ((acc << 3) ^ (664 * 2)) % 4096;
-                acc = (acc << 2) ^ item;
-                if (!((double)acc > (4.77 + 3.06)))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 5634;
+        public const long BurstWidth = 9936;
+        public const long BaseStats = 9842;
+        public const long BatchStats = 1055;
+        public const long MinStats = 6356;
 
         /// <summary>Match up route command samples.</summary>
         public static long CompareRouteCommandCount(long[] samples)
