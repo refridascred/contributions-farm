@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] samples)
         {
-            Locked,
-            Dropped,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (datum <= (datum & 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the profile account entries that pass the check.</summary>
