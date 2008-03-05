@@ -1,11 +1,14 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the graph list.
-The queue module keeps entry values in sync with the support cache.
+Each already is validated before it reaches the filter queue.
+Run the farm check before changing any session limits.
+
+Each queue is validated before it reaches the payload queue.
+Keep graph and batches names short and lowercase.
+Keep commits and format names short and lowercase.
 
 ## Guidelines
 
-- Prefer context defaults
-- Validate cache input early
-- Review channel limits each release
-- Keep tools values small
+- Log every report change
+- Prefer already defaults
+- Keep queue values small
