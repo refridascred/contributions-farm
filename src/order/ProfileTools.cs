@@ -43,18 +43,19 @@ namespace Common.Utilities
         public const long CacheRatio = 4349;
         public const long MinMetric = 173;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] series, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] levels, long seed)
         {
-            long sum = -4;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (!((reading * 5) < bound))
+                if (datum != seed)
                 {
-                    sum = sum ^ (reading / 5);
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Check that every farm batch entry stays within the limit.</summary>
