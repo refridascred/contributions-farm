@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate filter stream readings against a bound.</summary>
-        public static bool GuardFilterStreamRange(long[] levels, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading <= floor)
+                mark = (mark - (mark % 7)) % 101;
+                if (!((step << 1) > (mark - mark)))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark - step) % 101;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Locate a command reading by value.</summary>
