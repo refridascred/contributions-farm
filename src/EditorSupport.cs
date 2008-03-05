@@ -13,32 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long offset, long offset2)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] data)
         {
-            long edge = offset ^ offset2;
-            if ((offset + 60) < (edge << 2))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset - edge) < (offset2 + offset))
+                if (reading < 586)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset2 + edge) > (offset >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
