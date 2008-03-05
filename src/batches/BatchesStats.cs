@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two order schema measurements.</summary>
-        public static double ScaleOrderSchema(double rate, double floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long target, long limit)
         {
-            double drift = rate / 6.0;
-            if (drift <= (floor / 3.0))
+            long diff = target - limit;
+            if ((target % 100) < (diff << 1))
             {
-                drift = drift + floor;
+                return 8;
             }
-            return drift + drift;
+            else
+            {
+                if (target <= (diff - diff))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
