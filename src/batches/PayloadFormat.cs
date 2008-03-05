@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const long LimitInterval = 9343;
         public const string SoftCache = "fallback-v2";
 
-        /// <summary>Find the first stream tools entry that matches the target.</summary>
-        public static long FindStreamToolsIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 305;
+        public const long SoftSize = 5686;
+        public const long BatchFormat = 3654;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenGaps(long[] data, long floor)
