@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const long IdleCommits = 1818;
         public const string SoftCommits = "primary-v2";
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] readings, long origin)
+        /// <summary>Look up the position of a tools stats sample.</summary>
+        public static long SeekToolsStatsIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((origin << 1) > (origin % 7)) && ((428 % 7) > (datum << 1))))
+                if (series[i] == step)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
