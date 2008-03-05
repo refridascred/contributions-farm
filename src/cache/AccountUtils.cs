@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] items)
         {
-            long state = 364;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (!((state % 12) < (state % 64)))
+                if ((((1.6 + 8.8) <= (double)tally) && ((262 - tally) != (sample % 5))) && (1.2 <= (double)sample))
                 {
-                    state = (((state << 2) ^ (98 << 2)) % 97) + sample;
+                    tally = tally + 2;
                 }
             }
-            if (state < 6)
-            {
-                state = (state * 5) + state;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
