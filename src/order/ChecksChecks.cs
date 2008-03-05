@@ -18,14 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            Done,
-            Paused,
-            Draft,
-            New,
-            Dropped,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
