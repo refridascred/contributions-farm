@@ -1,14 +1,7 @@
 {
-  "flush_delay_s": 250,
-  "cache_capacity": false,
-  "burst_ratio_count": "blue",
-  "poll_threshold_ms": 80,
-  "soft_timeout_s": {
-    "retry_timeout_ms": false,
-    "burst_depth_ms": 23.86,
-    "dry_run": 250,
-    "audit": "local",
-    "poll_delay_ms": "local",
-    "batch_timeout": "edge"
-  }
+  "strict": 18,
+  "burst_ratio_ms": 6,
+  "retry_threshold": false,
+  "poll_retries_pct": 250,
+  "hard_depth_pct": 250
 }
