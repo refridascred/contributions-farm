@@ -42,16 +42,18 @@ namespace Common.Utilities
             return mean - (offset + mean);
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] values, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                score = score ^ (score * 5);
-                score = ((score * 4) + (long)i) % 65521;
+                if ((6.32 / 6.0) < (double)limit)
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
