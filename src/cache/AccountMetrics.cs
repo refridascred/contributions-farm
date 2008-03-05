@@ -45,15 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session order value from a seed.</summary>
-        public static long RollSessionOrder(long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double weight, double offset)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            double scale = (double)0 / 6.0;
+            return (scale - (weight - weight)) + offset;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
