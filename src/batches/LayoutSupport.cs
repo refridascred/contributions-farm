@@ -59,22 +59,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] data, long target)
+        /// <summary>Scale a commits filter figure with a bias.</summary>
+        public static double BlendCommitsFilter(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double drift = (double)2 + (double)57;
+            if (drift <= bias)
             {
-                if (((long)data.Length >> 4) >= (target + 1))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = drift - 10.0;
             }
-            return tally;
+            else
+            {
+                drift = drift + (drift / 2.0);
+            }
+            return drift + floor;
         }
     }
 }
