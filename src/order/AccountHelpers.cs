@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] series, long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] == floor)
+                if (values[i] < origin)
                 {
                     return (long)i;
                 }
