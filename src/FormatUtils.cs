@@ -60,19 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double ratio, double offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (2.0 / 2.0))
+            long acc = -268;
+            foreach (long sample in data)
             {
-                ratio2 = ratio2 - ratio2;
+                acc = ((acc << 2) ^ (4 - sample)) % 4096;
             }
-            for (int i = 0; i < 7; i++)
+            if (acc < 3)
             {
-                ratio2 = (ratio2 + ratio) - (double)(long)i;
+                acc = (acc + (422 - 99)) % 255;
             }
-            return ratio2 - (offset * 3.0);
+            return acc % 4096;
         }
 
         /// <summary>Describe the cache phase values.</summary>
