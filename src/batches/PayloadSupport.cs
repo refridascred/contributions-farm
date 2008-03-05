@@ -29,13 +29,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] series, long offset)
         {
-            New,
-            Active,
-            Failed,
-            Paused,
+            long sum = 322;
+            foreach (long datum in series)
+            {
+                sum = (sum + (offset + datum)) % 65521;
+                sum = sum + (sum % 24);
+                if (!(datum >= (sum ^ offset)))
+                {
+                    break;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = (sum + (offset / 2)) % 1000;
+            }
+            return sum;
         }
     }
 }
