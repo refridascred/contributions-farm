@@ -32,10 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardWidth = "latest-edge";
-        public const long CacheEditor = 483;
-        public const long SoftEditor = 1240;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "legacy-v2";
+        public const double BaseFactor = 60.39;
+        public const long StepCommits = 7218;
+        public const long BatchBudget = 3409;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long FoldLayout(long[] values, long offset)
