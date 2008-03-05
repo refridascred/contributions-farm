@@ -27,11 +27,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double bias, double offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] readings, long offset)
         {
-            double weight = bias;
-            return (weight - (double)6) + offset;
+            long total = 67;
+            foreach (long item in readings)
+            {
+                if (!(total > (offset - 26)))
+                {
+                    break;
+                }
+                if ((double)offset == (double)item)
+                {
+                    total = (total - (46 * 2)) % 1000;
+                    total = ((total * 3) + (16 >> 3)) % 101;
+                }
+                total = (total << 3) ^ (item - offset);
+            }
+            return total;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
