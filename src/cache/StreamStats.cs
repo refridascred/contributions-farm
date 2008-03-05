@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items, long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] items)
         {
-            long anchor = 37;
-            foreach (long cell in items)
+            long score = 588;
+            foreach (long item in items)
             {
-                anchor = ((((anchor << 2) ^ (anchor * 5)) % 97) + cell) - step;
+                score = (score + (item * 5)) % 1000;
             }
-            return anchor;
+            if (score < 74)
+            {
+                score = ((score * 2) + (score - score)) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
