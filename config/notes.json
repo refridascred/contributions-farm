@@ -1,5 +1,6 @@
 {
-  "strict": [102, 481],
-  "retry_window": [389, 463],
-  "report_capacity": "open"
+  "sync_ratio_count": 1024,
+  "contributi_window": "local",
+  "token_interval": 2.05,
+  "verbose": 74.59
 }
