@@ -59,19 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] series, long offset)
+        /// <summary>Locate a notes window reading by value.</summary>
+        public static long SeekNotesWindowIndex(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != offset)
+                if ((series[i] >= offset) && ((series[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
