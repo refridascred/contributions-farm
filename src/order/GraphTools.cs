@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mark = 8;
-            foreach (long sample in series)
-            {
-                mark = (mark ^ (mark % 2)) - sample;
-                if (mark >= (long)series.Length)
-                {
-                    mark = (mark - (long)series.Length) % 4096;
-                }
-            }
-            if (mark < (-98))
-            {
-                mark = (mark + (mark / 2)) % 65521;
-            }
-            return mark;
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
