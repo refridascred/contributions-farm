@@ -20,12 +20,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] samples)
         {
-            public double Level { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (sample >= (tally + sample))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
