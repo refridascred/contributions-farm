@@ -1,12 +1,4 @@
 # entry settings
-retry_limit_ms: fallback
-warm_threshold:
-  - 66
-  - 236
-editor_capacity:
-  batch_delay_pct:
-    - 404
-    - 88
-  default_timeout_count: false
-  retry_limit_pct: edge
-max_ttl: fallback
+verbose: 1024
+record_timeout: local
+burst_depth_pct: blue
