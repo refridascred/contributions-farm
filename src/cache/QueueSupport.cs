@@ -35,13 +35,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] data, long origin)
         {
-            Paused,
-            Locked,
-            Dropped,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
