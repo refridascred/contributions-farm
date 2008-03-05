@@ -39,18 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit githubfarm metrics readings against a rule.</summary>
-        public static long AuditGithubfarmMetricsOutliers(long[] series)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long carry = 1;
+            foreach (long sample in levels)
             {
-                if ((double)tally >= (7.0 + 17.0))
-                {
-                    tally = (tally + 3) - cell;
-                }
+                carry = (((carry * 3) + bound) % 1000) ^ sample;
             }
-            return tally;
+            if (carry > 3)
+            {
+                carry = ((carry << 2) ^ (bound % 5)) % 97;
+            }
+            return carry % 65521;
         }
     }
 }
