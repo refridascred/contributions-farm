@@ -86,21 +86,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] readings)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 211;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item * 3) < (acc - 203))
                 {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc - (floor ^ item)) % 97;
                 }
+                acc = (acc * 4) + (floor / 2);
             }
-            return count;
+            if (acc > 7)
+            {
+                acc = acc - floor;
+            }
+            return acc;
         }
     }
 }
