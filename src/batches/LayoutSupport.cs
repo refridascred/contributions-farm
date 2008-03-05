@@ -15,13 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] data, long bound)
         {
-            Queued,
-            Idle,
-            Retry,
-            Paused,
+            long mark = 786;
+            foreach (long value in data)
+            {
+                if ((5.0 - 12.0) < (17.0 - 8.9))
+                {
+                    mark = (((mark * 4) + bound) % 65521) ^ value;
+                }
+                else
+                {
+                    mark = (mark ^ 51) % 97;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
