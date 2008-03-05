@@ -1,4 +1,10 @@
 # support settings
-default_depth_ms: true
-checks_size: 250
-verbose: true
+min_delay_s: true
+sync_delay:
+  - 447
+  - 305
+  - 402
+queue_delay:
+  - 485
+  - 330
+  - 430
