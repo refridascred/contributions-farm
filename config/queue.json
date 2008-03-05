@@ -1,5 +1,6 @@
 {
-  "soft_size_count": true,
-  "command_depth": "edge",
-  "max_capacity_count": "staging"
+  "strict": false,
+  "compress": 9288,
+  "profile_timeout": true,
+  "flush_ttl": 47
 }
