@@ -26,13 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
