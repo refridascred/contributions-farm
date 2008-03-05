@@ -70,13 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] data)
         {
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long result = 50;
+            foreach (long item in data)
+            {
+                result = result - item;
+            }
+            if (result > 87)
+            {
+                result = ((result << 3) ^ (690 - (-789))) % 101;
+            }
+            return result;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
