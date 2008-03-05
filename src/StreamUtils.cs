@@ -42,17 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor << 2) ^ (floor >> 2)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 8292;
+        public const double BatchEditor = 73.45;
+        public const long MaxTimeout = 5162;
+        public const double IdleCount = 24.82;
 
         /// <summary>Adjust a editor metric reading.</summary>
         public static double SmoothEditorMetric(double scale, double bias)
