@@ -63,19 +63,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] samples, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
