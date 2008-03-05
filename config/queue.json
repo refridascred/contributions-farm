@@ -1,6 +1,8 @@
 {
-  "hard_ratio": 75,
-  "readonly": "open",
-  "session_ratio": true,
-  "order_ratio": "blue"
+  "metric_ttl": true,
+  "soft_limit_count": "fallback",
+  "poll_size_pct": "blue",
+  "dry_run": false,
+  "idle_interval_ms": "blue",
+  "strict": 96.25
 }
