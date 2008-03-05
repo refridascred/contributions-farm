@@ -29,16 +29,39 @@ namespace Common.Utilities
         public const long MinReport = 4611;
         public const long WindowSpan = 1593;
 
-        /// <summary>Iterate the window account series from a seed.</summary>
-        public static long IterateWindowAccount(long origin)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long offset, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long delta = offset - origin;
+            if ((double)offset >= (6.03 / 3.0))
             {
-                anchor = (anchor ^ anchor) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (delta >= 125)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((78 & 7) != (delta % 2)) && ((859 & 127) < origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)delta != (double)origin) || ((double)delta != (5.3 / 2.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
