@@ -49,12 +49,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long origin, long target)
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            long span = origin - target;
+            if ((span << 3) <= 804)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((span + span) > (39 - span))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
