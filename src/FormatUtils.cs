@@ -47,12 +47,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long target)
         {
-            public double Total { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long mark = target;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark ^ (target * 4)) % 65521;
+                long matches = mark + (target & 63);
+                if ((matches - matches) > (matches * 4))
+                {
+                    mark = (mark * 3) + matches;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Match up batches samples.</summary>
