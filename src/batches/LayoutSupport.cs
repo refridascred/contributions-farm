@@ -30,21 +30,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count batch counter pairs that satisfy a relation.</summary>
-        public static long CompareBatchCounterCount(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((17.0 / 8.0) > (double)value)
                 {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
