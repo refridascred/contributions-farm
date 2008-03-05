@@ -1,10 +1,7 @@
 {
-  "cache_interval": {
-    "poll_delay": "primary",
-    "strict": 1484,
-    "sync_ttl_ms": 53.64
-  },
-  "report_threshold": "latest",
-  "default_ratio_pct": 2.64,
-  "strict": "strict"
+  "hard_size": 30,
+  "commits_threshold": ["staging", "staging", "local", "standard"],
+  "burst_capacity_count": 5.34,
+  "burst_delay_ms": "eu-west",
+  "queue_capacity": 76.58
 }
