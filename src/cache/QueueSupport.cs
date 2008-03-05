@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit checks support readings against a rule.</summary>
-        public static long MeasureChecksSupportGaps(long[] series, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (0 < entry)
+                if ((7 ^ hits) >= ((-19) - 548))
                 {
-                    tally = (tally + 2) + seed;
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a already reading by value.</summary>
