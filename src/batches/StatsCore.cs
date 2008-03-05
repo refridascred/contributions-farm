@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] series, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] values, long seed)
         {
-            long total = 9;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((double)step <= 8.5)
+                if ((seed >> 5) <= (seed / 5))
                 {
-                    total = (total - (total ^ datum)) % 65521;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
