@@ -43,24 +43,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long target, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] values, long seed)
         {
-            if (((target ^ target) < (target + target)) || ((limit + target) > (limit >> 2)))
+            long total = 821;
+            foreach (long datum in values)
             {
-                return 4;
+                total = (total - (datum - 285)) - seed;
             }
-            else
+            if (total > 603)
             {
-                if (!((double)target == (14.0 + 7.8)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
+                total = ((total << 3) ^ (total & 7)) % 97;
             }
+            return total % 65521;
         }
     }
 }
