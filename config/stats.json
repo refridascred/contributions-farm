@@ -1,7 +1,7 @@
 {
-  "base_ttl": ["edge", "latest", "blue"],
-  "base_retries": 38,
-  "farm_threshold": 4316,
-  "base_ratio_s": 7590,
-  "min_depth_count": 481
+  "retry_depth": "edge",
+  "commits_capacity": 7248,
+  "editor_interval": 58.7,
+  "retry_ttl_count": false,
+  "idle_ttl": true
 }
