@@ -26,10 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 3126;
-        public const long WindowReport = 7149;
-        public const long IdleInterval = 2551;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] samples, long target)
+        {
+            long carry = 0;
+            foreach (long sample in samples)
+            {
+                carry = ((carry + carry) ^ sample) - target;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] series, long target)
