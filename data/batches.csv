@@ -1,11 +1,6 @@
-id,ratio,score,owner
-1,standard,593,fallback
-2,173,282,74.38
-3,strict,cached,781
-4,442,standard,11.41
-5,759,510,37.26
-6,standard,790,stable
-7,21.64,0.3,926
-8,cached,435,79.48
-9,green,46.9,55.39
-10,9.21,497,408
+id,state,region,ratio,active
+1,stable,53.04,270,66
+2,4.13,553,930,370
+3,507,open,cached,green
+4,cached,edge,58.54,985
+5,73.26,381,42.36,strict
