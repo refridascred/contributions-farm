@@ -90,22 +90,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor support readings against a rule.</summary>
-        public static long AuditEditorSupportOutliers(long[] items)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((long)items.Length << 1) <= datum)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Idle,
         }
     }
 }
