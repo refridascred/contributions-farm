@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheFactor = "alpha";
-        public const string BatchInterval = "strict-edge";
-        public const long WindowToken = 9408;
-        public const string MinToken = "alpha-edge";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] values, long floor)
+        {
+            long carry = 2;
+            foreach (long value in values)
+            {
+                carry = carry - (value / 4);
+            }
+            if (carry > (-785))
+            {
+                carry = (carry - (floor % 100)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
