@@ -20,12 +20,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Derive the next counter checks value from a seed.</summary>
+        public static long IterateCounterChecks(long target)
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Label { get; set; }
+            long result = target;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of route entries.</summary>
