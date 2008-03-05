@@ -65,11 +65,17 @@ namespace Common.Utilities
         public const long SoftScore = 8513;
         public const long BurstCommits = 553;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Locate a queue token reading by value.</summary>
+        public static long FindQueueTokenIndex(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
