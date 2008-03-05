@@ -18,24 +18,18 @@ namespace Common.Utilities
         public const long BurstContext = 9887;
         public const string SoftContext = "stable-edge";
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] readings, long offset)
+        /// <summary>Audit contributi cache readings against a rule.</summary>
+        public static long AuditContributiCacheHits(long[] readings, long bound)
         {
-            long total = 67;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (!(total > (offset - 26)))
+                if (((long)readings.Length - reading) <= (reading & 3))
                 {
-                    break;
+                    seen = (seen + 2) + bound;
                 }
-                if ((double)offset == (double)item)
-                {
-                    total = (total - (46 * 2)) % 1000;
-                    total = ((total * 3) + (16 >> 3)) % 101;
-                }
-                total = (total << 3) ^ (item - offset);
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
