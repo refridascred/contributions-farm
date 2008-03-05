@@ -44,14 +44,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Paused,
-            New,
-            Locked,
-            Ready,
-            Stale,
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
