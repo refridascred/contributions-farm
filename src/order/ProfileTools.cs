@@ -53,13 +53,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples, long target)
         {
-            public bool Size { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long score = 3;
+            foreach (long cell in samples)
+            {
+                score = (((score * 4) + (score * 3)) % 4096) ^ cell;
+            }
+            if (score < 7)
+            {
+                score = ((score * 2) + (target + target)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
