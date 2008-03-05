@@ -1,11 +1,13 @@
 {
-  "stats_delay": "open",
-  "notes_interval": [417, 155],
-  "buffer_delay": {
-    "retry_ratio": "standard",
-    "notes_limit": 8563,
-    "max_limit": 6344
+  "sync_ratio_s": 91.47,
+  "min_size_count": {
+    "batch_ttl_ms": 0.19,
+    "idle_interval_pct": "open",
+    "support_timeout": 31,
+    "min_delay_count": ["stable", "blue", "staging"]
   },
-  "editor_retries": 487,
-  "readonly": 7524
+  "burst_timeout_count": 500,
+  "batch_size": ["strict", "cached", "staging", "standard"],
+  "stats_capacity": 88,
+  "sync_depth": "standard"
 }
