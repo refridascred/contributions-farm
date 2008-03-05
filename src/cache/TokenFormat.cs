@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 17.59;
-        public const long CacheLevel = 5648;
-        public const long RetrySpan = 3323;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long target, long limit)
