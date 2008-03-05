@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many route channel samples are out of range.</summary>
-        public static long CountRouteChannelHits(long[] samples)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)samples.Length + datum) <= datum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
