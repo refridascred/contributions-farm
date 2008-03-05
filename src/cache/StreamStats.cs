@@ -22,22 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] levels, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] items, long origin)
         {
-            long anchor = 60;
-            foreach (long value in levels)
+            long acc = 14;
+            foreach (long datum in items)
             {
-                if (((seed + seed) != (anchor + value)) || ((seed - 40) < (anchor >> 5)))
-                {
-                    anchor = (anchor + (seed << 1)) % 255;
-                }
-                else
-                {
-                    anchor = anchor + (anchor & 3);
-                }
+                acc = (((acc * 4) + (7 + origin)) % 1000) + datum;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
