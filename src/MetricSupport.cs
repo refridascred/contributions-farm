@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first report metrics entry that matches the target.</summary>
-        public static long LocateReportMetricsIndex(long[] readings, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = scale;
+            if (drift < scale)
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                drift = (drift - 6.0) - span;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (double)401) - (double)(long)i;
+            }
+            return drift + 8.0;
         }
 
         /// <summary>Hold a graph header.</summary>
