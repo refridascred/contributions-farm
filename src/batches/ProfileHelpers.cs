@@ -48,12 +48,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long target, long step)
         {
-            New,
-            Closed,
-            Pending,
+            if ((double)step <= (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-21) < (24 + target)) || (step >= (target >> 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step >> 1) < (step - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((511 * 4) > (target + step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
