@@ -40,13 +40,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            Pending,
-            Queued,
-            Paused,
-            Ready,
+            long score = 3;
+            foreach (long entry in samples)
+            {
+                score = score + (entry + 20);
+                if ((score ^ entry) >= (score + entry))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
