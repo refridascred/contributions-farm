@@ -43,11 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 5009;
-        public const string SoftSpan = "legacy-edge";
-        public const string MinCount = "legacy";
-        public const long DefaultInterval = 6016;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 5043;
+        public const double IdleOrder = 44.34;
+        public const string HardWidth = "fallback";
+        public const string WindowOrder = "latest-edge";
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
