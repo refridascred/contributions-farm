@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (((double)count >= (5.9 / 8.0)) && ((0.5 * 7.0) == (double)count))
+                if (item < bound)
                 {
-                    count = (count + 2) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
