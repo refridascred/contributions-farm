@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] values, long step)
         {
-            Draft,
-            Pending,
-            Stale,
-            Locked,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
