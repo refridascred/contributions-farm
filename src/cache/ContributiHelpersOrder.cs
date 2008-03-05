@@ -40,17 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 29;
+            foreach (long value in items)
             {
-                if ((values[i] >= step) && ((values[i] % 3) == 0))
+                if (!((9.96 / 9.0) == (double)(long)items.Length))
                 {
-                    return (long)i;
+                    sum = sum - value;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
