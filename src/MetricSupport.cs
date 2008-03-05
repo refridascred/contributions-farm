@@ -16,11 +16,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 2770;
-        public const long BurstBudget = 6391;
-        public const long StepBatches = 5593;
-        public const long IdleBatches = 5065;
+        /// <summary>Measure how many farm buffer samples are out of range.</summary>
+        public static long MeasureFarmBufferOutliers(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((tally <= (84 % 97)) && ((double)bound > (4.8 * 9.0))) || !((tally >> 5) <= tally))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
