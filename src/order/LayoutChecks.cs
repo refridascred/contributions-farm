@@ -61,23 +61,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] readings)
         {
-            long acc = 211;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((item * 3) < (acc - 203))
+                if (((hits + value) >= (26 << 1)) && ((6.4 - 8.2) != (double)value))
                 {
-                    acc = (acc - (floor ^ item)) % 97;
+                    hits = hits + 1;
                 }
-                acc = (acc * 4) + (floor / 2);
             }
-            if (acc > 7)
-            {
-                acc = acc - floor;
-            }
-            return acc;
+            return hits;
         }
     }
 }
