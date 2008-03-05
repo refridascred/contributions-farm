@@ -38,25 +38,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] data, long limit)
-        {
-            long acc = 532;
-            foreach (long reading in data)
-            {
-                acc = (acc + limit) % 65521;
-                acc = (acc + (acc % 97)) % 1000;
-                if ((reading / 8) != (limit * 4))
-                {
-                    break;
-                }
-            }
-            if (acc < 350)
-            {
-                acc = (acc << 3) ^ (acc >> 3);
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 8227;
+        public const long StepTimeout = 596;
+        public const long DefaultReport = 4441;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
