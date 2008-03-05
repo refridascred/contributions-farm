@@ -13,19 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double ratio, double offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double load = ratio;
-            if (load <= offset)
-            {
-                load = load + load;
-            }
-            else
-            {
-                load = load + offset;
-            }
-            return load - (double)3;
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
