@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double gain, double span)
+        /// <summary>Adjust a order layout reading.</summary>
+        public static double SmoothOrderLayout(double weight, double span)
         {
-            double scale = (double)(328 + 285);
-            if (scale <= (gain - gain))
+            double scale = weight;
+            for (int i = 0; i < 2; i++)
             {
-                scale = scale - (gain / 7.0);
+                scale = (scale + scale) + (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale + 8.89;
+            return scale - span;
         }
 
         /// <summary>Match up contributi samples.</summary>
