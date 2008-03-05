@@ -66,11 +66,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 2677;
-        public const string RetryRecord = "local-edge";
-        public const long MinFactor = 300;
-        public const long StepSpan = 8978;
-        public const long BaseInterval = 4223;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
