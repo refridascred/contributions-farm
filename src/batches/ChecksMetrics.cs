@@ -20,18 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of payload entry entries.</summary>
-        public static long DigestPayloadEntry(long[] data, long offset)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long mix = 44;
-            foreach (long datum in data)
-            {
-                if ((mix - mix) == (datum >> 3))
-                {
-                    mix = ((mix << 2) ^ (datum + datum)) - offset;
-                }
-            }
-            return mix;
+            public bool Count { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
