@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 8455;
+        public const long MaxCount = 5000;
+        public const long LimitCommand = 1839;
+        public const long BatchDepth = 543;
 
         /// <summary>Classify a account token pair into a bucket.</summary>
         public static long RankAccountToken(long origin, long floor)
