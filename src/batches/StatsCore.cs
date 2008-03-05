@@ -50,19 +50,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] data, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] data, long origin)
         {
-            bool stale = true;
+            bool flag = true;
             foreach (long entry in data)
             {
-                if (entry <= bound)
+                if (entry <= origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
