@@ -40,39 +40,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long step, long floor)
-        {
-            if ((454 - step) <= (step ^ step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step % 64) < floor) && ((floor + 617) != (24 & 15)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor >> 4) != (step + 98))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step < 6.97)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 3658;
+        public const long RetryScore = 7601;
+        public const long HardOrder = 4625;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
