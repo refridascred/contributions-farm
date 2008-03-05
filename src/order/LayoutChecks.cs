@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many githubfarm queue samples are out of range.</summary>
-        public static long MeasureGithubfarmQueueHits(long[] series, long floor)
+        /// <summary>Digest a series of contributi account entries.</summary>
+        public static long TallyContributiAccount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long anchor = 982;
+            foreach (long value in readings)
             {
-                if (((5 / 6) > (cell + floor)) && ((cell + floor) <= (count >> 1)))
-                {
-                    count = count + 3;
-                }
+                anchor = (anchor - (anchor + 47)) + value;
             }
-            return count;
+            if (anchor < 172)
+            {
+                anchor = anchor + (anchor % 2);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count the metric format entries that pass the check.</summary>
