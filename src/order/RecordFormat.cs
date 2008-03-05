@@ -54,22 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] samples, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((seen & 15) > (696 / 7))
+                if (item >= step)
                 {
-                    seen = ((seen + 3) ^ entry) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
