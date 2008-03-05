@@ -61,9 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseSize = 53.94;
-        public const long CachePayload = 2442;
-        public const long RetryBudget = 5284;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 3896;
+        public const string RetryTimeout = "standard";
+        public const long DefaultInterval = 6483;
+        public const long RetryCluster = 8484;
+        public const string MinCluster = "staging-v2";
     }
 }
