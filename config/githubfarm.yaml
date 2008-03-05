@@ -1,5 +1,26 @@
 # githubfarm settings
-retry_capacity_count: cached
-soft_retries_count: true
-min_delay_s: cached
-tools_interval: fallback
+poll_window:
+  base_retries_ms:
+    support_size: 11.24
+    min_interval_ms: 100
+    audit: 7151
+    verbose: true
+  compress: 92.04
+  strict: true
+  base_threshold_count:
+    persist: 8875
+    idle_size:
+      - staging
+      - cached
+      - latest
+      - edge
+    default_limit_pct: 9118
+    burst_size_s: false
+    cache_depth_s:
+      - 348
+      - 68
+      - 152
+verbose: false
+cache_window_count: 7
+batch_threshold: false
+schema_timeout: cached
