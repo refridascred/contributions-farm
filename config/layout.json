@@ -1,16 +1,6 @@
 {
-  "filter_ratio": {
-    "cache_retries_count": {
-      "idle_retries_count": "standard",
-      "cache_timeout": 1024,
-      "window_limit": ["local", "stable"],
-      "warm_interval": true,
-      "enabled": "latest"
-    },
-    "enabled": false,
-    "max_ratio_ms": 3.74,
-    "idle_depth": 8019
-  },
-  "max_limit_s": 1707,
-  "min_timeout_count": true
+  "idle_limit_s": true,
+  "hard_retries_ms": 500,
+  "hard_window": 1.91,
+  "hard_size_s": ["strict", "fallback", "cached"]
 }
