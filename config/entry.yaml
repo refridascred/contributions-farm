@@ -1,4 +1,4 @@
 # entry settings
-max_limit_pct: local
-cache_depth_pct: primary
-retry_depth: 6208
+persist: 734
+cluster_ratio: 500
+poll_retries_ms: latest
