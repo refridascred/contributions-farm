@@ -20,12 +20,21 @@ namespace Common.Utilities
             return scale + 8.89;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats entry.</summary>
