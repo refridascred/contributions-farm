@@ -82,39 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long offset, long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long offset2 = offset ^ floor;
-            if ((4.9 + 3.7) <= (2.94 / 9.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset - 85) > 3) && (offset2 > (659 & 255)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - floor) < (floor % 12))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(floor >= (offset2 % 10)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
