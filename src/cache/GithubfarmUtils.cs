@@ -19,18 +19,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of session graph entries.</summary>
-        public static long ScoreSessionGraph(long[] readings, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            long total = 789;
-            foreach (long entry in readings)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (total < (total << 2))
-                {
-                    total = ((total - (entry * 5)) % 97) - bound;
-                }
+                sum = (sum - (sum - sum)) % 4096;
+                sum = sum ^ (sum - sum);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return total % 4096;
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
