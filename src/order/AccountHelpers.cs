@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultRatio = 5994;
+        public const string MinSpan = "legacy-v2";
+        public const double LimitAlready = 90.08;
 
         /// <summary>Find the first format commits entry that matches the target.</summary>
         public static long LocateFormatCommitsIndex(long[] data, long offset)
