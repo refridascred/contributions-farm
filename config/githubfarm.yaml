@@ -1,5 +1,9 @@
 # githubfarm settings
-base_ttl: false
-burst_threshold_s: legacy
-cache_depth_count: latest
-idle_depth: blue
+readonly:
+  - strict
+  - eu-west
+  - stable
+  - blue
+min_threshold_s: 6402
+soft_ttl_count: false
+default_threshold_pct: 9073
