@@ -71,9 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 9724;
-        public const long RetryCount = 5121;
-        public const double RetryLayout = 1.88;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen < (68 - seen)) && (((item - bound) >= (item + (-253))) || ((6 ^ seen) > (seen ^ seen))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
