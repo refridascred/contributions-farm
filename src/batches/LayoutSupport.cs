@@ -17,14 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] samples, long bound)
         {
-            Stale,
-            Pending,
-            Queued,
-            Dropped,
-            Synced,
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
