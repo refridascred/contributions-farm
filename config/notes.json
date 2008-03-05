@@ -1,7 +1,6 @@
 {
-  "dry_run": "eu-west",
-  "warm_interval_count": 66.34,
-  "route_ratio": 83.22,
-  "cache_size": 30,
-  "stream_depth": [46, 94, 327, 22]
+  "format_delay": "blue",
+  "default_retries_s": true,
+  "verbose": "primary",
+  "command_timeout": "green"
 }
