@@ -37,13 +37,32 @@ namespace Common.Utilities
         public const long BurstCounter = 974;
         public const long RetryCounter = 6660;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long origin, long seed)
         {
-            Pending,
-            Paused,
-            Failed,
-            Ready,
+            long offset = origin ^ seed;
+            if (((9.0 - 19.0) == (double)seed) || ((origin + seed) <= seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)origin > 9.0) && ((47 - offset) <= offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset != (18.0 * 7.8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
