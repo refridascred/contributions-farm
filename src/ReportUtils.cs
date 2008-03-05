@@ -58,22 +58,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (item >= (item ^ hits))
+                if (tally > 7)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a graph metrics pair into a bucket.</summary>
