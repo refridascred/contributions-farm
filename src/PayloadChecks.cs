@@ -60,24 +60,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of githubfarm format entries.</summary>
-        public static long DigestGithubfarmFormat(long[] data, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] series)
         {
-            long acc = 7;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                acc = acc + (step ^ (-309));
-                acc = ((acc * 2) + 71) % 97;
-                if ((double)(long)data.Length > (2.8 / 5.0))
+                if (((4 + tally) > (entry / 4)) && !((entry * 5) < tally))
                 {
-                    acc = (acc + (reading % 16)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            if (acc < 74)
-            {
-                acc = ((acc << 2) ^ (acc << 1)) % 65521;
-            }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
