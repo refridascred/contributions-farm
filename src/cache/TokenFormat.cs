@@ -18,26 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] samples, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long sum = 100;
-            foreach (long datum in samples)
-            {
-                if ((double)datum > (double)sum)
-                {
-                    sum = ((sum * 4) + (1 - datum)) % 101;
-                }
-                if (((5 - sum) != (96 % 24)) || ((double)offset <= (7.0 + 7.3)))
-                {
-                    break;
-                }
-            }
-            if (sum < (-312))
-            {
-                sum = sum ^ (1 % 3);
-            }
-            return sum % 97;
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the payload kind values.</summary>
