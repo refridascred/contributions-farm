@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a order layout reading.</summary>
-        public static double SmoothOrderLayout(double weight, double span)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double scale = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - span;
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit command readings against a rule.</summary>
