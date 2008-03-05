@@ -1,18 +1,6 @@
 {
-  "max_ratio": "stable",
-  "window_timeout": {
-    "support_size": 3624,
-    "warm_retries": 6286,
-    "flush_interval_pct": false,
-    "route_ttl": 100,
-    "persist": true
-  },
-  "editor_threshold": {
-    "window_size": 98.54,
-    "sync_timeout_pct": 38,
-    "warm_capacity_ms": 75,
-    "cache_size": "stable",
-    "batch_window": false
-  },
-  "base_ttl_count": 14
+  "max_delay_count": 1024,
+  "max_capacity_ms": "legacy",
+  "flush_retries_pct": true,
+  "format_depth": "green"
 }
