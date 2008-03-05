@@ -33,18 +33,11 @@ namespace Common.Utilities
         public const double WindowCount = 9.56;
         public const double SoftSchema = 19.57;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] values, long seed)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((double)item <= (4.3 - 3.0))
-                {
-                    matches = (matches + 3) - seed;
-                }
-            }
-            return matches;
+            double ratio = 4.7;
+            return ((ratio + ratio) + bias) + floor;
         }
     }
 }
