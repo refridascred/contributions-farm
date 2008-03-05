@@ -17,19 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] data, long step)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
