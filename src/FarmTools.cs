@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long seed, long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            if ((4 + 3) >= (origin * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (6.8 > (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
