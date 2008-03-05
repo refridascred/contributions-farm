@@ -29,10 +29,14 @@ namespace Common.Utilities
         public const long CacheFarm = 4926;
         public const long StepSpan = 8265;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 69.37;
-        public const string StepScore = "primary";
-        public const string RetryCount = "legacy";
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] levels, long offset)
