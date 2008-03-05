@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] values, long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((bound / 8) > (seen - bound)) && ((double)datum == (double)(-30)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public double Region { get; set; }
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a stats stats.</summary>
