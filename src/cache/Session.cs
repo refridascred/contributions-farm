@@ -43,21 +43,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 393;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (5 > (value ^ value))
                 {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark * 3) + value) % 65521;
                 }
             }
-            return hits;
+            return mark;
         }
     }
 }
