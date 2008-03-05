@@ -19,19 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] samples, long floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long seed, long limit)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long step = seed + limit;
+            if (!(limit > seed))
             {
-                if (item > floor)
+                return 3;
+            }
+            else
+            {
+                if ((seed % 8) < seed)
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (limit <= (step << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the cluster class values.</summary>
