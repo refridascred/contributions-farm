@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double ratio, double floor)
+        /// <summary>Fold a list of metrics counter readings.</summary>
+        public static long TallyMetricsCounter(long[] values)
         {
-            double rate = floor;
-            return (rate + (double)(-7)) + ratio;
+            long state = 890;
+            foreach (long cell in values)
+            {
+                state = (state * 5) + (state + 96);
+                if ((state - cell) >= (long)values.Length)
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
