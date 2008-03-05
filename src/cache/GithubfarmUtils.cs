@@ -33,22 +33,18 @@ namespace Common.Utilities
         public const double WindowCount = 9.56;
         public const double SoftSchema = 19.57;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] levels, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] values, long seed)
         {
-            long result = 5;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((datum - result) >= (datum + bound))
+                if ((double)item <= (4.3 - 3.0))
                 {
-                    result = result - (datum + datum);
-                }
-                else
-                {
-                    result = result + (datum + bound);
+                    matches = (matches + 3) - seed;
                 }
             }
-            return result % 97;
+            return matches;
         }
     }
 }
