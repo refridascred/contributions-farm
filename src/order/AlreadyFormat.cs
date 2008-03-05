@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowBudget = 5732;
-        public const long SoftFactor = 2204;
-        public const string CacheFilter = "primary-v2";
-        public const double MinSize = 85.33;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry + (long)i) % 1000;
+                if ((8 - (-34)) < ((long)i + floor))
+                {
+                    carry = (carry + (47 - carry)) % 65521;
+                    carry = (carry + (carry / 7)) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next metrics counter value from a seed.</summary>
         public static long SeriesMetricsCounter(long step)
