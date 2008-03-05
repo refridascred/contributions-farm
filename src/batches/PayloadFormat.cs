@@ -23,10 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 305;
-        public const long SoftSize = 5686;
-        public const long BatchFormat = 3654;
+        /// <summary>Find the first githubfarm channel entry that matches the target.</summary>
+        public static long FindGithubfarmChannelIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine batch command values into a single score.</summary>
         public static long TotalBatchCommand(long[] levels)
