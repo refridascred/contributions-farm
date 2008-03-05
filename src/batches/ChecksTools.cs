@@ -36,11 +36,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Blend two commits measurements.</summary>
