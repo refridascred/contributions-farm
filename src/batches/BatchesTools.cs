@@ -23,15 +23,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double bias, double span)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long offset, long bound)
         {
-            double load = 4.5;
-            for (int i = 0; i < 3; i++)
+            if ((121 / 5) > (bound - bound))
             {
-                load = (((load + load) - (double)(long)i) + bias) - span;
+                return 6;
             }
-            return load + (17.0 / 7.0);
+            else
+            {
+                if ((offset + bound) >= (bound - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)bound == (0.8 - 4.22)) && (offset > (349 << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
