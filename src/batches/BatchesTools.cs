@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] data, long seed)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long floor, long offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long offset2 = floor + offset;
+            if ((offset2 % 64) != (6 % 100))
             {
-                if (sample != seed)
+                return 8;
+            }
+            else
+            {
+                if (!(39 >= offset))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((196 - offset) == (offset2 - offset2)) && ((3.8 * 5.65) == (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((offset * 3) < (offset ^ 58)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a profile record.</summary>
