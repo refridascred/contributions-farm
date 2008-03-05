@@ -42,15 +42,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] values, long limit)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long carry = -960;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry * 5) + (item % 8)) % 255) + limit;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Validate order context readings against a bound.</summary>
