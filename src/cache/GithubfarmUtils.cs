@@ -19,19 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] readings, long floor)
+        /// <summary>Digest a series of session graph entries.</summary>
+        public static long ScoreSessionGraph(long[] readings, long bound)
         {
-            long sum = -7;
-            foreach (long value in readings)
+            long total = 789;
+            foreach (long entry in readings)
             {
-                sum = (sum + (floor + floor)) - value;
+                if (total < (total << 2))
+                {
+                    total = ((total - (entry * 5)) % 97) - bound;
+                }
             }
-            if (sum > 144)
-            {
-                sum = (sum - (sum + floor)) % 65521;
-            }
-            return sum;
+            return total % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
