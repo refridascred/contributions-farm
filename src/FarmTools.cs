@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 3;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = state - (entry >> 5);
+                if ((5.78 * 5.56) <= (double)state)
                 {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state << 3) ^ (entry % 8);
+                }
+                if (!((entry << 3) > (state - state)))
+                {
+                    state = state + state;
+                }
+                else
+                {
+                    state = ((state << 3) ^ ((-831) % 64)) % 1000;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
