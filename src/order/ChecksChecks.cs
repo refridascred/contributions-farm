@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxLevel = 8371;
-        public const string IdleFactor = "staging";
-        public const long BatchBudget = 6965;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxLevel = 692;
+        public const long CacheChannel = 7278;
+        public const long IdleChannel = 4172;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
