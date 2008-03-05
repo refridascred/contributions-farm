@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftLevel = 7935;
-        public const string MinBudget = "legacy-v2";
-        public const string LimitCommits = "stable-1";
-        public const long IdleCommits = 1818;
-        public const string SoftCommits = "primary-v2";
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] readings, long bound)
+        {
+            long result = 7;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    result = ((result ^ (result << 1)) + (long)i) - item;
+                }
+                if ((result << 3) > (result * 4))
+                {
+                    result = (result - (48 + 1)) % 4096;
+                }
+                else
+                {
+                    result = (result ^ (result & 63)) % 97;
+                }
+            }
+            if (result > 527)
+            {
+                result = result ^ (2 + bound);
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a tools stats sample.</summary>
         public static long SeekToolsStatsIndex(long[] series, long step)
