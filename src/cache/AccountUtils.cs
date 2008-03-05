@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] series, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long carry = 65;
+            foreach (long reading in values)
             {
-                if (value != target)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (((carry << 2) ^ (bound + carry)) % 1000) + reading;
             }
-            return valid;
+            if (carry < 172)
+            {
+                carry = (carry + (carry << 2)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
