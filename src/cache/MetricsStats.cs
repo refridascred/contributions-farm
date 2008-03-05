@@ -46,20 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] readings, long bound)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double rate, double floor)
         {
-            long result = 590;
-            foreach (long value in readings)
+            double gain = (rate * 19.0) / 9.0;
+            if (gain <= gain)
             {
-                result = (result - result) % 4096;
-                result = ((result << 2) ^ (value % 8)) % 101;
+                gain = gain + floor;
             }
-            if (result < 615)
+            else
             {
-                result = (result * 2) + bound;
+                gain = gain + (double)7;
             }
-            return result;
+            return gain + (rate + 0.68);
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
