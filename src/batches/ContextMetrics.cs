@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long limit, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] levels, long offset)
         {
-            if ((double)floor >= 9.0)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit - limit) <= limit)
+                if (sample >= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((30 - limit) < (886 + limit)) && ((3.8 * 18.0) > (double)floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor >= ((-8) + 669))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
