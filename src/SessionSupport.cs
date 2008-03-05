@@ -33,39 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter cache pair into a bucket.</summary>
-        public static long ClassifyCounterCache(long step, long bound)
-        {
-            long delta = step + bound;
-            if ((delta >> 2) > delta)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ bound) >= (step ^ (-70)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((delta % 10) >= bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step == (7.78 * 9.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitDepth = 7764;
+        public const string WindowCount = "standard";
+        public const double BaseWidth = 24.58;
+        public const double HardInterval = 68.29;
     }
 }
