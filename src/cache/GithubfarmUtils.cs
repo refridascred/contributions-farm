@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the format checks series from a seed.</summary>
-        public static long RollFormatChecks(long floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = mix + (floor * 4);
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Locked,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
