@@ -58,24 +58,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long seed, long seed2)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] samples)
         {
-            if ((18 - 6) == (seed - seed2))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(seed2 > (seed2 + 20)))
+                if ((sample * 5) < (matches + matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
