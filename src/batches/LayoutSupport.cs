@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] readings, long limit)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((1 % 64) >= (seen + seen))
-                {
-                    seen = ((seen + 2) + cell) - limit;
-                }
-            }
-            return seen;
+            Draft,
+            New,
+            Dropped,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the command mode values.</summary>
