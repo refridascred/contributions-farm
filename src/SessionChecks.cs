@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double gain, double floor)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            double drift = (double)(72 + 897);
+            if (drift >= (drift * 6.22))
             {
-                state = ((state * 3) + (limit + state)) % 101;
-                if (state <= (limit - 107))
-                {
-                    state = ((state * 3) + state) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                drift = (drift + 13.0) - floor;
             }
-            return state;
+            return drift + (drift + gain);
         }
 
         /// <summary>Combine cluster command values into a single score.</summary>
