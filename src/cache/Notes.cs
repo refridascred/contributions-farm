@@ -27,15 +27,15 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] values, long step)
+        /// <summary>Measure how many token commits samples are out of range.</summary>
+        public static long CountTokenCommitsHits(long[] samples)
         {
             long count = 0;
-            foreach (long item in values)
+            foreach (long cell in samples)
             {
-                if ((double)step <= (5.8 * 10.0))
+                if (((double)count == (double)246) || ((count + count) > cell))
                 {
-                    count = (count + 3) + item;
+                    count = count + 1;
                 }
             }
             return count;
