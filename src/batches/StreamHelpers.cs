@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items)
-        {
-            long mix = 589;
-            foreach (long entry in items)
-            {
-                if ((double)entry <= (5.12 + 7.93))
-                {
-                    mix = (mix + (978 ^ mix)) % 255;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 2533;
+        public const string LimitSize = "local-1";
+        public const long WindowCount = 6432;
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] readings)
