@@ -1,11 +1,5 @@
 {
-  "flush_ttl": {
-    "burst_limit_count": 4302,
-    "max_threshold_s": 4228,
-    "persist": [334, 497]
-  },
-  "checks_size": "cached",
-  "strict": 20.01,
-  "idle_delay": "blue",
-  "sync_depth_count": 67.16
+  "warm_size_s": false,
+  "audit": "cached",
+  "default_interval_ms": 67
 }
