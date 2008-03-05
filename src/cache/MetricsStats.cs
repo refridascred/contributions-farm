@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] samples, long target)
+        /// <summary>Check that every metrics batches entry stays within the limit.</summary>
+        public static bool ValidateMetricsBatchesLimits(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (datum <= target)
+                if (item != limit)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Digest a series of account entries.</summary>
