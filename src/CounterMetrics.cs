@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long origin, long floor)
         {
-            Stale,
-            Locked,
-            Draft,
-            Idle,
+            long prev = origin ^ floor;
+            if (!((double)prev != (double)(-63)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((-1) < (floor << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Iterate the command window series from a seed.</summary>
