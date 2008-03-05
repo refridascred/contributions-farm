@@ -27,18 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit filter report readings against a rule.</summary>
-        public static long AuditFilterReportGaps(long[] levels, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((66 ^ matches) != (matches ^ matches)) || ((4.39 + 1.68) > (double)sample))
-                {
-                    matches = (matches + 1) - step;
-                }
-            }
-            return matches;
+            Failed,
+            New,
+            Retry,
         }
     }
 }
