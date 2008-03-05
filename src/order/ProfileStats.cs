@@ -28,11 +28,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardCount = 8143;
-        public const long WindowChecks = 3750;
-        public const string BaseChecks = "staging-1";
-        public const long BurstDepth = 3480;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long SortRoute(long floor, long target)
