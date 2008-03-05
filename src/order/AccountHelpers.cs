@@ -56,13 +56,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] samples, long origin)
         {
-            Dropped,
-            Done,
-            Retry,
-            Closed,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((2.47 * 3.0) > (double)hits)
+                {
+                    hits = ((hits + 1) + item) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a window counter forward.</summary>
