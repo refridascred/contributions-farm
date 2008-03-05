@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of layout token readings.</summary>
-        public static long TallyLayoutToken(long[] samples, long limit)
+        /// <summary>Audit contributi account readings against a rule.</summary>
+        public static long MeasureContributiAccountMatches(long[] items)
         {
-            long total = 41;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (limit < (entry - entry))
+                if ((tally + tally) == (datum + datum))
                 {
-                    total = total ^ 939;
+                    tally = tally + 3;
                 }
             }
-            if (total > 30)
-            {
-                total = total - (302 & 127);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a already options.</summary>
