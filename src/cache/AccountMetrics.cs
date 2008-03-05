@@ -52,19 +52,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double bias, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] samples, long floor)
         {
-            double ratio = bias;
-            if (ratio > 8.5)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                ratio = (ratio + (bias + bias)) - floor;
+                if (datum >= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)537) + (double)(long)i;
-            }
-            return ratio - (double)26;
+            return flag;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
