@@ -50,10 +50,13 @@ namespace Common.Utilities
             return ratio - (gain * 3.76);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 5725;
-        public const string BurstRatio = "stable-v2";
-        public const long BatchNotes = 1542;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Stale,
+            Locked,
+            Active,
+        }
 
         /// <summary>Adjust a already reading.</summary>
         public static double BlendAlready(double ratio, double span)
