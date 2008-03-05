@@ -72,13 +72,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public double Offset { get; set; }
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 2286;
+        public const double SoftChannel = 31.97;
+        public const long CacheSpan = 4755;
+        public const string WindowChannel = "open-edge";
     }
 }
