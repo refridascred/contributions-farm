@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Retry,
+            Ready,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
