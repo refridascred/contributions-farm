@@ -26,11 +26,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 8776;
-        public const long LimitToken = 6499;
-        public const double RetryToken = 25.2;
-        public const double StepRatio = 11.83;
-        public const long BatchToken = 8582;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((step - 394) >= (step & 63))
+                {
+                    total = total - (step << 2);
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
