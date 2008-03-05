@@ -20,25 +20,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long seed, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] series, long offset)
         {
-            long edge = seed - floor;
-            if ((60 & 63) >= (edge / 2))
+            bool flag = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((edge % 60) <= 288) && ((0.03 + 3.12) < (double)edge))
+                if (value < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
