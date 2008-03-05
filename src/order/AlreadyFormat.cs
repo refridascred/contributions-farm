@@ -37,20 +37,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings)
+        /// <summary>Blend two profile record measurements.</summary>
+        public static double ScaleProfileRecord(double weight, double bias)
         {
-            long result = 359;
-            foreach (long item in readings)
+            double weight2 = weight;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 5) + 43) % 101;
-                result = (result << 2) ^ (item << 1);
-                if ((result << 1) == (item - item))
-                {
-                    break;
-                }
+                weight2 = ((weight2 + (weight2 / 6.0)) + (double)(long)i) - bias;
             }
-            return result;
+            return weight2 - (weight * 6.0);
         }
 
         /// <summary>Describe the contributi class values.</summary>
