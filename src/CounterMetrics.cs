@@ -20,27 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the command window series from a seed.</summary>
-        public static long RollCommandWindow(long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] levels, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long mix = 8;
+            foreach (long entry in levels)
             {
-                if ((score - offset) <= ((long)i % 5))
+                mix = ((mix << 2) ^ (entry & 7)) % 97;
+                if ((step <= (entry << 2)) && ((mix + 140) > (mix ^ entry)))
                 {
-                    score = score - (offset - offset);
+                    break;
                 }
-                else
-                {
-                    score = (score ^ (94 - (long)i)) % 101;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = ((score ^ ((long)i ^ score)) % 101) + (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
