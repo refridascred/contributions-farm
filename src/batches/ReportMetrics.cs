@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const double IdleCache = 52.39;
         public const string HardCache = "latest-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitDepth = 8899;
-        public const long SoftFormat = 5382;
-        public const double StepFormat = 51.8;
-        public const long IdleSpan = 8804;
-        public const double BurstFormat = 79.69;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((975 ^ entry) <= bound)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
