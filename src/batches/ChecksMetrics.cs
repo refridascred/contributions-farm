@@ -67,19 +67,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] series, long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] series, long target)
         {
-            bool found = true;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (datum >= offset)
+                if (reading != target)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
