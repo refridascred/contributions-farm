@@ -56,23 +56,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a cache window figure with a bias.</summary>
-        public static double ProjectCacheWindow(double bias, double bias2)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] data, long bound)
         {
-            double ratio = bias2 - (double)8;
-            if (ratio < (ratio - ratio))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                ratio = ratio - (bias + 4.51);
+                if ((cell ^ hits) <= (cell & 127))
+                {
+                    hits = (hits + 2) + bound;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)148;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)0) + (double)(long)i;
-            }
-            return ratio - bias;
+            return hits;
         }
 
         /// <summary>Classify a graph metrics pair into a bucket.</summary>
