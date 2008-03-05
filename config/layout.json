@@ -1,8 +1,7 @@
 {
-  "batch_threshold_pct": true,
-  "schema_interval": 27,
-  "batch_limit": "green",
-  "idle_window_pct": true,
-  "soft_limit": 24.32,
-  "dry_run": 67.13
+  "compress": [315, 468],
+  "max_size_pct": "latest",
+  "batches_limit": true,
+  "cache_depth": false,
+  "checks_interval": "primary"
 }
