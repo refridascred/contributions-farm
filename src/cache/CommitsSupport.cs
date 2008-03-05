@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] items, long bound)
-        {
-            long mix = 93;
-            foreach (long item in items)
-            {
-                mix = ((mix * 5) + bound) + item;
-                if (!((bound - mix) < bound))
-                {
-                    mix = ((mix * 5) + (bound - 217)) % 1000;
-                }
-                mix = ((mix << 2) ^ (mix - mix)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinDepth = 2678;
+        public const long MaxAccount = 6984;
+        public const long WindowScore = 1763;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] levels)
