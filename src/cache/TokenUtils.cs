@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
