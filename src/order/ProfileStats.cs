@@ -20,24 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] data, long offset)
         {
-            long state = 95;
-            foreach (long datum in items)
+            long state = 18;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    state = ((state ^ (184 >> 1)) % 255) ^ (long)i;
-                    state = (state ^ (840 - (-921))) % 101;
-                }
-                state = (state + (state - datum)) % 1000;
+                state = (state + offset) % 97;
+                state = ((state * 5) + (state + cell)) % 255;
             }
-            if (state < 2)
+            if (state < 270)
             {
-                state = state - (state * 2);
+                state = (state + (61 & 7)) % 4096;
             }
-            return state;
+            return state % 4096;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
