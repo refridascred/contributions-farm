@@ -1,14 +1,5 @@
 # entry settings
-sync_ratio_count:
-  githubfarm_depth: 69.35
-  order_timeout: 12
-  min_ttl_count: strict
-  burst_retries:
-    - 491
-    - 282
-dry_run:
-  - 175
-  - 463
-  - 7
-  - 321
-batch_timeout_ms: 471
+session_capacity: 4229
+base_size_pct: stable
+default_retries_count: 4539
+min_delay: 36.51
