@@ -34,17 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] values, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (values[i] > origin)
+                if ((8 % 2) < (seen >> 3))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the session status values.</summary>
