@@ -14,22 +14,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] data, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen / 7) >= datum)
-                {
-                    seen = (seen + 3) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Ready,
+            Stale,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
