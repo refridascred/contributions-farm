@@ -33,18 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] data, long offset)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= ((-6) + value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) + offset;
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
