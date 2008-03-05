@@ -21,22 +21,14 @@ namespace Common.Utilities
         public const double BaseContext = 62.71;
         public const long HardContext = 9781;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long result = 4;
-            foreach (long value in levels)
-            {
-                if (((value + (-34)) <= (result ^ (-9))) || ((result + value) >= (value / 5)))
-                {
-                    result = ((result << 3) ^ 55) % 65521;
-                }
-                if (result >= value)
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            Closed,
+            Retry,
+            Ready,
+            Synced,
+            Queued,
         }
     }
 }
