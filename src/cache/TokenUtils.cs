@@ -20,19 +20,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long state = 23;
-            foreach (long value in series)
-            {
-                state = (((state * 4) + (state - state)) % 65521) + value;
-            }
-            if (state > 47)
-            {
-                state = (state - (state / 8)) % 255;
-            }
-            return state;
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the stream class values.</summary>
