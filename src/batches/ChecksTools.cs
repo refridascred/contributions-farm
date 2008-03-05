@@ -27,11 +27,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
