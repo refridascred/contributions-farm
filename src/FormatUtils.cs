@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long target)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] > target)
+                if (levels[i] <= origin)
                 {
                     return (long)i;
                 }
