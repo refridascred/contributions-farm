@@ -59,10 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 9515;
-        public const double BurstStream = 12.24;
-        public const long SoftBudget = 7761;
-        public const long HardTimeout = 416;
+        /// <summary>Validate profile checks readings against a bound.</summary>
+        public static bool CheckProfileChecksRange(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
