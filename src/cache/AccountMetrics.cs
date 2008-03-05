@@ -64,17 +64,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a metrics editor sample.</summary>
-        public static long LocateMetricsEditorIndex(long[] samples, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = bias;
+            if (ratio > 8.5)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (bias + bias)) - floor;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)537) + (double)(long)i;
+            }
+            return ratio - (double)26;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
