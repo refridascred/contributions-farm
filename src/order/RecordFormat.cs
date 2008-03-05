@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two githubfarm buffer measurements.</summary>
-        public static double AdjustGithubfarmBuffer(double rate, double bias)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double ratio, double span)
         {
-            double drift = (rate - rate) / 9.0;
-            if (drift > (drift * 12.0))
+            double weight = (span * 8.0) * 6.71;
+            if (weight < span)
             {
-                drift = (drift + (2.9 - drift)) - bias;
+                weight = (weight + (weight / 8.0)) + ratio;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                drift = drift - (double)(long)i;
+                weight = weight - span;
             }
-            return drift + (drift / 2.0);
+            return weight + (weight / 8.0);
         }
 
         /// <summary>Audit graph format readings against a rule.</summary>
