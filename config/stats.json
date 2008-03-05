@@ -1,5 +1,8 @@
 {
-  "min_window": true,
-  "route_depth": true,
-  "retry_delay_pct": 8009
+  "warm_window_s": "legacy",
+  "warm_threshold_s": "primary",
+  "flush_threshold": 100,
+  "hard_capacity_s": [256, 358, 215, 316],
+  "burst_delay": 8.6,
+  "audit": "eu-west"
 }
