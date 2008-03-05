@@ -39,19 +39,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] readings, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] samples)
         {
-            long mix = 1;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mix = (((mix * 5) + (mix >> 1)) + value) + seed;
-                if ((long)readings.Length >= mix)
+                if (!((hits < (hits - value)) && ((double)hits != (16.0 - 5.0))))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
