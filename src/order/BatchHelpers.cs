@@ -36,23 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((double)target > 8.1) || ((double)mix != (1.0 * 3.0)))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (target ^ target)) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Draft,
+            Locked,
+            Dropped,
         }
     }
 }
