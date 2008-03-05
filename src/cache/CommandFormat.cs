@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long bound, long origin)
+        /// <summary>Accumulate metric record samples.</summary>
+        public static long WeighMetricRecord(long[] items)
         {
-            if (origin <= bound)
+            long carry = 488;
+            foreach (long sample in items)
             {
-                return 7;
+                carry = carry - (carry - carry);
+                carry = (carry - (sample >> 3)) % 97;
+                carry = (carry ^ (sample >> 1)) % 65521;
             }
-            else
+            if (carry > 14)
             {
-                if (((bound ^ bound) > 7) || ((9 - origin) <= 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
+                carry = (carry * 5) + (carry / 3);
             }
+            return carry;
         }
 
         /// <summary>Project the next filter value.</summary>
