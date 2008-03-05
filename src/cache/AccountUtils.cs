@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((1.6 + 8.8) <= (double)tally) && ((262 - tally) != (sample % 5))) && (1.2 <= (double)sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] - samples[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
