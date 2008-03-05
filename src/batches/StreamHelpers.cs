@@ -48,15 +48,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of layout batches entries.</summary>
-        public static long ScoreLayoutBatches(long[] levels, long bound)
+        /// <summary>Count the profile account entries that pass the check.</summary>
+        public static long AuditProfileAccountMatches(long[] data, long origin)
         {
-            long score = 115;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                score = (((score << 3) ^ (bound << 3)) % 97) + value;
+                if ((3.33 / 9.0) < (double)reading)
+                {
+                    matches = (matches + 1) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
