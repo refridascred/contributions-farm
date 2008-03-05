@@ -20,16 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = (sum + (833 << 2)) % 101;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Paused,
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
