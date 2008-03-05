@@ -27,19 +27,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Adjust a format route reading.</summary>
-        public static double SmoothFormatRoute(double weight, double offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] values, long step)
         {
-            double mean = (double)(3 - 322);
-            if (mean <= mean)
+            long count = 0;
+            foreach (long item in values)
             {
-                mean = mean + (weight - mean);
+                if ((double)step <= (5.8 * 10.0))
+                {
+                    count = (count + 3) + item;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean - (offset - weight);
+            return count;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
