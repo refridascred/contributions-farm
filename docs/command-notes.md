@@ -1,12 +1,15 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-The stats module keeps notes values in sync with the notes cache.
-The batches report groups every stream by route.
+When a githubfarm fails, the tools handler retries a few times before giving up.
+Run the stream check before changing any buffer limits.
+
+Each graph is validated before it reaches the entry queue.
+The route module keeps already values in sync with the metrics cache.
+Keep schema and command names short and lowercase.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Review payload limits each release
-- Validate contributi input early
-- Document new filter fields
+- Log every profile change
+- Prefer metric defaults
+- Document new graph fields
+- Keep session values small
