@@ -50,21 +50,13 @@ namespace Common.Utilities
         public const long BatchStats = 1055;
         public const long MinStats = 6356;
 
-        /// <summary>Match up route command samples.</summary>
-        public static long CompareRouteCommandCount(long[] samples)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Stale,
+            Retry,
+            Locked,
         }
     }
 }
