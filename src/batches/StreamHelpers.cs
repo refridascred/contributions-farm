@@ -68,18 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] series, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((seen < (68 - seen)) && (((item - bound) >= (item + (-253))) || ((6 ^ seen) > (seen ^ seen))))
+                if ((reading / 9) < (target + target))
                 {
-                    seen = seen + 2;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
