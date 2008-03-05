@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Grade a order contributi value against two limits.</summary>
+        public static long BucketOrderContributi(long floor, long floor2)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((floor2 - floor) < (floor + 6))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((9.86 / 6.0) >= (double)floor2)
                 {
-                    if ((series[i] - series[j]) < 8)
+                    return 1;
+                }
+                else
+                {
+                    if (71 >= (floor % 60))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
