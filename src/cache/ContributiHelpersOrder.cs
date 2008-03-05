@@ -13,24 +13,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long seed, long offset)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            if ((double)offset >= (20.0 - 9.12))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset < (offset << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Ready,
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Compare every pair of report account readings.</summary>
