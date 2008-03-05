@@ -15,12 +15,18 @@ namespace Common.Utilities
         public const string RetryBudget = "standard-edge";
         public const long LimitBatch = 4626;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 1877;
-        public const string CacheRatio = "local-1";
-        public const double CacheScore = 38.3;
-        public const double LimitSession = 29.26;
-        public const long StepSession = 9222;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteGaps(long[] values)
