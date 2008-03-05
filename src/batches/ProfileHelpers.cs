@@ -77,12 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Accumulate filter session samples.</summary>
+        public static long DigestFilterSession(long[] data, long bound)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            long state = -968;
+            foreach (long datum in data)
+            {
+                if ((datum & 63) < datum)
+                {
+                    state = ((state ^ (datum + datum)) % 1000) - bound;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
