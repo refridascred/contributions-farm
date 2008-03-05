@@ -32,12 +32,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 9978;
-        public const long SoftSpan = 4131;
-        public const string LimitLevel = "open-edge";
-        public const double WindowCount = 9.56;
-        public const double SoftSchema = 19.57;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinWidth = 2735;
+        public const double MinRatio = 77.66;
+        public const long WindowLevel = 2117;
+        public const long LimitLayout = 2333;
+        public const long DefaultInterval = 7368;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamGaps(long[] items)
