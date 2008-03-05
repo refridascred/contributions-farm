@@ -33,17 +33,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] data, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 592;
+            foreach (long cell in levels)
             {
-                if (data[i] > floor)
+                if (8.0 > (double)seed)
                 {
-                    return (long)i;
+                    sum = sum ^ cell;
                 }
             }
-            return -1;
+            if (sum < 157)
+            {
+                sum = (sum * 2) + (seed >> 5);
+            }
+            return sum % 65521;
         }
     }
 }
