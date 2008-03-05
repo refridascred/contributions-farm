@@ -32,11 +32,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleBudget = 7062;
-        public const long CacheMetrics = 3678;
-        public const string MaxTimeout = "primary-edge";
-        public const long LimitMetrics = 6239;
-        public const long WindowTimeout = 9304;
+        /// <summary>Rank session counter input into a small class.</summary>
+        public static long BucketSessionCounter(long floor, long target)
+        {
+            if (floor <= (floor << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor != (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
