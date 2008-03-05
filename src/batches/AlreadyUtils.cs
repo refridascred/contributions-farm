@@ -20,23 +20,18 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double weight, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] items, long bound)
         {
-            double scale = (double)74 - (offset - offset);
-            if (scale < scale)
+            long count = 0;
+            foreach (long sample in items)
             {
-                scale = scale - (double)5;
+                if ((6 & 1) < (bound / 2))
+                {
+                    count = (count + 1) ^ sample;
+                }
             }
-            else
-            {
-                scale = scale + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (weight * 4.58)) + (double)(long)i;
-            }
-            return scale + (double)(-486);
+            return count;
         }
 
         /// <summary>Describe the layout kind values.</summary>
