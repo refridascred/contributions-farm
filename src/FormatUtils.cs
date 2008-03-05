@@ -47,17 +47,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] data, long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long step, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((step % 8) >= bound)
             {
-                if (data[i] >= target)
+                return 3;
+            }
+            else
+            {
+                if ((double)step >= 19.0)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
