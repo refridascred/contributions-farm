@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] series, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] samples)
         {
-            long mix = 1;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 12; i++)
+                if (((double)hits <= (12.0 - 2.0)) && ((123 + 530) < sample))
                 {
-                    mix = (mix << 2) ^ ((long)i << 1);
-                    mix = ((mix << 3) ^ (reading - seed)) % 255;
+                    hits = hits + 1;
                 }
-                mix = (mix ^ (seed & 1)) % 1000;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Blend two githubfarm buffer measurements.</summary>
