@@ -36,12 +36,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Derive the next stats tools value from a seed.</summary>
+        public static long RollStatsTools(long origin)
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long state = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                state = state + (origin >> 5);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = ((state ^ state) % 65521) + (long)i2;
+                }
+                state = state + (long)i;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
