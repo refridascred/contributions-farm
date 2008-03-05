@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] data)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((1.4 * 3.4) == (double)tally)
-                {
-                    tally = (tally + 3) - item;
-                }
-            }
-            return tally;
+            double rate = floor;
+            return (rate + (double)(-7)) + ratio;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
