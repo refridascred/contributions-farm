@@ -52,22 +52,13 @@ namespace Common.Utilities
             return (scale - (weight - weight)) + offset;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long carry = 293;
-            foreach (long value in samples)
-            {
-                if (((double)value < (6.15 * 3.24)) || ((carry * 2) <= (value + 88)))
-                {
-                    carry = ((carry * 3) + (86 & 255)) % 101;
-                }
-            }
-            if (carry > 8)
-            {
-                carry = ((carry * 3) + (carry + carry)) % 4096;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
