@@ -46,22 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] samples, long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((limit + (-729)) != (tally % 10))
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Accumulate command samples.</summary>
