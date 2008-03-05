@@ -11,15 +11,25 @@ namespace Common.Utilities
         public const long BaseSize = 586;
         public const long StepEntry = 5479;
 
-        /// <summary>Fold a list of command order readings.</summary>
-        public static long TallyCommandOrder(long[] data)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long floor)
         {
-            long sum = 7;
-            foreach (long reading in data)
+            long cur = bound + floor;
+            if ((double)bound <= (double)floor)
             {
-                sum = (sum - (sum - sum)) + reading;
+                return 1;
             }
-            return sum % 4096;
+            else
+            {
+                if ((cur - bound) <= (bound ^ 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
