@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] data)
         {
-            Draft,
-            Closed,
-            Synced,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)count != (double)71)
+                {
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stats entry.</summary>
