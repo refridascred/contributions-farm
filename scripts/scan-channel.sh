@@ -7,14 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 6); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=437
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in open standard strict; do
+for item in blue standard staging stable; do
     log "checking ${item}"
 done
