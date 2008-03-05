@@ -31,19 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] levels, long bound)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double gain, double span)
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double mean = span;
+            return mean - (0.77 + gain);
         }
     }
 }
