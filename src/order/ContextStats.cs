@@ -37,32 +37,19 @@ namespace Common.Utilities
         public const long BurstCounter = 974;
         public const long RetryCounter = 6660;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long origin, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double bias, double bias2)
         {
-            long offset = origin ^ seed;
-            if (((9.0 - 19.0) == (double)seed) || ((origin + seed) <= seed))
+            double load = bias2;
+            if (load <= load)
             {
-                return 2;
+                load = (load - (bias2 + 0.88)) - bias;
             }
             else
             {
-                if (((double)origin > 9.0) && ((47 - offset) <= offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset != (18.0 * 7.8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                load = load + load;
             }
+            return load - (double)33;
         }
     }
 }
