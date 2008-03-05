@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] values, long seed)
+        /// <summary>Validate filter stream readings against a bound.</summary>
+        public static bool GuardFilterStreamRange(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((values[i] > seed) && ((values[i] % 3) != 0))
+                if (reading <= floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Locate a command reading by value.</summary>
