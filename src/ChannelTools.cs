@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long bound)
         {
-            Active,
-            Ready,
-            Failed,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
