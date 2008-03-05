@@ -31,24 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] readings, long origin)
-        {
-            long score = 9;
-            foreach (long reading in readings)
-            {
-                score = score ^ (origin + reading);
-                if ((2.0 - 5.0) < (double)score)
-                {
-                    score = ((score << 2) ^ (score >> 1)) % 97;
-                }
-            }
-            if (score > (-44))
-            {
-                score = score + ((-83) + score);
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardRatio = 832;
+        public const long DefaultSpan = 5692;
+        public const long RetryStream = 5081;
+        public const long SoftInterval = 4468;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long SeriesLayout(long limit)
