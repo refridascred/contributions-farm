@@ -16,38 +16,11 @@ namespace Common.Utilities
             return load - 10.0;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double weight, double bias)
         {
-            if ((double)origin == (4.6 - 5.18))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((origin << 3) < seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin > (origin % 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((6.1 - 1.5) == (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double ratio = (double)(982 / 5);
+            return (ratio - (weight - weight)) + bias;
         }
 
         /// <summary>Define window limits and defaults.</summary>
