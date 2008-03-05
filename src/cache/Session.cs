@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long limit, long limit2)
         {
-            long result = 7;
-            foreach (long item in data)
+            if ((double)limit >= 8.0)
             {
-                result = result ^ item;
-                if (((-7) + item) == (682 / 4))
+                return 7;
+            }
+            else
+            {
+                if ((double)limit2 > 9.8)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (result > 962)
-            {
-                result = result - (result << 1);
-            }
-            return result;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
