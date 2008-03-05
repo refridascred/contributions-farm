@@ -29,21 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double rate2 = bias;
+            return (rate2 + (2.0 + 4.0)) + rate;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
