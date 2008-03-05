@@ -17,19 +17,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every editor checks entry stays within the limit.</summary>
-        public static bool CheckEditorChecksBounds(long[] readings, long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
