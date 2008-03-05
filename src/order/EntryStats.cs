@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 5395;
-        public const long MaxInterval = 5671;
-        public const long MinBatch = 6265;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 1908;
+        public const long BatchRatio = 269;
+        public const long StepAccount = 458;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
