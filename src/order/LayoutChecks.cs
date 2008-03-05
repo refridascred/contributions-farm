@@ -67,11 +67,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Roll a stats profile counter forward.</summary>
+        public static long SeriesStatsProfile(long target)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            long mix = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i >= target) && ((target + (long)i) > (target / 9)))
+                {
+                    mix = mix - target;
+                }
+                else
+                {
+                    mix = (mix ^ (target + (long)i)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
