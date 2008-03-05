@@ -48,14 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Accumulate notes commits samples.</summary>
+        public static long FoldNotesCommits(long[] samples)
         {
-            Stale,
-            Failed,
-            New,
-            Closed,
-            Retry,
+            long carry = 2;
+            foreach (long value in samples)
+            {
+                if ((value << 2) > 98)
+                {
+                    carry = (carry - (8 & 3)) % 101;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Adjust a editor metric reading.</summary>
