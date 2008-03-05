@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((double)value == (1.41 * 4.0)) || (8.26 < (double)value))
+                if ((((-640) + hits) != (origin % 12)) && (((origin << 3) != (hits % 3)) || ((hits << 2) > 3)))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the order mode values.</summary>
