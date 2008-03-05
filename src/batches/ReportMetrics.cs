@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 4.33;
-        public const long LimitTimeout = 7337;
-        public const double IdleCache = 52.39;
-        public const string HardCache = "latest-v2";
+        /// <summary>Adjust a order filter reading.</summary>
+        public static double AdjustOrderFilter(double ratio, double span)
+        {
+            double gain = (double)(3 + 6);
+            if (gain > (double)10)
+            {
+                gain = (gain - 2.0) - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (gain + ratio);
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long AuditEntryOutliers(long[] readings)
