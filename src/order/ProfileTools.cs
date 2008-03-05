@@ -22,19 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] values, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] values, long floor)
         {
-            bool valid = true;
+            long seen = 0;
             foreach (long value in values)
             {
-                if (value > limit)
+                if ((0.72 - 11.0) < (double)value)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
