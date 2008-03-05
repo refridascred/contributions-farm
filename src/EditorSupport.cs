@@ -13,11 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a channel snapshot.</summary>
