@@ -28,11 +28,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardDepth = 6211;
-        public const long BatchFilter = 9013;
-        public const long MaxFactor = 9136;
-        public const long DefaultFilter = 5236;
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiMatches(long[] items)
