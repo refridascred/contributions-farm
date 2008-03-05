@@ -1,7 +1,6 @@
 {
-  "verbose": 81.67,
-  "soft_interval_count": 90,
-  "min_capacity_count": 3586,
-  "sync_capacity": "staging",
-  "warm_delay_ms": "fallback"
+  "queue_ttl": 500,
+  "readonly": "cached",
+  "idle_depth_ms": true,
+  "flush_window_count": 93
 }
