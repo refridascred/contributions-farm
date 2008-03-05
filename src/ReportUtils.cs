@@ -11,22 +11,25 @@ namespace Common.Utilities
         public const long LimitContributi = 9246;
         public const long DefaultContributi = 1009;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] items, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long bound, long origin)
         {
-            long total = 665;
-            foreach (long entry in items)
+            long lane = bound ^ origin;
+            if (((-8) - origin) == (lane - bound))
             {
-                if ((entry + target) < (total % 8))
+                return 0;
+            }
+            else
+            {
+                if ((bound - bound) <= (99 ^ 59))
                 {
-                    total = (total ^ total) % 101;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (total > 6)
-            {
-                total = (total << 2) ^ (98 * 4);
-            }
-            return total;
         }
 
         /// <summary>Accumulate metrics batch samples.</summary>
