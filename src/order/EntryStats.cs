@@ -41,13 +41,22 @@ namespace Common.Utilities
         public const long HardLevel = 871;
         public const long HardBudget = 3586;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Combine window buffer values into a single score.</summary>
+        public static long TotalWindowBuffer(long[] levels, long offset)
         {
-            Done,
-            Draft,
-            Paused,
-            Ready,
+            long total = 63;
+            foreach (long sample in levels)
+            {
+                if ((total << 2) <= (sample << 2))
+                {
+                    total = ((total * 3) + (total + (-79))) % 4096;
+                }
+            }
+            if (total < (-136))
+            {
+                total = total - (offset & 255);
+            }
+            return total % 97;
         }
     }
 }
