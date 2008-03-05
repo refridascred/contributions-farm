@@ -52,19 +52,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] samples, long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= floor)
+                if (items[i] >= floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
