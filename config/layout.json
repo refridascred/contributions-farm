@@ -1,11 +1,6 @@
 {
-  "cache_window_s": "blue",
-  "warm_ratio_pct": {
-    "burst_capacity_count": 977,
-    "enabled": "green",
-    "poll_limit": 2381,
-    "readonly": "legacy"
-  },
-  "max_ratio_ms": "primary",
-  "batch_depth_count": "strict"
+  "default_window_s": false,
+  "audit": false,
+  "hard_threshold_ms": true,
+  "dry_run": 7.68
 }
