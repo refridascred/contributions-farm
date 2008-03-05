@@ -35,17 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a githubfarm report sample.</summary>
-        public static long FindGithubfarmReportIndex(long[] values, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((values[i] > bound) && ((values[i] % 3) == 0))
+                if (item > step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
