@@ -44,21 +44,26 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 851;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)6 > (double)mix))
                 {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix + datum) % 4096) + origin;
+                }
+                else
+                {
+                    mix = (mix + (datum + 64)) % 101;
+                }
+                if ((double)mix == (7.0 + 7.03))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
