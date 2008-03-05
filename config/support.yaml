@@ -1,8 +1,5 @@
 # support settings
-farm_threshold: eu-west
-max_interval: local
-compress:
-  - open
-  - blue
-  - eu-west
-  - edge
+max_window_count: 63.89
+soft_ratio_s: false
+warm_size_pct: 30
+record_ttl: true
