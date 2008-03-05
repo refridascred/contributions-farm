@@ -19,11 +19,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 5573;
-        public const string DefaultScore = "latest";
-        public const string IdleLevel = "local-v2";
-        public const long DefaultEntry = 8030;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextRange(long[] items, long target)
