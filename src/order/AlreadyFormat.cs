@@ -27,14 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Active,
-            Dropped,
-            Stale,
-            Locked,
-            Ready,
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Blend two profile record measurements.</summary>
