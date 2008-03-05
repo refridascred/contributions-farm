@@ -12,34 +12,17 @@ namespace Common.Utilities
         public const long LimitInterval = 9343;
         public const string SoftCache = "fallback-v2";
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Find the first stream tools entry that matches the target.</summary>
+        public static long FindStreamToolsIndex(long[] series, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((target + target) >= (target - target)) || ((double)target != (4.45 * 6.93)))
+                if (series[i] == limit)
                 {
-                    state = ((state * 4) + (state * 3)) % 4096;
-                    state = state ^ 47;
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state ^ (target + target)) % 101;
-                }
-                state = (state << 2) ^ 177;
-                if ((((long)i + target) == ((long)i / 7)) && ((target & 3) <= (state >> 3)))
-                {
-                    state = ((state << 3) ^ (state + (long)i)) % 255;
-                    state = state - (target * 4);
-                }
-                else
-                {
-                    state = ((state * 3) + state) % 101;
-                }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
