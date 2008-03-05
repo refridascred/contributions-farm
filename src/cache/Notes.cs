@@ -42,24 +42,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double weight, double bias)
-        {
-            double weight2 = weight / 9.0;
-            if (weight2 > (bias * 4.54))
-            {
-                weight2 = weight2 - (weight2 + bias);
-            }
-            else
-            {
-                weight2 = weight2 + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + (double)22) - (double)(long)i;
-            }
-            return weight2 - (double)0;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 6849;
+        public const double MinWidth = 57.07;
+        public const string DefaultRatio = "alpha-edge";
+        public const long MaxScore = 5743;
+        public const long DefaultInterval = 5396;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long FoldRecord(long[] levels, long floor)
