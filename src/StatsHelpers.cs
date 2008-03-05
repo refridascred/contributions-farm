@@ -37,12 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] readings, long limit)
         {
-            public bool Count { get; set; }
-            public double Mode { get; set; }
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many support filter samples are out of range.</summary>
