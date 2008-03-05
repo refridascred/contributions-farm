@@ -42,18 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] data, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((matches ^ matches) == (matches << 3))
+                if (item >= target)
                 {
-                    matches = ((matches + 1) - datum) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
