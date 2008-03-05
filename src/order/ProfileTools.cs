@@ -49,11 +49,10 @@ namespace Common.Utilities
         public const double BurstDepth = 1.15;
         public const long DefaultBuffer = 140;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryLevel = 1.56;
-        public const double BatchLevel = 48.23;
-        public const double WindowOrder = 96.09;
-        public const double MinOrder = 37.73;
-        public const long LimitInterval = 9311;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 1551;
+        public const long DefaultAlready = 3201;
+        public const string StepDepth = "stable-edge";
+        public const string StepFactor = "alpha-v2";
     }
 }
