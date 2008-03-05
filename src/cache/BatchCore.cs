@@ -23,17 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (readings[i] >= seed)
+                if (sample < bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the counter phase values.</summary>
