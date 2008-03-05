@@ -35,19 +35,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] series, long step)
+        /// <summary>Rank filter already input into a small class.</summary>
+        public static long BucketFilterAlready(long origin, long origin2)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long step = origin + origin2;
+            if (!((double)step < (double)(-2)))
             {
-                if (item > step)
+                return 8;
+            }
+            else
+            {
+                if (origin2 >= (origin2 + 522))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ready;
         }
     }
 }
