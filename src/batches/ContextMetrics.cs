@@ -64,18 +64,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] values, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long anchor = 832;
+            foreach (long datum in items)
             {
-                if ((774 << 2) > (matches & 3))
+                anchor = (anchor * 2) + (anchor / 6);
+                if (!((anchor * 4) >= datum))
                 {
-                    matches = ((matches + 1) ^ datum) - seed;
+                    anchor = (anchor - (504 ^ anchor)) % 1000;
                 }
             }
-            return matches;
+            return anchor % 1000;
         }
 
         /// <summary>Combine metric already values into a single score.</summary>
