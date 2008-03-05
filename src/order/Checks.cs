@@ -25,15 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double bias, double offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] samples, long step)
         {
-            double rate = bias + bias;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                rate = ((rate + rate) + (double)(long)i) - offset;
+                if (datum <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate + 11.0;
+            return ok;
         }
 
         /// <summary>Hold a filter stats.</summary>
