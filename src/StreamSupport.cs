@@ -12,18 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] series, long origin)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double weight, double span)
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!((double)41 >= (double)entry))
-                {
-                    seen = (seen + 1) + origin;
-                }
-            }
-            return seen;
+            double load = weight + span;
+            return load + (span + weight);
         }
 
         /// <summary>Hold a order summary.</summary>
