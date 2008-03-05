@@ -47,22 +47,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long carry = -960;
+            foreach (long item in values)
             {
-                if ((tally * 2) == (tally % 12))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (((carry * 5) + (item % 8)) % 255) + limit;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
