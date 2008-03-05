@@ -15,38 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long origin, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            if ((1.73 / 7.0) > (double)bound)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                long lane = (floor & 63) * 3;
+                carry = ((carry << 3) ^ lane) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((bound + origin) > origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound / 2) > (origin % 97))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((46 - bound) > (bound >> 4)) && ((60 + 857) > (bound - 725)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Adjust a tools reading.</summary>
