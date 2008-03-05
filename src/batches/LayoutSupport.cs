@@ -30,15 +30,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of session schema entries.</summary>
-        public static long FoldSessionSchema(long[] levels, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] values)
         {
-            long mark = 7;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                mark = (((mark * 5) + (982 + seed)) % 1000) + datum;
+                if ((matches ^ matches) >= (6 + (long)values.Length))
+                {
+                    matches = (matches + 2) - reading;
+                }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
