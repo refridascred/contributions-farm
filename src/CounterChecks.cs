@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseLevel = 18.63;
-        public const long SoftRoute = 6894;
-        public const string BurstRoute = "strict-v2";
-        public const string StepRatio = "standard-1";
-        public const long BurstBudget = 357;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long SeekToolsIndex(long[] data, long limit)
