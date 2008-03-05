@@ -23,17 +23,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 7894;
+        public const string BaseDepth = "standard-1";
+        public const long SoftGithubfarm = 5606;
+        public const string LimitBudget = "stable";
+        public const double LimitGithubfarm = 63.34;
     }
 }
