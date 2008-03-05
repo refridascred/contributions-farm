@@ -1,6 +1,13 @@
 # support settings
-warm_depth_ms: standard
-channel_capacity:
-  - legacy
-  - fallback
-warm_size_count: 1251
+burst_ttl_s: 100
+warm_capacity: fallback
+idle_capacity_ms: 55
+burst_interval:
+  dry_run: 88.75
+  idle_retries: true
+  filter_size:
+    - latest
+    - open
+    - legacy
+readonly: 35
+payload_limit: 50
