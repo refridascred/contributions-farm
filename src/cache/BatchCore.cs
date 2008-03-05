@@ -19,16 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                result = (result ^ (result * 5)) % 97;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Draft,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the counter phase values.</summary>
