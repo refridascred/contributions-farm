@@ -50,9 +50,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 88.74;
-        public const long HardToken = 3644;
-        public const double IdleToken = 53.42;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long origin, long limit)
+        {
+            long diff = origin - limit;
+            if ((origin & 7) > (diff + origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((41 + limit) != (origin + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
