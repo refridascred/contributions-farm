@@ -54,11 +54,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardBudget = 9488;
-        public const long StepMetric = 2782;
-        public const double WindowMetric = 15.27;
-        public const long BurstFactor = 4300;
-        public const long BatchMetric = 9909;
+        /// <summary>Classify a entry record pair into a bucket.</summary>
+        public static long RankEntryRecord(long bound, long offset)
+        {
+            if ((double)offset == (3.3 / 6.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((offset + bound) == (offset / 8)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + offset) == (bound << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((bound << 2) != (bound ^ bound)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
