@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((long)i & 1) > (state << 1))
-                {
-                    state = (state - (state / 3)) % 1000;
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultDepth = 6348;
+        public const long BatchBuffer = 7438;
+        public const long WindowTimeout = 3889;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
