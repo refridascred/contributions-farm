@@ -34,21 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up contributi metrics samples.</summary>
-        public static long OverlapContributiMetricsCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 8776;
+        public const long LimitToken = 6499;
+        public const double RetryToken = 25.2;
+        public const double StepRatio = 11.83;
+        public const long BatchToken = 8582;
     }
 }
