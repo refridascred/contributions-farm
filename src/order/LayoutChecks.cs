@@ -12,21 +12,20 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 609;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum - (step << 2)) % 1000) + sample;
+                sum = sum ^ 649;
             }
-            return tally;
+            if (sum > (-337))
+            {
+                sum = ((sum * 3) + (step ^ 3)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
