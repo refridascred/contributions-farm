@@ -59,14 +59,21 @@ namespace Common.Utilities
         public const long LimitLevel = 5385;
         public const long CacheCount = 5717;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            Synced,
-            Stale,
-            Paused,
-            Dropped,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
