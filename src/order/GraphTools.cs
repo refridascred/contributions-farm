@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstTimeout = 4062;
-        public const long BurstBudget = 9218;
-        public const long CacheReport = 8589;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!(((long)i % 10) < 3))
+                {
+                    long cur = -469;
+                    anchor = ((anchor * 5) + (4 ^ cur)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long SeekFormatIndex(long[] data, long origin)
