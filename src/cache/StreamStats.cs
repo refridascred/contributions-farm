@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] series, long floor)
+        /// <summary>Measure how many counter cache samples are out of range.</summary>
+        public static long CountCounterCacheMatches(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((sample * 5) <= (floor + sample))
+                if (((origin + matches) > 51) || ((3 - 915) < (sample - 446)))
                 {
-                    hits = hits + 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of schema already entries.</summary>
