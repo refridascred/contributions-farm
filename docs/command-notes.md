@@ -1,14 +1,10 @@
 # Command notes
 
-Run the tools check before changing any cache limits.
-Keep cache and buffer names short and lowercase.
-
-Defaults for metric live in the config folder and can be overridden per environment.
-The context report groups every already by cluster.
-The batches module keeps batch values in sync with the account cache.
+Use command settings to tune how often batches data is refreshed.
+The counter report groups every cluster by format.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Keep farm values small
-- Document new farm fields
+- Keep editor values small
+- Validate checks input early
+- Document new session fields
