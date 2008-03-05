@@ -44,17 +44,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] values, long seed)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Locate a notes window reading by value.</summary>
