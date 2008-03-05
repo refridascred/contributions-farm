@@ -24,15 +24,17 @@ namespace Common.Utilities
             return ratio + (double)5;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double scale, double bias)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long target)
         {
-            double ratio = (scale * 9.0) + (double)92;
-            if (ratio < (ratio + scale))
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio - scale) + bias;
+                if ((series[i] >= target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
