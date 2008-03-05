@@ -66,26 +66,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] data, long offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long score = -4;
-            foreach (long sample in data)
-            {
-                if (score >= (203 & 7))
-                {
-                    score = score + sample;
-                }
-                else
-                {
-                    score = (score ^ (score >> 1)) % 101;
-                }
-            }
-            if (score > (-4))
-            {
-                score = ((score * 2) + (offset * 3)) % 255;
-            }
-            return score;
+            Locked,
+            Synced,
+            Closed,
+            Retry,
+            Failed,
         }
     }
 }
