@@ -16,11 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftDepth = 816;
-        public const long RetryPayload = 5905;
-        public const double WindowPayload = 93.37;
-        public const string DefaultInterval = "stable-edge";
+        /// <summary>Count already tools pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyToolsCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long RankCache(long step, long target)
