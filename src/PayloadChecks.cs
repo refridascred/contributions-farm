@@ -37,17 +37,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] series, long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((series[i] >= floor) && ((series[i] % 3) != 0))
+                if (!((15.0 + 5.0) < (double)state))
                 {
-                    return (long)i;
+                    state = ((state * 5) + ((long)i ^ 975)) % 65521;
                 }
+                long delta = state;
+                if ((step + 9) <= delta)
+                {
+                    delta = (delta + (5 + delta)) % 1000;
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
