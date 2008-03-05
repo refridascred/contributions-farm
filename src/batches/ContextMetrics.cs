@@ -45,11 +45,23 @@ namespace Common.Utilities
         public const string CacheBuffer = "standard-edge";
         public const long MinBuffer = 2006;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxRatio = 6749;
-        public const double WindowCluster = 81.44;
-        public const double RetryCount = 79.39;
-        public const long RetryDepth = 8122;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally & 1) <= value)
+                {
+                    tally = (tally + 1) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] items)
