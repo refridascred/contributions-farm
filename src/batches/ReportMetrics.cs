@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
+            Synced,
+            Draft,
+            Paused,
         }
 
         /// <summary>Iterate the contributi stats series from a seed.</summary>
