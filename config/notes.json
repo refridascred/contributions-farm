@@ -1,17 +1,17 @@
 {
-  "batch_window": {
-    "strict": "eu-west",
-    "flush_window": [300, 400],
-    "min_ttl_count": true,
-    "poll_retries": true,
-    "dry_run": {
-      "strict": 41,
-      "enabled": "eu-west",
-      "hard_depth": "local",
-      "cache_limit_s": 250,
-      "idle_delay_count": false
-    }
+  "command_retries": 6156,
+  "batch_limit_pct": {
+    "readonly": "green",
+    "warm_size_s": 62,
+    "persist": "green"
   },
-  "default_limit_ms": 2109,
-  "max_limit_ms": "standard"
+  "max_size": 7526,
+  "cache_capacity_ms": 54.01,
+  "default_threshold_ms": {
+    "flush_interval": 8,
+    "base_ttl_count": false,
+    "window_window": 14.83,
+    "persist": true,
+    "batch_timeout_count": "stable"
+  }
 }
