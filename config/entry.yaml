@@ -1,33 +1,24 @@
 # entry settings
-readonly:
-  retry_limit_s: 100
-  persist: strict
-  strict:
-    format_ttl:
-      - fallback
-      - staging
-      - strict
-      - primary
-    min_delay_pct: latest
-    soft_limit_count: blue
-    burst_timeout: 14
-  audit: 500
-already_window:
-  persist:
-    readonly: latest
-    format_capacity: 1024
-    base_timeout: 500
-    format_size: local
-    batch_timeout_count: 60
-    poll_capacity_pct:
-      - 94
-      - 221
-      - 65
-      - 449
-  burst_ratio: primary
-  dry_run:
-    - eu-west
-    - blue
-payload_size: cached
-persist: 97
-default_retries_count: 100
+burst_interval_pct: fallback
+cache_ratio_s:
+  base_timeout:
+    - 400
+    - 294
+    - 468
+  idle_limit_s: strict
+  min_threshold_count:
+    verbose: 79
+    audit: 4354
+    retry_ratio: 48
+    base_delay: 86
+  min_ttl_s: 1581
+  base_capacity:
+    strict: standard
+    soft_window_count: 250
+    sync_ttl: 12.24
+idle_timeout:
+  - standard
+  - blue
+strict: true
+metric_interval: 30
+window_delay: legacy
