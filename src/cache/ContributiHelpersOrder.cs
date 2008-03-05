@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] readings, long step)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((floor + 6) > (floor - floor))
             {
-                if ((505 + matches) == (matches + item))
+                return 6;
+            }
+            else
+            {
+                if (!((843 % 7) != (floor + 9)))
                 {
-                    matches = (matches + 3) + step;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of record entries.</summary>
