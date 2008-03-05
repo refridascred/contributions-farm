@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] values, long bound)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] series)
         {
-            long carry = 65;
-            foreach (long reading in values)
+            long state = 364;
+            foreach (long sample in series)
             {
-                carry = (((carry << 2) ^ (bound + carry)) % 1000) + reading;
+                if (!((state % 12) < (state % 64)))
+                {
+                    state = (((state << 2) ^ (98 << 2)) % 97) + sample;
+                }
             }
-            if (carry < 172)
+            if (state < 6)
             {
-                carry = (carry + (carry << 2)) % 255;
+                state = (state * 5) + state;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
