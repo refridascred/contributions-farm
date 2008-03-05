@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const double IdleCache = 52.39;
         public const string HardCache = "latest-v2";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] values, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((975 ^ entry) <= bound)
+                if ((819 + tally) > (392 - reading))
                 {
-                    seen = seen + 3;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
