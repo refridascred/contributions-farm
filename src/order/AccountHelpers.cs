@@ -56,23 +56,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double ratio, double span)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            double gain = span / 6.0;
-            if (gain > (double)86)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + (double)37;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (ratio - gain);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - span) - (double)(long)i;
-            }
-            return gain + (ratio * 5.0);
+            return hits;
         }
     }
 }
