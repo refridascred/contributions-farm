@@ -39,12 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            double weight = ratio * 7.2;
+            if (weight > (double)38)
+            {
+                weight = (weight - weight) - floor;
+            }
+            return weight + weight;
         }
 
         /// <summary>Describe the contributi class values.</summary>
