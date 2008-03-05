@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] data, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum < floor)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc * 4) + (24 ^ acc)) - (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Describe the route mode values.</summary>
