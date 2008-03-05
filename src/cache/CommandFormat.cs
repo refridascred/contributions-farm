@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate metric record samples.</summary>
-        public static long WeighMetricRecord(long[] items)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] items, long step)
         {
-            long carry = 488;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry - (carry - carry);
-                carry = (carry - (sample >> 3)) % 97;
-                carry = (carry ^ (sample >> 1)) % 65521;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 14)
-            {
-                carry = (carry * 5) + (carry / 3);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Project the next filter value.</summary>
