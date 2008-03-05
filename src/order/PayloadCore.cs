@@ -23,18 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Digest a series of batches batch entries.</summary>
+        public static long FoldBatchesBatch(long[] readings, long step)
         {
-            long result = 0;
-            foreach (long reading in data)
+            long total = 803;
+            foreach (long value in readings)
             {
-                if ((reading << 2) <= reading)
+                if ((double)step == (double)value)
                 {
-                    result = ((result * 3) + (result % 60)) % 4096;
+                    total = total ^ (value >> 3);
                 }
             }
-            return result;
+            if (total < 6)
+            {
+                total = total ^ (95 << 1);
+            }
+            return total;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
