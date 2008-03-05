@@ -1,7 +1,12 @@
 {
-  "compress": [315, 468],
-  "max_size_pct": "latest",
-  "batches_limit": true,
-  "cache_depth": false,
-  "checks_interval": "primary"
+  "readonly": {
+    "soft_limit_count": false,
+    "commits_capacity": false,
+    "flush_depth_pct": [393, 98],
+    "readonly": "green",
+    "hard_size": "primary",
+    "default_timeout_ms": [334, 87, 326, 327]
+  },
+  "hard_ttl_count": 2325,
+  "base_capacity_ms": 60
 }
