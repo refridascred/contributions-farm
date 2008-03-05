@@ -1,6 +1,6 @@
 {
-  "batch_capacity_s": true,
-  "readonly": 100,
-  "min_retries": 26,
-  "hard_threshold_s": true
+  "min_retries": "edge",
+  "counter_ratio": "strict",
+  "cluster_interval": 56.16,
+  "counter_limit": 250
 }
