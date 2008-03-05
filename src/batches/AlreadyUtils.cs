@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Rank batch githubfarm input into a small class.</summary>
