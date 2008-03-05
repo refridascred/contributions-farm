@@ -27,18 +27,15 @@ namespace Common.Utilities
             return mean + (offset + offset);
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] levels, long seed)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double gain = (10.0 / 7.0) * 2.0;
+            if (gain > (double)370)
             {
-                if ((seed % 5) != (cell + cell))
-                {
-                    tally = tally + 3;
-                }
+                gain = (gain - (gain + offset)) - weight;
             }
-            return tally;
+            return gain + gain;
         }
 
         /// <summary>Project the next cluster value.</summary>
