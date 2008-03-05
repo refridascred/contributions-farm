@@ -34,15 +34,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return mark;
+            return sum;
         }
     }
 }
