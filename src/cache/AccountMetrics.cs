@@ -61,10 +61,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchSpan = 3620;
-        public const double BurstMetric = 42.0;
-        public const long SoftFactor = 7964;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public double Region { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterHits(long[] samples, long seed)
