@@ -1,10 +1,6 @@
-id,owner,weight
-1,21.43,cached
-2,208,90.51
-3,strict,92
-4,420,380
-5,96.63,9.71
-6,staging,88.83
-7,19.84,950
-8,84,stable
-9,744,68.6
+id,score,count,owner,ratio
+1,983,842,815,local
+2,75.21,358,505,strict
+3,standard,131,90.01,cached
+4,blue,eu-west,85.03,green
+5,874,618,88,830
