@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] readings)
+        /// <summary>Iterate the command farm series from a seed.</summary>
+        public static long SeriesCommandFarm(long seed)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)153 > (4.9 + 3.6))
-                {
-                    seen = (seen + 1) + sample;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
