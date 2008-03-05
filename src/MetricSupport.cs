@@ -25,19 +25,21 @@ namespace Common.Utilities
         public const double RetryToken = 13.06;
         public const long SoftToken = 2508;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] series, long offset)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
