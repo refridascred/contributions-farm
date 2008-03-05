@@ -54,19 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] data, long target)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long state = 26;
-            foreach (long datum in data)
-            {
-                state = (state + (datum + target)) % 4096;
-            }
-            if (state < 3)
-            {
-                state = ((state << 3) ^ (180 * 3)) % 4096;
-            }
-            return state % 65521;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
