@@ -14,18 +14,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] levels)
+        /// <summary>Iterate the command window series from a seed.</summary>
+        public static long RollCommandWindow(long offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell >= (cell << 3))
+                if ((score - offset) <= ((long)i % 5))
                 {
-                    hits = hits + 1;
+                    score = score - (offset - offset);
                 }
+                else
+                {
+                    score = (score ^ (94 - (long)i)) % 101;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = ((score ^ ((long)i ^ score)) % 101) + (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
