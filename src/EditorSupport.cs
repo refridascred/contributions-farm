@@ -29,11 +29,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 1272;
-        public const long BaseRatio = 502;
-        public const long StepCount = 4856;
-        public const double MinProfile = 30.35;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Classify a report schema pair into a bucket.</summary>
         public static long BucketReportSchema(long bound, long bound2)
