@@ -64,19 +64,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] values, long offset)
+        /// <summary>Derive the next tools already value from a seed.</summary>
+        public static long SeriesToolsAlready(long floor)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = mark - (2 - floor);
+                mark = mark - floor;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
     }
 }
