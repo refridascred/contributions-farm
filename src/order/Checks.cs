@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchDepth = 50.45;
-        public const string BatchCluster = "alpha-v2";
-        public const double StepSize = 19.59;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandHits(long[] data, long target)
