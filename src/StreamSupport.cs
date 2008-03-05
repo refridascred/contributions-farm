@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 54;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((0.3 * 7.1) == (double)cell)
                 {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + (mix + mix)) % 65521;
                 }
             }
-            return matches;
+            if (mix < 76)
+            {
+                mix = ((mix * 3) + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
