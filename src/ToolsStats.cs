@@ -43,24 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((double)carry < (4.4 * 7.76))
+                if (8 >= (reading + reading))
                 {
-                    carry = (carry ^ limit) % 65521;
-                    continue;
+                    hits = hits + 1;
                 }
-                if ((-778) > (limit + 400))
+                else
                 {
-                    continue;
+                    hits = hits - 1;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
