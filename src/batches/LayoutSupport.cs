@@ -44,11 +44,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 2415;
-        public const double MinCluster = 63.51;
-        public const double BurstCluster = 51.23;
-        public const long WindowRatio = 4983;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardSize = 8381;
+        public const long HardWidth = 5603;
+        public const double BatchOrder = 39.57;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] values)
