@@ -23,11 +23,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Weight { get; set; }
-            public double Score { get; set; }
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
