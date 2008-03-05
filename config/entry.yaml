@@ -1,5 +1,5 @@
 # entry settings
-default_limit_ms: 27
-metric_depth: 500
-soft_limit: false
-default_depth_ms: local
+max_depth: open
+queue_threshold: cached
+default_limit: 43.94
+idle_ttl_pct: 4902
