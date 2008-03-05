@@ -1,4 +1,4 @@
 # entry settings
-verbose: 1024
-record_timeout: local
-burst_depth_pct: blue
+enabled: 4595
+entry_size: 71
+max_depth_ms: 37.92
