@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many batch queue samples are out of range.</summary>
-        public static long MeasureBatchQueueMatches(long[] samples)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mark = 84;
+            foreach (long sample in values)
             {
-                if (hits < entry)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = (((mark - (1 / 4)) % 1000) + sample) - offset;
             }
-            return hits;
+            if (mark > 0)
+            {
+                mark = ((mark << 3) ^ (mark * 2)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of payload entry entries.</summary>
