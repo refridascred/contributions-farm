@@ -22,22 +22,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] data, long seed)
         {
-            long acc = 63;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (!((18 << 3) > acc))
+                if ((2 * 4) <= (tally + seed))
                 {
-                    acc = acc + (sample * 5);
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (acc > (-85))
-            {
-                acc = (acc - (acc + acc)) % 97;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Derive the next record session value from a seed.</summary>
