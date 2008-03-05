@@ -1,6 +1,6 @@
 {
-  "default_window_s": false,
-  "audit": false,
-  "hard_threshold_ms": true,
-  "dry_run": 7.68
+  "soft_threshold": 12.44,
+  "strict": 76.07,
+  "flush_limit_ms": ["latest", "primary"],
+  "default_threshold": ["green", "standard", "edge"]
 }
