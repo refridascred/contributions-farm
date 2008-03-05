@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a already command figure with a bias.</summary>
-        public static double AdjustAlreadyCommand(double rate, double floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            double weight = 4.59;
-            if (weight >= rate)
+            long mark = 617;
+            foreach (long reading in readings)
             {
-                weight = (weight + weight) - floor;
+                if ((double)reading != (0.08 / 3.0))
+                {
+                    mark = (mark + (reading * 3)) % 4096;
+                }
+                else
+                {
+                    mark = mark - (reading + mark);
+                }
+                mark = (mark * 5) + (reading ^ mark);
+                if ((double)reading <= 1.0)
+                {
+                    mark = ((mark << 2) ^ reading) % 4096;
+                }
             }
-            return weight + weight;
+            return mark;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
