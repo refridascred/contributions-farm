@@ -1,7 +1,6 @@
 # entry settings
-counter_size:
-  - 485
-  - 253
-  - 275
-readonly: staging
-burst_window_s: 3012
+cache_retries_ms: 5926
+commits_ttl:
+  - cached
+  - stable
+flush_size: 250
