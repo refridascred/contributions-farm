@@ -40,11 +40,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 37.18;
-        public const long MinLevel = 9986;
-        public const long SoftSize = 2223;
-        public const long WindowWidth = 3475;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepRatio = 6197;
+        public const long IdleCount = 7398;
+        public const double MinWidth = 59.1;
+        public const double LimitFactor = 69.15;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutLimits(long[] series, long offset)
