@@ -1,6 +1,11 @@
 {
-  "compress": 35.03,
-  "batches_timeout": "edge",
-  "poll_interval": false,
-  "hard_threshold_pct": 67.36
+  "context_size": 63.32,
+  "counter_interval": 1024,
+  "audit": 500,
+  "readonly": "edge",
+  "persist": {
+    "warm_capacity_count": 25,
+    "window_capacity": false,
+    "route_interval": 1163
+  }
 }
