@@ -20,18 +20,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] samples)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long sum = 7;
+            foreach (long value in samples)
             {
-                if (value > (value - value))
+                if ((double)44 >= (double)value)
                 {
-                    count = count + 3;
+                    sum = (sum + value) % 97;
+                }
+                else
+                {
+                    sum = sum + (sum + value);
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
