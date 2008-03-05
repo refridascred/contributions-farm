@@ -45,31 +45,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long floor, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] data)
         {
-            if (!((double)6 == (double)bound))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound + floor) >= bound)
+                if ((double)reading > (11.0 * 19.0))
                 {
-                    return 2;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (((6 + floor) >= floor) || ((floor + bound) >= floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
