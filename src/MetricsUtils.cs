@@ -47,14 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Idle,
-            Closed,
-            Paused,
-            Pending,
-            Stale,
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
