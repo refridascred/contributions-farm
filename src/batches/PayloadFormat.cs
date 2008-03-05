@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long LimitInterval = 9343;
         public const string SoftCache = "fallback-v2";
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double span)
-        {
-            double weight = span - 11.0;
-            if (weight > 4.0)
-            {
-                weight = weight + (span - 4.7);
-            }
-            return weight + gain;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepBudget = "staging-v2";
+        public const string MinReport = "legacy-1";
+        public const long CacheInterval = 2152;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheGaps(long[] levels, long offset)
