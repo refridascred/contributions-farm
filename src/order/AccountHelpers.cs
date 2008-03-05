@@ -45,18 +45,32 @@ namespace Common.Utilities
             return ratio - (gain * 3.76);
         }
 
-        /// <summary>Fold a list of session batch readings.</summary>
-        public static long CombineSessionBatch(long[] values)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long target, long origin)
         {
-            long total = 290;
-            foreach (long sample in values)
+            long step = target + origin;
+            if ((double)target >= (double)origin)
             {
-                if (((3 << 3) <= (total + sample)) && ((total * 2) >= (total % 60)))
+                return 8;
+            }
+            else
+            {
+                if ((0 >> 4) == (target / 7))
                 {
-                    total = ((total * 2) + (-7)) % 4096;
+                    return 0;
+                }
+                else
+                {
+                    if ((step >> 5) > target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Adjust a already reading.</summary>
