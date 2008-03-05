@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count stream filter pairs that satisfy a relation.</summary>
-        public static long PairStreamFilterCount(long[] series)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((limit ^ (long)i) >= (limit << 2))
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state ^ (limit - limit)) % 65521;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the commits phase values.</summary>
