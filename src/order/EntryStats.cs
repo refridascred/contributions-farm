@@ -34,12 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 70.0;
-        public const string RetryDepth = "local-1";
-        public const long CacheContributi = 8108;
-        public const long HardLevel = 871;
-        public const long HardBudget = 3586;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (19.0 <= (double)step)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine window buffer values into a single score.</summary>
         public static long TotalWindowBuffer(long[] levels, long offset)
