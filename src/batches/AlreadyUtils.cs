@@ -46,12 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Ready,
-            Dropped,
-            Retry,
+            Done,
+            Stale,
+            Locked,
+            Closed,
             Queued,
         }
 
