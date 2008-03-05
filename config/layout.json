@@ -1,18 +1,12 @@
 {
-  "sync_retries_pct": 76,
-  "channel_interval": 69.91,
-  "checks_threshold": {
-    "hard_depth_ms": false,
-    "contributi_window": [425, 159],
-    "poll_size": 1024,
-    "burst_threshold": ["cached", "open", "stable"],
-    "commits_ttl": false
+  "sync_size_pct": "cached",
+  "tools_threshold": {
+    "default_limit": "open",
+    "default_capacity_pct": 62.22,
+    "enabled": 19,
+    "base_limit": "primary"
   },
-  "idle_ttl_count": 4,
-  "hard_ratio_pct": {
-    "cluster_window": false,
-    "enabled": 60,
-    "dry_run": false
-  },
-  "min_interval_s": 92.16
+  "compress": 6316,
+  "batches_limit": [55, 184],
+  "support_ttl": 94
 }
