@@ -50,13 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!(value < (value + 7)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
