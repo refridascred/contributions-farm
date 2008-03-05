@@ -20,21 +20,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] samples)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading <= target)
                 {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
