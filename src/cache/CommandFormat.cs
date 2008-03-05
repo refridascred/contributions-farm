@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] readings)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((cell * 4) > (cell << 3))
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a channel options.</summary>
