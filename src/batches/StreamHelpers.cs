@@ -55,18 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((item - matches) > (item + matches))
                 {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
