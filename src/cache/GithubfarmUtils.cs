@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Iterate the format checks series from a seed.</summary>
+        public static long RollFormatChecks(long floor)
         {
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = mix + (floor * 4);
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
