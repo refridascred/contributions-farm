@@ -39,22 +39,18 @@ namespace Common.Utilities
         public const double WindowCount = 9.56;
         public const double SoftSchema = 19.57;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] readings, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] items)
         {
-            long mark = 451;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((755 % 3) >= origin)
+                if ((matches * 3) == (entry << 3))
                 {
-                    mark = (((mark * 4) + (mark << 2)) % 1000) ^ datum;
+                    matches = matches + 3;
                 }
             }
-            if (mark < 43)
-            {
-                mark = ((mark * 4) + mark) % 4096;
-            }
-            return mark;
+            return matches;
         }
     }
 }
