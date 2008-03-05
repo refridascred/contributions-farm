@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] samples, long floor)
         {
-            Closed,
-            Stale,
-            Draft,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((83 - 555) != (9 + hits))
+                {
+                    hits = ((hits + 2) + sample) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a buffer queue value against two limits.</summary>
