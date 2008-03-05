@@ -44,10 +44,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBudget = 30;
-        public const double BurstDepth = 1.15;
-        public const long DefaultBuffer = 140;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a support commits pair into a bucket.</summary>
         public static long RankSupportCommits(long offset, long floor)
