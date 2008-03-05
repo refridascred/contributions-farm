@@ -69,19 +69,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two tools order measurements.</summary>
-        public static double ScaleToolsOrder(double scale, double offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] values, long seed)
         {
-            double ratio = offset;
-            if (ratio <= ratio)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                ratio = (ratio + ratio) + scale;
+                if ((774 << 2) > (matches & 3))
+                {
+                    matches = ((matches + 1) ^ datum) - seed;
+                }
             }
-            else
-            {
-                ratio = ratio - (offset / 7.0);
-            }
-            return ratio - offset;
+            return matches;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
