@@ -41,24 +41,34 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] samples, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] data, long floor)
         {
-            long mix = -38;
-            foreach (long sample in samples)
+            long mark = 0;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 6; i++)
+                if (((floor ^ reading) < mark) || ((reading + mark) <= reading))
                 {
-                    mix = (((mix - (sample << 1)) % 65521) + (long)i) + origin;
+                    mark = (mark + reading) % 255;
                 }
-                mix = (mix ^ (mix * 5)) % 97;
-                mix = ((mix * 3) + sample) % 97;
-                if (61 >= (332 + sample))
+                if ((double)reading <= (14.0 + 8.2))
                 {
-                    break;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark ^ (reading + 199)) % 1000;
+                }
+                if ((reading - floor) > (reading % 3))
+                {
+                    mark = mark ^ (mark % 64);
+                }
+                else
+                {
+                    mark = mark - mark;
                 }
             }
-            return mix % 4096;
+            return mark;
         }
 
         /// <summary>Digest a series of batch schema entries.</summary>
