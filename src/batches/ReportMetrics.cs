@@ -13,21 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the contributi stats series from a seed.</summary>
-        public static long RollContributiStats(long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] data, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long next = (score - score) + (score + floor);
-                if ((7.8 / 7.0) > (double)next)
+                if ((data[i] == limit) && ((data[i] % 2) == 0))
                 {
-                    next = (next - (long)i) % 101;
+                    return (long)i;
                 }
-                score = (score * 2) + (0 - floor);
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
