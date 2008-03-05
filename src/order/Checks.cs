@@ -51,17 +51,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
