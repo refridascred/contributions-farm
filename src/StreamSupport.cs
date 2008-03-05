@@ -25,19 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] data, long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Closed,
+            Idle,
+            Dropped,
+            Paused,
         }
     }
 }
