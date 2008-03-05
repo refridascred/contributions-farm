@@ -27,19 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit graph schema readings against a rule.</summary>
-        public static long AuditGraphSchemaMatches(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((limit * 5) == (sample % 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftLevel = 7935;
+        public const string MinBudget = "legacy-v2";
+        public const string LimitCommits = "stable-1";
+        public const long IdleCommits = 1818;
+        public const string SoftCommits = "primary-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double LimitScore = 9.32;
