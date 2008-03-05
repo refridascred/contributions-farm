@@ -71,21 +71,18 @@ namespace Common.Utilities
         public const string RetrySize = "staging-edge";
         public const double CacheFactor = 14.72;
 
-        /// <summary>Count context order pairs that satisfy a relation.</summary>
-        public static long PairContextOrderCount(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)reading > 9.0)
                 {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
