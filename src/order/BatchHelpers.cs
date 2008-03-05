@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            Ready,
+            Closed,
+            Active,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
