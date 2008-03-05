@@ -61,38 +61,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank channel notes input into a small class.</summary>
-        public static long BucketChannelNotes(long seed, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data, long offset)
         {
-            if ((seed ^ 93) <= origin)
+            long mark = 722;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((312 * 3) > (seed >> 3))
+                if (!(283 <= (value * 3)))
                 {
-                    return 0;
+                    mark = mark ^ (mark >> 4);
                 }
                 else
                 {
-                    if ((seed / 7) <= (seed & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed <= origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = ((mark * 5) + (offset + mark)) % 4096;
+                }
+                if (!(mark < (mark % 7)))
+                {
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
