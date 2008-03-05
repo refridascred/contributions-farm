@@ -59,19 +59,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] samples, long step)
+        /// <summary>Grade a tools cluster value against two limits.</summary>
+        public static long ClassifyToolsCluster(long origin, long target)
         {
-            long state = 947;
-            foreach (long entry in samples)
+            long next = origin - target;
+            if ((origin - origin) <= (next - target))
             {
-                state = ((state ^ (step & 15)) % 1000) - entry;
+                return 6;
             }
-            if (state > 66)
+            else
             {
-                state = state - (2 - state);
+                if (!(4 < (78 - target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + target) >= (next >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return state % 4096;
         }
     }
 }
