@@ -26,11 +26,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 98.97;
-        public const long MinChecks = 919;
-        public const long BurstChecks = 4067;
-        public const long DefaultChecks = 7867;
-        public const long StepInterval = 2734;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleRatio = 3940;
+        public const double HardFactor = 63.41;
+        public const long BatchSize = 9118;
+        public const string MaxInterval = "cached-v2";
     }
 }
