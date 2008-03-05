@@ -20,17 +20,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long target)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Queued,
+            New,
+            Retry,
+            Done,
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
