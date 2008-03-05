@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 636;
-        public const string IdleInterval = "stable-edge";
-        public const double StepCount = 56.13;
+        /// <summary>Scale a cluster filter figure with a bias.</summary>
+        public static double BlendClusterFilter(double weight, double offset)
+        {
+            double scale = 1.96;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale - 3.4) + (double)(long)i) + offset;
+            }
+            return scale + (scale - weight);
+        }
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
