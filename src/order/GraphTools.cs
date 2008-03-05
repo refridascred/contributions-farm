@@ -24,17 +24,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] data, long origin)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long floor, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((-28) + seed) > (seed >> 1))
             {
-                if (data[i] == origin)
+                return 8;
+            }
+            else
+            {
+                if ((double)floor > (1.5 * 7.2))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed >> 1) == (floor / 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)374 < (double)seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
