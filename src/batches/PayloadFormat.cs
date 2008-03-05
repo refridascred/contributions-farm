@@ -39,12 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Count channel batch pairs that satisfy a relation.</summary>
+        public static long CompareChannelBatchCount(long[] values)
         {
-            Queued,
-            Pending,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
