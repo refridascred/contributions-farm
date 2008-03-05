@@ -50,11 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
             public string Offset { get; set; } = "";
         }
     }
