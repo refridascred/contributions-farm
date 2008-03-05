@@ -1,6 +1,19 @@
 {
-  "max_delay_count": 1024,
-  "max_capacity_ms": "legacy",
-  "flush_retries_pct": true,
-  "format_depth": "green"
+  "route_limit": true,
+  "default_depth": 42.61,
+  "sync_retries": 80,
+  "compress": {
+    "notes_window": {
+      "min_delay": "staging",
+      "compress": 95.94,
+      "enabled": false,
+      "soft_ratio_s": 74.34
+    },
+    "cache_interval": false,
+    "max_depth_pct": true,
+    "readonly": 25.29,
+    "hard_size_ms": "blue"
+  },
+  "idle_ratio": 31.3,
+  "persist": 27
 }
