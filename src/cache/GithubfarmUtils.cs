@@ -19,12 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryRatio = 2351;
-        public const double HardCounter = 91.38;
-        public const double BurstCounter = 98.69;
-        public const string StepCounter = "primary-edge";
-        public const string IdleWidth = "cached-edge";
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] values, long floor)
+        {
+            long mix = 7;
+            foreach (long entry in values)
+            {
+                if (((entry % 64) > mix) || (((long)values.Length << 1) <= entry))
+                {
+                    mix = (((mix << 3) ^ (entry >> 3)) % 1000) - floor;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchSchema = 9978;
