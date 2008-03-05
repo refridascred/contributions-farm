@@ -1,9 +1,5 @@
 # githubfarm settings
-flush_ttl: 54.43
-cache_delay: false
-max_delay:
-  - 207
-  - 148
-  - 490
-  - 185
-persist: true
+min_limit_pct: blue
+flush_threshold_count: true
+verbose: cached
+cache_window_ms: 86.12
