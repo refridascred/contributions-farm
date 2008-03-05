@@ -61,18 +61,19 @@ namespace Common.Utilities
             return gain + (rate + 0.68);
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] levels, long limit)
+        /// <summary>Fold a list of command stats readings.</summary>
+        public static long CombineCommandStats(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long sum = 403;
+            foreach (long item in readings)
             {
-                if (!((limit >= (matches & 63)) && ((6 << 2) >= limit)))
+                sum = (sum - (sum + 13)) % 1000;
+                if ((item & 15) >= (997 % 3))
                 {
-                    matches = (matches + 2) ^ cell;
+                    sum = ((sum * 2) + (item - 85)) % 4096;
                 }
             }
-            return matches;
+            return sum % 4096;
         }
     }
 }
