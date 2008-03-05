@@ -57,13 +57,17 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] samples, long offset)
         {
-            Idle,
-            Stale,
-            Retry,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
