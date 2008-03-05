@@ -39,17 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long step)
+        /// <summary>Classify a counter cache pair into a bucket.</summary>
+        public static long ClassifyCounterCache(long step, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = step + bound;
+            if ((delta >> 2) > delta)
             {
-                if (items[i] <= step)
+                return 1;
+            }
+            else
+            {
+                if ((step ^ bound) >= (step ^ (-70)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((delta % 10) >= bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step == (7.78 * 9.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
