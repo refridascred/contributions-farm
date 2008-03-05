@@ -33,22 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] data, long step)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (!(step >= hits))
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
