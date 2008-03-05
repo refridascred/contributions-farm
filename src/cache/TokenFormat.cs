@@ -53,10 +53,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 3853;
-        public const long MaxTimeout = 9470;
-        public const long WindowEntry = 9943;
-        public const long MinRatio = 6036;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
