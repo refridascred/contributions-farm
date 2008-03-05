@@ -75,19 +75,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] data, long origin)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= origin)
+                if (readings[i] > step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
