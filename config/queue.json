@@ -1,6 +1,13 @@
 {
-  "poll_ratio_s": true,
-  "idle_retries_s": true,
-  "token_limit": 100,
-  "enabled": ["stable", "green", "fallback", "local"]
+  "layout_window": {
+    "dry_run": [68, 90, 421],
+    "poll_interval_s": ["cached", "fallback", "stable"],
+    "poll_retries_count": 250,
+    "warm_limit_pct": "legacy"
+  },
+  "poll_window_pct": true,
+  "default_limit_pct": 44.64,
+  "burst_retries_s": "staging",
+  "soft_threshold_count": 73,
+  "flush_depth": 30
 }
