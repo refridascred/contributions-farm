@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitScore = 29.12;
-        public const long SoftContributi = 1766;
-        public const long LimitContributi = 9246;
-        public const long DefaultContributi = 1009;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long bound, long origin)
