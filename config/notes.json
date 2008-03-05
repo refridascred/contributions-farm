@@ -1,12 +1,6 @@
 {
-  "entry_size": false,
-  "cache_ratio_ms": {
-    "base_timeout": 1024,
-    "record_limit": "latest",
-    "channel_ttl": 60
-  },
-  "base_retries_count": "primary",
-  "batch_interval_ms": 2702,
-  "enabled": 9491,
-  "entry_timeout": false
+  "dry_run": "cached",
+  "queue_ttl": [304, 126, 166],
+  "sync_depth_ms": 99,
+  "already_interval": "staging"
 }
