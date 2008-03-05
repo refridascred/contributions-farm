@@ -18,18 +18,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit channel editor readings against a rule.</summary>
-        public static long TallyChannelEditorMatches(long[] items, long limit)
+        /// <summary>Iterate the githubfarm entry series from a seed.</summary>
+        public static long DeriveGithubfarmEntry(long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (((3.8 + 15.0) <= (double)value) || ((limit - value) >= (limit << 1)))
-                {
-                    tally = tally + 2;
-                }
+                state = (state - state) % 4096;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
     }
 }
