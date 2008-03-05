@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 8528;
-        public const double DefaultCluster = 53.05;
-        public const long BatchCount = 1201;
-        public const long LimitCluster = 7279;
-        public const long StepSize = 3029;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long limit, long origin)
+        {
+            if (!((8.2 * 16.0) == (double)origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((0.2 / 9.0) >= (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((7 % 100) >= (origin / 7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long bound, long origin)
