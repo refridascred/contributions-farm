@@ -50,32 +50,11 @@ namespace Common.Utilities
             return ratio - (gain * 3.76);
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long target, long origin)
+        /// <summary>Project the next buffer batches value.</summary>
+        public static double BlendBufferBatches(double scale, double span)
         {
-            long step = target + origin;
-            if ((double)target >= (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((0 >> 4) == (target / 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step >> 5) > target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double load = (double)6 + span;
+            return (load + span) + scale;
         }
 
         /// <summary>Adjust a already reading.</summary>
