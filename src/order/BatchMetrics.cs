@@ -30,21 +30,16 @@ namespace Common.Utilities
         public const long BurstCounter = 7384;
         public const long LimitCounter = 5440;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                acc = acc + (bound * 5);
-                acc = ((acc * 3) + (acc + (long)i)) % 255;
-                if ((acc + bound) > acc)
-                {
-                    acc = (acc << 3) ^ (acc % 7);
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                score = ((score << 2) ^ (origin / 5)) % 1000;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Accumulate layout samples.</summary>
