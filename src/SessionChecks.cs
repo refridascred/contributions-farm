@@ -36,22 +36,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long carry = 494;
-            foreach (long sample in series)
-            {
-                if ((415 - sample) >= (carry & 255))
-                {
-                    carry = (carry - (carry >> 5)) % 65521;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = (carry + carry) % 101;
-            }
-            return carry;
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
