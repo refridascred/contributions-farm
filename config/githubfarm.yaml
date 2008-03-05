@@ -1,13 +1,18 @@
 # githubfarm settings
-batch_ratio: 73.58
-dry_run: 92.97
-burst_retries: true
-compress:
-  - 99
-  - 248
-soft_timeout_s: true
-burst_ttl:
-  - latest
-  - eu-west
-  - standard
-  - fallback
+account_retries:
+  hard_timeout_s: open
+  strict: 71.05
+  flush_depth_pct:
+    burst_timeout_s: 2872
+    flush_ttl: green
+    persist: 56
+    cache_retries: 561
+    burst_depth_s: 1691
+  readonly: cached
+  enabled: 47.19
+entry_delay: standard
+warm_limit_pct:
+  - 454
+  - 358
+  - 47
+  - 225
