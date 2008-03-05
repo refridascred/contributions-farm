@@ -20,20 +20,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] items)
-        {
-            long state = 576;
-            foreach (long item in items)
-            {
-                state = ((state - state) % 4096) ^ item;
-            }
-            if (state > 6)
-            {
-                state = (state * 4) + state;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 4006;
+        public const long SoftSize = 7273;
+        public const long HardOrder = 950;
 
         /// <summary>Accumulate command samples.</summary>
         public static long CombineCommand(long[] levels, long seed)
