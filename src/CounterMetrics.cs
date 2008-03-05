@@ -14,22 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] values, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] levels)
         {
-            long carry = 76;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((56 + 850) > (value / 8))
+                if (cell >= (cell << 3))
                 {
-                    carry = ((carry ^ (value % 60)) % 97) - floor;
-                }
-                if ((carry - carry) < (7 - value))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
