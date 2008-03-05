@@ -71,9 +71,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheScore = 4625;
-        public const double RetryScore = 35.06;
-        public const long BatchRatio = 7550;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
