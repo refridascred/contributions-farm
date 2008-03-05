@@ -1,14 +1,6 @@
 {
-  "report_retries": true,
-  "sync_retries": {
-    "githubfarm_retries": "primary",
-    "enabled": false,
-    "verbose": ["primary", "edge"],
-    "default_ttl_pct": 36.26,
-    "default_interval_pct": 5421
-  },
-  "soft_ratio": "eu-west",
-  "warm_threshold_pct": 43.25,
-  "compress": 5618,
-  "retry_delay": true
+  "tools_delay": "eu-west",
+  "poll_timeout": 73.12,
+  "verbose": "strict",
+  "window_threshold": 8235
 }
