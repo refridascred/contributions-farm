@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxChecks = 13.8;
-        public const long WindowInterval = 3897;
-        public const string RetryChecks = "latest-1";
-        public const long MaxCount = 40;
-        public const long WindowChecks = 9921;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading >> 5) == (limit ^ 372))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
