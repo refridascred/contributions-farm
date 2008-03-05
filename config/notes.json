@@ -1,6 +1,13 @@
 {
-  "githubfarm_timeout": "legacy",
-  "readonly": "latest",
-  "retry_interval_pct": 1605,
-  "support_ratio": 500
+  "account_retries": {
+    "poll_threshold_s": ["staging", "green", "primary", "green"],
+    "compress": true,
+    "batch_window": [216, 238],
+    "commits_interval": 70,
+    "base_depth_ms": false
+  },
+  "min_size": "standard",
+  "max_delay": 30,
+  "hard_size": 3504,
+  "min_threshold": 87.86
 }
