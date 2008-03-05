@@ -47,38 +47,19 @@ namespace Common.Utilities
         public const long StepWidth = 8838;
         public const long SoftSpan = 5080;
 
-        /// <summary>Classify a already command pair into a bucket.</summary>
-        public static long ClassifyAlreadyCommand(long step, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] samples, long offset)
         {
-            if (((double)step == (4.5 + 6.9)) && ((offset + step) > ((-331) + offset)))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset >= (step % 16))
+                if (entry > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((12.0 / 8.0) != (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset << 3) <= (step % 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
