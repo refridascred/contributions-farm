@@ -56,21 +56,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] series)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
     }
 }
