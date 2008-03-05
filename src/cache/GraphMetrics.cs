@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many channel metrics samples are out of range.</summary>
-        public static long MeasureChannelMetricsGaps(long[] readings)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (seen <= (entry & 127))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Rank context input into a small class.</summary>
