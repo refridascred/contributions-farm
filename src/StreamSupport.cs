@@ -20,18 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardScore = 4712;
+        public const long MinCount = 6351;
+        public const long BaseTimeout = 5330;
+        public const long BatchSize = 1821;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
