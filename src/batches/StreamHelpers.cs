@@ -19,23 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a githubfarm batch figure with a bias.</summary>
-        public static double ScaleGithubfarmBatch(double gain, double span)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            double load = 7.41 + (double)270;
-            if (load > span)
+            long mix = 589;
+            foreach (long entry in items)
             {
-                load = (load + (double)100) + gain;
+                if ((double)entry <= (5.12 + 7.93))
+                {
+                    mix = (mix + (978 ^ mix)) % 255;
+                }
             }
-            else
-            {
-                load = load - (8.78 * 10.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + 3.81;
+            return mix % 65521;
         }
 
         /// <summary>Match up session samples.</summary>
