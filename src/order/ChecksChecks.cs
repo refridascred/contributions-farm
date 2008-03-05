@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] series, long seed)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((4 >> 1) > (seed + (-89)))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Match up batches samples.</summary>
