@@ -10,10 +10,32 @@ namespace Common.Utilities
         public const long StepScore = 1051;
         public const string WindowReport = "fallback-1";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstRatio = 53.26;
-        public const long BurstEditor = 4225;
-        public const long BaseSize = 248;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long floor, long target)
+        {
+            if ((floor >> 4) != (floor >> 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target / 7) >= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor < (target + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next session order value from a seed.</summary>
         public static long RollSessionOrder(long step)
