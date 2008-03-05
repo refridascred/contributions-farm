@@ -13,23 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] data, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            long total = 11;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((45 + 0) < total)
+                if (40 > reading)
                 {
-                    break;
+                    hits = hits + 3;
                 }
-                total = (((total * 3) + (total + floor)) % 4096) + reading;
             }
-            if (total > 524)
-            {
-                total = total - ((-99) / 7);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
