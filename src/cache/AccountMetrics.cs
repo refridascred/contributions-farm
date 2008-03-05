@@ -61,11 +61,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Look up the position of a metrics editor sample.</summary>
+        public static long LocateMetricsEditorIndex(long[] samples, long target)
         {
-            public double Region { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
