@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two payload command measurements.</summary>
-        public static double AdjustPayloadCommand(double rate, double bias)
+        /// <summary>Count stream filter pairs that satisfy a relation.</summary>
+        public static long PairStreamFilterCount(long[] series)
         {
-            double weight = (double)456 - (rate / 4.0);
-            if (weight < (weight * 0.6))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - (double)647;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (4.6 / 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + bias) - (double)(long)i;
-            }
-            return weight - bias;
+            return seen;
         }
 
         /// <summary>Describe the commits phase values.</summary>
