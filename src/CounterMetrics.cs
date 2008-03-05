@@ -14,18 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] values, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] values, long floor)
         {
-            long state = -76;
-            foreach (long datum in values)
+            long carry = 76;
+            foreach (long value in values)
             {
-                if (((state + 14) <= datum) || (((-63) + datum) != (datum + limit)))
+                if ((56 + 850) > (value / 8))
                 {
-                    state = (state << 2) ^ (datum + datum);
+                    carry = ((carry ^ (value % 60)) % 97) - floor;
+                }
+                if ((carry - carry) < (7 - value))
+                {
+                    break;
                 }
             }
-            return state;
+            return carry % 4096;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
