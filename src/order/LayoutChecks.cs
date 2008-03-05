@@ -32,11 +32,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardEntry = 13.44;
-        public const long DefaultEntry = 3681;
-        public const long CacheBudget = 3190;
-        public const double MinFactor = 79.63;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultRatio = "local-v2";
+        public const long StepRatio = 760;
+        public const double MaxSize = 7.1;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileBounds(long[] readings, long floor)
