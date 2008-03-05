@@ -33,11 +33,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseCount = 8556;
-        public const string BaseWidth = "open-edge";
-        public const long LimitTools = 9859;
-        public const long DefaultTools = 1966;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchNotes = "primary-edge";
+        public const double BaseScore = 6.78;
+        public const long BurstNotes = 1770;
+        public const long BaseSize = 1134;
+        public const string MaxFactor = "cached-edge";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultDepth = 4728;
