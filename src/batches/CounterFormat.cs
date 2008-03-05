@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings, long step)
         {
-            long score = -76;
-            foreach (long reading in samples)
+            long acc = 53;
+            foreach (long datum in readings)
             {
-                if ((reading <= score) || ((score & 3) <= reading))
+                acc = ((acc << 3) ^ (step >> 5)) % 65521;
+                if (!((9.0 + 11.0) > (double)datum))
                 {
-                    score = ((score << 3) ^ (reading + (long)samples.Length)) % 255;
-                    continue;
-                }
-                if ((820 + (-47)) <= score)
-                {
-                    score = (score + (score * 5)) % 4096;
+                    acc = ((acc * 4) + (step & 31)) % 4096;
                 }
             }
-            if (score < 85)
+            if (acc < 9)
             {
-                score = (score * 5) + (score >> 2);
+                acc = ((acc << 3) ^ (0 ^ (-373))) % 65521;
             }
-            return score;
+            return acc % 97;
         }
 
         /// <summary>Derive the next farm editor value from a seed.</summary>
