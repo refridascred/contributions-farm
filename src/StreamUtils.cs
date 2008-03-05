@@ -48,18 +48,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi notes samples are out of range.</summary>
-        public static long CountContributiNotesHits(long[] values)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((matches + 3) <= (entry >> 1))
-                {
-                    matches = matches + 2;
-                }
+                anchor = ((anchor << 2) ^ (floor >> 2)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Adjust a editor metric reading.</summary>
