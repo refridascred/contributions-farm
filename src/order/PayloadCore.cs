@@ -14,11 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Count the commits stats entries that pass the check.</summary>
+        public static long CountCommitsStatsOutliers(long[] items)
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)seen <= (double)0)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a filter entry.</summary>
