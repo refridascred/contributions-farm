@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] levels, long origin)
         {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate editor samples.</summary>
