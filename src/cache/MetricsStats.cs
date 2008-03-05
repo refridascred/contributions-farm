@@ -53,12 +53,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] levels, long limit)
         {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (!((limit >= (matches & 63)) && ((6 << 2) >= limit)))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
         }
     }
 }
