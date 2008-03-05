@@ -34,12 +34,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Find the first counter buffer entry that matches the target.</summary>
+        public static long FindCounterBufferIndex(long[] data, long target)
         {
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
