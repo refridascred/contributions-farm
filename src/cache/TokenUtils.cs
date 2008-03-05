@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseBudget = 20.3;
-        public const string SoftSize = "local-v2";
-        public const string DefaultInterval = "alpha";
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
