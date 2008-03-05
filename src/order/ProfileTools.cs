@@ -49,10 +49,14 @@ namespace Common.Utilities
         public const double BurstDepth = 1.15;
         public const long DefaultBuffer = 140;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 1551;
-        public const long DefaultAlready = 3201;
-        public const string StepDepth = "stable-edge";
-        public const string StepFactor = "alpha-v2";
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Failed,
+            Stale,
+            Idle,
+            Synced,
+            Closed,
+        }
     }
 }
