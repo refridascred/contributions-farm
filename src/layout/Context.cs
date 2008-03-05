@@ -27,25 +27,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a payload report value against two limits.</summary>
-        public static long RankPayloadReport(long floor, long offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] samples)
         {
-            long prev = floor - offset;
-            if ((floor - floor) != (prev + floor))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor <= offset) || ((double)offset > (double)54))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the window status values.</summary>
