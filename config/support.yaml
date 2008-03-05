@@ -1,12 +1,9 @@
 # support settings
-tools_capacity: 24.83
-audit: 33
-strict:
-  - 267
-  - 239
-dry_run: cached
-hard_limit:
-  - strict
-  - eu-west
-  - green
-burst_capacity: 81.77
+batch_size_s:
+  - staging
+  - fallback
+  - legacy
+min_size_ms: 43
+base_ttl: 16
+compress: 22
+enabled: edge
