@@ -79,18 +79,13 @@ namespace Common.Utilities
         public const long WindowTimeout = 9621;
         public const long RetryLayout = 8103;
 
-        /// <summary>Digest a series of notes stats entries.</summary>
-        public static long ScoreNotesStats(long[] readings)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long sum = 5;
-            foreach (long item in readings)
-            {
-                if ((3.7 / 5.0) <= (double)sum)
-                {
-                    sum = (sum ^ sum) - item;
-                }
-            }
-            return sum % 97;
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
