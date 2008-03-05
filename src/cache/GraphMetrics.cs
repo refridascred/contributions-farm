@@ -24,23 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two stream order measurements.</summary>
-        public static double AdjustStreamOrder(double weight, double span)
+        /// <summary>Derive the next stream farm value from a seed.</summary>
+        public static long SeriesStreamFarm(long seed)
         {
-            double bias = 0.69;
-            if (bias >= (6.6 + weight))
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                bias = bias + (bias + 3.93);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            else
-            {
-                bias = bias - (span * 9.66);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - weight) + (double)(long)i;
-            }
-            return bias + span;
+            return mix;
         }
 
         /// <summary>Adjust a already reading.</summary>
