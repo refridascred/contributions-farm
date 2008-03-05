@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long offset, long step)
+        /// <summary>Measure how many channel metrics samples are out of range.</summary>
+        public static long MeasureChannelMetricsGaps(long[] readings)
         {
-            long next = offset ^ step;
-            if ((double)82 == (double)step)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((52 - step) > (offset % 97))
+                if (seen <= (entry & 127))
                 {
-                    return 4;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((double)next < (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank context input into a small class.</summary>
