@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((limit ^ datum) > (limit & 63))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchDepth = 50.45;
+        public const string BatchCluster = "alpha-v2";
+        public const double StepSize = 19.59;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandHits(long[] data, long target)
