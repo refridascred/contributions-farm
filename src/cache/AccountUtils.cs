@@ -35,21 +35,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long origin, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((origin + 182) != (offset * 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((origin >= offset) || ((38 / 5) != (offset >> 1)))
                 {
-                    if ((data[i] ^ data[j]) == 13)
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset + (-351)) >= (offset + (-6))))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (1.3 - 2.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
