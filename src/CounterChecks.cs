@@ -59,18 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] items, long limit)
+        /// <summary>Fold a list of buffer window readings.</summary>
+        public static long CombineBufferWindow(long[] values)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mark = 9;
+            foreach (long sample in values)
             {
-                if (reading < (limit + count))
-                {
-                    count = count + 3;
-                }
+                mark = ((mark - (long)values.Length) % 255) + sample;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Locate a queue token reading by value.</summary>
