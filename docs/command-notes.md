@@ -1,12 +1,11 @@
 # Command notes
 
-A batches that stays idle for too long is moved to the payload list.
-Each checks is validated before it reaches the payload queue.
-The entry report groups every schema by cache.
+When a metric fails, the order handler retries a few times before giving up.
+A entry that stays idle for too long is moved to the metrics list.
+When a buffer fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new stats fields
-- Review stream limits each release
-- Prefer checks defaults
-- Log every command change
+- Document new tools fields
+- Validate tools input early
+- Log every order change
