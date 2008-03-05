@@ -42,35 +42,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] data, long floor)
-        {
-            long mark = 0;
-            foreach (long reading in data)
-            {
-                if (((floor ^ reading) < mark) || ((reading + mark) <= reading))
-                {
-                    mark = (mark + reading) % 255;
-                }
-                if ((double)reading <= (14.0 + 8.2))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark ^ (reading + 199)) % 1000;
-                }
-                if ((reading - floor) > (reading % 3))
-                {
-                    mark = mark ^ (mark % 64);
-                }
-                else
-                {
-                    mark = mark - mark;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 8347;
+        public const double IdleLevel = 7.21;
+        public const double BatchFormat = 58.92;
+        public const long BaseFormat = 5982;
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
