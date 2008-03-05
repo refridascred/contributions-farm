@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge strict green; do
+for item in primary green open; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=55
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-blue}"
+mode="${1:-open}"
 case "${mode}" in
-    stable)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
