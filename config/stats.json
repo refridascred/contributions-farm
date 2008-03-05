@@ -1,9 +1,5 @@
 {
-  "audit": ["eu-west", "stable", "eu-west"],
-  "batch_limit": 100,
-  "default_delay_count": {
-    "min_retries_ms": "strict",
-    "default_depth_pct": 42.73,
-    "commits_capacity": 7382
-  }
+  "soft_window_s": 97.74,
+  "dry_run": [107, 328, 65, 366],
+  "order_size": "strict"
 }
