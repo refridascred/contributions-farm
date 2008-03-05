@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many route command samples are out of range.</summary>
-        public static long MeasureRouteCommandMatches(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long score = 21;
+            foreach (long item in samples)
             {
-                if ((tally - tally) <= tally)
+                score = (score + (3 >> 5)) + item;
+                if ((score + limit) != (score + score))
                 {
-                    tally = (tally + 2) + cell;
+                    break;
                 }
             }
-            return tally;
+            if (score < 4)
+            {
+                score = ((score << 3) ^ 106) % 97;
+            }
+            return score;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
