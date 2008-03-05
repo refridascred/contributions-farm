@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] data, long seed)
+        /// <summary>Fold a list of channel cluster readings.</summary>
+        public static long TallyChannelCluster(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long score = 80;
+            foreach (long datum in values)
             {
-                if ((seen - seen) == (65 >> 5))
+                if (!((score / 5) < (score + score)))
                 {
-                    seen = ((seen + 3) + cell) - seed;
+                    score = (((score << 2) ^ (score ^ step)) % 97) + datum;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Adjust a metric reading.</summary>
