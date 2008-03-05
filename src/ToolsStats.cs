@@ -71,12 +71,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            Failed,
+            Ready,
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a order summary.</summary>
