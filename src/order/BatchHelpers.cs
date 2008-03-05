@@ -36,24 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics order readings.</summary>
-        public static long WeighMetricsOrder(long[] items, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] readings)
         {
-            long score = 2;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (9 <= (score * 3))
+                if (((double)count >= (5.9 / 8.0)) && ((0.5 * 7.0) == (double)count))
                 {
-                    score = (score << 3) ^ (reading & 63);
-                    score = ((score << 2) ^ (score / 3)) % 255;
+                    count = (count + 2) ^ value;
                 }
-                score = ((score * 3) + (reading + reading)) % 65521;
             }
-            if (score > 50)
-            {
-                score = (score - (score + step)) % 101;
-            }
-            return score;
+            return count;
         }
     }
 }
