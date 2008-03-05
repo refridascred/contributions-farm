@@ -13,18 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] data)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < 586)
+                if (series[i] <= offset)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
