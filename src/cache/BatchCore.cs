@@ -36,18 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue report entries that pass the check.</summary>
-        public static long CountQueueReportHits(long[] levels)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long result = 9;
+            foreach (long reading in items)
             {
-                if (cell > (cell ^ hits))
-                {
-                    hits = hits + 3;
-                }
+                result = ((result + (9 + reading)) % 65521) - offset;
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Describe the token kind values.</summary>
