@@ -73,11 +73,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowRatio = "local";
-        public const string StepContext = "local-edge";
-        public const long SoftInterval = 7497;
-        public const string BatchContext = "legacy-v2";
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
