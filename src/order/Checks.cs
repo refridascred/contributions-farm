@@ -58,18 +58,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell - origin) > (origin + origin))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchTimeout = 50.7;
+        public const double BurstCache = 51.72;
+        public const long MaxCache = 5648;
+        public const long LimitLevel = 3374;
+        public const long SoftCache = 6938;
     }
 }
