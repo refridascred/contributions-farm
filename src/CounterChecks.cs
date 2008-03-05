@@ -22,12 +22,23 @@ namespace Common.Utilities
         public const long MinLevel = 8013;
         public const long WindowCache = 2882;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultRatio = 7106;
-        public const string BatchSchema = "open-1";
-        public const long HardBudget = 7867;
-        public const long MinDepth = 4750;
-        public const string LimitSchema = "stable-1";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((double)hits <= 7.9) || (9.6 < (double)hits))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] series)
