@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long step, long floor)
-        {
-            if ((floor & 7) < (step * 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor - floor) != (step - step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.0 + 3.4) == (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((((-47) >> 4) < (floor & 63)) || (step <= (step % 16)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "legacy-1";
+        public const long MaxNotes = 9168;
+        public const double LimitNotes = 0.45;
+        public const double IdleTimeout = 82.75;
 
         /// <summary>Fold a list of report stats readings.</summary>
         public static long TotalReportStats(long[] series)
