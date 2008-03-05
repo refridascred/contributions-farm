@@ -29,38 +29,23 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long floor, long target)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double weight, double bias)
         {
-            if (target < (floor / 9))
+            double weight2 = weight / 9.0;
+            if (weight2 > (bias * 4.54))
             {
-                return 1;
+                weight2 = weight2 - (weight2 + bias);
             }
             else
             {
-                if ((target / 2) >= (floor + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((9.44 + 20.0) > (double)target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((floor / 6) < floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                weight2 = weight2 + bias;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + (double)22) - (double)(long)i;
+            }
+            return weight2 - (double)0;
         }
 
         /// <summary>Digest a series of record entries.</summary>
