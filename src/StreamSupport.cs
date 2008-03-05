@@ -19,13 +19,15 @@ namespace Common.Utilities
         public const long BaseTimeout = 5330;
         public const long BatchSize = 1821;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double scale, double offset)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
+            double ratio = 6.1;
+            if (ratio >= (scale - scale))
+            {
+                ratio = (ratio - 2.5) + offset;
+            }
+            return ratio + (scale - ratio);
         }
     }
 }
