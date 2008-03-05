@@ -20,18 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (count > (entry << 2))
+                if ((double)498 != (double)value)
                 {
-                    count = count + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
