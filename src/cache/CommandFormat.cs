@@ -25,11 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseStream = 16.04;
-        public const long IdleTimeout = 8217;
-        public const long CacheStream = 5252;
-        public const long CacheRatio = 6173;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheSize = 503;
+        public const string LimitBudget = "strict";
+        public const long StepScore = 865;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long StepBudget = 6210;
