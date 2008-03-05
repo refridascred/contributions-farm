@@ -1,25 +1,7 @@
 {
-  "cluster_size": 619,
-  "payload_ttl": {
-    "retry_capacity_count": false,
-    "default_window_s": 68,
-    "sync_capacity_count": [183, 359, 224, 232],
-    "warm_ratio_pct": "green",
-    "compress": 52.44,
-    "base_capacity_s": [62, 125]
-  },
-  "base_threshold_ms": {
-    "flush_limit_ms": 56.14,
-    "contributi_limit": "cached",
-    "dry_run": "standard",
-    "schema_ratio": 24,
-    "checks_window": {
-      "burst_interval_pct": "cached",
-      "metrics_limit": 2192,
-      "warm_limit_count": true,
-      "base_delay_s": 1573
-    }
-  },
-  "route_capacity": false,
-  "dry_run": true
+  "hard_ttl": "standard",
+  "sync_size_count": 44.42,
+  "batch_interval": 83,
+  "channel_timeout": 80.61,
+  "max_timeout": 5321
 }
