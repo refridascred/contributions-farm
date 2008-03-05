@@ -23,10 +23,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheSize = 1.92;
-        public const long HardSpan = 3213;
-        public const long LimitRatio = 5478;
-        public const string BaseGraph = "strict-edge";
+        /// <summary>Audit tools route readings against a rule.</summary>
+        public static long TallyToolsRouteHits(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + 48) <= (datum >> 5))
+                {
+                    count = (count + 1) - origin;
+                }
+            }
+            return count;
+        }
     }
 }
