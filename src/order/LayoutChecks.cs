@@ -20,18 +20,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the metric format entries that pass the check.</summary>
-        public static long CountMetricFormatHits(long[] data, long offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double scale = (9.8 + gain) * 13.0;
+            if (scale < (scale / 3.0))
             {
-                if ((double)offset > (20.0 * 6.0))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
+                scale = scale - floor;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - floor;
         }
 
         /// <summary>Describe the queue kind values.</summary>
