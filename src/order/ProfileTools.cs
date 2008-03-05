@@ -22,22 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] values, long floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((0.72 - 11.0) < (double)value)
-                {
-                    seen = (seen + 1) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
