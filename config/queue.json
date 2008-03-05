@@ -1,6 +1,5 @@
 {
-  "readonly": true,
-  "editor_retries": true,
-  "persist": false,
-  "route_ttl": 40
+  "soft_size_count": true,
+  "command_depth": "edge",
+  "max_capacity_count": "staging"
 }
