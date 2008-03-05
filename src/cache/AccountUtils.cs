@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long MaxCount = 40;
         public const long WindowChecks = 9921;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] levels, long bound)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
