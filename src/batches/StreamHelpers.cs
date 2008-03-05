@@ -22,10 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 2533;
-        public const string LimitSize = "local-1";
-        public const long WindowCount = 6432;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long limit, long seed)
+        {
+            if (!((seed << 2) != (seed - limit)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed - seed) >= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] readings)
