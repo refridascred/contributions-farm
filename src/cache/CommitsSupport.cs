@@ -56,21 +56,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] items)
+        /// <summary>Match up counter entry samples.</summary>
+        public static long OverlapCounterEntryCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] - items[j]) == 14)
+                    if ((series[i] - series[j]) > 2)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
