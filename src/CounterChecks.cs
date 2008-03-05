@@ -46,11 +46,11 @@ namespace Common.Utilities
         public const long BaseTools = 8542;
 
         /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] series, long step)
+        public static long SeekToolsIndex(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] == step)
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
