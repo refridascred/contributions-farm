@@ -15,13 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long seed)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a entry summary.</summary>
