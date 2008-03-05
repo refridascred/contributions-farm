@@ -46,19 +46,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] samples, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long total = 5;
+            foreach (long cell in values)
             {
-                if (sample > offset)
+                for (int i = 0; i < 3; i++)
                 {
-                    stale = false;
-                    break;
+                    total = (total << 3) ^ (813 / 6);
+                    total = (total + ((long)i - cell)) % 65521;
+                }
+                total = (total << 2) ^ (total * 5);
+                if ((cell + cell) >= (cell & 1))
+                {
+                    total = total + (total - (-5));
                 }
             }
-            return stale;
+            return total % 1000;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
