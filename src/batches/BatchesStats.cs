@@ -41,21 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!!((count + count) > (46 >> 3)))
                 {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 1) ^ reading) - target;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
