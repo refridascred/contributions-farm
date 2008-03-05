@@ -69,18 +69,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] values, long floor)
-        {
-            long anchor = 70;
-            foreach (long cell in values)
-            {
-                if ((9.8 + 7.2) == (double)cell)
-                {
-                    anchor = ((anchor + anchor) % 4096) + floor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BaseSize = 53.94;
+        public const long CachePayload = 2442;
+        public const long RetryBudget = 5284;
     }
 }
