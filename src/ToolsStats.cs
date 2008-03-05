@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] samples, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            long mix = 401;
-            foreach (long item in samples)
+            long result = 464;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 5) + (item + step)) % 4096;
+                result = (result + (datum & 7)) % 97;
             }
-            if (mix > 73)
+            if (result > (-47))
             {
-                mix = (mix ^ (step << 3)) % 4096;
+                result = (result + ((long)readings.Length * 3)) % 97;
             }
-            return mix;
+            return result % 1000;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
