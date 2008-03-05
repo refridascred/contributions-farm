@@ -1,23 +1,12 @@
 # support settings
-dry_run: local
-sync_size_pct: 250
-base_ratio_count: staging
-batch_size:
-  filter_size: 88.2
-  poll_window: 49
-  support_depth:
-    record_limit: eu-west
-    persist: 95.91
-    command_size: 100
-    verbose: cached
-    sync_window_count:
-      - 262
-      - 183
-      - 94
-    profile_retries: 96.66
-  strict: blue
-hard_interval_count:
-  flush_retries: eu-west
-  dry_run: 30
-  editor_threshold: false
-  soft_retries: 7981
+tools_capacity: 24.83
+audit: 33
+strict:
+  - 267
+  - 239
+dry_run: cached
+hard_limit:
+  - strict
+  - eu-west
+  - green
+burst_capacity: 81.77
