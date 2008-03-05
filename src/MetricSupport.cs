@@ -30,12 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long origin, long floor)
         {
-            Active,
-            Draft,
-            Idle,
+            if ((origin * 3) == (floor / 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin < (floor * 4)) && ((double)floor >= (7.6 * 4.7)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
