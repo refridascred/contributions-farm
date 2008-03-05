@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long step, long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if (!((double)seed <= (8.9 / 9.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)step < 6.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((585 * 2) > (seed % 60))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((591 ^ seed) >= 22)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
