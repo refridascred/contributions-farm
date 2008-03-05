@@ -31,24 +31,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a batches counter pair into a bucket.</summary>
-        public static long SortBatchesCounter(long bound, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] data, long limit)
         {
-            if ((2.0 + 7.0) < (double)bound)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (1.15 > (double)offset)
+                if ((data[i] < limit) && ((data[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
