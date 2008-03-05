@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the stats order entries that pass the check.</summary>
-        public static long MeasureStatsOrderMatches(long[] levels, long step)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches - matches) >= (value + 582))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) - step;
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a editor header.</summary>
