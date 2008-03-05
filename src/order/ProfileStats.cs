@@ -67,11 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double ratio, double span)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double bias = ratio;
-            return (bias - bias) + span;
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
