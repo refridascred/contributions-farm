@@ -25,10 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheSize = 503;
-        public const string LimitBudget = "strict";
-        public const long StepScore = 865;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Paused,
+            Active,
+            Closed,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long StepBudget = 6210;
