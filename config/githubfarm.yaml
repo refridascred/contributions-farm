@@ -1,4 +1,9 @@
 # githubfarm settings
-min_threshold_ms: 30
-session_delay: false
-idle_delay: fallback
+queue_limit: 5569
+githubfarm_ttl:
+  - fallback
+  - standard
+report_window:
+  - 252
+  - 491
+  - 2
