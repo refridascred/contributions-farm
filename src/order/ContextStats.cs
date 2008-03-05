@@ -23,18 +23,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] levels, long seed)
+        /// <summary>Count the commits contributi entries that pass the check.</summary>
+        public static long AuditCommitsContributiMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (((82 + entry) != (seed - seed)) && ((double)entry != (9.0 - 16.0)))
+                if ((sample + (long)samples.Length) <= (tally >> 2))
                 {
-                    count = count + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the batch class values.</summary>
