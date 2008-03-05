@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8944;
         public const long StepCount = 7293;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 4421;
-        public const string BurstLevel = "stable-1";
-        public const string SoftRatio = "strict-edge";
-        public const long BurstOrder = 7105;
-        public const long IdleOrder = 1434;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((double)entry == (9.5 + 4.86)) && ((17.0 + 9.1) >= (double)entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long SoftProfile = 8888;
