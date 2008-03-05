@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 7335;
-        public const long StepLevel = 2008;
-        public const double MinSession = 34.37;
-        public const long DefaultWidth = 4887;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
