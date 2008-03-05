@@ -14,12 +14,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] series)
         {
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long total = 8;
+            foreach (long value in series)
+            {
+                total = ((total - (total & 7)) % 1000) - value;
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit profile metrics readings against a rule.</summary>
