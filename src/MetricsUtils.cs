@@ -35,10 +35,18 @@ namespace Common.Utilities
         public const string CacheInterval = "legacy-edge";
         public const long BaseTimeout = 7641;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 2241;
-        public const long IdleSpan = 9347;
-        public const long DefaultBuffer = 4681;
+        /// <summary>Locate a cluster layout reading by value.</summary>
+        public static long SeekClusterLayoutIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
