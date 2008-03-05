@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
+            Active,
+            Locked,
+            Draft,
         }
 
         /// <summary>Look up the position of a window graph sample.</summary>
