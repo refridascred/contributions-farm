@@ -82,9 +82,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowSpan = 4494;
-        public const long BatchFarm = 6356;
-        public const double CacheLevel = 29.27;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
