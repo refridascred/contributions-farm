@@ -19,21 +19,19 @@ namespace Common.Utilities
         public const double CacheDepth = 61.84;
         public const string BaseDepth = "alpha-edge";
 
-        /// <summary>Compare every pair of report account readings.</summary>
-        public static long PairReportAccountCount(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample < target)
                 {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
