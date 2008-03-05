@@ -19,21 +19,14 @@ namespace Common.Utilities
         public const double BatchGraph = 13.98;
         public const long LimitTimeout = 4820;
 
-        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
-        public static long PairContextMetricsCount(long[] series)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Failed,
+            Draft,
+            Active,
+            Stale,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
