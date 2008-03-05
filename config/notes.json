@@ -1,6 +1,14 @@
 {
-  "dry_run": "cached",
-  "queue_ttl": [304, 126, 166],
-  "sync_depth_ms": 99,
-  "already_interval": "staging"
+  "report_retries": true,
+  "sync_retries": {
+    "githubfarm_retries": "primary",
+    "enabled": false,
+    "verbose": ["primary", "edge"],
+    "default_ttl_pct": 36.26,
+    "default_interval_pct": 5421
+  },
+  "soft_ratio": "eu-west",
+  "warm_threshold_pct": 43.25,
+  "compress": 5618,
+  "retry_delay": true
 }
