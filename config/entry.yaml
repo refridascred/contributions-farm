@@ -1,5 +1,17 @@
 # entry settings
-max_depth: open
-queue_threshold: cached
-default_limit: 43.94
-idle_ttl_pct: 4902
+idle_limit_pct: local
+persist: 100
+verbose:
+  persist: 100
+  batches_limit: latest
+  default_interval:
+    default_interval_s: cached
+    batch_window_count:
+      - 348
+      - 2
+      - 325
+      - 192
+    warm_size_s: 97.87
+  soft_limit: fallback
+  dry_run: true
+sync_limit_count: 250
