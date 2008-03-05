@@ -15,19 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] values, long offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Idle,
+            Retry,
+            Paused,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
