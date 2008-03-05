@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double gain, double bias)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] readings, long offset)
         {
-            double load = gain;
-            for (int i = 0; i < 4; i++)
+            long total = 978;
+            foreach (long datum in readings)
             {
-                load = ((load + (double)666) + (double)(long)i) + bias;
+                total = ((total << 2) ^ (datum - offset)) % 255;
             }
-            return load + (double)(-746);
+            return total;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
