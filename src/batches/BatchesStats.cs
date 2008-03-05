@@ -22,21 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (sum - sum) ^ (long)i2;
-                    sum = (sum * 2) + ((long)i & 255);
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 3126;
+        public const long WindowReport = 7149;
+        public const long IdleInterval = 2551;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] series, long target)
