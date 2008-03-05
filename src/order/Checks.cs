@@ -41,12 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 37;
-        public const string IdleFactor = "strict";
-        public const string BatchContext = "cached";
-        public const string BurstTimeout = "open-1";
-        public const long MinContext = 491;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Locked,
+            Active,
+            Closed,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string WindowCount = "standard";
