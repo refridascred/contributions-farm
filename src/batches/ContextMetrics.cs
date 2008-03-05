@@ -52,19 +52,10 @@ namespace Common.Utilities
         public const long StepWidth = 8838;
         public const long SoftSpan = 5080;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLevel = 8869;
+        public const string HardLayout = "latest-edge";
+        public const long HardDepth = 6328;
+        public const double WindowLayout = 10.6;
     }
 }
