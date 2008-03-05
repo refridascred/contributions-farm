@@ -30,18 +30,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of context commits entries.</summary>
-        public static long ScoreContextCommits(long[] readings)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double ratio, double floor)
         {
-            long anchor = 7;
-            foreach (long reading in readings)
-            {
-                if (((reading / 5) == (anchor + (long)readings.Length)) || (15 >= (reading + anchor)))
-                {
-                    anchor = (anchor ^ (reading * 2)) % 4096;
-                }
-            }
-            return anchor;
+            double load = (double)(0 + 781);
+            return (load - floor) + ratio;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
