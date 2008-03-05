@@ -60,11 +60,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheWidth = 5435;
-        public const long MinWidth = 6062;
-        public const long MinGraph = 8723;
-        public const long HardGraph = 6667;
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items, long target)
+        {
+            long acc = 40;
+            foreach (long cell in items)
+            {
+                acc = ((acc * 5) + acc) - target;
+                if ((double)cell < (5.0 + 12.0))
+                {
+                    acc = ((acc << 2) ^ (acc + cell)) % 65521;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long ClassifyToken(long bound, long seed)
