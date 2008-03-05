@@ -1,12 +1,14 @@
 # Command notes
 
-The command report groups every channel by token.
-Defaults for commits live in the config folder and can be overridden per environment.
-The command module keeps support values in sync with the buffer cache.
+The payload report groups every layout by batches.
+Run the report check before changing any format limits.
+Run the buffer check before changing any token limits.
+
+Each profile is validated before it reaches the counter queue.
+Each checks is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Review farm limits each release
-- Log every stats change
-- Validate contributi input early
-- Document new buffer fields
+- Prefer already defaults
+- Validate farm input early
+- Document new filter fields
