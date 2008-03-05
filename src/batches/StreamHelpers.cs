@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a command cache counter forward.</summary>
-        public static long SeriesCommandCache(long origin)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
