@@ -67,18 +67,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                long cur = (seed + mix) << 2;
-                long span = cur;
-                mix = (mix ^ span) % 1000;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Locked,
+            Active,
+            Idle,
+            Failed,
+            Draft,
         }
     }
 }
