@@ -28,14 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] levels, long bound)
         {
-            Idle,
-            Failed,
-            Queued,
-            Retry,
-            Active,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((((tally + tally) < (datum % 2)) || (bound <= (448 + (-1)))) && (((datum ^ bound) == (tally + tally)) && (tally >= (bound * 4))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
