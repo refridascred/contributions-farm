@@ -52,22 +52,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many support filter samples are out of range.</summary>
-        public static long TallySupportFilterMatches(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (hits < (offset * 4))
-                {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 6913;
+        public const long HardCounter = 7401;
+        public const long DefaultCounter = 5777;
+        public const long DefaultTimeout = 4279;
+        public const string BaseCounter = "alpha";
     }
 }
