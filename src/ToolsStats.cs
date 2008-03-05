@@ -89,18 +89,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] series, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((seed / 8) <= (seed / 4))
+                if ((value - value) < 1)
                 {
-                    count = (count + 1) + entry;
+                    matches = (matches + 1) + seed;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
