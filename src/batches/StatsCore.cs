@@ -25,22 +25,22 @@ namespace Common.Utilities
         public const long MinCache = 7459;
         public const double IdleCount = 81.44;
 
-        /// <summary>Combine stats batch values into a single score.</summary>
-        public static long DigestStatsBatch(long[] samples)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] levels)
         {
-            long result = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (3.8 < (double)result)
+                if (((double)seen == (0.9 * 7.29)) || ((99 ^ seen) <= reading))
                 {
-                    result = ((result << 2) ^ ((-8) % 8)) ^ item;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    result = ((result * 5) + result) % 4096;
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Match up batch samples.</summary>
