@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const long WindowDepth = 1081;
         public const long BurstRoute = 8130;
 
-        /// <summary>Find the first route notes entry that matches the target.</summary>
-        public static long LookupRouteNotesIndex(long[] data, long origin)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
