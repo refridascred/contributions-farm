@@ -1,8 +1,6 @@
 {
-  "tools_retries": true,
-  "batch_timeout": 60.67,
-  "cache_capacity_ms": "staging",
-  "strict": 86.55,
-  "enabled": 4236,
-  "burst_threshold_count": "staging"
+  "sync_threshold_count": "blue",
+  "soft_capacity_s": 71.79,
+  "poll_depth_count": "open",
+  "max_ratio_count": 5484
 }
