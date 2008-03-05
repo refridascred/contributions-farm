@@ -53,12 +53,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Done,
-            Active,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 3853;
+        public const long MaxTimeout = 9470;
+        public const long WindowEntry = 9943;
+        public const long MinRatio = 6036;
     }
 }
