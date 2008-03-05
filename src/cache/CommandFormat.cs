@@ -49,22 +49,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine route order values into a single score.</summary>
-        public static long TotalRouteOrder(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long sum = 6;
-            foreach (long cell in series)
-            {
-                if ((0 - cell) >= (cell - cell))
-                {
-                    sum = sum - (cell << 2);
-                }
-            }
-            if (sum > 9)
-            {
-                sum = (sum * 5) + (sum - sum);
-            }
-            return sum % 4096;
+            Closed,
+            Stale,
+            Done,
+            Retry,
+            Ready,
         }
     }
 }
