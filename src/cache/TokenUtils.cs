@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] series, long offset)
         {
-            long bound2 = seed + bound;
-            if (((seed & 255) <= 49) && (seed < bound))
+            long carry = 151;
+            foreach (long sample in series)
             {
-                return 0;
+                carry = (((carry - (carry << 3)) % 65521) ^ sample) + offset;
             }
-            else
+            if (carry > 38)
             {
-                if (((19 + 7) != (bound2 / 7)) || ((bound + 365) > bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                carry = (carry ^ (carry / 4)) % 1000;
             }
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of support readings.</summary>
