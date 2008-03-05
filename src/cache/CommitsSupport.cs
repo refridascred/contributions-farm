@@ -50,10 +50,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFarm = 35.52;
-        public const long MaxFarm = 6455;
-        public const long DefaultSpan = 2964;
+        /// <summary>Grade a queue record value against two limits.</summary>
+        public static long BucketQueueRecord(long floor, long floor2)
+        {
+            if (((5.0 / 8.0) > (double)floor) && ((347 ^ floor) == (floor ^ floor2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((2.9 / 4.0) != (double)floor2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0 + 3) <= (486 - floor2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((floor - floor2) > floor2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatHits(long[] samples, long target)
