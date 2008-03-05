@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items, long step)
         {
-            Pending,
-            Synced,
-            Active,
+            long anchor = 37;
+            foreach (long cell in items)
+            {
+                anchor = ((((anchor << 2) ^ (anchor * 5)) % 97) + cell) - step;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
