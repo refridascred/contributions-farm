@@ -29,11 +29,15 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchRatio = 117;
-        public const long WindowBudget = 2670;
-        public const long HardCache = 3691;
-        public const long BurstCache = 5106;
-        public const string WindowFactor = "staging";
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
