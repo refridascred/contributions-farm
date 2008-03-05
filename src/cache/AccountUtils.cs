@@ -32,22 +32,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank session counter input into a small class.</summary>
-        public static long BucketSessionCounter(long floor, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long origin, long step)
         {
-            if (floor <= (floor << 2))
+            long next = origin + step;
+            if (!((double)next > (double)step))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((double)floor != (double)target)
+                if ((double)step >= (2.57 / 8.0))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    if (!((80 + next) >= origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
