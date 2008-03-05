@@ -48,11 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] data, long target)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((double)target == (8.27 * 17.0))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
