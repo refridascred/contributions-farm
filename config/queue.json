@@ -1,11 +1,15 @@
 {
-  "min_interval_s": "legacy",
-  "dry_run": {
-    "strict": "legacy",
-    "warm_ttl_pct": 9.16,
-    "stream_limit": 12.51,
-    "metrics_limit": 26,
-    "dry_run": "blue"
-  },
-  "cache_size_count": ["open", "staging", "eu-west"]
+  "sync_timeout_pct": [44, 72, 53, 346],
+  "default_threshold_count": 1024,
+  "base_ratio": 1,
+  "min_interval_ms": {
+    "persist": 1965,
+    "max_size": {
+      "batches_ttl": 1024,
+      "burst_size_pct": [5, 385, 354],
+      "notes_interval": 69.55,
+      "flush_retries": ["eu-west", "blue", "stable", "edge"]
+    },
+    "order_size": 66.55
+  }
 }
