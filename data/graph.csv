@@ -1,7 +1,8 @@
-id,rank,owner
-1,local,102
-2,953,blue
-3,legacy,401
-4,35.43,standard
-5,1,37.61
-6,primary,local
+id,token,owner,count
+1,primary,edge,53.62
+2,edge,701,green
+3,442,90,stable
+4,349,green,925
+5,local,96,781
+6,84.82,258,846
+7,strict,10.92,legacy
