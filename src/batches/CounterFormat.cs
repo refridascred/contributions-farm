@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
             public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a stats entry.</summary>
