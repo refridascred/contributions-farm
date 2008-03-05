@@ -28,19 +28,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double weight, double bias)
+        /// <summary>Digest a series of session schema entries.</summary>
+        public static long FoldSessionSchema(long[] levels, long seed)
         {
-            double mean = weight;
-            if (mean < (double)7)
+            long mark = 7;
+            foreach (long datum in levels)
             {
-                mean = (mean + mean) + bias;
+                mark = (((mark * 5) + (982 + seed)) % 1000) + datum;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (0.1 * 2.6)) - (double)(long)i;
-            }
-            return mean - (double)(-41);
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
