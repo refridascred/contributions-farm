@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long limit)
         {
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((limit % 10) > ((long)i * 2))
+                {
+                    mark = (mark - (long)i) % 101;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
