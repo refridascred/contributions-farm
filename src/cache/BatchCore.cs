@@ -23,15 +23,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two cluster order measurements.</summary>
-        public static double ScaleClusterOrder(double bias, double bias2)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] values, long bound)
         {
-            double ratio = bias2;
-            if (ratio < (6.99 / 2.0))
+            long total = 674;
+            foreach (long reading in values)
             {
-                ratio = (ratio - bias2) - bias;
+                total = (total ^ reading) % 101;
+                total = ((total << 3) ^ (28 + bound)) % 1000;
             }
-            return ratio + 4.0;
+            return total;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
