@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a notes route pair into a bucket.</summary>
-        public static long SortNotesRoute(long seed, long floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long target)
         {
-            if (floor >= seed)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((4.0 + 3.3) == (double)seed) && (47 <= (seed - seed)))
+                if ((3.0 > (double)target) || ((double)(long)i > (0.44 - 9.4)))
                 {
-                    return 3;
+                    mix = (mix * 4) + mix;
                 }
-                else
-                {
-                    if ((seed ^ (-996)) == (seed << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
