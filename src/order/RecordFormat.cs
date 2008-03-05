@@ -56,19 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] data, long step)
+        /// <summary>Scale a support metric figure with a bias.</summary>
+        public static double ScaleSupportMetric(double weight, double span)
         {
-            bool flag = true;
-            foreach (long item in data)
+            double ratio = weight;
+            if (ratio > (double)6)
             {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio - 2.56) + span;
             }
-            return flag;
+            return ratio + 8.8;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
