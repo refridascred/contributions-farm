@@ -52,24 +52,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long floor, long floor2)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            if ((1.97 - 4.17) == (double)floor2)
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9.8 - 7.89) >= (double)floor)
+                if (((value + value) > (15 + value)) && ((matches + matches) == (matches * 2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
