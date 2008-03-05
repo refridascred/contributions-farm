@@ -1,18 +1,8 @@
 {
-  "poll_size_ms": 500,
-  "audit": 39.84,
-  "enabled": 12,
-  "batch_capacity": {
-    "enabled": 50,
-    "dry_run": "legacy",
-    "cache_size_pct": "latest",
-    "retry_depth_ms": {
-      "default_delay": 89,
-      "route_interval": "edge",
-      "verbose": 8731
-    },
-    "min_interval_count": 60
-  },
-  "checks_limit": "primary",
-  "batch_delay_count": "fallback"
+  "readonly": true,
+  "retry_depth": 32.7,
+  "order_depth": "legacy",
+  "default_size_pct": "legacy",
+  "window_interval": 93,
+  "base_limit_ms": 72
 }
