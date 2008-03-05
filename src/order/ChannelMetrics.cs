@@ -22,24 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank window token input into a small class.</summary>
-        public static long GradeWindowToken(long seed, long seed2)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] series, long origin)
         {
-            if (((3 - seed) < seed2) && ((seed * 3) > (seed + seed2)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (49 >= (seed2 + 780))
+                if (series[i] <= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
