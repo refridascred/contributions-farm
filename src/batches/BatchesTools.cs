@@ -33,11 +33,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats counter reading.</summary>
-        public static double ProjectStatsCounter(double scale, double bias)
+        /// <summary>Iterate the filter already series from a seed.</summary>
+        public static long StepFilterAlready(long bound)
         {
-            double ratio = scale * 7.0;
-            return (ratio - scale) + bias;
+            long state = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                state = state + state;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
