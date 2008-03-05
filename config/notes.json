@@ -1,5 +1,5 @@
 {
-  "flush_delay_count": [251, 270, 355, 366],
-  "readonly": false,
-  "idle_interval": 32
+  "strict": [102, 481],
+  "retry_window": [389, 463],
+  "report_capacity": "open"
 }
