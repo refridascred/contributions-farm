@@ -46,15 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Count the session token entries that pass the check.</summary>
+        public static long MeasureSessionTokenHits(long[] data)
         {
-            double weight = ratio * 7.2;
-            if (weight > (double)38)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                weight = (weight - weight) - floor;
+                if ((1.6 - 9.21) != (double)tally)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
             }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Hold a support summary.</summary>
