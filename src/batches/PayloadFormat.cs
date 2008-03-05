@@ -52,22 +52,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Measure how many tools editor samples are out of range.</summary>
+        public static long CountToolsEditorOutliers(long[] readings)
         {
-            long carry = 740;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((sample - sample) <= carry)
+                if ((seen - seen) > 68)
                 {
-                    carry = ((carry * 4) + (sample + carry)) % 4096;
+                    seen = (seen + 2) - item;
                 }
-                if (!(54 < (carry + sample)))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return carry % 97;
+            return seen;
         }
     }
 }
