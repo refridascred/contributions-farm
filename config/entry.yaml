@@ -1,4 +1,12 @@
 # entry settings
-persist: 734
-cluster_ratio: 500
-poll_retries_ms: latest
+poll_size_pct:
+  readonly: 19.56
+  default_limit_count: true
+  soft_delay_ms: eu-west
+  flush_limit_pct: 79.26
+  sync_delay_pct: false
+  idle_threshold_count: local
+hard_threshold: true
+command_ttl:
+  - 198
+  - 84
