@@ -22,10 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchTimeout = 39.72;
-        public const long WindowSchema = 9703;
-        public const double BatchRatio = 17.84;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public bool Level { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
