@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Find the first report metrics entry that matches the target.</summary>
+        public static long LocateReportMetricsIndex(long[] readings, long seed)
         {
-            Paused,
-            Pending,
-            Active,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
