@@ -22,13 +22,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] levels)
         {
-            Dropped,
-            Ready,
-            Closed,
-            New,
+            long acc = 63;
+            foreach (long sample in levels)
+            {
+                if (!((18 << 3) > acc))
+                {
+                    acc = acc + (sample * 5);
+                }
+            }
+            if (acc > (-85))
+            {
+                acc = (acc - (acc + acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
