@@ -46,21 +46,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next stats tools value from a seed.</summary>
-        public static long RollStatsTools(long origin)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double weight, double span)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            double mean = (span - span) + (double)99;
+            if (mean > (weight - span))
             {
-                state = state + (origin >> 5);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = ((state ^ state) % 65521) + (long)i2;
-                }
-                state = state + (long)i;
-                state = ((state * 2) + (long)i) % 1000;
+                mean = mean - (double)7;
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (mean - span)) + (double)(long)i;
+            }
+            return mean - (double)68;
         }
     }
 }
