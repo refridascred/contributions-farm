@@ -1,7 +1,5 @@
 {
-  "max_window_ms": "strict",
-  "queue_threshold": "latest",
-  "flush_threshold_pct": 30,
-  "max_retries_ms": 13.79,
-  "metrics_ttl": ["stable", "edge", "open", "green"]
+  "min_ratio_count": 100,
+  "hard_interval": false,
+  "sync_threshold_ms": [128, 138]
 }
