@@ -27,19 +27,17 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Validate notes session readings against a bound.</summary>
-        public static bool ValidateNotesSessionRange(long[] series, long limit)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < limit)
+                if (series[i] == step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
