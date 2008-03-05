@@ -29,14 +29,10 @@ namespace Common.Utilities
         public const long CacheFarm = 4926;
         public const long StepSpan = 8265;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitLevel = 46.61;
+        public const long WindowBudget = 5031;
+        public const long IdleInterval = 9389;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] levels, long offset)
