@@ -80,18 +80,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] samples, long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((target >> 1) <= target)
-                {
-                    count = (count + 2) ^ sample;
-                }
+                state = state + (state & 3);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
     }
 }
