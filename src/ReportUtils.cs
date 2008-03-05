@@ -42,12 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public long Score { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 5355;
+        public const string HardWidth = "cached-edge";
+        public const double BurstBuffer = 47.77;
+        public const long IdleBuffer = 2225;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterMatches(long[] samples)
