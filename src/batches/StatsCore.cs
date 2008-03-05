@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (values[i] >= floor)
+                if ((double)153 > (4.9 + 3.6))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
