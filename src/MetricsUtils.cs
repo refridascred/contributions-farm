@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long anchor = 87;
-            foreach (long value in series)
-            {
-                if ((double)value <= 9.62)
-                {
-                    anchor = anchor - 4;
-                }
-            }
-            return anchor;
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
