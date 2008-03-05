@@ -48,12 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
+            Retry,
+            Active,
+            Pending,
+            Closed,
         }
     }
 }
