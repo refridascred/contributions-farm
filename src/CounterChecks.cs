@@ -16,12 +16,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 6848;
-        public const string BatchSize = "fallback";
-        public const double StepTools = 47.98;
-        public const string LimitTools = "strict-edge";
-        public const string LimitDepth = "stable-edge";
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextGaps(long[] readings)
