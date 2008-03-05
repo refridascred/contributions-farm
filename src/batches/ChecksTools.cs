@@ -33,13 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] values, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
