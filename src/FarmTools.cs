@@ -29,24 +29,18 @@ namespace Common.Utilities
             return (drift + (double)482) + offset;
         }
 
-        /// <summary>Rank already format input into a small class.</summary>
-        public static long GradeAlreadyFormat(long target, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] data)
         {
-            if ((37 - target) < (target + 1))
+            long sum = 1;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.8 - 3.25) < (double)target)
+                if ((value * 4) != (sum + 6))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    sum = sum + (value - value);
                 }
             }
+            return sum % 97;
         }
     }
 }
