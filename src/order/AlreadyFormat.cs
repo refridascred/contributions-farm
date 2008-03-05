@@ -35,22 +35,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of checks schema entries.</summary>
-        public static long TotalChecksSchema(long[] items, long bound)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long mix = 21;
-            foreach (long value in items)
-            {
-                if ((mix * 5) > (value % 5))
-                {
-                    mix = (mix << 2) ^ (value * 2);
-                }
-            }
-            if (mix < 696)
-            {
-                mix = ((mix << 3) ^ (bound - bound)) % 97;
-            }
-            return mix % 1000;
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the contributi class values.</summary>
