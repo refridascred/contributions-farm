@@ -1,28 +1,4 @@
 # githubfarm settings
-idle_threshold_ms: false
-retry_depth:
-  command_limit:
-    sync_capacity_pct: 100
-    burst_threshold_pct:
-      - strict
-      - standard
-    readonly: open
-  base_depth: local
-  metric_threshold: 4061
-idle_ratio:
-  order_size:
-    - eu-west
-    - staging
-    - latest
-    - legacy
-  min_retries_pct: cached
-  audit: true
-  poll_timeout_ms:
-    cache_limit_ms: 24.71
-    flush_delay: 65.93
-    readonly: fallback
-    burst_capacity_pct: standard
-  metrics_delay: true
-  batch_capacity_count: open
-sync_interval_pct: 60
-schema_retries: 250
+cache_delay_count: cached
+verbose: 72
+idle_size_ms: 34.67
