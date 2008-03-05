@@ -1,14 +1,17 @@
 # entry settings
-filter_capacity:
-  burst_delay_s: open
-  hard_window_ms: 10.9
-  sync_window_pct: strict
-  readonly:
-    - 112
-    - 262
-  min_size_count: local
-  audit: 500
-strict:
-  - legacy
-  - stable
-soft_threshold_count: 60
+warm_ratio_s: true
+soft_interval_s: edge
+warm_timeout:
+  - 91
+  - 473
+  - 91
+  - 424
+checks_timeout: 37
+readonly:
+  retry_retries_pct: eu-west
+  account_window: 26
+  burst_ratio: cached
+  min_depth_pct:
+    checks_limit: 52.28
+    hard_delay_s: green
+    persist: false
