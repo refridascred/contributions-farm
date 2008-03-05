@@ -13,17 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a window graph sample.</summary>
-        public static long LookupWindowGraphIndex(long[] series, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 11;
+            foreach (long reading in data)
             {
-                if ((series[i] == offset) && ((series[i] % 5) != 0))
+                if ((45 + 0) < total)
                 {
-                    return (long)i;
+                    break;
                 }
+                total = (((total * 3) + (total + floor)) % 4096) + reading;
             }
-            return -1;
+            if (total > 524)
+            {
+                total = total - ((-99) / 7);
+            }
+            return total;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
