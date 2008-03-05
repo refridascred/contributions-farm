@@ -1,26 +1,13 @@
 # githubfarm settings
-persist:
-  - 165
-  - 414
-order_retries: legacy
-audit: 2.44
-default_limit_count:
+batch_ratio: 73.58
+dry_run: 92.97
+burst_retries: true
+compress:
+  - 99
+  - 248
+soft_timeout_s: true
+burst_ttl:
+  - latest
+  - eu-west
   - standard
-  - open
-flush_size_count:
-  idle_timeout:
-    - fallback
-    - staging
-    - stable
-  session_interval: false
-  strict:
-    - open
-    - strict
-    - stable
-    - standard
-  min_timeout_pct: edge
-  cache_threshold: false
-  compress: true
-cache_timeout_s:
-  - strict
-  - strict
+  - fallback
