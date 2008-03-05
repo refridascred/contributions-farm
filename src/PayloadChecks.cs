@@ -68,38 +68,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long floor, long limit)
+        /// <summary>Compare every pair of token contributi readings.</summary>
+        public static long MatchTokenContributiCount(long[] levels)
         {
-            if ((floor - limit) < floor)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((limit + limit) == (54 * 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (floor < (floor ^ floor))
+                    if ((levels[i] ^ levels[j]) == 14)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit - limit) >= (limit << 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
