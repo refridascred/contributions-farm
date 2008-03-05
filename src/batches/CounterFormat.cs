@@ -20,21 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count report token pairs that satisfy a relation.</summary>
-        public static long PairReportTokenCount(long[] readings)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                sum = (sum << 3) ^ (sum + limit);
+                if (!!((3.9 - 0.4) != (double)sum))
                 {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum << 2) ^ (9 + limit)) % 101;
+                    sum = (sum + (sum * 5)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the cache level values.</summary>
