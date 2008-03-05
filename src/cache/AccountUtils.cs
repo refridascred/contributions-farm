@@ -35,39 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long target, long limit)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            long gap = target ^ limit;
-            if ((limit >> 5) > gap)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((gap + target) < (limit ^ gap)) || ((9.34 / 4.0) <= (double)gap))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)limit == (3.18 - 13.0)) || (gap > (gap + limit)))
+                    if ((data[i] ^ data[j]) == 13)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((44 << 1) >= (52 + gap)) || ((gap >> 4) <= (gap - 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
