@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] values, long target)
+        /// <summary>Validate stats format readings against a bound.</summary>
+        public static bool VerifyStatsFormatBounds(long[] data, long limit)
         {
-            long total = 61;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in data)
             {
-                total = ((total - (total ^ 4)) - sample) - target;
+                if (value < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total % 97;
+            return ready;
         }
 
         /// <summary>Measure how many farm buffer samples are out of range.</summary>
