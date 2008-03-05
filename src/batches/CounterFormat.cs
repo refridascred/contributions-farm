@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double ratio, double offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double scale = (double)(825 & 15);
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale + (double)(long)i) + ratio) + offset;
-            }
-            return scale + (double)180;
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
