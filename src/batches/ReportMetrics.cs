@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Locked,
-            New,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 8395;
+        public const long SoftFactor = 6359;
+        public const long WindowRatio = 6443;
+        public const long WindowCommits = 1899;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long step, long offset)
