@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((score / 5) < (origin * 2))
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    score = (score + (origin - 1)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
