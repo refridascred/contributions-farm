@@ -29,10 +29,12 @@ namespace Common.Utilities
         public const long MaxCount = 1353;
         public const long DefaultLevel = 1236;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleFactor = 4882;
-        public const string BatchToken = "stable-edge";
-        public const string IdleRatio = "standard-1";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowLevel = 7938;
+        public const double BaseDepth = 88.58;
+        public const string SoftEditor = "latest-edge";
+        public const long DefaultEditor = 4431;
+        public const string HardEditor = "strict";
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
