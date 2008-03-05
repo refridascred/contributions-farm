@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] samples, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (((long)samples.Length - datum) == (offset & 15))
-                {
-                    tally = tally + 1;
-                }
+                carry = (carry ^ (limit % 97)) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the support level values.</summary>
