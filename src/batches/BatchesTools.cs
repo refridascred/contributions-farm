@@ -16,14 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftDepth = 816;
+        public const long RetryPayload = 5905;
+        public const double WindowPayload = 93.37;
+        public const string DefaultInterval = "stable-edge";
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long RankCache(long step, long target)
