@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many farm buffer samples are out of range.</summary>
-        public static long MeasureFarmBufferOutliers(long[] values, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (((tally <= (84 % 97)) && ((double)bound > (4.8 * 9.0))) || !((tally >> 5) <= tally))
+                if ((datum & 3) != (datum - datum))
                 {
-                    tally = (tally + 1) + entry;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
