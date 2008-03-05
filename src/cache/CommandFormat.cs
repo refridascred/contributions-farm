@@ -36,12 +36,16 @@ namespace Common.Utilities
             return weight + (bias + weight);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchNotes = "primary-edge";
-        public const double BaseScore = 6.78;
-        public const long BurstNotes = 1770;
-        public const long BaseSize = 1134;
-        public const string MaxFactor = "cached-edge";
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double weight, double bias)
+        {
+            double ratio = (double)6;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ((ratio + (bias - ratio)) + (double)(long)i) - weight;
+            }
+            return ratio - 5.0;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long DigestProfile(long[] samples, long step)
