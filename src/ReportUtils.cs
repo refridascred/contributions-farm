@@ -53,16 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mark = 38;
-            foreach (long datum in series)
-            {
-                mark = (mark << 2) ^ (datum << 1);
-                mark = (mark * 4) + (datum - mark);
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
