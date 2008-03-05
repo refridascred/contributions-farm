@@ -31,23 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches + seed) <= seed)
-                {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitSize = 5759;
+        public const long CacheCounter = 3733;
+        public const long BurstCounter = 974;
+        public const long RetryCounter = 6660;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
