@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long BaseAccount = 2130;
         public const long SoftAccount = 4715;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
