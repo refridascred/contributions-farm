@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (((acc << 3) ^ 14) % 65521) + (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
