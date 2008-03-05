@@ -29,12 +29,20 @@ namespace Common.Utilities
         public const long MaxCount = 1353;
         public const long DefaultLevel = 1236;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowLevel = 7938;
-        public const double BaseDepth = 88.58;
-        public const string SoftEditor = "latest-edge";
-        public const long DefaultEditor = 4431;
-        public const string HardEditor = "strict";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
