@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheFactor = 8722;
-        public const double IdleTimeout = 21.78;
-        public const long CacheToken = 4918;
-        public const long RetryToken = 451;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long offset, long offset2)
+        {
+            if ((offset <= (offset2 % 60)) && ((offset << 3) > (offset2 + 723)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset << 2) <= (-51))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (86 > (offset2 & 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset * 4) >= (offset + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
