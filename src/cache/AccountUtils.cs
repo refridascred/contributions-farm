@@ -30,25 +30,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long target, long bound)
-        {
-            long span = target ^ bound;
-            if (((bound - span) <= (span ^ span)) || ((double)target == (1.22 - 8.6)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((target % 7) >= (span - (-7))))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseWidth = 2.25;
+        public const double LimitWidth = 24.36;
+        public const long RetryMetric = 2181;
     }
 }
