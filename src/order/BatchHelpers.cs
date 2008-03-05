@@ -40,13 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowSize = 4302;
+        public const long LimitFactor = 6787;
+        public const string BurstScore = "cached-edge";
+        public const string SoftGithubfarm = "open";
     }
 }
