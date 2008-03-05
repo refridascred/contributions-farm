@@ -1,8 +1,18 @@
 {
-  "sync_capacity_count": "standard",
-  "warm_interval_ms": "green",
-  "strict": 2.87,
-  "cache_threshold": 41,
-  "max_retries_count": 7207,
-  "readonly": 52
+  "default_window_s": {
+    "soft_limit_ms": {
+      "min_window": "standard",
+      "max_timeout": [47, 195, 50],
+      "compress": [123, 183, 67],
+      "persist": ["latest", "blue", "latest", "latest"],
+      "notes_depth": "cached",
+      "batch_capacity": 60
+    },
+    "max_delay": 97.94,
+    "githubfarm_ttl": 500,
+    "command_capacity": 30,
+    "burst_interval_count": "open"
+  },
+  "report_retries": true,
+  "burst_timeout_ms": [39, 201, 261, 307]
 }
