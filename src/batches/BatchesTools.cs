@@ -23,31 +23,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long offset, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if ((121 / 5) > (bound - bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + bound) >= (bound - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)bound == (0.8 - 4.22)) && (offset > (349 << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Dropped,
+            Idle,
+            Paused,
         }
     }
 }
