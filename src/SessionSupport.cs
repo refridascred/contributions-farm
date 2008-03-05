@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of metrics counter readings.</summary>
-        public static long TallyMetricsCounter(long[] values)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] readings, long target)
         {
-            long state = 890;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                state = (state * 5) + (state + 96);
-                if ((state - cell) >= (long)values.Length)
+                if (item >= target)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return state % 65521;
+            return ok;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
