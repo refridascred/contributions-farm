@@ -29,12 +29,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinCount = 50.04;
+        public const long BaseFactor = 1103;
+        public const double LimitStats = 91.07;
+        public const double StepDepth = 90.43;
+        public const long MinStats = 3935;
     }
 }
