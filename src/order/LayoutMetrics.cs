@@ -33,22 +33,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (seed >= (sample - sample))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultCount = 1312;
+        public const long HardProfile = 5167;
+        public const double SoftSpan = 81.16;
     }
 }
