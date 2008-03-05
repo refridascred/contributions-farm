@@ -1,30 +1,28 @@
 # githubfarm settings
-audit: 35.61
-metrics_delay: 7749
-cluster_limit:
-  verbose:
-    flush_depth_ms: standard
-    min_window_pct: latest
-    persist: 32
-    report_window:
-      - 362
-      - 271
-      - 191
-      - 257
-    sync_retries: 59.01
-    burst_retries: 50.79
-  burst_capacity_pct: 30
-  base_interval_pct: latest
-farm_timeout:
-  readonly: true
-  retry_capacity_s: 6.08
-  batch_timeout:
-    idle_window_ms: edge
-    default_delay_count: 4826
-    compress: 2689
-    burst_timeout_pct: 65.78
-  channel_limit: 100
-  base_ratio: open
-  soft_timeout_pct: false
-stats_retries: false
-dry_run: 82.22
+idle_threshold_ms: false
+retry_depth:
+  command_limit:
+    sync_capacity_pct: 100
+    burst_threshold_pct:
+      - strict
+      - standard
+    readonly: open
+  base_depth: local
+  metric_threshold: 4061
+idle_ratio:
+  order_size:
+    - eu-west
+    - staging
+    - latest
+    - legacy
+  min_retries_pct: cached
+  audit: true
+  poll_timeout_ms:
+    cache_limit_ms: 24.71
+    flush_delay: 65.93
+    readonly: fallback
+    burst_capacity_pct: standard
+  metrics_delay: true
+  batch_capacity_count: open
+sync_interval_pct: 60
+schema_retries: 250
