@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long BatchBuffer = 7438;
         public const long WindowTimeout = 3889;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 390;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((item + 55) < floor)
                 {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc - (floor * 4);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (358 + acc);
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
