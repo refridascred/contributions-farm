@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] samples, long offset)
         {
-            Closed,
-            Queued,
-            Active,
-            Retry,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((double)count != (7.6 * 4.8))
+                {
+                    count = ((count + 2) + item) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metrics state values.</summary>
