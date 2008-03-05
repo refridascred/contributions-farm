@@ -23,13 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Roll a metric queue counter forward.</summary>
+        public static long RollMetricQueue(long limit)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                result = result - limit;
+                result = result + ((long)i + (long)i);
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the route mode values.</summary>
