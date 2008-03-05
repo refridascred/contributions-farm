@@ -46,15 +46,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next account command value.</summary>
-        public static double AdjustAccountCommand(double gain, double span)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double ratio, double span)
         {
-            double scale = span;
-            if (scale <= gain)
+            double drift = (span - span) - (2.0 / 8.0);
+            if (drift >= 5.98)
             {
-                scale = scale + span;
+                drift = (drift - (span / 5.0)) + ratio;
             }
-            return scale + (0.4 + gain);
+            return drift - drift;
         }
 
         /// <summary>Describe the farm kind values.</summary>
