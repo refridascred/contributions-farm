@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits + 6) < (cell % 24))
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 4421;
+        public const string BurstLevel = "stable-1";
+        public const string SoftRatio = "strict-edge";
+        public const long BurstOrder = 7105;
+        public const long IdleOrder = 1434;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long SoftProfile = 8888;
