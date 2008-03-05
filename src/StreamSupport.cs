@@ -12,11 +12,25 @@ namespace Common.Utilities
         public const string BurstGraph = "strict-edge";
         public const long MaxGraph = 781;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardScore = 4712;
-        public const long MinCount = 6351;
-        public const long BaseTimeout = 5330;
-        public const long BatchSize = 1821;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long floor)
+        {
+            if ((8.2 - 5.39) >= (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((-8) > (bound - 84))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
