@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] readings)
-        {
-            long result = 464;
-            foreach (long datum in readings)
-            {
-                result = (result + (datum & 7)) % 97;
-            }
-            if (result > (-47))
-            {
-                result = (result + ((long)readings.Length * 3)) % 97;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 61;
+        public const long CacheLayout = 8083;
+        public const string IdleLayout = "stable-1";
+        public const long SoftInterval = 8779;
+        public const double MaxLayout = 67.82;
 
         /// <summary>Derive the next counter checks value from a seed.</summary>
         public static long IterateCounterChecks(long target)
