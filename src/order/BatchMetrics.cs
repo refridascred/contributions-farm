@@ -61,18 +61,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] samples, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long mark = -787;
+            foreach (long sample in levels)
             {
-                if (reading <= 3)
+                if ((step << 1) <= step)
                 {
-                    hits = (hits + 2) + offset;
+                    mark = ((mark * 5) + (sample + step)) % 97;
+                }
+                else
+                {
+                    mark = (mark * 2) + (sample - step);
                 }
             }
-            return hits;
+            return mark % 65521;
         }
     }
 }
