@@ -35,21 +35,39 @@ namespace Common.Utilities
         public const long StepCount = 4856;
         public const double MinProfile = 30.35;
 
-        /// <summary>Match up order entry samples.</summary>
-        public static long OverlapOrderEntryCount(long[] values)
+        /// <summary>Classify a report schema pair into a bucket.</summary>
+        public static long BucketReportSchema(long bound, long bound2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = bound + bound2;
+            if (bound2 <= (bound2 ^ bound))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((edge * 5) != (bound2 + bound2))
                 {
-                    if ((values[i] + values[j]) == 19)
+                    return 8;
+                }
+                else
+                {
+                    if (edge <= bound)
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2 * 5) < bound2)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate format window readings against a bound.</summary>
