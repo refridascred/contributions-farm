@@ -24,11 +24,22 @@ namespace Common.Utilities
         public const long MinCache = 7459;
         public const double IdleCount = 81.44;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 1025;
-        public const long BaseMetric = 7897;
-        public const long MinMetric = 8908;
-        public const double HardScore = 88.08;
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordRange(long[] items, long step)
