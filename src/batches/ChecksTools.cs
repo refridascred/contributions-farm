@@ -53,15 +53,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window channel readings.</summary>
-        public static long CombineWindowChannel(long[] levels, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            long sum = 7;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((((sum * 3) + (-95)) % 97) - cell) + bound;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return tally;
         }
     }
 }
