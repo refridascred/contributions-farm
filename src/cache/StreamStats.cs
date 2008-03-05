@@ -33,38 +33,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long bound, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] data, long step)
         {
-            if ((bound - bound) < step)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound - step) <= (step + bound)) && ((step / 5) <= bound))
+                if (!(step >= hits))
                 {
-                    return 5;
+                    hits = (hits + 1) + datum;
                 }
                 else
                 {
-                    if (((step + bound) >= (1 * 2)) && ((bound & 7) == (step & 15)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step + 451) < step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
