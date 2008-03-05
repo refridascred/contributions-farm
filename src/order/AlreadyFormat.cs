@@ -41,17 +41,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] series, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = -38;
+            foreach (long sample in samples)
             {
-                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    mix = (((mix - (sample << 1)) % 65521) + (long)i) + origin;
+                }
+                mix = (mix ^ (mix * 5)) % 97;
+                mix = ((mix * 3) + sample) % 97;
+                if (61 >= (332 + sample))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of batch schema entries.</summary>
