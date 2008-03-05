@@ -37,10 +37,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstDepth = 6505;
-        public const long StepDepth = 4669;
-        public const long LimitCluster = 9631;
-        public const long BaseCluster = 4957;
+        /// <summary>Blend two report stream measurements.</summary>
+        public static double ScaleReportStream(double bias, double span)
+        {
+            double mean = (bias / 9.0) * 2.87;
+            if (mean <= span)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean - 1.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - (span - bias);
+        }
     }
 }
