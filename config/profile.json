@@ -1,7 +1,6 @@
 {
-  "burst_delay_count": 57.1,
-  "min_ratio_pct": 21.18,
-  "account_window": "fallback",
-  "strict": "edge",
-  "dry_run": [240, 120, 87, 361]
+  "min_size_count": false,
+  "burst_window_s": 1880,
+  "batch_ratio": "green",
+  "enabled": 100
 }
