@@ -63,23 +63,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] samples, long bound)
         {
-            long sum = -4;
-            foreach (long entry in data)
+            long state = 67;
+            foreach (long entry in samples)
             {
-                sum = sum ^ entry;
-                if ((double)entry != (9.96 - 6.6))
+                if (((state ^ state) >= state) && (state > (state + bound)))
                 {
-                    sum = ((sum << 2) ^ entry) % 255;
+                    state = ((state ^ (state % 100)) % 101) ^ entry;
+                }
+                else
+                {
+                    state = (state << 2) ^ (state - bound);
                 }
             }
-            if (sum < 28)
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum;
+            return state % 65521;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
