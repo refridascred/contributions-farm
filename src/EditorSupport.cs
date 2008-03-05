@@ -90,12 +90,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            New,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinScore = "staging-v2";
+        public const long BurstDepth = 4671;
+        public const double RetryQueue = 41.69;
+        public const long IdleScore = 3131;
     }
 }
