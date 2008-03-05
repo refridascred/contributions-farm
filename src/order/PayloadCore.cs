@@ -27,23 +27,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two report stream measurements.</summary>
-        public static double ScaleReportStream(double bias, double span)
-        {
-            double mean = (bias / 9.0) * 2.87;
-            if (mean <= span)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean - 1.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - (span - bias);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryLevel = 2530;
+        public const long StepDepth = 5146;
+        public const long BurstRatio = 3423;
     }
 }
