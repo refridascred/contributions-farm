@@ -30,15 +30,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long acc = 5;
-            foreach (long cell in levels)
-            {
-                acc = ((acc - (acc - (-9))) % 255) - cell;
-            }
-            return acc;
+            Queued,
+            Pending,
+            Locked,
         }
     }
 }
