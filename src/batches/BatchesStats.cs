@@ -41,18 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] data, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] values)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = -182;
+            foreach (long cell in values)
             {
-                if (!!((count + count) > (46 >> 3)))
+                if ((carry + 897) < (carry % 100))
                 {
-                    count = ((count + 1) ^ reading) - target;
+                    carry = (carry + (cell - carry)) % 255;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
