@@ -90,14 +90,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Locked,
-            Synced,
             Closed,
-            Retry,
-            Failed,
+            Queued,
+            Done,
+            Stale,
         }
     }
 }
