@@ -21,18 +21,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchFactor = "legacy-edge";
+        public const long BaseCommand = 4451;
+        public const long WindowBudget = 9821;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long GradeBatches(long step, long seed)
