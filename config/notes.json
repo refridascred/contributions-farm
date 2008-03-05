@@ -1,8 +1,6 @@
 {
-  "compress": 97.28,
-  "hard_capacity_count": "strict",
-  "burst_retries_pct": 48,
-  "poll_window_count": true,
-  "base_ttl": 7235,
-  "readonly": 17.43
+  "warm_ratio_count": false,
+  "batch_window": "primary",
+  "poll_delay_pct": [336, 129],
+  "batch_capacity": true
 }
