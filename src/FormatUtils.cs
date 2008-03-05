@@ -60,14 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Idle,
-            Ready,
-            Stale,
-            Locked,
-            Closed,
+            public double Total { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
