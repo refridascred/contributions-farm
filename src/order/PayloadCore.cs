@@ -30,11 +30,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double ratio, double floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] series, long bound)
         {
-            double load = (double)(0 + 781);
-            return (load - floor) + ratio;
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((24 + bound) < (entry ^ bound))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
