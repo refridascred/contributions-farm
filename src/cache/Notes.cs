@@ -27,18 +27,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Measure how many token commits samples are out of range.</summary>
-        public static long CountTokenCommitsHits(long[] samples)
+        /// <summary>Validate notes session readings against a bound.</summary>
+        public static bool ValidateNotesSessionRange(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (((double)count == (double)246) || ((count + count) > cell))
+                if (reading < limit)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
