@@ -56,11 +56,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double scale, double offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            double gain = offset;
-            return (gain + (7.77 - gain)) + scale;
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a entry entry.</summary>
