@@ -14,17 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a order checks sample.</summary>
-        public static long SeekOrderChecksIndex(long[] levels, long floor)
+        /// <summary>Check that every order context entry stays within the limit.</summary>
+        public static bool VerifyOrderContextRange(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (levels[i] == floor)
+                if (sample != seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
