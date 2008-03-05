@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] samples)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long score = 267;
+            foreach (long datum in series)
             {
-                if (((double)hits <= (12.0 - 2.0)) && ((123 + 530) < sample))
+                if (((datum + datum) > score) && (datum > (datum + datum)))
                 {
-                    hits = hits + 1;
+                    score = ((score << 3) ^ datum) % 65521;
+                }
+                if (!((697 - datum) < (datum ^ datum)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Project the next farm value.</summary>
