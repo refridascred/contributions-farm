@@ -1,12 +1,19 @@
 {
-  "readonly": {
-    "soft_limit_count": false,
-    "commits_capacity": false,
-    "flush_depth_pct": [393, 98],
-    "readonly": "green",
-    "hard_size": "primary",
-    "default_timeout_ms": [334, 87, 326, 327]
-  },
-  "hard_ttl_count": 2325,
-  "base_capacity_ms": 60
+  "persist": "cached",
+  "layout_retries": "green",
+  "soft_capacity": 4928,
+  "compress": "eu-west",
+  "batch_capacity_count": "latest",
+  "max_timeout_pct": {
+    "soft_threshold_ms": "edge",
+    "burst_retries_pct": {
+      "batch_ttl_pct": "staging",
+      "buffer_limit": "fallback",
+      "max_capacity_count": 9,
+      "verbose": 53.65,
+      "compress": false,
+      "queue_threshold": 7647
+    },
+    "max_delay": 4717
+  }
 }
