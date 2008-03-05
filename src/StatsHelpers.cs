@@ -12,18 +12,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] data, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry - 90) != (entry + 0))
+                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
                 {
-                    matches = (matches + 3) + limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of account graph readings.</summary>
