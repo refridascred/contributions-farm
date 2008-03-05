@@ -22,20 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] values, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                score = ((score * 4) + (long)i) % 1000;
-                if ((score * 2) <= target)
+                if (value > limit)
                 {
-                    score = (score - (target ^ target)) % 101;
+                    valid = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
