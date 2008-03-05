@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] samples, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (((datum + seen) > datum) && !((seed + seen) == (datum & 15)))
+                if ((count ^ reading) == (3 & 31))
                 {
-                    seen = seen + 2;
+                    count = (count + 3) + step;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of account graph readings.</summary>
