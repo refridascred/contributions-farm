@@ -36,11 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinBuffer = "strict-v2";
-        public const long StepBuffer = 7075;
-        public const long CacheBuffer = 1764;
-        public const long CacheWidth = 600;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long MeasureAlreadyMatches(long[] samples, long limit)
