@@ -33,39 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long step, long target)
+        /// <summary>Adjust a stats counter reading.</summary>
+        public static double ProjectStatsCounter(double scale, double bias)
         {
-            long prev = step - target;
-            if (99 <= prev)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step % 24) != (target * 4)) && ((7.3 * 17.0) >= (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)step > (2.6 * 3.44)) || ((62 << 3) > (target + prev)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((prev * 2) <= (target / 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double ratio = scale * 7.0;
+            return (ratio - scale) + bias;
         }
     }
 }
