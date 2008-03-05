@@ -25,15 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long seed, long offset)
         {
-            long anchor = 17;
-            foreach (long datum in levels)
+            if ((double)offset >= (20.0 - 9.12))
             {
-                anchor = (anchor + (anchor - anchor)) + datum;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (offset < (offset << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
