@@ -33,12 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long limit2)
         {
-            Ready,
-            Stale,
-            Closed,
+            if ((double)limit >= (2.6 * 2.98))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)limit >= (7.2 * 8.1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
