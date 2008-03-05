@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] samples)
+        /// <summary>Roll a profile filter counter forward.</summary>
+        public static long SeriesProfileFilter(long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)seen < (7.0 - 1.9))
+                long gap = ((long)i ^ offset) << 3;
+                if (offset < (521 + gap))
                 {
-                    seen = (seen + 1) + entry;
+                    acc = (acc ^ (acc ^ acc)) % 65521;
+                    gap = gap + (offset ^ acc);
+                    break;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Accumulate queue samples.</summary>
