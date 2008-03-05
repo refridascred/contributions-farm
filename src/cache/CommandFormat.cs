@@ -57,12 +57,13 @@ namespace Common.Utilities
             return weight - (double)60;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Idle,
-            Locked,
-            Pending,
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
