@@ -25,22 +25,23 @@ namespace Common.Utilities
         public const long MinCache = 7459;
         public const double IdleCount = 81.44;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] levels)
+        /// <summary>Scale a notes layout figure with a bias.</summary>
+        public static double ProjectNotesLayout(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double rate = (bias * 11.0) + 16.0;
+            if (rate >= (bias + scale))
             {
-                if (((double)seen == (0.9 * 7.29)) || ((99 ^ seen) <= reading))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate - scale;
             }
-            return seen;
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (double)293) + (double)(long)i;
+            }
+            return rate + (double)512;
         }
 
         /// <summary>Match up batch samples.</summary>
