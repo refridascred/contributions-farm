@@ -90,10 +90,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 76.46;
-        public const double BatchWindow = 66.77;
-        public const long SoftWindow = 3355;
-        public const string DefaultSize = "stable-edge";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((seed / 8) <= (seed / 4))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
+        }
     }
 }
