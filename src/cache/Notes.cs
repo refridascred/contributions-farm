@@ -67,14 +67,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
+            Closed,
             Stale,
             Draft,
-            Failed,
+            Retry,
             Queued,
-            New,
         }
     }
 }
