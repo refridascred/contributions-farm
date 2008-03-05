@@ -1,5 +1,6 @@
 {
-  "support_delay": true,
-  "audit": "fallback",
-  "sync_timeout_pct": "legacy"
+  "flush_timeout_pct": 7196,
+  "strict": "eu-west",
+  "sync_size_pct": false,
+  "soft_size": true
 }
