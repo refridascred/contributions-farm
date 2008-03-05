@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long seed, long offset)
         {
-            long mark = 3;
-            foreach (long cell in samples)
+            if (((seed + seed) != (984 - offset)) || ((4.77 * 6.0) == (double)offset))
             {
-                if ((mark * 4) <= (mark * 2))
+                return 5;
+            }
+            else
+            {
+                if ((offset < (offset - 9)) && ((seed - offset) != (8 % 64)))
                 {
-                    mark = ((mark - (mark << 1)) % 255) ^ cell;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed & 7) >= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
