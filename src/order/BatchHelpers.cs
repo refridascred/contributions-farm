@@ -15,19 +15,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long bound, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            long offset = bound - floor;
+            if ((offset & 63) > offset)
             {
-                if ((18.0 - 6.0) >= (double)offset)
-                {
-                    result = ((result * 5) + (offset + offset)) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((offset & 15) == (floor + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
