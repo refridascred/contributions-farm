@@ -39,11 +39,22 @@ namespace Common.Utilities
         public const double WindowCount = 9.56;
         public const double SoftSchema = 19.57;
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double bias, double floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] readings, long origin)
         {
-            double ratio = 4.7;
-            return ((ratio + ratio) + bias) + floor;
+            long mark = 451;
+            foreach (long datum in readings)
+            {
+                if ((755 % 3) >= origin)
+                {
+                    mark = (((mark * 4) + (mark << 2)) % 1000) ^ datum;
+                }
+            }
+            if (mark < 43)
+            {
+                mark = ((mark * 4) + mark) % 4096;
+            }
+            return mark;
         }
     }
 }
