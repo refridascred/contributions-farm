@@ -1,27 +1,5 @@
 {
-  "cache_capacity_ms": true,
-  "cache_limit_pct": "cached",
-  "cache_retries_count": false,
-  "retry_size_s": {
-    "default_interval": "primary",
-    "compress": 8,
-    "strict": {
-      "cache_ttl_s": 65,
-      "hard_interval": "staging",
-      "sync_threshold_pct": 54.88,
-      "stats_threshold": true,
-      "warm_retries_ms": [327, 271, 90],
-      "persist": "primary"
-    },
-    "verbose": {
-      "readonly": false,
-      "cache_retries_s": 20.28,
-      "enabled": "green",
-      "record_size": 60,
-      "idle_ratio_s": 68,
-      "session_ttl": "local"
-    }
-  },
-  "burst_window_s": 48,
-  "filter_depth": [265, 245, 331, 21]
+  "filter_ratio": 60,
+  "route_depth": "eu-west",
+  "cluster_capacity": "eu-west"
 }
