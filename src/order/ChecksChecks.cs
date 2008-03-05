@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (tally > (bound << 3))
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxLevel = 8371;
+        public const string IdleFactor = "staging";
+        public const long BatchBudget = 6965;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderHits(long[] samples)
