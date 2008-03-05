@@ -29,21 +29,10 @@ namespace Common.Utilities
         public const long BurstCounter = 974;
         public const long RetryCounter = 6660;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 1909;
+        public const string SoftGithubfarm = "cached-v2";
+        public const string MaxTimeout = "primary";
+        public const long CacheDepth = 4847;
     }
 }
