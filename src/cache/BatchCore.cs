@@ -23,10 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxWidth = 8092;
-        public const string MaxScore = "standard";
-        public const long MaxLevel = 4589;
+        /// <summary>Audit tools layout readings against a rule.</summary>
+        public static long MeasureToolsLayoutHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum <= (double)tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long PairBatchCount(long[] values)
