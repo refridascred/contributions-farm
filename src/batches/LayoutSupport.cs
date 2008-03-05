@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] series, long step)
+        /// <summary>Scale a editor cache figure with a bias.</summary>
+        public static double ScaleEditorCache(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = offset;
+            if (rate >= (rate - rate))
             {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
+                rate = (rate + offset) + weight;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (7.56 / 5.0)) + (double)(long)i;
+            }
+            return rate - (offset * 9.9);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
