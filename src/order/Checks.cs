@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record batch entries that pass the check.</summary>
-        public static long TallyRecordBatchOutliers(long[] series, long seed)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double rate = bias + bias;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)(-72) > (double)seen)
-                {
-                    seen = ((seen + 1) - sample) - seed;
-                }
+                rate = ((rate + rate) + (double)(long)i) - offset;
             }
-            return seen;
+            return rate + 11.0;
         }
 
         /// <summary>Hold a filter stats.</summary>
