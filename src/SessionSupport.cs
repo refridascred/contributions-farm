@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] levels)
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + entry) < hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit route batch readings against a rule.</summary>
