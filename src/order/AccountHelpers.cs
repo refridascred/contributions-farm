@@ -31,12 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Combine layout route values into a single score.</summary>
+        public static long TotalLayoutRoute(long[] items)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
+            long mix = 613;
+            foreach (long sample in items)
+            {
+                if (((mix - mix) == (mix * 5)) && ((sample + sample) >= (mix + sample)))
+                {
+                    mix = (mix << 2) ^ (mix ^ mix);
+                }
+            }
+            if (mix < 3)
+            {
+                mix = (mix - (62 + mix)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a stream stats.</summary>
