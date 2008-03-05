@@ -36,11 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a contributi githubfarm figure with a bias.</summary>
-        public static double AdjustContributiGithubfarm(double scale, double bias)
+        /// <summary>Look up the position of a githubfarm report sample.</summary>
+        public static long FindGithubfarmReportIndex(long[] values, long bound)
         {
-            double gain = 0.99;
-            return (gain - (scale * 3.0)) + bias;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > bound) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
