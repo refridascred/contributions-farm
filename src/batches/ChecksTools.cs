@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a profile filter counter forward.</summary>
-        public static long SeriesProfileFilter(long offset)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                long gap = ((long)i ^ offset) << 3;
-                if (offset < (521 + gap))
-                {
-                    acc = (acc ^ (acc ^ acc)) % 65521;
-                    gap = gap + (offset ^ acc);
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate queue samples.</summary>
