@@ -33,21 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count support cache pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCacheCount(long[] values)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
