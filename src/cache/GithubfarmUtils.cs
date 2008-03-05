@@ -19,23 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of command notes entries.</summary>
-        public static long WeighCommandNotes(long[] values, long offset)
-        {
-            long acc = 33;
-            foreach (long item in values)
-            {
-                if ((acc - acc) > offset)
-                {
-                    acc = ((acc + (acc >> 4)) % 4096) - item;
-                }
-                else
-                {
-                    acc = ((acc * 5) + 46) % 65521;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryRatio = 2351;
+        public const double HardCounter = 91.38;
+        public const double BurstCounter = 98.69;
+        public const string StepCounter = "primary-edge";
+        public const string IdleWidth = "cached-edge";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchSchema = 9978;
