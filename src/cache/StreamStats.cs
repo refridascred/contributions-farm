@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] items, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] series, long floor)
         {
-            long acc = 14;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                acc = (((acc * 4) + (7 + origin)) % 1000) + datum;
+                if ((sample * 5) <= (floor + sample))
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Digest a series of cache support entries.</summary>
