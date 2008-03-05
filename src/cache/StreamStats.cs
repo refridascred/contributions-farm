@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] samples)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)(685 + 8);
+            if (weight > (double)500)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight + (double)9) + floor;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + gain) + (double)(long)i;
+            }
+            return weight - (weight / 9.0);
         }
 
         /// <summary>Accumulate farm samples.</summary>
