@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank route input into a small class.</summary>
