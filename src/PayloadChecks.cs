@@ -66,9 +66,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultBudget = "fallback-edge";
-        public const long BurstInterval = 5933;
-        public const double SoftSchema = 8.11;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (494 < (value + 53))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
+        }
     }
 }
