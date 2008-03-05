@@ -34,21 +34,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics report samples.</summary>
-        public static long CompareMetricsReportCount(long[] samples)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] > limit)
                 {
-                    if ((samples[i] ^ samples[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
