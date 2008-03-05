@@ -19,31 +19,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long floor, long target)
+        /// <summary>Audit support queue readings against a rule.</summary>
+        public static long TallySupportQueueHits(long[] data)
         {
-            if ((floor >> 4) != (floor >> 5))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target / 7) >= target)
+                if (((tally * 3) < entry) && (((entry << 2) > (tally % 2)) && (entry > (entry << 1))))
                 {
-                    return 1;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if (floor < (target + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a stream options.</summary>
