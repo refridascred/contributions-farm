@@ -32,21 +32,23 @@ namespace Common.Utilities
         public const string StepScore = "primary";
         public const string RetryCount = "legacy";
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)(80 / 8);
+            if (scale < (8.0 / 6.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale + (double)682) - bias2;
             }
-            return matches;
+            else
+            {
+                scale = scale + (double)(-73);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - (scale / 9.0);
         }
     }
 }
