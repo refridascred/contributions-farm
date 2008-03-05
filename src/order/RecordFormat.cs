@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardSpan = "local-v2";
-        public const long StepContributi = 3561;
-        public const string StepSize = "primary";
-        public const string DefaultFactor = "local";
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] series, long seed)
+        {
+            long mix = 1;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mix = (mix << 2) ^ ((long)i << 1);
+                    mix = ((mix << 3) ^ (reading - seed)) % 255;
+                }
+                mix = (mix ^ (seed & 1)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Blend two githubfarm buffer measurements.</summary>
         public static double AdjustGithubfarmBuffer(double rate, double bias)
