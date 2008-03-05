@@ -39,24 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long seed2)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            if ((seed >> 5) > (seed2 * 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed2) < (9 + seed2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Validate profile checks readings against a bound.</summary>
