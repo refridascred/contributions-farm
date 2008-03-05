@@ -38,13 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Check that every layout report entry stays within the limit.</summary>
+        public static bool CheckLayoutReportBounds(long[] items, long offset)
         {
-            Synced,
-            Pending,
-            Locked,
-            Paused,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
