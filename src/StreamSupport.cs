@@ -18,15 +18,17 @@ namespace Common.Utilities
         public const long BaseTimeout = 5330;
         public const long BatchSize = 1821;
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double scale, double offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] data, long target)
         {
-            double ratio = 6.1;
-            if (ratio >= (scale - scale))
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - 2.5) + offset;
+                if ((data[i] <= target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (scale - ratio);
+            return -1;
         }
     }
 }
