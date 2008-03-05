@@ -1,9 +1,5 @@
 {
-  "burst_timeout": 53.29,
-  "compress": ["edge", "staging"],
-  "hard_threshold": {
-    "counter_threshold": true,
-    "hard_capacity": true,
-    "strict": 149
-  }
+  "retry_retries_pct": 30,
+  "hard_timeout_pct": 89,
+  "profile_window": "local"
 }
