@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardWidth = 3930;
-        public const double BaseScore = 60.69;
-        public const double DefaultCount = 64.05;
-        public const string BaseFactor = "open";
-        public const long BaseBudget = 5124;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinWidth = 6171;
+        public const long SoftRatio = 5870;
+        public const long BurstSize = 5616;
+        public const double MinEditor = 27.23;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamHits(long[] levels, long origin)
