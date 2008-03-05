@@ -1,10 +1,11 @@
 {
-  "poll_capacity": true,
-  "hard_retries": {
-    "editor_delay": "green",
-    "soft_limit_ms": 500,
-    "hard_interval": 97.61,
-    "support_delay": 71
+  "flush_ttl": {
+    "burst_limit_count": 4302,
+    "max_threshold_s": 4228,
+    "persist": [334, 497]
   },
-  "base_interval_count": "local"
+  "checks_size": "cached",
+  "strict": 20.01,
+  "idle_delay": "blue",
+  "sync_depth_count": 67.16
 }
