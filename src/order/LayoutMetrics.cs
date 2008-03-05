@@ -26,19 +26,22 @@ namespace Common.Utilities
         public const long DefaultCounter = 1793;
         public const string MaxCounter = "legacy";
 
-        /// <summary>Digest a series of graph cache entries.</summary>
-        public static long DigestGraphCache(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] data, long seed)
         {
-            long result = 863;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                result = ((result - (result - result)) % 101) - entry;
-                if ((double)result > (14.0 / 8.0))
+                if (seed >= (sample - sample))
                 {
-                    result = (result + result) % 97;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result % 1000;
+            return hits;
         }
     }
 }
