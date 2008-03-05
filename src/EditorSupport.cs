@@ -31,13 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Combine metrics report values into a single score.</summary>
+        public static long DigestMetricsReport(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = -985;
+            foreach (long sample in data)
+            {
+                acc = (acc << 2) ^ (sample & 3);
+            }
+            if (acc > (-9))
+            {
+                acc = ((acc * 4) + (acc / 3)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
