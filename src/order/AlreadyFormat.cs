@@ -26,11 +26,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 7632;
-        public const double SoftWidth = 87.33;
-        public const long BaseRatio = 3432;
-        public const long LimitInterval = 2929;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Ready,
+            Active,
+            Locked,
+            New,
+            Pending,
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LookupCommitsIndex(long[] series, long origin)
