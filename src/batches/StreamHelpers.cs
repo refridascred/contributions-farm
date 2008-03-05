@@ -19,24 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long limit, long seed)
+        /// <summary>Compare every pair of window githubfarm readings.</summary>
+        public static long OverlapWindowGithubfarmCount(long[] samples)
         {
-            if (!((seed << 2) != (seed - limit)))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed) >= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] - samples[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
