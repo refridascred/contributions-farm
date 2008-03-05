@@ -62,24 +62,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches tools input into a small class.</summary>
-        public static long GradeBatchesTools(long floor, long limit)
-        {
-            if (!((0.24 - 5.06) == (double)floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit > 8.24) || ((4.01 - 7.6) < (double)limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 88.74;
+        public const long HardToken = 3644;
+        public const double IdleToken = 53.42;
     }
 }
