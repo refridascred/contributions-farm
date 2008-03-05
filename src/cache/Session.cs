@@ -39,21 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry layout pairs that satisfy a relation.</summary>
-        public static long OverlapEntryLayoutCount(long[] data)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long limit, long limit2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit + limit) <= (643 + 37))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (limit > (74 * 2))
                 {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
