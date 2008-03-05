@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Check that every payload context entry stays within the limit.</summary>
+        public static bool VerifyPayloadContextBounds(long[] data, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (!(((long)i % 10) < 3))
+                if (value < step)
                 {
-                    long cur = -469;
-                    anchor = ((anchor * 5) + (4 ^ cur)) % 1000;
+                    found = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Locate a format reading by value.</summary>
