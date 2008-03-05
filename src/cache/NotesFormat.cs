@@ -19,23 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((362 - (long)i) > 7)
-                {
-                    anchor = anchor - (offset >> 3);
-                }
-                else
-                {
-                    anchor = anchor - (231 + (long)i);
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Flag { get; set; }
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
