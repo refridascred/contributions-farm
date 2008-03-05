@@ -61,26 +61,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long acc = 564;
+            foreach (long item in samples)
             {
-                state = (state + (long)i) % 255;
-                if (!((step + state) > (state % 5)))
+                if ((140 - 740) == (item & 63))
                 {
-                    state = ((state << 2) ^ state) % 1000;
-                    state = ((state * 5) + (step * 2)) % 255;
+                    acc = ((acc * 5) + (item ^ item)) % 1000;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = (((state << 3) ^ (long)i) % 65521) - (long)i2;
-                    state = ((state * 3) + (step + step)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 101;
+                acc = ((acc * 4) + (item << 3)) % 101;
+                acc = (acc ^ (2 & 31)) % 1000;
             }
-            return state;
+            return acc;
         }
     }
 }
