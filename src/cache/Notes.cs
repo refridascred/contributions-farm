@@ -42,12 +42,10 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 6849;
-        public const double MinWidth = 57.07;
-        public const string DefaultRatio = "alpha-edge";
-        public const long MaxScore = 5743;
-        public const long DefaultInterval = 5396;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 1155;
+        public const long IdleTimeout = 581;
+        public const long HardChannel = 1518;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long FoldRecord(long[] levels, long floor)
