@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] samples, long limit)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading >> 5) == (limit ^ 372))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Retry,
+            New,
+            Idle,
+            Stale,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
