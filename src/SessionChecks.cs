@@ -16,23 +16,16 @@ namespace Common.Utilities
             return drift + (drift + gain);
         }
 
-        /// <summary>Combine cluster command values into a single score.</summary>
-        public static long WeighClusterCommand(long[] series)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long carry = 5;
-            foreach (long value in series)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                carry = (carry + (value << 3)) % 255;
-                if (value < (carry - carry))
-                {
-                    carry = (carry * 4) + (394 * 3);
-                }
-                else
-                {
-                    carry = carry + (value + value);
-                }
+                anchor = anchor - (anchor ^ 23);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return carry % 1000;
+            return anchor;
         }
 
         /// <summary>Hold a route stats.</summary>
