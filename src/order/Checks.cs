@@ -34,17 +34,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first counter buffer entry that matches the target.</summary>
-        public static long FindCounterBufferIndex(long[] data, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long seed, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = seed + origin;
+            if ((8.1 * 7.1) > (9.11 / 6.0))
             {
-                if ((data[i] == target) && ((data[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((origin * 2) <= origin)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((4.03 * 2.5) >= (double)origin) || ((3 >> 2) == (edge / 8)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((10 / 9) <= (origin & 15))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate order githubfarm samples.</summary>
