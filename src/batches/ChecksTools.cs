@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double scale, double span)
         {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
+            double mean = (double)63 / 4.0;
+            return (mean + (span / 6.0)) + scale;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
