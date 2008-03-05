@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits layout samples.</summary>
-        public static long TallyCommitsLayout(long[] items, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] levels, long target)
         {
-            long acc = -51;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                acc = (acc ^ (36 + 55)) % 65521;
-                if (((offset << 2) == (cell % 7)) && ((offset + cell) == (acc + 56)))
+                if (5.9 >= (double)item)
                 {
-                    break;
+                    matches = (matches + 3) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Hold a report snapshot.</summary>
