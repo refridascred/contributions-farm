@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of context token readings.</summary>
-        public static long OverlapContextTokenCount(long[] series)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 9;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value & 15) > (limit - limit))
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                mark = (mark + 49) % 255;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
