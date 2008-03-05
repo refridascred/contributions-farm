@@ -39,21 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Dropped,
+            Paused,
+            New,
         }
 
         /// <summary>Digest a series of layout batches entries.</summary>
