@@ -45,11 +45,19 @@ namespace Common.Utilities
         public const long SoftSpan = 1075;
         public const long HardLevel = 1699;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] samples, long offset)
         {
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
