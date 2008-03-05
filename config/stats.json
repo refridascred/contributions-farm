@@ -1,5 +1,5 @@
 {
-  "idle_threshold": [458, 173],
-  "default_timeout_count": "staging",
-  "base_interval": "blue"
+  "min_window": true,
+  "route_depth": true,
+  "retry_delay_pct": 8009
 }
