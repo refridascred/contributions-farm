@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Audit batch context readings against a rule.</summary>
+        public static long CountBatchContextHits(long[] items, long offset)
         {
-            public bool Count { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!(hits <= offset))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
