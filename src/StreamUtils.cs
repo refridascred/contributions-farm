@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((3.0 > (double)target) || ((double)(long)i > (0.44 - 9.4)))
-                {
-                    mix = (mix * 4) + mix;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Synced,
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
