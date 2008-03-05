@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long BaseSpan = 3460;
         public const double DefaultAccount = 90.17;
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double weight, double bias)
         {
-            public double Owner { get; set; }
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
+            double ratio = weight;
+            if (ratio > (bias - weight))
+            {
+                ratio = ratio - (weight / 8.0);
+            }
+            return ratio + bias;
         }
 
         /// <summary>Roll a format counter forward.</summary>
