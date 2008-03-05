@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double scale, double floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double gain = (double)6 + (floor + scale);
-            if (gain >= (floor / 5.0))
-            {
-                gain = gain - (double)607;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + scale;
+            public double Region { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the layout class values.</summary>
