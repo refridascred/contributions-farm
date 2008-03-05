@@ -1,14 +1,7 @@
 # githubfarm settings
-profile_window: 59.39
-dry_run:
-  burst_depth: green
-  hard_window:
-    - 363
-    - 205
-    - 303
-    - 324
-  base_size_s: legacy
-  metric_delay: true
-  sync_interval_count: 4385
-commits_ratio: 60.22
-compress: 86.96
+stats_depth: staging
+persist: 39.31
+strict: open
+hard_interval: blue
+cache_size: 82.61
+hard_interval_s: 36.97
