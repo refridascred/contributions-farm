@@ -23,16 +23,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the filter already series from a seed.</summary>
-        public static long StepFilterAlready(long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double bias, double span)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            double load = 4.5;
+            for (int i = 0; i < 3; i++)
             {
-                state = state + state;
-                state = ((state * 3) + (long)i) % 4093;
+                load = (((load + load) - (double)(long)i) + bias) - span;
             }
-            return state;
+            return load + (17.0 / 7.0);
         }
     }
 }
