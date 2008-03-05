@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Validate cache context readings against a bound.</summary>
+        public static bool GuardCacheContextBounds(long[] levels, long seed)
         {
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
