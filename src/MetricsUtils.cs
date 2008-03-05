@@ -14,15 +14,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Locate a metrics format reading by value.</summary>
+        public static long SeekMetricsFormatIndex(long[] values, long target)
         {
-            long acc = 56;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc * 3) + (value << 3);
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
