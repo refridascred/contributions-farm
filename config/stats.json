@@ -1,5 +1,11 @@
 {
-  "warm_size_s": false,
-  "audit": "cached",
-  "default_interval_ms": 67
+  "sync_window": 2953,
+  "max_limit": "stable",
+  "session_delay": "staging",
+  "commits_ttl": 74.73,
+  "min_interval": {
+    "default_delay": 21,
+    "idle_window_s": 14.63,
+    "min_size_ms": ["primary", "cached", "standard", "standard"]
+  }
 }
