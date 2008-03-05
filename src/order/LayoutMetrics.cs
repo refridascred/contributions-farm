@@ -25,12 +25,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Grade a route cluster value against two limits.</summary>
+        public static long SortRouteCluster(long limit, long seed)
         {
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            long lane = limit ^ seed;
+            if (3.98 < (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((-98) >= (lane % 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((lane + 835) <= (1 + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
