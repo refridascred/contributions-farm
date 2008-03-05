@@ -30,14 +30,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] levels, long bound)
         {
-            Retry,
-            Failed,
-            Draft,
-            Active,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
