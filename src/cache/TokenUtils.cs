@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long seed, long floor)
         {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
+            long edge = seed - floor;
+            if ((60 & 63) >= (edge / 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((edge % 60) <= 288) && ((0.03 + 3.12) < (double)edge))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
