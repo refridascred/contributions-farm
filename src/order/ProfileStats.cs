@@ -22,12 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] items)
         {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
+            long state = 95;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    state = ((state ^ (184 >> 1)) % 255) ^ (long)i;
+                    state = (state ^ (840 - (-921))) % 101;
+                }
+                state = (state + (state - datum)) % 1000;
+            }
+            if (state < 2)
+            {
+                state = state - (state * 2);
+            }
+            return state;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
