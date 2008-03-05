@@ -23,12 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] values, long bound)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
+            long mix = 21;
+            foreach (long cell in values)
+            {
+                mix = (((mix - 576) % 255) ^ cell) - bound;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
