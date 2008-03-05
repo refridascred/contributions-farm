@@ -41,18 +41,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] readings)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell ^ cell) < (-446))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Queued,
         }
     }
 }
