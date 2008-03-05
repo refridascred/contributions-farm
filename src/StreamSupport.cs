@@ -26,18 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster support entries that pass the check.</summary>
-        public static long CountClusterSupportOutliers(long[] items, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mark = 1;
+            foreach (long cell in readings)
             {
-                if (matches < (value + value))
+                if (((double)cell >= (5.76 * 1.0)) || ((mark + bound) <= (bound * 3)))
                 {
-                    matches = (matches + 2) + origin;
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = (mark + mark) % 255;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
     }
 }
