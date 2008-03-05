@@ -38,12 +38,19 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 50.19;
-        public const string MinSpan = "local-1";
-        public const double DefaultCache = 66.97;
-        public const double CacheWidth = 88.65;
-        public const long BaseLevel = 7869;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((((cell + hits) == (cell % 64)) && (hits >= ((long)levels.Length >> 5))) || ((cell << 3) < hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
