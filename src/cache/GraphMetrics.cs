@@ -54,26 +54,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] series, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] values)
         {
-            long acc = 76;
-            foreach (long datum in series)
+            long carry = 1;
+            foreach (long entry in values)
             {
-                if ((acc + offset) > (offset / 5))
-                {
-                    acc = (acc + (datum - 27)) % 4096;
-                }
-                if (datum < acc)
-                {
-                    acc = acc ^ datum;
-                }
-                if ((4.0 / 8.0) >= (double)datum)
-                {
-                    break;
-                }
+                carry = ((carry << 3) ^ entry) % 97;
             }
-            return acc;
+            return carry;
         }
     }
 }
