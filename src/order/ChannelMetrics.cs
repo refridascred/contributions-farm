@@ -26,18 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] readings, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] values, long bound)
         {
-            long sum = 28;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((entry >= (3 & 63)) || ((offset + offset) >= (sum >> 3)))
+                if (datum >= bound)
                 {
-                    sum = ((sum << 3) ^ (offset + sum)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
     }
 }
