@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next cache stats value from a seed.</summary>
-        public static long StepCacheStats(long seed)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 4) + (seed - seed)) % 65521;
-                if ((double)anchor != (3.9 / 4.0))
-                {
-                    anchor = (anchor ^ (3 - seed)) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Queued,
+            Failed,
+            Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
