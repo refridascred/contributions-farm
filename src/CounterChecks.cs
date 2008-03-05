@@ -58,22 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] values)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long carry = 529;
-            foreach (long datum in values)
-            {
-                if (((805 & 1) == (datum + 0)) || ((datum - carry) < datum))
-                {
-                    carry = (carry - (datum << 3)) % 4096;
-                }
-            }
-            if (carry > 84)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
