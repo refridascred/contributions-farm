@@ -34,17 +34,21 @@ namespace Common.Utilities
         public const string CacheInterval = "legacy-edge";
         public const long BaseTimeout = 7641;
 
-        /// <summary>Locate a cluster layout reading by value.</summary>
-        public static long SeekClusterLayoutIndex(long[] readings, long origin)
+        /// <summary>Compare every pair of checks contributi readings.</summary>
+        public static long PairChecksContributiCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] > origin) && ((readings[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a route info.</summary>
