@@ -20,39 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long bound, long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] readings, long bound)
         {
-            long cur = bound ^ limit;
-            if ((1.0 / 9.0) <= (double)cur)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound <= 3.13)
+                if (readings[i] > bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((cur & 127) != (8 / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)cur > (16.0 * 6.3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
