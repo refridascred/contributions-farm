@@ -1,11 +1,16 @@
 {
-  "sync_window": 2953,
-  "max_limit": "stable",
-  "session_delay": "staging",
-  "commits_ttl": 74.73,
-  "min_interval": {
-    "default_delay": 21,
-    "idle_window_s": 14.63,
-    "min_size_ms": ["primary", "cached", "standard", "standard"]
-  }
+  "batch_threshold": "legacy",
+  "route_capacity": 500,
+  "default_timeout_count": "primary",
+  "dry_run": {
+    "buffer_ratio": "blue",
+    "soft_depth_count": {
+      "dry_run": [447, 51, 430],
+      "flush_threshold": false,
+      "idle_size": 8284
+    },
+    "githubfarm_limit": true
+  },
+  "entry_ratio": [427, 284],
+  "poll_size_pct": 52
 }
