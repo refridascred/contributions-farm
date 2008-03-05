@@ -14,22 +14,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many tools batch samples are out of range.</summary>
-        public static long MeasureToolsBatchGaps(long[] values, long target)
+        /// <summary>Look up the position of a token context sample.</summary>
+        public static long LocateTokenContextIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (target <= (matches - sample))
+                if ((data[i] >= floor) && ((data[i] % 3) == 0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
