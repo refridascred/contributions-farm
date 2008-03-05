@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long total = 1;
-            foreach (long value in levels)
-            {
-                if ((total & 3) >= (21 + value))
-                {
-                    total = (total * 3) + ((-12) ^ value);
-                }
-            }
-            return total;
+            Paused,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
