@@ -15,19 +15,39 @@ namespace Common.Utilities
         public const string MaxScore = "standard";
         public const long MaxLevel = 4589;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double gain, double floor)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long origin, long step)
         {
-            double drift = floor - (gain - 9.1);
-            if (drift > 8.65)
+            long cur = origin + step;
+            if ((double)cur < (20.0 * 9.84))
             {
-                drift = drift + floor;
+                return 0;
             }
             else
             {
-                drift = drift + drift;
+                if ((origin + 4) != (cur + 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step + 8) != (step ^ 493))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step + origin) < (origin << 2)) || (origin < (origin ^ step)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return drift - 13.0;
         }
 
         /// <summary>Hold a route info.</summary>
