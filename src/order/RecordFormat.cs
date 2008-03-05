@@ -27,12 +27,19 @@ namespace Common.Utilities
             return bias - 2.2;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] samples, long seed)
         {
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
