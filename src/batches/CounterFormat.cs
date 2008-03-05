@@ -42,18 +42,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit graph schema readings against a rule.</summary>
-        public static long TallyGraphSchemaMatches(long[] items, long origin)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (origin > (origin + origin))
-                {
-                    count = (count + 2) + entry;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
     }
 }
