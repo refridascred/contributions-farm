@@ -37,12 +37,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long offset, long step)
         {
-            Locked,
-            Idle,
-            Paused,
+            if ((step ^ 31) >= offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((offset + offset) > (step + offset)) && ((offset * 2) <= (step - offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step - offset) < (offset + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate schema samples.</summary>
