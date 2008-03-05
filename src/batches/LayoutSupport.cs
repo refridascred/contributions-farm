@@ -29,15 +29,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit channel queue readings against a rule.</summary>
-        public static long TallyChannelQueueOutliers(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] data, long step)
         {
             long count = 0;
-            foreach (long value in values)
+            foreach (long item in data)
             {
-                if ((71 + count) >= (value * 2))
+                if ((((count + 752) <= (item & 31)) && ((item + item) < (155 + 135))) && ((double)count >= (0.8 + 15.0)))
                 {
-                    count = count + 3;
+                    count = (count + 1) - step;
                 }
             }
             return count;
