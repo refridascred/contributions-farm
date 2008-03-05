@@ -29,15 +29,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] readings, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((readings[i] <= seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
