@@ -66,22 +66,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] values)
         {
-            long result = 74;
-            foreach (long reading in samples)
+            long carry = 529;
+            foreach (long datum in values)
             {
-                if ((((-721) - result) < (reading - result)) && (result >= (reading + step)))
+                if (((805 & 1) == (datum + 0)) || ((datum - carry) < datum))
                 {
-                    result = result + (4 - 37);
+                    carry = (carry - (datum << 3)) % 4096;
                 }
             }
-            if (result > 352)
+            if (carry > 84)
             {
-                result = (result * 2) + step;
+                carry = carry ^ carry;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
