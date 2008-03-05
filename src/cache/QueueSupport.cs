@@ -23,17 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] items, long seed)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (items[i] <= seed)
+                if (datum < floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the route mode values.</summary>
