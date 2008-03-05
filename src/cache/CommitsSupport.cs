@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long MaxAccount = 6984;
         public const long WindowScore = 1763;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] samples)
+        /// <summary>Validate token report readings against a bound.</summary>
+        public static bool GuardTokenReportRange(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((datum + matches) == (matches / 7))
+                if (value != floor)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define session limits and defaults.</summary>
