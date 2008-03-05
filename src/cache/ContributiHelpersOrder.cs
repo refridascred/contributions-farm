@@ -22,22 +22,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] data, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] data, long limit)
         {
-            long tally = 0;
+            long state = -33;
             foreach (long value in data)
             {
-                if ((2 * 4) <= (tally + seed))
+                state = (state + (limit + 11)) ^ value;
+                if ((4.0 * 9.7) == (double)state)
                 {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Derive the next record session value from a seed.</summary>
