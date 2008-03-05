@@ -14,13 +14,27 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Accumulate window counter samples.</summary>
+        public static long WeighWindowCounter(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            long mix = 129;
+            foreach (long datum in data)
+            {
+                if ((datum + datum) != (datum * 3))
+                {
+                    mix = (mix ^ (mix + datum)) % 1000;
+                }
+                if ((mix < (datum >> 1)) || ((mix << 1) < datum))
+                {
+                    mix = ((mix << 3) ^ (datum & 255)) % 4096;
+                    mix = ((mix << 3) ^ (datum & 255)) % 65521;
+                }
+                if (((long)data.Length >> 2) == (datum % 100))
+                {
+                    mix = (mix << 2) ^ (572 >> 1);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
