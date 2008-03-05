@@ -60,32 +60,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command commits value against two limits.</summary>
-        public static long BucketCommandCommits(long seed, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            long offset = seed + step;
-            if (((seed / 7) != (step >> 5)) || ((5.14 + 18.0) <= (double)seed))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset - step) < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((13 <= (offset + offset)) && ((step / 5) >= seed))
+                    if ((readings[i] ^ readings[j]) < 7)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
