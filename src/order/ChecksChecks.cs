@@ -23,15 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] values, long bound)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            long mix = 21;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix - 576) % 255) ^ cell) - bound;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
