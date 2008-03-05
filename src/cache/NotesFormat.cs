@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultInterval = 2584;
+        public const long DefaultScore = 3560;
+        public const string HardCluster = "open-v2";
+        public const string LimitCluster = "latest-v2";
 
         /// <summary>Classify a account token pair into a bucket.</summary>
         public static long RankAccountToken(long origin, long floor)
