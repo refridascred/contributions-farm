@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Project the next filter githubfarm value.</summary>
+        public static double SmoothFilterGithubfarm(double ratio, double offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            double mean = (ratio - 1.68) + (ratio * 0.38);
+            if (mean >= offset)
+            {
+                mean = mean + (mean / 2.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean + 5.1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
