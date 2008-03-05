@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double gain, double floor)
+        /// <summary>Blend two payload command measurements.</summary>
+        public static double AdjustPayloadCommand(double rate, double bias)
         {
-            double drift = (double)(72 + 897);
-            if (drift >= (drift * 6.22))
+            double weight = (double)456 - (rate / 4.0);
+            if (weight < (weight * 0.6))
             {
-                drift = (drift + 13.0) - floor;
+                weight = weight - (double)647;
             }
-            return drift + (drift + gain);
+            else
+            {
+                weight = weight - (4.6 / 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + bias) - (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Blend two command measurements.</summary>
