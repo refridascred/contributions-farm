@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a stats token pair into a bucket.</summary>
-        public static long SortStatsToken(long limit, long origin)
-        {
-            long offset = limit + origin;
-            if ((limit - 863) > (origin - origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + limit) >= offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((2.35 - 10.0) == (double)limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardCount = 50.51;
+        public const long IdleFactor = 9144;
+        public const long LimitEntry = 6642;
+        public const string StepEntry = "standard-1";
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
