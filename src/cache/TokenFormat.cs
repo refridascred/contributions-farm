@@ -40,31 +40,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine account editor values into a single score.</summary>
-        public static long TallyAccountEditor(long[] items)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long carry = 863;
-            foreach (long entry in items)
-            {
-                carry = ((carry << 3) ^ (entry + 846)) % 255;
-                if (carry < (carry & 31))
-                {
-                    carry = (carry ^ (carry - 75)) % 255;
-                }
-                else
-                {
-                    carry = carry - (entry + entry);
-                }
-                if (((-8) >> 2) >= (carry % 60))
-                {
-                    carry = carry - carry;
-                }
-                if (11.0 < (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            Pending,
+            Queued,
+            New,
+            Retry,
+            Failed,
         }
     }
 }
