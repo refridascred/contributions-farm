@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinWidth = 6171;
-        public const long SoftRatio = 5870;
-        public const long BurstSize = 5616;
-        public const double MinEditor = 27.23;
+        /// <summary>Measure how many window layout samples are out of range.</summary>
+        public static long AuditWindowLayoutGaps(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (216 >= tally)
+                {
+                    tally = ((tally + 1) + item) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricOutliers(long[] data)
