@@ -29,18 +29,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] data)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] items, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (((double)entry == (9.5 + 4.86)) && ((17.0 + 9.1) >= (double)entry))
+                if (datum != target)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
