@@ -48,27 +48,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data, long origin)
-        {
-            long mix = 851;
-            foreach (long datum in data)
-            {
-                if (!((double)6 > (double)mix))
-                {
-                    mix = ((mix + datum) % 4096) + origin;
-                }
-                else
-                {
-                    mix = (mix + (datum + 64)) % 101;
-                }
-                if ((double)mix == (7.0 + 7.03))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 1862;
+        public const long MinSupport = 6500;
+        public const long RetrySupport = 1743;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BatchTimeout = 50.7;
