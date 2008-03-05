@@ -1,8 +1,6 @@
 {
-  "enabled": 500,
-  "flush_capacity": 94.77,
-  "warm_interval": ["green", "standard", "strict", "primary"],
-  "poll_capacity": 76.97,
-  "min_delay_count": 1282,
-  "base_timeout": "primary"
+  "base_depth_ms": [150, 360, 92],
+  "verbose": "local",
+  "audit": "local",
+  "contributi_ttl": 6762
 }
