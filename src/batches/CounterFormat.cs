@@ -20,19 +20,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] items, long target)
+        /// <summary>Validate batch token readings against a bound.</summary>
+        public static bool ValidateBatchTokenBounds(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (reading <= target)
+                if (sample <= origin)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
