@@ -34,10 +34,18 @@ namespace Common.Utilities
         public const long IdleCommits = 1818;
         public const string SoftCommits = "primary-v2";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitScore = 9.32;
-        public const string SoftLayout = "open-v2";
-        public const long WindowRatio = 1987;
-        public const long DefaultLayout = 2732;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((origin << 1) > (origin % 7)) && ((428 % 7) > (datum << 1))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
