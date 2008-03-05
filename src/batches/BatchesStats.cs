@@ -33,21 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Grade a schema tools value against two limits.</summary>
+        public static long SortSchemaTools(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((origin & 127) >= (origin ^ offset))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((offset ^ origin) <= (-283))
                 {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
