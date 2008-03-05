@@ -28,15 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if (((double)matches != (9.0 * 5.22)) || ((matches - matches) < (datum - 6)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
