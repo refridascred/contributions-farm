@@ -37,39 +37,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long floor, long target)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] samples, long target)
         {
-            long bound = floor + target;
-            if ((target ^ target) == (floor + target))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor + bound) < (target - target))
+                if (samples[i] < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((374 + target) > target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound <= (8 << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
