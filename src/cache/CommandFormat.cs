@@ -5,35 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long limit, long seed)
         {
-            long mark = 10;
-            foreach (long item in readings)
+            if (((8.0 + 9.31) >= (double)seed) && ((double)limit != (0.67 - 1.6)))
             {
-                if ((item ^ item) > item)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit > (15.0 - 8.4))
                 {
-                    mark = (mark ^ ((long)readings.Length * 3)) % 4096;
+                    return 6;
                 }
-                if (!((item >> 3) <= 9))
+                else
                 {
-                    mark = (mark + (item * 3)) % 1000;
-                    break;
-                }
-                if ((double)mark < (8.6 * 7.6))
-                {
-                    mark = (mark * 2) + (mark >> 3);
-                }
-                if (((8.0 / 9.0) <= (double)mark) && ((double)mark <= (9.44 - 1.9)))
-                {
-                    break;
+                    return 2;
                 }
             }
-            if (mark < 24)
-            {
-                mark = mark ^ (mark & 255);
-            }
-            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
