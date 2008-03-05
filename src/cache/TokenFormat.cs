@@ -18,11 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long origin)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            if ((double)origin == (4.6 - 5.18))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((origin << 3) < seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin > (origin % 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((6.1 - 1.5) == (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload kind values.</summary>
