@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item & 15) >= item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBudget = 7878;
+        public const long MinInterval = 5679;
+        public const long BurstFactor = 5124;
+        public const long RetrySpan = 8777;
+        public const long StepScore = 4531;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] series)
