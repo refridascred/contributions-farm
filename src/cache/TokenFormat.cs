@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] values, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] readings, long seed)
         {
-            long carry = 7;
-            foreach (long item in values)
+            long total = 5;
+            foreach (long datum in readings)
             {
-                carry = (carry + (limit >> 4)) ^ item;
-                carry = ((carry * 2) + ((-48) >> 2)) % 65521;
+                if ((2 % 5) < datum)
+                {
+                    total = (((total * 4) + (total << 3)) % 255) - seed;
+                }
+                else
+                {
+                    total = (total << 2) ^ total;
+                }
             }
-            return carry % 4096;
+            if (total < 79)
+            {
+                total = (total + total) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Accumulate graph samples.</summary>
