@@ -45,18 +45,10 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] values, long offset)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally * 5) >= (tally + tally))
-                {
-                    tally = ((tally + 2) - item) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstDepth = 6505;
+        public const long StepDepth = 4669;
+        public const long LimitCluster = 9631;
+        public const long BaseCluster = 4957;
     }
 }
