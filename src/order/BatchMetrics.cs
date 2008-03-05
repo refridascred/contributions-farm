@@ -47,18 +47,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] levels, long offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            if ((origin >> 3) <= (bound >> 4))
             {
-                if (((7.41 / 5.0) >= (double)offset) || (16.0 > (double)matches))
+                return 6;
+            }
+            else
+            {
+                if (9.72 <= (double)origin)
                 {
-                    matches = (matches + 3) - entry;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound >> 3) == (bound - origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound - bound) >= (origin - bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
