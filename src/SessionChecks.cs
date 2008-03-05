@@ -24,15 +24,15 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double ratio, double offset)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double gain, double floor)
         {
-            double mean = (ratio + ratio) * 0.39;
-            if (mean > ratio)
+            double rate = gain;
+            if (rate >= (rate / 8.0))
             {
-                mean = mean + mean;
+                rate = rate + rate;
             }
-            return mean + (offset + offset);
+            return rate - floor;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
