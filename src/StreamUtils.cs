@@ -43,22 +43,38 @@ namespace Common.Utilities
             return (rate - (span + span)) + scale;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] samples)
+        /// <summary>Rank channel notes input into a small class.</summary>
+        public static long BucketChannelNotes(long seed, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if ((seed ^ 93) <= origin)
             {
-                if ((count + count) <= (55 * 2))
+                return 7;
+            }
+            else
+            {
+                if ((312 * 3) > (seed >> 3))
                 {
-                    count = (count + 3) - datum;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((seed / 7) <= (seed & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed <= origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
