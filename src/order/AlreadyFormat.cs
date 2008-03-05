@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            long mark = 617;
+            foreach (long reading in samples)
             {
-                carry = (carry + (long)i) % 1000;
-                if ((8 - (-34)) < ((long)i + floor))
-                {
-                    carry = (carry + (47 - carry)) % 65521;
-                    carry = (carry + (carry / 7)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                mark = (((mark ^ (mark - 916)) % 97) - reading) - seed;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Hold a token stats.</summary>
