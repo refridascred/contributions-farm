@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] series, long limit)
+        /// <summary>Validate batches session readings against a bound.</summary>
+        public static bool GuardBatchesSessionBounds(long[] items, long target)
         {
-            long mark = 9;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((value & 15) > (limit - limit))
+                if (value > target)
                 {
+                    stale = false;
                     break;
                 }
-                mark = (mark + 49) % 255;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
