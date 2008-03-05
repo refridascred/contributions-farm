@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] samples, long floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long mix = 2;
-            foreach (long entry in samples)
-            {
-                mix = (mix + (floor ^ floor)) + entry;
-            }
-            return mix % 1000;
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Grade a buffer queue value against two limits.</summary>
