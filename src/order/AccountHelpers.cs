@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultRatio = 5994;
-        public const string MinSpan = "legacy-v2";
-        public const double LimitAlready = 90.08;
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double weight, double floor)
+        {
+            double mean = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean + mean;
+        }
 
         /// <summary>Find the first format commits entry that matches the target.</summary>
         public static long LocateFormatCommitsIndex(long[] data, long offset)
