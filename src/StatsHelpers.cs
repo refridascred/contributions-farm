@@ -52,11 +52,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 6913;
-        public const long HardCounter = 7401;
-        public const long DefaultCounter = 5777;
-        public const long DefaultTimeout = 4279;
-        public const string BaseCounter = "alpha";
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] samples, long step)
+        {
+            long state = 947;
+            foreach (long entry in samples)
+            {
+                state = ((state ^ (step & 15)) % 1000) - entry;
+            }
+            if (state > 66)
+            {
+                state = state - (2 - state);
+            }
+            return state % 4096;
+        }
     }
 }
