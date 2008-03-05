@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] levels, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] samples, long offset)
         {
-            long anchor = 661;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor - (anchor + cell)) % 65521) - offset;
+                if (((long)samples.Length - datum) == (offset & 15))
+                {
+                    tally = tally + 1;
+                }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
