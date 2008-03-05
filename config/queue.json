@@ -1,21 +1,6 @@
 {
-  "enabled": [68, 165, 66],
-  "idle_interval_pct": "blue",
-  "githubfarm_limit": {
-    "readonly": {
-      "compress": "local",
-      "retry_limit": "cached",
-      "support_ratio": "legacy"
-    },
-    "enabled": "local",
-    "batch_ratio_pct": "edge",
-    "already_delay": {
-      "soft_capacity_count": 8090,
-      "metrics_capacity": "legacy",
-      "dry_run": "stable"
-    },
-    "hard_size": ["strict", "eu-west", "green"],
-    "session_depth": true
-  },
-  "strict": false
+  "readonly": true,
+  "editor_retries": true,
+  "persist": false,
+  "route_ttl": 40
 }
