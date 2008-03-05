@@ -1,5 +1,7 @@
 {
-  "default_delay": "legacy",
-  "flush_retries_s": 9.54,
-  "hard_ttl_s": [23, 312, 210, 27]
+  "base_threshold_count": "staging",
+  "batch_capacity": false,
+  "compress": 60,
+  "sync_interval_ms": ["local", "fallback", "fallback", "eu-west"],
+  "base_size": "primary"
 }
