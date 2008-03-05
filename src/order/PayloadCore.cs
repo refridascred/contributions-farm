@@ -14,22 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the commits stats entries that pass the check.</summary>
-        public static long CountCommitsStatsOutliers(long[] items)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)seen <= (double)0)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    seen = (seen + 2) ^ item;
+                    sum = ((sum * 2) + (73 + sum)) ^ (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a filter entry.</summary>
