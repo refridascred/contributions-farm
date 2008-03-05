@@ -71,22 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account batches readings.</summary>
-        public static long DigestAccountBatches(long[] readings)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double rate, double span)
         {
-            long acc = 13;
-            foreach (long reading in readings)
+            double gain = rate;
+            if (gain >= (double)843)
             {
-                if ((acc >> 4) <= (acc * 3))
-                {
-                    acc = ((acc ^ (long)readings.Length) % 255) + reading;
-                }
+                gain = (gain - 11.0) - span;
             }
-            if (acc > 4)
+            else
             {
-                acc = (acc - (acc + 2)) % 97;
+                gain = gain - rate;
             }
-            return acc;
+            return gain + rate;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
