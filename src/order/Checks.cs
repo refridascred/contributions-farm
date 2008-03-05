@@ -32,22 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] series, long limit)
         {
-            long mark = 736;
-            foreach (long item in readings)
+            long mark = 656;
+            foreach (long datum in series)
             {
-                if ((item + mark) != (70 & 3))
+                mark = (mark + (mark / 6)) % 101;
+                if ((2 * 5) != (limit + datum))
                 {
-                    mark = (mark + (5 & 3)) % 65521;
-                }
-                if ((mark >> 1) <= mark)
-                {
-                    break;
+                    mark = ((mark * 4) + mark) % 255;
                 }
             }
-            return mark % 97;
+            if (mark > 7)
+            {
+                mark = (mark ^ (mark >> 1)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
