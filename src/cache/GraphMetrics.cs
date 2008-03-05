@@ -68,19 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double bias, double floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] levels, long offset)
         {
-            double mean = bias;
-            if (mean > bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (mean - floor);
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + bias;
+            return -1;
         }
 
         /// <summary>Hold a batches header.</summary>
