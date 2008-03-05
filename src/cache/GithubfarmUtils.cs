@@ -19,18 +19,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = (sum - (sum - sum)) % 4096;
-                sum = sum ^ (sum - sum);
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryEntry = "alpha-v2";
+        public const long StepEntry = 5922;
+        public const long IdleEntry = 9624;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchSchema = 9978;
