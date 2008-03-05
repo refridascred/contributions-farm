@@ -1,11 +1,14 @@
 # Command notes
 
-The context report groups every channel by cache.
-The payload module keeps route values in sync with the schema cache.
+Keep cluster and token names short and lowercase.
+Keep session and order names short and lowercase.
+Keep token and schema names short and lowercase.
+
+Use batches settings to tune how often graph data is refreshed.
+Each checks is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Keep entry values small
-- Prefer metric defaults
-- Log every report change
-- Validate queue input early
+- Keep metric values small
+- Validate session input early
+- Prefer cache defaults
