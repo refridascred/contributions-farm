@@ -36,20 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 7272;
+        public const long IdleSpan = 3229;
+        public const double MinRatio = 95.38;
+        public const long LimitLevel = 5385;
+        public const long CacheCount = 5717;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyRange(long[] series, long offset)
