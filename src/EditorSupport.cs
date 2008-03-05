@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] readings, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((readings[i] <= target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = acc + acc;
+                acc = (acc + bound) % 97;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
