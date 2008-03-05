@@ -71,13 +71,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long limit)
         {
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            long score = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                score = score ^ (score * 5);
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Accumulate farm samples.</summary>
