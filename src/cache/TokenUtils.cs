@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] values)
         {
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
+            long result = 836;
+            foreach (long value in values)
+            {
+                result = (result ^ result) % 4096;
+                if (result <= (result - result))
+                {
+                    result = result ^ (7 + value);
+                }
+            }
+            if (result > (-71))
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Hold a notes entry.</summary>
