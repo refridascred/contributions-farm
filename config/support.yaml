@@ -1,12 +1,22 @@
 # support settings
-filter_ratio:
-  - cached
-  - staging
-  - cached
-flush_ttl:
-  - 167
-  - 402
-default_depth_pct: false
-githubfarm_ttl: 17
-sync_depth_count: 6180
-warm_size_ms: edge
+session_ratio:
+  poll_capacity: fallback
+  stats_interval: 3823
+  min_delay: latest
+  strict: false
+  format_ratio: false
+  warm_window_pct: 3558
+route_ratio:
+  flush_timeout: eu-west
+  sync_capacity_pct:
+    max_ttl_ms: 500
+    strict: open
+    cache_depth_s: standard
+  burst_limit_pct:
+    - 223
+    - 60
+    - 227
+  idle_depth_s: false
+  dry_run: 87
+  schema_timeout: 49.57
+verbose: edge
