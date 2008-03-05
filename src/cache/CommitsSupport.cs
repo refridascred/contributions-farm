@@ -56,18 +56,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] readings, long limit)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((matches / 6) != (limit / 9)) && ((1.1 - 8.0) < (double)entry))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double gain = offset;
+            return (gain + (7.77 - gain)) + scale;
         }
 
         /// <summary>Hold a entry entry.</summary>
