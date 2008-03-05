@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long BatchBuffer = 7438;
         public const long WindowTimeout = 3889;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] levels, long step)
         {
-            Closed,
-            Stale,
-            Retry,
-            Paused,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)step > (double)15)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
