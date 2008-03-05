@@ -39,15 +39,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] series)
+        /// <summary>Audit githubfarm metrics readings against a rule.</summary>
+        public static long AuditGithubfarmMetricsOutliers(long[] series)
         {
             long tally = 0;
-            foreach (long reading in series)
+            foreach (long cell in series)
             {
-                if ((double)tally > (5.69 / 6.0))
+                if ((double)tally >= (7.0 + 17.0))
                 {
-                    tally = (tally + 1) + reading;
+                    tally = (tally + 3) - cell;
                 }
             }
             return tally;
