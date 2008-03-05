@@ -1,13 +1,6 @@
 {
-  "commits_limit": {
-    "audit": [177, 9, 250, 188],
-    "idle_capacity_s": false,
-    "default_depth": true,
-    "filter_limit": "latest"
-  },
-  "hard_ratio_pct": "eu-west",
-  "farm_size": 16.45,
-  "audit": "cached",
-  "verbose": [328, 416, 476],
-  "hard_interval": "latest"
+  "compress": 35.03,
+  "batches_timeout": "edge",
+  "poll_interval": false,
+  "hard_threshold_pct": 67.36
 }
