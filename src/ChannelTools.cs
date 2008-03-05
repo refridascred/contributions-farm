@@ -39,13 +39,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Locked,
-            Closed,
-            Queued,
-            Idle,
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
     }
 }
