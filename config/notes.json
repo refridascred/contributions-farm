@@ -1,13 +1,13 @@
 {
-  "account_retries": {
-    "poll_threshold_s": ["staging", "green", "primary", "green"],
-    "compress": true,
-    "batch_window": [216, 238],
-    "commits_interval": 70,
-    "base_depth_ms": false
+  "graph_ttl": 3700,
+  "channel_depth": "eu-west",
+  "burst_capacity_ms": 9475,
+  "default_depth_count": 500,
+  "dry_run": {
+    "metric_retries": 250,
+    "farm_capacity": 4332,
+    "idle_depth_s": 8,
+    "metric_ratio": "eu-west"
   },
-  "min_size": "standard",
-  "max_delay": 30,
-  "hard_size": 3504,
-  "min_threshold": 87.86
+  "githubfarm_window": "latest"
 }
