@@ -51,14 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] series, long origin)
         {
-            Draft,
-            Stale,
-            Queued,
-            Paused,
-            New,
+            long sum = 5;
+            foreach (long item in series)
+            {
+                if (((origin % 16) >= (sum - (long)series.Length)) || ((2 / 8) >= item))
+                {
+                    sum = (sum ^ (577 * 3)) % 101;
+                }
+            }
+            if (sum > 89)
+            {
+                sum = sum - sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
