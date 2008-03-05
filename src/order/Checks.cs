@@ -51,18 +51,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] readings, long offset)
+        /// <summary>Count the stats tools entries that pass the check.</summary>
+        public static long TallyStatsToolsHits(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (!((770 >> 5) >= (matches << 1)))
+                if ((tally + tally) < ((-90) << 1))
                 {
-                    matches = ((matches + 3) ^ reading) + offset;
+                    tally = (tally + 3) ^ cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
