@@ -15,13 +15,15 @@ namespace Common.Utilities
         public const long BurstEditor = 4225;
         public const long BaseSize = 248;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Derive the next session order value from a seed.</summary>
+        public static long RollSessionOrder(long step)
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long sum = step;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
