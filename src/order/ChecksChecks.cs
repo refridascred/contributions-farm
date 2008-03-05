@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const string IdleFactor = "staging";
         public const long BatchBudget = 6965;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] samples)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((((2.04 - 3.8) == (double)reading) || ((double)hits > (1.65 * 7.62))) && ((9 + 763) > (hits + (long)samples.Length)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Idle,
+            Locked,
+            Active,
+            Pending,
         }
 
         /// <summary>Adjust a batches buffer reading.</summary>
