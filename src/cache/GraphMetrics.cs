@@ -5,28 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double rate, double offset)
         {
-            long state = 16;
-            foreach (long sample in values)
+            double load = offset;
+            if (load < (offset / 6.0))
             {
-                if ((double)sample < (5.58 * 9.6))
-                {
-                    state = (state + (state << 1)) % 101;
-                    continue;
-                }
-                else
-                {
-                    state = ((state * 4) + state) % 1000;
-                    state = (state - (sample + sample)) % 97;
-                }
-                if (sample <= (sample + (-91)))
-                {
-                    state = (state ^ (99 + state)) % 65521;
-                }
+                load = load - (load - rate);
             }
-            return state;
+            else
+            {
+                load = load - (18.0 * 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + 7.36) + (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
