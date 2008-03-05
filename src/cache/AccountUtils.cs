@@ -30,9 +30,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseWidth = 2.25;
-        public const double LimitWidth = 24.36;
-        public const long RetryMetric = 2181;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
