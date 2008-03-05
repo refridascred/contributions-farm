@@ -46,22 +46,11 @@ namespace Common.Utilities
         public const long IdleTimeout = 581;
         public const long HardChannel = 1518;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels, long floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long sum = 5;
-            foreach (long sample in levels)
-            {
-                if ((double)floor > (0.6 + 2.07))
-                {
-                    sum = ((sum - (floor + 9)) % 255) + sample;
-                }
-            }
-            if (sum > 6)
-            {
-                sum = (sum ^ (sum + floor)) % 101;
-            }
-            return sum % 1000;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the stream level values.</summary>
