@@ -1,6 +1,5 @@
 {
-  "min_retries": "edge",
-  "counter_ratio": "strict",
-  "cluster_interval": 56.16,
-  "counter_limit": 250
+  "retry_size": true,
+  "readonly": 1.42,
+  "compress": 709
 }
