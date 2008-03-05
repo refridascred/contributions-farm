@@ -20,28 +20,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] values, long floor)
         {
-            long mix = 666;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((44 * 4) >= (sample << 2))
+                if (values[i] >= floor)
                 {
-                    mix = (mix - ((-851) * 3)) % 97;
-                    mix = mix + (mix + sample);
-                }
-                mix = (mix << 3) ^ (sample << 2);
-                if ((mix + mix) == (mix - mix))
-                {
-                    mix = ((mix << 2) ^ (sample % 100)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mix < 7)
-            {
-                mix = (mix * 5) + (long)readings.Length;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Classify a counter cache pair into a bucket.</summary>
