@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Check that every cache command entry stays within the limit.</summary>
+        public static bool GuardCacheCommandLimits(long[] items, long seed)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a token context sample.</summary>
