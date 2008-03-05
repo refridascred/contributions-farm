@@ -43,12 +43,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 5634;
-        public const long BurstWidth = 9936;
-        public const long BaseStats = 9842;
-        public const long BatchStats = 1055;
-        public const long MinStats = 6356;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinWidth = 3029;
+        public const long BurstLevel = 4792;
+        public const long CacheWidth = 1635;
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
