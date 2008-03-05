@@ -30,15 +30,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] values)
+        /// <summary>Count batch counter pairs that satisfy a relation.</summary>
+        public static long CompareBatchCounterCount(long[] values)
         {
             long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches ^ matches) >= (6 + (long)values.Length))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) - reading;
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
