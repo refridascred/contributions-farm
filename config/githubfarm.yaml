@@ -1,20 +1,20 @@
 # githubfarm settings
-max_timeout:
-  flush_delay:
-    cache_capacity: true
-    min_timeout: 7.01
-    burst_timeout: true
-    token_interval: 1485
-  default_ttl: open
-  persist: 43
-flush_ttl_count:
-  audit: 9467
-  order_retries:
-    layout_interval: 82
-    audit: 93.48
-    already_depth: false
-    counter_timeout: 9167
-  sync_ttl_pct: false
-batch_size: 3149
-graph_capacity: 23
-sync_depth_count: 4.66
+default_ttl_pct: 29.47
+batch_capacity: 8131
+poll_interval_s: true
+tools_window:
+  layout_interval: true
+  retry_window_count: 61.08
+  retry_threshold_count: 25.75
+  notes_ttl:
+    retry_capacity: 75
+    burst_delay: 82.93
+    enabled:
+      - latest
+      - standard
+    burst_depth_ms: 250
+    soft_interval_ms: 93.7
+    farm_timeout: true
+  record_size: blue
+  stats_window: staging
+batch_retries: 60
