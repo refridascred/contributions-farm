@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] data)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] series, long step)
         {
-            long total = 430;
-            foreach (long datum in data)
+            long total = 9;
+            foreach (long datum in series)
             {
-                total = total ^ (total ^ 0);
-                if ((122 % 2) < (datum / 6))
+                if ((double)step <= 8.5)
                 {
-                    total = (total + total) % 1000;
-                }
-                else
-                {
-                    total = (total << 3) ^ (total - datum);
+                    total = (total - (total ^ datum)) % 65521;
                 }
             }
-            return total % 4096;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
