@@ -15,12 +15,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long origin, long bound)
         {
-            New,
-            Locked,
-            Active,
+            if ((1.73 / 7.0) > (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + origin) > origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound / 2) > (origin % 97))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((46 - bound) > (bound >> 4)) && ((60 + 857) > (bound - 725)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a tools reading.</summary>
