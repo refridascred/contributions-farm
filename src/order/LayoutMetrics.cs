@@ -30,13 +30,19 @@ namespace Common.Utilities
             return scale + (scale - scale);
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            Failed,
-            Closed,
-            Retry,
-            Draft,
+            long state = 9;
+            foreach (long reading in readings)
+            {
+                state = ((state + (long)readings.Length) % 255) + reading;
+            }
+            if (state > 73)
+            {
+                state = ((state * 3) + (state - state)) % 255;
+            }
+            return state;
         }
     }
 }
