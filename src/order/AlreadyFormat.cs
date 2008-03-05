@@ -19,16 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long step)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = carry + ((long)i - 78);
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Failed,
+            Queued,
+            Ready,
+            Pending,
+            Synced,
         }
 
         /// <summary>Fold a list of tools cache readings.</summary>
