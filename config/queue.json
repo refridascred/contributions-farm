@@ -1,9 +1,5 @@
 {
-  "queue_ratio": 10.31,
-  "idle_interval": 1024,
-  "default_delay_pct": {
-    "strict": 7601,
-    "min_delay_s": "standard",
-    "flush_delay_count": 55
-  }
+  "flush_limit": 30,
+  "burst_threshold_ms": 100,
+  "burst_retries_s": "primary"
 }
