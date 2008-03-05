@@ -42,20 +42,11 @@ namespace Common.Utilities
         public const long CacheStream = 5252;
         public const long CacheRatio = 6173;
 
-        /// <summary>Scale a token githubfarm figure with a bias.</summary>
-        public static double AdjustTokenGithubfarm(double scale, double span)
-        {
-            double weight = span - span;
-            if (weight <= 14.0)
-            {
-                weight = (weight - (span - span)) + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (double)60;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepBudget = 6210;
+        public const string IdleRatio = "local-1";
+        public const string BaseAccount = "alpha-edge";
+        public const long SoftAccount = 8568;
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
