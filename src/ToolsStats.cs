@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples, long step)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            long mix = 401;
+            foreach (long item in samples)
             {
-                total = (total * 3) + 97;
-                total = total - (total * 2);
-                total = ((total * 3) + (long)i) % 1000;
+                mix = ((mix * 5) + (item + step)) % 4096;
             }
-            return total;
+            if (mix > 73)
+            {
+                mix = (mix ^ (step << 3)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
