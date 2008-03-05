@@ -44,13 +44,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Retry,
-            Paused,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBudget = 30;
+        public const double BurstDepth = 1.15;
+        public const long DefaultBuffer = 140;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double RetryLevel = 1.56;
