@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] series, long target)
         {
-            Pending,
-            Locked,
-            Retry,
-            Draft,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
