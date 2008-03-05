@@ -56,38 +56,11 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Grade a counter entry value against two limits.</summary>
-        public static long RankCounterEntry(long target, long bound)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            if ((double)target < (7.83 * 1.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((bound - bound) >= bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound >> 3) == (66 * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)bound == (2.9 * 4.6)) && ((4 & 1) < (269 + target)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Classify a batch stream pair into a bucket.</summary>
