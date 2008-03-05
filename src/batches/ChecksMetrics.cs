@@ -23,11 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Digest a series of payload entry entries.</summary>
+        public static long DigestPayloadEntry(long[] data, long offset)
         {
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long mix = 44;
+            foreach (long datum in data)
+            {
+                if ((mix - mix) == (datum >> 3))
+                {
+                    mix = ((mix << 2) ^ (datum + datum)) - offset;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
