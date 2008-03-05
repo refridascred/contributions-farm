@@ -63,22 +63,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a graph metrics pair into a bucket.</summary>
-        public static long GradeGraphMetrics(long limit, long origin)
+        /// <summary>Rank batches tools input into a small class.</summary>
+        public static long GradeBatchesTools(long floor, long limit)
         {
-            if ((double)limit > (7.0 / 3.0))
+            if (!((0.24 - 5.06) == (double)floor))
             {
                 return 5;
             }
             else
             {
-                if ((double)origin == (2.15 + 0.53))
+                if (((double)limit > 8.24) || ((4.01 - 7.6) < (double)limit))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    return 7;
                 }
             }
         }
