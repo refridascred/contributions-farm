@@ -51,17 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] levels, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (levels[i] > origin)
+                if (!(entry <= count))
                 {
-                    return (long)i;
+                    count = (count + 3) - origin;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
