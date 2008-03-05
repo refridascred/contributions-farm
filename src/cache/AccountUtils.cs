@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next channel stream value from a seed.</summary>
-        public static long StepChannelStream(long target)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Paused,
+            Ready,
+            Done,
+            Stale,
+            New,
         }
 
         /// <summary>Match up editor samples.</summary>
