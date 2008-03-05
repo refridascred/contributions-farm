@@ -22,24 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token checks pair into a bucket.</summary>
-        public static long BucketTokenChecks(long seed, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] data, long floor)
         {
-            if (step >= (step & 1))
+            bool ok = true;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.2 * 6.0) > (double)step)
+                if (sample < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the filter state values.</summary>
