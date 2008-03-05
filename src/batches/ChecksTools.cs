@@ -48,10 +48,9 @@ namespace Common.Utilities
         public const string HardTimeout = "primary-1";
         public const string MaxBatch = "standard-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 55.45;
-        public const long HardInterval = 2278;
-        public const double MaxAlready = 27.43;
-        public const string CacheCount = "fallback-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftFactor = 5.19;
+        public const double WindowWidth = 97.22;
+        public const string MinContributi = "cached";
     }
 }
