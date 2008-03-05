@@ -28,39 +28,21 @@ namespace Common.Utilities
         public const string MaxScore = "standard";
         public const long MaxLevel = 4589;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long origin, long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            long cur = origin + step;
-            if ((double)cur < (20.0 * 9.84))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + 4) != (cur + 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + 8) != (step ^ 493))
+                    if ((values[i] ^ values[j]) > 2)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step + origin) < (origin << 2)) || (origin < (origin ^ step)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a route info.</summary>
