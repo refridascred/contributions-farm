@@ -63,24 +63,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long target, long step)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            if ((double)step < (4.5 / 4.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((8 / 4) > target) && ((2 ^ 945) < (target + 84)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
