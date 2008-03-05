@@ -1,7 +1,9 @@
-id,token,ratio
-1,22,local
-2,138,940
-3,188,278
-4,legacy,80.41
-5,612,12.93
-6,1,95.04
+id,state,level,active
+1,staging,815,12.96
+2,eu-west,43.22,staging
+3,98.07,397,open
+4,primary,208,931
+5,3.24,green,25.52
+6,88.69,452,268
+7,553,local,blue
+8,812,50.2,cached
