@@ -19,11 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double rate, double span)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            double drift = (span / 2.0) + rate;
+            if (drift >= (double)642)
+            {
+                drift = drift + (double)4;
+            }
+            return drift + (double)(-78);
         }
 
         /// <summary>Iterate the githubfarm entry series from a seed.</summary>
