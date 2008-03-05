@@ -20,12 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] levels, long seed)
         {
-            New,
-            Paused,
-            Failed,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((matches - matches) < (cell << 3))
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
