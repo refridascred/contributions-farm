@@ -23,22 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of batches batch entries.</summary>
-        public static long FoldBatchesBatch(long[] readings, long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long total = 803;
-            foreach (long value in readings)
-            {
-                if ((double)step == (double)value)
-                {
-                    total = total ^ (value >> 3);
-                }
-            }
-            if (total < 6)
-            {
-                total = total ^ (95 << 1);
-            }
-            return total;
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
