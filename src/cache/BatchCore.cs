@@ -36,15 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] items, long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long result = 9;
-            foreach (long reading in items)
-            {
-                result = ((result + (9 + reading)) % 65521) - offset;
-            }
-            return result % 1000;
+            Ready,
+            Idle,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the token kind values.</summary>
