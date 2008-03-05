@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] data)
+        /// <summary>Roll a command cache counter forward.</summary>
+        public static long SeriesCommandCache(long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((((entry + entry) >= (tally - entry)) && ((4 >> 5) != (entry * 2))) && (entry > (entry * 5)))
-                {
-                    tally = tally + 3;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
