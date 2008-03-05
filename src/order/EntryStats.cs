@@ -34,22 +34,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] samples)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long floor, long bound)
         {
-            long mix = 187;
-            foreach (long reading in samples)
+            if (!((double)6 == (double)bound))
             {
-                if ((1.8 - 2.1) < (double)mix)
+                return 3;
+            }
+            else
+            {
+                if ((bound + floor) >= bound)
                 {
-                    mix = mix - (mix + reading);
+                    return 2;
+                }
+                else
+                {
+                    if (((6 + floor) >= floor) || ((floor + bound) >= floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mix < 6)
-            {
-                mix = (mix << 2) ^ (mix / 7);
-            }
-            return mix % 65521;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
