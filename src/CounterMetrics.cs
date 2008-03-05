@@ -33,22 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] series, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] data)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long total = 998;
+            foreach (long cell in data)
             {
-                if ((value + seen) <= (seen + 745))
+                if (!((total - cell) < (cell * 5)))
                 {
-                    seen = (seen + 3) + bound;
+                    total = ((total * 3) + total) % 97;
                 }
-                else
+                if (!((total * 3) <= cell))
                 {
-                    seen = seen - 1;
+                    total = ((total << 3) ^ (total + cell)) % 1000;
                 }
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
