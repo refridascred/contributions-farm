@@ -28,19 +28,12 @@ namespace Common.Utilities
         public const long BurstCounter = 7384;
         public const long LimitCounter = 5440;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] data, long limit)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Retry,
+            Draft,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
