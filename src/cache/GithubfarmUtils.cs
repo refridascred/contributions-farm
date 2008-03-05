@@ -33,31 +33,22 @@ namespace Common.Utilities
         public const double WindowCount = 9.56;
         public const double SoftSchema = 19.57;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long origin, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] levels, long bound)
         {
-            if ((origin < (7 >> 2)) || ((51 + origin) < (origin % 64)))
+            long result = 5;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin & 1) > 16)
+                if ((datum - result) >= (datum + bound))
                 {
-                    return 7;
+                    result = result - (datum + datum);
                 }
                 else
                 {
-                    if ((origin >> 4) >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = result + (datum + bound);
                 }
             }
+            return result % 97;
         }
     }
 }
