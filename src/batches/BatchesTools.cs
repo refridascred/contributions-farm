@@ -56,10 +56,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheSize = "stable";
-        public const long RetrySpan = 8123;
-        public const long BatchChannel = 686;
-        public const double SoftSize = 74.54;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Retry,
+            New,
+            Dropped,
+            Paused,
+            Idle,
+        }
     }
 }
