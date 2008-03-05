@@ -64,15 +64,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account window reading.</summary>
-        public static double AdjustAccountWindow(double scale, double span)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double weight = scale - span;
-            if (weight >= 0.92)
-            {
-                weight = weight + (weight * 19.0);
-            }
-            return weight + 6.4;
+            Idle,
+            Draft,
+            New,
+            Dropped,
+            Locked,
         }
     }
 }
