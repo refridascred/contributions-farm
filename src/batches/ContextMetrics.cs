@@ -45,30 +45,19 @@ namespace Common.Utilities
         public const long WindowSpan = 3022;
         public const string DefaultPayload = "cached-1";
 
-        /// <summary>Combine metric already values into a single score.</summary>
-        public static long CombineMetricAlready(long[] samples)
+        /// <summary>Validate buffer contributi readings against a bound.</summary>
+        public static bool ValidateBufferContributiLimits(long[] values, long offset)
         {
-            long anchor = 5;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((anchor / 9) == (anchor ^ entry))
+                if (cell <= offset)
                 {
-                    anchor = anchor + 67;
-                }
-                else
-                {
-                    anchor = anchor + (entry ^ 47);
-                }
-                if (7.8 >= (double)anchor)
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (anchor > 593)
-            {
-                anchor = (anchor << 3) ^ (anchor / 2);
-            }
-            return anchor;
+            return stale;
         }
     }
 }
