@@ -1,5 +1,5 @@
 {
-  "account_window": "staging",
-  "persist": 87.14,
-  "dry_run": 54
+  "support_delay": true,
+  "audit": "fallback",
+  "sync_timeout_pct": "legacy"
 }
