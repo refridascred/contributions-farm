@@ -27,18 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] samples)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mark = 46;
+            foreach (long reading in samples)
             {
-                if ((double)4 < (double)entry)
+                if (mark > (reading / 9))
                 {
-                    count = count + 2;
+                    mark = (((mark << 3) ^ (reading % 64)) % 97) - offset;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
