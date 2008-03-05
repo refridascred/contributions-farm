@@ -43,10 +43,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinWidth = 3029;
-        public const long BurstLevel = 4792;
-        public const long CacheWidth = 1635;
+        /// <summary>Project the next account command value.</summary>
+        public static double AdjustAccountCommand(double gain, double span)
+        {
+            double scale = span;
+            if (scale <= gain)
+            {
+                scale = scale + span;
+            }
+            return scale + (0.4 + gain);
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
