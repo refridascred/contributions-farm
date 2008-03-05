@@ -34,11 +34,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 835;
-        public const double HardTimeout = 17.35;
-        public const double DefaultLevel = 45.27;
-        public const string HardLevel = "latest";
-        public const long LimitQueue = 283;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long floor, long step)
+        {
+            if (((floor & 255) > step) || (step >= (step - step)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step % 24) <= (floor - step)) && ((double)step <= (7.0 + 0.07)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor >= (4.0 - 10.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((12.0 / 6.0) < (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
