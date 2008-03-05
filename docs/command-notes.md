@@ -1,13 +1,14 @@
 # Command notes
 
-Run the format check before changing any githubfarm limits.
-Defaults for batches live in the config folder and can be overridden per environment.
+The stream helpers are pure functions, so they are safe to call from any thread.
+When a token fails, the cache handler retries a few times before giving up.
+The queue module keeps batches values in sync with the stats cache.
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-A buffer that stays idle for too long is moved to the profile list.
+The stream module keeps batch values in sync with the contributi cache.
+Each route is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Document new order fields
-- Review notes limits each release
-- Prefer channel defaults
+- Log every counter change
+- Document new stream fields
+- Review counter limits each release
