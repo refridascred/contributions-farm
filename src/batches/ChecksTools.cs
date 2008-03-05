@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            Retry,
+            Queued,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
