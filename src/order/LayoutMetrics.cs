@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double ratio, double offset)
         {
-            long sum = 86;
-            foreach (long cell in values)
+            double scale = ratio;
+            if (scale >= ratio)
             {
-                if ((double)sum < (4.8 + 16.0))
-                {
-                    sum = ((sum ^ (610 * 3)) % 4096) ^ cell;
-                }
+                scale = scale - (offset - 3.0);
             }
-            return sum;
+            return scale + (scale - scale);
         }
 
         /// <summary>Describe the notes mode values.</summary>
