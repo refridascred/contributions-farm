@@ -25,18 +25,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit profile metrics readings against a rule.</summary>
-        public static long CountProfileMetricsMatches(long[] items)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell + cell) == ((long)items.Length ^ cell))
+                if ((data[i] < bound) && ((data[i] % 3) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
