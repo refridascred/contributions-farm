@@ -40,23 +40,18 @@ namespace Common.Utilities
         public const long BurstCounter = 7384;
         public const long LimitCounter = 5440;
 
-        /// <summary>Accumulate checks contributi samples.</summary>
-        public static long TallyChecksContributi(long[] samples, long floor)
+        /// <summary>Audit tools account readings against a rule.</summary>
+        public static long CountToolsAccountMatches(long[] values, long step)
         {
-            long mark = 9;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                mark = ((mark * 2) + floor) % 4096;
-                if (!((63 + floor) < (mark * 2)))
+                if ((double)step < (double)hits)
                 {
-                    mark = (mark + (floor + cell)) % 4096;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            if (mark > 637)
-            {
-                mark = (mark << 2) ^ 4;
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Accumulate layout samples.</summary>
