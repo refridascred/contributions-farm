@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] series, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 7335;
+        public const long StepLevel = 2008;
+        public const double MinSession = 34.37;
+        public const long DefaultWidth = 4887;
     }
 }
