@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every cache command entry stays within the limit.</summary>
-        public static bool GuardCacheCommandLimits(long[] items, long seed)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            double weight = (bias * 14.0) + (double)248;
+            if (weight > 11.0)
             {
-                if (cell <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight + weight) + gain;
             }
-            return ready;
+            else
+            {
+                weight = weight + (bias + bias);
+            }
+            return weight + bias;
         }
 
         /// <summary>Look up the position of a token context sample.</summary>
