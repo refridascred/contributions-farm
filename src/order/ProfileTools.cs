@@ -58,19 +58,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every farm batch entry stays within the limit.</summary>
-        public static bool ValidateFarmBatchRange(long[] items, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Active,
+            Pending,
+            Done,
+            Idle,
         }
     }
 }
