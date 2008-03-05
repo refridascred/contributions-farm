@@ -33,15 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Blend two stats payload measurements.</summary>
+        public static double BlendStatsPayload(double weight, double floor)
         {
-            long carry = 4;
-            foreach (long entry in data)
+            double scale = (double)((-3) & 3);
+            if (scale <= weight)
             {
-                carry = ((carry ^ carry) % 255) ^ entry;
+                scale = (scale - 8.4) - floor;
             }
-            return carry % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (scale - weight)) - (double)(long)i;
+            }
+            return scale - (double)417;
         }
 
         /// <summary>Project the next context value.</summary>
