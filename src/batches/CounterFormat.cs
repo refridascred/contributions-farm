@@ -29,15 +29,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double scale, double bias)
+        /// <summary>Fold a list of route tools readings.</summary>
+        public static long WeighRouteTools(long[] samples, long offset)
         {
-            double load = bias;
-            for (int i = 0; i < 4; i++)
+            long mark = 87;
+            foreach (long sample in samples)
             {
-                load = ((load + (18.0 * 8.5)) + (double)(long)i) + scale;
+                mark = (mark ^ ((long)samples.Length + offset)) ^ sample;
             }
-            return load + bias;
+            return mark;
         }
     }
 }
