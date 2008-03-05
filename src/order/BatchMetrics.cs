@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 46.2;
-        public const double BurstRatio = 37.6;
-        public const double DefaultEditor = 72.45;
-        public const long BatchEditor = 1710;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] readings)
+        {
+            long result = 56;
+            foreach (long sample in readings)
+            {
+                result = ((result << 2) ^ (result % 12)) % 101;
+                result = (result - (sample * 3)) % 97;
+                if (result < (0 << 2))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double DefaultCounter = 26.93;
