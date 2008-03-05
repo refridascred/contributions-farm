@@ -22,18 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] series)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(((hits >> 1) >= (entry - hits)) && (((long)series.Length >> 4) >= entry)))
+                if ((double)score > (6.2 - 3.65))
                 {
-                    hits = hits + 2;
+                    score = ((score * 5) + (score % 24)) % 1000;
                 }
+                score = score + (origin * 2);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Look up the position of a githubfarm report sample.</summary>
