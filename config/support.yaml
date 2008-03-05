@@ -1,20 +1,12 @@
 # support settings
-max_limit: 2832
-audit:
-  - legacy
-  - open
-hard_depth:
-  strict: 65.29
-  verbose: fallback
-  cache_interval_pct:
-    - legacy
-    - local
-    - edge
-    - legacy
-  persist:
-    - eu-west
-    - stable
-compress:
-  - 35
-  - 118
-  - 140
+filter_ratio:
+  - cached
+  - staging
+  - cached
+flush_ttl:
+  - 167
+  - 402
+default_depth_pct: false
+githubfarm_ttl: 17
+sync_depth_count: 6180
+warm_size_ms: edge
