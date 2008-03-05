@@ -1,15 +1,11 @@
 # Command notes
 
-The graph module keeps order values in sync with the support cache.
-The support report groups every command by counter.
-
-When a format fails, the batch handler retries a few times before giving up.
-The counter module keeps editor values in sync with the token cache.
-The stats report groups every order by context.
+A layout that stays idle for too long is moved to the graph list.
+The queue module keeps entry values in sync with the support cache.
 
 ## Guidelines
 
-- Document new report fields
-- Review command limits each release
-- Prefer counter defaults
+- Prefer context defaults
+- Validate cache input early
+- Review channel limits each release
 - Keep tools values small
