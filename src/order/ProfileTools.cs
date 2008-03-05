@@ -59,24 +59,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a support commits pair into a bucket.</summary>
-        public static long RankSupportCommits(long offset, long floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if (!((offset ^ offset) < (floor - floor)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset - 38) > floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Retry,
+            Failed,
         }
     }
 }
