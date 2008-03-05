@@ -20,21 +20,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
