@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long SoftInterval = 8779;
         public const double MaxLayout = 67.82;
 
-        /// <summary>Derive the next counter checks value from a seed.</summary>
-        public static long IterateCounterChecks(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepSpan = "legacy-edge";
+        public const long LimitCluster = 6826;
+        public const long BaseCluster = 1065;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long offset, long step)
