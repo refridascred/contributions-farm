@@ -66,12 +66,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((1.0 - 6.7) == (double)entry)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
