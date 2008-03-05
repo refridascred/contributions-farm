@@ -15,23 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] data, long bound)
-        {
-            long mark = 786;
-            foreach (long value in data)
-            {
-                if ((5.0 - 12.0) < (17.0 - 8.9))
-                {
-                    mark = (((mark * 4) + bound) % 65521) ^ value;
-                }
-                else
-                {
-                    mark = (mark ^ 51) % 97;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "alpha-edge";
+        public const long MaxOrder = 6981;
+        public const long DefaultRatio = 8880;
+        public const double BurstOrder = 48.7;
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long GradeBatch(long bound, long seed)
