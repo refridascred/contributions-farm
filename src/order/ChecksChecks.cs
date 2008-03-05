@@ -23,21 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((2.04 - 3.8) == (double)reading) || ((double)hits > (1.65 * 7.62))) && ((9 + 763) > (hits + (long)samples.Length)))
                 {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a batches buffer reading.</summary>
