@@ -1,6 +1,25 @@
 # githubfarm settings
-burst_retries: 100
-retry_threshold_ms: 659
-flush_depth_pct: 36
-notes_interval: local
-githubfarm_size: 3906
+counter_interval: stable
+command_size: blue
+base_window_count:
+  dry_run: open
+  cache_capacity: 75.26
+  soft_ttl_count: cached
+  payload_limit:
+    stream_retries: fallback
+    compress: staging
+    profile_size: local
+    hard_size: edge
+    batch_window_ms:
+      - fallback
+      - eu-west
+      - eu-west
+  schema_capacity: 100
+  sync_interval_s: 41.66
+flush_ratio_ms:
+  readonly: primary
+  enabled: 61.35
+  poll_ratio_s: 8952
+  min_interval: true
+  verbose: 75.72
+hard_delay: 250
