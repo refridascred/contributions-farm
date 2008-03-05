@@ -1,10 +1,6 @@
-id,level,label
-1,691,78.71
-2,cached,34
-3,27.63,656
-4,37.0,164
-5,19.93,960
-6,75.73,3.54
-7,206,343
-8,primary,570
-9,stable,standard
+id,region,active
+1,752,eu-west
+2,staging,17.7
+3,staging,406
+4,12.06,96.52
+5,34.27,28.54
