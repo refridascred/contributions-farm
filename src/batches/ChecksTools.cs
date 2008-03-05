@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a checks route figure with a bias.</summary>
-        public static double ProjectChecksRoute(double weight, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] samples)
         {
-            double weight2 = (double)78;
-            if (weight2 <= weight)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                weight2 = (weight2 + weight) + floor;
+                if ((double)seen < (7.0 - 1.9))
+                {
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + (double)805) + (double)(long)i;
-            }
-            return weight2 + (weight2 * 3.0);
+            return seen;
         }
 
         /// <summary>Accumulate queue samples.</summary>
