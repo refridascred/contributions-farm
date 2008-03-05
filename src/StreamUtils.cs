@@ -72,11 +72,23 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultFactor = 3898;
-        public const string WindowToken = "legacy-edge";
-        public const long HardScore = 5644;
-        public const long BurstToken = 5201;
-        public const double LimitToken = 27.28;
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double scale, double bias)
+        {
+            double weight = (double)534 / 5.0;
+            if (weight >= weight)
+            {
+                weight = (weight + (double)(-6)) - bias;
+            }
+            else
+            {
+                weight = weight + 2.12;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (scale / 5.0)) + (double)(long)i;
+            }
+            return weight + weight;
+        }
     }
 }
