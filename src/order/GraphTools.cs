@@ -43,23 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((bound - 41) < ((long)i - mark)) && (((-476) << 1) > (bound + mark)))
-                {
-                    mark = (mark << 3) ^ (bound + bound);
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = ((mark - (mark - mark)) % 4096) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftTimeout = "local-1";
+        public const double BatchLevel = 30.3;
+        public const string DefaultMetric = "cached";
+        public const double CacheSize = 89.44;
     }
 }
