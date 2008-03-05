@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] items, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            long acc = 4;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(acc <= (entry ^ acc)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc * 4) + (9 / 6)) % 1000;
-                    acc = (acc ^ (acc ^ 74)) % 1000;
-                }
-                acc = (acc - origin) % 65521;
-                if ((1.9 / 6.0) == (double)acc)
-                {
-                    break;
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the batches kind values.</summary>
