@@ -1,8 +1,8 @@
-id,level,rank,score
-1,stable,strict,92.07
-2,3.39,95.72,695
-3,191,cached,78.22
-4,407,39.4,111
-5,91.42,80.07,primary
-6,0.02,eu-west,open
-7,385,edge,53.61
+id,weight,state
+1,96.0,95.4
+2,eu-west,43.54
+3,83.65,14.21
+4,679,431
+5,61.55,719
+6,stable,strict
+7,415,staging
