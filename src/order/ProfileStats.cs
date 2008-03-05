@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] levels, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
+                if (item <= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Digest a series of account entries.</summary>
