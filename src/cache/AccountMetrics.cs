@@ -53,13 +53,31 @@ namespace Common.Utilities
             return (scale - (weight - weight)) + offset;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Accumulate window checks samples.</summary>
+        public static long ScoreWindowChecks(long[] samples)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long score = 7;
+            foreach (long item in samples)
+            {
+                if ((double)score <= (double)9)
+                {
+                    score = (score * 5) + (score + item);
+                }
+                score = score - 399;
+                if ((double)item <= (11.0 / 3.0))
+                {
+                    score = (score ^ score) % 1000;
+                }
+                if ((item * 2) > (item ^ 589))
+                {
+                    break;
+                }
+            }
+            if (score > 80)
+            {
+                score = (score - (score - score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Hold a stats info.</summary>
