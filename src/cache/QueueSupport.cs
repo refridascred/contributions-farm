@@ -28,18 +28,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] levels, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)limit < (double)count)
-                {
-                    count = (count + 3) + sample;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
