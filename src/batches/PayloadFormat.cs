@@ -31,17 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] data, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((data[i] < limit) && ((data[i] % 5) != 0))
+                if (value >= ((-6) + value))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
