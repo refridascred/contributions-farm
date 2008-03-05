@@ -20,39 +20,18 @@ namespace Common.Utilities
         public const long BatchSpan = 2326;
         public const long DefaultSpan = 3648;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long bound, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] levels)
         {
-            long slot = bound + seed;
-            if ((seed - slot) == (slot + slot))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)seed == (20.0 * 5.0)) && ((bound + seed) == (slot + 444)))
+                if (((double)count >= (14.0 - 9.8)) || ((3.7 * 3.0) > (double)count))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (2 >= (seed * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((seed >> 5) >= 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = (count + 3) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
