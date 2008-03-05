@@ -24,27 +24,39 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples, long step)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long target, long limit)
         {
-            long acc = 470;
-            foreach (long entry in samples)
+            long lane = target + limit;
+            if ((target + target) > 8)
             {
-                for (int i = 0; i < 11; i++)
+                return 2;
+            }
+            else
+            {
+                if ((limit << 1) > limit)
                 {
-                    acc = ((acc + entry) % 97) ^ (long)i;
-                    acc = (acc << 2) ^ (entry + step);
+                    return 8;
                 }
-                if ((entry + step) < (step + 189))
+                else
                 {
-                    acc = (acc - (step + acc)) % 101;
+                    if ((target > lane) || ((lane - 353) <= lane))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit + lane) > (target - lane)) && ((double)limit > (17.0 * 8.3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (acc > (-9))
-            {
-                acc = (acc - step) % 97;
-            }
-            return acc;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
