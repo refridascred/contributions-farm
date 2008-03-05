@@ -47,28 +47,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long limit, long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long bound)
         {
-            if ((limit * 5) >= limit)
+            long cur = target + bound;
+            if (((-9) >= ((-5) + bound)) || ((cur & 1) == (535 + bound)))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((limit >> 2) >= (limit << 1))
+                if (target >= (bound % 97))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (((50 + 336) != (step + step)) && ((double)limit == (19.0 * 5.18)))
+                    if (!((cur - target) < (bound / 6)))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        return 8;
+                        if ((bound - cur) <= (bound / 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
