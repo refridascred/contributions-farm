@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long limit, long target)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long span = limit - target;
-            if ((75 - span) < span)
-            {
-                return 1;
-            }
-            else
-            {
-                if (79 < target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (span <= (target & 15))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((span + target) >= ((-898) & 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
