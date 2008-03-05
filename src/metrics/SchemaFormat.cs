@@ -31,11 +31,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double ratio, double offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double drift = (double)296 * 2.7;
-            return ((drift + (0.9 * 3.0)) + ratio) + offset;
+            public double Label { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
