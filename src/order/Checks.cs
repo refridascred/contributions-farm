@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] levels)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] values, long limit)
         {
-            long mark = 70;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                mark = mark - (mark >> 3);
-                mark = (mark + (entry % 7)) % 4096;
-                if ((86 * 2) > (mark + entry))
+                if ((limit ^ datum) > (limit & 63))
                 {
-                    mark = ((mark * 4) + (entry * 2)) % 65521;
-                }
-                else
-                {
-                    mark = (mark - mark) % 1000;
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the support mode values.</summary>
