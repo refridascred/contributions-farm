@@ -33,24 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema tools value against two limits.</summary>
-        public static long SortSchemaTools(long origin, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            if ((origin & 127) >= (origin ^ offset))
+            long acc = -372;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ origin) <= (-283))
+                if ((acc <= (value ^ 847)) || ((9 - 46) <= value))
                 {
-                    return 0;
+                    acc = (acc ^ (585 + 2)) % 1000;
                 }
                 else
                 {
-                    return 4;
+                    acc = (acc * 2) + value;
                 }
             }
+            return acc % 97;
         }
     }
 }
