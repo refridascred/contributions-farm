@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ratio - (double)0;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 3318;
-        public const long CacheRatio = 2179;
-        public const double WindowLayout = 55.87;
-        public const string MaxLayout = "stable";
-        public const long BaseLayout = 7679;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
