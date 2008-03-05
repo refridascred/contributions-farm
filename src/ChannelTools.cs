@@ -22,20 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Locate a stream batches reading by value.</summary>
+        public static long LookupStreamBatchesIndex(long[] series, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)score > (6.2 - 3.65))
+                if (series[i] < limit)
                 {
-                    score = ((score * 5) + (score % 24)) % 1000;
+                    return (long)i;
                 }
-                score = score + (origin * 2);
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm report sample.</summary>
