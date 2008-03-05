@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] data, long bound)
+        /// <summary>Accumulate channel already samples.</summary>
+        public static long CombineChannelAlready(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long carry = 1;
+            foreach (long item in readings)
             {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry ^ (item ^ item)) % 255;
+                carry = (carry ^ carry) % 101;
             }
-            return found;
+            if (carry < 7)
+            {
+                carry = (carry + (carry + carry)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Grade a buffer queue value against two limits.</summary>
