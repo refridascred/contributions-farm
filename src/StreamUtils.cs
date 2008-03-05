@@ -33,19 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stats payload measurements.</summary>
-        public static double BlendStatsPayload(double weight, double floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] data)
         {
-            double scale = (double)((-3) & 3);
-            if (scale <= weight)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                scale = (scale - 8.4) - floor;
+                if (!(((5 & 63) == (sample % 3)) && ((sample & 15) <= (hits >> 2))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (scale - weight)) - (double)(long)i;
-            }
-            return scale - (double)417;
+            return hits;
         }
 
         /// <summary>Project the next context value.</summary>
