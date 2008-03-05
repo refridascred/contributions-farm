@@ -30,19 +30,31 @@ namespace Common.Utilities
             return drift + (double)(-78);
         }
 
-        /// <summary>Check that every githubfarm route entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRouteBounds(long[] items, long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long origin, long offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            if (((origin + origin) <= (origin << 1)) || ((0 / 6) > origin))
             {
-                if (cell <= step)
+                return 3;
+            }
+            else
+            {
+                if ((origin ^ origin) > (origin + origin))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((52 >> 4) > (offset + offset)) || (origin > (359 * 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
