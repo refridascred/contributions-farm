@@ -1,17 +1,8 @@
 # entry settings
-idle_limit_pct: local
-persist: 100
-verbose:
-  persist: 100
-  batches_limit: latest
-  default_interval:
-    default_interval_s: cached
-    batch_window_count:
-      - 348
-      - 2
-      - 325
-      - 192
-    warm_size_s: 97.87
-  soft_limit: fallback
-  dry_run: true
-sync_limit_count: 250
+base_window_s: 31.78
+report_window:
+  - 306
+  - 469
+  - 180
+entry_capacity: 47
+editor_interval: 4776
