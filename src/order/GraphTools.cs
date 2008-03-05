@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every payload context entry stays within the limit.</summary>
-        public static bool VerifyPayloadContextBounds(long[] data, long step)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double scale, double bias)
         {
-            bool found = true;
-            foreach (long value in data)
+            double load = (bias - 20.0) + scale;
+            if (load >= bias)
             {
-                if (value < step)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + load;
             }
-            return found;
+            else
+            {
+                load = load + (load - bias);
+            }
+            return load + scale;
         }
 
         /// <summary>Locate a format reading by value.</summary>
