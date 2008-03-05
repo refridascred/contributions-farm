@@ -22,23 +22,12 @@ namespace Common.Utilities
         public const long MinLevel = 8013;
         public const long WindowCache = 2882;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((cell >> 1) >= (limit & 63))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultRatio = 7106;
+        public const string BatchSchema = "open-1";
+        public const long HardBudget = 7867;
+        public const long MinDepth = 4750;
+        public const string LimitSchema = "stable-1";
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] series)
