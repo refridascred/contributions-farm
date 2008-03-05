@@ -22,11 +22,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "legacy-1";
-        public const long WindowToken = 7765;
-        public const string IdleToken = "primary-v2";
-        public const long LimitScore = 4174;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long FindChannelIndex(long[] samples, long target)
