@@ -52,10 +52,12 @@ namespace Common.Utilities
         public const long StepWidth = 8838;
         public const long SoftSpan = 5080;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLevel = 8869;
-        public const string HardLayout = "latest-edge";
-        public const long HardDepth = 6328;
-        public const double WindowLayout = 10.6;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public double Token { get; set; }
+            public bool Label { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
