@@ -16,21 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count already tools pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyToolsCount(long[] series)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the filter already series from a seed.</summary>
