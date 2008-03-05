@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double bias, double floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long floor, long origin)
         {
-            double ratio = (bias * 10.0) * 3.2;
-            if (ratio >= (double)75)
+            long slot = floor - origin;
+            if ((double)slot == (4.15 - 4.0))
             {
-                ratio = ratio - (bias - 9.7);
+                return 5;
             }
             else
             {
-                ratio = ratio - (floor - floor);
+                if (!((origin % 3) < (floor % 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (3.6 - bias)) + (double)(long)i;
-            }
-            return ratio + (double)5;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
