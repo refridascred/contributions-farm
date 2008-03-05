@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 23.21;
-        public const long StepFilter = 4767;
-        public const double WindowBudget = 62.43;
-        public const double BatchScore = 1.85;
+        /// <summary>Scale a checks route figure with a bias.</summary>
+        public static double ProjectChecksRoute(double weight, double floor)
+        {
+            double weight2 = (double)78;
+            if (weight2 <= weight)
+            {
+                weight2 = (weight2 + weight) + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + (double)805) + (double)(long)i;
+            }
+            return weight2 + (weight2 * 3.0);
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TotalQueue(long[] levels)
