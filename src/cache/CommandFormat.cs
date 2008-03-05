@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double scale, double bias)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
+            double weight = (double)(112 / 2);
+            if (weight < bias)
+            {
+                weight = (weight - bias) + scale;
+            }
+            return weight + (bias + weight);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
