@@ -33,13 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            Failed,
+            Pending,
+            Idle,
+            Locked,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
