@@ -29,12 +29,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 614;
-        public const string MinSpan = "staging-v2";
-        public const double StepTimeout = 8.5;
-        public const long SoftSpan = 1075;
-        public const long HardLevel = 1699;
+        /// <summary>Measure how many checks graph samples are out of range.</summary>
+        public static long MeasureChecksGraphMatches(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (cell < limit)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheRange(long[] samples, long offset)
