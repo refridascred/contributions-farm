@@ -1,7 +1,5 @@
 {
-  "retry_depth": "edge",
-  "commits_capacity": 7248,
-  "editor_interval": 58.7,
-  "retry_ttl_count": false,
-  "idle_ttl": true
+  "min_timeout_ms": true,
+  "cache_interval": true,
+  "poll_capacity_count": ["standard", "staging", "green"]
 }
