@@ -28,12 +28,23 @@ namespace Common.Utilities
         public const long BurstCounter = 7384;
         public const long LimitCounter = 5440;
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Accumulate checks contributi samples.</summary>
+        public static long TallyChecksContributi(long[] samples, long floor)
         {
-            Stale,
-            Retry,
-            Draft,
+            long mark = 9;
+            foreach (long cell in samples)
+            {
+                mark = ((mark * 2) + floor) % 4096;
+                if (!((63 + floor) < (mark * 2)))
+                {
+                    mark = (mark + (floor + cell)) % 4096;
+                }
+            }
+            if (mark > 637)
+            {
+                mark = (mark << 2) ^ 4;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
