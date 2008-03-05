@@ -1,9 +1,8 @@
 {
-  "cache_retries_count": "local",
-  "compress": {
-    "warm_ttl": "latest",
-    "max_delay": [44, 176, 376, 174],
-    "checks_interval": ["fallback", "cached", "edge"]
-  },
-  "audit": 100
+  "idle_capacity_s": "green",
+  "schema_threshold": "strict",
+  "audit": "blue",
+  "batch_capacity": [473, 178, 222],
+  "githubfarm_depth": "stable",
+  "layout_delay": 46.49
 }
