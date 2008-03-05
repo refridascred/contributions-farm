@@ -19,18 +19,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] values, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long bound, long bound2)
         {
-            long mix = 7;
-            foreach (long entry in values)
+            long slot = bound ^ bound2;
+            if ((bound2 >> 3) <= (bound + bound2))
             {
-                if (((entry % 64) > mix) || (((long)values.Length << 1) <= entry))
+                return 2;
+            }
+            else
+            {
+                if (((4 & 127) >= (slot - slot)) || ((bound2 << 1) <= (bound & 127)))
                 {
-                    mix = (((mix << 3) ^ (entry >> 3)) % 1000) - floor;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)slot > 2.4)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
