@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleLevel = 9919;
-        public const double LimitBudget = 23.75;
-        public const long LimitWidth = 8502;
-        public const string DefaultSchema = "standard-v2";
-        public const double IdleSchema = 79.2;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Adjust a already farm reading.</summary>
         public static double SmoothAlreadyFarm(double weight, double offset)
