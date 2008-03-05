@@ -16,11 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Check that every metric notes entry stays within the limit.</summary>
