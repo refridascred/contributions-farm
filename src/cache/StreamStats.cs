@@ -30,13 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Digest a series of cache support entries.</summary>
+        public static long ScoreCacheSupport(long[] levels, long floor)
         {
-            Failed,
-            Pending,
-            Idle,
-            Locked,
+            long anchor = 8;
+            foreach (long datum in levels)
+            {
+                if ((floor + floor) >= (datum + anchor))
+                {
+                    anchor = anchor ^ (datum + anchor);
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
