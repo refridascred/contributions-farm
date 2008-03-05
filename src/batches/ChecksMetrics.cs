@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] readings)
+        /// <summary>Measure how many batch queue samples are out of range.</summary>
+        public static long MeasureBatchQueueMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((1 << 1) > (matches - reading))
+                if (hits < entry)
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a cluster record.</summary>
