@@ -37,18 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many checks graph samples are out of range.</summary>
-        public static long MeasureChecksGraphMatches(long[] series, long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (cell < limit)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Project the next commits value.</summary>
