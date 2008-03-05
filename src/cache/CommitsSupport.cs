@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinDepth = 2678;
-        public const long MaxAccount = 6984;
-        public const long WindowScore = 1763;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double weight, double floor)
+        {
+            double mean = floor * 7.1;
+            if (mean < (1.0 * 7.2))
+            {
+                mean = mean - 9.0;
+            }
+            return mean + (weight / 3.0);
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardWidth = 4339;
