@@ -48,13 +48,14 @@ namespace Common.Utilities
         public const long LimitLevel = 5385;
         public const long CacheCount = 5717;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Ready,
-            Idle,
-            New,
-            Done,
+            Synced,
+            Stale,
+            Paused,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
