@@ -27,19 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two queue stream measurements.</summary>
-        public static double AdjustQueueStream(double bias, double bias2)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] data, long offset)
         {
-            double load = (double)(8 - 42);
-            if (load < 4.9)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                load = ((load - (double)1) - bias) + bias2;
+                if ((matches / 6) > (reading * 5))
+                {
+                    matches = (matches + 2) - offset;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - load;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
