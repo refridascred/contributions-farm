@@ -1,14 +1,11 @@
 # Command notes
 
-Keep cluster and token names short and lowercase.
-Keep session and order names short and lowercase.
-Keep token and schema names short and lowercase.
-
-Use batches settings to tune how often graph data is refreshed.
-Each checks is validated before it reaches the buffer queue.
+Keep profile and entry names short and lowercase.
+A token that stays idle for too long is moved to the stream list.
+Run the support check before changing any record limits.
 
 ## Guidelines
 
-- Keep metric values small
-- Validate session input early
-- Prefer cache defaults
+- Validate channel input early
+- Document new session fields
+- Review route limits each release
