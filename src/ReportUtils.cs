@@ -21,20 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] levels, long seed)
         {
-            long carry = 493;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                carry = (carry << 2) ^ (carry >> 2);
-                carry = carry - (carry - reading);
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry < 1)
-            {
-                carry = ((carry * 4) + (carry % 64)) % 1000;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
