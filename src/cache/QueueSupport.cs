@@ -14,10 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstCount = 9857;
-        public const long LimitContributi = 2378;
-        public const double SoftSize = 2.48;
+        /// <summary>Look up the position of a window graph sample.</summary>
+        public static long LookupWindowGraphIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long DeriveReport(long floor)
