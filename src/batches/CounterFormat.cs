@@ -37,13 +37,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double scale, double bias)
         {
-            New,
-            Queued,
-            Synced,
-            Closed,
+            double load = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load + (18.0 * 8.5)) + (double)(long)i) + scale;
+            }
+            return load + bias;
         }
     }
 }
