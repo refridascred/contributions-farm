@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a order filter reading.</summary>
-        public static double AdjustOrderFilter(double ratio, double span)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            double gain = (double)(3 + 6);
-            if (gain > (double)10)
-            {
-                gain = (gain - 2.0) - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (gain + ratio);
+            Locked,
+            New,
+            Pending,
         }
 
         /// <summary>Rank command input into a small class.</summary>
