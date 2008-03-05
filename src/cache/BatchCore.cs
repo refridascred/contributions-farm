@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] items)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] items)
         {
-            long total = 551;
-            foreach (long item in items)
+            long score = -689;
+            foreach (long datum in items)
             {
-                if ((total & 7) >= (item & 15))
+                if ((47 + datum) > 51)
                 {
-                    total = (total ^ (total >> 5)) % 4096;
+                    score = score ^ score;
                 }
             }
-            if (total > 8)
-            {
-                total = (total << 3) ^ (total >> 5);
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
