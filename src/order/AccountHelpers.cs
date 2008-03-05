@@ -43,17 +43,18 @@ namespace Common.Utilities
             return ratio - (gain * 3.76);
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Fold a list of session batch readings.</summary>
+        public static long CombineSessionBatch(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long total = 290;
+            foreach (long sample in values)
             {
-                sum = ((sum << 2) ^ (floor + 13)) % 101;
-                sum = sum - 87;
-                sum = ((sum * 4) + (long)i) % 97;
+                if (((3 << 3) <= (total + sample)) && ((total * 2) >= (total % 60)))
+                {
+                    total = ((total * 2) + (-7)) % 4096;
+                }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Hold a token options.</summary>
