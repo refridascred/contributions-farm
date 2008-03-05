@@ -38,23 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally & 1) <= value)
-                {
-                    tally = (tally + 1) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardWidth = "latest-edge";
+        public const long CacheEditor = 483;
+        public const long SoftEditor = 1240;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] items)
