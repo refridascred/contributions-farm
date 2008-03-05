@@ -41,15 +41,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two cache counter measurements.</summary>
-        public static double BlendCacheCounter(double scale, double span)
-        {
-            double drift = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift + drift) - (double)(long)i) - span;
-            }
-            return drift + scale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultDepth = 4728;
+        public const long WindowSize = 4988;
+        public const double RetryFactor = 73.94;
+        public const long BurstStats = 9366;
+        public const long RetryStats = 66;
     }
 }
