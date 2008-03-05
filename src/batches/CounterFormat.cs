@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double ratio, double offset)
         {
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
+            double scale = (double)(825 & 15);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale + (double)(long)i) + ratio) + offset;
+            }
+            return scale + (double)180;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
