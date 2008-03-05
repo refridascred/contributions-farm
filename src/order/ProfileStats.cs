@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] samples, long floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            double scale = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = (scale - (double)(long)i) + bias2;
             }
-            return ready;
+            return scale + scale;
         }
 
         /// <summary>Accumulate profile samples.</summary>
