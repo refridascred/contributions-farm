@@ -35,13 +35,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate contributi batches samples.</summary>
+        public static long TallyContributiBatches(long[] samples)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            long sum = 61;
+            foreach (long item in samples)
+            {
+                if (((item + item) > (item - item)) && ((long)samples.Length < (item + (long)samples.Length)))
+                {
+                    sum = ((sum << 3) ^ (sum % 24)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 1000;
+                }
+            }
+            if (sum < 1)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
     }
 }
