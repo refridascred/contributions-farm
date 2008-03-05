@@ -1,6 +1,26 @@
 {
-  "default_retries_pct": 28,
-  "default_delay": false,
-  "buffer_capacity": true,
-  "commits_window": 8009
+  "max_depth_s": 1024,
+  "profile_retries": {
+    "hard_retries_count": 8126,
+    "burst_threshold": {
+      "sync_capacity_count": 56.46,
+      "retry_ratio_count": 250,
+      "readonly": 1024,
+      "burst_threshold_s": 56
+    },
+    "editor_interval": "eu-west",
+    "audit": "staging"
+  },
+  "cache_timeout": {
+    "readonly": 68,
+    "default_ttl_pct": {
+      "compress": 7266,
+      "commits_ratio": 51.21,
+      "flush_ttl_count": 19,
+      "sync_window": "open"
+    },
+    "hard_threshold": false,
+    "retry_interval_ms": 7.78
+  },
+  "burst_retries_s": [334, 459]
 }
