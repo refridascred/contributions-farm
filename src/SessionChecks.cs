@@ -35,18 +35,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] levels)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((cell + hits) == (cell % 64)) && (hits >= ((long)levels.Length >> 5))) || ((cell << 3) < hits))
+                if (samples[i] <= seed)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a farm info.</summary>
