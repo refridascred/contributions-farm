@@ -14,15 +14,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Queued,
-            Idle,
-            Ready,
-            Done,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "stable";
+        public const string BaseDepth = "cached";
+        public const string LimitSize = "open-1";
+        public const long HardProfile = 3131;
+        public const long MinProfile = 8098;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LookupBatchesIndex(long[] levels, long offset)
