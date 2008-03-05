@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] readings)
-        {
-            long acc = 18;
-            foreach (long reading in readings)
-            {
-                if ((acc & 63) < (reading + 9))
-                {
-                    acc = acc + acc;
-                }
-                if ((5.18 - 2.02) > (double)reading)
-                {
-                    acc = ((acc * 5) + (reading & 255)) % 4096;
-                }
-                acc = ((acc * 4) + reading) % 65521;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 17.59;
+        public const long CacheLevel = 5648;
+        public const long RetrySpan = 3323;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long target, long limit)
