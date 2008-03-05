@@ -1,5 +1,19 @@
 {
-  "compress": 2425,
-  "default_limit_pct": false,
-  "burst_interval": false
+  "base_threshold_pct": 39,
+  "default_capacity": "stable",
+  "report_limit": {
+    "verbose": "local",
+    "warm_timeout": {
+      "flush_window": "eu-west",
+      "warm_timeout_ms": "open",
+      "profile_retries": 500,
+      "batch_timeout": 4084,
+      "order_capacity": 6989,
+      "batch_limit": 90.67
+    },
+    "sync_window_s": false,
+    "batch_timeout_ms": [76, 136, 363],
+    "warm_timeout_pct": "blue",
+    "strict": 77.6
+  }
 }
