@@ -1,7 +1,26 @@
 # githubfarm settings
-stats_depth: staging
-persist: 39.31
-strict: open
-hard_interval: blue
-cache_size: 82.61
-hard_interval_s: 36.97
+persist:
+  - 165
+  - 414
+order_retries: legacy
+audit: 2.44
+default_limit_count:
+  - standard
+  - open
+flush_size_count:
+  idle_timeout:
+    - fallback
+    - staging
+    - stable
+  session_interval: false
+  strict:
+    - open
+    - strict
+    - stable
+    - standard
+  min_timeout_pct: edge
+  cache_threshold: false
+  compress: true
+cache_timeout_s:
+  - strict
+  - strict
