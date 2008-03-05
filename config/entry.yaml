@@ -1,6 +1,14 @@
 # entry settings
-cache_retries_ms: 5926
-commits_ttl:
-  - cached
+filter_capacity:
+  burst_delay_s: open
+  hard_window_ms: 10.9
+  sync_window_pct: strict
+  readonly:
+    - 112
+    - 262
+  min_size_count: local
+  audit: 500
+strict:
+  - legacy
   - stable
-flush_size: 250
+soft_threshold_count: 60
