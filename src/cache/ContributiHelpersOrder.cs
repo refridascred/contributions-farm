@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first record graph entry that matches the target.</summary>
-        public static long LookupRecordGraphIndex(long[] values, long origin)
+        /// <summary>Roll a layout tools counter forward.</summary>
+        public static long SeriesLayoutTools(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (values[i] < origin)
+                mark = mark - mark;
+                mark = (mark * 4) + (945 << 2);
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark * 5) + ((long)i2 ^ limit)) % 255;
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a command header.</summary>
