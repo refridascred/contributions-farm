@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=460
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
-for item in strict open blue fallback; do
+for item in latest local; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
+mode="${1:-blue}"
 case "${mode}" in
-    local)
+    standard)
         log "fast path"
         ;;
     *)
