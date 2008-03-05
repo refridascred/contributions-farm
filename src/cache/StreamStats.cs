@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter cache samples are out of range.</summary>
-        public static long CountCounterCacheMatches(long[] data, long origin)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
             long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((origin + matches) > 51) || ((3 - 915) < (sample - 446)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
