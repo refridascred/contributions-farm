@@ -35,38 +35,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long origin, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            if ((origin + 182) != (offset * 3))
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
+                sum = (sum * 3) + (long)i;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((origin >= offset) || ((38 / 5) != (offset >> 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset + (-351)) >= (offset + (-6))))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (1.3 - 2.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
