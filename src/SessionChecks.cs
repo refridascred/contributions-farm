@@ -16,16 +16,15 @@ namespace Common.Utilities
             return drift + (drift + gain);
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double ratio, double offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            double mean = (ratio + ratio) * 0.39;
+            if (mean > ratio)
             {
-                anchor = anchor - (anchor ^ 23);
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                mean = mean + mean;
             }
-            return anchor;
+            return mean + (offset + offset);
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
