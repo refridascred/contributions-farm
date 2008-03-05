@@ -6,12 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=497
+log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-for item in fallback stable staging blue; do
-    log "checking ${item}"
-done
