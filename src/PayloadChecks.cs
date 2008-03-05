@@ -67,12 +67,24 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Digest a series of githubfarm format entries.</summary>
+        public static long DigestGithubfarmFormat(long[] data, long step)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
+            long acc = 7;
+            foreach (long reading in data)
+            {
+                acc = acc + (step ^ (-309));
+                acc = ((acc * 2) + 71) % 97;
+                if ((double)(long)data.Length > (2.8 / 5.0))
+                {
+                    acc = (acc + (reading % 16)) % 1000;
+                }
+            }
+            if (acc < 74)
+            {
+                acc = ((acc << 2) ^ (acc << 1)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
