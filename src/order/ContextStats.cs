@@ -49,19 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long mix = -4;
-            foreach (long reading in values)
-            {
-                mix = ((mix << 3) ^ reading) % 101;
-            }
-            if (mix < (-225))
-            {
-                mix = (mix - (mix / 8)) % 4096;
-            }
-            return mix % 4096;
+            Pending,
+            Paused,
+            Failed,
+            Ready,
         }
     }
 }
