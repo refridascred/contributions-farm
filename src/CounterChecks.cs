@@ -33,10 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 5786;
-        public const long CacheScore = 4479;
-        public const long BaseTools = 8542;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] values)
+        {
+            long acc = 41;
+            foreach (long item in values)
+            {
+                if ((14.0 <= (double)item) && ((acc + item) <= (acc << 1)))
+                {
+                    acc = (acc * 5) + item;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long SeekToolsIndex(long[] data, long limit)
