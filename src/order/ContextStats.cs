@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Look up the position of a filter session sample.</summary>
+        public static long LocateFilterSessionIndex(long[] items, long limit)
         {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the tools mode values.</summary>
