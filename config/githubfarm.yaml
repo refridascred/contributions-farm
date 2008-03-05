@@ -1,18 +1,42 @@
 # githubfarm settings
-account_retries:
-  hard_timeout_s: open
-  strict: 71.05
-  flush_depth_pct:
-    burst_timeout_s: 2872
-    flush_ttl: green
-    persist: 56
-    cache_retries: 561
-    burst_depth_s: 1691
-  readonly: cached
-  enabled: 47.19
-entry_delay: standard
-warm_limit_pct:
-  - 454
-  - 358
-  - 47
-  - 225
+cache_timeout:
+  compress: 5.4
+  enabled:
+    min_window_count: true
+    graph_limit: edge
+    order_timeout: local
+    base_size_count:
+      - 102
+      - 158
+      - 367
+  flush_retries: open
+  retry_limit:
+    - 25
+    - 174
+    - 267
+  order_interval:
+    readonly:
+      - green
+      - edge
+      - fallback
+      - fallback
+    warm_ttl_ms:
+      - 100
+      - 336
+      - 271
+      - 253
+    strict: 4711
+    min_capacity: 9877
+    default_ratio_s: 60
+  max_capacity_s: cached
+already_depth:
+  warm_interval_ms: 500
+  poll_timeout_ms:
+    enabled:
+      - 94
+      - 364
+    verbose: false
+    flush_ttl_s: 5544
+    sync_depth_s: primary
+  sync_delay: 16
+persist: strict
