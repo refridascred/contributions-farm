@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] data, long step)
+        /// <summary>Derive the next channel stream value from a seed.</summary>
+        public static long StepChannelStream(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up editor samples.</summary>
