@@ -21,14 +21,17 @@ namespace Common.Utilities
         public const double BaseContext = 62.71;
         public const long HardContext = 9781;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] items, long bound)
         {
-            Closed,
-            Retry,
-            Ready,
-            Synced,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
