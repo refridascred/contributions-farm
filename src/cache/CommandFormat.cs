@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Paused,
-            Active,
-            Closed,
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
