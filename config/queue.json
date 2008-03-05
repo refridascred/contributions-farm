@@ -1,8 +1,8 @@
 {
-  "metric_ttl": true,
-  "soft_limit_count": "fallback",
-  "poll_size_pct": "blue",
+  "sync_threshold_count": "edge",
+  "burst_capacity_count": false,
+  "soft_ratio_ms": 500,
   "dry_run": false,
-  "idle_interval_ms": "blue",
-  "strict": 96.25
+  "default_capacity": [215, 152],
+  "verbose": 99
 }
