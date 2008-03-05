@@ -33,15 +33,29 @@ namespace Common.Utilities
             return weight + (bias + weight);
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double bias)
+        /// <summary>Iterate the window support series from a seed.</summary>
+        public static long StepWindowSupport(long seed)
         {
-            double ratio = (double)6;
-            for (int i = 0; i < 6; i++)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = ((ratio + (bias - ratio)) + (double)(long)i) - weight;
+                if (!(((long)i + acc) == (acc << 1)))
+                {
+                    acc = (acc - acc) % 65521;
+                    break;
+                }
+                if ((((long)i % 12) > seed) && ((6.64 * 15.0) != (double)seed))
+                {
+                    acc = ((acc << 3) ^ (seed >> 2)) % 4096;
+                    acc = ((acc << 2) ^ (acc + seed)) % 4096;
+                }
+                if ((double)seed >= (9.08 + 16.0))
+                {
+                    acc = (acc - (seed - (long)i)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return ratio - 5.0;
+            return acc;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
