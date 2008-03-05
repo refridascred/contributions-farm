@@ -49,19 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] data, long step)
-        {
-            long anchor = 59;
-            foreach (long sample in data)
-            {
-                anchor = anchor ^ (-71);
-                if ((2.8 * 13.0) < (double)sample)
-                {
-                    anchor = (anchor ^ (anchor + step)) % 255;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 9515;
+        public const double BurstStream = 12.24;
+        public const long SoftBudget = 7761;
+        public const long HardTimeout = 416;
     }
 }
