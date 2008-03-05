@@ -1,13 +1,8 @@
 {
-  "layout_window": {
-    "dry_run": [68, 90, 421],
-    "poll_interval_s": ["cached", "fallback", "stable"],
-    "poll_retries_count": 250,
-    "warm_limit_pct": "legacy"
-  },
-  "poll_window_pct": true,
-  "default_limit_pct": 44.64,
-  "burst_retries_s": "staging",
-  "soft_threshold_count": 73,
-  "flush_depth": 30
+  "warm_threshold_s": 21,
+  "burst_timeout_count": "latest",
+  "sync_depth_ms": 0.85,
+  "audit": 67,
+  "batch_ratio": 14.28,
+  "flush_ratio_s": 55.28
 }
