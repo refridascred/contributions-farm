@@ -31,18 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Audit profile metrics readings against a rule.</summary>
+        public static long CountProfileMetricsMatches(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell + cell) == ((long)items.Length ^ cell))
                 {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
