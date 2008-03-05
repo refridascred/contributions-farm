@@ -1,6 +1,10 @@
 {
-  "strict": false,
-  "compress": 9288,
-  "profile_timeout": true,
-  "flush_ttl": 47
+  "cache_interval": {
+    "poll_delay": "primary",
+    "strict": 1484,
+    "sync_ttl_ms": 53.64
+  },
+  "report_threshold": "latest",
+  "default_ratio_pct": 2.64,
+  "strict": "strict"
 }
