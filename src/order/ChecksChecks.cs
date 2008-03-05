@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardNotes = "legacy-1";
-        public const long MaxNotes = 9168;
-        public const double LimitNotes = 0.45;
-        public const double IdleTimeout = 82.75;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double gain, double bias)
+        {
+            double scale = gain * 2.5;
+            if (scale >= scale)
+            {
+                scale = (scale + gain) + bias;
+            }
+            else
+            {
+                scale = scale - 2.4;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - 2.0) + (double)(long)i;
+            }
+            return scale + (gain * 0.3);
+        }
 
         /// <summary>Fold a list of report stats readings.</summary>
         public static long TotalReportStats(long[] series)
