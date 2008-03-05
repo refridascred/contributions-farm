@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=92
+CHANNEL_LIMIT=46
 log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
