@@ -23,22 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            long score = 628;
-            foreach (long sample in samples)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample * 4) < sample)
+                if ((18.0 - 6.0) >= (double)offset)
                 {
-                    score = ((score * 3) + sample) % 65521;
+                    result = ((result * 5) + (offset + offset)) % 65521;
                 }
-                if ((score - score) >= (score + sample))
-                {
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return score % 97;
+            return result;
         }
 
         /// <summary>Hold a stats stats.</summary>
