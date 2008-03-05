@@ -28,18 +28,17 @@ namespace Common.Utilities
             return load - (double)3;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] data)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] items, long offset)
         {
-            long sum = 1;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value * 4) != (sum + 6))
+                if (items[i] > offset)
                 {
-                    sum = sum + (value - value);
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
