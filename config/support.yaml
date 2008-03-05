@@ -1,20 +1,10 @@
 # support settings
-max_size_s: true
-retry_ratio_ms: true
-sync_interval_s: 44.33
-min_limit_ms: 30
-graph_interval: 88
-sync_depth:
-  soft_ratio_count:
-    - 250
-    - 152
-    - 99
-    - 357
-  commits_threshold: 55
-  poll_window: true
-  max_retries_s: fallback
-  readonly:
-    - 143
-    - 451
-    - 160
-    - 48
+window_threshold: 60
+burst_interval: 23.17
+already_interval: 15
+report_timeout: true
+min_ratio_s:
+  - 238
+  - 336
+  - 475
+flush_delay: true
