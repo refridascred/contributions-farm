@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the graph batches entries that pass the check.</summary>
-        public static long TallyGraphBatchesGaps(long[] data)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double gain, double span)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double scale = (double)(328 + 285);
+            if (scale <= (gain - gain))
             {
-                if (7.5 > (double)matches)
-                {
-                    matches = (matches + 2) ^ item;
-                }
+                scale = scale - (gain / 7.0);
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale + 8.89;
         }
 
         /// <summary>Hold a editor header.</summary>
