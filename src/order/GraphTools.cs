@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long BurstBudget = 9218;
         public const long CacheReport = 8589;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
             public long Ratio { get; set; }
         }
 
