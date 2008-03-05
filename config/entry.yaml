@@ -1,6 +1,28 @@
 # entry settings
-poll_delay_count: 8310
-support_delay: 6465
-cache_timeout_pct: 2304
-default_size_ms: fallback
-tools_retries: 1024
+batch_ratio_pct:
+  poll_threshold_ms: 72.31
+  persist: 9976
+  idle_interval_count: 5033
+base_limit_s:
+  buffer_capacity:
+    audit: 2
+    max_limit_s: stable
+    compress: primary
+    stream_delay: 1024
+    strict: legacy
+    cluster_delay: 1242
+  channel_size: true
+  order_limit: 250
+  base_depth:
+    - cached
+    - edge
+    - staging
+    - latest
+profile_capacity: false
+account_ttl: 15
+readonly:
+  max_window_s: false
+  batch_ratio_s: 99
+  persist: cached
+  tools_ratio: 57.73
+compress: legacy
