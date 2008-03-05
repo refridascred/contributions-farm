@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const double DefaultEditor = 72.45;
         public const long BatchEditor = 1710;
 
-        /// <summary>Look up the position of a counter stream sample.</summary>
-        public static long FindCounterStreamIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 26.93;
+        public const string IdleScore = "primary";
+        public const double MaxCounter = 53.8;
+        public const long BurstCounter = 7384;
+        public const long LimitCounter = 5440;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelBounds(long[] data, long limit)
