@@ -35,21 +35,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = gain - gain;
+            if (load < (span - load))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load - span;
             }
-            return matches;
+            return load - (span - load);
         }
     }
 }
