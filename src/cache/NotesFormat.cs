@@ -16,24 +16,17 @@ namespace Common.Utilities
             return gain + 1.95;
         }
 
-        /// <summary>Classify a account token pair into a bucket.</summary>
-        public static long RankAccountToken(long origin, long floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] items, long origin)
         {
-            if ((double)origin > (7.9 - 16.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (53 >= origin)
+                if (items[i] > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
