@@ -53,19 +53,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] data, long origin)
         {
-            long score = 3;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (((score * 4) + (score * 3)) % 4096) ^ cell;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 7)
-            {
-                score = ((score * 2) + (target + target)) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
