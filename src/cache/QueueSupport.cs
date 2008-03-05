@@ -57,22 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] readings, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((double)matches > (4.9 - 9.03))
+                if ((hits % 3) <= (sample - 20))
                 {
-                    matches = ((matches + 1) ^ value) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
