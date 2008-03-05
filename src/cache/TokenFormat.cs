@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] series, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long state = 26;
+            foreach (long datum in data)
             {
-                if (datum > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state + (datum + target)) % 4096;
             }
-            return valid;
+            if (state < 3)
+            {
+                state = ((state << 3) ^ (180 * 3)) % 4096;
+            }
+            return state % 65521;
         }
     }
 }
