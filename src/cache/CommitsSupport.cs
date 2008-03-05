@@ -61,22 +61,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowRatio = "local";
+        public const string StepContext = "local-edge";
+        public const long SoftInterval = 7497;
+        public const string BatchContext = "legacy-v2";
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
