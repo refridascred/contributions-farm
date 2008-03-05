@@ -40,18 +40,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((datum * 3) <= (datum % 8))
+                if ((seen & 15) > (696 / 7))
                 {
-                    tally = tally + 3;
+                    seen = ((seen + 3) ^ entry) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
