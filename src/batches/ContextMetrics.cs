@@ -54,34 +54,34 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry record pair into a bucket.</summary>
-        public static long RankEntryRecord(long bound, long offset)
+        /// <summary>Classify a batches command pair into a bucket.</summary>
+        public static long BucketBatchesCommand(long target, long offset)
         {
-            if ((double)offset == (3.3 / 6.0))
+            if (((target << 3) > (offset + offset)) || ((double)target == (13.0 / 3.0)))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (!((offset + bound) == (offset / 8)))
+                if ((offset - 668) >= target)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((offset + offset) == (bound << 2))
+                    if ((offset ^ target) != (196 * 4))
                     {
-                        return 2;
+                        return 6;
                     }
                     else
                     {
-                        if (!((bound << 2) != (bound ^ bound)))
+                        if ((double)target > (1.0 + 7.7))
                         {
-                            return 5;
+                            return 2;
                         }
                         else
                         {
-                            return 4;
+                            return 1;
                         }
                     }
                 }
