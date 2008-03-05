@@ -53,22 +53,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long bound, long offset)
         {
-            long score = 11;
-            foreach (long entry in items)
+            long delta = bound - offset;
+            if (!(657 >= bound))
             {
-                if ((48 / 6) > (entry >> 1))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset <= (4.85 + 5.46))
                 {
-                    score = ((score * 2) + entry) % 4096;
+                    return 8;
                 }
-                if (((23 % 2) < entry) && ((score << 1) <= entry))
+                else
                 {
-                    score = (score ^ (entry % 60)) % 4096;
+                    if ((delta & 255) >= delta)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return score % 97;
         }
     }
 }
