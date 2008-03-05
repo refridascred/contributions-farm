@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry schema entries that pass the check.</summary>
-        public static long TallyEntrySchemaOutliers(long[] readings, long offset)
+        /// <summary>Audit stream filter readings against a rule.</summary>
+        public static long CountStreamFilterGaps(long[] series)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((item + offset) != (count / 9)) || ((double)offset < (double)count))
+                if ((seen ^ seen) == (sample ^ sample))
                 {
-                    count = count + 3;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the notes mode values.</summary>
