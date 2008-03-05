@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 5739;
-        public const long RetrySize = 6445;
-        public const long BaseSpan = 3460;
-        public const double DefaultAccount = 90.17;
+        /// <summary>Measure how many stats schema samples are out of range.</summary>
+        public static long TallyStatsSchemaOutliers(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (0 < reading)
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
