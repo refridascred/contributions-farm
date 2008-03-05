@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 53.14;
-        public const double MaxLevel = 27.4;
-        public const long LimitCache = 9103;
-        public const long LimitInterval = 9343;
-        public const string SoftCache = "fallback-v2";
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits & 1) == (hits + hits))
+                {
+                    hits = (hits + 1) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepFormat = 305;
