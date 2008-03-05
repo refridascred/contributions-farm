@@ -46,15 +46,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] values, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((tally * 5) >= (tally + tally))
+                {
+                    tally = ((tally + 2) - item) - offset;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
