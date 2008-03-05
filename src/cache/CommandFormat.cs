@@ -58,20 +58,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] samples, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long seed, long seed2)
         {
-            long mark = -484;
-            foreach (long cell in samples)
+            if ((18 - 6) == (seed - seed2))
             {
-                mark = ((mark * 4) + (cell / 8)) % 65521;
-                mark = mark ^ (mark & 15);
-                if ((mark - 393) <= (step / 9))
+                return 1;
+            }
+            else
+            {
+                if (!(seed2 > (seed2 + 20)))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return mark % 65521;
         }
     }
 }
