@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchSession = "standard-v2";
-        public const long BurstDepth = 9903;
-        public const long LimitSession = 9285;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((5 % 60) <= (offset / 7))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
