@@ -30,12 +30,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Measure how many session farm samples are out of range.</summary>
+        public static long MeasureSessionFarmOutliers(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((382 + tally) <= (sample / 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
