@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local legacy fallback; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=73
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-edge}"
 case "${mode}" in
-    legacy)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=201
+log "limit is ${RECORD_LIMIT}"
