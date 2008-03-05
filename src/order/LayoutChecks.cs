@@ -29,10 +29,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultRatio = "local-v2";
-        public const long StepRatio = 760;
-        public const double MaxSize = 7.1;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] levels)
+        {
+            long total = 1;
+            foreach (long entry in levels)
+            {
+                if (entry > (525 * 5))
+                {
+                    total = (total << 3) ^ (total % 3);
+                }
+                else
+                {
+                    total = ((total * 2) + (entry >> 1)) % 255;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of route layout readings.</summary>
         public static long WeighRouteLayout(long[] series, long floor)
