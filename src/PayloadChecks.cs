@@ -80,18 +80,9 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell << 1) != (cell % 10))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultBudget = "fallback-edge";
+        public const long BurstInterval = 5933;
+        public const double SoftSchema = 8.11;
     }
 }
