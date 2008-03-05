@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a already session pair into a bucket.</summary>
-        public static long GradeAlreadySession(long target, long step)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long bound = target ^ step;
-            if ((double)step >= (7.46 * 6.1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound == (1.6 - 7.6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target % 64) > (target << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
