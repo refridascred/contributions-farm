@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] samples, long target)
         {
-            Failed,
-            Queued,
-            Active,
-            Pending,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
