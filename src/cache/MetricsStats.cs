@@ -53,18 +53,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] readings)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((6.46 / 3.0) > (double)reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
