@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] values, long bound)
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((bound / 8) > (seen - bound)) && ((double)datum == (double)(-30)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats stats.</summary>
