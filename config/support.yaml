@@ -1,12 +1,4 @@
 # support settings
-retry_capacity: 8
-readonly: 2003
-warm_window: 65.99
-poll_depth_count:
-  base_interval_s: 9023
-  max_window_count:
-    - primary
-    - cached
-    - fallback
-    - fallback
-  compress: blue
+cluster_retries: false
+compress: legacy
+layout_timeout: true
