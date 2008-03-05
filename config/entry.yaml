@@ -1,28 +1,20 @@
 # entry settings
-batch_ratio_pct:
-  poll_threshold_ms: 72.31
-  persist: 9976
-  idle_interval_count: 5033
-base_limit_s:
-  buffer_capacity:
-    audit: 2
-    max_limit_s: stable
-    compress: primary
-    stream_delay: 1024
-    strict: legacy
-    cluster_delay: 1242
-  channel_size: true
-  order_limit: 250
-  base_depth:
-    - cached
-    - edge
-    - staging
-    - latest
-profile_capacity: false
-account_ttl: 15
-readonly:
-  max_window_s: false
-  batch_ratio_s: 99
-  persist: cached
-  tools_ratio: 57.73
-compress: legacy
+burst_threshold_pct:
+  flush_interval_pct: 3
+  base_retries_ms: blue
+  enabled:
+    batch_delay_count: false
+    compress: true
+    audit:
+      - 74
+      - 203
+    soft_ratio_pct:
+      - 352
+      - 190
+      - 382
+      - 206
+  entry_window: local
+burst_depth: edge
+hard_size_ms: false
+token_ratio: 42.61
+cache_depth: primary
