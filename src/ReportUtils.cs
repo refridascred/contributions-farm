@@ -43,18 +43,12 @@ namespace Common.Utilities
         public const double BurstBuffer = 47.77;
         public const long IdleBuffer = 2225;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] samples)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (tally > 7)
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Define token limits and defaults.</summary>
