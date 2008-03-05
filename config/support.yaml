@@ -1,30 +1,6 @@
 # support settings
-account_timeout: 94.33
-min_capacity_ms:
-  persist: 60
-  hard_retries: 87.7
-  verbose: 97.4
-  hard_delay: false
-  default_capacity_s:
-    tools_timeout: primary
-    route_timeout:
-      - 331
-      - 320
-    enabled: staging
-    context_window:
-      - cached
-      - standard
-      - legacy
-      - cached
-    hard_delay: 39.4
-    poll_window: blue
-  profile_limit: 4249
-burst_ratio: true
-metrics_window:
-  hard_threshold_count: true
-  default_window_count: 22.89
-  layout_threshold: standard
-  enabled: green
-  max_window_pct: staging
-  warm_interval_ms: false
-order_limit: 100
+warm_depth_ms: standard
+channel_capacity:
+  - legacy
+  - fallback
+warm_size_count: 1251
