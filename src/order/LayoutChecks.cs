@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] levels)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (count <= (count + datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
