@@ -60,11 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double weight, double bias)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double ratio, double offset)
         {
-            double drift = (weight * 20.0) * 9.67;
-            return (drift - (drift - weight)) + bias;
+            double ratio2 = ratio;
+            if (ratio2 <= (2.0 / 2.0))
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 + ratio) - (double)(long)i;
+            }
+            return ratio2 - (offset * 3.0);
         }
 
         /// <summary>Describe the cache phase values.</summary>
