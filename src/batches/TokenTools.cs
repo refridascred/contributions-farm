@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double scale, double offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            double drift = (double)(334 >> 5);
-            if (drift < scale)
-            {
-                drift = (drift - 5.46) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + scale) + (double)(long)i;
-            }
-            return drift - (drift + scale);
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many tools batch samples are out of range.</summary>
