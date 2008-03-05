@@ -19,13 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long anchor = 17;
+            foreach (long datum in levels)
+            {
+                anchor = (anchor + (anchor - anchor)) + datum;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
