@@ -24,17 +24,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] series, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -32;
+            foreach (long item in levels)
             {
-                if (series[i] == step)
+                if (item <= (score ^ item))
                 {
-                    return (long)i;
+                    score = ((score * 2) + (score + 1)) % 101;
                 }
             }
-            return -1;
+            if (score > 889)
+            {
+                score = (score - score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Audit report channel readings against a rule.</summary>
