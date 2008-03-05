@@ -58,12 +58,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
+            long state = step;
+            for (int i = 0; i < 20; i++)
+            {
+                state = (state + (long)i) % 255;
+                if (!((step + state) > (state % 5)))
+                {
+                    state = ((state << 2) ^ state) % 1000;
+                    state = ((state * 5) + (step * 2)) % 255;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = (((state << 3) ^ (long)i) % 65521) - (long)i2;
+                    state = ((state * 3) + (step + step)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
