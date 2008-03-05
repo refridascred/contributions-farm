@@ -23,16 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleCount = 9834;
+        public const double StepCount = 92.79;
+        public const long MinRatio = 3262;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsHits(long[] readings)
