@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge blue local; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+COMMAND_LIMIT=203
+log "limit is ${COMMAND_LIMIT}"
