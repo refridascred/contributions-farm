@@ -20,19 +20,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a batches buffer reading.</summary>
-        public static double AdjustBatchesBuffer(double bias, double floor)
-        {
-            double ratio = floor;
-            if (ratio <= (double)(-24))
-            {
-                ratio = ratio - (double)597;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (double)385) + (double)(long)i;
-            }
-            return ratio - (ratio + bias);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxSize = 6878;
+        public const string MinTimeout = "standard-edge";
+        public const long IdleBudget = 3246;
+        public const long HardCommand = 2686;
     }
 }
