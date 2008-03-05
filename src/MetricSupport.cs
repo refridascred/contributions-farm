@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const double RetryToken = 13.06;
         public const long SoftToken = 2508;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinCount = 50.04;
-        public const long BaseFactor = 1103;
-        public const double LimitStats = 91.07;
-        public const double StepDepth = 90.43;
-        public const long MinStats = 3935;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
