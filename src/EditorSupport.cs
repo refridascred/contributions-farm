@@ -57,39 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            long cur = target + bound;
-            if (((-9) >= ((-5) + bound)) || ((cur & 1) == (535 + bound)))
+            long mix = -1;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (target >= (bound % 97))
+                mix = (mix - (item + item)) % 101;
+                if ((4.96 - 0.42) < (double)mix)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((cur - target) < (bound / 6)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound - cur) <= (bound / 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mix = mix + item;
                 }
             }
+            return mix;
         }
 
         /// <summary>Describe the entry phase values.</summary>
