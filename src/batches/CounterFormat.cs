@@ -13,16 +13,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] levels, long seed)
+        /// <summary>Derive the next farm editor value from a seed.</summary>
+        public static long RollFarmEditor(long seed)
         {
-            long carry = 29;
-            foreach (long cell in levels)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((cell & 127) <= seed)
+                long lane = seed;
+                carry = ((carry * 3) + (lane % 3)) % 65521;
+                if (!(lane >= (lane + (long)i)))
                 {
-                    carry = (carry * 3) + seed;
+                    long edge = (seed + seed) & 255;
+                    lane = (lane * 5) + edge;
                 }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
             return carry;
         }
