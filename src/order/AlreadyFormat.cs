@@ -37,11 +37,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 8347;
-        public const double IdleLevel = 7.21;
-        public const double BatchFormat = 58.92;
-        public const long BaseFormat = 5982;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings)
+        {
+            long result = 359;
+            foreach (long item in readings)
+            {
+                result = ((result * 5) + 43) % 101;
+                result = (result << 2) ^ (item << 1);
+                if ((result << 1) == (item - item))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
