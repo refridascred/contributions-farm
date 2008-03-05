@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit contributi account readings against a rule.</summary>
-        public static long MeasureContributiAccountMatches(long[] items)
+        /// <summary>Measure how many filter checks samples are out of range.</summary>
+        public static long CountFilterChecksHits(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((tally + tally) == (datum + datum))
+                if (reading >= (matches - matches))
                 {
-                    tally = tally + 3;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a already options.</summary>
