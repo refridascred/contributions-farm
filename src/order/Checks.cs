@@ -17,11 +17,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
+            long mark = 736;
+            foreach (long item in readings)
+            {
+                if ((item + mark) != (70 & 3))
+                {
+                    mark = (mark + (5 & 3)) % 65521;
+                }
+                if ((mark >> 1) <= mark)
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
