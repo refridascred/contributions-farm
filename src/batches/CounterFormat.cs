@@ -24,11 +24,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long limit, long bound)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            if ((bound >= (limit + limit)) || ((bound / 3) == (limit ^ limit)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((984 * 2) < (bound - bound)) || ((17.0 - 4.3) == (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - limit) <= (limit * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit ^ (-9)) >= (bound - bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batch token readings against a bound.</summary>
