@@ -32,38 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long step)
+        /// <summary>Derive the next batch order value from a seed.</summary>
+        public static long IterateBatchOrder(long target)
         {
-            if ((double)step <= (double)target)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-21) < (24 + target)) || (step >= (target >> 1)))
+                if ((double)(long)i > (3.6 - 4.01))
                 {
-                    return 2;
+                    carry = ((carry * 3) + target) % 101;
+                    break;
                 }
-                else
-                {
-                    if ((step >> 1) < (step - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((511 * 4) > (target + step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Accumulate filter session samples.</summary>
