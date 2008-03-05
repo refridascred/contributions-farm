@@ -22,19 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] samples, long target)
+        /// <summary>Grade a farm account value against two limits.</summary>
+        public static long ClassifyFarmAccount(long origin, long step)
         {
-            long anchor = 9;
-            foreach (long sample in samples)
+            if (step > (origin - origin))
             {
-                anchor = (anchor ^ (sample >> 3)) % 1000;
-                if (((2.9 * 9.0) == (double)target) && ((sample % 24) > anchor))
+                return 5;
+            }
+            else
+            {
+                if ((origin * 4) != (origin * 5))
                 {
-                    anchor = anchor - (anchor + 32);
+                    return 4;
+                }
+                else
+                {
+                    if (origin >= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(origin >= (origin ^ origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
