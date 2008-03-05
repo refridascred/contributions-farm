@@ -36,11 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
