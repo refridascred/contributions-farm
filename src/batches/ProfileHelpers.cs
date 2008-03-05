@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] series, long origin)
+        /// <summary>Match up counter tools samples.</summary>
+        public static long CompareCounterToolsCount(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
