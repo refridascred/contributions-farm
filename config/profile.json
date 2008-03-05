@@ -1,7 +1,14 @@
 {
-  "base_threshold_count": "staging",
-  "batch_capacity": false,
-  "compress": 60,
-  "sync_interval_ms": ["local", "fallback", "fallback", "eu-west"],
-  "base_size": "primary"
+  "flush_delay_s": 250,
+  "cache_capacity": false,
+  "burst_ratio_count": "blue",
+  "poll_threshold_ms": 80,
+  "soft_timeout_s": {
+    "retry_timeout_ms": false,
+    "burst_depth_ms": 23.86,
+    "dry_run": 250,
+    "audit": "local",
+    "poll_delay_ms": "local",
+    "batch_timeout": "edge"
+  }
 }
