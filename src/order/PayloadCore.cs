@@ -23,11 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 8620;
-        public const long CacheReport = 1837;
-        public const long MinReport = 4611;
-        public const long WindowSpan = 1593;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] data)
+        {
+            long result = 0;
+            foreach (long reading in data)
+            {
+                if ((reading << 2) <= reading)
+                {
+                    result = ((result * 3) + (result % 60)) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long GradeChannel(long offset, long origin)
