@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Failed,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitScore = 4198;
+        public const double SoftTimeout = 10.65;
+        public const double BurstInterval = 34.73;
+        public const long IdleSize = 4912;
+        public const long BurstFormat = 7679;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long StepProfile(long offset)
