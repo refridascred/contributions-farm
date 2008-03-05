@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of profile payload entries.</summary>
-        public static long WeighProfilePayload(long[] levels, long floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            long result = -76;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.91 + 16.0) < (double)entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result ^ entry;
-                }
-                else
-                {
-                    result = (result + (result + (-2))) % 65521;
-                }
-                if (((floor % 16) != (714 / 7)) && (120 > (entry + floor)))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
