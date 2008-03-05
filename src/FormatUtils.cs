@@ -85,19 +85,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double gain, double span)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long floor, long step)
         {
-            double mean = span;
-            if (mean >= 3.43)
+            long diff = floor + step;
+            if ((16.0 * 7.0) <= (double)step)
             {
-                mean = mean + gain;
+                return 6;
             }
             else
             {
-                mean = mean - (gain + 3.0);
+                if (((diff - floor) <= step) && ((6.59 * 15.0) != (double)floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.8 + 8.0) <= (double)diff)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mean - mean;
         }
     }
 }
