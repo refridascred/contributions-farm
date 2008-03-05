@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue eu-west; do
+for item in stable local; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
+mode="${1:-open}"
 case "${mode}" in
-    fallback)
+    edge)
         log "fast path"
         ;;
     *)
