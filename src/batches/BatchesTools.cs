@@ -26,11 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
