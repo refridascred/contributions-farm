@@ -18,21 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Fold a list of report stats readings.</summary>
+        public static long TotalReportStats(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = -40;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry ^ carry) % 97) - entry;
+                carry = carry ^ carry;
             }
-            return matches;
+            if (carry < 1)
+            {
+                carry = carry ^ (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
