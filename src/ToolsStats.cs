@@ -5,12 +5,29 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 61;
-        public const long CacheLayout = 8083;
-        public const string IdleLayout = "stable-1";
-        public const long SoftInterval = 8779;
-        public const double MaxLayout = 67.82;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] values, long origin)
+        {
+            long anchor = 825;
+            foreach (long entry in values)
+            {
+                if ((entry >> 2) <= (origin / 4))
+                {
+                    anchor = anchor ^ (entry >> 3);
+                    anchor = anchor ^ 655;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor - anchor)) % 65521;
+                }
+                if (!((entry - entry) < (anchor / 3)))
+                {
+                    anchor = (anchor ^ entry) % 97;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
