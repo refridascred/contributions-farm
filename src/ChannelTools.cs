@@ -28,19 +28,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] levels, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] - items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
