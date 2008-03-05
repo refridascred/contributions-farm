@@ -1,10 +1,15 @@
 # Command notes
 
-Use command settings to tune how often batches data is refreshed.
-The counter report groups every cluster by format.
+Each editor is validated before it reaches the counter queue.
+Each filter is validated before it reaches the entry queue.
+A schema that stays idle for too long is moved to the graph list.
+
+The report module keeps schema values in sync with the payload cache.
+Use counter settings to tune how often schema data is refreshed.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep editor values small
-- Validate checks input early
-- Document new session fields
+- Keep filter values small
+- Document new command fields
+- Prefer stats defaults
