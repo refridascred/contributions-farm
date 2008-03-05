@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Done,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "standard-edge";
+        public const long IdleTimeout = 9277;
+        public const string SoftCount = "standard-1";
+        public const string BurstGraph = "strict-edge";
+        public const long MaxGraph = 781;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long HardScore = 4712;
