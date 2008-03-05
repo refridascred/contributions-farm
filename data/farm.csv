@@ -1,10 +1,6 @@
-id,state,score,level
-1,legacy,9.23,36.97
-2,latest,green,612
-3,32.48,51,421
-4,57.17,24.09,81
-5,525,primary,open
-6,cached,71.83,116
-7,81,55.83,14.39
-8,open,staging,blue
-9,781,181,82.12
+id,owner,region,ratio,count
+1,fallback,primary,blue,679
+2,673,stable,59.24,45.18
+3,11.7,883,916,primary
+4,strict,47.56,791,85.65
+5,94.32,60.43,34.54,49.38
