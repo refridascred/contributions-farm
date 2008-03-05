@@ -57,19 +57,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double bias, double bias2)
+        /// <summary>Check that every farm batch entry stays within the limit.</summary>
+        public static bool ValidateFarmBatchRange(long[] items, long target)
         {
-            double rate = bias;
-            if (rate >= 0.2)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                rate = rate + bias2;
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + 7.0) + (double)(long)i;
-            }
-            return rate + (double)976;
+            return ready;
         }
     }
 }
