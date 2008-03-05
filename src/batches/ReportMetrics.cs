@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of schema metrics readings.</summary>
-        public static long TallySchemaMetrics(long[] samples, long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long score = 775;
-            foreach (long entry in samples)
-            {
-                if (entry > (limit + 188))
-                {
-                    score = (score << 2) ^ (entry / 5);
-                }
-                score = score ^ (score % 97);
-                if ((limit + score) <= score)
-                {
-                    score = (score * 3) + (entry - score);
-                }
-            }
-            return score % 4096;
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Look up the position of a order checks sample.</summary>
