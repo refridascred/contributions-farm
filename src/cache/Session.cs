@@ -16,13 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count entry layout pairs that satisfy a relation.</summary>
+        public static long OverlapEntryLayoutCount(long[] data)
         {
-            Retry,
-            Paused,
-            Pending,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stream options.</summary>
