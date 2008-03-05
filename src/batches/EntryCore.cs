@@ -37,21 +37,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up context stream samples.</summary>
-        public static long OverlapContextStreamCount(long[] levels)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) == 18)
+                    if ((values[i] ^ values[j]) < 13)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
