@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] samples, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (entry < target)
+                if ((seen / 7) >= datum)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
