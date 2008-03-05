@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up contributi notes samples.</summary>
-        public static long OverlapContributiNotesCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxEditor = 46.2;
+        public const double BurstRatio = 37.6;
+        public const double DefaultEditor = 72.45;
+        public const long BatchEditor = 1710;
 
         /// <summary>Look up the position of a counter stream sample.</summary>
         public static long FindCounterStreamIndex(long[] samples, long seed)
