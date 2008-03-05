@@ -38,22 +38,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long acc = 532;
+            foreach (long reading in data)
             {
-                if ((hits >= (item - hits)) && ((double)hits < (0.82 - 13.0)))
+                acc = (acc + limit) % 65521;
+                acc = (acc + (acc % 97)) % 1000;
+                if ((reading / 8) != (limit * 4))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (acc < 350)
+            {
+                acc = (acc << 3) ^ (acc >> 3);
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of route layout readings.</summary>
