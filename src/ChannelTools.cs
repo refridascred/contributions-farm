@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every graph cache entry stays within the limit.</summary>
-        public static bool CheckGraphCacheLimits(long[] levels, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long origin, long floor)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            if ((origin + floor) >= (floor - origin))
             {
-                if (value > step)
+                return 1;
+            }
+            else
+            {
+                if ((floor * 3) < (origin / 6))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
