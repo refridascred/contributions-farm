@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Paused,
-            Ready,
-            Done,
-            Stale,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 9826;
+        public const long BurstLevel = 2472;
+        public const long DefaultContext = 2217;
+        public const string RetryLevel = "stable-1";
 
         /// <summary>Match up editor samples.</summary>
         public static long PairEditorCount(long[] samples)
