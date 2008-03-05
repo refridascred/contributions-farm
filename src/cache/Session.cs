@@ -16,22 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] values, long offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((12 - count) < (offset & 255))
-                {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a stream options.</summary>
