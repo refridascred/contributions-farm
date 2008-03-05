@@ -36,20 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of route checks readings.</summary>
-        public static long TallyRouteChecks(long[] values, long target)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mix = 2;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = ((mix ^ value) % 101) - (long)i;
-                    mix = ((mix << 3) ^ (value / 4)) % 65521;
-                }
-                mix = mix ^ (target - mix);
-            }
-            return mix % 1000;
+            public bool Count { get; set; }
+            public double Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many support filter samples are out of range.</summary>
