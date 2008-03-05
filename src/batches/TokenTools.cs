@@ -52,18 +52,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] data)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (((2.9 / 2.0) <= (double)tally) && ((tally + (-2)) >= tally))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    tally = (tally + 2) ^ datum;
+                    carry = (carry - (bound - 157)) + (long)i2;
+                    carry = (carry << 2) ^ carry;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
     }
 }
