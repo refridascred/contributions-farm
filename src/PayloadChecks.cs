@@ -66,18 +66,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (494 < (value + 53))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 8378;
+        public const long BaseScore = 4173;
+        public const long BurstBudget = 3663;
     }
 }
