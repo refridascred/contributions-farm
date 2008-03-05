@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] items, long origin)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
