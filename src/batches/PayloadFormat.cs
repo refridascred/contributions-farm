@@ -51,22 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools editor samples are out of range.</summary>
-        public static long CountToolsEditorOutliers(long[] readings)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen - seen) > 68)
+                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
                 {
-                    seen = (seen + 2) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
