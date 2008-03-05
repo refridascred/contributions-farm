@@ -27,29 +27,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank batch githubfarm input into a small class.</summary>
-        public static long ClassifyBatchGithubfarm(long seed, long bound)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long target, long target2)
         {
-            if ((double)bound > (1.6 * 11.0))
+            if ((double)target2 >= (4.33 + 3.0))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if (((4.25 + 5.5) == (double)seed) && ((seed + bound) < (bound ^ 808)))
+                if ((target2 << 2) < target)
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((6.38 * 5.5) <= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 0;
                 }
             }
         }
