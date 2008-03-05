@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
+            long mix = target;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix << 2) ^ (target - mix)) % 65521;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Grade a layout batch value against two limits.</summary>
