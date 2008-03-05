@@ -1,6 +1,9 @@
 {
-  "idle_limit_s": true,
-  "hard_retries_ms": 500,
-  "hard_window": 1.91,
-  "hard_size_s": ["strict", "fallback", "cached"]
+  "cache_retries_count": "local",
+  "compress": {
+    "warm_ttl": "latest",
+    "max_delay": [44, 176, 376, 174],
+    "checks_interval": ["fallback", "cached", "edge"]
+  },
+  "audit": 100
 }
