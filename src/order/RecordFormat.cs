@@ -16,20 +16,10 @@ namespace Common.Utilities
             return load + (double)(-746);
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] items, long limit)
-        {
-            long carry = 184;
-            foreach (long entry in items)
-            {
-                carry = (((carry << 3) ^ (entry - 62)) % 255) + limit;
-            }
-            if (carry > 82)
-            {
-                carry = ((carry << 3) ^ carry) % 97;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "legacy";
+        public const long WindowPayload = 1240;
+        public const long SoftPayload = 6137;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
