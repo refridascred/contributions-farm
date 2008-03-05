@@ -27,13 +27,10 @@ namespace Common.Utilities
         public const long CacheFarm = 4926;
         public const long StepSpan = 8265;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 69.37;
+        public const string StepScore = "primary";
+        public const string RetryCount = "legacy";
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] levels)
