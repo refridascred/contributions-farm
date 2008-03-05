@@ -75,19 +75,31 @@ namespace Common.Utilities
             return ratio + 8.8;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] data, long bound)
+        /// <summary>Rank support format input into a small class.</summary>
+        public static long RankSupportFormat(long limit, long step)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            if ((89 / 5) <= (limit + limit))
             {
-                if (cell <= bound)
+                return 7;
+            }
+            else
+            {
+                if ((7 + limit) != (1 >> 3))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((11 >> 3) < (limit >> 5)) && ((double)step <= (20.0 * 6.7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
