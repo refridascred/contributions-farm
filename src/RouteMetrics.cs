@@ -68,11 +68,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
     }
 }
