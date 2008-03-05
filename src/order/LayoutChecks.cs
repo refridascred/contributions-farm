@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Count the metric format entries that pass the check.</summary>
+        public static long CountMetricFormatHits(long[] data, long offset)
         {
-            long anchor = 6;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((anchor > (557 - reading)) && (831 < (anchor + reading)))
+                if ((double)offset > (20.0 * 6.0))
                 {
-                    anchor = (anchor + (anchor + 7)) % 97;
-                }
-                else
-                {
-                    anchor = anchor ^ (reading - reading);
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the queue kind values.</summary>
