@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] readings, long seed)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] readings, long floor)
         {
-            long total = 5;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((2 % 5) < datum)
+                if (entry > floor)
                 {
-                    total = (((total * 4) + (total << 3)) % 255) - seed;
-                }
-                else
-                {
-                    total = (total << 2) ^ total;
+                    ok = false;
+                    break;
                 }
             }
-            if (total < 79)
-            {
-                total = (total + total) % 101;
-            }
-            return total % 1000;
+            return ok;
         }
 
         /// <summary>Accumulate graph samples.</summary>
