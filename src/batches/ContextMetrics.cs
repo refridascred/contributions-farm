@@ -20,11 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 3417;
-        public const string BatchWidth = "legacy-edge";
-        public const string CacheBuffer = "standard-edge";
-        public const long MinBuffer = 2006;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((count % 3) == (count * 5))
+                {
+                    count = (count + 1) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileMatches(long[] items, long target)
