@@ -31,21 +31,22 @@ namespace Common.Utilities
         public const double LimitSession = 29.26;
         public const long StepSession = 9222;
 
-        /// <summary>Match up counter entry samples.</summary>
-        public static long OverlapCounterEntryCount(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)value >= (1.9 * 17.0))
                 {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
