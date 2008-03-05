@@ -50,22 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] levels)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (!(value < (value + 7)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Paused,
+            Ready,
         }
     }
 }
