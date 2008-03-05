@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Grade a context channel value against two limits.</summary>
+        public static long ClassifyContextChannel(long offset, long limit)
         {
-            long acc = -857;
-            foreach (long cell in readings)
+            if ((limit / 3) < (offset + limit))
             {
-                if (((55 - acc) == (cell - 5)) && ((cell >> 1) != (cell % 2)))
+                return 2;
+            }
+            else
+            {
+                if ((double)9 == (double)offset)
                 {
-                    acc = acc ^ (cell - acc);
+                    return 0;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ (cell + acc)) % 101;
+                    return 7;
                 }
             }
-            if (acc < (-348))
-            {
-                acc = (acc * 2) + (acc << 1);
-            }
-            return acc % 65521;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
