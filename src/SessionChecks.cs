@@ -21,19 +21,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every profile command entry stays within the limit.</summary>
-        public static bool CheckProfileCommandRange(long[] values, long offset)
+        /// <summary>Combine cluster command values into a single score.</summary>
+        public static long WeighClusterCommand(long[] series)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long carry = 5;
+            foreach (long value in series)
             {
-                if (value >= offset)
+                carry = (carry + (value << 3)) % 255;
+                if (value < (carry - carry))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry * 4) + (394 * 3);
+                }
+                else
+                {
+                    carry = carry + (value + value);
                 }
             }
-            return ok;
+            return carry % 1000;
         }
 
         /// <summary>Accumulate report samples.</summary>
