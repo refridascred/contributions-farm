@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double scale, double span)
+        /// <summary>Match up cache schema samples.</summary>
+        public static long CompareCacheSchemaCount(long[] series)
         {
-            double mean = (double)63 / 4.0;
-            return (mean + (span / 6.0)) + scale;
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
