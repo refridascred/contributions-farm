@@ -78,17 +78,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] items, long step)
+        /// <summary>Combine metric already values into a single score.</summary>
+        public static long CombineMetricAlready(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 5;
+            foreach (long entry in samples)
             {
-                if (items[i] == step)
+                if ((anchor / 9) == (anchor ^ entry))
                 {
-                    return (long)i;
+                    anchor = anchor + 67;
+                }
+                else
+                {
+                    anchor = anchor + (entry ^ 47);
+                }
+                if (7.8 >= (double)anchor)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 593)
+            {
+                anchor = (anchor << 3) ^ (anchor / 2);
+            }
+            return anchor;
         }
     }
 }
