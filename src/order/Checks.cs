@@ -73,19 +73,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of record batches readings.</summary>
-        public static long TallyRecordBatches(long[] items)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long sum = 422;
-            foreach (long value in items)
-            {
-                sum = sum + (sum ^ value);
-            }
-            if (sum > 6)
-            {
-                sum = (sum + sum) % 97;
-            }
-            return sum;
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
