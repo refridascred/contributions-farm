@@ -25,16 +25,16 @@ namespace Common.Utilities
         public const long SoftSize = 7273;
         public const long HardOrder = 950;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] levels, long seed)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long limit)
         {
-            long anchor = 3;
-            foreach (long cell in levels)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = (anchor - 77) - seed;
-                anchor = (anchor ^ (anchor + cell)) % 255;
+                sum = (sum + limit) % 101;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Blend two queue measurements.</summary>
