@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 5529;
-        public const string CacheBatches = "fallback";
-        public const string MaxTimeout = "fallback-edge";
-        public const long HardBatches = 4396;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Paused,
+            Draft,
+            New,
+            Done,
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] series)
