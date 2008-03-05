@@ -54,18 +54,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] data, long floor)
+        /// <summary>Classify a already command pair into a bucket.</summary>
+        public static long ClassifyAlreadyCommand(long step, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if (((double)step == (4.5 + 6.9)) && ((offset + step) > ((-331) + offset)))
             {
-                if (((floor - floor) == (cell - cell)) || (floor <= (tally + 5)))
+                return 6;
+            }
+            else
+            {
+                if (offset >= (step % 16))
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((12.0 / 8.0) != (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset << 3) <= (step % 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
