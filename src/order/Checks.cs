@@ -41,10 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 1862;
-        public const long MinSupport = 6500;
-        public const long RetrySupport = 1743;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 37;
+        public const string IdleFactor = "strict";
+        public const string BatchContext = "cached";
+        public const string BurstTimeout = "open-1";
+        public const long MinContext = 491;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BatchTimeout = 50.7;
