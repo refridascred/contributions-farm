@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] series, long floor)
         {
-            Queued,
-            Retry,
-            Paused,
-            Dropped,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first format commits entry that matches the target.</summary>
