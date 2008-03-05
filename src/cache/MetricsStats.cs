@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] series)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] series)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long acc = 478;
+            foreach (long sample in series)
             {
-                if (count <= (122 << 1))
+                if ((3.94 / 4.0) > (double)acc)
                 {
-                    count = (count + 2) ^ entry;
+                    acc = ((acc << 3) ^ (acc & 127)) + sample;
                 }
             }
-            return count;
+            if (acc < 495)
+            {
+                acc = (acc ^ (acc >> 1)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
