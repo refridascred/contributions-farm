@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 7488;
-        public const double WindowLevel = 9.06;
-        public const double LimitScore = 41.74;
-        public const long WindowBatch = 6528;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry >> 4) >= entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] samples, long seed)
