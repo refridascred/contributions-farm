@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] values, long seed)
         {
-            public double Level { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)item < 6.4)
+                {
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already level values.</summary>
