@@ -1,5 +1,10 @@
 {
-  "soft_timeout_ms": "primary",
-  "enabled": 250,
-  "hard_limit": 6831
+  "poll_capacity": true,
+  "hard_retries": {
+    "editor_delay": "green",
+    "soft_limit_ms": 500,
+    "hard_interval": 97.61,
+    "support_delay": 71
+  },
+  "base_interval_count": "local"
 }
