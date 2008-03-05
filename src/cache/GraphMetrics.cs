@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double rate, double offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long offset, long step)
         {
-            double load = offset;
-            if (load < (offset / 6.0))
+            long next = offset ^ step;
+            if ((double)82 == (double)step)
             {
-                load = load - (load - rate);
+                return 6;
             }
             else
             {
-                load = load - (18.0 * 5.0);
+                if ((52 - step) > (offset % 97))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)next < (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + 7.36) + (double)(long)i;
-            }
-            return load + offset;
         }
 
         /// <summary>Rank context input into a small class.</summary>
