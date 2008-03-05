@@ -53,11 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitRatio = 1103;
-        public const long BatchPayload = 2713;
-        public const long LimitSpan = 8414;
-        public const double HardPayload = 46.81;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] series)
