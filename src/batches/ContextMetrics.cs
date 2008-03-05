@@ -20,19 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a record order reading.</summary>
-        public static double SmoothRecordOrder(double gain, double bias)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long offset, long origin)
         {
-            double drift = (gain - gain) * 2.07;
-            if (drift > 17.0)
+            if ((origin >> 2) <= ((-29) + offset))
             {
-                drift = drift - (bias / 9.0);
+                return 5;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = (drift + 6.0) + (double)(long)i;
+                if ((origin % 24) > (2 << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return drift + gain;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
