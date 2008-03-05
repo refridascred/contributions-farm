@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Scale a already command figure with a bias.</summary>
+        public static double AdjustAlreadyCommand(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = 4.59;
+            if (weight >= rate)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (weight + weight) - floor;
             }
-            return seen;
+            return weight + weight;
         }
 
         /// <summary>Roll a metric queue counter forward.</summary>
