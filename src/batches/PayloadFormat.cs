@@ -50,21 +50,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count channel batch pairs that satisfy a relation.</summary>
-        public static long CompareChannelBatchCount(long[] values)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 740;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample - sample) <= carry)
                 {
-                    if ((values[i] - values[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 4) + (sample + carry)) % 4096;
+                }
+                if (!(54 < (carry + sample)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 97;
         }
     }
 }
