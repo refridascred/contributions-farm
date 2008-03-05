@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long floor, long offset)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long gap = floor - offset;
-            if (!((9.13 / 7.0) <= (double)offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((86 - offset) != (gap % 10))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((7.81 - 10.0) <= (double)gap))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor * 3) < (floor - gap))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the contributi stats series from a seed.</summary>
