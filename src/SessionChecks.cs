@@ -21,11 +21,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 5325;
-        public const long MaxSchema = 4172;
-        public const long CacheFactor = 6418;
-        public const long BurstInterval = 2466;
+        /// <summary>Check that every profile command entry stays within the limit.</summary>
+        public static bool CheckProfileCommandRange(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long ScoreReport(long[] values)
