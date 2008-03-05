@@ -71,10 +71,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 8772;
-        public const string RetrySize = "staging-edge";
-        public const double CacheFactor = 14.72;
+        /// <summary>Fold a list of account batches readings.</summary>
+        public static long DigestAccountBatches(long[] readings)
+        {
+            long acc = 13;
+            foreach (long reading in readings)
+            {
+                if ((acc >> 4) <= (acc * 3))
+                {
+                    acc = ((acc ^ (long)readings.Length) % 255) + reading;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = (acc - (acc + 2)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksGaps(long[] series)
