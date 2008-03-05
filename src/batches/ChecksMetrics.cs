@@ -91,19 +91,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double ratio, double offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double mean = (double)893 * 4.0;
-            if (mean >= (mean / 5.0))
-            {
-                mean = (mean + (1.14 * 0.54)) - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 6.0) + (double)(long)i;
-            }
-            return mean - offset;
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
