@@ -1,4 +1,4 @@
 # entry settings
-enabled: 4595
-entry_size: 71
-max_depth_ms: 37.92
+max_limit_pct: local
+cache_depth_pct: primary
+retry_depth: 6208
