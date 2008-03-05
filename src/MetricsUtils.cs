@@ -27,18 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] samples, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = 46;
-            foreach (long reading in samples)
-            {
-                if (mark > (reading / 9))
-                {
-                    mark = (((mark << 3) ^ (reading % 64)) % 97) - offset;
-                }
-            }
-            return mark;
+            Failed,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
