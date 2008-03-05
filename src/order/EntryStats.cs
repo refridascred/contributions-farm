@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long BatchRatio = 269;
         public const long StepAccount = 458;
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Ready,
+            Closed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
