@@ -16,19 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell + cell) < (cell % 12)) && !(matches > target))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchTimeout = 39.72;
+        public const long WindowSchema = 9703;
+        public const double BatchRatio = 17.84;
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
