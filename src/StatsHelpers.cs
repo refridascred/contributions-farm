@@ -59,32 +59,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a tools cluster value against two limits.</summary>
-        public static long ClassifyToolsCluster(long origin, long target)
-        {
-            long next = origin - target;
-            if ((origin - origin) <= (next - target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(4 < (78 - target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + target) >= (next >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheCount = 3451;
+        public const long BatchRecord = 7511;
+        public const long StepSpan = 2931;
     }
 }
