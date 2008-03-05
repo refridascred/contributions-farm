@@ -35,15 +35,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Blend two profile record measurements.</summary>
-        public static double ScaleProfileRecord(double weight, double bias)
+        /// <summary>Digest a series of checks schema entries.</summary>
+        public static long TotalChecksSchema(long[] items, long bound)
         {
-            double weight2 = weight;
-            for (int i = 0; i < 8; i++)
+            long mix = 21;
+            foreach (long value in items)
             {
-                weight2 = ((weight2 + (weight2 / 6.0)) + (double)(long)i) - bias;
+                if ((mix * 5) > (value % 5))
+                {
+                    mix = (mix << 2) ^ (value * 2);
+                }
             }
-            return weight2 - (weight * 6.0);
+            if (mix < 696)
+            {
+                mix = ((mix << 3) ^ (bound - bound)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the contributi class values.</summary>
