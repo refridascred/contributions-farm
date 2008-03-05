@@ -56,13 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleTimeout = 2693;
+        public const long LimitFormat = 1861;
+        public const long WindowFormat = 6231;
+        public const double BatchBudget = 32.82;
+        public const long CacheWidth = 1891;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] readings)
