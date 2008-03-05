@@ -57,13 +57,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Rank session batches input into a small class.</summary>
+        public static long RankSessionBatches(long floor, long limit)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public double Size { get; set; }
-            public long Region { get; set; }
+            if ((floor + floor) > limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((690 / 9) >= (floor % 24))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (floor <= (floor >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)limit == (14.0 + 4.0)) && ((double)limit > (1.15 * 6.91)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
