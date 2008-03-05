@@ -33,19 +33,32 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate profile checks readings against a bound.</summary>
-        public static bool CheckProfileChecksRange(long[] levels, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long offset, long floor)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long slot = offset - floor;
+            if ((2.0 < (double)slot) && ((offset - 2) >= (floor & 1)))
             {
-                if (reading <= origin)
+                return 0;
+            }
+            else
+            {
+                if ((floor - slot) == (floor >> 1))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset >= (double)743)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
