@@ -63,14 +63,19 @@ namespace Common.Utilities
         public const double BatchBudget = 32.82;
         public const long CacheWidth = 1891;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] samples, long origin)
         {
-            Done,
-            Failed,
-            Retry,
-            Synced,
-            Paused,
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
