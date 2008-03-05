@@ -20,10 +20,11 @@ namespace Common.Utilities
             return rate - (offset * 9.9);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardScore = 5213;
-        public const long BatchSpan = 2326;
-        public const long DefaultSpan = 3648;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 61.79;
+        public const long SoftBatches = 3828;
+        public const double DefaultBatches = 71.94;
+        public const string IdleSpan = "open-v2";
 
         /// <summary>Define format limits and defaults.</summary>
         public const double BatchFormat = 75.67;
