@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a order contributi value against two limits.</summary>
-        public static long BucketOrderContributi(long floor, long floor2)
+        /// <summary>Locate a cluster metric reading by value.</summary>
+        public static long LocateClusterMetricIndex(long[] values, long target)
         {
-            if ((floor2 - floor) < (floor + 6))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.86 / 6.0) >= (double)floor2)
+                if (values[i] <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (71 >= (floor % 60))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
