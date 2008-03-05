@@ -45,17 +45,11 @@ namespace Common.Utilities
         public const long WindowSpan = 3022;
         public const string DefaultPayload = "cached-1";
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardBudget = 9488;
+        public const long StepMetric = 2782;
+        public const double WindowMetric = 15.27;
+        public const long BurstFactor = 4300;
+        public const long BatchMetric = 9909;
     }
 }
