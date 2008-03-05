@@ -1,4 +1,9 @@
 # support settings
-flush_capacity_pct: staging
-idle_capacity_s: 4527
-idle_retries: 250
+readonly: 250
+verbose: 37.8
+enabled:
+  - stable
+  - open
+  - strict
+persist: 23.11
+cache_window: 70
