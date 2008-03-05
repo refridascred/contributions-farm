@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long offset, long floor)
         {
-            long result = 56;
-            foreach (long sample in readings)
+            long lane = offset ^ floor;
+            if (floor >= (lane << 3))
             {
-                result = ((result << 2) ^ (result % 12)) % 101;
-                result = (result - (sample * 3)) % 97;
-                if (result < (0 << 2))
+                return 2;
+            }
+            else
+            {
+                if ((offset << 2) == (floor - offset))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset ^ lane) < (floor / 9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
