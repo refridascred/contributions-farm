@@ -52,12 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] series, long target)
         {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
+            long sum = 24;
+            foreach (long sample in series)
+            {
+                sum = (((sum ^ sum) % 97) + sample) + target;
+            }
+            return sum % 97;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
