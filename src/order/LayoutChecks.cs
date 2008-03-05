@@ -58,24 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of route layout readings.</summary>
-        public static long WeighRouteLayout(long[] series, long floor)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long anchor = 11;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    anchor = ((anchor ^ value) % 4096) - (long)i;
-                    anchor = ((anchor << 2) ^ (anchor - value)) % 65521;
-                }
-                anchor = anchor ^ (value - floor);
-            }
-            if (anchor < 365)
-            {
-                anchor = (anchor + (floor + anchor)) % 65521;
-            }
-            return anchor % 4096;
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
