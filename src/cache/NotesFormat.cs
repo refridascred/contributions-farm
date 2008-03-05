@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowWidth = "legacy-v2";
-        public const long LimitSize = 4444;
-        public const string MinChecks = "cached";
-        public const double BaseBudget = 64.38;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
