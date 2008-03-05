@@ -25,31 +25,22 @@ namespace Common.Utilities
         public const long MinCache = 7459;
         public const double IdleCount = 81.44;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long target, long floor)
+        /// <summary>Combine stats batch values into a single score.</summary>
+        public static long DigestStatsBatch(long[] samples)
         {
-            if ((1.51 - 4.2) == (double)target)
+            long result = 0;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((floor / 4) >= (target + floor)))
+                if (3.8 < (double)result)
                 {
-                    return 2;
+                    result = ((result << 2) ^ ((-8) % 8)) ^ item;
                 }
                 else
                 {
-                    if (((double)floor >= (3.6 / 3.0)) && ((target + floor) < floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = ((result * 5) + result) % 4096;
                 }
             }
+            return result;
         }
 
         /// <summary>Match up batch samples.</summary>
