@@ -22,22 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] readings)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long score = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((7.02 / 4.0) > (double)seen)
+                score = ((score * 4) + (long)i) % 1000;
+                if ((score * 2) <= target)
                 {
-                    seen = (seen + 1) + value;
+                    score = (score - (target ^ target)) % 101;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
