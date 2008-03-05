@@ -36,24 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long target, long target2)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] series, long floor)
         {
-            if ((double)target2 >= (4.33 + 3.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target2 << 2) < target)
+                if (series[i] >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
