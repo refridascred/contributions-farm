@@ -19,11 +19,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryScore = 24.17;
-        public const long StepInterval = 6352;
-        public const string BurstSpan = "alpha-edge";
-        public const string MaxDepth = "legacy";
-        public const string MaxWidth = "standard";
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public double Region { get; set; }
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
+        }
     }
 }
