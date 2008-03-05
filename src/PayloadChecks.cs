@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstWidth = 6131;
+        public const string SoftGithubfarm = "stable-1";
+        public const long RetryCount = 7610;
+        public const long StepGithubfarm = 8298;
+        public const long MaxGithubfarm = 6757;
 
         /// <summary>Validate batches session readings against a bound.</summary>
         public static bool GuardBatchesSessionBounds(long[] items, long target)
