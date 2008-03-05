@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] levels, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (((599 + cell) < (69 + cell)) && ((target + seen) < (target / 5)))
-                {
-                    seen = seen + 2;
-                }
+                total = (total * 3) + 97;
+                total = total - (total * 2);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
