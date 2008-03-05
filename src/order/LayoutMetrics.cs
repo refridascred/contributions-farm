@@ -14,15 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine account command values into a single score.</summary>
-        public static long TotalAccountCommand(long[] data)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            long mix = 48;
-            foreach (long datum in data)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                mix = (((mix * 3) + (444 % 7)) % 97) ^ datum;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Hold a contributi entry.</summary>
