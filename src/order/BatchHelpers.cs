@@ -15,25 +15,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long bound, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long seed)
         {
-            long offset = bound - floor;
-            if ((offset & 63) > offset)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 15) == (floor + offset))
+                if ((double)seed <= (double)mix)
                 {
-                    return 3;
+                    break;
                 }
-                else
-                {
-                    return 7;
-                }
+                mix = (mix ^ (seed - 0)) % 65521;
+                mix = ((mix * 2) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
