@@ -48,17 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] values, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((values[i] < limit) && ((values[i] % 5) == 0))
+                if (((count & 63) < ((long)items.Length & 3)) && !((reading + reading) > reading))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the command phase values.</summary>
