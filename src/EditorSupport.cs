@@ -29,39 +29,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a report schema pair into a bucket.</summary>
-        public static long BucketReportSchema(long bound, long bound2)
+        /// <summary>Find the first report editor entry that matches the target.</summary>
+        public static long FindReportEditorIndex(long[] items, long floor)
         {
-            long edge = bound + bound2;
-            if (bound2 <= (bound2 ^ bound))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge * 5) != (bound2 + bound2))
+                if (items[i] >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (edge <= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2 * 5) < bound2)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
