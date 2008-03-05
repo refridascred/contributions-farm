@@ -20,22 +20,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] levels, long target)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long result = 81;
-            foreach (long item in levels)
-            {
-                if (((result << 1) > (result ^ target)) && ((target % 10) <= item))
-                {
-                    result = ((result * 3) + (8 ^ 63)) % 255;
-                }
-                else
-                {
-                    result = ((result << 2) ^ target) % 1000;
-                }
-            }
-            return result % 65521;
+            public double Size { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
