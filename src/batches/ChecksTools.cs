@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Retry,
-            Queued,
-            Failed,
-            Locked,
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit command readings against a rule.</summary>
