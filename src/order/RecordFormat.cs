@@ -16,17 +16,19 @@ namespace Common.Utilities
             return load + (double)(-746);
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] items, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 184;
+            foreach (long entry in items)
             {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 3) ^ (entry - 62)) % 255) + limit;
             }
-            return -1;
+            if (carry > 82)
+            {
+                carry = ((carry << 3) ^ carry) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a report snapshot.</summary>
