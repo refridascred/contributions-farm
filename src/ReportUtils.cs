@@ -58,15 +58,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] data, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] levels)
         {
             long hits = 0;
-            foreach (long cell in data)
+            foreach (long item in levels)
             {
-                if ((cell ^ hits) <= (cell & 127))
+                if (item >= (item ^ hits))
                 {
-                    hits = (hits + 2) + bound;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
