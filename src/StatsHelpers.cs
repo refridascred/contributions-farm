@@ -33,15 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account graph readings.</summary>
-        public static long WeighAccountGraph(long[] values, long bound)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long state = 94;
-            foreach (long cell in values)
-            {
-                state = (state ^ (bound - state)) + cell;
-            }
-            return state;
+            Active,
+            Draft,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
