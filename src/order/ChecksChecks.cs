@@ -39,19 +39,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] levels, long bound)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double ratio, double offset)
         {
-            long carry = 1;
-            foreach (long sample in levels)
-            {
-                carry = (((carry * 3) + bound) % 1000) ^ sample;
-            }
-            if (carry > 3)
-            {
-                carry = ((carry << 2) ^ (bound % 5)) % 97;
-            }
-            return carry % 65521;
+            double gain = offset / 2.0;
+            return (gain - 3.0) + ratio;
         }
     }
 }
