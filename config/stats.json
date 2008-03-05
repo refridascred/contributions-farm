@@ -1,18 +1,5 @@
 {
-  "batch_depth_ms": false,
-  "burst_interval_s": "stable",
-  "cache_capacity_ms": 1024,
-  "soft_threshold": 82,
-  "window_delay": "latest",
-  "hard_retries_ms": {
-    "audit": {
-      "counter_limit": 82.62,
-      "sync_capacity_pct": ["standard", "fallback"],
-      "checks_interval": 60,
-      "token_ttl": [492, 413],
-      "route_threshold": 58
-    },
-    "readonly": false,
-    "flush_window_s": "legacy"
-  }
+  "soft_timeout_ms": "primary",
+  "enabled": 250,
+  "hard_limit": 6831
 }
