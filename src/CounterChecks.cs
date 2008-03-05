@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftSize = 9928;
+        public const string LimitCache = "staging-v2";
+        public const long MinLevel = 8013;
+        public const long WindowCache = 2882;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileMatches(long[] items, long limit)
