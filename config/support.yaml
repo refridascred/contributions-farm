@@ -1,24 +1,4 @@
 # support settings
-readonly: 56
-strict:
-  - legacy
-  - legacy
-  - standard
-  - primary
-stats_retries:
-  cache_ratio_s:
-    - 345
-    - 482
-  cache_delay:
-    retry_retries_s: 819
-    farm_capacity: primary
-    route_ratio: 7902
-    dry_run: 25
-  retry_limit_count: 55.19
-  max_window:
-    - legacy
-    - strict
-    - blue
-  min_threshold_pct: fallback
-batch_limit: 30
-compress: 1
+default_depth_ms: true
+checks_size: 250
+verbose: true
