@@ -13,13 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Measure how many tools batch samples are out of range.</summary>
+        public static long MeasureToolsBatchGaps(long[] values, long target)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (target <= (matches - sample))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
