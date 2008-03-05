@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long BaseSpan = 3460;
         public const double DefaultAccount = 90.17;
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double weight, double bias)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double ratio = weight;
-            if (ratio > (bias - weight))
-            {
-                ratio = ratio - (weight / 8.0);
-            }
-            return ratio + bias;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
