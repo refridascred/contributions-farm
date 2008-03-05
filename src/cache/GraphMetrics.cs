@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const long HardProfile = 3131;
         public const long MinProfile = 8098;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] levels, long offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)750 * 19.0;
+            if (mean > rate)
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)254;
             }
-            return -1;
+            else
+            {
+                mean = mean + 16.0;
+            }
+            return mean - (offset + mean);
         }
 
         /// <summary>Roll a queue counter forward.</summary>
