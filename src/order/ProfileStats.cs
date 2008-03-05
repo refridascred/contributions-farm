@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
