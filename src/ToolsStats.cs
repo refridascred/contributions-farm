@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "standard";
-        public const string BatchFactor = "primary-edge";
-        public const double RetrySession = 24.13;
-        public const long HardCount = 3295;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((599 + cell) < (69 + cell)) && ((target + seen) < (target / 5)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long ScoreCluster(long[] readings)
