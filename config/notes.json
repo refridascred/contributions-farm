@@ -1,17 +1,12 @@
 {
-  "metrics_size": {
-    "verbose": ["staging", "open"],
-    "flush_retries_ms": 500,
-    "batch_retries_s": {
-      "strict": 98.81,
-      "verbose": "stable",
-      "cache_ttl": true,
-      "default_window": [302, 407, 474, 449],
-      "order_depth": false,
-      "readonly": false
-    },
-    "base_interval_count": [327, 418, 205, 494]
+  "entry_size": false,
+  "cache_ratio_ms": {
+    "base_timeout": 1024,
+    "record_limit": "latest",
+    "channel_ttl": 60
   },
-  "sync_limit_ms": "strict",
-  "retry_threshold": 100
+  "base_retries_count": "primary",
+  "batch_interval_ms": 2702,
+  "enabled": 9491,
+  "entry_timeout": false
 }
