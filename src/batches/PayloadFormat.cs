@@ -28,18 +28,18 @@ namespace Common.Utilities
         public const long SoftSize = 5686;
         public const long BatchFormat = 3654;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] data, long floor)
+        /// <summary>Combine batch command values into a single score.</summary>
+        public static long TotalBatchCommand(long[] levels)
         {
-            long count = 0;
-            foreach (long value in data)
+            long carry = 4;
+            foreach (long sample in levels)
             {
-                if ((4 - 7) <= (floor - value))
+                if ((((-302) & 31) != (sample << 2)) && ((sample & 15) <= (4 % 16)))
                 {
-                    count = count + 2;
+                    carry = (carry << 3) ^ (carry << 3);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count channel batch pairs that satisfy a relation.</summary>
