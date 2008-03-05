@@ -92,21 +92,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context stats readings.</summary>
-        public static long OverlapContextStatsCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardLayout = 22.77;
+        public const long HardDepth = 2738;
+        public const string BatchWidth = "local";
     }
 }
