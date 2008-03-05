@@ -23,18 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools layout readings against a rule.</summary>
-        public static long MeasureToolsLayoutHits(long[] readings)
+        /// <summary>Blend two cluster order measurements.</summary>
+        public static double ScaleClusterOrder(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double ratio = bias2;
+            if (ratio < (6.99 / 2.0))
             {
-                if ((double)datum <= (double)tally)
-                {
-                    tally = tally + 3;
-                }
+                ratio = (ratio - bias2) - bias;
             }
-            return tally;
+            return ratio + 4.0;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
