@@ -1,6 +1,4 @@
 # support settings
-hard_threshold_s: primary
-warm_depth_s: 52.3
-idle_timeout_count: 2.27
-batch_limit: staging
-sync_retries_pct: 1439
+warm_window_s: local
+buffer_window: 6660
+audit: 64
