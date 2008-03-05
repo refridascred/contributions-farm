@@ -26,21 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading + matches) < (reading * 2))
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + step;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
