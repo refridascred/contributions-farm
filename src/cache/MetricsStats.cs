@@ -34,24 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((carry / 4) <= 505))
-                {
-                    carry = ((carry * 3) + (28 / 2)) % 4096;
-                }
-                if ((1 - origin) < (origin >> 5))
-                {
-                    carry = (carry + 0) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 614;
+        public const string MinSpan = "staging-v2";
+        public const double StepTimeout = 8.5;
+        public const long SoftSpan = 1075;
+        public const long HardLevel = 1699;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
