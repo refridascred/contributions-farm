@@ -62,18 +62,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)bound >= 4.0)
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultScore = 8341;
+        public const string MaxFactor = "stable";
+        public const double BaseLevel = 64.8;
+        public const double CacheFactor = 80.53;
     }
 }
