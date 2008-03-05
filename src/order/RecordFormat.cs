@@ -73,16 +73,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a support metric figure with a bias.</summary>
-        public static double ScaleSupportMetric(double weight, double span)
-        {
-            double ratio = weight;
-            if (ratio > (double)6)
-            {
-                ratio = (ratio - 2.56) + span;
-            }
-            return ratio + 8.8;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 28.39;
+        public const long HardLevel = 558;
+        public const long WindowTimeout = 9621;
+        public const long RetryLayout = 8103;
 
         /// <summary>Digest a series of notes stats entries.</summary>
         public static long ScoreNotesStats(long[] readings)
