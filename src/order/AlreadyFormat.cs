@@ -29,13 +29,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a already reading.</summary>
