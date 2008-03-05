@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next account graph value.</summary>
-        public static double ProjectAccountGraph(double gain, double offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long bound)
         {
-            double ratio = (double)(0 / 7);
-            if (ratio >= (double)415)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                ratio = (ratio + (5.59 + offset)) - gain;
+                total = (total ^ (6 * 4)) % 1000;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (ratio - offset)) - (double)(long)i;
-            }
-            return ratio - offset;
+            return total;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
