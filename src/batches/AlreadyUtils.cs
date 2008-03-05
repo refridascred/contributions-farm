@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Measure how many report record samples are out of range.</summary>
+        public static long TallyReportRecordMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)hits >= (12.0 - 0.5))
                 {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
