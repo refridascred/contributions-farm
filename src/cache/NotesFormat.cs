@@ -19,12 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
