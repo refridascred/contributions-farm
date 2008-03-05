@@ -1,11 +1,13 @@
 # Command notes
 
-Run the tools check before changing any tools limits.
-Use format settings to tune how often entry data is refreshed.
-Use commits settings to tune how often queue data is refreshed.
+Run the format check before changing any githubfarm limits.
+Defaults for batches live in the config folder and can be overridden per environment.
+
+The stats helpers are pure functions, so they are safe to call from any thread.
+A buffer that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Review schema limits each release
-- Keep channel values small
+- Document new order fields
+- Review notes limits each release
+- Prefer channel defaults
