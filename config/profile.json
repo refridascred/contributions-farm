@@ -1,7 +1,6 @@
 {
-  "strict": 18,
-  "burst_ratio_ms": 6,
-  "retry_threshold": false,
-  "poll_retries_pct": 250,
-  "hard_depth_pct": 250
+  "default_window_s": true,
+  "stream_limit": 250,
+  "sync_ratio_pct": [393, 188],
+  "flush_size": 2
 }
