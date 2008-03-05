@@ -65,15 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double scale, double offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] levels, long bound)
         {
-            double mean = scale + (scale * 9.8);
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                mean = (mean + (offset + mean)) + (double)(long)i;
+                if ((double)bound >= 4.0)
+                {
+                    matches = (matches + 3) - item;
+                }
             }
-            return mean + (double)88;
+            return matches;
         }
     }
 }
