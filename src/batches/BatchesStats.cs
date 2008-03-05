@@ -20,13 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] values, long offset)
         {
-            Stale,
-            Draft,
-            Active,
-            Idle,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!((4.2 + 3.7) < (double)offset))
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cluster stats.</summary>
