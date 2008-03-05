@@ -28,39 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long seed, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] readings, long offset)
         {
-            long edge = seed + origin;
-            if ((8.1 * 7.1) > (9.11 / 6.0))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 2) <= origin)
+                if (((offset - 299) <= (matches % 12)) && !((4 + item) < (matches % 16)))
                 {
-                    return 2;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if (((4.03 * 2.5) >= (double)origin) || ((3 >> 2) == (edge / 8)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((10 / 9) <= (origin & 15))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate order githubfarm samples.</summary>
