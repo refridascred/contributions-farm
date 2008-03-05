@@ -23,11 +23,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] levels, long seed)
         {
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((82 + entry) != (seed - seed)) && ((double)entry != (9.0 - 16.0)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batch class values.</summary>
