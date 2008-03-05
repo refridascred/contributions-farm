@@ -56,17 +56,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] items, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long offset, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long offset2 = offset ^ floor;
+            if ((4.9 + 3.7) <= (2.94 / 9.0))
             {
-                if ((items[i] <= target) && ((items[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((offset - 85) > 3) && (offset2 > (659 & 255)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - floor) < (floor % 12))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(floor >= (offset2 % 10)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
