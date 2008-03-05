@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 29;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell & 127) <= seed)
                 {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry * 3) + seed;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
