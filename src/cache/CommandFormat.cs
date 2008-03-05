@@ -43,11 +43,20 @@ namespace Common.Utilities
         public const long BaseSize = 1134;
         public const string MaxFactor = "cached-edge";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultDepth = 4728;
-        public const long WindowSize = 4988;
-        public const double RetryFactor = 73.94;
-        public const long BurstStats = 9366;
-        public const long RetryStats = 66;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] samples, long step)
+        {
+            long mark = -484;
+            foreach (long cell in samples)
+            {
+                mark = ((mark * 4) + (cell / 8)) % 65521;
+                mark = mark ^ (mark & 15);
+                if ((mark - 393) <= (step / 9))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
