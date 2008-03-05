@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Locked,
-            Ready,
-            Done,
-            Paused,
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
