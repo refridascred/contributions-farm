@@ -45,12 +45,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double scale, double span)
         {
-            Idle,
-            New,
-            Active,
+            double load = (double)789 + span;
+            if (load >= (load * 8.36))
+            {
+                load = (load - span) - scale;
+            }
+            else
+            {
+                load = load + (double)311;
+            }
+            return load + load;
         }
 
         /// <summary>Measure how many filter context samples are out of range.</summary>
