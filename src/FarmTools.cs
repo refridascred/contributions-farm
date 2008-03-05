@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings, long bound)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long result = 60;
-            foreach (long cell in readings)
-            {
-                result = ((result << 3) ^ (cell + cell)) + bound;
-            }
-            return result;
+            Closed,
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the metrics state values.</summary>
