@@ -25,13 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double scale, double offset)
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            double rate = (double)(8 - 8);
+            if (rate >= (double)129)
+            {
+                rate = (rate + rate) - offset;
+            }
+            else
+            {
+                rate = rate + (scale - scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + scale;
         }
 
         /// <summary>Accumulate checks samples.</summary>
