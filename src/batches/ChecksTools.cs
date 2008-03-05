@@ -16,18 +16,15 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] items, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((hits & 127) > (hits * 2)) && ((39 & 127) < (hits - datum)))
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + origin;
                 }
             }
             return hits;
