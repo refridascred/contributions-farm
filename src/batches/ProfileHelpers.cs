@@ -73,18 +73,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter batch samples are out of range.</summary>
-        public static long TallyCounterBatchMatches(long[] values, long offset)
+        /// <summary>Adjust a account window reading.</summary>
+        public static double AdjustAccountWindow(double scale, double span)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double weight = scale - span;
+            if (weight >= 0.92)
             {
-                if (((3.6 + 11.0) != (double)offset) && ((double)offset >= (double)6))
-                {
-                    tally = (tally + 3) + entry;
-                }
+                weight = weight + (weight * 19.0);
             }
-            return tally;
+            return weight + 6.4;
         }
     }
 }
