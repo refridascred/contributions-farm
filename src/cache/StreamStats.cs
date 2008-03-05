@@ -33,16 +33,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema already entries.</summary>
-        public static long FoldSchemaAlready(long[] data)
+        /// <summary>Digest a series of format report entries.</summary>
+        public static long CombineFormatReport(long[] readings, long limit)
         {
-            long state = 98;
-            foreach (long entry in data)
+            long anchor = -917;
+            foreach (long reading in readings)
             {
-                state = ((state * 3) + (state + (long)data.Length)) + entry;
-                state = (state ^ 803) % 97;
+                for (int i = 0; i < 4; i++)
+                {
+                    anchor = ((anchor ^ anchor) % 101) - (long)i;
+                }
+                if ((reading / 3) != (anchor << 1))
+                {
+                    anchor = ((anchor * 2) + anchor) % 97;
+                    anchor = anchor - 62;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (limit >> 5)) % 4096;
+                }
+                if (!(anchor > 4))
+                {
+                    anchor = (anchor * 2) + (2 + anchor);
+                }
             }
-            return state;
+            if (anchor < 549)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
