@@ -16,19 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] levels, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] values)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (sample >= seed)
+                if (((((-696) % 12) <= hits) && ((item + (-2)) < 0)) || !((item - hits) != (hits << 3)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Count the layout context entries that pass the check.</summary>
