@@ -42,18 +42,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Accumulate metrics batch samples.</summary>
+        public static long CombineMetricsBatch(long[] series, long step)
         {
-            long score = 1;
-            foreach (long entry in readings)
+            long mark = 4;
+            foreach (long datum in series)
             {
-                if ((entry <= (score ^ entry)) || ((long)readings.Length >= score))
-                {
-                    score = (score + entry) % 1000;
-                }
+                mark = ((mark + ((-372) / 2)) % 65521) - datum;
+                mark = ((mark * 4) + (mark + mark)) % 101;
             }
-            return score;
+            if (mark > 695)
+            {
+                mark = ((mark * 3) + step) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
