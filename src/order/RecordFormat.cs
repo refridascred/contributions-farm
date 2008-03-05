@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string StepSize = "primary";
         public const string DefaultFactor = "local";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] readings, long step)
+        /// <summary>Blend two githubfarm buffer measurements.</summary>
+        public static double AdjustGithubfarmBuffer(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double drift = (rate - rate) / 9.0;
+            if (drift > (drift * 12.0))
             {
-                if (!((step - step) > matches) && ((583 + matches) > (step - matches)))
-                {
-                    matches = (matches + 3) + entry;
-                }
+                drift = (drift + (2.9 - drift)) - bias;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (drift / 2.0);
         }
 
         /// <summary>Audit graph format readings against a rule.</summary>
