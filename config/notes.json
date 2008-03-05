@@ -1,7 +1,13 @@
 {
-  "strict": true,
-  "sync_depth_count": "local",
-  "burst_capacity_pct": 6007,
-  "githubfarm_size": 5380,
-  "readonly": "staging"
+  "max_limit": 9.25,
+  "idle_size_pct": "open",
+  "verbose": {
+    "checks_depth": 26.73,
+    "sync_ttl": [223, 314, 401, 177],
+    "warm_limit_ms": ["green", "local", "standard", "staging"],
+    "format_ttl": [310, 6],
+    "audit": "staging"
+  },
+  "format_delay": 7865,
+  "max_ttl_count": 62
 }
