@@ -18,30 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] readings, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] readings, long offset)
         {
-            long result = 7;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 7; i++)
+                if ((value - offset) != (offset * 4))
                 {
-                    result = ((result ^ (result << 1)) + (long)i) - item;
-                }
-                if ((result << 3) > (result * 4))
-                {
-                    result = (result - (48 + 1)) % 4096;
-                }
-                else
-                {
-                    result = (result ^ (result & 63)) % 97;
+                    matches = matches + 1;
                 }
             }
-            if (result > 527)
-            {
-                result = result ^ (2 + bound);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Look up the position of a tools stats sample.</summary>
