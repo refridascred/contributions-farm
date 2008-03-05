@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstFactor = 5889;
-        public const string StepCommand = "open-v2";
-        public const long SoftTimeout = 6158;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowSpan = 77.7;
+        public const long SoftCount = 6753;
+        public const long DefaultReport = 7441;
+        public const double WindowReport = 63.02;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
