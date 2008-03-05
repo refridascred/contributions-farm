@@ -38,17 +38,13 @@ namespace Common.Utilities
             return scale + (double)(-486);
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] series, long floor)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the token kind values.</summary>
