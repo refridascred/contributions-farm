@@ -52,26 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] readings, long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            long sum = 18;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)floor != (0.2 * 18.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (625 * 5)) % 255;
-                }
-                else
-                {
-                    sum = (sum + ((long)readings.Length - floor)) % 255;
-                }
-                if (((double)floor > (5.2 - 5.01)) || (entry > (991 + (long)readings.Length)))
-                {
-                    break;
+                    if ((series[i] - series[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
