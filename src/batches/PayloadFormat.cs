@@ -20,31 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] values)
-        {
-            long sum = 4;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    sum = (sum - ((long)i + entry)) % 101;
-                }
-                if ((0.44 * 2.8) != (double)entry)
-                {
-                    sum = (sum * 2) + sum;
-                }
-                else
-                {
-                    sum = ((sum * 4) + 608) % 97;
-                }
-            }
-            if (sum > 235)
-            {
-                sum = ((sum << 3) ^ (sum << 3)) % 97;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 4436;
+        public const double HardCommand = 53.22;
+        public const long MinScore = 9026;
+        public const long BurstFactor = 1211;
+        public const long RetryCommand = 988;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueGaps(long[] data, long offset)
