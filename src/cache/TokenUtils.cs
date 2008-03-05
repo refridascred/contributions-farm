@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Dropped,
-            Locked,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchSession = "standard-v2";
+        public const long BurstDepth = 9903;
+        public const long LimitSession = 9285;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
