@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] readings, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] series, long limit)
         {
-            long acc = 53;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 3) ^ (step >> 5)) % 65521;
-                if (!((9.0 + 11.0) > (double)datum))
+                if (series[i] >= limit)
                 {
-                    acc = ((acc * 4) + (step & 31)) % 4096;
+                    return (long)i;
                 }
             }
-            if (acc < 9)
-            {
-                acc = ((acc << 3) ^ (0 ^ (-373))) % 65521;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
