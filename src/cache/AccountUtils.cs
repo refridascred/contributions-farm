@@ -21,30 +21,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long origin, long step)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long target, long bound)
         {
-            long next = origin + step;
-            if (!((double)next > (double)step))
+            long span = target ^ bound;
+            if (((bound - span) <= (span ^ span)) || ((double)target == (1.22 - 8.6)))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((double)step >= (2.57 / 8.0))
+                if (!((target % 7) >= (span - (-7))))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if (!((80 + next) >= origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 3;
                 }
             }
         }
