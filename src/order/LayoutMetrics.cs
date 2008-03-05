@@ -33,9 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultCount = 1312;
-        public const long HardProfile = 5167;
-        public const double SoftSpan = 81.16;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
