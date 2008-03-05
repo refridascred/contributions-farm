@@ -1,6 +1,9 @@
 {
-  "token_ratio": "stable",
-  "soft_threshold": [25, 13, 329],
-  "stats_ttl": 9555,
-  "max_threshold_pct": 30
+  "queue_ratio": 10.31,
+  "idle_interval": 1024,
+  "default_delay_pct": {
+    "strict": 7601,
+    "min_delay_s": "standard",
+    "flush_delay_count": 55
+  }
 }
