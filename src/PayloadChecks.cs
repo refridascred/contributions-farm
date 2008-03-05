@@ -87,9 +87,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheSize = "standard";
-        public const string CacheEditor = "fallback-1";
-        public const long WindowInterval = 8086;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell << 1) != (cell % 10))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
