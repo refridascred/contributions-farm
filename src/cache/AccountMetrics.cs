@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Rank stream stats input into a small class.</summary>
+        public static long BucketStreamStats(long seed, long bound)
         {
-            Ready,
-            Dropped,
-            Stale,
+            if (((bound << 3) >= (seed - seed)) && ((8.5 - 8.4) == (double)seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)seed < (double)bound) && ((seed ^ seed) < bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)seed >= (4.9 / 2.0)) || (seed < (239 % 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound > (bound >> 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit support queue readings against a rule.</summary>
