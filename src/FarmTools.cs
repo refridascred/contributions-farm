@@ -19,14 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] items, long offset)
         {
-            Draft,
-            Done,
-            Paused,
-            Ready,
-            New,
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
