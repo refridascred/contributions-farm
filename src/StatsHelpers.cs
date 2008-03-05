@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 7488;
+        public const double WindowLevel = 9.06;
+        public const double LimitScore = 41.74;
+        public const long WindowBatch = 6528;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] samples, long seed)
