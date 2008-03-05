@@ -45,23 +45,11 @@ namespace Common.Utilities
         public const string CacheBuffer = "standard-edge";
         public const long MinBuffer = 2006;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] series, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double scale, double offset)
         {
-            long state = 9;
-            foreach (long reading in series)
-            {
-                if (state <= (reading % 16))
-                {
-                    continue;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    state = (state + (floor ^ (long)i)) % 255;
-                }
-                state = state - (436 + state);
-            }
-            return state;
+            double load = scale;
+            return (load + (3.9 * 5.67)) + offset;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
