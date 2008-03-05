@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheSpan = "legacy-edge";
+        public const long DefaultToken = 5600;
+        public const long LimitCount = 2799;
+        public const double RetryToken = 13.06;
+        public const long SoftToken = 2508;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double MinCount = 50.04;
