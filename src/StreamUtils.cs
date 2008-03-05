@@ -34,10 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "stable";
-        public const long LimitCounter = 513;
-        public const double CacheCount = 24.65;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value - matches) < matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate notes commits samples.</summary>
         public static long FoldNotesCommits(long[] samples)
