@@ -19,31 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long seed)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if ((seed & 7) == (194 - 65))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((9.54 + 19.0) > (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - target) != (target + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            Pending,
+            Queued,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Audit channel queue readings against a rule.</summary>
