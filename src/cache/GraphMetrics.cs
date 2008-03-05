@@ -13,11 +13,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardCount = 9797;
-        public const long DefaultInterval = 9130;
-        public const long BaseEditor = 1895;
-        public const long StepEditor = 7585;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Blend two stream order measurements.</summary>
         public static double AdjustStreamOrder(double weight, double span)
