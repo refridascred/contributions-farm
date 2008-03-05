@@ -31,24 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long limit2)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            if ((double)limit >= (2.6 * 2.98))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)limit >= (7.2 * 8.1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
