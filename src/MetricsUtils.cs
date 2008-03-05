@@ -35,18 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] items)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((hits >> 4) >= (item >> 5))
+                if (sample != bound)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Compare every pair of checks contributi readings.</summary>
