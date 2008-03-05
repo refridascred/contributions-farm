@@ -20,14 +20,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] values, long target)
         {
-            Idle,
-            Synced,
-            Failed,
-            Queued,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up commits samples.</summary>
