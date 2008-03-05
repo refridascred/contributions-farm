@@ -28,13 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Failed,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxFactor = 3035;
+        public const long MaxEntry = 3590;
+        public const long BaseEntry = 3965;
+        public const string CacheInterval = "legacy-edge";
+        public const long BaseTimeout = 7641;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstBuffer = 2241;
