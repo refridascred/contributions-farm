@@ -23,15 +23,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a stream layout counter forward.</summary>
-        public static long SeriesStreamLayout(long offset)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Pending,
+            Ready,
+            Locked,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
