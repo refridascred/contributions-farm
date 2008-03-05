@@ -31,14 +31,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] items, long limit)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Queued,
-            Ready,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell >> 1) >= (limit & 63))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up checks samples.</summary>
