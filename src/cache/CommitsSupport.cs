@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
