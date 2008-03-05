@@ -22,17 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] items, long origin)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long target, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (origin <= (52 >> 5))
             {
-                if (items[i] > origin)
+                return 5;
+            }
+            else
+            {
+                if (target <= (5 - target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (4 <= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target > origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the counter state values.</summary>
