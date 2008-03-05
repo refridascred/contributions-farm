@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheScore = 7107;
-        public const long CacheBudget = 5261;
-        public const long RetrySupport = 2673;
-        public const long HardSupport = 304;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] readings)
+        {
+            long acc = -857;
+            foreach (long cell in readings)
+            {
+                if (((55 - acc) == (cell - 5)) && ((cell >> 1) != (cell % 2)))
+                {
+                    acc = acc ^ (cell - acc);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (cell + acc)) % 101;
+                }
+            }
+            if (acc < (-348))
+            {
+                acc = (acc * 2) + (acc << 1);
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Audit farm batch readings against a rule.</summary>
         public static long AuditFarmBatchHits(long[] items, long target)
