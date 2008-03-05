@@ -37,22 +37,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] values, long step)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double rate, double span)
         {
-            long carry = 900;
-            foreach (long value in values)
+            double drift = (span / 2.0) * 0.3;
+            if (drift >= (rate - rate))
             {
-                if (((step & 15) <= value) && ((step + value) >= (step * 5)))
-                {
-                    carry = (carry - (value % 16)) % 101;
-                }
+                drift = drift + (9.31 - 0.6);
             }
-            if (carry > 12)
+            for (int i = 0; i < 4; i++)
             {
-                carry = carry - (step / 6);
+                drift = (drift + 2.87) - (double)(long)i;
             }
-            return carry;
+            return drift - rate;
         }
 
         /// <summary>Accumulate support samples.</summary>
