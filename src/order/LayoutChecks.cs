@@ -28,22 +28,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] series)
         {
-            long total = 1;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (entry > (525 * 5))
+                if ((hits >= (item - hits)) && ((double)hits < (0.82 - 13.0)))
                 {
-                    total = (total << 3) ^ (total % 3);
+                    hits = hits + 2;
                 }
                 else
                 {
-                    total = ((total * 2) + (entry >> 1)) % 255;
+                    hits = hits - 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of route layout readings.</summary>
