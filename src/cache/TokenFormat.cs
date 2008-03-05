@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] series, long offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
