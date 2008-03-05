@@ -30,12 +30,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long mix = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((double)target > 8.1) || ((double)mix != (1.0 * 3.0)))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (target ^ target)) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
