@@ -35,16 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] readings, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                acc = (acc + (acc & 15)) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (limit > (tally * 3))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a context entry.</summary>
