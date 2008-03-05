@@ -1,4 +1,7 @@
 # entry settings
-commits_ttl: false
-poll_ttl_s: cached
-graph_interval: 88.3
+warm_ttl_count: legacy
+default_size_pct:
+  - green
+  - edge
+  - green
+max_depth: 63
