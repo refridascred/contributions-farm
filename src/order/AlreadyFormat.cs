@@ -27,19 +27,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metric notes entry stays within the limit.</summary>
-        public static bool ValidateMetricNotesLimits(long[] items, long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Dropped,
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
