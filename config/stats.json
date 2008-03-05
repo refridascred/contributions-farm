@@ -1,14 +1,12 @@
 {
-  "tools_retries": "legacy",
-  "retry_timeout_ms": 63.83,
-  "batch_capacity_s": 67.76,
-  "enabled": "cached",
-  "record_retries": {
-    "max_interval_pct": "cached",
-    "burst_capacity_s": 8.72,
-    "flush_ratio_count": false,
-    "min_retries_pct": "eu-west",
-    "hard_retries_s": 60,
-    "channel_interval": [319, 388, 107, 227]
-  }
+  "poll_limit": 100,
+  "record_size": 9966,
+  "session_delay": [271, 240, 74, 147],
+  "report_delay": {
+    "retry_timeout_ms": "eu-west",
+    "idle_retries": 60,
+    "retry_limit_pct": "green"
+  },
+  "compress": 2999,
+  "base_limit": true
 }
