@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] series, long offset)
-        {
-            long carry = 151;
-            foreach (long sample in series)
-            {
-                carry = (((carry - (carry << 3)) % 65521) ^ sample) + offset;
-            }
-            if (carry > 38)
-            {
-                carry = (carry ^ (carry / 4)) % 1000;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 2323;
+        public const long DefaultAccount = 3472;
+        public const string WindowAccount = "stable-v2";
+        public const long BaseAccount = 2130;
+        public const long SoftAccount = 4715;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
