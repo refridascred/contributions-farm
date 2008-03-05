@@ -63,14 +63,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] readings)
         {
-            Failed,
-            Ready,
-            Draft,
-            Paused,
-            Synced,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value ^ seen) < (value >> 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order summary.</summary>
