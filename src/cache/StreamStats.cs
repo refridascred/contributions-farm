@@ -33,18 +33,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache support entries.</summary>
-        public static long ScoreCacheSupport(long[] levels, long floor)
+        /// <summary>Digest a series of schema already entries.</summary>
+        public static long FoldSchemaAlready(long[] data)
         {
-            long anchor = 8;
-            foreach (long datum in levels)
+            long state = 98;
+            foreach (long entry in data)
             {
-                if ((floor + floor) >= (datum + anchor))
-                {
-                    anchor = anchor ^ (datum + anchor);
-                }
+                state = ((state * 3) + (state + (long)data.Length)) + entry;
+                state = (state ^ 803) % 97;
             }
-            return anchor % 4096;
+            return state;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
