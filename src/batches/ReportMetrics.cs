@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Synced,
-            Draft,
-            Paused,
+            Retry,
+            New,
+            Active,
         }
 
         /// <summary>Iterate the contributi stats series from a seed.</summary>
