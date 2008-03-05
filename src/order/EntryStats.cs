@@ -48,22 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window buffer values into a single score.</summary>
-        public static long TotalWindowBuffer(long[] levels, long offset)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            long total = 63;
-            foreach (long sample in levels)
+            double mean = scale + (scale * 9.8);
+            for (int i = 0; i < 3; i++)
             {
-                if ((total << 2) <= (sample << 2))
-                {
-                    total = ((total * 3) + (total + (-79))) % 4096;
-                }
+                mean = (mean + (offset + mean)) + (double)(long)i;
             }
-            if (total < (-136))
-            {
-                total = total - (offset & 255);
-            }
-            return total % 97;
+            return mean + (double)88;
         }
     }
 }
