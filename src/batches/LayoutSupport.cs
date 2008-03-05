@@ -41,22 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster report samples.</summary>
-        public static long WeighClusterReport(long[] series)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] readings, long seed)
         {
-            long state = 98;
-            foreach (long datum in series)
+            long mix = 1;
+            foreach (long value in readings)
             {
-                if ((((long)series.Length % 2) >= datum) && ((15 - datum) == (datum - state)))
+                mix = (((mix * 5) + (mix >> 1)) + value) + seed;
+                if ((long)readings.Length >= mix)
                 {
-                    state = state + (372 % 64);
+                    break;
                 }
             }
-            if (state < 92)
-            {
-                state = state + ((-764) >> 3);
-            }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
