@@ -23,12 +23,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 26.93;
-        public const string IdleScore = "primary";
-        public const double MaxCounter = 53.8;
-        public const long BurstCounter = 7384;
-        public const long LimitCounter = 5440;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 83.78;
+        public const long SoftBudget = 8900;
+        public const long IdleWidth = 9403;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long RollTools(long origin)
