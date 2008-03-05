@@ -36,12 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstMetric = 10.8;
-        public const double StepMetric = 24.72;
-        public const double WindowSpan = 83.57;
-        public const long CacheRatio = 4349;
-        public const long MinMetric = 173;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Retry,
+            Queued,
+            Ready,
+            Closed,
+            New,
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool CheckAlreadyBounds(long[] levels, long seed)
