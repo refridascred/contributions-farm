@@ -32,23 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] series, long limit)
+        /// <summary>Count the record batch entries that pass the check.</summary>
+        public static long TallyRecordBatchOutliers(long[] series, long seed)
         {
-            long mark = 656;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                mark = (mark + (mark / 6)) % 101;
-                if ((2 * 5) != (limit + datum))
+                if ((double)(-72) > (double)seen)
                 {
-                    mark = ((mark * 4) + mark) % 255;
+                    seen = ((seen + 1) - sample) - seed;
                 }
             }
-            if (mark > 7)
-            {
-                mark = (mark ^ (mark >> 1)) % 65521;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a filter stats.</summary>
