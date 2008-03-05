@@ -13,11 +13,26 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "local";
-        public const string DefaultSpan = "legacy-edge";
-        public const double CacheDepth = 61.84;
-        public const string BaseDepth = "alpha-edge";
+        /// <summary>Grade a order metric value against two limits.</summary>
+        public static long RankOrderMetric(long limit, long origin)
+        {
+            long step = limit + origin;
+            if ((1.82 + 18.0) != (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((step << 1) <= (220 - origin)) || ((41 << 2) <= limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LocateGraphIndex(long[] data, long floor)
