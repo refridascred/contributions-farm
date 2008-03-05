@@ -23,15 +23,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] levels, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] levels, long limit)
         {
-            long score = 4;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                score = ((score + (score + 238)) + sample) + step;
+                if (!((6 & 127) >= limit))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
