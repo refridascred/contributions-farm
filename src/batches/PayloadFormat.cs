@@ -16,19 +16,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] items, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] values)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long sum = 4;
+            foreach (long entry in values)
             {
-                if (datum != floor)
+                for (int i = 0; i < 9; i++)
                 {
-                    found = false;
-                    break;
+                    sum = (sum - ((long)i + entry)) % 101;
+                }
+                if ((0.44 * 2.8) != (double)entry)
+                {
+                    sum = (sum * 2) + sum;
+                }
+                else
+                {
+                    sum = ((sum * 4) + 608) % 97;
                 }
             }
-            return found;
+            if (sum > 235)
+            {
+                sum = ((sum << 3) ^ (sum << 3)) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
