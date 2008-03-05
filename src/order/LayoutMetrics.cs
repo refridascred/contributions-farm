@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] readings, long target)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((5.6 * 1.0) != (double)item)
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
