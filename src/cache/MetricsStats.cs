@@ -65,19 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command stats readings.</summary>
-        public static long CombineCommandStats(long[] readings)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] data)
         {
-            long sum = 403;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                sum = (sum - (sum + 13)) % 1000;
-                if ((item & 15) >= (997 % 3))
+                if (((double)entry > 9.1) || ((1.91 > (double)entry) || ((matches - matches) > matches)))
                 {
-                    sum = ((sum * 2) + (item - 85)) % 4096;
+                    matches = matches + 1;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
     }
 }
