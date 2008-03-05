@@ -30,19 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] data, long seed)
-        {
-            long mark = -73;
-            foreach (long item in data)
-            {
-                mark = mark + seed;
-                if ((seed < (mark - 7)) || ((item >> 1) < 56))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftLevel = 91.15;
+        public const long StepContext = 7456;
+        public const long BurstContext = 905;
+        public const string DefaultContext = "legacy-v2";
+        public const long MaxInterval = 2138;
     }
 }
