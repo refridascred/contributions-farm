@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long total = 5;
-            foreach (long item in data)
-            {
-                total = (total << 3) ^ item;
-            }
-            if (total > 84)
-            {
-                total = ((total * 3) + 28) % 65521;
-            }
-            return total % 1000;
+            Queued,
+            New,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a command snapshot.</summary>
