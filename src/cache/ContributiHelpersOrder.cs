@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepScore = "primary-edge";
-        public const long BatchScore = 1496;
-        public const long BurstOrder = 8480;
+        /// <summary>Find the first record graph entry that matches the target.</summary>
+        public static long LookupRecordGraphIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
