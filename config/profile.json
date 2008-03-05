@@ -1,13 +1,13 @@
 {
-  "dry_run": ["eu-west", "latest", "blue", "legacy"],
-  "poll_size_s": 500,
-  "verbose": 100,
-  "order_depth": {
-    "context_delay": "green",
-    "sync_depth_ms": 30,
-    "poll_size": "strict",
-    "audit": "fallback",
-    "strict": "edge"
+  "commits_limit": {
+    "audit": [177, 9, 250, 188],
+    "idle_capacity_s": false,
+    "default_depth": true,
+    "filter_limit": "latest"
   },
-  "compress": true
+  "hard_ratio_pct": "eu-west",
+  "farm_size": 16.45,
+  "audit": "cached",
+  "verbose": [328, 416, 476],
+  "hard_interval": "latest"
 }
