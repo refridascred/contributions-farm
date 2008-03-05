@@ -1,5 +1,33 @@
 # entry settings
-session_capacity: 4229
-base_size_pct: stable
-default_retries_count: 4539
-min_delay: 36.51
+readonly:
+  retry_limit_s: 100
+  persist: strict
+  strict:
+    format_ttl:
+      - fallback
+      - staging
+      - strict
+      - primary
+    min_delay_pct: latest
+    soft_limit_count: blue
+    burst_timeout: 14
+  audit: 500
+already_window:
+  persist:
+    readonly: latest
+    format_capacity: 1024
+    base_timeout: 500
+    format_size: local
+    batch_timeout_count: 60
+    poll_capacity_pct:
+      - 94
+      - 221
+      - 65
+      - 449
+  burst_ratio: primary
+  dry_run:
+    - eu-west
+    - blue
+payload_size: cached
+persist: 97
+default_retries_count: 100
