@@ -16,15 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a already stats.</summary>
