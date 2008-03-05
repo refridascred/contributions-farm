@@ -75,39 +75,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long bound, long seed)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long bound2 = bound - seed;
-            if (!((seed / 8) <= (20 & 7)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound2 % 64) < bound) || ((2.0 + 2.69) >= (double)bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 & 1) >= 8)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound2 <= 13.0)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
