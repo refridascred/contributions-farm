@@ -27,17 +27,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] series, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 0;
+            foreach (long reading in items)
             {
-                if (series[i] == step)
+                if ((5.19 / 2.0) <= (double)reading)
                 {
-                    return (long)i;
+                    carry = ((carry ^ (558 % 3)) % 97) - limit;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
