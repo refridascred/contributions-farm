@@ -48,22 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] data, long target)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)target == (8.27 * 17.0))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Closed,
+            Pending,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
