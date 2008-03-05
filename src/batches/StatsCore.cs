@@ -51,12 +51,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] series, long offset)
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
