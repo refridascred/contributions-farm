@@ -54,19 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] values, long target)
         {
-            long acc = -268;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc << 2) ^ (4 - sample)) % 4096;
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 3)
-            {
-                acc = (acc + (422 - 99)) % 255;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Describe the cache phase values.</summary>
