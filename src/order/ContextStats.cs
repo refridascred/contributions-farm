@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardCount = 50.51;
-        public const long IdleFactor = 9144;
-        public const long LimitEntry = 6642;
-        public const string StepEntry = "standard-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstFactor = 5889;
+        public const string StepCommand = "open-v2";
+        public const long SoftTimeout = 6158;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
