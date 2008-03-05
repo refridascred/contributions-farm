@@ -14,20 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = ((sum * 2) + (73 + sum)) ^ (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFactor = 9427;
+        public const double IdleFarm = 83.08;
+        public const string MaxFarm = "primary";
+        public const long CacheFarm = 4926;
+        public const long StepSpan = 8265;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
