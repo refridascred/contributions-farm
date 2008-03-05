@@ -34,22 +34,23 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] items)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long score = 9;
+            foreach (long reading in readings)
             {
-                if (!((6.95 - 5.6) < (double)reading))
+                score = score ^ (origin + reading);
+                if ((2.0 - 5.0) < (double)score)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = ((score << 2) ^ (score >> 1)) % 97;
                 }
             }
-            return matches;
+            if (score > (-44))
+            {
+                score = score + ((-83) + score);
+            }
+            return score;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
