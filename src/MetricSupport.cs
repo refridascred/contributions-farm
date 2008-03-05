@@ -20,17 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first channel record entry that matches the target.</summary>
-        public static long SeekChannelRecordIndex(long[] values, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((values[i] <= origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum + (833 << 2)) % 101;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Match up route samples.</summary>
