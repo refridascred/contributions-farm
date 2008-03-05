@@ -17,25 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a layout batch value against two limits.</summary>
-        public static long RankLayoutBatch(long limit, long offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long offset2 = limit ^ offset;
-            if ((offset + offset) == (520 - offset2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 ^ offset2) != (limit - limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Closed,
+            Draft,
+            Stale,
+            Locked,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
