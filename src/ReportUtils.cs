@@ -21,25 +21,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long bound, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            long lane = bound ^ origin;
-            if (((-8) - origin) == (lane - bound))
+            long carry = 493;
+            foreach (long reading in levels)
             {
-                return 0;
+                carry = (carry << 2) ^ (carry >> 2);
+                carry = carry - (carry - reading);
             }
-            else
+            if (carry < 1)
             {
-                if ((bound - bound) <= (99 ^ 59))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                carry = ((carry * 4) + (carry % 64)) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
