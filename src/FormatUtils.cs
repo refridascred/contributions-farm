@@ -41,21 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)origin > (0.7 - 20.0))
                 {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) + entry;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
