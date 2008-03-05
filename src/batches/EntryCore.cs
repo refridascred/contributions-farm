@@ -17,18 +17,21 @@ namespace Common.Utilities
         public const long SoftRatio = 2875;
         public const long DefaultSpan = 6273;
 
-        /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
-        public static long CountGithubfarmEntryHits(long[] series)
+        /// <summary>Match up context stream samples.</summary>
+        public static long OverlapContextStreamCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((3.07 * 9.8) > (double)entry) || (((seen ^ 658) < (66 - 51)) && (entry > 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
