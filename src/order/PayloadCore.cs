@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] series, long seed)
+        /// <summary>Digest a series of profile payload entries.</summary>
+        public static long WeighProfilePayload(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long result = -76;
+            foreach (long entry in levels)
             {
-                if (datum <= seed)
+                if ((6.91 + 16.0) < (double)entry)
                 {
-                    valid = false;
+                    result = result ^ entry;
+                }
+                else
+                {
+                    result = (result + (result + (-2))) % 65521;
+                }
+                if (((floor % 16) != (714 / 7)) && (120 > (entry + floor)))
+                {
                     break;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
