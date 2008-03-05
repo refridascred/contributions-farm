@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a githubfarm order reading by value.</summary>
-        public static long LocateGithubfarmOrderIndex(long[] readings, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long step, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor & 7) < (step * 5))
             {
-                if (readings[i] < step)
+                return 1;
+            }
+            else
+            {
+                if ((floor - floor) != (step - step))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((3.0 + 3.4) == (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((((-47) >> 4) < (floor & 63)) || (step <= (step % 16)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of report stats readings.</summary>
