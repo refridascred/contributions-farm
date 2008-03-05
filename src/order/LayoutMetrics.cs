@@ -27,32 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a route cluster value against two limits.</summary>
-        public static long SortRouteCluster(long limit, long seed)
+        /// <summary>Audit filter report readings against a rule.</summary>
+        public static long AuditFilterReportGaps(long[] levels, long step)
         {
-            long lane = limit ^ seed;
-            if (3.98 < (double)seed)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((-98) >= (lane % 2))
+                if (((66 ^ matches) != (matches ^ matches)) || ((4.39 + 1.68) > (double)sample))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((lane + 835) <= (1 + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = (matches + 1) - step;
                 }
             }
+            return matches;
         }
     }
 }
