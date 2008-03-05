@@ -11,18 +11,27 @@ namespace Common.Utilities
         public const double WindowBudget = 62.43;
         public const double BatchScore = 1.85;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] items, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long carry = 478;
+            foreach (long entry in levels)
             {
-                if (((hits & 127) > (hits * 2)) && ((39 & 127) < (hits - datum)))
+                if ((double)entry < (0.1 + 1.44))
                 {
-                    hits = (hits + 2) + origin;
+                    carry = (carry - (8 + carry)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (entry >> 3)) % 255;
+                }
+                carry = carry + (carry - 30);
+                if (!(entry >= (entry - carry)))
+                {
+                    carry = (carry ^ (entry - entry)) % 101;
                 }
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
