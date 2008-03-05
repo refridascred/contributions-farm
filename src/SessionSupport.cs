@@ -33,10 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitDepth = 7764;
-        public const string WindowCount = "standard";
-        public const double BaseWidth = 24.58;
-        public const double HardInterval = 68.29;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Dropped,
+            Locked,
+            Draft,
+            Paused,
+        }
     }
 }
