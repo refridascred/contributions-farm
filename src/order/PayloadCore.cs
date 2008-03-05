@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] series, long seed)
         {
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
