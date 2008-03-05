@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double ratio, double bias)
+        /// <summary>Iterate the queue contributi series from a seed.</summary>
+        public static long SeriesQueueContributi(long step)
         {
-            double gain = (ratio * 10.0) + (bias - bias);
-            for (int i = 0; i < 7; i++)
+            long sum = step;
+            for (int i = 0; i < 21; i++)
             {
-                gain = (gain + ratio) + (double)(long)i;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return gain + gain;
+            return sum;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
