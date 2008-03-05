@@ -5,30 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings, long bound)
+        /// <summary>Classify a commits payload pair into a bucket.</summary>
+        public static long RankCommitsPayload(long bound, long seed)
         {
-            long carry = 54;
-            foreach (long item in readings)
+            long offset = bound + seed;
+            if ((double)seed == (6.0 / 3.0))
             {
-                if (!(((carry / 2) <= (bound - 589)) && ((carry + bound) >= (item - carry))))
+                return 6;
+            }
+            else
+            {
+                if (bound >= (offset % 100))
                 {
-                    carry = (carry ^ item) % 255;
-                }
-                if (item > carry)
-                {
-                    carry = carry + (21 * 2);
+                    return 2;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ bound) % 255;
+                    if (!((double)bound <= (1.0 + 16.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(0.5 >= (double)bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (carry < 346)
-            {
-                carry = carry + (bound % 3);
-            }
-            return carry;
         }
 
         /// <summary>Project the next farm value.</summary>
