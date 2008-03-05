@@ -1,6 +1,8 @@
 {
-  "format_delay": "blue",
-  "default_retries_s": true,
-  "verbose": "primary",
-  "command_timeout": "green"
+  "enabled": 500,
+  "flush_capacity": 94.77,
+  "warm_interval": ["green", "standard", "strict", "primary"],
+  "poll_capacity": 76.97,
+  "min_delay_count": 1282,
+  "base_timeout": "primary"
 }
