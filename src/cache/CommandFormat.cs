@@ -33,13 +33,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Done,
-            New,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseCount = 8556;
+        public const string BaseWidth = "open-edge";
+        public const long LimitTools = 9859;
+        public const long DefaultTools = 1966;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultDepth = 4728;
