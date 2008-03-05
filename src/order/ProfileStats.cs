@@ -28,18 +28,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "legacy-1";
+        public const long WindowToken = 7765;
+        public const string IdleToken = "primary-v2";
+        public const long LimitScore = 4174;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long FindChannelIndex(long[] samples, long target)
