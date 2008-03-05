@@ -42,17 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchRatio = 117;
+        public const long WindowBudget = 2670;
+        public const long HardCache = 3691;
+        public const long BurstCache = 5106;
+        public const string WindowFactor = "staging";
     }
 }
