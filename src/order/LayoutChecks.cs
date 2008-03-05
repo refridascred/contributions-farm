@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] levels, long origin)
+        /// <summary>Measure how many githubfarm queue samples are out of range.</summary>
+        public static long MeasureGithubfarmQueueHits(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (value > origin)
+                if (((5 / 6) > (cell + floor)) && ((cell + floor) <= (count >> 1)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
