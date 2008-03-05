@@ -52,18 +52,38 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many filter context samples are out of range.</summary>
-        public static long MeasureFilterContextMatches(long[] values)
+        /// <summary>Grade a counter entry value against two limits.</summary>
+        public static long RankCounterEntry(long target, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            if ((double)target < (7.83 * 1.0))
             {
-                if (4.14 <= (double)sample)
+                return 8;
+            }
+            else
+            {
+                if (!((bound - bound) >= bound))
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound >> 3) == (66 * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)bound == (2.9 * 4.6)) && ((4 & 1) < (269 + target)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
