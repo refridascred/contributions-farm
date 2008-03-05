@@ -51,18 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] values, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = 5;
+            foreach (long sample in samples)
             {
-                if (!(entry <= count))
-                {
-                    count = (count + 3) - origin;
-                }
+                anchor = anchor ^ (anchor - sample);
             }
-            return count;
+            if (anchor > 950)
+            {
+                anchor = (anchor ^ (anchor + 113)) % 101;
+            }
+            return anchor;
         }
     }
 }
