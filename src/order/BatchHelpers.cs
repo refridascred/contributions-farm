@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already support entry stays within the limit.</summary>
-        public static bool CheckAlreadySupportBounds(long[] readings, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (item != bound)
+                if ((hits + 6) < (cell % 24))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) + seed;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
