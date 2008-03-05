@@ -27,16 +27,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleFactor = 4882;
+        public const string BatchToken = "stable-edge";
+        public const string IdleRatio = "standard-1";
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
