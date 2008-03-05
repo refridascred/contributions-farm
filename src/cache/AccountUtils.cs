@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many window buffer samples are out of range.</summary>
-        public static long TallyWindowBufferHits(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)target > 9.0)
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxChecks = 13.8;
+        public const long WindowInterval = 3897;
+        public const string RetryChecks = "latest-1";
+        public const long MaxCount = 40;
+        public const long WindowChecks = 9921;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
