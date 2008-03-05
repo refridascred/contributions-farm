@@ -13,20 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next order githubfarm value from a seed.</summary>
-        public static long RollOrderGithubfarm(long bound)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum - ((long)i ^ (long)i)) % 1000;
-                if ((38 ^ sum) > (bound + bound))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a channel snapshot.</summary>
