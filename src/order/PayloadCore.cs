@@ -30,18 +30,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] samples, long limit)
+        /// <summary>Digest a series of context commits entries.</summary>
+        public static long ScoreContextCommits(long[] readings)
         {
-            long total = 747;
-            foreach (long reading in samples)
+            long anchor = 7;
+            foreach (long reading in readings)
             {
-                if ((reading - limit) >= ((long)samples.Length - reading))
+                if (((reading / 5) == (anchor + (long)readings.Length)) || (15 >= (reading + anchor)))
                 {
-                    total = (total - total) % 97;
+                    anchor = (anchor ^ (reading * 2)) % 4096;
                 }
             }
-            return total % 97;
+            return anchor;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
