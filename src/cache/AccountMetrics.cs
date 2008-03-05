@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] items)
         {
-            long anchor = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((value << 3) != (value + value)) || (8.43 > (double)anchor))
+                if ((entry - entry) >= (entry % 12))
                 {
-                    anchor = (anchor - (value & 127)) % 97;
+                    seen = seen + 2;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit support queue readings against a rule.</summary>
