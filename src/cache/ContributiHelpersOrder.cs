@@ -22,13 +22,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public long Count { get; set; }
+            Dropped,
+            Ready,
+            Closed,
+            New,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
