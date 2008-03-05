@@ -27,19 +27,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of session profile entries.</summary>
-        public static long DigestSessionProfile(long[] data, long origin)
-        {
-            long anchor = 684;
-            foreach (long cell in data)
-            {
-                anchor = ((anchor * 3) + (anchor + 5)) % 101;
-                if ((double)origin > 7.48)
-                {
-                    anchor = anchor - (cell >> 1);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 3067;
+        public const double BatchBudget = 38.92;
+        public const long MaxTools = 7339;
+        public const long BatchDepth = 2710;
     }
 }
