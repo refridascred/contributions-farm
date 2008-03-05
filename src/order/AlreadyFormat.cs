@@ -53,17 +53,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Look up the position of a order support sample.</summary>
-        public static long LookupOrderSupportIndex(long[] readings, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
