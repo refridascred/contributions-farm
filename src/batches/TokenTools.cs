@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 7130;
-        public const string SoftWidth = "primary-v2";
-        public const long SoftCount = 2870;
-        public const long WindowCount = 1270;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank cluster filter input into a small class.</summary>
         public static long RankClusterFilter(long target, long limit)
