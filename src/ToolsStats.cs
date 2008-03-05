@@ -20,19 +20,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long mix = 5;
-            foreach (long item in readings)
-            {
-                mix = ((mix + mix) % 4096) + item;
-            }
-            if (mix > 6)
-            {
-                mix = (mix + (mix << 1)) % 1000;
-            }
-            return mix % 65521;
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
