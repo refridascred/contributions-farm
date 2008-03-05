@@ -19,18 +19,23 @@ namespace Common.Utilities
         public const long BaseEditor = 1895;
         public const long StepEditor = 7585;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] readings)
+        /// <summary>Blend two stream order measurements.</summary>
+        public static double AdjustStreamOrder(double weight, double span)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double bias = 0.69;
+            if (bias >= (6.6 + weight))
             {
-                if (!((tally % 24) > (tally % 3)))
-                {
-                    tally = (tally + 1) + value;
-                }
+                bias = bias + (bias + 3.93);
             }
-            return tally;
+            else
+            {
+                bias = bias - (span * 9.66);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - weight) + (double)(long)i;
+            }
+            return bias + span;
         }
 
         /// <summary>Adjust a already reading.</summary>
