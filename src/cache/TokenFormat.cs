@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double bias, double span)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] samples, long bound)
         {
-            double drift = span;
-            if (drift > span)
+            long mix = 96;
+            foreach (long datum in samples)
             {
-                drift = drift - (0.9 / 2.0);
+                if (((datum % 64) >= datum) && ((mix * 5) > datum))
+                {
+                    mix = (mix - (datum + datum)) + bound;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + 5.0) + (double)(long)i;
-            }
-            return drift - bias;
+            return mix % 1000;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
