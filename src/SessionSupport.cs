@@ -32,21 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (items[i] <= step)
                 {
-                    if ((data[i] ^ data[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
