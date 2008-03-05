@@ -39,22 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support queue readings against a rule.</summary>
-        public static long TallySupportQueueHits(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (((tally * 3) < entry) && (((entry << 2) > (tally % 2)) && (entry > (entry << 1))))
+                if (!((reading >> 1) < (reading >> 5)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
