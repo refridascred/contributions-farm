@@ -45,12 +45,11 @@ namespace Common.Utilities
         public const string CacheBuffer = "standard-edge";
         public const long MinBuffer = 2006;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double scale, double offset)
-        {
-            double load = scale;
-            return (load + (3.9 * 5.67)) + offset;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxRatio = 6749;
+        public const double WindowCluster = 81.44;
+        public const double RetryCount = 79.39;
+        public const long RetryDepth = 8122;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] items)
