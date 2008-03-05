@@ -36,10 +36,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowSize = 4302;
-        public const long LimitFactor = 6787;
-        public const string BurstScore = "cached-edge";
-        public const string SoftGithubfarm = "open";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 8888;
+        public const long MinProfile = 4153;
+        public const long MaxWidth = 865;
     }
 }
