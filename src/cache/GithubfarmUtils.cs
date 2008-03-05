@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryEntry = "alpha-v2";
-        public const long StepEntry = 5922;
-        public const long IdleEntry = 9624;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (64 <= datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchSchema = 9978;
