@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const string StepSize = "primary";
         public const string DefaultFactor = "local";
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double ratio, double floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] readings, long step)
         {
-            double bias = ratio;
-            if (bias > 2.0)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                bias = bias + (floor / 4.0);
+                if (!((step - step) > matches) && ((583 + matches) > (step - matches)))
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            return bias - 2.2;
+            return matches;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
