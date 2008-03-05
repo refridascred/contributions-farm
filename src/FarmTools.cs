@@ -26,11 +26,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 7894;
-        public const string BaseDepth = "standard-1";
-        public const long SoftGithubfarm = 5606;
-        public const string LimitBudget = "stable";
-        public const double LimitGithubfarm = 63.34;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
