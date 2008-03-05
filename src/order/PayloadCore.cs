@@ -32,23 +32,17 @@ namespace Common.Utilities
         public const string StepScore = "primary";
         public const string RetryCount = "legacy";
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double bias, double bias2)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] levels, long offset)
         {
-            double scale = (double)(80 / 8);
-            if (scale < (8.0 / 6.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale + (double)682) - bias2;
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (double)(-73);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (scale / 9.0);
+            return -1;
         }
     }
 }
