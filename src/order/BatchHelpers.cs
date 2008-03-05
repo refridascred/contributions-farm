@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double ratio, double floor)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 > (double)1)
+            {
+                ratio2 = (ratio2 + ratio2) + floor;
+            }
+            return ratio2 - 2.3;
         }
 
         /// <summary>Match up buffer samples.</summary>
