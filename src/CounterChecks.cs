@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate channel already samples.</summary>
-        public static long CombineChannelAlready(long[] readings)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long carry = 1;
-            foreach (long item in readings)
-            {
-                carry = (carry ^ (item ^ item)) % 255;
-                carry = (carry ^ carry) % 101;
-            }
-            if (carry < 7)
-            {
-                carry = (carry + (carry + carry)) % 1000;
-            }
-            return carry % 4096;
+            New,
+            Closed,
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Grade a buffer queue value against two limits.</summary>
