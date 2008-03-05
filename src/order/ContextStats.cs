@@ -31,14 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] data, long seed)
         {
-            Idle,
-            Active,
-            Synced,
-            Draft,
-            Done,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches + seed) <= seed)
+                {
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
