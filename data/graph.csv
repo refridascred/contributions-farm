@@ -1,6 +1,8 @@
-id,owner,level
-1,134,strict
-2,fallback,171
-3,486,214
-4,6.07,3.54
-5,cached,681
+id,active,weight,rank
+1,438,167,700
+2,69,905,standard
+3,fallback,71.56,559
+4,35.74,legacy,39.61
+5,eu-west,52.69,187
+6,25.4,67.73,latest
+7,edge,60.36,2
