@@ -56,19 +56,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double gain, double offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double rate = gain / 9.0;
-            if (rate >= gain)
-            {
-                rate = rate - offset;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + gain;
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
