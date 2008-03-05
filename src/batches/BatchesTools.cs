@@ -35,19 +35,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheSize = "stable";
+        public const long RetrySpan = 8123;
+        public const long BatchChannel = 686;
+        public const double SoftSize = 74.54;
     }
 }
