@@ -16,11 +16,30 @@ namespace Common.Utilities
             return load - 10.0;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double weight, double bias)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            double ratio = (double)(982 / 5);
-            return (ratio - (weight - weight)) + bias;
+            long anchor = 23;
+            foreach (long sample in samples)
+            {
+                if ((sample >> 3) != (717 >> 3))
+                {
+                    anchor = ((anchor * 3) + (sample + 570)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor - sample;
+                }
+                if (((anchor - anchor) > (anchor + sample)) && (sample <= anchor))
+                {
+                    anchor = (anchor ^ (sample * 3)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor - anchor)) % 101;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
