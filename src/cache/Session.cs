@@ -15,10 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowCount = "local";
-        public const string LimitWidth = "primary";
-        public const string DefaultGithubfarm = "stable-v2";
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading != (8.9 - 1.79))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long RankGraph(long seed, long seed2)
