@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a stream farm value against two limits.</summary>
-        public static long SortStreamFarm(long origin, long target)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double gain, double bias)
         {
-            if (!((origin - target) >= origin))
+            double load = gain;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                load = ((load + (double)666) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((origin - target) >= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(origin >= (target * 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((target - 80) < (4 / 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return load + (double)(-746);
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
