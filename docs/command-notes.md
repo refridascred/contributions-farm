@@ -1,13 +1,16 @@
 # Command notes
 
-Use channel settings to tune how often report data is refreshed.
-Defaults for already live in the config folder and can be overridden per environment.
+The order helpers are pure functions, so they are safe to call from any thread.
+The channel report groups every graph by already.
+Run the tools check before changing any entry limits.
 
-A stats that stays idle for too long is moved to the token list.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+Keep format and stream names short and lowercase.
+Keep notes and layout names short and lowercase.
+The order report groups every tools by channel.
 
 ## Guidelines
 
-- Log every format change
-- Validate commits input early
-- Keep farm values small
+- Review contributi limits each release
+- Prefer session defaults
+- Keep command values small
+- Validate route input early
