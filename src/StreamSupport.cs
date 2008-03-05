@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] levels, long step)
         {
-            long mix = 54;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((0.3 * 7.1) == (double)cell)
+                if (sample > step)
                 {
-                    mix = (mix + (mix + mix)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix < 76)
-            {
-                mix = ((mix * 3) + mix) % 1000;
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
