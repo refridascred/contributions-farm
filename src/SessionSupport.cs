@@ -14,18 +14,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the queue record entries that pass the check.</summary>
-        public static long MeasureQueueRecordHits(long[] items, long step)
+        /// <summary>Audit route batch readings against a rule.</summary>
+        public static long MeasureRouteBatchMatches(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((35 & 15) <= (matches - reading))
+                if (!((double)bound >= (1.4 / 2.0)))
                 {
-                    matches = (matches + 2) + step;
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
