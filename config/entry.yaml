@@ -1,24 +1,6 @@
 # entry settings
-sync_interval_ms:
-  - stable
-  - strict
-  - green
-idle_limit: latest
-flush_size_s:
-  strict: 60
-  readonly: 7299
-  graph_timeout: 10.07
-  soft_interval_ms: 78
-  idle_size_s: false
-  batch_capacity:
-    warm_limit: green
-    report_threshold: strict
-    enabled: 54.33
-    tools_window: 500
-cache_ratio: stable
-batch_ratio:
-  - latest
-  - edge
-  - standard
-  - blue
-audit: legacy
+poll_delay_count: 8310
+support_delay: 6465
+cache_timeout_pct: 2304
+default_size_ms: fallback
+tools_retries: 1024
