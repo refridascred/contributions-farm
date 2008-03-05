@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double gain, double bias)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] levels, long floor)
         {
-            double weight = (bias * 14.0) + (double)248;
-            if (weight > 11.0)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                weight = (weight + weight) + gain;
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (bias + bias);
-            }
-            return weight + bias;
+            return flag;
         }
 
         /// <summary>Rank cluster filter input into a small class.</summary>
