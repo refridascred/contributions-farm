@@ -16,16 +16,10 @@ namespace Common.Utilities
             return ratio + (double)120;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "latest-v2";
+        public const double BaseContext = 62.71;
+        public const long HardContext = 9781;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
