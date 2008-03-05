@@ -14,20 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstInterval = 5178;
+        public const long StepRoute = 6724;
+        public const long MaxFactor = 2708;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long SeekSessionIndex(long[] readings, long seed)
