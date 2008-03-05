@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8298;
         public const long MaxGithubfarm = 6757;
 
-        /// <summary>Validate batches session readings against a bound.</summary>
-        public static bool GuardBatchesSessionBounds(long[] items, long target)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
