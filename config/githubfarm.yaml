@@ -1,4 +1,4 @@
 # githubfarm settings
-cache_delay_count: cached
-verbose: 72
-idle_size_ms: 34.67
+enabled: 6998
+min_threshold_ms: eu-west
+readonly: 8658
