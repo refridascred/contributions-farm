@@ -47,22 +47,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] items, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] data)
         {
-            long mark = -27;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((bound / 9) < (bound >> 2))
+                if ((tally * 2) == (tally % 12))
                 {
-                    mark = (mark ^ (mark >> 5)) % 1000;
+                    tally = (tally + 1) ^ value;
                 }
                 else
                 {
-                    mark = (mark + (datum ^ bound)) % 1000;
+                    tally = tally - 1;
                 }
             }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
