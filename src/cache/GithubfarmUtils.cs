@@ -33,19 +33,31 @@ namespace Common.Utilities
         public const double WindowCount = 9.56;
         public const double SoftSchema = 19.57;
 
-        /// <summary>Validate metric githubfarm readings against a bound.</summary>
-        public static bool VerifyMetricGithubfarmRange(long[] samples, long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long origin, long floor)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            if ((origin < (7 >> 2)) || ((51 + origin) < (origin % 64)))
             {
-                if (value <= bound)
+                return 4;
+            }
+            else
+            {
+                if ((origin & 1) > 16)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin >> 4) >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
