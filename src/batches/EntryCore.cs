@@ -29,11 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double rate, double bias)
+        /// <summary>Validate account command readings against a bound.</summary>
+        public static bool GuardAccountCommandLimits(long[] readings, long step)
         {
-            double rate2 = bias;
-            return (rate2 + (2.0 + 4.0)) + rate;
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
