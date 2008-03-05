@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Iterate the window metrics series from a seed.</summary>
+        public static long RollWindowMetrics(long seed)
         {
-            Queued,
-            Stale,
-            Retry,
+            long result = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 3) + (seed + 9)) % 97;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Measure how many tools batch samples are out of range.</summary>
