@@ -13,17 +13,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a already graph sample.</summary>
-        public static long SeekAlreadyGraphIndex(long[] series, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 9;
+            foreach (long sample in values)
             {
-                if (series[i] > target)
+                sum = ((sum * 4) + sum) + sample;
+                if (!!((seed - seed) <= (41 - seed)))
                 {
-                    return (long)i;
+                    sum = (sum - (seed & 7)) % 255;
+                }
+                if ((10.0 + 1.93) <= (double)seed)
+                {
+                    sum = (sum ^ 6) % 65521;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
