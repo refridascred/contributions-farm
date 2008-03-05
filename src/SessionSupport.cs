@@ -14,15 +14,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit profile metrics readings against a rule.</summary>
