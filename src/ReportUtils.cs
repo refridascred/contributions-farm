@@ -45,25 +45,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long origin, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] items, long offset)
         {
-            long diff = origin - limit;
-            if ((origin & 7) > (diff + origin))
+            long acc = 18;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((41 + limit) != (origin + limit))
+                if ((offset & 15) == (offset - 63))
                 {
-                    return 7;
+                    acc = acc + offset;
+                    acc = (acc + (78 & 15)) % 255;
                 }
-                else
+                if (!((acc * 5) > sample))
                 {
-                    return 8;
+                    acc = acc ^ (sample + sample);
                 }
             }
+            return acc;
         }
     }
 }
