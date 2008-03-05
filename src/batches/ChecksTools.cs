@@ -12,23 +12,19 @@ namespace Common.Utilities
             return (mean + (span / 6.0)) + scale;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] series)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] data, long floor)
         {
-            long sum = 45;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                bool found = ((entry + entry) >= 936) || ((entry / 4) >= 845);
-                if (!found)
+                if (reading <= floor)
                 {
-                    sum = (sum + sum) % 1000;
-                }
-                if ((sum * 4) >= (sum ^ entry))
-                {
-                    sum = (sum ^ (sum % 8)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Describe the metric phase values.</summary>
