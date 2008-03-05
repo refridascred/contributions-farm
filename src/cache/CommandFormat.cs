@@ -46,23 +46,12 @@ namespace Common.Utilities
             return weight - (double)60;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (sum <= (sum * 4))
-                {
-                    sum = (sum << 3) ^ (limit - limit);
-                }
-                else
-                {
-                    sum = (sum ^ limit) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Idle,
+            Locked,
+            Pending,
         }
     }
 }
