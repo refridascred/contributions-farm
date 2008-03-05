@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 586;
-        public const long HardTimeout = 2926;
-        public const string CacheCount = "fallback-v2";
-        public const long MaxContext = 4825;
-        public const long DefaultContext = 3316;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public double Region { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Blend two queue stream measurements.</summary>
         public static double AdjustQueueStream(double bias, double bias2)
