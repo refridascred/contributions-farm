@@ -1,12 +1,5 @@
 {
-  "poll_limit": 100,
-  "record_size": 9966,
-  "session_delay": [271, 240, 74, 147],
-  "report_delay": {
-    "retry_timeout_ms": "eu-west",
-    "idle_retries": 60,
-    "retry_limit_pct": "green"
-  },
-  "compress": 2999,
-  "base_limit": true
+  "stream_size": true,
+  "max_threshold_s": 500,
+  "window_window": true
 }
