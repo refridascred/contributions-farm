@@ -28,39 +28,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long origin, long target)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] readings, long origin)
         {
-            long diff = origin - target;
-            if ((97 - origin) != (221 + 734))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin > (double)diff)
+                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((diff % 97) < (target + 844)) && (6.8 <= (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target >= (diff & 31)) && ((origin / 3) != (diff % 10)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
