@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long seed, long origin)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            long slot = seed + origin;
-            if (((seed - origin) > (origin + origin)) || ((slot / 2) > 52))
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)slot <= (3.99 - 5.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state;
         }
 
         /// <summary>Classify a account token pair into a bucket.</summary>
