@@ -69,18 +69,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already queue samples are out of range.</summary>
-        public static long AuditAlreadyQueueGaps(long[] items, long seed)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long prev = floor - offset;
+            if (((-6) % 24) > (floor % 5))
             {
-                if (((((-254) << 3) >= (value ^ value)) && (seed > (seen & 1))) || ((3.88 / 5.0) <= (double)value))
+                return 6;
+            }
+            else
+            {
+                if ((prev << 1) >= (floor / 3))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset == (8.67 / 9.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (prev >= (offset / 9))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
