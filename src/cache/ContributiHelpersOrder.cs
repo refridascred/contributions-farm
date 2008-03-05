@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long limit, long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            if ((floor + 6) > (floor - floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((843 % 7) != (floor + 9)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Rank route input into a small class.</summary>
