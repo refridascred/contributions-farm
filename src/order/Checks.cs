@@ -46,18 +46,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order githubfarm samples.</summary>
-        public static long FoldOrderGithubfarm(long[] levels)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long state = 114;
-            foreach (long item in levels)
-            {
-                if ((double)14 == (double)item)
-                {
-                    state = state - item;
-                }
-            }
-            return state;
+            Synced,
+            Failed,
+            Done,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
