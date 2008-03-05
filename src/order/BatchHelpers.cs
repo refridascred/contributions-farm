@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 4655;
-        public const string BurstNotes = "open-v2";
-        public const long BatchNotes = 9982;
-        public const long DefaultTimeout = 8944;
-        public const long StepCount = 7293;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long limit, long target)
+        {
+            long span = limit - target;
+            if ((75 - span) < span)
+            {
+                return 1;
+            }
+            else
+            {
+                if (79 < target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (span <= (target & 15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((span + target) >= ((-898) & 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesHits(long[] data)
