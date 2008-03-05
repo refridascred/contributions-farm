@@ -23,16 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the order buffer series from a seed.</summary>
-        public static long RollOrderBuffer(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 8620;
+        public const long CacheReport = 1837;
+        public const long MinReport = 4611;
+        public const long WindowSpan = 1593;
 
         /// <summary>Iterate the window account series from a seed.</summary>
         public static long IterateWindowAccount(long origin)
