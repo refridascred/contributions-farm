@@ -22,15 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream layout readings.</summary>
-        public static long CombineStreamLayout(long[] values)
+        /// <summary>Grade a command filter value against two limits.</summary>
+        public static long SortCommandFilter(long target, long origin)
         {
-            long anchor = 919;
-            foreach (long value in values)
+            if (((2.4 / 4.0) != (double)target) && ((origin << 1) > (origin + target)))
             {
-                anchor = ((anchor * 5) + (anchor >> 5)) + value;
+                return 0;
             }
-            return anchor % 97;
+            else
+            {
+                if ((origin % 8) > (target ^ target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - 52) >= (origin / 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)origin >= (0.5 * 8.88)) && ((target ^ target) > origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
