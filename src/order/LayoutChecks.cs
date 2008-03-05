@@ -34,19 +34,24 @@ namespace Common.Utilities
         public const long StepRatio = 760;
         public const double MaxSize = 7.1;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] readings, long floor)
+        /// <summary>Fold a list of route layout readings.</summary>
+        public static long WeighRouteLayout(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long anchor = 11;
+            foreach (long value in series)
             {
-                if (sample != floor)
+                for (int i = 0; i < 4; i++)
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor ^ value) % 4096) - (long)i;
+                    anchor = ((anchor << 2) ^ (anchor - value)) % 65521;
                 }
+                anchor = anchor ^ (value - floor);
             }
-            return ready;
+            if (anchor < 365)
+            {
+                anchor = (anchor + (floor + anchor)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a counter record.</summary>
