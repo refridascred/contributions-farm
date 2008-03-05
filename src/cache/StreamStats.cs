@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double gain, double floor)
+        /// <summary>Count the format window entries that pass the check.</summary>
+        public static long CountFormatWindowOutliers(long[] samples, long bound)
         {
-            double weight = (double)(685 + 8);
-            if (weight > (double)500)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                weight = (weight + (double)9) + floor;
+                if ((bound + datum) <= bound)
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + gain) + (double)(long)i;
-            }
-            return weight - (weight / 9.0);
+            return matches;
         }
 
         /// <summary>Accumulate farm samples.</summary>
