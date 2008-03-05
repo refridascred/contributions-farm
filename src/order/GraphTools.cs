@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of cache schema readings.</summary>
-        public static long WeighCacheSchema(long[] readings, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] series)
         {
-            long result = 0;
-            foreach (long reading in readings)
+            long mark = 8;
+            foreach (long sample in series)
             {
-                if (0.63 >= (double)result)
+                mark = (mark ^ (mark % 2)) - sample;
+                if (mark >= (long)series.Length)
                 {
-                    result = ((result + offset) % 101) - reading;
+                    mark = (mark - (long)series.Length) % 4096;
                 }
             }
-            return result % 1000;
+            if (mark < (-98))
+            {
+                mark = (mark + (mark / 2)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Locate a format reading by value.</summary>
