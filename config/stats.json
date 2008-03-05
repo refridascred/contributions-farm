@@ -1,8 +1,14 @@
 {
-  "hard_timeout": 500,
-  "hard_capacity_pct": "primary",
-  "max_depth_s": 60,
-  "flush_delay_s": 0.53,
-  "already_threshold": "strict",
-  "base_ttl": 71
+  "compress": "latest",
+  "soft_threshold_pct": {
+    "flush_ratio": false,
+    "githubfarm_ttl": "staging",
+    "flush_interval_count": "strict",
+    "window_window": 90,
+    "persist": "cached",
+    "poll_depth_count": 250
+  },
+  "schema_interval": false,
+  "verbose": true,
+  "strict": "eu-west"
 }
