@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order context entry stays within the limit.</summary>
-        public static bool VerifyOrderContextRange(long[] levels, long seed)
+        /// <summary>Iterate the contributi stats series from a seed.</summary>
+        public static long RollContributiStats(long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample != seed)
+                long next = (score - score) + (score + floor);
+                if ((7.8 / 7.0) > (double)next)
                 {
-                    found = false;
-                    break;
+                    next = (next - (long)i) % 101;
                 }
+                score = (score * 2) + (0 - floor);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Hold a context entry.</summary>
