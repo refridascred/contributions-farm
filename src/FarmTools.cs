@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] samples, long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)count != (7.6 * 4.8))
-                {
-                    count = ((count + 2) + item) - offset;
-                }
-            }
-            return count;
+            Draft,
+            Pending,
+            Stale,
+            Locked,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
