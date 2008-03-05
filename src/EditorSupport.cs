@@ -63,19 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] samples, long limit)
         {
-            long mix = -1;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                mix = (mix - (item + item)) % 101;
-                if ((4.96 - 0.42) < (double)mix)
+                if (datum < limit)
                 {
-                    mix = mix + item;
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
