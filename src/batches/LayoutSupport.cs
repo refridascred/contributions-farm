@@ -27,18 +27,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] data, long step)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double weight, double bias)
         {
-            long count = 0;
-            foreach (long item in data)
+            double mean = weight;
+            if (mean < (double)7)
             {
-                if ((((count + 752) <= (item & 31)) && ((item + item) < (155 + 135))) && ((double)count >= (0.8 + 15.0)))
-                {
-                    count = (count + 1) - step;
-                }
+                mean = (mean + mean) + bias;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (0.1 * 2.6)) - (double)(long)i;
+            }
+            return mean - (double)(-41);
         }
 
         /// <summary>Fold a list of payload readings.</summary>
