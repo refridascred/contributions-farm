@@ -33,22 +33,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] levels, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] series)
         {
-            long sum = 592;
-            foreach (long cell in levels)
+            long anchor = 3;
+            foreach (long entry in series)
             {
-                if (8.0 > (double)seed)
-                {
-                    sum = sum ^ cell;
-                }
+                anchor = (anchor + anchor) ^ entry;
             }
-            if (sum < 157)
-            {
-                sum = (sum * 2) + (seed >> 5);
-            }
-            return sum % 65521;
+            return anchor;
         }
     }
 }
