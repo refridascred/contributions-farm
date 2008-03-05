@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the schema graph entries that pass the check.</summary>
-        public static long AuditSchemaGraphHits(long[] samples, long seed)
+        /// <summary>Classify a stats token pair into a bucket.</summary>
+        public static long SortStatsToken(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long offset = limit + origin;
+            if ((limit - 863) > (origin - origin))
             {
-                if (tally <= (500 & 63))
+                return 1;
+            }
+            else
+            {
+                if ((offset + limit) >= offset)
                 {
-                    tally = ((tally + 1) - value) - seed;
+                    return 6;
+                }
+                else
+                {
+                    if (!((2.35 - 10.0) == (double)limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the tools mode values.</summary>
