@@ -1,5 +1,6 @@
 {
-  "editor_capacity": 93.53,
-  "hard_delay": false,
-  "audit": [332, 54, 492, 201]
+  "githubfarm_timeout": "legacy",
+  "readonly": "latest",
+  "retry_interval_pct": 1605,
+  "support_ratio": 500
 }
