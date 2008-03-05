@@ -40,22 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] data)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if (((floor << 1) == (739 & 3)) && ((9.3 - 11.0) > (double)floor))
             {
-                if ((double)15 > (double)item)
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset) <= (offset - offset))
                 {
-                    seen = seen + 2;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((floor << 2) < (floor + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)floor != (9.8 / 8.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
