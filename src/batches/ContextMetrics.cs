@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftSize = 4050;
+        public const string SoftEntry = "stable";
+        public const long BaseSize = 586;
+        public const long StepEntry = 5479;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long offset, long origin)
