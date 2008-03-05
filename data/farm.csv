@@ -1,6 +1,6 @@
-id,count,weight,state
-1,fallback,standard,33.94
-2,852,509,local
-3,20,597,357
-4,98.55,eu-west,813
-5,blue,424,legacy
+id,token,region,rank
+1,419,54.22,53.71
+2,57.19,511,0.51
+3,423,266,edge
+4,70.11,edge,strict
+5,410,369,861
