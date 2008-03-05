@@ -27,10 +27,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 3067;
-        public const double BatchBudget = 38.92;
-        public const long MaxTools = 7339;
-        public const long BatchDepth = 2710;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double bias, double offset)
+        {
+            double load = offset + bias;
+            for (int i = 0; i < 3; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + offset;
+        }
     }
 }
