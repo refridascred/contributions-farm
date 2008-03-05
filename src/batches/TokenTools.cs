@@ -37,20 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] items, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (item < bound)
                 {
-                    carry = (carry - (bound - 157)) + (long)i2;
-                    carry = (carry << 2) ^ carry;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return flag;
         }
     }
 }
