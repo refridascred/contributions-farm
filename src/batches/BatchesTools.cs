@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] data)
         {
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)15 > (double)item)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
