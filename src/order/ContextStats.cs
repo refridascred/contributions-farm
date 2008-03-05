@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] items, long limit)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen / 3) <= (seen ^ seen))
-                {
-                    seen = ((seen + 1) - value) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a cache header.</summary>
