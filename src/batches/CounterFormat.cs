@@ -30,11 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftLevel = 91.15;
-        public const long StepContext = 7456;
-        public const long BurstContext = 905;
-        public const string DefaultContext = "legacy-v2";
-        public const long MaxInterval = 2138;
+        /// <summary>Audit graph schema readings against a rule.</summary>
+        public static long TallyGraphSchemaMatches(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (origin > (origin + origin))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
+        }
     }
 }
