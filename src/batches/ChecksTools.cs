@@ -27,17 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] values, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double gain, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = offset;
+            if (mean >= (double)596)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                mean = (mean + offset) + gain;
             }
-            return -1;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define already limits and defaults.</summary>
