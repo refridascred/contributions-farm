@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseSpan = 3120;
-        public const long HardCounter = 1884;
-        public const double SoftCounter = 26.93;
-        public const long DefaultCounter = 1793;
-        public const string MaxCounter = "legacy";
+        /// <summary>Count the entry schema entries that pass the check.</summary>
+        public static long TallyEntrySchemaOutliers(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((item + offset) != (count / 9)) || ((double)offset < (double)count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountHits(long[] data, long seed)
