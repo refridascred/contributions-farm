@@ -57,15 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Look up the position of a payload command sample.</summary>
+        public static long LookupPayloadCommandIndex(long[] levels, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if ((levels[i] == target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
