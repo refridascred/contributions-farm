@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] items, long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (items[i] > seed)
+                mix = (mix ^ ((long)i - step)) % 255;
+                mix = mix ^ (45 + step);
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    mix = (mix + ((long)i + mix)) - (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a metric header.</summary>
