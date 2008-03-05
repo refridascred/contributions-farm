@@ -28,19 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit report channel readings against a rule.</summary>
-        public static long TallyReportChannelOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (!((seen << 2) <= (item % 24)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 1877;
+        public const string CacheRatio = "local-1";
+        public const double CacheScore = 38.3;
+        public const double LimitSession = 29.26;
+        public const long StepSession = 9222;
 
         /// <summary>Match up counter entry samples.</summary>
         public static long OverlapCounterEntryCount(long[] series)
