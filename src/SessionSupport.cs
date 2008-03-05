@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Dropped,
-            Locked,
-            Draft,
-            Paused,
+            Ready,
+            Stale,
+            Closed,
         }
     }
 }
