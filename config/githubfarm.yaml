@@ -1,9 +1,8 @@
 # githubfarm settings
-metric_ttl: 5.05
-cache_capacity_ms:
-  - standard
-  - blue
-  - standard
-  - legacy
-filter_size: true
-min_depth: strict
+default_depth_s: true
+flush_capacity_ms: blue
+batch_depth_ms:
+  - 230
+  - 151
+  - 95
+  - 1
