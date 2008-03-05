@@ -26,18 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] values, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((reading + matches) < (reading * 2))
+                if (sample <= target)
                 {
-                    matches = (matches + 3) + step;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
