@@ -29,25 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long origin, long target)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            long span = origin - target;
-            if ((span << 3) <= 804)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span + span) > (39 - span))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
