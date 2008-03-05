@@ -52,15 +52,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] series)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] readings)
         {
             long tally = 0;
-            foreach (long entry in series)
+            foreach (long value in readings)
             {
-                if (((4 + tally) > (entry / 4)) && !((entry * 5) < tally))
+                if ((value / 4) != (tally + tally))
                 {
-                    tally = tally + 2;
+                    tally = tally + 1;
                 }
             }
             return tally;
