@@ -24,22 +24,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next farm editor value from a seed.</summary>
-        public static long RollFarmEditor(long seed)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                long lane = seed;
-                carry = ((carry * 3) + (lane % 3)) % 65521;
-                if (!(lane >= (lane + (long)i)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    long edge = (seed + seed) & 255;
-                    lane = (lane * 5) + edge;
+                    acc = (((acc << 3) ^ 14) % 65521) + (long)i2;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
