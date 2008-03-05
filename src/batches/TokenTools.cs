@@ -27,19 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long state = 18;
-            foreach (long item in levels)
-            {
-                state = ((state << 2) ^ (660 - 479)) + item;
-                if ((13.0 * 4.51) >= (double)state)
-                {
-                    break;
-                }
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
