@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long offset, long floor)
+        /// <summary>Combine checks tools values into a single score.</summary>
+        public static long TallyChecksTools(long[] samples, long bound)
         {
-            long lane = offset ^ floor;
-            if (floor >= (lane << 3))
+            long total = 235;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset << 2) == (floor - offset))
+                if ((total & 63) > bound)
                 {
-                    return 4;
+                    total = ((total ^ total) % 101) + item;
                 }
                 else
                 {
-                    if ((offset ^ lane) < (floor / 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = (total * 5) + total;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
