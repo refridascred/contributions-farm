@@ -22,15 +22,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                result = result ^ (floor % 7);
+                if ((floor * 2) < 8)
+                {
+                    result = ((result << 2) ^ (result >> 5)) % 101;
+                }
+                else
+                {
+                    result = (result - (97 << 3)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Describe the cache phase values.</summary>
