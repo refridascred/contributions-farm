@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] data, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] items)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long total = 551;
+            foreach (long item in items)
             {
-                if (!(8.0 < (double)count) || ((double)entry > (double)358))
+                if ((total & 7) >= (item & 15))
                 {
-                    count = (count + 1) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = (total ^ (total >> 5)) % 4096;
                 }
             }
-            return count;
+            if (total > 8)
+            {
+                total = (total << 3) ^ (total >> 5);
+            }
+            return total;
         }
 
         /// <summary>Blend two cluster order measurements.</summary>
