@@ -1,6 +1,6 @@
-id,active,state,owner,rank
-1,eu-west,38.33,cached,stable
-2,849,681,green,279
-3,231,open,blue,94.89
-4,977,905,82.23,72.28
-5,289,408,58.46,629
+id,token,count,active
+1,stable,825,444
+2,green,178,latest
+3,16.9,92.61,standard
+4,851,34.19,567
+5,blue,33.76,latest
