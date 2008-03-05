@@ -29,10 +29,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 1909;
-        public const string SoftGithubfarm = "cached-v2";
-        public const string MaxTimeout = "primary";
-        public const long CacheDepth = 4847;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] levels)
+        {
+            long acc = 5;
+            foreach (long cell in levels)
+            {
+                acc = ((acc - (acc - (-9))) % 255) - cell;
+            }
+            return acc;
+        }
     }
 }
