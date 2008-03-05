@@ -49,18 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] data, long step)
         {
-            long mark = 0;
-            foreach (long entry in data)
+            long anchor = 59;
+            foreach (long sample in data)
             {
-                if ((6.49 - 5.1) > (double)mark)
+                anchor = anchor ^ (-71);
+                if ((2.8 * 13.0) < (double)sample)
                 {
-                    mark = mark - (58 ^ entry);
+                    anchor = (anchor ^ (anchor + step)) % 255;
                 }
             }
-            return mark;
+            return anchor % 65521;
         }
     }
 }
