@@ -13,14 +13,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Ready,
-            Failed,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "local";
+        public const string DefaultSpan = "legacy-edge";
+        public const double CacheDepth = 61.84;
+        public const string BaseDepth = "alpha-edge";
 
         /// <summary>Compare every pair of report account readings.</summary>
         public static long PairReportAccountCount(long[] levels)
