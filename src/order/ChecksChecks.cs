@@ -20,10 +20,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxSize = 6878;
-        public const string MinTimeout = "standard-edge";
-        public const long IdleBudget = 3246;
-        public const long HardCommand = 2686;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardWidth = "standard-edge";
+        public const long SoftScore = 8161;
+        public const string IdleWidth = "legacy-1";
     }
 }
