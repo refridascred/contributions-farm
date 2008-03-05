@@ -46,11 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double weight, double offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double scale = (double)0 / 6.0;
-            return (scale - (weight - weight)) + offset;
+            Draft,
+            Queued,
+            Active,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the session class values.</summary>
