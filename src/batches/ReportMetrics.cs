@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] series, long seed)
+        /// <summary>Fold a list of schema metrics readings.</summary>
+        public static long TallySchemaMetrics(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 775;
+            foreach (long entry in samples)
             {
-                if (series[i] > seed)
+                if (entry > (limit + 188))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (entry / 5);
+                }
+                score = score ^ (score % 97);
+                if ((limit + score) <= score)
+                {
+                    score = (score * 3) + (entry - score);
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
