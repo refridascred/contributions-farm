@@ -28,18 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] series)
+        /// <summary>Adjust a already farm reading.</summary>
+        public static double SmoothAlreadyFarm(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double load = (7.51 * 0.9) - (offset + offset);
+            if (load >= (weight * 5.7))
             {
-                if (((double)matches != (9.0 * 5.22)) || ((matches - matches) < (datum - 6)))
-                {
-                    matches = matches + 2;
-                }
+                load = load - (offset + weight);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + 4.5) + (double)(long)i;
+            }
+            return load + weight;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
