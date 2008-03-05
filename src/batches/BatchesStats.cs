@@ -33,18 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] values)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long carry = -182;
-            foreach (long cell in values)
-            {
-                if ((carry + 897) < (carry % 100))
-                {
-                    carry = (carry + (cell - carry)) % 255;
-                }
-            }
-            return carry;
+            New,
+            Ready,
+            Failed,
+            Retry,
         }
     }
 }
