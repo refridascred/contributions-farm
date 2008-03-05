@@ -13,24 +13,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] values, long seed)
-        {
-            long sum = 9;
-            foreach (long sample in values)
-            {
-                sum = ((sum * 4) + sum) + sample;
-                if (!!((seed - seed) <= (41 - seed)))
-                {
-                    sum = (sum - (seed & 7)) % 255;
-                }
-                if ((10.0 + 1.93) <= (double)seed)
-                {
-                    sum = (sum ^ 6) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 81.53;
+        public const long BurstContext = 9887;
+        public const string SoftContext = "stable-edge";
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long WeighBatch(long[] readings, long offset)
