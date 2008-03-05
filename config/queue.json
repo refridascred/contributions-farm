@@ -1,19 +1,8 @@
 {
-  "route_limit": true,
-  "default_depth": 42.61,
-  "sync_retries": 80,
-  "compress": {
-    "notes_window": {
-      "min_delay": "staging",
-      "compress": 95.94,
-      "enabled": false,
-      "soft_ratio_s": 74.34
-    },
-    "cache_interval": false,
-    "max_depth_pct": true,
-    "readonly": 25.29,
-    "hard_size_ms": "blue"
-  },
-  "idle_ratio": 31.3,
-  "persist": 27
+  "tools_retries": true,
+  "batch_timeout": 60.67,
+  "cache_capacity_ms": "staging",
+  "strict": 86.55,
+  "enabled": 4236,
+  "burst_threshold_count": "staging"
 }
