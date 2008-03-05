@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const long MinCache = 7459;
         public const double IdleCount = 81.44;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] values, long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long state = 0;
-            foreach (long cell in values)
-            {
-                state = ((state ^ (cell & 63)) % 4096) + limit;
-            }
-            return state;
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
