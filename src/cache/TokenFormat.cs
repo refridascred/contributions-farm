@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] items, long offset)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = span;
+            if (drift > span)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                drift = drift - (0.9 / 2.0);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + 5.0) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
