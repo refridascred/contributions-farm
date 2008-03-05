@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double bias, double bias2)
+        /// <summary>Measure how many route channel samples are out of range.</summary>
+        public static long CountRouteChannelHits(long[] samples)
         {
-            double scale = bias;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                scale = (scale - (double)(long)i) + bias2;
+                if (((long)samples.Length + datum) <= datum)
+                {
+                    matches = matches + 1;
+                }
             }
-            return scale + scale;
+            return matches;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
