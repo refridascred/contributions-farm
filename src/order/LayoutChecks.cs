@@ -37,10 +37,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 8227;
-        public const long StepTimeout = 596;
-        public const long DefaultReport = 4441;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Dropped,
+            Queued,
+            Locked,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
