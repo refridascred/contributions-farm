@@ -48,13 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long target)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public bool Total { get; set; }
+            long mark = target;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = (mark + ((long)i * 3)) ^ (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
