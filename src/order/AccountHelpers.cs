@@ -15,15 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Find the first format commits entry that matches the target.</summary>
+        public static long LocateFormatCommitsIndex(long[] data, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a entry summary.</summary>
