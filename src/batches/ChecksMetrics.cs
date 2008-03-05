@@ -62,38 +62,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a batch stream pair into a bucket.</summary>
-        public static long GradeBatchStream(long target, long limit)
+        /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
+        public static bool CheckTokenGithubfarmLimits(long[] readings, long limit)
         {
-            if (target <= (30 ^ target))
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2.69 / 8.0) >= (5.2 + 8.62))
+                if (cell >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((515 + limit) > (target % 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit + 928) > (limit + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
