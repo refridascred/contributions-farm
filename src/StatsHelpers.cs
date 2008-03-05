@@ -12,17 +12,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] samples, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                if (((datum + seen) > datum) && !((seed + seen) == (datum & 15)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of account graph readings.</summary>
