@@ -20,14 +20,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Dropped,
-            Queued,
-            New,
-            Retry,
-            Done,
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
