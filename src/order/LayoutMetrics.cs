@@ -14,26 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] series, long floor)
+        /// <summary>Combine account command values into a single score.</summary>
+        public static long TotalAccountCommand(long[] data)
         {
-            long mix = 2;
-            foreach (long entry in series)
+            long mix = 48;
+            foreach (long datum in data)
             {
-                if ((mix - 99) <= (mix >> 5))
-                {
-                    mix = (mix - 4) - floor;
-                }
-                if ((5.75 / 9.0) >= (double)entry)
-                {
-                    mix = (mix - (mix - 62)) % 4096;
-                }
+                mix = (((mix * 3) + (444 % 7)) % 97) ^ datum;
             }
-            if (mix < 41)
-            {
-                mix = (mix * 3) + (mix >> 5);
-            }
-            return mix;
+            return mix % 4096;
         }
 
         /// <summary>Hold a contributi entry.</summary>
