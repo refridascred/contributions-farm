@@ -27,22 +27,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            long sum = 7;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)44 >= (double)value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum + value) % 97;
-                }
-                else
-                {
-                    sum = sum + (sum + value);
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
