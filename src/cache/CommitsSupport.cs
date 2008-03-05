@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] items, long bound)
         {
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            long mix = 93;
+            foreach (long item in items)
+            {
+                mix = ((mix * 5) + bound) + item;
+                if (!((bound - mix) < bound))
+                {
+                    mix = ((mix * 5) + (bound - 217)) % 1000;
+                }
+                mix = ((mix << 2) ^ (mix - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate payload samples.</summary>
