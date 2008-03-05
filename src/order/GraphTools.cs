@@ -62,11 +62,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 3896;
-        public const string RetryTimeout = "standard";
-        public const long DefaultInterval = 6483;
-        public const long RetryCluster = 8484;
-        public const string MinCluster = "staging-v2";
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
