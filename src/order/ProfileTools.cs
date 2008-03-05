@@ -22,14 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitTimeout = "primary-edge";
+        public const long CacheSpan = 3709;
+        public const double LimitRoute = 78.13;
+        public const long MaxCount = 1353;
+        public const long DefaultLevel = 1236;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long IdleFactor = 4882;
