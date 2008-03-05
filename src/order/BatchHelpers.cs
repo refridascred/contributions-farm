@@ -23,13 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            public double Token { get; set; }
-            public double Region { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long score = 628;
+            foreach (long sample in samples)
+            {
+                if ((sample * 4) < sample)
+                {
+                    score = ((score * 3) + sample) % 65521;
+                }
+                if ((score - score) >= (score + sample))
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a stats stats.</summary>
