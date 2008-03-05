@@ -50,14 +50,17 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Look up the position of a order support sample.</summary>
+        public static long LookupOrderSupportIndex(long[] readings, long origin)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Synced,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
