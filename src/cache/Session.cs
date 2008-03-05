@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every cache filter entry stays within the limit.</summary>
-        public static bool VerifyCacheFilterRange(long[] values, long origin)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Synced,
+            Pending,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
