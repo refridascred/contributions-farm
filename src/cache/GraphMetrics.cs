@@ -24,15 +24,39 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long floor, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long diff = floor ^ limit;
+            if ((limit - 4) >= (diff * 2))
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((limit + diff) >= (diff << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((3.99 + 8.32) <= (double)diff) && ((floor >> 3) <= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((diff >> 5) == (diff + limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
