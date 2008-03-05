@@ -15,11 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "alpha-edge";
-        public const long MaxOrder = 6981;
-        public const long DefaultRatio = 8880;
-        public const double BurstOrder = 48.7;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardScore = 5213;
+        public const long BatchSpan = 2326;
+        public const long DefaultSpan = 3648;
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long GradeBatch(long bound, long seed)
