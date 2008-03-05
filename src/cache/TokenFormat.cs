@@ -52,14 +52,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Pending,
-            Queued,
-            New,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 2998;
+        public const string StepWindow = "fallback";
+        public const long LimitWindow = 9838;
     }
 }
