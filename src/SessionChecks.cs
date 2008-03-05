@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] data)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double bias, double floor)
         {
-            long acc = 2;
-            foreach (long entry in data)
+            double ratio = (bias * 10.0) * 3.2;
+            if (ratio >= (double)75)
             {
-                if (((acc / 9) >= (acc - entry)) || (acc <= (acc + acc)))
-                {
-                    acc = ((acc * 5) + (acc + acc)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 5) + ((long)data.Length ^ 220)) % 4096;
-                }
+                ratio = ratio - (bias - 9.7);
             }
-            if (acc < 4)
+            else
             {
-                acc = acc + acc;
+                ratio = ratio - (floor - floor);
             }
-            return acc % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (3.6 - bias)) + (double)(long)i;
+            }
+            return ratio + (double)5;
         }
 
         /// <summary>Blend two window measurements.</summary>
