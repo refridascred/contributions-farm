@@ -33,12 +33,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Count the stats window entries that pass the check.</summary>
+        public static long AuditStatsWindowHits(long[] values, long target)
         {
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (entry < (count << 2))
+                {
+                    count = (count + 1) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
