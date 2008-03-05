@@ -14,14 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Idle,
-            Retry,
-            New,
+            Active,
+            Closed,
+            Draft,
             Locked,
-            Paused,
         }
 
         /// <summary>Roll a stream layout counter forward.</summary>
