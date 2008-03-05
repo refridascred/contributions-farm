@@ -45,19 +45,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double rate, double floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long offset, long origin)
         {
-            double gain = (rate * 19.0) / 9.0;
-            if (gain <= gain)
+            if (origin >= (origin ^ 17))
             {
-                gain = gain + floor;
+                return 0;
             }
             else
             {
-                gain = gain + (double)7;
+                if ((origin >> 5) >= (offset + 799))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return gain + (rate + 0.68);
         }
 
         /// <summary>Fold a list of command stats readings.</summary>
