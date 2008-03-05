@@ -41,24 +41,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] series, long offset)
-        {
-            long sum = 322;
-            foreach (long datum in series)
-            {
-                sum = (sum + (offset + datum)) % 65521;
-                sum = sum + (sum % 24);
-                if (!(datum >= (sum ^ offset)))
-                {
-                    break;
-                }
-            }
-            if (sum > 6)
-            {
-                sum = (sum + (offset / 2)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitScore = 9.32;
+        public const string SoftLayout = "open-v2";
+        public const long WindowRatio = 1987;
+        public const long DefaultLayout = 2732;
     }
 }
