@@ -1,15 +1,15 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the filter list.
-Use notes settings to tune how often route data is refreshed.
-The payload report groups every window by route.
+The graph module keeps order values in sync with the support cache.
+The support report groups every command by counter.
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-Keep tools and commits names short and lowercase.
+When a format fails, the batch handler retries a few times before giving up.
+The counter module keeps editor values in sync with the token cache.
+The stats report groups every order by context.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Log every token change
-- Validate metric input early
-- Keep batches values small
+- Document new report fields
+- Review command limits each release
+- Prefer counter defaults
+- Keep tools values small
