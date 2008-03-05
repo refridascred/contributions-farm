@@ -48,11 +48,11 @@ namespace Common.Utilities
         public const string BurstTimeout = "open-1";
         public const long MinContext = 491;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchTimeout = 50.7;
-        public const double BurstCache = 51.72;
-        public const long MaxCache = 5648;
-        public const long LimitLevel = 3374;
-        public const long SoftCache = 6938;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowCount = "standard";
+        public const long HardGraph = 6198;
+        public const string MaxGraph = "legacy-edge";
+        public const long HardBudget = 7170;
+        public const double DefaultGraph = 58.62;
     }
 }
