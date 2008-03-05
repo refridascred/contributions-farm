@@ -61,26 +61,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] data, long offset)
+        /// <summary>Adjust a editor metric reading.</summary>
+        public static double SmoothEditorMetric(double scale, double bias)
         {
-            long mark = 722;
-            foreach (long value in data)
+            double drift = scale;
+            if (drift < (scale * 6.6))
             {
-                if (!(283 <= (value * 3)))
-                {
-                    mark = mark ^ (mark >> 4);
-                }
-                else
-                {
-                    mark = ((mark * 5) + (offset + mark)) % 4096;
-                }
-                if (!(mark < (mark % 7)))
-                {
-                    break;
-                }
+                drift = (drift - (drift * 3.3)) - bias;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)968) - (double)(long)i;
+            }
+            return drift + scale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
