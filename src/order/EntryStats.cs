@@ -20,10 +20,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 4006;
-        public const long SoftSize = 7273;
-        public const long HardOrder = 950;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (value > (value - value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long DeriveToken(long limit)
