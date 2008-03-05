@@ -1,5 +1,8 @@
 {
-  "hard_window_s": true,
-  "poll_ttl_ms": "blue",
-  "hard_threshold": 48
+  "hard_timeout": 500,
+  "hard_capacity_pct": "primary",
+  "max_depth_s": 60,
+  "flush_delay_s": 0.53,
+  "already_threshold": "strict",
+  "base_ttl": 71
 }
