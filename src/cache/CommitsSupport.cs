@@ -48,19 +48,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count >> 2) == (limit + reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFarm = 35.52;
+        public const long MaxFarm = 6455;
+        public const long DefaultSpan = 2964;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatHits(long[] samples, long target)
