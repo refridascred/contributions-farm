@@ -69,13 +69,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Blend two tools order measurements.</summary>
+        public static double ScaleToolsOrder(double scale, double offset)
         {
-            Ready,
-            Pending,
-            Dropped,
-            New,
+            double ratio = offset;
+            if (ratio <= ratio)
+            {
+                ratio = (ratio + ratio) + scale;
+            }
+            else
+            {
+                ratio = ratio - (offset / 7.0);
+            }
+            return ratio - offset;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
