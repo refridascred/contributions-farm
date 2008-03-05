@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] levels, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 100;
+            foreach (long datum in samples)
             {
-                if ((levels[i] == step) && ((levels[i] % 2) != 0))
+                if ((double)datum > (double)sum)
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + (1 - datum)) % 101;
+                }
+                if (((5 - sum) != (96 % 24)) || ((double)offset <= (7.0 + 7.3)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum < (-312))
+            {
+                sum = sum ^ (1 % 3);
+            }
+            return sum % 97;
         }
 
         /// <summary>Combine account editor values into a single score.</summary>
