@@ -35,19 +35,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] readings, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long step)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return flag;
+            return acc;
         }
     }
 }
