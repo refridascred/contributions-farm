@@ -41,19 +41,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double scale, double span)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] values, long limit)
         {
-            double load = (double)789 + span;
-            if (load >= (load * 8.36))
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - span) - scale;
+                if ((values[i] < limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (double)311;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
