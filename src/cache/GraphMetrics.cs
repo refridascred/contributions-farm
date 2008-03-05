@@ -20,39 +20,14 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long floor, long limit)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long diff = floor ^ limit;
-            if ((limit - 4) >= (diff * 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit + diff) >= (diff << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((3.99 + 8.32) <= (double)diff) && ((floor >> 3) <= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((diff >> 5) == (diff + limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
