@@ -49,21 +49,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step2 = step ^ seed;
+            if ((step2 + seed) <= seed)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((step <= (step2 + step2)) && ((seed ^ (-101)) >= step2))
                 {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
     }
 }
