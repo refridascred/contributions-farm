@@ -19,32 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long bound, long bound2)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] readings, long floor)
         {
-            long slot = bound ^ bound2;
-            if ((bound2 >> 3) <= (bound + bound2))
+            long sum = -7;
+            foreach (long value in readings)
             {
-                return 2;
+                sum = (sum + (floor + floor)) - value;
             }
-            else
+            if (sum > 144)
             {
-                if (((4 & 127) >= (slot - slot)) || ((bound2 << 1) <= (bound & 127)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)slot > 2.4)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                sum = (sum - (sum + floor)) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
