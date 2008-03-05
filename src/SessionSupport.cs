@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] readings, long step)
+        /// <summary>Count the queue record entries that pass the check.</summary>
+        public static long MeasureQueueRecordHits(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (value <= step)
+                if ((35 & 15) <= (matches - reading))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + step;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
