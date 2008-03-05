@@ -14,15 +14,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] readings, long step)
         {
-            long total = 8;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                total = ((total - (total & 7)) % 1000) - value;
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total % 65521;
+            return valid;
         }
 
         /// <summary>Describe the checks kind values.</summary>
