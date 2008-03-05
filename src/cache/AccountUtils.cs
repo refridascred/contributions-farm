@@ -27,12 +27,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Idle,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleBudget = 7062;
+        public const long CacheMetrics = 3678;
+        public const string MaxTimeout = "primary-edge";
+        public const long LimitMetrics = 6239;
+        public const long WindowTimeout = 9304;
     }
 }
