@@ -36,12 +36,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Fold a list of metrics order readings.</summary>
+        public static long WeighMetricsOrder(long[] items, long step)
         {
-            Draft,
-            Locked,
-            Dropped,
+            long score = 2;
+            foreach (long reading in items)
+            {
+                if (9 <= (score * 3))
+                {
+                    score = (score << 3) ^ (reading & 63);
+                    score = ((score << 2) ^ (score / 3)) % 255;
+                }
+                score = ((score * 3) + (reading + reading)) % 65521;
+            }
+            if (score > 50)
+            {
+                score = (score - (score + step)) % 101;
+            }
+            return score;
         }
     }
 }
