@@ -1,12 +1,5 @@
 # githubfarm settings
-batches_ratio:
-  - 364
-  - 71
-  - 163
-verbose: staging
-dry_run: false
-strict:
-  - 322
-  - 486
-sync_limit_pct: 53.81
-idle_interval_ms: true
+retry_capacity_count: cached
+soft_retries_count: true
+min_delay_s: cached
+tools_interval: fallback
