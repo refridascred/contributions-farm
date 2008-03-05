@@ -69,15 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] values, long target)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] items)
         {
             long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((target + 511) < 0)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) - value;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
