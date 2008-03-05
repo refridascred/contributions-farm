@@ -33,15 +33,31 @@ namespace Common.Utilities
         public const long MinSpan = 2520;
         public const string SoftScore = "open-1";
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] series, long target)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long offset, long floor)
         {
-            long sum = 24;
-            foreach (long sample in series)
+            if ((offset * 5) >= ((-6) + floor))
             {
-                sum = (((sum ^ sum) % 97) + sample) + target;
+                return 2;
             }
-            return sum % 97;
+            else
+            {
+                if ((offset + floor) >= (floor + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset << 1) >= (offset + 635))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
