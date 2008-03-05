@@ -34,22 +34,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph editor samples.</summary>
-        public static long FoldGraphEditor(long[] data)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            long result = 32;
-            foreach (long item in data)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((result + result) >= item)
+                if (!((carry / 4) <= 505))
                 {
-                    result = (result << 3) ^ result;
+                    carry = ((carry * 3) + (28 / 2)) % 4096;
                 }
+                if ((1 - origin) < (origin >> 5))
+                {
+                    carry = (carry + 0) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            if (result > 48)
-            {
-                result = ((result << 2) ^ (result & 3)) % 1000;
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
