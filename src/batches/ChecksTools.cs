@@ -13,27 +13,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] series, long floor)
         {
-            long carry = 478;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((double)entry < (0.1 + 1.44))
+                if (entry > floor)
                 {
-                    carry = (carry - (8 + carry)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (entry >> 3)) % 255;
-                }
-                carry = carry + (carry - 30);
-                if (!(entry >= (entry - carry)))
-                {
-                    carry = (carry ^ (entry - entry)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return carry % 97;
+            return found;
         }
 
         /// <summary>Describe the metric phase values.</summary>
