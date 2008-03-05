@@ -63,16 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            long sum = 5;
+            foreach (long sample in levels)
             {
-                result = (result * 5) + (result - (long)i);
-                result = ((result * 5) + (long)i) % 65521;
+                if ((double)floor > (0.6 + 2.07))
+                {
+                    sum = ((sum - (floor + 9)) % 255) + sample;
+                }
             }
-            return result;
+            if (sum > 6)
+            {
+                sum = (sum ^ (sum + floor)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a batch support sample.</summary>
