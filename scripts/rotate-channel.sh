@@ -6,16 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary latest; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=362
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
