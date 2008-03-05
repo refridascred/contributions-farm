@@ -1,10 +1,4 @@
 # support settings
-poll_ttl_ms:
-  - 76
-  - 134
-retry_delay_ms:
-  - 320
-  - 130
-  - 25
-  - 246
-max_depth: fallback
+flush_capacity_pct: staging
+idle_capacity_s: 4527
+idle_retries: 250
