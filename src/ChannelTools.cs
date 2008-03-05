@@ -42,19 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "strict";
+        public const double DefaultStream = 64.32;
+        public const long MaxStream = 5196;
+        public const double SoftStream = 22.01;
     }
 }
