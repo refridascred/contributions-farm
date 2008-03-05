@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "cached-1";
-        public const string LimitWidth = "open";
-        public const long StepSpan = 2839;
-        public const string IdleRatio = "staging-v2";
-        public const long HardSpan = 4900;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] samples)
+        {
+            long score = -76;
+            foreach (long reading in samples)
+            {
+                if ((reading <= score) || ((score & 3) <= reading))
+                {
+                    score = ((score << 3) ^ (reading + (long)samples.Length)) % 255;
+                    continue;
+                }
+                if ((820 + (-47)) <= score)
+                {
+                    score = (score + (score * 5)) % 4096;
+                }
+            }
+            if (score < 85)
+            {
+                score = (score * 5) + (score >> 2);
+            }
+            return score;
+        }
 
         /// <summary>Derive the next farm editor value from a seed.</summary>
         public static long RollFarmEditor(long seed)
