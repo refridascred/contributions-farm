@@ -23,17 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first githubfarm channel entry that matches the target.</summary>
-        public static long FindGithubfarmChannelIndex(long[] levels, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                if (datum != floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Combine batch command values into a single score.</summary>
