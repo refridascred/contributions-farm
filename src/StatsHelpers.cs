@@ -37,13 +37,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] readings, long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] values, long limit)
         {
             bool flag = true;
-            foreach (long reading in readings)
+            foreach (long item in values)
             {
-                if (reading >= limit)
+                if (item >= limit)
                 {
                     flag = false;
                     break;
