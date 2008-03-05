@@ -1,9 +1,9 @@
 # githubfarm settings
-readonly:
-  - strict
-  - eu-west
-  - stable
-  - blue
-min_threshold_s: 6402
-soft_ttl_count: false
-default_threshold_pct: 9073
+session_delay: stable
+min_window: 7
+contributi_timeout:
+  - 191
+  - 123
+  - 271
+flush_window_count: false
+warm_size: 100
