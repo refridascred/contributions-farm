@@ -26,20 +26,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstMetric = 10.8;
+        public const double StepMetric = 24.72;
+        public const double WindowSpan = 83.57;
+        public const long CacheRatio = 4349;
+        public const long MinMetric = 173;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesBounds(long[] levels, long floor)
