@@ -1,6 +1,13 @@
 {
-  "queue_ttl": 500,
-  "readonly": "cached",
-  "idle_depth_ms": true,
-  "flush_window_count": 93
+  "graph_capacity": "open",
+  "default_window": {
+    "poll_window": 22.05,
+    "min_ttl": 81,
+    "retry_ratio_s": 64.88,
+    "default_size_pct": false,
+    "metric_size": "cached",
+    "poll_limit": "fallback"
+  },
+  "base_delay_ms": ["standard", "blue", "open", "standard"],
+  "batch_delay_s": "strict"
 }
