@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] series, long step)
         {
-            Draft,
-            New,
-            Dropped,
-            Pending,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
