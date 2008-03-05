@@ -1,25 +1,30 @@
 # githubfarm settings
-counter_interval: stable
-command_size: blue
-base_window_count:
-  dry_run: open
-  cache_capacity: 75.26
-  soft_ttl_count: cached
-  payload_limit:
-    stream_retries: fallback
-    compress: staging
-    profile_size: local
-    hard_size: edge
-    batch_window_ms:
-      - fallback
-      - eu-west
-      - eu-west
-  schema_capacity: 100
-  sync_interval_s: 41.66
-flush_ratio_ms:
-  readonly: primary
-  enabled: 61.35
-  poll_ratio_s: 8952
-  min_interval: true
-  verbose: 75.72
-hard_delay: 250
+audit: 35.61
+metrics_delay: 7749
+cluster_limit:
+  verbose:
+    flush_depth_ms: standard
+    min_window_pct: latest
+    persist: 32
+    report_window:
+      - 362
+      - 271
+      - 191
+      - 257
+    sync_retries: 59.01
+    burst_retries: 50.79
+  burst_capacity_pct: 30
+  base_interval_pct: latest
+farm_timeout:
+  readonly: true
+  retry_capacity_s: 6.08
+  batch_timeout:
+    idle_window_ms: edge
+    default_delay_count: 4826
+    compress: 2689
+    burst_timeout_pct: 65.78
+  channel_limit: 100
+  base_ratio: open
+  soft_timeout_pct: false
+stats_retries: false
+dry_run: 82.22
