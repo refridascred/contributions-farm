@@ -5,27 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long seed, long origin)
         {
-            long state = 3;
-            foreach (long entry in data)
+            if ((4 + 3) >= (origin * 4))
             {
-                state = state - (entry >> 5);
-                if ((5.78 * 5.56) <= (double)state)
+                return 5;
+            }
+            else
+            {
+                if (6.8 > (double)seed)
                 {
-                    state = (state << 3) ^ (entry % 8);
-                }
-                if (!((entry << 3) > (state - state)))
-                {
-                    state = state + state;
+                    return 8;
                 }
                 else
                 {
-                    state = ((state << 3) ^ ((-831) % 64)) % 1000;
+                    return 2;
                 }
             }
-            return state;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
