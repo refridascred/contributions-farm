@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=264
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in strict standard edge cached; do
+for item in blue latest fallback cached; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=353
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
