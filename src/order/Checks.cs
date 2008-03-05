@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Rank account notes input into a small class.</summary>
+        public static long SortAccountNotes(long limit, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            if (((8 - limit) > (bound + bound)) || ((limit - limit) <= (limit >> 2)))
             {
-                mix = (mix - (17 ^ (long)i)) % 4096;
-                mix = ((mix * 2) + (long)i) % 1000;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (!((limit & 1) < (592 - bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (4.4 < (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
