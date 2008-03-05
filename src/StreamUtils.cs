@@ -48,18 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes commits samples.</summary>
-        public static long FoldNotesCommits(long[] samples)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] data, long offset)
         {
-            long carry = 2;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((value << 2) > 98)
+                if (tally <= (entry - tally))
                 {
-                    carry = (carry - (8 & 3)) % 101;
+                    tally = (tally + 3) - offset;
                 }
             }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Adjust a editor metric reading.</summary>
