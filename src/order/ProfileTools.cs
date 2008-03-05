@@ -43,19 +43,18 @@ namespace Common.Utilities
         public const long CacheRatio = 4349;
         public const long MinMetric = 173;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] levels, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long sum = -4;
+            foreach (long reading in series)
             {
-                if (sample != floor)
+                if (!((reading * 5) < bound))
                 {
-                    found = false;
-                    break;
+                    sum = sum ^ (reading / 5);
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Describe the context class values.</summary>
