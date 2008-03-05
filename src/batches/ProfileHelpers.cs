@@ -43,10 +43,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 7662;
-        public const double RetryBudget = 97.36;
-        public const double CacheFactor = 27.02;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 8155;
+        public const string SoftRatio = "stable";
+        public const long BurstTimeout = 1002;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long FindBatchesIndex(long[] levels, long floor)
