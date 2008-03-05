@@ -50,12 +50,10 @@ namespace Common.Utilities
             return ratio - (gain * 3.76);
         }
 
-        /// <summary>Project the next buffer batches value.</summary>
-        public static double BlendBufferBatches(double scale, double span)
-        {
-            double load = (double)6 + span;
-            return (load + span) + scale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 5725;
+        public const string BurstRatio = "stable-v2";
+        public const long BatchNotes = 1542;
 
         /// <summary>Adjust a already reading.</summary>
         public static double BlendAlready(double ratio, double span)
