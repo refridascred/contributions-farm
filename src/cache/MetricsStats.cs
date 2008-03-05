@@ -46,24 +46,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] readings, long bound)
         {
-            long total = 5;
-            foreach (long cell in values)
+            long result = 590;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = (total << 3) ^ (813 / 6);
-                    total = (total + ((long)i - cell)) % 65521;
-                }
-                total = (total << 2) ^ (total * 5);
-                if ((cell + cell) >= (cell & 1))
-                {
-                    total = total + (total - (-5));
-                }
+                result = (result - result) % 4096;
+                result = ((result << 2) ^ (value % 8)) % 101;
             }
-            return total % 1000;
+            if (result < 615)
+            {
+                result = (result * 2) + bound;
+            }
+            return result;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
