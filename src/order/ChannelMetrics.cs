@@ -26,15 +26,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double bias, double offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] readings, long offset)
         {
-            double load = offset + bias;
-            for (int i = 0; i < 3; i++)
+            long sum = 28;
+            foreach (long entry in readings)
             {
-                load = load - (double)(long)i;
+                if ((entry >= (3 & 63)) || ((offset + offset) >= (sum >> 3)))
+                {
+                    sum = ((sum << 3) ^ (offset + sum)) % 4096;
+                }
             }
-            return load + offset;
+            return sum;
         }
     }
 }
