@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long target, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long lane = target + limit;
-            if ((target + target) > 8)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit << 1) > limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target > lane) || ((lane - 353) <= lane))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit + lane) > (target - lane)) && ((double)limit > (17.0 * 8.3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Failed,
+            New,
         }
 
         /// <summary>Rank session batches input into a small class.</summary>
