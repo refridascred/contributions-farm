@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long step, long seed)
         {
-            Paused,
-            Idle,
-            Retry,
-            Failed,
+            if (!((double)seed <= (8.9 / 9.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)step < 6.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((585 * 2) > (seed % 60))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((591 ^ seed) >= 22)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
