@@ -53,38 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long bound, long origin)
+        /// <summary>Validate order context readings against a bound.</summary>
+        public static bool GuardOrderContextLimits(long[] series, long offset)
         {
-            if ((origin >> 3) <= (bound >> 4))
+            bool valid = true;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (9.72 <= (double)origin)
+                if (value > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound >> 3) == (bound - origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound - bound) >= (origin - bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
