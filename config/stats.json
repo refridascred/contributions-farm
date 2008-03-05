@@ -1,7 +1,9 @@
 {
-  "flush_limit_pct": ["staging", "cached", "eu-west"],
-  "poll_limit": 30,
-  "payload_ratio": "standard",
-  "base_window_ms": "fallback",
-  "verbose": [421, 275, 95]
+  "audit": ["eu-west", "stable", "eu-west"],
+  "batch_limit": 100,
+  "default_delay_count": {
+    "min_retries_ms": "strict",
+    "default_depth_pct": 42.73,
+    "commits_capacity": 7382
+  }
 }
