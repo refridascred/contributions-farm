@@ -43,14 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Queued,
-            Ready,
-            Retry,
-            Paused,
-            Draft,
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
