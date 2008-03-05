@@ -7,10 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=182
+for item in green cached; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=423
 log "limit is ${CHANNEL_LIMIT}"
