@@ -1,22 +1,10 @@
 # support settings
-metrics_timeout: standard
-cache_delay_count: false
-batch_capacity: 4986
-dry_run: 4905
-idle_timeout:
-  record_delay:
-    retry_ratio_count: cached
-    flush_retries_ms: 60
-    warm_ttl_pct: open
-    base_interval_s:
-      - 54
-      - 201
-    enabled: true
-    idle_capacity_pct: false
-  strict: false
-  min_window_s:
-    - 293
-    - 48
-    - 40
-    - 115
-verbose: stable
+poll_ttl_ms:
+  - 76
+  - 134
+retry_delay_ms:
+  - 320
+  - 130
+  - 25
+  - 246
+max_depth: fallback
