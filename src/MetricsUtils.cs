@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a metrics format reading by value.</summary>
-        public static long SeekMetricsFormatIndex(long[] values, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 87;
+            foreach (long value in series)
             {
-                if (values[i] > target)
+                if ((double)value <= 9.62)
                 {
-                    return (long)i;
+                    anchor = anchor - 4;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the filter state values.</summary>
