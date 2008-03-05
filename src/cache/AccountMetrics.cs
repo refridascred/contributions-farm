@@ -42,15 +42,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Pending,
-            Paused,
-            Locked,
-            New,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchSpan = 3620;
+        public const double BurstMetric = 42.0;
+        public const long SoftFactor = 7964;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TallyWindow(long[] levels, long floor)
