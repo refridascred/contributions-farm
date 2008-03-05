@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const long BatchRatio = 269;
         public const long StepAccount = 458;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            Paused,
-            Closed,
-            Idle,
-            Dropped,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
