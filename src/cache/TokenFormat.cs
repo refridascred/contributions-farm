@@ -53,9 +53,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 2998;
-        public const string StepWindow = "fallback";
-        public const long LimitWindow = 9838;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Done,
+            Active,
+            New,
+        }
     }
 }
