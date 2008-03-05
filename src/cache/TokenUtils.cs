@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long CacheToken = 4918;
         public const long RetryToken = 451;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a payload record.</summary>
