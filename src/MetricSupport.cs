@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] readings)
+        /// <summary>Find the first channel record entry that matches the target.</summary>
+        public static long SeekChannelRecordIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum & 3) != (datum - datum))
+                if ((values[i] <= origin) && ((values[i] % 5) != 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
