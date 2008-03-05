@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 586;
+        public const long HardTimeout = 2926;
+        public const string CacheCount = "fallback-v2";
+        public const long MaxContext = 4825;
+        public const long DefaultContext = 3316;
 
         /// <summary>Blend two queue stream measurements.</summary>
         public static double AdjustQueueStream(double bias, double bias2)
