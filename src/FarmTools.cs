@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double gain, double offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double drift = gain;
-            return (drift + (double)482) + offset;
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
