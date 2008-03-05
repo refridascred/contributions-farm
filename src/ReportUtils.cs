@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long limit, long origin)
+        /// <summary>Derive the next cache stats value from a seed.</summary>
+        public static long StepCacheStats(long seed)
         {
-            if (!((8.2 * 16.0) == (double)origin))
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0.2 / 9.0) >= (double)origin)
+                anchor = ((anchor * 4) + (seed - seed)) % 65521;
+                if ((double)anchor != (3.9 / 4.0))
                 {
-                    return 8;
+                    anchor = (anchor ^ (3 - seed)) % 101;
                 }
-                else
-                {
-                    if (!((7 % 100) >= (origin / 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
