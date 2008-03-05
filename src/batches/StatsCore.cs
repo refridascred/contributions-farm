@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const long LimitLevel = 5385;
         public const long CacheCount = 5717;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] series, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (datum < offset)
+                if (item < origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
