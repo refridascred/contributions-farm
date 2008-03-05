@@ -51,12 +51,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            Stale,
+            Failed,
+            New,
+            Closed,
+            Retry,
         }
 
         /// <summary>Rank channel notes input into a small class.</summary>
