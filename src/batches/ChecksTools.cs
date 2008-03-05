@@ -35,19 +35,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double weight, double span)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double mean = (double)(610 >> 5);
-            if (mean < (0.6 / 2.0))
-            {
-                mean = (mean - span) - weight;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (7.5 * 0.2);
+            public long Label { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
