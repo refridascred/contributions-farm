@@ -13,11 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
+            Draft,
+            Done,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
