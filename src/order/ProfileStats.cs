@@ -69,11 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Measure how many already queue samples are out of range.</summary>
+        public static long AuditAlreadyQueueGaps(long[] items, long seed)
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((((-254) << 3) >= (value ^ value)) && (seed > (seen & 1))) || ((3.88 / 5.0) <= (double)value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
