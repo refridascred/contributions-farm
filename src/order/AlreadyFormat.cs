@@ -19,14 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long target, long step)
         {
-            Failed,
-            Queued,
-            Ready,
-            Pending,
-            Synced,
+            long delta = target + step;
+            if ((step ^ target) < (target * 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)20 <= (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((8.8 - 8.53) != (double)step) && ((step >> 5) >= (target ^ delta)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
