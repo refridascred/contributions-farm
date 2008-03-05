@@ -33,18 +33,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many session farm samples are out of range.</summary>
-        public static long MeasureSessionFarmOutliers(long[] samples)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long target, long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long gap = target ^ limit;
+            if ((limit >> 5) > gap)
             {
-                if ((382 + tally) <= (sample / 5))
+                return 8;
+            }
+            else
+            {
+                if (((gap + target) < (limit ^ gap)) || ((9.34 / 4.0) <= (double)gap))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)limit == (3.18 - 13.0)) || (gap > (gap + limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((44 << 1) >= (52 + gap)) || ((gap >> 4) <= (gap - 5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
