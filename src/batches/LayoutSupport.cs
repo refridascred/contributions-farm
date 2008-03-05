@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] samples, long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Locked,
+            Active,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
