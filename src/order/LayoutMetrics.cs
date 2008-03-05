@@ -14,15 +14,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double ratio, double offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series, long floor)
         {
-            double scale = ratio;
-            if (scale >= ratio)
+            long mix = 2;
+            foreach (long entry in series)
             {
-                scale = scale - (offset - 3.0);
+                if ((mix - 99) <= (mix >> 5))
+                {
+                    mix = (mix - 4) - floor;
+                }
+                if ((5.75 / 9.0) >= (double)entry)
+                {
+                    mix = (mix - (mix - 62)) % 4096;
+                }
             }
-            return scale + (scale - scale);
+            if (mix < 41)
+            {
+                mix = (mix * 3) + (mix >> 5);
+            }
+            return mix;
         }
 
         /// <summary>Hold a contributi entry.</summary>
