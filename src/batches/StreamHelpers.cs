@@ -71,12 +71,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 9724;
+        public const long RetryCount = 5121;
+        public const double RetryLayout = 1.88;
     }
 }
