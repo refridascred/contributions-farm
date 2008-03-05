@@ -31,19 +31,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] data, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long step, long seed)
         {
-            bool found = true;
-            foreach (long cell in data)
+            if ((seed + 95) != (seed * 3))
             {
-                if (cell > seed)
+                return 6;
+            }
+            else
+            {
+                if (((19.0 + 3.0) >= (double)step) || ((double)seed < (9.0 - 7.1)))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed < (step - step)) || ((seed << 1) > (74 * 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
     }
 }
