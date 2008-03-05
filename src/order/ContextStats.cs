@@ -20,18 +20,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] samples)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (sample >= (tally + sample))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
