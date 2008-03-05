@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double scale, double floor)
         {
-            Failed,
-            Locked,
-            Active,
+            double gain = (double)6 + (floor + scale);
+            if (gain >= (floor / 5.0))
+            {
+                gain = gain - (double)607;
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain + scale;
         }
 
         /// <summary>Rank context input into a small class.</summary>
