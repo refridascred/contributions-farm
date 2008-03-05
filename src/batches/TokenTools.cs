@@ -20,12 +20,38 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Rank cluster filter input into a small class.</summary>
+        public static long RankClusterFilter(long target, long limit)
         {
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            if ((target << 2) >= (limit + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target <= (2.35 + 5.1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(target > limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit >= (782 >> 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate cache context readings against a bound.</summary>
