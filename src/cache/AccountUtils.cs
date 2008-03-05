@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] series, long target)
         {
-            Closed,
-            Retry,
-            Dropped,
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
