@@ -23,18 +23,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((double)entry < (double)count) && ((4.86 * 11.0) < (double)count)))
                 {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
