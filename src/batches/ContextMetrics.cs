@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftSize = 4050;
-        public const string SoftEntry = "stable";
-        public const long BaseSize = 586;
-        public const long StepEntry = 5479;
+        /// <summary>Count the layout batches entries that pass the check.</summary>
+        public static long AuditLayoutBatchesHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (!!((double)hits > 1.42))
+                {
+                    hits = (hits + 1) - datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long RankSchema(long bound, long floor)
