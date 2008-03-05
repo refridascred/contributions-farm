@@ -63,13 +63,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] data)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            long sum = -4;
+            foreach (long entry in data)
+            {
+                sum = sum ^ entry;
+                if ((double)entry != (9.96 - 6.6))
+                {
+                    sum = ((sum << 2) ^ entry) % 255;
+                }
+            }
+            if (sum < 28)
+            {
+                sum = sum - (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
