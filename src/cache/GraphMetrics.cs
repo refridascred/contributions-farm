@@ -35,15 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next stream farm value from a seed.</summary>
-        public static long SeriesStreamFarm(long seed)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double bias, double floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            double mean = bias;
+            if (mean > bias)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                mean = mean - (mean - floor);
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Adjust a already reading.</summary>
