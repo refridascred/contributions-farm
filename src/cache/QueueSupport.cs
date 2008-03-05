@@ -30,18 +30,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] readings, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((hits % 3) <= (sample - 20))
+                if (count < (count - datum))
                 {
-                    hits = (hits + 3) - bound;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
