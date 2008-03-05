@@ -77,15 +77,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double scale, double span)
+        /// <summary>Fold a list of record batches readings.</summary>
+        public static long TallyRecordBatches(long[] items)
         {
-            double load = scale;
-            if (load <= scale)
+            long sum = 422;
+            foreach (long value in items)
             {
-                load = (load - (load + load)) - span;
+                sum = sum + (sum ^ value);
             }
-            return load + 6.64;
+            if (sum > 6)
+            {
+                sum = (sum + sum) % 97;
+            }
+            return sum;
         }
     }
 }
