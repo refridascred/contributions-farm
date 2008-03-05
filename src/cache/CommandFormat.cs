@@ -33,11 +33,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepBudget = 6210;
-        public const string IdleRatio = "local-1";
-        public const string BaseAccount = "alpha-edge";
-        public const long SoftAccount = 8568;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Done,
+            New,
+            Idle,
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
