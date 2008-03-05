@@ -82,12 +82,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
