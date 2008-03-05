@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the queue payload entries that pass the check.</summary>
+        public static long CountQueuePayloadMatches(long[] levels)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (reading > (-1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
