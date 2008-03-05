@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a context channel value against two limits.</summary>
-        public static long ClassifyContextChannel(long offset, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] samples)
         {
-            if ((limit / 3) < (offset + limit))
+            long mark = 3;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)9 == (double)offset)
+                if ((mark * 4) <= (mark * 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    mark = ((mark - (mark << 1)) % 255) ^ cell;
                 }
             }
+            return mark;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
