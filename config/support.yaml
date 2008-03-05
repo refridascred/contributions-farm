@@ -1,4 +1,15 @@
 # support settings
-enabled: 43.25
-compress: false
-persist: primary
+profile_timeout:
+  metrics_timeout: false
+  stream_depth: true
+  verbose: 64.95
+  report_retries:
+    - 487
+    - 363
+token_depth: 97
+order_size: 5962
+flush_threshold_count: 100
+flush_delay_s:
+  - latest
+  - fallback
+  - eu-west
