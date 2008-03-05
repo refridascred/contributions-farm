@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Blend two order schema measurements.</summary>
+        public static double ScaleOrderSchema(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = rate / 6.0;
+            if (drift <= (floor / 3.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + floor;
             }
-            return hits;
+            return drift + drift;
         }
 
         /// <summary>Define report limits and defaults.</summary>
