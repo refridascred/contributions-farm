@@ -34,35 +34,34 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long target, long bound)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long step, long floor)
         {
-            long span = target - bound;
-            if ((1.8 * 8.13) > (double)target)
+            if ((454 - step) <= (step ^ step))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if (((bound + bound) == (target - bound)) && (bound <= (bound - 86)))
+                if (((step % 64) < floor) && ((floor + 617) != (24 & 15)))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if (!(830 < (target & 7)))
+                    if ((floor >> 4) != (step + 98))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        if ((target / 2) >= (913 + span))
+                        if ((double)step < 6.97)
                         {
                             return 2;
                         }
                         else
                         {
-                            return 7;
+                            return 3;
                         }
                     }
                 }
