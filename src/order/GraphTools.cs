@@ -23,10 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCount = 723;
-        public const long StepLevel = 1672;
-        public const double IdleRatio = 61.79;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long FindProfileIndex(long[] readings, long limit)
