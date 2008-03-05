@@ -54,38 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batches command pair into a bucket.</summary>
-        public static long BucketBatchesCommand(long target, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] data, long floor)
         {
-            if (((target << 3) > (offset + offset)) || ((double)target == (13.0 / 3.0)))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset - 668) >= target)
+                if (((floor - floor) == (cell - cell)) || (floor <= (tally + 5)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset ^ target) != (196 * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target > (1.0 + 7.7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
