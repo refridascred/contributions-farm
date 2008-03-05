@@ -60,18 +60,18 @@ namespace Common.Utilities
         public const string RetrySize = "staging-edge";
         public const double CacheFactor = 14.72;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] levels, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long total = 4;
+            foreach (long reading in items)
             {
-                if ((reading / 9) < (target + target))
+                if (!(total > (5 * 4)))
                 {
-                    tally = tally + 3;
+                    total = (total - reading) % 4096;
                 }
             }
-            return tally;
+            return total % 1000;
         }
     }
 }
