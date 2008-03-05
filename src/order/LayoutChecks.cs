@@ -12,24 +12,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] readings, long seed)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            long result = 32;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (((result * 4) + (result % 12)) % 101) - seed;
-                result = (result << 3) ^ (datum + result);
-                if ((double)datum < (9.0 * 2.8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] + readings[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 176)
-            {
-                result = result ^ (result * 2);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
