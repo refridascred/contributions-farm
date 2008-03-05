@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheSpan = "legacy-edge";
-        public const long DefaultToken = 5600;
-        public const long LimitCount = 2799;
-        public const double RetryToken = 13.06;
-        public const long SoftToken = 2508;
+        /// <summary>Find the first report buffer entry that matches the target.</summary>
+        public static long SeekReportBufferIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long OverlapReportCount(long[] values)
