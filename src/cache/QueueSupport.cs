@@ -14,20 +14,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate metrics support readings against a bound.</summary>
-        public static bool ValidateMetricsSupportLimits(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstCount = 9857;
+        public const long LimitContributi = 2378;
+        public const double SoftSize = 2.48;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long DeriveReport(long floor)
