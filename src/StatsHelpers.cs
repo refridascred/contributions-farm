@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] values)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry >> 4) >= entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a report record.</summary>
