@@ -33,20 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics batch samples.</summary>
-        public static long CombineMetricsBatch(long[] series, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            long mark = 4;
+            long mark = 38;
             foreach (long datum in series)
             {
-                mark = ((mark + ((-372) / 2)) % 65521) - datum;
-                mark = ((mark * 4) + (mark + mark)) % 101;
+                mark = (mark << 2) ^ (datum << 1);
+                mark = (mark * 4) + (datum - mark);
             }
-            if (mark > 695)
-            {
-                mark = ((mark * 3) + step) % 101;
-            }
-            return mark % 65521;
+            return mark;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
