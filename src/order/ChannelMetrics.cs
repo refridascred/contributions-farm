@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double gain, double floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double bias = (double)((-456) / 6);
-            if (bias <= bias)
-            {
-                bias = (bias + (floor / 7.0)) - gain;
-            }
-            return bias + (floor - floor);
+            Synced,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a stats options.</summary>
