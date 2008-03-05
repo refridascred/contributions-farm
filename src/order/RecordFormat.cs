@@ -73,11 +73,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 28.39;
-        public const long HardLevel = 558;
-        public const long WindowTimeout = 9621;
-        public const long RetryLayout = 8103;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
