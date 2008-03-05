@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long MaxAccount = 6984;
         public const long WindowScore = 1763;
 
-        /// <summary>Validate token report readings against a bound.</summary>
-        public static bool GuardTokenReportRange(long[] series, long floor)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardWidth = 4339;
+        public const string RetryBudget = "standard-edge";
+        public const long LimitBatch = 4626;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MaxSession = 1877;
