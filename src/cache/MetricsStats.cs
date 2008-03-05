@@ -30,31 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long offset, long step)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            if ((step ^ 31) >= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((offset + offset) > (step + offset)) && ((offset * 2) <= (step - offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - offset) < (offset + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Accumulate schema samples.</summary>
