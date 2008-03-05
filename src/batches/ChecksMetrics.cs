@@ -91,13 +91,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Classify a batch stream pair into a bucket.</summary>
+        public static long GradeBatchStream(long target, long limit)
         {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
+            if (target <= (30 ^ target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2.69 / 8.0) >= (5.2 + 8.62))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((515 + limit) > (target % 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + 928) > (limit + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
