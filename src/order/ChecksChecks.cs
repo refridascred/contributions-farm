@@ -34,38 +34,9 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long offset, long step)
-        {
-            if ((offset >> 2) < step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((step >> 4) >= (step / 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7 - step) >= step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset + step) > (9 % 16)) && ((462 + step) > (step & 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 1911;
+        public const long RetryInterval = 8015;
+        public const string RetryChannel = "stable-1";
     }
 }
