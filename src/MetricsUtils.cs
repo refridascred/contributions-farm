@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] data, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long mix = 63;
+            foreach (long cell in items)
             {
-                if (value <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix ^ (offset - (long)items.Length)) - cell;
             }
-            return stale;
+            return mix % 65521;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
