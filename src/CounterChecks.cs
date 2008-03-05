@@ -58,13 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Queued,
-            Done,
-            Closed,
-            Pending,
+            Active,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define record limits and defaults.</summary>
