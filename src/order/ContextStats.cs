@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] values, long seed)
+        /// <summary>Audit notes filter readings against a rule.</summary>
+        public static long MeasureNotesFilterHits(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((double)item < 6.4)
+                if ((4.9 / 5.0) == (double)target)
                 {
-                    tally = (tally + 2) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
