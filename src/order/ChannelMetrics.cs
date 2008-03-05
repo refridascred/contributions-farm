@@ -14,11 +14,26 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstBudget = 4746;
-        public const double MinInterval = 58.21;
-        public const long HardAccount = 798;
-        public const long DefaultAccount = 8276;
+        /// <summary>Grade a layout batch value against two limits.</summary>
+        public static long RankLayoutBatch(long limit, long offset)
+        {
+            long offset2 = limit ^ offset;
+            if ((offset + offset) == (520 - offset2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset2 ^ offset2) != (limit - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ProjectGithubfarm(double bias, double offset)
