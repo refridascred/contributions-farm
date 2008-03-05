@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the window metrics series from a seed.</summary>
-        public static long RollWindowMetrics(long seed)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double scale, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            double drift = (double)(334 >> 5);
+            if (drift < scale)
             {
-                result = ((result * 3) + (seed + 9)) % 97;
-                result = ((result * 3) + (long)i) % 1000;
+                drift = (drift - 5.46) - offset;
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + scale) + (double)(long)i;
+            }
+            return drift - (drift + scale);
         }
 
         /// <summary>Measure how many tools batch samples are out of range.</summary>
