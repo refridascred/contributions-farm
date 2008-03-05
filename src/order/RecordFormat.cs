@@ -16,10 +16,16 @@ namespace Common.Utilities
             return load + (double)(-746);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "legacy";
-        public const long WindowPayload = 1240;
-        public const long SoftPayload = 6137;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double ratio, double floor)
+        {
+            double bias = ratio;
+            if (bias > 2.0)
+            {
+                bias = bias + (floor / 4.0);
+            }
+            return bias - 2.2;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
