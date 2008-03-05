@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long seed)
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc + seed) % 65521;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
