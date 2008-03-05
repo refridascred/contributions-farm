@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] data, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 97;
+            foreach (long reading in series)
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                total = ((total + (total ^ 684)) % 65521) ^ reading;
             }
-            return -1;
+            if (total < 235)
+            {
+                total = (total << 3) ^ offset;
+            }
+            return total % 4096;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
