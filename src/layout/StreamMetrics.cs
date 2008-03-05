@@ -40,19 +40,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double bias, double bias2)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            double ratio = (bias2 - bias2) / 3.0;
-            if (ratio >= bias2)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - (ratio - ratio)) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (bias2 / 6.0)) + (double)(long)i;
-            }
-            return ratio - (ratio - ratio);
+            return count;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
