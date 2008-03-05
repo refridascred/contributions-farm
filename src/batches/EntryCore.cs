@@ -52,17 +52,24 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Locate a notes window reading by value.</summary>
-        public static long SeekNotesWindowIndex(long[] series, long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long floor, long floor2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((1.97 - 4.17) == (double)floor2)
             {
-                if ((series[i] >= offset) && ((series[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((9.8 - 7.89) >= (double)floor)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
