@@ -71,19 +71,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of batch schema entries.</summary>
-        public static long DigestBatchSchema(long[] items)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long result = 1;
-            foreach (long entry in items)
-            {
-                result = ((result * 5) + (entry + entry)) % 65521;
-            }
-            if (result > 318)
-            {
-                result = ((result << 3) ^ (59 ^ result)) % 255;
-            }
-            return result;
+            Locked,
+            Dropped,
+            Pending,
+            Synced,
+            Paused,
         }
     }
 }
