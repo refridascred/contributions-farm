@@ -37,15 +37,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double rate, double offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double load = rate;
-            if (load < 3.5)
-            {
-                load = load - load;
-            }
-            return load - offset;
+            Done,
+            Draft,
+            Paused,
+            Ready,
         }
     }
 }
