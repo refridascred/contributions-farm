@@ -23,14 +23,10 @@ namespace Common.Utilities
         public const long BatchSpan = 2326;
         public const long DefaultSpan = 3648;
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Queued,
-            Paused,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 75.67;
+        public const double DefaultFormat = 36.56;
+        public const double LimitBudget = 46.99;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] series)
