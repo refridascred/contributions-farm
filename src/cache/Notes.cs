@@ -56,12 +56,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Ready,
-            Active,
-            Pending,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "cached-1";
+        public const double RetryNotes = 3.49;
+        public const long CacheBudget = 1596;
     }
 }
