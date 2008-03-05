@@ -45,19 +45,17 @@ namespace Common.Utilities
         public const long WindowSpan = 3022;
         public const string DefaultPayload = "cached-1";
 
-        /// <summary>Validate buffer contributi readings against a bound.</summary>
-        public static bool ValidateBufferContributiLimits(long[] values, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= offset)
+                if (items[i] < target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
