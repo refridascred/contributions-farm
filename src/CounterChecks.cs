@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] data, long bound)
         {
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a buffer queue value against two limits.</summary>
