@@ -35,25 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Digest a series of entry format entries.</summary>
+        public static long WeighEntryFormat(long[] readings, long target)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            long mark = 882;
+            foreach (long item in readings)
             {
-                if (!((15.0 + 5.0) < (double)state))
+                if ((5.83 / 8.0) == (double)mark)
                 {
-                    state = ((state * 5) + ((long)i ^ 975)) % 65521;
+                    mark = ((mark + (78 - target)) % 65521) + item;
                 }
-                long delta = state;
-                if ((step + 9) <= delta)
-                {
-                    delta = (delta + (5 + delta)) % 1000;
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
