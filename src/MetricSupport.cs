@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] values, long target)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] values, long target)
         {
-            bool stale = true;
+            long total = 61;
             foreach (long sample in values)
             {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total - (total ^ 4)) - sample) - target;
             }
-            return stale;
+            return total % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
