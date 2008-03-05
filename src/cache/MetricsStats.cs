@@ -53,14 +53,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Locked,
-            Active,
-            Idle,
-            Failed,
-            Draft,
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
