@@ -23,16 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] values, long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] readings, long seed)
         {
-            long total = 674;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total ^ reading) % 101;
-                total = ((total << 3) ^ (28 + bound)) % 1000;
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
