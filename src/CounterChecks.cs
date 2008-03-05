@@ -25,23 +25,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] samples, long origin)
-        {
-            long mix = 539;
-            foreach (long cell in samples)
-            {
-                if ((cell ^ mix) < (cell >> 1))
-                {
-                    mix = ((mix ^ (mix * 3)) % 255) + origin;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + 80)) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 5786;
+        public const long CacheScore = 4479;
+        public const long BaseTools = 8542;
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] series)
