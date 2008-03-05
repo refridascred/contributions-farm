@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 8528;
+        public const double DefaultCluster = 53.05;
+        public const long BatchCount = 1201;
+        public const long LimitCluster = 7279;
+        public const long StepSize = 3029;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long bound, long origin)
