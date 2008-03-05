@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 23.21;
+        public const long StepFilter = 4767;
+        public const double WindowBudget = 62.43;
+        public const double BatchScore = 1.85;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandHits(long[] items, long origin)
