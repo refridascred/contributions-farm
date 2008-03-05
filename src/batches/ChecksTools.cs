@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up cache schema samples.</summary>
-        public static long CompareCacheSchemaCount(long[] series)
+        /// <summary>Count notes account pairs that satisfy a relation.</summary>
+        public static long PairNotesAccountCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 18)
+                    if ((readings[i] + readings[j]) == 18)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
