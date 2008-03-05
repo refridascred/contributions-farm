@@ -56,11 +56,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] data, long step)
         {
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a batch stream pair into a bucket.</summary>
