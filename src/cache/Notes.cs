@@ -42,19 +42,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] readings, long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long total = 468;
+            foreach (long cell in items)
             {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total << 2) ^ (cell + cell)) % 97;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
