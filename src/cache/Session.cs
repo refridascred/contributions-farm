@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] readings, long step)
         {
-            long total = 95;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total << 2) ^ (740 - total)) % 4096) - value;
+                if ((readings[i] > step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count entry layout pairs that satisfy a relation.</summary>
