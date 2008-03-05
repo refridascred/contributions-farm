@@ -31,11 +31,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 5355;
-        public const string HardWidth = "cached-edge";
-        public const double BurstBuffer = 47.77;
-        public const long IdleBuffer = 2225;
+        /// <summary>Count the layout context entries that pass the check.</summary>
+        public static long MeasureLayoutContextGaps(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item + origin) < (matches ^ origin))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
