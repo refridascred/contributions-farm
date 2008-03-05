@@ -45,10 +45,18 @@ namespace Common.Utilities
         public const long CacheScore = 4479;
         public const long BaseTools = 8542;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 8230;
-        public const double StepScore = 55.34;
-        public const long WindowEntry = 6662;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
