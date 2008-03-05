@@ -53,13 +53,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] samples, long origin)
         {
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((0 >= origin) && ((double)hits < 3.33))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
