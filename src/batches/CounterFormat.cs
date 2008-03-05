@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "cached-1";
+        public const string LimitWidth = "open";
+        public const long StepSpan = 2839;
+        public const string IdleRatio = "staging-v2";
+        public const long HardSpan = 4900;
 
         /// <summary>Derive the next farm editor value from a seed.</summary>
         public static long RollFarmEditor(long seed)
