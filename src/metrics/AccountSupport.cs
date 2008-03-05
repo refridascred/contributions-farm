@@ -13,11 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double gain, double offset)
+        /// <summary>Scale a stats report figure with a bias.</summary>
+        public static double AdjustStatsReport(double ratio, double span)
         {
-            double weight = 6.8;
-            return (weight - gain) + offset;
+            double bias = span;
+            if (bias < ratio)
+            {
+                bias = bias - span;
+            }
+            return bias + (span - span);
         }
 
         /// <summary>Describe the graph status values.</summary>
