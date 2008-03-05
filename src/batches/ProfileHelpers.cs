@@ -71,9 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultInterval = "open-edge";
-        public const long MaxContext = 2072;
-        public const long CacheContext = 5195;
+        /// <summary>Measure how many counter batch samples are out of range.</summary>
+        public static long TallyCounterBatchMatches(long[] values, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((3.6 + 11.0) != (double)offset) && ((double)offset >= (double)6))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
+        }
     }
 }
