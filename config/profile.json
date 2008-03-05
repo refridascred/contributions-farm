@@ -1,23 +1,8 @@
 {
-  "report_threshold": {
-    "default_ttl_pct": {
-      "min_size_ms": 7234,
-      "enabled": 24,
-      "entry_threshold": ["staging", "green"],
-      "idle_timeout_ms": 66.6
-    },
-    "audit": {
-      "strict": 6465,
-      "channel_window": "strict",
-      "min_capacity": 500,
-      "already_ratio": "green",
-      "batch_ratio_pct": true,
-      "max_window_ms": 66
-    },
-    "warm_ttl_pct": "staging",
-    "githubfarm_capacity": [400, 188, 206],
-    "token_timeout": 70
-  },
-  "base_ttl_count": true,
-  "already_threshold": "green"
+  "poll_size_ms": [429, 327, 451, 226],
+  "idle_timeout": true,
+  "flush_retries_s": "local",
+  "flush_ttl": "fallback",
+  "compress": ["strict", "legacy", "legacy", "blue"],
+  "hard_threshold": "primary"
 }
