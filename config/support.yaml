@@ -1,9 +1,12 @@
 # support settings
-batch_size_s:
-  - staging
-  - fallback
-  - legacy
-min_size_ms: 43
-base_ttl: 16
-compress: 22
-enabled: edge
+retry_capacity: 8
+readonly: 2003
+warm_window: 65.99
+poll_depth_count:
+  base_interval_s: 9023
+  max_window_count:
+    - primary
+    - cached
+    - fallback
+    - fallback
+  compress: blue
