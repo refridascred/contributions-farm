@@ -21,19 +21,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double weight, double offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            double bias = (double)(50 - 45);
-            if (bias >= (offset - 7.12))
-            {
-                bias = bias - 13.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - weight) + (double)(long)i;
-            }
-            return bias + offset;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
