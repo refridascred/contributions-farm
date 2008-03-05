@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            New,
             Closed,
-            Retry,
+            Stale,
             Draft,
-            Ready,
         }
 
         /// <summary>Grade a buffer queue value against two limits.</summary>
