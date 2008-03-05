@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stream batches reading by value.</summary>
-        public static long LookupStreamBatchesIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowStats = "strict-1";
+        public const long BaseCount = 3649;
+        public const long StepStats = 8654;
+        public const long RetryStats = 404;
+        public const long DefaultStats = 5047;
 
         /// <summary>Rank filter already input into a small class.</summary>
         public static long BucketFilterAlready(long origin, long origin2)
