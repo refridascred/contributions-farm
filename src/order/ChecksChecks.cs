@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double gain, double bias)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] data, long bound)
         {
-            double scale = gain * 2.5;
-            if (scale >= scale)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                scale = (scale + gain) + bias;
+                if (tally > (bound << 3))
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                scale = scale - 2.4;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - 2.0) + (double)(long)i;
-            }
-            return scale + (gain * 0.3);
+            return tally;
         }
 
         /// <summary>Fold a list of report stats readings.</summary>
