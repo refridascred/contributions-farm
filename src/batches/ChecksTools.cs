@@ -43,20 +43,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double gain, double offset)
-        {
-            double mean = offset;
-            if (mean >= (double)596)
-            {
-                mean = (mean + offset) + gain;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBudget = 1107;
+        public const string HardTimeout = "primary-1";
+        public const string MaxBatch = "standard-v2";
 
         /// <summary>Define already limits and defaults.</summary>
         public const double CacheAlready = 55.45;
