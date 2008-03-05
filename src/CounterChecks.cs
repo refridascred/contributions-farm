@@ -47,11 +47,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Grade a command commits value against two limits.</summary>
+        public static long BucketCommandCommits(long seed, long step)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            long offset = seed + step;
+            if (((seed / 7) != (step >> 5)) || ((5.14 + 18.0) <= (double)seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset - step) < offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((13 <= (offset + offset)) && ((step / 5) >= seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
