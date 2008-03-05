@@ -49,14 +49,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            Closed,
-            Stale,
-            Done,
-            Retry,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
