@@ -47,22 +47,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] values)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mark = -27;
+            foreach (long datum in items)
             {
-                if (value <= ((-1) + tally))
+                if ((bound / 9) < (bound >> 2))
                 {
-                    tally = tally + 2;
+                    mark = (mark ^ (mark >> 5)) % 1000;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark + (datum ^ bound)) % 1000;
                 }
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
