@@ -29,18 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many support filter samples are out of range.</summary>
-        public static long TallySupportFilterGaps(long[] series)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!((double)item != (4.6 + 8.68)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
