@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next layout contributi value from a seed.</summary>
-        public static long DeriveLayoutContributi(long seed)
+        /// <summary>Adjust a notes tools reading.</summary>
+        public static double BlendNotesTools(double ratio, double offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            double load = 3.0;
+            return (load + (offset + load)) + ratio;
         }
 
         /// <summary>Hold a token record.</summary>
