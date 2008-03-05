@@ -28,12 +28,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            long carry = 1;
+            foreach (long value in values)
+            {
+                if ((13.0 * 3.18) >= (double)value)
+                {
+                    carry = (carry + (carry + value)) % 255;
+                }
+                if (carry <= (43 + carry))
+                {
+                    carry = carry ^ (carry - carry);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Derive the next stats tools value from a seed.</summary>
