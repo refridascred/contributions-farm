@@ -57,12 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitRatio = 1103;
+        public const long BatchPayload = 2713;
+        public const long LimitSpan = 8414;
+        public const double HardPayload = 46.81;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] series)
