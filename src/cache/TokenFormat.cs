@@ -20,30 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            long anchor = 23;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample >> 3) != (717 >> 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor * 3) + (sample + 570)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor - sample;
-                }
-                if (((anchor - anchor) > (anchor + sample)) && (sample <= anchor))
-                {
-                    anchor = (anchor ^ (sample * 3)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor - anchor)) % 101;
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Compare every pair of graph record readings.</summary>
