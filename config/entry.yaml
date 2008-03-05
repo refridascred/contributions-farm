@@ -1,10 +1,5 @@
 # entry settings
-persist: false
-warm_size: latest
-cache_depth_ms: 41.07
-min_depth_s: true
-audit: 100
-account_retries:
-  - staging
-  - green
-  - stable
+default_limit_ms: 27
+metric_depth: 500
+soft_limit: false
+default_depth_ms: local
