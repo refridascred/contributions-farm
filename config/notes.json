@@ -1,5 +1,8 @@
 {
-  "flush_retries_count": 91,
-  "burst_window_ms": 20,
-  "soft_delay": 8198
+  "burst_ratio": "eu-west",
+  "flush_ratio": 16.05,
+  "soft_retries": "latest",
+  "poll_timeout_s": 929,
+  "dry_run": "legacy",
+  "payload_timeout": 79
 }
