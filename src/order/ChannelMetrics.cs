@@ -26,19 +26,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] values, long bound)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
