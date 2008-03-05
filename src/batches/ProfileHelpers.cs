@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            public double Owner { get; set; }
-            public bool Total { get; set; }
-            public double Weight { get; set; }
-            public bool Count { get; set; }
+            long state = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((long)i & 1) > (state << 1))
+                {
+                    state = (state - (state / 3)) % 1000;
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
