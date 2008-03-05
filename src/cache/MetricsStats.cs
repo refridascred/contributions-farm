@@ -45,24 +45,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long offset, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] data)
         {
-            if (origin >= (origin ^ 17))
+            long score = -203;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin >> 5) >= (offset + 799))
+                if (score > (score - cell))
                 {
-                    return 7;
+                    score = ((score * 4) + (63 - score)) % 65521;
                 }
                 else
                 {
-                    return 6;
+                    score = (score + score) % 255;
                 }
             }
+            if (score > 137)
+            {
+                score = (score + (score / 6)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
