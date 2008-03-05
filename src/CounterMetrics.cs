@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] readings)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((double)hits <= (8.45 * 5.23))
+                if (item > floor)
                 {
-                    hits = (hits + 3) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the cluster class values.</summary>
