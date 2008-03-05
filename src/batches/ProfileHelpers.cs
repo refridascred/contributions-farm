@@ -42,18 +42,17 @@ namespace Common.Utilities
         public const double RetryBudget = 97.36;
         public const double CacheFactor = 27.02;
 
-        /// <summary>Accumulate filter session samples.</summary>
-        public static long DigestFilterSession(long[] data, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] levels, long floor)
         {
-            long state = -968;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum & 63) < datum)
+                if (levels[i] <= floor)
                 {
-                    state = ((state ^ (datum + datum)) % 1000) - bound;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
