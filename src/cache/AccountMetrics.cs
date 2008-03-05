@@ -90,13 +90,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] items)
         {
-            Closed,
-            Queued,
-            Done,
-            Stale,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!(76 > (count & 15)))
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
