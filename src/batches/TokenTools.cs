@@ -54,19 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache context readings against a bound.</summary>
-        public static bool GuardCacheContextBounds(long[] levels, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (reading <= seed)
+                if (((2.9 / 2.0) <= (double)tally) && ((tally + (-2)) >= tally))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
