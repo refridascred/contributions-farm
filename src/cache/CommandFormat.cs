@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long limit, long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long bound, long origin)
         {
-            if (((8.0 + 9.31) >= (double)seed) && ((double)limit != (0.67 - 1.6)))
+            if (origin <= bound)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((double)limit > (15.0 - 8.4))
+                if (((bound ^ bound) > 7) || ((9 - origin) <= 5))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    return 8;
                 }
             }
         }
