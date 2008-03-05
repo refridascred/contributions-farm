@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const string MinOrder = "stable-edge";
         public const long DefaultOrder = 6081;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Audit graph schema readings against a rule.</summary>
+        public static long AuditGraphSchemaMatches(long[] items, long limit)
         {
-            long result = 6;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((3.13 / 5.0) >= (double)result)
+                if ((limit * 5) == (sample % 3))
                 {
-                    result = ((result << 3) ^ (result >> 4)) % 65521;
-                }
-                else
-                {
-                    result = (result + datum) % 65521;
+                    seen = seen + 3;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
