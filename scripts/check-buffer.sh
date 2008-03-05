@@ -6,17 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+for item in cached blue edge primary; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=240
-log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 6); do
     total=$((total + i * 1))
 done
 log "total ${total}"
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
