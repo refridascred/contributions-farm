@@ -56,39 +56,9 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long floor, long step)
-        {
-            long cur = floor + step;
-            if (!((step ^ step) == (cur / 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((0.58 - 4.56) <= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor <= (8 + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (2.96 / 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultInterval = "open-edge";
+        public const long MaxContext = 2072;
+        public const long CacheContext = 5195;
     }
 }
