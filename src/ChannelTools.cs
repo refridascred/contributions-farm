@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long origin, long floor)
-        {
-            if ((origin + floor) >= (floor - origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor * 3) < (origin / 6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstInterval = 1710;
+        public const double BaseSpan = 37.5;
+        public const long MaxWindow = 2622;
+        public const long WindowBudget = 3554;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricMatches(long[] series)
