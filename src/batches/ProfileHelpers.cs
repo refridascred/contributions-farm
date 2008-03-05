@@ -14,12 +14,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 7413;
-        public const long RetryChannel = 9538;
-        public const double BaseSpan = 14.75;
-        public const long BaseChannel = 3884;
-        public const long CacheChannel = 5437;
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count context metrics pairs that satisfy a relation.</summary>
         public static long PairContextMetricsCount(long[] series)
