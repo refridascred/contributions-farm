@@ -16,13 +16,24 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Grade a buffer queue value against two limits.</summary>
+        public static long GradeBufferQueue(long floor, long floor2)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            if ((double)floor <= (4.1 * 4.81))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.6 / 8.0) >= (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
