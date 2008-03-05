@@ -58,9 +58,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 8378;
-        public const long BaseScore = 4173;
-        public const long BurstBudget = 3663;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long floor, long limit)
+        {
+            if ((floor - limit) < floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((limit + limit) == (54 * 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor < (floor ^ floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit - limit) >= (limit << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
