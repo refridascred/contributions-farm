@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] readings, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= target)
+                if ((data[i] > seed) && ((data[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
