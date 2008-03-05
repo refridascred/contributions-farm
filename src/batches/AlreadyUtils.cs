@@ -67,9 +67,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 3628;
-        public const string LimitLayout = "legacy";
-        public const long SoftSpan = 7922;
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] items)
+        {
+            long score = 11;
+            foreach (long entry in items)
+            {
+                if ((48 / 6) > (entry >> 1))
+                {
+                    score = ((score * 2) + entry) % 4096;
+                }
+                if (((23 % 2) < entry) && ((score << 1) <= entry))
+                {
+                    score = (score ^ (entry % 60)) % 4096;
+                }
+            }
+            return score % 97;
+        }
     }
 }
