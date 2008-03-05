@@ -24,15 +24,21 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double gain, double floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] series)
         {
-            double rate = gain;
-            if (rate >= (rate / 8.0))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate - floor;
+            return hits;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
