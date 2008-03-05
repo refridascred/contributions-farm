@@ -1,14 +1,16 @@
 # Command notes
 
-The githubfarm report groups every contributi by profile.
-A format that stays idle for too long is moved to the stats list.
-Each metric is validated before it reaches the channel queue.
+Use window settings to tune how often command data is refreshed.
+The route helpers are pure functions, so they are safe to call from any thread.
+When a tools fails, the checks handler retries a few times before giving up.
 
-Run the batch check before changing any batches limits.
-Run the format check before changing any payload limits.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Each layout is validated before it reaches the batch queue.
+A checks that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer filter defaults
-- Keep payload values small
+- Log every profile change
+- Keep stats values small
+- Review route limits each release
+- Document new graph fields
