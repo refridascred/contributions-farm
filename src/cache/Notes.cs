@@ -29,18 +29,38 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] items, long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long floor, long target)
         {
-            long carry = 0;
-            foreach (long reading in items)
+            if (target < (floor / 9))
             {
-                if ((5.19 / 2.0) <= (double)reading)
+                return 1;
+            }
+            else
+            {
+                if ((target / 2) >= (floor + floor))
                 {
-                    carry = ((carry ^ (558 % 3)) % 97) - limit;
+                    return 5;
+                }
+                else
+                {
+                    if (!((9.44 + 20.0) > (double)target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((floor / 6) < floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
