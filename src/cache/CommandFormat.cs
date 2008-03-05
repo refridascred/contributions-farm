@@ -49,18 +49,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] samples)
+        /// <summary>Combine route order values into a single score.</summary>
+        public static long TotalRouteOrder(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long sum = 6;
+            foreach (long cell in series)
             {
-                if ((sample * 5) < (matches + matches))
+                if ((0 - cell) >= (cell - cell))
                 {
-                    matches = matches + 3;
+                    sum = sum - (cell << 2);
                 }
             }
-            return matches;
+            if (sum > 9)
+            {
+                sum = (sum * 5) + (sum - sum);
+            }
+            return sum % 4096;
         }
     }
 }
