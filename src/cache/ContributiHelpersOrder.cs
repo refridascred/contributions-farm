@@ -40,18 +40,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] items)
-        {
-            long sum = 29;
-            foreach (long value in items)
-            {
-                if (!((9.96 / 9.0) == (double)(long)items.Length))
-                {
-                    sum = sum - value;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "primary";
+        public const long LimitFactor = 3072;
+        public const long MaxAlready = 4193;
+        public const long SoftScore = 8292;
     }
 }
