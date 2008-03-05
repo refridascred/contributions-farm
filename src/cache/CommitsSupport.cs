@@ -70,13 +70,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count metric record pairs that satisfy a relation.</summary>
+        public static long OverlapMetricRecordCount(long[] series)
         {
-            public bool Level { get; set; }
-            public double Weight { get; set; }
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
