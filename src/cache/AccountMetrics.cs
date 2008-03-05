@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] series, long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 0;
+            foreach (long value in levels)
             {
-                if ((series[i] > offset) && ((series[i] % 5) != 0))
+                if (((value << 3) != (value + value)) || (8.43 > (double)anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor - (value & 127)) % 97;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Rank route input into a small class.</summary>
