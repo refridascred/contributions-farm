@@ -60,18 +60,24 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] levels)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long target, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            if ((double)step < (4.5 / 4.0))
             {
-                if (!(datum >= (seen + seen)))
+                return 8;
+            }
+            else
+            {
+                if (((8 / 4) > target) && ((2 ^ 945) < (target + 84)))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
