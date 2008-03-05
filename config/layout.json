@@ -1,8 +1,7 @@
 {
-  "idle_capacity_s": "green",
-  "schema_threshold": "strict",
-  "audit": "blue",
-  "batch_capacity": [473, 178, 222],
-  "githubfarm_depth": "stable",
-  "layout_delay": 46.49
+  "cache_threshold_s": 59,
+  "base_window_pct": [33, 81],
+  "enabled": 35.31,
+  "entry_delay": ["legacy", "latest", "fallback", "legacy"],
+  "farm_capacity": "blue"
 }
