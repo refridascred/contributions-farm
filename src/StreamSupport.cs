@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
