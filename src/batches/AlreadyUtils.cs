@@ -20,18 +20,13 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] items, long bound)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((6 & 1) < (bound / 2))
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
+            Queued,
+            Retry,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define context limits and defaults.</summary>
