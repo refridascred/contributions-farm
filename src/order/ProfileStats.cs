@@ -45,25 +45,13 @@ namespace Common.Utilities
         public const long RetryScore = 7601;
         public const long HardOrder = 4625;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long seed, long target)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long cur = seed - target;
-            if ((3.62 - 0.69) == (double)cur)
-            {
-                return 4;
-            }
-            else
-            {
-                if (target <= ((-123) * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Locked,
+            Idle,
+            Paused,
+            Synced,
         }
     }
 }
