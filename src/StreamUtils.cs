@@ -39,18 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] data, long offset)
+        /// <summary>Measure how many contributi notes samples are out of range.</summary>
+        public static long CountContributiNotesHits(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (tally <= (entry - tally))
+                if ((matches + 3) <= (entry >> 1))
                 {
-                    tally = (tally + 3) - offset;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Adjust a editor metric reading.</summary>
