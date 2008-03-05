@@ -22,19 +22,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next metrics counter value from a seed.</summary>
-        public static long SeriesMetricsCounter(long step)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = ((score - (step * 4)) % 1000) + (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every metric notes entry stays within the limit.</summary>
