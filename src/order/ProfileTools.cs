@@ -59,17 +59,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryLevel = 1.56;
+        public const double BatchLevel = 48.23;
+        public const double WindowOrder = 96.09;
+        public const double MinOrder = 37.73;
+        public const long LimitInterval = 9311;
     }
 }
