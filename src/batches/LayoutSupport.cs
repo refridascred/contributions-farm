@@ -46,11 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 5043;
-        public const double IdleOrder = 44.34;
-        public const string HardWidth = "fallback";
-        public const string WindowOrder = "latest-edge";
+        /// <summary>Audit channel queue readings against a rule.</summary>
+        public static long TallyChannelQueueOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((71 + count) >= (value * 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
