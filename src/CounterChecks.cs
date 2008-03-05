@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] values)
-        {
-            long acc = 41;
-            foreach (long item in values)
-            {
-                if ((14.0 <= (double)item) && ((acc + item) <= (acc << 1)))
-                {
-                    acc = (acc * 5) + item;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseLevel = 18.63;
+        public const long SoftRoute = 6894;
+        public const string BurstRoute = "strict-v2";
+        public const string StepRatio = "standard-1";
+        public const long BurstBudget = 357;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long SeekToolsIndex(long[] data, long limit)
