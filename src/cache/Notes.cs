@@ -55,9 +55,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "cached-1";
-        public const double RetryNotes = 3.49;
-        public const long CacheBudget = 1596;
+        /// <summary>Look up the position of a batch support sample.</summary>
+        public static long LocateBatchSupportIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
