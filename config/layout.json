@@ -1,11 +1,8 @@
 {
-  "readonly": "green",
-  "sync_limit_count": 69.62,
-  "compress": {
-    "audit": true,
-    "compress": "open",
-    "burst_delay_ms": true,
-    "report_delay": false,
-    "readonly": ["stable", "eu-west"]
-  }
+  "warm_ratio_pct": 34.27,
+  "burst_ttl": ["strict", "primary"],
+  "dry_run": "green",
+  "enabled": "fallback",
+  "audit": 3404,
+  "format_window": 4113
 }
