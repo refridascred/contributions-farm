@@ -34,9 +34,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 1911;
-        public const long RetryInterval = 8015;
-        public const string RetryChannel = "stable-1";
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
