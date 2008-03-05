@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] levels, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            long mark = 66;
+            foreach (long reading in levels)
             {
-                mix = ((mix << 2) ^ (target - mix)) % 65521;
-                mix = ((mix * 5) + (long)i) % 65521;
+                mark = ((mark + mark) % 97) + origin;
+                mark = (mark ^ (reading + mark)) % 4096;
             }
-            return mix;
+            return mark % 97;
         }
 
         /// <summary>Describe the token kind values.</summary>
