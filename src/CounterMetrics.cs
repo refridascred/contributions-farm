@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long origin, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] values, long seed)
         {
-            long prev = origin ^ floor;
-            if (!((double)prev != (double)(-63)))
+            bool flag = true;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((-1) < (floor << 3)))
+                if (item > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Iterate the command window series from a seed.</summary>
