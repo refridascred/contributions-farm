@@ -39,19 +39,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] samples, long offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long bound)
         {
-            long carry = 322;
-            foreach (long datum in samples)
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                carry = (((carry * 3) + (1 >> 2)) - datum) - offset;
+                if (((bound - 41) < ((long)i - mark)) && (((-476) << 1) > (bound + mark)))
+                {
+                    mark = (mark << 3) ^ (bound + bound);
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = ((mark - (mark - mark)) % 4096) ^ (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            if (carry > 2)
-            {
-                carry = (carry ^ carry) % 97;
-            }
-            return carry;
+            return mark;
         }
     }
 }
