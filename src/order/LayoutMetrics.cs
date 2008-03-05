@@ -25,25 +25,12 @@ namespace Common.Utilities
             return scale + (scale - scale);
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long target, long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long gap = target ^ offset;
-            if ((double)gap > 8.03)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target * 4) <= 12)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
