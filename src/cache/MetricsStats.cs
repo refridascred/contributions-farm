@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every metrics batches entry stays within the limit.</summary>
-        public static bool ValidateMetricsBatchesLimits(long[] items, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (item != limit)
+                if (8.88 > (double)hits)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Fold a list of token readings.</summary>
