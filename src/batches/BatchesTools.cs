@@ -24,38 +24,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long offset, long floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] values, long seed)
         {
-            if (((floor << 1) == (739 & 3)) && ((9.3 - 11.0) > (double)floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) <= (offset - offset))
+                if (values[i] < seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor << 2) < (floor + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)floor != (9.8 / 8.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
