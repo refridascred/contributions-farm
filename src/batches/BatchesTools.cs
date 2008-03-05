@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Classify a already session pair into a bucket.</summary>
+        public static long GradeAlreadySession(long target, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            long bound = target ^ step;
+            if ((double)step >= (7.46 * 6.1))
             {
-                if ((score / 5) < (origin * 2))
+                return 7;
+            }
+            else
+            {
+                if ((double)bound == (1.6 - 7.6))
                 {
-                    continue;
+                    return 2;
                 }
                 else
                 {
-                    score = (score + (origin - 1)) % 255;
+                    if ((target % 64) > (target << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
         }
 
         /// <summary>Locate a already reading by value.</summary>
