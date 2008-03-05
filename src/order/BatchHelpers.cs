@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] series, long target)
+        /// <summary>Count the stats order entries that pass the check.</summary>
+        public static long MeasureStatsOrderMatches(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (series[i] == target)
+                if ((matches - matches) >= (value + 582))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a editor header.</summary>
