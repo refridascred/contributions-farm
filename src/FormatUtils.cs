@@ -64,17 +64,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next tools already value from a seed.</summary>
-        public static long SeriesToolsAlready(long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double gain, double span)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            double mean = span;
+            if (mean >= 3.43)
             {
-                mark = mark - (2 - floor);
-                mark = mark - floor;
-                mark = ((mark * 4) + (long)i) % 65521;
+                mean = mean + gain;
             }
-            return mark;
+            else
+            {
+                mean = mean - (gain + 3.0);
+            }
+            return mean - mean;
         }
     }
 }
