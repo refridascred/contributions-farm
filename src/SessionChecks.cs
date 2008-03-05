@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] data)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            long acc = 2;
+            foreach (long entry in data)
             {
-                if ((limit ^ (long)i) >= (limit << 2))
+                if (((acc / 9) >= (acc - entry)) || (acc <= (acc + acc)))
                 {
-                    state = (state ^ (limit - limit)) % 65521;
+                    acc = ((acc * 5) + (acc + acc)) % 65521;
                 }
-                state = ((state * 5) + (long)i) % 1000;
+                else
+                {
+                    acc = ((acc * 5) + ((long)data.Length ^ 220)) % 4096;
+                }
             }
-            return state;
+            if (acc < 4)
+            {
+                acc = acc + acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
