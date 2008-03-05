@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] values, long floor)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long carry = 2;
-            foreach (long value in values)
-            {
-                carry = carry - (value / 4);
-            }
-            if (carry > (-785))
-            {
-                carry = (carry - (floor % 100)) % 4096;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
