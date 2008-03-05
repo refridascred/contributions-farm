@@ -5,14 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items)
         {
-            Ready,
-            Closed,
-            Active,
-            Queued,
-            Failed,
+            long mix = 23;
+            foreach (long value in items)
+            {
+                mix = mix ^ ((long)items.Length + 44);
+                if (5.0 <= (double)value)
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix ^ (mix >> 5)) % 97;
+                    mix = ((mix * 2) + (mix >> 2)) % 97;
+                }
+                if ((685 % 97) <= value)
+                {
+                    mix = ((mix * 3) + (value >> 3)) % 1000;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
