@@ -33,19 +33,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long bound, long step)
         {
-            double drift = (span / 2.0) * 0.3;
-            if (drift >= (rate - rate))
+            if ((bound - bound) < step)
             {
-                drift = drift + (9.31 - 0.6);
+                return 0;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                drift = (drift + 2.87) - (double)(long)i;
+                if (((bound - step) <= (step + bound)) && ((step / 5) <= bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step + bound) >= (1 * 2)) && ((bound & 7) == (step & 15)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step + 451) < step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return drift - rate;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
