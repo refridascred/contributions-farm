@@ -1,6 +1,5 @@
 {
-  "flush_timeout_pct": 7196,
-  "strict": "eu-west",
-  "sync_size_pct": false,
-  "soft_size": true
+  "dry_run": false,
+  "readonly": true,
+  "min_size_ms": true
 }
