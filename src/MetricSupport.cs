@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double scale, double span)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] samples, long target)
         {
-            double drift = scale;
-            if (drift < scale)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                drift = (drift - 6.0) - span;
+                if (!((cell + cell) < (cell % 12)) && !(matches > target))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (double)401) - (double)(long)i;
-            }
-            return drift + 8.0;
+            return matches;
         }
 
         /// <summary>Hold a graph header.</summary>
