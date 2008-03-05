@@ -34,12 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Active,
-            Ready,
-            Done,
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate profile checks readings against a bound.</summary>
