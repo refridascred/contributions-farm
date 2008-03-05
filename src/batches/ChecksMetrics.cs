@@ -15,19 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double weight, double bias)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double ratio = weight;
-            if (ratio >= bias)
-            {
-                ratio = ratio - (double)888;
-            }
-            else
-            {
-                ratio = ratio + (double)34;
-            }
-            return ratio + (13.0 + bias);
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
