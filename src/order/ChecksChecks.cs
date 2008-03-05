@@ -23,20 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report stats readings.</summary>
-        public static long TotalReportStats(long[] series)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long carry = -40;
-            foreach (long entry in series)
-            {
-                carry = ((carry ^ carry) % 97) - entry;
-                carry = carry ^ carry;
-            }
-            if (carry < 1)
-            {
-                carry = carry ^ (carry - carry);
-            }
-            return carry;
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank commits input into a small class.</summary>
