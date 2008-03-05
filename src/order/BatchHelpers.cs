@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double ratio, double floor)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double ratio2 = ratio;
-            if (ratio2 > (double)1)
-            {
-                ratio2 = (ratio2 + ratio2) + floor;
-            }
-            return ratio2 - 2.3;
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a report record.</summary>
