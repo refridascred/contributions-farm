@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 7130;
+        public const string SoftWidth = "primary-v2";
+        public const long SoftCount = 2870;
+        public const long WindowCount = 1270;
 
         /// <summary>Rank cluster filter input into a small class.</summary>
         public static long RankClusterFilter(long target, long limit)
