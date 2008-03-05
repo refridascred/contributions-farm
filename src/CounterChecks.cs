@@ -53,11 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 8858;
-        public const long MaxCount = 1847;
-        public const long SoftScore = 8513;
-        public const long BurstCommits = 553;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (reading < (limit + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a queue token reading by value.</summary>
         public static long FindQueueTokenIndex(long[] readings, long offset)
