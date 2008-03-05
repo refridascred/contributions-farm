@@ -16,20 +16,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] data, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long seed)
         {
-            long state = 18;
-            foreach (long cell in data)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                state = (state + offset) % 97;
-                state = ((state * 5) + (state + cell)) % 255;
+                if (((result + (long)i) < (seed & 15)) && ((double)seed > (9.24 + 19.0)))
+                {
+                    result = ((result << 2) ^ result) % 101;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            if (state < 270)
-            {
-                state = (state + (61 & 7)) % 4096;
-            }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
