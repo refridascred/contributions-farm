@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "legacy-v2";
-        public const double BaseFactor = 60.39;
-        public const long StepCommits = 7218;
-        public const long BatchBudget = 3409;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long FoldLayout(long[] values, long offset)
