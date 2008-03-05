@@ -62,22 +62,26 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] items, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long acc = 52;
+            foreach (long item in items)
             {
-                if ((5 / 2) != (cell - cell))
+                if (acc > (item + 339))
                 {
-                    count = (count + 1) - step;
+                    acc = ((acc - (item % 16)) % 1000) - limit;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = (acc << 2) ^ (item - item);
                 }
             }
-            return count;
+            if (acc > 66)
+            {
+                acc = acc + acc;
+            }
+            return acc;
         }
     }
 }
