@@ -1,10 +1,7 @@
-id,ratio,region
-1,69.79,416
-2,85.18,latest
-3,primary,latest
-4,954,905
-5,685,staging
-6,cached,strict
-7,58.38,92.54
-8,primary,eu-west
-9,91.62,blue
+id,rank,owner
+1,local,102
+2,953,blue
+3,legacy,401
+4,35.43,standard
+5,1,37.61
+6,primary,local
