@@ -1,6 +1,5 @@
 {
-  "default_depth_s": "open",
-  "githubfarm_ratio": 60,
-  "hard_threshold_count": 36,
-  "persist": 55.09
+  "flush_delay_count": [251, 270, 355, 366],
+  "readonly": false,
+  "idle_interval": 32
 }
