@@ -1,5 +1,5 @@
 {
-  "soft_window_s": 97.74,
-  "dry_run": [107, 328, 65, 366],
-  "order_size": "strict"
+  "hard_window_s": true,
+  "poll_ttl_ms": "blue",
+  "hard_threshold": 48
 }
