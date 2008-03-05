@@ -34,12 +34,19 @@ namespace Common.Utilities
         public const long StepWidth = 8838;
         public const long SoftSpan = 5080;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double gain, double offset)
         {
-            public double Token { get; set; }
-            public bool Label { get; set; }
-            public double Total { get; set; }
+            double rate = gain / 9.0;
+            if (rate >= gain)
+            {
+                rate = rate - offset;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + gain;
         }
     }
 }
