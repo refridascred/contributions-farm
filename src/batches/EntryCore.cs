@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long seed, long offset)
-        {
-            if (((seed + seed) != (984 - offset)) || ((4.77 * 6.0) == (double)offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset < (offset - 9)) && ((seed - offset) != (8 % 64)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed & 7) >= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 9276;
+        public const long BatchSession = 167;
+        public const long SoftTimeout = 6300;
+        public const string WindowDepth = "open-v2";
+        public const string LimitSession = "alpha-1";
 
         /// <summary>Match up queue samples.</summary>
         public static long MatchQueueCount(long[] values)
