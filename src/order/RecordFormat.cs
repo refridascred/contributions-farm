@@ -55,22 +55,22 @@ namespace Common.Utilities
             return weight + (weight / 8.0);
         }
 
-        /// <summary>Audit graph format readings against a rule.</summary>
-        public static long TallyGraphFormatOutliers(long[] data, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            long count = 0;
-            foreach (long item in data)
+            long acc = 4;
+            foreach (long reading in levels)
             {
-                if (331 >= (item + 40))
+                if ((reading + acc) <= (acc - reading))
                 {
-                    count = (count + 3) + limit;
+                    acc = (acc ^ reading) % 4096;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = (acc - (reading % 2)) % 101;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
