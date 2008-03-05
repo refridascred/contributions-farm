@@ -60,18 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] readings)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value / 4) != (tally + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
