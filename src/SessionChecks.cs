@@ -28,22 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] levels, long seed)
         {
-            long carry = 1;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((13.0 * 3.18) >= (double)value)
+                if ((seed % 5) != (cell + cell))
                 {
-                    carry = (carry + (carry + value)) % 255;
-                }
-                if (carry <= (43 + carry))
-                {
-                    carry = carry ^ (carry - carry);
+                    tally = tally + 3;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Project the next cluster value.</summary>
