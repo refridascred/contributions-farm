@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Pending,
-            Active,
-            Closed,
+            Ready,
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Look up the position of a order checks sample.</summary>
