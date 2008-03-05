@@ -42,19 +42,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] readings, long step)
-        {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 2337;
+        public const long LimitGraph = 7936;
+        public const long BatchGraph = 1573;
+        public const string HardScore = "legacy-v2";
+        public const long SoftGraph = 2183;
     }
 }
