@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] items, long floor)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long result = 213;
+            foreach (long sample in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    result = ((result * 4) + (result ^ sample)) ^ (long)i;
+                }
+                if (!((result - floor) == (floor * 4)))
+                {
+                    result = ((result << 2) ^ (floor % 8)) % 1000;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a stats entry.</summary>
