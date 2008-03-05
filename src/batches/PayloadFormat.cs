@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const string MinReport = "legacy-1";
         public const long CacheInterval = 2152;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] levels, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((7.84 / 4.0) <= (double)offset)
+                if ((4 - 7) <= (floor - value))
                 {
-                    hits = (hits + 3) ^ sample;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
