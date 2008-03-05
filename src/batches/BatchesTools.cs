@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long bound, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] data, long seed)
         {
-            long bound2 = bound ^ target;
-            if ((62 + target) < (98 * 2))
+            bool found = true;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((785 + bound2) <= (bound & 15))
+                if (sample != seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a profile record.</summary>
