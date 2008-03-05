@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings, long bound)
         {
-            long score = 267;
-            foreach (long datum in series)
+            long carry = 54;
+            foreach (long item in readings)
             {
-                if (((datum + datum) > score) && (datum > (datum + datum)))
+                if (!(((carry / 2) <= (bound - 589)) && ((carry + bound) >= (item - carry))))
                 {
-                    score = ((score << 3) ^ datum) % 65521;
+                    carry = (carry ^ item) % 255;
                 }
-                if (!((697 - datum) < (datum ^ datum)))
+                if (item > carry)
                 {
-                    break;
+                    carry = carry + (21 * 2);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ bound) % 255;
                 }
             }
-            return score;
+            if (carry < 346)
+            {
+                carry = carry + (bound % 3);
+            }
+            return carry;
         }
 
         /// <summary>Project the next farm value.</summary>
