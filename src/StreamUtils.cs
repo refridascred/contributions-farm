@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Fold a list of layout token readings.</summary>
+        public static long TallyLayoutToken(long[] samples, long limit)
         {
-            Synced,
-            Draft,
-            Done,
-            Idle,
+            long total = 41;
+            foreach (long entry in samples)
+            {
+                if (limit < (entry - entry))
+                {
+                    total = total ^ 939;
+                }
+            }
+            if (total > 30)
+            {
+                total = total - (302 & 127);
+            }
+            return total;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
