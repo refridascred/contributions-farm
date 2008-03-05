@@ -1,15 +1,14 @@
 # Command notes
 
-The metric module keeps token values in sync with the record cache.
-A buffer that stays idle for too long is moved to the channel list.
-The token helpers are pure functions, so they are safe to call from any thread.
+The already module keeps metric values in sync with the queue cache.
+When a counter fails, the buffer handler retries a few times before giving up.
+Keep graph and session names short and lowercase.
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-A cache that stays idle for too long is moved to the entry list.
-Keep githubfarm and contributi names short and lowercase.
+Each account is validated before it reaches the order queue.
+Run the metric check before changing any filter limits.
 
 ## Guidelines
 
-- Keep account values small
-- Log every report change
-- Prefer command defaults
+- Validate already input early
+- Review format limits each release
+- Prefer session defaults
