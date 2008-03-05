@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] readings, long offset)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double ratio, double floor)
         {
-            long total = 978;
-            foreach (long datum in readings)
+            double drift = (double)(2 - 7);
+            if (drift > (double)1)
             {
-                total = ((total << 2) ^ (datum - offset)) % 255;
+                drift = drift - ratio;
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (floor - 0.47);
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
