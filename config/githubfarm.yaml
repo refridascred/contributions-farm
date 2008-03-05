@@ -1,8 +1,16 @@
 # githubfarm settings
-default_depth_s: true
-flush_capacity_ms: blue
-batch_depth_ms:
-  - 230
-  - 151
-  - 95
-  - 1
+batch_limit_ms:
+  max_ttl: false
+  cache_capacity: 7316
+  warm_depth: 25.21
+  batch_delay_ms:
+    channel_ttl:
+      - edge
+      - open
+    idle_window_s: 30
+    retry_threshold: fallback
+flush_ratio_s: 10.34
+max_threshold_s:
+  - 117
+  - 380
+  - 379
