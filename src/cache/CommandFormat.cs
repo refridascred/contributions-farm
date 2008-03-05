@@ -41,13 +41,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Blend two cache counter measurements.</summary>
+        public static double BlendCacheCounter(double scale, double span)
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            double drift = scale;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift + drift) - (double)(long)i) - span;
+            }
+            return drift + scale;
         }
     }
 }
