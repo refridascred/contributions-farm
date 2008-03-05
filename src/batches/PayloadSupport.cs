@@ -18,19 +18,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Audit channel editor readings against a rule.</summary>
+        public static long TallyChannelEditorMatches(long[] items, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((step - 394) >= (step & 63))
+                if (((3.8 + 15.0) <= (double)value) || ((limit - value) >= (limit << 1)))
                 {
-                    total = total - (step << 2);
+                    tally = tally + 2;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
     }
 }
