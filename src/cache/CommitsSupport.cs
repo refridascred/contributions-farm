@@ -19,22 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] data, long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)sample == (13.0 / 2.0))
+                if (series[i] == step)
                 {
-                    matches = (matches + 2) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate entry profile readings against a bound.</summary>
