@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next githubfarm window value.</summary>
-        public static double ProjectGithubfarmWindow(double weight, double offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            double gain = offset - weight;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain - (double)6) - (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain + 1.95;
+            return count;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
