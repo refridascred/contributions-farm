@@ -20,12 +20,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] levels, long target)
         {
-            public double Region { get; set; }
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
+            long result = 81;
+            foreach (long item in levels)
+            {
+                if (((result << 1) > (result ^ target)) && ((target % 10) <= item))
+                {
+                    result = ((result * 3) + (8 ^ 63)) % 255;
+                }
+                else
+                {
+                    result = ((result << 2) ^ target) % 1000;
+                }
+            }
+            return result % 65521;
         }
     }
 }
