@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long origin, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] items, long limit)
         {
-            if (((limit + limit) >= (origin + origin)) || ((double)limit > (2.3 - 0.1)))
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((8 >> 2) != (limit & 15)) || ((double)limit >= (8.7 * 9.0)))
+                if (entry <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a window entry.</summary>
