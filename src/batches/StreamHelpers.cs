@@ -44,18 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] values)
+        /// <summary>Digest a series of layout batches entries.</summary>
+        public static long ScoreLayoutBatches(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long score = 115;
+            foreach (long value in levels)
             {
-                if ((item - matches) > (item + matches))
-                {
-                    matches = matches + 1;
-                }
+                score = (((score << 3) ^ (bound << 3)) % 97) + value;
             }
-            return matches;
+            return score % 1000;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
