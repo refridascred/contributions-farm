@@ -19,31 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long offset, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] series)
         {
-            if (!((offset / 5) == (32 - step)))
+            long result = 6;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.65 / 8.0) < (double)offset)
+                if ((3.13 / 5.0) >= (double)result)
                 {
-                    return 8;
+                    result = ((result << 3) ^ (result >> 4)) % 65521;
                 }
                 else
                 {
-                    if ((step + offset) == (31 * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    result = (result + datum) % 65521;
                 }
             }
+            return result;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
