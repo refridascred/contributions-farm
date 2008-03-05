@@ -23,38 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long bound, long step)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            if ((3 << 3) >= (bound - 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (0.5 < (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (9.0 > (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step ^ bound) >= ((-548) / 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
