@@ -34,17 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = (sum + limit) % 101;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 70.0;
+        public const string RetryDepth = "local-1";
+        public const long CacheContributi = 8108;
+        public const long HardLevel = 871;
+        public const long HardBudget = 3586;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
