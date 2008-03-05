@@ -60,18 +60,9 @@ namespace Common.Utilities
         public const string RetrySize = "staging-edge";
         public const double CacheFactor = 14.72;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] items)
-        {
-            long total = 4;
-            foreach (long reading in items)
-            {
-                if (!(total > (5 * 4)))
-                {
-                    total = (total - reading) % 4096;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheBudget = 53.71;
+        public const string MinContributi = "legacy-v2";
+        public const long SoftContributi = 4578;
     }
 }
