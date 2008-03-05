@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxLevel = "legacy-v2";
-        public const string BurstWindow = "fallback";
-        public const long SoftScore = 5059;
-        public const string BatchWindow = "local-v2";
-        public const long CacheWindow = 3262;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] readings, long step)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((505 + matches) == (matches + item))
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
