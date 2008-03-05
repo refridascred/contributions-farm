@@ -40,10 +40,19 @@ namespace Common.Utilities
         public const long CacheEditor = 483;
         public const long SoftEditor = 1240;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftScore = "primary";
-        public const long WindowSpan = 3022;
-        public const string DefaultPayload = "cached-1";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum & 127) == (datum * 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardBudget = 9488;
