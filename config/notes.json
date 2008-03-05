@@ -1,6 +1,7 @@
 {
-  "sync_ratio_count": 1024,
-  "contributi_window": "local",
-  "token_interval": 2.05,
-  "verbose": 74.59
+  "strict": true,
+  "sync_depth_count": "local",
+  "burst_capacity_pct": 6007,
+  "githubfarm_size": 5380,
+  "readonly": "staging"
 }
