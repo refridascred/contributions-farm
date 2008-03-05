@@ -31,19 +31,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] samples, long offset)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
