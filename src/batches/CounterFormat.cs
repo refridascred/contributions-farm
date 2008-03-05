@@ -16,10 +16,22 @@ namespace Common.Utilities
             return scale + (double)180;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitCount = 9827;
-        public const string IdleScore = "latest-1";
-        public const long MaxRatio = 652;
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of route tools readings.</summary>
         public static long WeighRouteTools(long[] samples, long offset)
