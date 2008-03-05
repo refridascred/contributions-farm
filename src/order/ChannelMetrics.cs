@@ -22,13 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double gain, double floor)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
+            double bias = (double)((-456) / 6);
+            if (bias <= bias)
+            {
+                bias = (bias + (floor / 7.0)) - gain;
+            }
+            return bias + (floor - floor);
         }
 
         /// <summary>Hold a stats options.</summary>
