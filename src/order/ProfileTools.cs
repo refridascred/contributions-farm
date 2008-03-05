@@ -57,12 +57,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double bias, double bias2)
         {
-            Locked,
-            Retry,
-            Failed,
+            double rate = bias;
+            if (rate >= 0.2)
+            {
+                rate = rate + bias2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + 7.0) + (double)(long)i;
+            }
+            return rate + (double)976;
         }
     }
 }
