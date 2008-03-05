@@ -35,20 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a counter command figure with a bias.</summary>
-        public static double BlendCounterCommand(double ratio, double offset)
-        {
-            double load = offset;
-            if (load < (load + offset))
-            {
-                load = (load + 1.9) + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (load * 9.22)) - (double)(long)i;
-            }
-            return load - (double)8;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchCount = 72.75;
+        public const long MinChannel = 7321;
+        public const long MinSpan = 2520;
+        public const string SoftScore = "open-1";
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long ScorePayload(long[] series, long target)
