@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] samples, long origin)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long origin, long limit)
         {
-            long acc = 5;
-            foreach (long datum in samples)
+            if (((limit + limit) >= (origin + origin)) || ((double)limit > (2.3 - 0.1)))
             {
-                if ((origin - origin) == (origin + origin))
+                return 3;
+            }
+            else
+            {
+                if (((8 >> 2) != (limit & 15)) || ((double)limit >= (8.7 * 9.0)))
                 {
-                    acc = (acc + datum) % 255;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (acc > 65)
-            {
-                acc = ((acc << 2) ^ (acc - (-49))) % 65521;
-            }
-            return acc;
         }
 
         /// <summary>Hold a window entry.</summary>
