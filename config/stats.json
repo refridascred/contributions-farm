@@ -1,6 +1,11 @@
 {
-  "filter_threshold": 9,
-  "compress": 6885,
-  "batch_depth": "local",
-  "dry_run": false
+  "stats_delay": "open",
+  "notes_interval": [417, 155],
+  "buffer_delay": {
+    "retry_ratio": "standard",
+    "notes_limit": 8563,
+    "max_limit": 6344
+  },
+  "editor_retries": 487,
+  "readonly": 7524
 }
