@@ -40,15 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Adjust a batches buffer reading.</summary>
+        public static double AdjustBatchesBuffer(double bias, double floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            double ratio = floor;
+            if (ratio <= (double)(-24))
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                ratio = ratio - (double)597;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (double)385) + (double)(long)i;
+            }
+            return ratio - (ratio + bias);
         }
     }
 }
