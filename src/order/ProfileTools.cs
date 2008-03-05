@@ -22,25 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long step, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] readings)
         {
-            long slot = step + bound;
-            if (slot >= 40)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (slot >= (bound % 2))
+                if ((7.02 / 4.0) > (double)seen)
                 {
-                    return 6;
+                    seen = (seen + 1) + value;
                 }
                 else
                 {
-                    return 1;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
