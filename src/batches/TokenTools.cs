@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] levels, long floor)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= floor)
+                if ((items[i] > limit) && ((items[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Rank cluster filter input into a small class.</summary>
