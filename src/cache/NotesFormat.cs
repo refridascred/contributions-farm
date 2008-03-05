@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] values, long origin)
-        {
-            long mix = -74;
-            foreach (long item in values)
-            {
-                if ((3.0 * 4.62) <= (double)mix)
-                {
-                    mix = (((mix << 3) ^ (origin & 7)) % 255) + item;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowWidth = "legacy-v2";
+        public const long LimitSize = 4444;
+        public const string MinChecks = "cached";
+        public const double BaseBudget = 64.38;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
