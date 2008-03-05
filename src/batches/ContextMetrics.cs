@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] samples)
+        /// <summary>Adjust a record order reading.</summary>
+        public static double SmoothRecordOrder(double gain, double bias)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double drift = (gain - gain) * 2.07;
+            if (drift > 17.0)
             {
-                if ((count % 3) == (count * 5))
-                {
-                    count = (count + 1) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = drift - (bias / 9.0);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + 6.0) + (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
