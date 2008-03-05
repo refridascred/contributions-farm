@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long target, long limit)
-        {
-            long diff = target - limit;
-            if ((target % 100) < (diff << 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target <= (diff - diff))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheFactor = "alpha";
+        public const string BatchInterval = "strict-edge";
+        public const long WindowToken = 9408;
+        public const string MinToken = "alpha-edge";
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long ScoreStats(long[] samples, long target)
