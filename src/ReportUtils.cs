@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] data)
         {
-            Queued,
-            Failed,
-            Closed,
-            New,
-            Stale,
+            long result = 34;
+            foreach (long item in data)
+            {
+                result = (result + (258 - item)) % 97;
+                result = (result << 2) ^ (long)data.Length;
+                if (item < (result >> 1))
+                {
+                    result = result - (result + result);
+                }
+            }
+            return result;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
