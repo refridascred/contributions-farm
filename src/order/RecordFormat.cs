@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double ratio, double floor)
-        {
-            double drift = (double)(2 - 7);
-            if (drift > (double)1)
-            {
-                drift = drift - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (floor - 0.47);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardSpan = "local-v2";
+        public const long StepContributi = 3561;
+        public const string StepSize = "primary";
+        public const string DefaultFactor = "local";
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double ProjectChannel(double ratio, double floor)
