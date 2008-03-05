@@ -13,25 +13,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a order metric value against two limits.</summary>
-        public static long RankOrderMetric(long limit, long origin)
+        /// <summary>Fold a list of stream layout readings.</summary>
+        public static long CombineStreamLayout(long[] values)
         {
-            long step = limit + origin;
-            if ((1.82 + 18.0) != (double)limit)
+            long anchor = 919;
+            foreach (long value in values)
             {
-                return 0;
+                anchor = ((anchor * 5) + (anchor >> 5)) + value;
             }
-            else
-            {
-                if (((step << 1) <= (220 - origin)) || ((41 << 2) <= limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return anchor % 97;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
