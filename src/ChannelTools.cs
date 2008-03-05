@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Scale a profile checks figure with a bias.</summary>
+        public static double AdjustProfileChecks(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = span;
+            if (ratio > ratio)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio - (double)914) + rate;
             }
-            return tally;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (double)209) + (double)(long)i;
+            }
+            return ratio - (double)580;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
