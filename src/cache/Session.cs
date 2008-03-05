@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long limit, long limit2)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            if ((double)limit >= 8.0)
+            long total = 95;
+            foreach (long value in values)
             {
-                return 7;
+                total = (((total << 2) ^ (740 - total)) % 4096) - value;
             }
-            else
-            {
-                if ((double)limit2 > 9.8)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
