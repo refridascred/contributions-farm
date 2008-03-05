@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] items, long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a window entry.</summary>
