@@ -16,11 +16,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 5230;
-        public const long MaxScore = 4931;
-        public const long MinRatio = 4890;
-        public const long MaxRatio = 2749;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long RankCache(long step, long target)
