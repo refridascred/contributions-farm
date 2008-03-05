@@ -31,38 +31,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session batches input into a small class.</summary>
-        public static long RankSessionBatches(long floor, long limit)
+        /// <summary>Combine account editor values into a single score.</summary>
+        public static long TallyAccountEditor(long[] items)
         {
-            if ((floor + floor) > limit)
+            long carry = 863;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((690 / 9) >= (floor % 24))
+                carry = ((carry << 3) ^ (entry + 846)) % 255;
+                if (carry < (carry & 31))
                 {
-                    return 5;
+                    carry = (carry ^ (carry - 75)) % 255;
                 }
                 else
                 {
-                    if (floor <= (floor >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)limit == (14.0 + 4.0)) && ((double)limit > (1.15 * 6.91)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = carry - (entry + entry);
+                }
+                if (((-8) >> 2) >= (carry % 60))
+                {
+                    carry = carry - carry;
+                }
+                if (11.0 < (double)carry)
+                {
+                    break;
                 }
             }
+            return carry % 1000;
         }
     }
 }
