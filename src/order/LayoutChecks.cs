@@ -56,15 +56,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
