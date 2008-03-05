@@ -1,13 +1,16 @@
 {
-  "graph_capacity": "open",
-  "default_window": {
-    "poll_window": 22.05,
-    "min_ttl": 81,
-    "retry_ratio_s": 64.88,
-    "default_size_pct": false,
-    "metric_size": "cached",
-    "poll_limit": "fallback"
+  "filter_ratio": {
+    "cache_retries_count": {
+      "idle_retries_count": "standard",
+      "cache_timeout": 1024,
+      "window_limit": ["local", "stable"],
+      "warm_interval": true,
+      "enabled": "latest"
+    },
+    "enabled": false,
+    "max_ratio_ms": 3.74,
+    "idle_depth": 8019
   },
-  "base_delay_ms": ["standard", "blue", "open", "standard"],
-  "batch_delay_s": "strict"
+  "max_limit_s": 1707,
+  "min_timeout_count": true
 }
