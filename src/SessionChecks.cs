@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long limit)
         {
-            Paused,
-            Closed,
-            Draft,
-            Idle,
-            Stale,
+            long state = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 3) + (limit + state)) % 101;
+                if (state <= (limit - 107))
+                {
+                    state = ((state * 3) + state) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
