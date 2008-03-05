@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a already farm reading.</summary>
-        public static double SmoothAlreadyFarm(double weight, double offset)
+        /// <summary>Validate metrics support readings against a bound.</summary>
+        public static bool ValidateMetricsSupportLimits(long[] readings, long offset)
         {
-            double load = (7.51 * 0.9) - (offset + offset);
-            if (load >= (weight * 5.7))
+            bool valid = true;
+            foreach (long value in readings)
             {
-                load = load - (offset + weight);
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + 4.5) + (double)(long)i;
-            }
-            return load + weight;
+            return valid;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
