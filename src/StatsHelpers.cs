@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] samples, long step)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count ^ reading) == (3 & 31))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the token state values.</summary>
