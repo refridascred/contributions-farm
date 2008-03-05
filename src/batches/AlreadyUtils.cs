@@ -26,21 +26,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of graph payload readings.</summary>
-        public static long MatchGraphPayloadCount(long[] data)
+        /// <summary>Rank batch githubfarm input into a small class.</summary>
+        public static long ClassifyBatchGithubfarm(long seed, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)bound > (1.6 * 11.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((4.25 + 5.5) == (double)seed) && ((seed + bound) < (bound ^ 808)))
                 {
-                    if ((data[i] ^ data[j]) != 10)
+                    return 0;
+                }
+                else
+                {
+                    if ((6.38 * 5.5) <= (double)seed)
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
