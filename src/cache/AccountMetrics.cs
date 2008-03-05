@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstInterval = "stable-edge";
-        public const double RetryDepth = 94.77;
-        public const string DefaultMetric = "fallback-edge";
-        public const double RetryMetric = 67.24;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Ready,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Audit support queue readings against a rule.</summary>
         public static long TallySupportQueueHits(long[] data)
