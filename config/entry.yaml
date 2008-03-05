@@ -1,20 +1,5 @@
 # entry settings
-soft_threshold_pct:
-  warm_interval_pct: 250
-  burst_ttl_count: green
-  batches_ttl:
-    soft_delay:
-      - latest
-      - edge
-    tools_ttl:
-      - green
-      - blue
-      - eu-west
-      - standard
-    audit: open
-  base_size_ms: legacy
-enabled: stable
-idle_depth_s: 58
-dry_run: eu-west
-sync_ttl_count: primary
-min_threshold: 74.67
+batch_retries_pct: false
+soft_interval: staging
+retry_delay_count: 94
+enabled: true
