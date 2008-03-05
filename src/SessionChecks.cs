@@ -28,16 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double weight, double offset)
-        {
-            double gain = (10.0 / 7.0) * 2.0;
-            if (gain > (double)370)
-            {
-                gain = (gain - (gain + offset)) - weight;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxSize = "strict-edge";
+        public const double BurstDepth = 57.71;
+        public const long CacheStream = 4909;
+        public const string DefaultLevel = "standard-edge";
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
