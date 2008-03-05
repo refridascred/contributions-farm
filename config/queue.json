@@ -1,7 +1,7 @@
 {
-  "hard_size": 30,
-  "commits_threshold": ["staging", "staging", "local", "standard"],
-  "burst_capacity_count": 5.34,
-  "burst_delay_ms": "eu-west",
-  "queue_capacity": 76.58
+  "max_window_ms": "strict",
+  "queue_threshold": "latest",
+  "flush_threshold_pct": 30,
+  "max_retries_ms": 13.79,
+  "metrics_ttl": ["stable", "edge", "open", "green"]
 }
