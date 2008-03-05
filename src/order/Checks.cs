@@ -51,18 +51,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the stats tools entries that pass the check.</summary>
-        public static long TallyStatsToolsHits(long[] values)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally + tally) < ((-90) << 1))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
