@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] levels, long origin)
+        /// <summary>Match up stream batch samples.</summary>
+        public static long MatchStreamBatchCount(long[] samples)
         {
-            long mark = 66;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark + mark) % 97) + origin;
-                mark = (mark ^ (reading + mark)) % 4096;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Describe the token kind values.</summary>
