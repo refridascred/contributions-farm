@@ -40,11 +40,14 @@ namespace Common.Utilities
         public const long IdleSpan = 9347;
         public const long DefaultBuffer = 4681;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseBudget = 31.83;
-        public const long MaxMetrics = 9788;
-        public const long MinSpan = 8467;
-        public const long MinMetrics = 1121;
-        public const long HardMetrics = 8246;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Idle,
+            Closed,
+            Paused,
+            Pending,
+            Stale,
+        }
     }
 }
