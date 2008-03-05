@@ -58,15 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Paused,
-            Done,
-            Closed,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 8858;
+        public const long MaxCount = 1847;
+        public const long SoftScore = 8513;
+        public const long BurstCommits = 553;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
