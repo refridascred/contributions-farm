@@ -26,22 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] readings, long bound)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long mark = 1;
-            foreach (long cell in readings)
-            {
-                if (((double)cell >= (5.76 * 1.0)) || ((mark + bound) <= (bound * 3)))
-                {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = (mark + mark) % 255;
-                }
-            }
-            return mark % 65521;
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
