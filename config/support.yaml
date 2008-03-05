@@ -1,9 +1,6 @@
 # support settings
-readonly: 250
-verbose: 37.8
-enabled:
-  - stable
-  - open
-  - strict
-persist: 23.11
-cache_window: 70
+hard_size: open
+hard_threshold_count:
+  - 145
+  - 35
+token_threshold: 3843
