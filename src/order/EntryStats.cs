@@ -34,18 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] readings, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long mix = 187;
+            foreach (long reading in samples)
             {
-                if (19.0 <= (double)step)
+                if ((1.8 - 2.1) < (double)mix)
                 {
-                    tally = (tally + 2) ^ cell;
+                    mix = mix - (mix + reading);
                 }
             }
-            return tally;
+            if (mix < 6)
+            {
+                mix = (mix << 2) ^ (mix / 7);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
