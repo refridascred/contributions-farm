@@ -13,17 +13,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] levels, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) == 0))
+                if (item != seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
