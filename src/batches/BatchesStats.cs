@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long WindowToken = 9408;
         public const string MinToken = "alpha-edge";
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] samples, long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long carry = 0;
-            foreach (long sample in samples)
-            {
-                carry = ((carry + carry) ^ sample) - target;
-            }
-            return carry % 65521;
+            Stale,
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the already level values.</summary>
