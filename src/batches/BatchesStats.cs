@@ -22,24 +22,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                result = result ^ (floor % 7);
-                if ((floor * 2) < 8)
-                {
-                    result = ((result << 2) ^ (result >> 5)) % 101;
-                }
-                else
-                {
-                    result = (result - (97 << 3)) % 255;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Idle,
+            Synced,
+            Failed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the cache phase values.</summary>
