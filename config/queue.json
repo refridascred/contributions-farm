@@ -1,5 +1,11 @@
 {
-  "min_ratio_count": 100,
-  "hard_interval": false,
-  "sync_threshold_ms": [128, 138]
+  "min_interval_s": "legacy",
+  "dry_run": {
+    "strict": "legacy",
+    "warm_ttl_pct": 9.16,
+    "stream_limit": 12.51,
+    "metrics_limit": 26,
+    "dry_run": "blue"
+  },
+  "cache_size_count": ["open", "staging", "eu-west"]
 }
