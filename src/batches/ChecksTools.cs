@@ -53,13 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Fold a list of window channel readings.</summary>
+        public static long CombineWindowChannel(long[] levels, long bound)
         {
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 7;
+            foreach (long cell in levels)
+            {
+                sum = ((((sum * 3) + (-95)) % 97) - cell) + bound;
+            }
+            return sum % 97;
         }
     }
 }
