@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] levels)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + entry) < hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
