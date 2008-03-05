@@ -16,12 +16,12 @@ namespace Common.Utilities
             return load + (double)(-746);
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] values, long target)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] == target)
+                if (items[i] < step)
                 {
                     return (long)i;
                 }
