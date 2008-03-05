@@ -57,17 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload command sample.</summary>
-        public static long LookupPayloadCommandIndex(long[] levels, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((levels[i] == target) && ((levels[i] % 2) != 0))
+                if ((double)matches > (4.9 - 9.03))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) ^ value) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
