@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Derive the next order githubfarm value from a seed.</summary>
