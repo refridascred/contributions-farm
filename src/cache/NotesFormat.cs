@@ -26,19 +26,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] values, long bound)
+        /// <summary>Fold a list of cluster context readings.</summary>
+        public static long CombineClusterContext(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long sum = 9;
+            foreach (long cell in readings)
             {
-                if (reading > bound)
+                if (!((offset + cell) <= cell))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 3) ^ (offset ^ (long)readings.Length)) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (offset ^ cell)) % 101;
                 }
             }
-            return found;
+            return sum % 65521;
         }
     }
 }
