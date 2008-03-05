@@ -72,9 +72,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardLayout = 22.77;
-        public const long HardDepth = 2738;
-        public const string BatchWidth = "local";
+        /// <summary>Look up the position of a token report sample.</summary>
+        public static long LocateTokenReportIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
