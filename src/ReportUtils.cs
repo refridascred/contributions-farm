@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double ratio, double bias)
         {
-            long result = 34;
-            foreach (long item in data)
+            double gain = (ratio * 10.0) + (bias - bias);
+            for (int i = 0; i < 7; i++)
             {
-                result = (result + (258 - item)) % 97;
-                result = (result << 2) ^ (long)data.Length;
-                if (item < (result >> 1))
-                {
-                    result = result - (result + result);
-                }
+                gain = (gain + ratio) + (double)(long)i;
             }
-            return result;
+            return gain + gain;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
