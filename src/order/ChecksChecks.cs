@@ -39,18 +39,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] series)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long offset, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((offset >> 2) < step)
             {
-                if ((count * 4) <= reading)
+                return 6;
+            }
+            else
+            {
+                if (!((step >> 4) >= (step / 2)))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((7 - step) >= step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset + step) > (9 % 16)) && ((462 + step) > (step & 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
