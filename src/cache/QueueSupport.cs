@@ -19,10 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinSpan = "standard-edge";
-        public const long BurstRatio = 1296;
-        public const string BurstSize = "local-1";
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
