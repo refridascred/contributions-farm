@@ -1,6 +1,17 @@
 {
-  "min_ratio": "edge",
-  "batch_ratio_s": "strict",
-  "compress": 7350,
-  "verbose": 3.64
+  "stream_window": 7275,
+  "command_size": 4751,
+  "sync_capacity_pct": 58.61,
+  "verbose": {
+    "audit": true,
+    "poll_ttl_count": 500,
+    "metrics_limit": {
+      "batch_ttl_ms": "eu-west",
+      "persist": 45.65,
+      "default_window_pct": 0.77
+    },
+    "min_limit_ms": "edge",
+    "max_capacity": 7376,
+    "flush_threshold_pct": 26
+  }
 }
