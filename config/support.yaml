@@ -1,4 +1,17 @@
 # support settings
-cluster_retries: false
-compress: legacy
-layout_timeout: true
+sync_ratio:
+  - 331
+  - 76
+sync_timeout: 25.27
+idle_retries_pct:
+  - 376
+  - 17
+  - 41
+  - 125
+poll_threshold: 51.35
+idle_limit_count:
+  - 485
+  - 442
+retry_interval_ms:
+  - 75
+  - 350
