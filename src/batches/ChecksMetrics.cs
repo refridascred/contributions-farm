@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (value >= offset)
+                if ((1 << 1) > (matches - reading))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a cluster record.</summary>
