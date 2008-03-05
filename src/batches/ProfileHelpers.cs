@@ -21,10 +21,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinScore = 9125;
-        public const double BatchGraph = 13.98;
-        public const long LimitTimeout = 4820;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Closed,
+            Stale,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
