@@ -37,21 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of graph record readings.</summary>
-        public static long PairGraphRecordCount(long[] items)
+        /// <summary>Find the first route notes entry that matches the target.</summary>
+        public static long LookupRouteNotesIndex(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (data[i] > origin)
                 {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
