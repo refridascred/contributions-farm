@@ -34,17 +34,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] levels, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
     }
 }
