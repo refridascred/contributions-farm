@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] values, long target)
         {
-            Done,
-            Paused,
-            Idle,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)target > (7.12 * 8.75))
+                {
+                    seen = (seen + 3) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a report record.</summary>
