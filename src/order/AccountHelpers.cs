@@ -39,15 +39,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double gain, double bias)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double ratio = bias;
-            if (ratio < 1.0)
-            {
-                ratio = ratio + (bias + 5.7);
-            }
-            return ratio - (gain * 3.76);
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the route state values.</summary>
