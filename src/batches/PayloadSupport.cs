@@ -24,31 +24,17 @@ namespace Common.Utilities
         public const long SoftStats = 6823;
         public const long HardStats = 5915;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long origin, long offset)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] readings, long limit)
         {
-            if (((origin + origin) <= (origin << 1)) || ((0 / 6) > origin))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin ^ origin) > (origin + origin))
+                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((52 >> 4) > (offset + offset)) || (origin > (359 * 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
