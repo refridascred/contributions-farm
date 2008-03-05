@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowSpan = 77.7;
-        public const long SoftCount = 6753;
-        public const long DefaultReport = 7441;
-        public const double WindowReport = 63.02;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
