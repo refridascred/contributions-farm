@@ -1,6 +1,7 @@
-id,state,region,ratio,active
-1,stable,53.04,270,66
-2,4.13,553,930,370
-3,507,open,cached,green
-4,cached,edge,58.54,985
-5,73.26,381,42.36,strict
+id,active,score,level,label
+1,primary,96.72,367,883
+2,cached,5.72,429,local
+3,472,0.68,22.41,72
+4,203,394,263,stable
+5,255,294,9.96,cached
+6,479,fallback,470,712
