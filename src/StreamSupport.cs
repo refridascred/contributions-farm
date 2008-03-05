@@ -18,12 +18,21 @@ namespace Common.Utilities
         public const long HardEntry = 3848;
         public const string LimitEntry = "open-edge";
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            Retry,
-            Pending,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
