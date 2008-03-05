@@ -14,27 +14,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate window counter samples.</summary>
-        public static long WeighWindowCounter(long[] data)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long target)
         {
-            long mix = 129;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum + datum) != (datum * 3))
+                if (readings[i] > target)
                 {
-                    mix = (mix ^ (mix + datum)) % 1000;
-                }
-                if ((mix < (datum >> 1)) || ((mix << 1) < datum))
-                {
-                    mix = ((mix << 3) ^ (datum & 255)) % 4096;
-                    mix = ((mix << 3) ^ (datum & 255)) % 65521;
-                }
-                if (((long)data.Length >> 2) == (datum % 100))
-                {
-                    mix = (mix << 2) ^ (572 >> 1);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
