@@ -39,11 +39,19 @@ namespace Common.Utilities
         public const long HardWidth = 5603;
         public const double BatchOrder = 39.57;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 1195;
-        public const long BaseInterval = 8414;
-        public const long DefaultWidth = 363;
-        public const long BatchContributi = 8187;
-        public const long LimitContributi = 676;
+        /// <summary>Blend two route buffer measurements.</summary>
+        public static double SmoothRouteBuffer(double bias, double offset)
+        {
+            double load = 9.63;
+            if (load > 8.86)
+            {
+                load = (load + load) + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (load + load)) + (double)(long)i;
+            }
+            return load + (0.33 - bias);
+        }
     }
 }
