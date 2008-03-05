@@ -25,10 +25,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 6685;
-        public const long MaxMetric = 5471;
-        public const long BaseMetric = 3459;
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] samples, long origin)
+        {
+            long mix = 539;
+            foreach (long cell in samples)
+            {
+                if ((cell ^ mix) < (cell >> 1))
+                {
+                    mix = ((mix ^ (mix * 3)) % 255) + origin;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + 80)) % 97;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] series)
