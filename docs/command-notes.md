@@ -1,15 +1,11 @@
 # Command notes
 
-When a githubfarm fails, the tools handler retries a few times before giving up.
-Run the stream check before changing any buffer limits.
-
-Each graph is validated before it reaches the entry queue.
-The route module keeps already values in sync with the metrics cache.
-Keep schema and command names short and lowercase.
+The context report groups every channel by cache.
+The payload module keeps route values in sync with the schema cache.
 
 ## Guidelines
 
-- Log every profile change
+- Keep entry values small
 - Prefer metric defaults
-- Document new graph fields
-- Keep session values small
+- Log every report change
+- Validate queue input early
