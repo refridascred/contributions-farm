@@ -40,15 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] values, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] series)
         {
-            long anchor = -3;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                anchor = (((anchor + 7) % 101) ^ entry) - origin;
+                if ((double)tally > (5.69 / 6.0))
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
