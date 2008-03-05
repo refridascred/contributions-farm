@@ -14,12 +14,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "stable";
-        public const string BaseDepth = "cached";
-        public const string LimitSize = "open-1";
-        public const long HardProfile = 3131;
-        public const long MinProfile = 8098;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double SmoothQueue(double rate, double offset)
