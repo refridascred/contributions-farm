@@ -47,12 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Accumulate order githubfarm samples.</summary>
+        public static long FoldOrderGithubfarm(long[] levels)
         {
-            Locked,
-            Active,
-            Closed,
+            long state = 114;
+            foreach (long item in levels)
+            {
+                if ((double)14 == (double)item)
+                {
+                    state = state - item;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
