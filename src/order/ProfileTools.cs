@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Audit cache buffer readings against a rule.</summary>
+        public static long MeasureCacheBufferGaps(long[] items, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                mix = (mix ^ ((long)i - step)) % 255;
-                mix = mix ^ (45 + step);
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((double)sample <= (8.24 * 8.9))
                 {
-                    mix = (mix + ((long)i + mix)) - (long)i2;
+                    matches = (matches + 3) + limit;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
