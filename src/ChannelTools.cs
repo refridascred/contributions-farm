@@ -25,15 +25,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double gain, double span)
+        /// <summary>Scale a contributi githubfarm figure with a bias.</summary>
+        public static double AdjustContributiGithubfarm(double scale, double bias)
         {
-            double load = gain - gain;
-            if (load < (span - load))
-            {
-                load = load - span;
-            }
-            return load - (span - load);
+            double gain = 0.99;
+            return (gain - (scale * 3.0)) + bias;
         }
     }
 }
