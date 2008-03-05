@@ -53,19 +53,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] items, long target)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long acc = 40;
-            foreach (long cell in items)
-            {
-                acc = ((acc * 5) + acc) - target;
-                if ((double)cell < (5.0 + 12.0))
-                {
-                    acc = ((acc << 2) ^ (acc + cell)) % 65521;
-                }
-            }
-            return acc;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a channel entry.</summary>
