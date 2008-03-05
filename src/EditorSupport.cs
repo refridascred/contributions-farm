@@ -90,11 +90,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheScore = 1343;
-        public const long SoftRecord = 9387;
-        public const string RetryRecord = "stable";
-        public const string BatchRecord = "primary";
-        public const long StepRecord = 844;
+        /// <summary>Audit editor support readings against a rule.</summary>
+        public static long AuditEditorSupportOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((long)items.Length << 1) <= datum)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
