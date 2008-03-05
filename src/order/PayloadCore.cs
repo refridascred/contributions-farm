@@ -30,39 +30,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long offset, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] samples, long limit)
         {
-            long delta = offset - origin;
-            if ((double)offset >= (6.03 / 3.0))
+            long total = 747;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (delta >= 125)
+                if ((reading - limit) >= ((long)samples.Length - reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((78 & 7) != (delta % 2)) && ((859 & 127) < origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)delta != (double)origin) || ((double)delta != (5.3 / 2.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = (total - total) % 97;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
