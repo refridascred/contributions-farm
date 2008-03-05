@@ -49,32 +49,13 @@ namespace Common.Utilities
         public const string HardWidth = "fallback";
         public const string WindowOrder = "latest-edge";
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long offset, long floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long edge = offset + floor;
-            if ((edge * 5) >= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1.23 + 7.93) > (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor >> 3) == (offset >> 2)) && ((edge + 540) > 389))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Scale a commits filter figure with a bias.</summary>
