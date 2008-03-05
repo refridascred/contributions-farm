@@ -58,12 +58,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Active,
-            Idle,
-            Retry,
+            Paused,
+            Done,
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a profile snapshot.</summary>
