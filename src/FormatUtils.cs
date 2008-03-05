@@ -37,24 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long step, long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            if ((step % 8) >= bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step >= 19.0)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Draft,
+            Stale,
+            Queued,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a route options.</summary>
