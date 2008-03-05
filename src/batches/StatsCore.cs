@@ -48,19 +48,13 @@ namespace Common.Utilities
         public const long LimitLevel = 5385;
         public const long CacheCount = 5717;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] values, long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
