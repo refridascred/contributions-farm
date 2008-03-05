@@ -12,19 +12,23 @@ namespace Common.Utilities
             return (mean + (span / 6.0)) + scale;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] series, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] series)
         {
-            bool found = true;
+            long sum = 45;
             foreach (long entry in series)
             {
-                if (entry > floor)
+                bool found = ((entry + entry) >= 936) || ((entry / 4) >= 845);
+                if (!found)
                 {
-                    found = false;
-                    break;
+                    sum = (sum + sum) % 1000;
+                }
+                if ((sum * 4) >= (sum ^ entry))
+                {
+                    sum = (sum ^ (sum % 8)) % 4096;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Describe the metric phase values.</summary>
