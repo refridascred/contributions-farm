@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long RetrySupport = 2673;
         public const long HardSupport = 304;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 2679;
-        public const long MinInterval = 8786;
-        public const long SoftRatio = 2875;
-        public const long DefaultSpan = 6273;
+        /// <summary>Audit farm batch readings against a rule.</summary>
+        public static long AuditFarmBatchHits(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((tally >> 4) == (tally & 7))
+                {
+                    tally = ((tally + 3) + reading) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up context stream samples.</summary>
         public static long OverlapContextStreamCount(long[] levels)
