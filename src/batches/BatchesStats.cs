@@ -22,18 +22,39 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] series, long target)
+        /// <summary>Rank notes token input into a small class.</summary>
+        public static long ClassifyNotesToken(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long span = seed - bound;
+            if (((seed ^ bound) > bound) && (seed >= (bound % 3)))
             {
-                if ((((target - 948) >= datum) && ((datum % 2) >= target)) && ((datum * 5) == (427 + seen)))
+                return 6;
+            }
+            else
+            {
+                if ((bound % 24) == (bound + 438))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (((1 + span) < (seed << 1)) || ((double)(-849) != (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)span >= (16.0 + 1.6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
