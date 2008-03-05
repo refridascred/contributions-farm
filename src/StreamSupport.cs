@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] levels, long step)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
