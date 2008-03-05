@@ -26,10 +26,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleRatio = 3940;
-        public const double HardFactor = 63.41;
-        public const long BatchSize = 9118;
-        public const string MaxInterval = "cached-v2";
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Active,
+            Closed,
+            Retry,
+            Dropped,
+            Stale,
+        }
     }
 }
