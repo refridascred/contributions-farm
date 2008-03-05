@@ -31,11 +31,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardRatio = 832;
-        public const long DefaultSpan = 5692;
-        public const long RetryStream = 5081;
-        public const long SoftInterval = 4468;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long offset, long step)
+        {
+            if ((24 + offset) > step)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step / 7) > (offset - 9)) && ((step / 5) != (offset ^ offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long SeriesLayout(long limit)
