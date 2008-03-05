@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Active,
-            Closed,
-            Draft,
-            Locked,
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a stream layout counter forward.</summary>
