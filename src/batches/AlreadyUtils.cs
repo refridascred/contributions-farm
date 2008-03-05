@@ -19,18 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report record samples are out of range.</summary>
-        public static long TallyReportRecordMatches(long[] values)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double scale = (double)74 - (offset - offset);
+            if (scale < scale)
             {
-                if ((double)hits >= (12.0 - 0.5))
-                {
-                    hits = (hits + 1) + entry;
-                }
+                scale = scale - (double)5;
             }
-            return hits;
+            else
+            {
+                scale = scale + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (weight * 4.58)) + (double)(long)i;
+            }
+            return scale + (double)(-486);
         }
 
         /// <summary>Locate a stats reading by value.</summary>
