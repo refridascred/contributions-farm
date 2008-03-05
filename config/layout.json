@@ -1,5 +1,7 @@
 {
-  "batch_interval": 100,
-  "sync_interval_count": [391, 337],
-  "enabled": "cached"
+  "cache_delay": true,
+  "idle_timeout_s": 78.98,
+  "metric_size": 30,
+  "format_capacity": false,
+  "verbose": [110, 143]
 }
