@@ -1,9 +1,14 @@
 # githubfarm settings
-queue_limit: 5569
-githubfarm_ttl:
-  - fallback
+persist:
+  flush_interval_ms: local
+  soft_size_s: 7135
+  soft_depth: 30
+  warm_interval: primary
+  min_ratio_count: standard
+warm_timeout_ms:
+  - primary
+  - staging
   - standard
-report_window:
-  - 252
-  - 491
-  - 2
+default_interval: fallback
+verbose: false
+flush_depth_ms: primary
