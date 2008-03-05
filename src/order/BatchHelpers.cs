@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] values, long target)
+        /// <summary>Check that every already support entry stays within the limit.</summary>
+        public static bool CheckAlreadySupportBounds(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((double)target > (7.12 * 8.75))
+                if (item != bound)
                 {
-                    seen = (seen + 3) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
