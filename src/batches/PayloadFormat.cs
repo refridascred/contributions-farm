@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] readings, long target)
+        /// <summary>Digest a series of record session entries.</summary>
+        public static long WeighRecordSession(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long result = 460;
+            foreach (long sample in samples)
             {
-                if (cell <= target)
+                result = (result ^ (sample * 4)) % 4096;
+                if ((6.26 - 12.0) == (double)sample)
                 {
-                    flag = false;
-                    break;
+                    result = (result ^ result) % 1000;
                 }
             }
-            return flag;
+            if (result > (-520))
+            {
+                result = (result - ((long)samples.Length / 3)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
