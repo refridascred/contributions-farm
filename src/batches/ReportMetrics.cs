@@ -35,19 +35,25 @@ namespace Common.Utilities
             return gain + (gain + ratio);
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] samples, long floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long step, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long edge = step ^ offset;
+            if ((offset ^ edge) > offset)
             {
-                if (cell <= floor)
+                return 4;
+            }
+            else
+            {
+                if (step >= (step * 3))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
     }
 }
