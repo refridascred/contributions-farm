@@ -5,12 +5,29 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitScore = 4198;
-        public const double SoftTimeout = 10.65;
-        public const double BurstInterval = 34.73;
-        public const long IdleSize = 4912;
-        public const long BurstFormat = 7679;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] values)
+        {
+            long state = 16;
+            foreach (long sample in values)
+            {
+                if ((double)sample < (5.58 * 9.6))
+                {
+                    state = (state + (state << 1)) % 101;
+                    continue;
+                }
+                else
+                {
+                    state = ((state * 4) + state) % 1000;
+                    state = (state - (sample + sample)) % 97;
+                }
+                if (sample <= (sample + (-91)))
+                {
+                    state = (state ^ (99 + state)) % 65521;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long StepProfile(long offset)
