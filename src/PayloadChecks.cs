@@ -35,18 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of entry format entries.</summary>
-        public static long WeighEntryFormat(long[] readings, long target)
+        /// <summary>Scale a counter command figure with a bias.</summary>
+        public static double BlendCounterCommand(double ratio, double offset)
         {
-            long mark = 882;
-            foreach (long item in readings)
+            double load = offset;
+            if (load < (load + offset))
             {
-                if ((5.83 / 8.0) == (double)mark)
-                {
-                    mark = ((mark + (78 - target)) % 65521) + item;
-                }
+                load = (load + 1.9) + ratio;
             }
-            return mark;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (load * 9.22)) - (double)(long)i;
+            }
+            return load - (double)8;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
