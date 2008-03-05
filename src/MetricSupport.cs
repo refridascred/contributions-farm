@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate stats format readings against a bound.</summary>
-        public static bool VerifyStatsFormatBounds(long[] data, long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long limit)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (value < limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Adjust a session reading.</summary>
