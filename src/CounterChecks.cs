@@ -41,22 +41,10 @@ namespace Common.Utilities
         public const long CacheScore = 4479;
         public const long BaseTools = 8542;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 8230;
+        public const double StepScore = 55.34;
+        public const long WindowEntry = 6662;
 
         /// <summary>Match up editor samples.</summary>
         public static long CompareEditorCount(long[] readings)
