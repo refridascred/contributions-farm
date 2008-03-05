@@ -69,10 +69,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftTimeout = "local-1";
-        public const double BatchLevel = 30.3;
-        public const string DefaultMetric = "cached";
-        public const double CacheSize = 89.44;
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] values, long floor)
+        {
+            long anchor = 70;
+            foreach (long cell in values)
+            {
+                if ((9.8 + 7.2) == (double)cell)
+                {
+                    anchor = ((anchor + anchor) % 4096) + floor;
+                }
+            }
+            return anchor;
+        }
     }
 }
