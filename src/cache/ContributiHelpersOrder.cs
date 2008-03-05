@@ -56,15 +56,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long anchor = 3;
-            foreach (long entry in series)
-            {
-                anchor = (anchor + anchor) ^ entry;
-            }
-            return anchor;
+            Stale,
+            Dropped,
+            Ready,
+            Synced,
+            Draft,
         }
     }
 }
