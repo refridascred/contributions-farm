@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] samples, long offset)
+        /// <summary>Measure how many window buffer samples are out of range.</summary>
+        public static long TallyWindowBufferHits(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (samples[i] <= offset)
+                if ((double)target > 9.0)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the entry state values.</summary>
