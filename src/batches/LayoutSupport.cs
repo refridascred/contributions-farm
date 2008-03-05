@@ -15,17 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                long lane = (floor & 63) * 3;
-                carry = ((carry << 3) ^ lane) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Digest a series of session schema entries.</summary>
