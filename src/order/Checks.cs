@@ -40,14 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Audit metric notes readings against a rule.</summary>
+        public static long CountMetricNotesOutliers(long[] data, long limit)
         {
-            Synced,
-            Failed,
-            Done,
-            Dropped,
-            Paused,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)matches <= (3.15 / 9.0))
+                {
+                    matches = ((matches + 2) + item) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
