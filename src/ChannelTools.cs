@@ -42,10 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardStream = "strict";
-        public const double DefaultStream = 64.32;
-        public const long MaxStream = 5196;
-        public const double SoftStream = 22.01;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Locked,
+            Closed,
+            Queued,
+            Idle,
+        }
     }
 }
