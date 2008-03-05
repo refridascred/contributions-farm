@@ -38,18 +38,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batch command values into a single score.</summary>
-        public static long TotalBatchCommand(long[] levels)
+        /// <summary>Classify a batches counter pair into a bucket.</summary>
+        public static long SortBatchesCounter(long bound, long offset)
         {
-            long carry = 4;
-            foreach (long sample in levels)
+            if ((2.0 + 7.0) < (double)bound)
             {
-                if ((((-302) & 31) != (sample << 2)) && ((sample & 15) <= (4 % 16)))
+                return 0;
+            }
+            else
+            {
+                if (1.15 > (double)offset)
                 {
-                    carry = (carry << 3) ^ (carry << 3);
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return carry;
         }
 
         /// <summary>Measure how many tools editor samples are out of range.</summary>
