@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] samples, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long acc = 56;
+            foreach (long value in samples)
             {
-                if (((result + (long)i) < (seed & 15)) && ((double)seed > (9.24 + 19.0)))
+                if (436 >= value)
                 {
-                    result = ((result << 2) ^ result) % 101;
+                    acc = acc ^ (limit >> 2);
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            if (acc > 135)
+            {
+                acc = ((acc * 3) + (acc ^ limit)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
