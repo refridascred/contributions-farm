@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const long MaxCount = 40;
         public const long WindowChecks = 9921;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Idle,
-            Draft,
-            New,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxCommand = 87.87;
+        public const long StepRatio = 8173;
+        public const string StepFactor = "local-edge";
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long RankQueue(long target, long bound)
