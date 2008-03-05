@@ -53,11 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] levels, long offset)
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((7.41 / 5.0) >= (double)offset) || (16.0 > (double)matches))
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
