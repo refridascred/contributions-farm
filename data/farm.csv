@@ -1,6 +1,8 @@
-id,token,region,rank
-1,419,54.22,53.71
-2,57.19,511,0.51
-3,423,266,edge
-4,70.11,edge,strict
-5,410,369,861
+id,weight,level,label
+1,564,56.07,primary
+2,strict,edge,39.31
+3,249,27.53,open
+4,5.08,standard,staging
+5,59.19,64.01,stable
+6,564,310,601
+7,752,standard,438
