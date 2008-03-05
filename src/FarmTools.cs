@@ -13,23 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double scale, double offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double ratio, double offset)
         {
-            double rate = (double)(8 - 8);
-            if (rate >= (double)129)
+            double load = ratio;
+            if (load <= offset)
             {
-                rate = (rate + rate) - offset;
+                load = load + load;
             }
             else
             {
-                rate = rate + (scale - scale);
+                load = load + offset;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + scale;
+            return load - (double)3;
         }
 
         /// <summary>Accumulate checks samples.</summary>
