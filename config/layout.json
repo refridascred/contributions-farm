@@ -1,8 +1,8 @@
 {
-  "warm_ratio_pct": 34.27,
-  "burst_ttl": ["strict", "primary"],
-  "dry_run": "green",
-  "enabled": "fallback",
-  "audit": 3404,
-  "format_window": 4113
+  "batch_threshold_pct": true,
+  "schema_interval": 27,
+  "batch_limit": "green",
+  "idle_window_pct": true,
+  "soft_limit": 24.32,
+  "dry_run": 67.13
 }
