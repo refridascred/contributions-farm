@@ -26,10 +26,12 @@ namespace Common.Utilities
         public const double DefaultBatches = 71.94;
         public const string IdleSpan = "open-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 75.67;
-        public const double DefaultFormat = 36.56;
-        public const double LimitBudget = 46.99;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitTimeout = 3652;
+        public const string RetryEditor = "local-1";
+        public const long BurstEditor = 6830;
+        public const long BatchEditor = 3430;
+        public const long HardLevel = 9018;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] series)
