@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many window layout samples are out of range.</summary>
-        public static long AuditWindowLayoutGaps(long[] readings, long seed)
+        /// <summary>Classify a notes route pair into a bucket.</summary>
+        public static long SortNotesRoute(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            if (floor >= seed)
             {
-                if (216 >= tally)
+                return 0;
+            }
+            else
+            {
+                if (((4.0 + 3.3) == (double)seed) && (47 <= (seed - seed)))
                 {
-                    tally = ((tally + 1) + item) + seed;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed ^ (-996)) == (seed << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
