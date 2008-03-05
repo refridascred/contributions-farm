@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 49.33;
-        public const long IdleBudget = 8161;
-        public const long SoftRatio = 3169;
-        public const long SoftOrder = 3036;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count support cache pairs that satisfy a relation.</summary>
         public static long OverlapSupportCacheCount(long[] values)
