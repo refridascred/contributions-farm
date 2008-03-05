@@ -13,22 +13,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] series, long floor)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double weight, double span)
         {
-            long acc = 390;
-            foreach (long item in series)
+            double weight2 = (double)2 + (7.99 * 10.0);
+            if (weight2 > weight2)
             {
-                if ((item + 55) < floor)
-                {
-                    acc = acc - (floor * 4);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (358 + acc);
-                }
+                weight2 = (weight2 + (double)4) + weight;
             }
-            return acc % 1000;
+            else
+            {
+                weight2 = weight2 - (double)25;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + span) - (double)(long)i;
+            }
+            return weight2 + span;
         }
 
         /// <summary>Hold a command record.</summary>
