@@ -16,11 +16,19 @@ namespace Common.Utilities
             return scale + (scale - weight);
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] data, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a token githubfarm figure with a bias.</summary>
