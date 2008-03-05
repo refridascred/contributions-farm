@@ -22,39 +22,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank notes token input into a small class.</summary>
-        public static long ClassifyNotesToken(long seed, long bound)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long floor)
         {
-            long span = seed - bound;
-            if (((seed ^ bound) > bound) && (seed >= (bound % 3)))
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((bound % 24) == (bound + 438))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((1 + span) < (seed << 1)) || ((double)(-849) != (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)span >= (16.0 + 1.6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
