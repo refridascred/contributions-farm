@@ -38,19 +38,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] series, long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long step)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
