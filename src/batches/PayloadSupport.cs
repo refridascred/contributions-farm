@@ -30,16 +30,19 @@ namespace Common.Utilities
             return drift + (double)(-78);
         }
 
-        /// <summary>Iterate the githubfarm entry series from a seed.</summary>
-        public static long DeriveGithubfarmEntry(long seed)
+        /// <summary>Check that every githubfarm route entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRouteBounds(long[] items, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                state = (state - state) % 4096;
-                state = ((state * 2) + (long)i) % 97;
+                if (cell <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
     }
 }
