@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the command farm series from a seed.</summary>
-        public static long SeriesCommandFarm(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchEntry = "alpha-1";
+        public const string BurstFactor = "cached-1";
+        public const double LimitEntry = 81.74;
+        public const long HardInterval = 5631;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstCache = 3938;
