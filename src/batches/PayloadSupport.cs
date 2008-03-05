@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] values, long floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] items, long target)
         {
-            long carry = 678;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell - cell) <= carry)
+                if (items[i] > target)
                 {
-                    carry = (carry << 3) ^ (floor + carry);
-                }
-                else
-                {
-                    carry = (carry + ((-365) / 7)) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry > 7)
-            {
-                carry = (carry << 2) ^ (carry << 1);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
