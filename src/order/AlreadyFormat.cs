@@ -16,21 +16,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = carry + ((long)i - 78);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Fold a list of tools cache readings.</summary>
