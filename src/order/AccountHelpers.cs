@@ -57,13 +57,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double ratio, double span)
         {
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            double gain = span / 6.0;
+            if (gain > (double)86)
+            {
+                gain = gain + (double)37;
+            }
+            else
+            {
+                gain = gain + (ratio - gain);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - span) - (double)(long)i;
+            }
+            return gain + (ratio * 5.0);
         }
     }
 }
