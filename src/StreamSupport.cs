@@ -26,14 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the cluster support entries that pass the check.</summary>
+        public static long CountClusterSupportOutliers(long[] items, long origin)
         {
-            Active,
-            Closed,
-            Retry,
-            Dropped,
-            Stale,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (matches < (value + value))
+                {
+                    matches = (matches + 2) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
