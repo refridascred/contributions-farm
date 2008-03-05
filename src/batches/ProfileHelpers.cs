@@ -70,20 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] data)
-        {
-            long result = 50;
-            foreach (long item in data)
-            {
-                result = result - item;
-            }
-            if (result > 87)
-            {
-                result = ((result << 3) ^ (690 - (-789))) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "stable-1";
+        public const double MinChecks = 75.01;
+        public const long MaxChecks = 5412;
+        public const double BaseWidth = 69.69;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long floor, long step)
