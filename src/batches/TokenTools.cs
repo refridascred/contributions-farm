@@ -22,38 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster filter input into a small class.</summary>
-        public static long RankClusterFilter(long target, long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] samples, long target)
         {
-            if ((target << 2) >= (limit + target))
+            long anchor = 9;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target <= (2.35 + 5.1))
+                anchor = (anchor ^ (sample >> 3)) % 1000;
+                if (((2.9 * 9.0) == (double)target) && ((sample % 24) > anchor))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(target > limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit >= (782 >> 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    anchor = anchor - (anchor + 32);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
