@@ -56,12 +56,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Stale,
-            Locked,
-            Active,
+            Dropped,
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Roll a window counter forward.</summary>
