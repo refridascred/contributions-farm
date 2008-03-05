@@ -23,13 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
