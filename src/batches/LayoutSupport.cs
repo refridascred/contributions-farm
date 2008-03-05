@@ -61,19 +61,39 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Scale a commits filter figure with a bias.</summary>
-        public static double BlendCommitsFilter(double bias, double floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long origin, long bound)
         {
-            double drift = (double)2 + (double)57;
-            if (drift <= bias)
+            long delta = origin + bound;
+            if (bound <= (bound * 5))
             {
-                drift = drift - 10.0;
+                return 3;
             }
             else
             {
-                drift = drift + (drift / 2.0);
+                if ((delta >= (delta + 55)) && ((bound << 2) > bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin >> 4) >= (bound - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((delta + origin) < origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return drift + floor;
         }
     }
 }
