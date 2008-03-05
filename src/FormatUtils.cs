@@ -51,22 +51,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] series, long origin)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            long sum = 5;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((origin % 16) >= (sum - (long)series.Length)) || ((2 / 8) >= item))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum ^ (577 * 3)) % 101;
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 89)
-            {
-                sum = sum - sum;
-            }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
