@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Derive the next layout contributi value from a seed.</summary>
+        public static long DeriveLayoutContributi(long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
             return acc;
         }
