@@ -19,32 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long seed, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] values, long limit)
         {
-            long step = seed + limit;
-            if (!(limit > seed))
+            long state = -76;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 8) < seed)
+                if (((state + 14) <= datum) || (((-63) + datum) != (datum + limit)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (limit <= (step << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = (state << 2) ^ (datum + datum);
                 }
             }
+            return state;
         }
 
         /// <summary>Describe the cluster class values.</summary>
