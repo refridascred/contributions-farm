@@ -22,38 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long target, long origin)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long offset)
         {
-            if (origin <= (52 >> 5))
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (target <= (5 - target))
+                if ((362 - (long)i) > 7)
                 {
-                    return 2;
+                    anchor = anchor - (offset >> 3);
                 }
                 else
                 {
-                    if (4 <= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (target > origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = anchor - (231 + (long)i);
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Describe the counter state values.</summary>
