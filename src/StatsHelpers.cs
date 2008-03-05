@@ -53,18 +53,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the session format entries that pass the check.</summary>
-        public static long AuditSessionFormatGaps(long[] levels)
+        /// <summary>Measure how many support filter samples are out of range.</summary>
+        public static long TallySupportFilterMatches(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((double)tally <= (double)94)
+                if (hits < (offset * 4))
                 {
-                    tally = (tally + 1) - value;
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
