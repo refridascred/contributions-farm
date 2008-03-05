@@ -13,18 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] samples)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (count < (6 ^ 413))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            Pending,
+            Idle,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
