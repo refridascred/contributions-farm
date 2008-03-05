@@ -1,6 +1,9 @@
-id,region,active
-1,752,eu-west
-2,staging,17.7
-3,staging,406
-4,12.06,96.52
-5,34.27,28.54
+id,token,state,level
+1,15.24,60.22,blue
+2,21.64,43.85,803
+3,cached,821,cached
+4,260,edge,eu-west
+5,690,962,12
+6,fallback,918,88.97
+7,standard,131,199
+8,strict,fallback,594
