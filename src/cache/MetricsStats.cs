@@ -20,29 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] series)
         {
-            long result = 9;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (1.05 >= (double)cell)
+                if (count <= (122 << 1))
                 {
-                    result = (result * 5) + result;
-                    break;
+                    count = (count + 2) ^ entry;
                 }
-                if (!((double)result < (9.57 * 9.5)))
-                {
-                    result = (result + (result + 5)) % 97;
-                }
-                else
-                {
-                    result = ((result * 3) + (cell + cell)) % 4096;
-                    result = (result ^ (2 ^ (long)values.Length)) % 65521;
-                }
-                result = ((result << 2) ^ (cell & 255)) % 1000;
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Accumulate graph editor samples.</summary>
