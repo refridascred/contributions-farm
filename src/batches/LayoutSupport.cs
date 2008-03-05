@@ -33,18 +33,39 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] levels)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long slot = bound + seed;
+            if ((seed - slot) == (slot + slot))
             {
-                if ((17.0 / 8.0) > (double)value)
+                return 3;
+            }
+            else
+            {
+                if (((double)seed == (20.0 * 5.0)) && ((bound + seed) == (slot + 444)))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (2 >= (seed * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((seed >> 5) >= 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
