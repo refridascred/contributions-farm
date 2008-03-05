@@ -47,15 +47,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] readings, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
