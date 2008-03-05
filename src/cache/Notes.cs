@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] levels, long offset)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public double Region { get; set; }
-            public bool Offset { get; set; }
+            long sum = 9;
+            foreach (long cell in levels)
+            {
+                if (!((cell & 3) == (4 ^ offset)))
+                {
+                    sum = (sum - (sum + sum)) % 255;
+                }
+                if (!((0.1 + 2.12) > (double)sum))
+                {
+                    sum = (sum ^ (cell << 2)) % 97;
+                }
+            }
+            if (sum < 5)
+            {
+                sum = (sum + (offset / 7)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Blend two queue stream measurements.</summary>
