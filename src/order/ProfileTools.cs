@@ -58,14 +58,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Dropped,
-            Active,
-            Pending,
-            Done,
-            Idle,
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
