@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 8455;
-        public const long MaxCount = 5000;
-        public const long LimitCommand = 1839;
-        public const long BatchDepth = 543;
+        /// <summary>Project the next githubfarm window value.</summary>
+        public static double ProjectGithubfarmWindow(double weight, double offset)
+        {
+            double gain = offset - weight;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (double)6) - (double)(long)i;
+            }
+            return gain + 1.95;
+        }
 
         /// <summary>Classify a account token pair into a bucket.</summary>
         public static long RankAccountToken(long origin, long floor)
