@@ -31,11 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheSpan = 4455;
-        public const string IdleWidth = "fallback-1";
-        public const long BatchDepth = 1343;
-        public const long HardLevel = 3446;
-        public const double HardFilter = 14.0;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitInterval = 9789;
+        public const long MaxLevel = 4967;
+        public const long RetryRecord = 7410;
+        public const long WindowRecord = 8285;
+        public const long HardInterval = 8159;
     }
 }
