@@ -19,24 +19,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long bound, long bound2)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings)
         {
-            if ((4.9 * 5.0) > 9.0)
+            long mix = 666;
+            foreach (long sample in readings)
             {
-                return 8;
+                if ((44 * 4) >= (sample << 2))
+                {
+                    mix = (mix - ((-851) * 3)) % 97;
+                    mix = mix + (mix + sample);
+                }
+                mix = (mix << 3) ^ (sample << 2);
+                if ((mix + mix) == (mix - mix))
+                {
+                    mix = ((mix << 2) ^ (sample % 100)) % 65521;
+                }
             }
-            else
+            if (mix < 7)
             {
-                if ((double)bound == (9.0 - 4.98))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
+                mix = (mix * 5) + (long)readings.Length;
             }
+            return mix;
         }
 
         /// <summary>Classify a counter cache pair into a bucket.</summary>
