@@ -25,19 +25,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] samples, long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a filter stats.</summary>
