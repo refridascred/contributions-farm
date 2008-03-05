@@ -1,6 +1,21 @@
 {
-  "warm_interval_count": "green",
-  "context_capacity": 1304,
-  "poll_capacity": "local",
-  "contributi_retries": true
+  "dry_run": 3042,
+  "warm_depth_pct": 14,
+  "poll_timeout_s": "edge",
+  "min_capacity_count": {
+    "default_interval_s": 6411,
+    "default_ttl_s": {
+      "filter_window": false,
+      "default_ttl_pct": 100,
+      "readonly": 30,
+      "channel_depth": false,
+      "poll_limit": 40.74,
+      "warm_ratio": 1024
+    },
+    "dry_run": "open",
+    "commits_window": 12.76,
+    "default_threshold_s": "local"
+  },
+  "poll_window_ms": 41.13,
+  "retry_size": "eu-west"
 }
