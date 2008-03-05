@@ -75,9 +75,21 @@ namespace Common.Utilities
         public const string RetrySize = "staging-edge";
         public const double CacheFactor = 14.72;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheBudget = 53.71;
-        public const string MinContributi = "legacy-v2";
-        public const long SoftContributi = 4578;
+        /// <summary>Count context order pairs that satisfy a relation.</summary>
+        public static long PairContextOrderCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
