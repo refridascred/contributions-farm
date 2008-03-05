@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of channel cluster readings.</summary>
-        public static long TallyChannelCluster(long[] values, long step)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double rate, double offset)
         {
-            long score = 80;
-            foreach (long datum in values)
+            double drift = offset;
+            if (drift <= drift)
             {
-                if (!((score / 5) < (score + score)))
-                {
-                    score = (((score << 2) ^ (score ^ step)) % 97) + datum;
-                }
+                drift = drift + rate;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - offset) - (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Adjust a metric reading.</summary>
