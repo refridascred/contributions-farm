@@ -52,21 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metric record pairs that satisfy a relation.</summary>
-        public static long OverlapMetricRecordCount(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count >> 2) == (limit + reading))
                 {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
