@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] values, long step)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Dropped,
+            Done,
+            Failed,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
