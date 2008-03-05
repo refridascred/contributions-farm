@@ -84,31 +84,18 @@ namespace Common.Utilities
             return ratio + 8.8;
         }
 
-        /// <summary>Rank support format input into a small class.</summary>
-        public static long RankSupportFormat(long limit, long step)
+        /// <summary>Digest a series of notes stats entries.</summary>
+        public static long ScoreNotesStats(long[] readings)
         {
-            if ((89 / 5) <= (limit + limit))
+            long sum = 5;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7 + limit) != (1 >> 3))
+                if ((3.7 / 5.0) <= (double)sum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((11 >> 3) < (limit >> 5)) && ((double)step <= (20.0 * 6.7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = (sum ^ sum) - item;
                 }
             }
+            return sum % 97;
         }
     }
 }
