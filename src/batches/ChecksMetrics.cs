@@ -56,19 +56,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] data, long step)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Classify a batch stream pair into a bucket.</summary>
