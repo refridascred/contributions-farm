@@ -45,12 +45,11 @@ namespace Common.Utilities
         public const long SoftSpan = 1075;
         public const long HardLevel = 1699;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public double Token { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
