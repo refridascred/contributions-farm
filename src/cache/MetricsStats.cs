@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 5529;
+        public const string CacheBatches = "fallback";
+        public const string MaxTimeout = "fallback-edge";
+        public const long HardBatches = 4396;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] series)
