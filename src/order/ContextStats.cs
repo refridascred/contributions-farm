@@ -29,19 +29,21 @@ namespace Common.Utilities
         public const long BurstCounter = 974;
         public const long RetryCounter = 6660;
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double bias, double bias2)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            double load = bias2;
-            if (load <= load)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - (bias2 + 0.88)) - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - (double)33;
+            return seen;
         }
     }
 }
