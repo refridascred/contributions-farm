@@ -23,22 +23,13 @@ namespace Common.Utilities
         public const long BatchSpan = 2326;
         public const long DefaultSpan = 3648;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long sum = 566;
-            foreach (long item in samples)
-            {
-                if ((double)sum <= (7.0 - 6.36))
-                {
-                    sum = (sum - sum) + item;
-                }
-                if (6 < (sum / 2))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            Queued,
+            Paused,
+            Pending,
+            Locked,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
