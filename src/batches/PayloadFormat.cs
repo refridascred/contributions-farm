@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] levels, long step)
+        /// <summary>Locate a context channel reading by value.</summary>
+        public static long LookupContextChannelIndex(long[] readings, long origin)
         {
-            long result = -93;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result - 769) ^ item) - step;
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
