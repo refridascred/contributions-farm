@@ -13,25 +13,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long floor)
-        {
-            if ((8.2 - 5.39) >= (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((-8) > (bound - 84))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 2792;
+        public const long HardEntry = 3848;
+        public const string LimitEntry = "open-edge";
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
