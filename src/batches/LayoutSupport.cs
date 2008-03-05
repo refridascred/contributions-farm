@@ -73,18 +73,17 @@ namespace Common.Utilities
         public const long HardWidth = 5603;
         public const double BatchOrder = 39.57;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] values, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1 + matches) < matches)
+                if (values[i] == seed)
                 {
-                    matches = ((matches + 2) + item) - floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
