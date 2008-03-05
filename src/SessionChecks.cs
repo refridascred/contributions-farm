@@ -41,19 +41,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double weight, double span)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            double mean = (span - span) + (double)99;
-            if (mean > (weight - span))
-            {
-                mean = mean - (double)7;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean - span)) + (double)(long)i;
-            }
-            return mean - (double)68;
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
