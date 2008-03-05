@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green edge legacy; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=258
+CHANNEL_LIMIT=192
 log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
