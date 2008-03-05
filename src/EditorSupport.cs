@@ -82,13 +82,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] series, long origin)
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
