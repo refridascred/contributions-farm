@@ -13,12 +13,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long offset, long offset2)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
+            long edge = offset ^ offset2;
+            if ((offset + 60) < (edge << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset - edge) < (offset2 + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset2 + edge) > (offset >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel snapshot.</summary>
