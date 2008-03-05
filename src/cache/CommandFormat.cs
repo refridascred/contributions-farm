@@ -36,20 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] data, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseStream = 16.04;
+        public const long IdleTimeout = 8217;
+        public const long CacheStream = 5252;
+        public const long CacheRatio = 6173;
 
         /// <summary>Scale a token githubfarm figure with a bias.</summary>
         public static double AdjustTokenGithubfarm(double scale, double span)
