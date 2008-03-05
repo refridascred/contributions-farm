@@ -34,22 +34,19 @@ namespace Common.Utilities
             return (weight - (double)6) + offset;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] series, long bound)
+        /// <summary>Digest a series of report window entries.</summary>
+        public static long FoldReportWindow(long[] items)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long carry = 700;
+            foreach (long cell in items)
             {
-                if (!!((double)bound <= (6.4 / 2.0)))
-                {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry ^ (cell >> 4)) % 65521;
             }
-            return count;
+            if (carry > 128)
+            {
+                carry = carry + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
