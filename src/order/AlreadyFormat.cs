@@ -29,15 +29,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of tools cache readings.</summary>
-        public static long ScoreToolsCache(long[] readings)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long total = 247;
-            foreach (long value in readings)
-            {
-                total = ((total - (total ^ total)) % 255) ^ value;
-            }
-            return total;
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Adjust a already reading.</summary>
