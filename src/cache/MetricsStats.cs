@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] items)
         {
-            Paused,
-            Draft,
-            New,
-            Done,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item & 15) >= item)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
