@@ -40,10 +40,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "primary";
-        public const long LimitFactor = 3072;
-        public const long MaxAlready = 4193;
-        public const long SoftScore = 8292;
+        /// <summary>Derive the next record session value from a seed.</summary>
+        public static long IterateRecordSession(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total - (total - 275)) % 65521;
+                total = (total << 3) ^ seed;
+                if ((seed ^ 5) >= 50)
+                {
+                    total = total + total;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
