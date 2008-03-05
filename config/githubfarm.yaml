@@ -1,4 +1,27 @@
 # githubfarm settings
-enabled: 6998
-min_threshold_ms: eu-west
-readonly: 8658
+buffer_capacity: open
+token_delay: eu-west
+retry_limit: blue
+retry_interval:
+  warm_ratio_s: edge
+  retry_threshold_s: local
+  idle_limit:
+    - open
+    - eu-west
+compress: 500
+hard_ratio_s:
+  record_capacity:
+    default_ratio: false
+    audit: 20
+    warm_depth_ms: local
+    base_limit_s: blue
+    readonly: true
+    persist: 12.49
+  dry_run: 78.66
+  batch_interval: 38.94
+  githubfarm_capacity: legacy
+  poll_size_s:
+    - legacy
+    - strict
+    - fallback
+    - staging
