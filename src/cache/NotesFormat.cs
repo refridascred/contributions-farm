@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultInterval = 2584;
-        public const long DefaultScore = 3560;
-        public const string HardCluster = "open-v2";
-        public const string LimitCluster = "latest-v2";
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long seed, long origin)
+        {
+            long slot = seed + origin;
+            if (((seed - origin) > (origin + origin)) || ((slot / 2) > 52))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)slot <= (3.99 - 5.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Classify a account token pair into a bucket.</summary>
         public static long RankAccountToken(long origin, long floor)
