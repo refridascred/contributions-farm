@@ -23,10 +23,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleCount = 9834;
-        public const double StepCount = 92.79;
-        public const long MinRatio = 3262;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsHits(long[] readings)
