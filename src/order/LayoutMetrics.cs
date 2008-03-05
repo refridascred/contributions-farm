@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream filter readings against a rule.</summary>
-        public static long CountStreamFilterGaps(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long sum = 86;
+            foreach (long cell in values)
             {
-                if ((seen ^ seen) == (sample ^ sample))
+                if ((double)sum < (4.8 + 16.0))
                 {
-                    seen = seen + 1;
+                    sum = ((sum ^ (610 * 3)) % 4096) ^ cell;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the notes mode values.</summary>
