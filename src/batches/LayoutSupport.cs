@@ -73,18 +73,11 @@ namespace Common.Utilities
         public const long HardWidth = 5603;
         public const double BatchOrder = 39.57;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + entry) > entry)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 1195;
+        public const long BaseInterval = 8414;
+        public const long DefaultWidth = 363;
+        public const long BatchContributi = 8187;
+        public const long LimitContributi = 676;
     }
 }
