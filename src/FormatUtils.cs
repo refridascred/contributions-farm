@@ -64,21 +64,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample != offset)
                 {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
