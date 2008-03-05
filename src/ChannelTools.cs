@@ -22,12 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowStats = "strict-1";
-        public const long BaseCount = 3649;
-        public const long StepStats = 8654;
-        public const long RetryStats = 404;
-        public const long DefaultStats = 5047;
+        /// <summary>Classify a token checks pair into a bucket.</summary>
+        public static long BucketTokenChecks(long seed, long step)
+        {
+            if (step >= (step & 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8.2 * 6.0) > (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksHits(long[] data, long limit)
