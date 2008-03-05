@@ -73,11 +73,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 76.46;
+        public const double BatchWindow = 66.77;
+        public const long SoftWindow = 3355;
+        public const string DefaultSize = "stable-edge";
     }
 }
