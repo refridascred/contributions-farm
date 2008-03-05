@@ -27,12 +27,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxFactor = 3035;
-        public const long MaxEntry = 3590;
-        public const long BaseEntry = 3965;
-        public const string CacheInterval = "legacy-edge";
-        public const long BaseTimeout = 7641;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits >> 4) >= (item >> 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of checks contributi readings.</summary>
         public static long PairChecksContributiCount(long[] data)
