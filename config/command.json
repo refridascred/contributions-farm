@@ -1,13 +1,16 @@
 {
-  "batches_timeout": "standard",
-  "hard_size_pct": 9,
-  "flush_limit": {
-    "idle_limit_ms": false,
-    "enabled": "fallback",
-    "retry_window_s": "green",
-    "poll_threshold_s": "latest"
-  },
-  "order_ratio": ["fallback", "fallback", "primary", "eu-west"],
-  "idle_window": "cached",
-  "sync_capacity": false
+  "burst_delay": "latest",
+  "warm_window": 6,
+  "idle_ratio": {
+    "order_threshold": 500,
+    "sync_size": "edge",
+    "soft_delay_count": ["latest", "eu-west", "cached", "local"],
+    "stream_depth": 4.17,
+    "batches_timeout": {
+      "flush_ratio_count": 56,
+      "audit": ["fallback", "edge"],
+      "cache_ttl_s": 3180,
+      "channel_timeout": "fallback"
+    }
+  }
 }
