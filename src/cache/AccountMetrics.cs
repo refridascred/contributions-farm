@@ -71,15 +71,18 @@ namespace Common.Utilities
         public const double BurstMetric = 42.0;
         public const long SoftFactor = 7964;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] samples, long seed)
         {
-            long sum = 5;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                sum = (((sum - 8) % 65521) + cell) - floor;
+                if (((reading * 4) >= (seed + 8)) && (seed < (reading >> 1)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
