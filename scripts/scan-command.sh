@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+COMMAND_LIMIT=307
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    blue)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in legacy stable edge standard; do
-    log "checking ${item}"
-done
