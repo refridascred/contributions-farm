@@ -28,21 +28,39 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long origin, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = origin - target;
+            if ((97 - origin) != (221 + 734))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)origin > (double)diff)
                 {
-                    if ((samples[i] - samples[j]) != 13)
+                    return 8;
+                }
+                else
+                {
+                    if (((diff % 97) < (target + 844)) && (6.8 <= (double)origin))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target >= (diff & 31)) && ((origin / 3) != (diff % 10)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
