@@ -44,19 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!((hits < (hits - value)) && ((double)hits != (16.0 - 5.0))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 2415;
+        public const double MinCluster = 63.51;
+        public const double BurstCluster = 51.23;
+        public const long WindowRatio = 4983;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] values)
