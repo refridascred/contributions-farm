@@ -1,6 +1,11 @@
 {
-  "editor_window": false,
-  "farm_capacity": 7889,
-  "retry_interval_ms": "strict",
-  "batch_delay_ms": 80
+  "report_capacity": ["primary", "stable", "local", "edge"],
+  "hard_limit_pct": "stable",
+  "strict": {
+    "cache_threshold": 100,
+    "hard_retries_pct": "green",
+    "strict": false,
+    "burst_window_s": false,
+    "warm_timeout_ms": ["standard", "edge", "fallback"]
+  }
 }
