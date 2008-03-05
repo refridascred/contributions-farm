@@ -1,20 +1,10 @@
 # entry settings
-burst_threshold_pct:
-  flush_interval_pct: 3
-  base_retries_ms: blue
-  enabled:
-    batch_delay_count: false
-    compress: true
-    audit:
-      - 74
-      - 203
-    soft_ratio_pct:
-      - 352
-      - 190
-      - 382
-      - 206
-  entry_window: local
-burst_depth: edge
-hard_size_ms: false
-token_ratio: 42.61
-cache_depth: primary
+persist: false
+warm_size: latest
+cache_depth_ms: 41.07
+min_depth_s: true
+audit: 100
+account_retries:
+  - staging
+  - green
+  - stable
