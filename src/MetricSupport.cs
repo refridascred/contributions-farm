@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of stream editor entries.</summary>
-        public static long CombineStreamEditor(long[] items)
+        /// <summary>Look up the position of a token entry sample.</summary>
+        public static long LookupTokenEntryIndex(long[] levels, long offset)
         {
-            long state = 5;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.0 + 2.0) != (double)state)
+                if (levels[i] >= offset)
                 {
-                    state = state ^ state;
-                }
-                if ((843 + item) >= (state + state))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
