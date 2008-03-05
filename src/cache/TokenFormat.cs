@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] samples, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] series, long offset)
         {
-            long mix = 96;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (((datum % 64) >= datum) && ((mix * 5) > datum))
+                if (cell < offset)
                 {
-                    mix = (mix - (datum + datum)) + bound;
+                    ready = false;
+                    break;
                 }
             }
-            return mix % 1000;
+            return ready;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
