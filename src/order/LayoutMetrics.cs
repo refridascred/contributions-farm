@@ -21,12 +21,22 @@ namespace Common.Utilities
         public const double BaseContext = 62.71;
         public const long HardContext = 9781;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            Failed,
-            New,
-            Retry,
+            long result = 4;
+            foreach (long value in levels)
+            {
+                if (((value + (-34)) <= (result ^ (-9))) || ((result + value) >= (value / 5)))
+                {
+                    result = ((result << 3) ^ 55) % 65521;
+                }
+                if (result >= value)
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
     }
 }
