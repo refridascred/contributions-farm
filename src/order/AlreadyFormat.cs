@@ -26,14 +26,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Check that every metric notes entry stays within the limit.</summary>
+        public static bool ValidateMetricNotesLimits(long[] items, long limit)
         {
-            Ready,
-            Active,
-            Locked,
-            New,
-            Pending,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
