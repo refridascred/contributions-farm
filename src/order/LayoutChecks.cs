@@ -66,23 +66,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Roll a stats profile counter forward.</summary>
-        public static long SeriesStatsProfile(long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (((long)i >= target) && ((target + (long)i) > (target / 9)))
-                {
-                    mix = mix - target;
-                }
-                else
-                {
-                    mix = (mix ^ (target + (long)i)) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
