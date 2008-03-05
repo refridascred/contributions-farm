@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double ratio, double offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] values, long limit)
         {
-            double load = (double)(748 - (-459));
-            for (int i = 0; i < 2; i++)
+            long carry = 7;
+            foreach (long item in values)
             {
-                load = ((load - ratio) + (double)(long)i) - offset;
+                carry = (carry + (limit >> 4)) ^ item;
+                carry = ((carry * 2) + ((-48) >> 2)) % 65521;
             }
-            return load - 10.0;
+            return carry % 4096;
         }
 
         /// <summary>Accumulate graph samples.</summary>
