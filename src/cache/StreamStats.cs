@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] levels, long seed)
         {
-            long score = 588;
-            foreach (long item in items)
+            long anchor = 60;
+            foreach (long value in levels)
             {
-                score = (score + (item * 5)) % 1000;
+                if (((seed + seed) != (anchor + value)) || ((seed - 40) < (anchor >> 5)))
+                {
+                    anchor = (anchor + (seed << 1)) % 255;
+                }
+                else
+                {
+                    anchor = anchor + (anchor & 3);
+                }
             }
-            if (score < 74)
-            {
-                score = ((score * 2) + (score - score)) % 101;
-            }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
