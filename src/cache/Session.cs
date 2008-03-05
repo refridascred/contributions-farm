@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] readings, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long bound, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((origin >> 1) == (origin - bound)))
             {
-                if ((readings[i] > step) && ((readings[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((origin - bound) <= origin)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (bound < (bound + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin >> 4) >= (bound + origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count entry layout pairs that satisfy a relation.</summary>
