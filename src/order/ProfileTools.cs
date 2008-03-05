@@ -68,26 +68,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] readings, long limit)
         {
-            long acc = 52;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (acc > (item + 339))
+                if ((readings[i] > limit) && ((readings[i] % 3) == 0))
                 {
-                    acc = ((acc - (item % 16)) % 1000) - limit;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (item - item);
+                    return (long)i;
                 }
             }
-            if (acc > 66)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            return -1;
         }
     }
 }
