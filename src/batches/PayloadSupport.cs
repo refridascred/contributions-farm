@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 34.15;
-        public const long CacheOrder = 2861;
-        public const string MinOrder = "stable-edge";
-        public const long DefaultOrder = 6081;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] values, long floor)
+        {
+            long carry = 678;
+            foreach (long cell in values)
+            {
+                if ((cell - cell) <= carry)
+                {
+                    carry = (carry << 3) ^ (floor + carry);
+                }
+                else
+                {
+                    carry = (carry + ((-365) / 7)) % 4096;
+                }
+            }
+            if (carry > 7)
+            {
+                carry = (carry << 2) ^ (carry << 1);
+            }
+            return carry;
+        }
 
         /// <summary>Audit graph schema readings against a rule.</summary>
         public static long AuditGraphSchemaMatches(long[] items, long limit)
