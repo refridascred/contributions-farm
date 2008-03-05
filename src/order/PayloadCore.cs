@@ -30,18 +30,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] series, long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double weight, double offset)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double bias = (double)(50 - 45);
+            if (bias >= (offset - 7.12))
             {
-                if ((24 + bound) < (entry ^ bound))
-                {
-                    count = count + 1;
-                }
+                bias = bias - 13.0;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - weight) + (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
