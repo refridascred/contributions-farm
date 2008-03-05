@@ -55,19 +55,15 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] samples)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            long anchor = 5;
-            foreach (long sample in samples)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = anchor ^ (anchor - sample);
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (anchor > 950)
-            {
-                anchor = (anchor ^ (anchor + 113)) % 101;
-            }
-            return anchor;
+            return score;
         }
     }
 }
