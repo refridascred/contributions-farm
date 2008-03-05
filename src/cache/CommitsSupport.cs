@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] samples, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            long score = 21;
-            foreach (long item in samples)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                score = (score + (3 >> 5)) + item;
-                if ((score + limit) != (score + score))
-                {
-                    break;
-                }
-            }
-            if (score < 4)
-            {
-                score = ((score << 3) ^ 106) % 97;
+                score = ((score * 4) + (long)i) % 101;
             }
             return score;
         }
