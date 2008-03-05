@@ -1,17 +1,12 @@
 # entry settings
-warm_ratio_s: true
-soft_interval_s: edge
-warm_timeout:
-  - 91
-  - 473
-  - 91
-  - 424
-checks_timeout: 37
-readonly:
-  retry_retries_pct: eu-west
-  account_window: 26
-  burst_ratio: cached
-  min_depth_pct:
-    checks_limit: 52.28
-    hard_delay_s: green
-    persist: false
+retry_limit_ms: fallback
+warm_threshold:
+  - 66
+  - 236
+editor_capacity:
+  batch_delay_pct:
+    - 404
+    - 88
+  default_timeout_count: false
+  retry_limit_pct: edge
+max_ttl: fallback
