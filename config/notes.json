@@ -1,6 +1,6 @@
 {
-  "warm_ratio_count": false,
-  "batch_window": "primary",
-  "poll_delay_pct": [336, 129],
-  "batch_capacity": true
+  "notes_ttl": "cached",
+  "enabled": 30,
+  "base_depth_count": true,
+  "poll_delay_count": 100
 }
