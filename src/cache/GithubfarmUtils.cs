@@ -27,14 +27,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 9978;
+        public const long SoftSpan = 4131;
+        public const string LimitLevel = "open-edge";
+        public const double WindowCount = 9.56;
+        public const double SoftSchema = 19.57;
 
         /// <summary>Validate metric githubfarm readings against a bound.</summary>
         public static bool VerifyMetricGithubfarmRange(long[] samples, long bound)
