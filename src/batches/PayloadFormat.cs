@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long result = -93;
+            foreach (long item in levels)
             {
-                if ((hits & 1) == (hits + hits))
-                {
-                    hits = (hits + 1) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result - 769) ^ item) - step;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
