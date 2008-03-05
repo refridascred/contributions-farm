@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a cluster metric reading by value.</summary>
-        public static long LocateClusterMetricIndex(long[] values, long target)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(748 - (-459));
+            for (int i = 0; i < 2; i++)
             {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
+                load = ((load - ratio) + (double)(long)i) - offset;
             }
-            return -1;
+            return load - 10.0;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
