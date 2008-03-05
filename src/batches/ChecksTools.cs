@@ -47,17 +47,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] samples, long offset)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(610 >> 5);
+            if (mean < (0.6 / 2.0))
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean - span) - weight;
             }
-            return -1;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (7.5 * 0.2);
         }
     }
 }
