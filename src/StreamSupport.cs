@@ -26,11 +26,21 @@ namespace Common.Utilities
         public const long SoftRatio = 3169;
         public const long SoftOrder = 3036;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double bias, double bias2)
+        /// <summary>Count support cache pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCacheCount(long[] values)
         {
-            double gain = (bias - bias) / 9.0;
-            return (gain + gain) + bias2;
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
