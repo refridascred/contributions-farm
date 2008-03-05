@@ -27,22 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats window entries that pass the check.</summary>
-        public static long AuditStatsWindowHits(long[] values, long target)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (entry < (count << 2))
-                {
-                    count = (count + 1) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
