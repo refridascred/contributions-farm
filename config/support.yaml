@@ -1,19 +1,20 @@
 # support settings
-base_delay_count: open
-min_retries_count: 5282
-soft_limit_count:
-  soft_capacity_count: true
-  report_ttl: local
-  order_delay: 45.16
-  base_ttl_ms:
-    strict: fallback
-    compress: 500
-    burst_delay_s:
-      - 202
-      - 40
-      - 454
-      - 55
-    burst_ratio: stable
-    warm_threshold_pct: 5435
-    warm_ttl: 25
-sync_delay: 61.63
+max_limit: 2832
+audit:
+  - legacy
+  - open
+hard_depth:
+  strict: 65.29
+  verbose: fallback
+  cache_interval_pct:
+    - legacy
+    - local
+    - edge
+    - legacy
+  persist:
+    - eu-west
+    - stable
+compress:
+  - 35
+  - 118
+  - 140
