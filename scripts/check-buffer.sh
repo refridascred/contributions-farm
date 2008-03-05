@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green open fallback blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-blue}"
 case "${mode}" in
-    fallback)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in primary green standard; do
+    log "checking ${item}"
+done
