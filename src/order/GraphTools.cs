@@ -27,21 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double weight = bias;
+            return (weight - (double)6) + offset;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
