@@ -90,9 +90,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 5222;
-        public const long MinStream = 573;
-        public const long LimitStream = 4931;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheScore = 1343;
+        public const long SoftRecord = 9387;
+        public const string RetryRecord = "stable";
+        public const string BatchRecord = "primary";
+        public const long StepRecord = 844;
     }
 }
