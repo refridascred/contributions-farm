@@ -25,14 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] series, long seed)
         {
-            Pending,
-            Closed,
-            Idle,
-            Dropped,
-            Paused,
+            long total = -477;
+            foreach (long datum in series)
+            {
+                if (datum >= (seed % 5))
+                {
+                    total = (total - (total + datum)) % 1000;
+                }
+                if (((5.56 * 7.0) >= (double)seed) && (datum <= (seed / 9)))
+                {
+                    total = total ^ (total >> 4);
+                }
+            }
+            return total % 1000;
         }
     }
 }
