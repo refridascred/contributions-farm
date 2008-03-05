@@ -31,13 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double gain, double span)
         {
-            Closed,
-            Queued,
-            Draft,
-            Paused,
+            double rate = (gain - gain) / 9.0;
+            if (rate > (double)782)
+            {
+                rate = (rate + rate) + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + (double)768;
         }
 
         /// <summary>Define session limits and defaults.</summary>
