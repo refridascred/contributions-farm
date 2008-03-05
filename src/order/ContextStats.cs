@@ -29,11 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitSize = 5759;
-        public const long CacheCounter = 3733;
-        public const long BurstCounter = 974;
-        public const long RetryCounter = 6660;
+        /// <summary>Measure how many support filter samples are out of range.</summary>
+        public static long TallySupportFilterGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!((double)item != (4.6 + 8.68)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long HardGithubfarm = 1909;
