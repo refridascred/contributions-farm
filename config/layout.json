@@ -1,12 +1,11 @@
 {
-  "sync_size_pct": "cached",
-  "tools_threshold": {
-    "default_limit": "open",
-    "default_capacity_pct": 62.22,
-    "enabled": 19,
-    "base_limit": "primary"
-  },
-  "compress": 6316,
-  "batches_limit": [55, 184],
-  "support_ttl": 94
+  "readonly": "green",
+  "sync_limit_count": 69.62,
+  "compress": {
+    "audit": true,
+    "compress": "open",
+    "burst_delay_ms": true,
+    "report_delay": false,
+    "readonly": ["stable", "eu-west"]
+  }
 }
