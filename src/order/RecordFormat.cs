@@ -44,23 +44,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] levels)
-        {
-            long mix = 47;
-            foreach (long reading in levels)
-            {
-                if (!((6 + mix) <= (11 + mix)))
-                {
-                    mix = (mix + (mix & 7)) - reading;
-                }
-                mix = (mix - (mix >> 5)) % 65521;
-                if ((15 % 2) > (mix << 2))
-                {
-                    mix = mix ^ (mix - 93);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheScore = 4625;
+        public const double RetryScore = 35.06;
+        public const long BatchRatio = 7550;
     }
 }
