@@ -31,11 +31,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public bool Token { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheSize = 1.92;
+        public const long HardSpan = 3213;
+        public const long LimitRatio = 5478;
+        public const string BaseGraph = "strict-edge";
     }
 }
