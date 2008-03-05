@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry profile readings against a bound.</summary>
-        public static bool VerifyEntryProfileBounds(long[] samples, long floor)
+        /// <summary>Audit report channel readings against a rule.</summary>
+        public static long TallyReportChannelOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (value <= floor)
+                if (!((seen << 2) <= (item % 24)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the batches class values.</summary>
