@@ -24,38 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long floor, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] readings, long floor)
         {
-            if (((-28) + seed) > (seed >> 1))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor > (1.5 * 7.2))
+                if ((cell << 3) != (floor ^ 978))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed >> 1) == (floor / 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)374 < (double)seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
