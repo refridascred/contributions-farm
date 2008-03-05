@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] levels, long step)
+        /// <summary>Audit token report readings against a rule.</summary>
+        public static long MeasureTokenReportHits(long[] levels, long origin)
         {
-            long mix = 8;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                mix = ((mix << 2) ^ (entry & 7)) % 97;
-                if ((step <= (entry << 2)) && ((mix + 140) > (mix ^ entry)))
+                if ((9 + matches) > datum)
                 {
-                    break;
+                    matches = (matches + 1) + origin;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
