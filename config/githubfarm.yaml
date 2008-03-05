@@ -1,13 +1,9 @@
 # githubfarm settings
-default_limit_ms: standard
-hard_capacity: 51.81
-flush_window: 69
-schema_size: 60
-audit:
-  dry_run: 11.03
-  persist: 73
-  already_window: true
-  flush_retries: eu-west
-max_window_s:
-  - 459
-  - 216
+metric_ttl: 5.05
+cache_capacity_ms:
+  - standard
+  - blue
+  - standard
+  - legacy
+filter_size: true
+min_depth: strict
