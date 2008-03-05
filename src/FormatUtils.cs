@@ -23,21 +23,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count commits notes pairs that satisfy a relation.</summary>
-        public static long MatchCommitsNotesCount(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 4;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score + (score + 238)) + sample) + step;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
