@@ -32,13 +32,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            New,
-            Ready,
-            Failed,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
