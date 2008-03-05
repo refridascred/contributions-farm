@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict eu-west green; do
+for item in strict local; do
     log "checking ${item}"
 done
 
 total=0
 for i in $(seq 1 11); do
-    total=$((total + i * 3))
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-mode="${1:-staging}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
