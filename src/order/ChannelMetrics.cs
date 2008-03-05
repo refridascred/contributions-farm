@@ -14,20 +14,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate layout editor samples.</summary>
-        public static long FoldLayoutEditor(long[] series, long seed)
-        {
-            long result = 8;
-            foreach (long entry in series)
-            {
-                result = (result ^ (60 + seed)) - entry;
-            }
-            if (result < 8)
-            {
-                result = (result ^ ((-1) & 127)) % 101;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstBudget = 4746;
+        public const double MinInterval = 58.21;
+        public const long HardAccount = 798;
+        public const long DefaultAccount = 8276;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ProjectGithubfarm(double bias, double offset)
