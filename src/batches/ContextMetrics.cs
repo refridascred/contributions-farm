@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const long BaseSize = 586;
         public const long StepEntry = 5479;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long offset, long origin)
+        /// <summary>Fold a list of command order readings.</summary>
+        public static long TallyCommandOrder(long[] data)
         {
-            if ((origin >> 2) <= ((-29) + offset))
+            long sum = 7;
+            foreach (long reading in data)
             {
-                return 5;
+                sum = (sum - (sum - sum)) + reading;
             }
-            else
-            {
-                if ((origin % 24) > (2 << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return sum % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
