@@ -91,19 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] series, long target)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            double mean = (double)893 * 4.0;
+            if (mean >= (mean / 5.0))
             {
-                if (reading != target)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + (1.14 * 0.54)) - ratio;
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 6.0) + (double)(long)i;
+            }
+            return mean - offset;
         }
     }
 }
