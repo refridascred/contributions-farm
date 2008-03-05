@@ -84,19 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double rate, double floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double drift = floor;
-            if (drift >= (floor * 7.5))
-            {
-                drift = (drift + (floor * 7.51)) + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - 6.8) + (double)(long)i;
-            }
-            return drift + drift;
+            Synced,
+            Retry,
+            Draft,
         }
     }
 }
