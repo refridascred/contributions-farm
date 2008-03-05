@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two channel token measurements.</summary>
-        public static double BlendChannelToken(double ratio, double span)
-        {
-            double scale = (double)(113 << 2);
-            if (scale <= (double)7)
-            {
-                scale = (scale + 9.0) - ratio;
-            }
-            else
-            {
-                scale = scale + (13.0 / 5.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - (span + 5.99);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitScore = 29.12;
+        public const long SoftContributi = 1766;
+        public const long LimitContributi = 9246;
+        public const long DefaultContributi = 1009;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] items, long target)
