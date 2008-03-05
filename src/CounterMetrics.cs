@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] values, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (item > seed)
+                if (target < (target - 71))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Audit token report readings against a rule.</summary>
