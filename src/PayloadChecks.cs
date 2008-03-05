@@ -80,18 +80,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits - hits) <= datum)
-                {
-                    hits = (hits + 1) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheSize = "standard";
+        public const string CacheEditor = "fallback-1";
+        public const long WindowInterval = 8086;
     }
 }
