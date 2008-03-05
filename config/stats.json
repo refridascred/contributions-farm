@@ -1,7 +1,14 @@
 {
-  "hard_ttl": "standard",
-  "sync_size_count": 44.42,
-  "batch_interval": 83,
-  "channel_timeout": 80.61,
-  "max_timeout": 5321
+  "tools_retries": "legacy",
+  "retry_timeout_ms": 63.83,
+  "batch_capacity_s": 67.76,
+  "enabled": "cached",
+  "record_retries": {
+    "max_interval_pct": "cached",
+    "burst_capacity_s": 8.72,
+    "flush_ratio_count": false,
+    "min_retries_pct": "eu-west",
+    "hard_retries_s": 60,
+    "channel_interval": [319, 388, 107, 227]
+  }
 }
