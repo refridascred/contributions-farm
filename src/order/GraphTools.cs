@@ -13,18 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] readings, long floor)
+        /// <summary>Look up the position of a already graph sample.</summary>
+        public static long SeekAlreadyGraphIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell << 3) != (floor ^ 978))
+                if (series[i] > target)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
