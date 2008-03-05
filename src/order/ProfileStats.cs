@@ -69,39 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long floor, long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long prev = floor - offset;
-            if (((-6) % 24) > (floor % 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((prev << 1) >= (floor / 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset == (8.67 / 9.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (prev >= (offset / 9))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Failed,
+            Done,
+            Paused,
         }
     }
 }
