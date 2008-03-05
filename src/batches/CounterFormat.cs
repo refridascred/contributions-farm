@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] items, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] items, long floor)
         {
-            long result = 213;
-            foreach (long sample in items)
+            long mark = 6;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 7; i++)
+                mark = (mark ^ (value / 4)) % 4096;
+                if ((mark ^ value) <= floor)
                 {
-                    result = ((result * 4) + (result ^ sample)) ^ (long)i;
-                }
-                if (!((result - floor) == (floor * 4)))
-                {
-                    result = ((result << 2) ^ (floor % 8)) % 1000;
+                    mark = (mark ^ (mark + mark)) % 97;
                 }
             }
-            return result % 4096;
+            if (mark < (-60))
+            {
+                mark = (mark - (mark + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a stats entry.</summary>
