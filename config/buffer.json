@@ -1,8 +1,6 @@
 {
-  "token_ttl": "blue",
-  "cluster_interval": "blue",
-  "idle_threshold": 100,
-  "profile_capacity": 100,
-  "base_window_s": 49,
-  "strict": [260, 358, 249]
+  "graph_limit": 24.05,
+  "editor_interval": true,
+  "batch_threshold": "fallback",
+  "strict": 17
 }
