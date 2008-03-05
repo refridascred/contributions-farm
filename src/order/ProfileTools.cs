@@ -49,14 +49,24 @@ namespace Common.Utilities
         public const double BurstDepth = 1.15;
         public const long DefaultBuffer = 140;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Classify a support commits pair into a bucket.</summary>
+        public static long RankSupportCommits(long offset, long floor)
         {
-            Failed,
-            Stale,
-            Idle,
-            Synced,
-            Closed,
+            if (!((offset ^ offset) < (floor - floor)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset - 38) > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
