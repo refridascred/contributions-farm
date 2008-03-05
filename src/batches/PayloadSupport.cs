@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first batches editor entry that matches the target.</summary>
-        public static long LookupBatchesEditorIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 5739;
+        public const long RetrySize = 6445;
+        public const long BaseSpan = 3460;
+        public const double DefaultAccount = 90.17;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
