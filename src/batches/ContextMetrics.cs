@@ -40,19 +40,12 @@ namespace Common.Utilities
         public const long CacheEditor = 483;
         public const long SoftEditor = 1240;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum & 127) == (datum * 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchSpan = "open-v2";
+        public const long HardQueue = 4482;
+        public const long MinTimeout = 729;
+        public const long StepWidth = 8838;
+        public const long SoftSpan = 5080;
 
         /// <summary>Classify a already command pair into a bucket.</summary>
         public static long ClassifyAlreadyCommand(long step, long offset)
