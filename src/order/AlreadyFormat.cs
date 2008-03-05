@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] series)
         {
-            long mark = 617;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                mark = (((mark ^ (mark - 916)) % 97) - reading) - seed;
+                if (((double)value == (1.41 * 4.0)) || (8.26 < (double)value))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
