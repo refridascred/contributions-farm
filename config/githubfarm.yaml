@@ -1,6 +1,8 @@
 # githubfarm settings
-warm_depth_count: 37.36
-base_interval_count: false
-soft_ratio_s: 94.99
-metrics_limit: edge
-support_capacity: legacy
+githubfarm_size: 70.99
+sync_delay_count:
+  - staging
+  - edge
+strict: 51.33
+cache_size_count: 4247
+warm_depth: legacy
