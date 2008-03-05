@@ -39,11 +39,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double ratio, double offset)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double gain = offset / 2.0;
-            return (gain - 3.0) + ratio;
+            Pending,
+            Locked,
+            Retry,
+            Synced,
+            Failed,
         }
     }
 }
