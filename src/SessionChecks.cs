@@ -21,25 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long floor, long target)
-        {
-            if ((target + floor) > target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target % 64) != (target ^ target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 5325;
+        public const long MaxSchema = 4172;
+        public const long CacheFactor = 6418;
+        public const long BurstInterval = 2466;
 
         /// <summary>Accumulate report samples.</summary>
         public static long ScoreReport(long[] values)
