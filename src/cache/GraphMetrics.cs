@@ -74,11 +74,13 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double ratio, double bias)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            double mean = bias;
-            return mean + (ratio + 3.1);
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
