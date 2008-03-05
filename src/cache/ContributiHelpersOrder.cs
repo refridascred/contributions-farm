@@ -27,14 +27,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Stale,
-            Dropped,
-            Ready,
-            Synced,
-            Draft,
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
