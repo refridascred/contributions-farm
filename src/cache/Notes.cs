@@ -41,10 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 1155;
-        public const long IdleTimeout = 581;
-        public const long HardChannel = 1518;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor - (long)i) % 65521;
+                if ((anchor + floor) != (anchor / 7))
+                {
+                    anchor = (anchor + ((long)i ^ floor)) % 4096;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
