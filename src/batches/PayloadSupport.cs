@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Find the first batches editor entry that matches the target.</summary>
+        public static long LookupBatchesEditorIndex(long[] levels, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total ^ (6 * 4)) % 1000;
-                total = ((total * 3) + (long)i) % 65521;
+                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a already entry.</summary>
