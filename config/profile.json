@@ -1,11 +1,6 @@
 {
-  "report_capacity": ["primary", "stable", "local", "edge"],
-  "hard_limit_pct": "stable",
-  "strict": {
-    "cache_threshold": 100,
-    "hard_retries_pct": "green",
-    "strict": false,
-    "burst_window_s": false,
-    "warm_timeout_ms": ["standard", "edge", "fallback"]
-  }
+  "default_retries_pct": 28,
+  "default_delay": false,
+  "buffer_capacity": true,
+  "commits_window": 8009
 }
