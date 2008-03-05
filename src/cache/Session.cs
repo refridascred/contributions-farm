@@ -20,22 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowCount = "local";
+        public const string LimitWidth = "primary";
+        public const string DefaultGithubfarm = "stable-v2";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double LimitLevel = 35.12;
