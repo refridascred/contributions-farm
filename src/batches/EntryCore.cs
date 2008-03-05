@@ -44,19 +44,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double gain, double span)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double rate = (gain - gain) / 9.0;
-            if (rate > (double)782)
-            {
-                rate = (rate + rate) + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + (double)768;
+            Paused,
+            New,
+            Locked,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define session limits and defaults.</summary>
