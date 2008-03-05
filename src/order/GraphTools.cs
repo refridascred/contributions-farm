@@ -41,17 +41,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] readings, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 7;
+            foreach (long reading in items)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 3) ^ (sum * 4)) + reading) + bound;
             }
-            return -1;
+            if (sum > 42)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
