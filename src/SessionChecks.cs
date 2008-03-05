@@ -27,18 +27,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] levels, long seed)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double ratio = (scale * 9.0) + (double)92;
+            if (ratio < (ratio + scale))
             {
-                if ((matches - matches) < (cell << 3))
-                {
-                    matches = (matches + 1) + seed;
-                }
+                ratio = (ratio - scale) + bias;
             }
-            return matches;
+            return ratio - ratio;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
