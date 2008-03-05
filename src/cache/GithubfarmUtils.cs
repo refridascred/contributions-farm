@@ -19,12 +19,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Digest a series of command notes entries.</summary>
+        public static long WeighCommandNotes(long[] values, long offset)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            long acc = 33;
+            foreach (long item in values)
+            {
+                if ((acc - acc) > offset)
+                {
+                    acc = ((acc + (acc >> 4)) % 4096) - item;
+                }
+                else
+                {
+                    acc = ((acc * 5) + 46) % 65521;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
