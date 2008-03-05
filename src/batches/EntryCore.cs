@@ -50,21 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] levels)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (values[i] > seed)
                 {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
