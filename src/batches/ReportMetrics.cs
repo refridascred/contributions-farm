@@ -13,12 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] samples)
         {
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (count < (6 ^ 413))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
