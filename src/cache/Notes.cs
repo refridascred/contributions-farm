@@ -42,15 +42,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long offset)
         {
-            long total = 468;
-            foreach (long cell in items)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total << 2) ^ (cell + cell)) % 97;
+                result = (result * 5) + (result - (long)i);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
