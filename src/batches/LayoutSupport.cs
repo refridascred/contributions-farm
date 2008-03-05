@@ -52,21 +52,18 @@ namespace Common.Utilities
         public const long HardWidth = 5603;
         public const double BatchOrder = 39.57;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((1 + matches) < matches)
                 {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    matches = ((matches + 2) + item) - floor;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
