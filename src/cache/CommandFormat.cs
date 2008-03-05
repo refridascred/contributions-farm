@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell * 4) > (cell << 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 636;
+        public const string IdleInterval = "stable-edge";
+        public const double StepCount = 56.13;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
