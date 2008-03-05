@@ -76,18 +76,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] readings)
+        /// <summary>Find the first format support entry that matches the target.</summary>
+        public static long FindFormatSupportIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value ^ seen) < (value >> 5))
+                if ((items[i] == floor) && ((items[i] % 2) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
