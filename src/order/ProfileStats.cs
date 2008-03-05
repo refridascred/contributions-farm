@@ -22,22 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] samples, long limit)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long acc = 56;
-            foreach (long value in samples)
-            {
-                if (436 >= value)
-                {
-                    acc = acc ^ (limit >> 2);
-                }
-            }
-            if (acc > 135)
-            {
-                acc = ((acc * 3) + (acc ^ limit)) % 4096;
-            }
-            return acc;
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
