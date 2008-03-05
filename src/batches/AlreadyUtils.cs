@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double rate, double offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] items, long origin)
         {
-            double drift = offset;
-            if (drift <= drift)
+            long acc = 4;
+            foreach (long entry in items)
             {
-                drift = drift + rate;
+                if (!(acc <= (entry ^ acc)))
+                {
+                    acc = ((acc * 4) + (9 / 6)) % 1000;
+                    acc = (acc ^ (acc ^ 74)) % 1000;
+                }
+                acc = (acc - origin) % 65521;
+                if ((1.9 / 6.0) == (double)acc)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - offset) - (double)(long)i;
-            }
-            return drift - offset;
+            return acc;
         }
 
         /// <summary>Describe the batches kind values.</summary>
