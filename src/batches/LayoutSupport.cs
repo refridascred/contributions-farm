@@ -48,19 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Accumulate cluster report samples.</summary>
+        public static long WeighClusterReport(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
+            long state = 98;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((((long)series.Length % 2) >= datum) && ((15 - datum) == (datum - state)))
                 {
-                    mark = (mark + ((long)i * 3)) ^ (long)i2;
+                    state = state + (372 % 64);
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            if (state < 92)
+            {
+                state = state + ((-764) >> 3);
+            }
+            return state % 1000;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
