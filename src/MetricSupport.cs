@@ -32,21 +32,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] values)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
                 {
-                    if ((values[i] - values[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
