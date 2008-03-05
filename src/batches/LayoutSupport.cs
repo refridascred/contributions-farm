@@ -50,39 +50,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long origin, long bound)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            long delta = origin + bound;
-            if (bound <= (bound * 5))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((delta >= (delta + 55)) && ((bound << 2) > bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin >> 4) >= (bound - bound))
+                    if ((values[i] + values[j]) != 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((delta + origin) < origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
