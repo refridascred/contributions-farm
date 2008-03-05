@@ -33,25 +33,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long step, long offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long edge = step ^ offset;
-            if ((offset ^ edge) > offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (step >= (step * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
