@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the queue payload entries that pass the check.</summary>
-        public static long CountQueuePayloadMatches(long[] levels)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (reading > (-1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            Draft,
+            Idle,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
