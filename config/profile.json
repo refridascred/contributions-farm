@@ -1,8 +1,6 @@
 {
-  "warm_threshold_ms": 500,
-  "stream_interval": 500,
-  "readonly": "eu-west",
-  "sync_depth": [358, 369],
-  "retry_size_pct": 30,
-  "audit": 49
+  "warm_interval_count": "green",
+  "context_capacity": 1304,
+  "poll_capacity": "local",
+  "contributi_retries": true
 }
