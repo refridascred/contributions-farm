@@ -25,21 +25,15 @@ namespace Common.Utilities
         public const long MinCache = 7459;
         public const double IdleCount = 81.44;
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state ^ (cell & 63)) % 4096) + limit;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
