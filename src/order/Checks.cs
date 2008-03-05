@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank account notes input into a small class.</summary>
-        public static long SortAccountNotes(long limit, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            if (((8 - limit) > (bound + bound)) || ((limit - limit) <= (limit >> 2)))
+            long mark = 70;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit & 1) < (592 - bound)))
+                mark = mark - (mark >> 3);
+                mark = (mark + (entry % 7)) % 4096;
+                if ((86 * 2) > (mark + entry))
                 {
-                    return 7;
+                    mark = ((mark * 4) + (entry * 2)) % 65521;
                 }
                 else
                 {
-                    if (4.4 < (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = (mark - mark) % 1000;
                 }
             }
+            return mark;
         }
 
         /// <summary>Adjust a metric reading.</summary>
