@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a filter session sample.</summary>
-        public static long LocateFilterSessionIndex(long[] items, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 478;
+            foreach (long cell in levels)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix + mix) % 101) - cell;
+                mix = (mix * 4) + 7;
             }
-            return -1;
+            if (mix > 8)
+            {
+                mix = (mix + (6 << 3)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the tools mode values.</summary>
