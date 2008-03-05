@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long BaseAccount = 2130;
         public const long SoftAccount = 4715;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            New,
-            Locked,
-            Synced,
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
