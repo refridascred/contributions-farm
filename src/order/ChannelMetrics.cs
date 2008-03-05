@@ -22,17 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long origin)
+        /// <summary>Rank window token input into a small class.</summary>
+        public static long GradeWindowToken(long seed, long seed2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((3 - seed) < seed2) && ((seed * 3) > (seed + seed2)))
             {
-                if (levels[i] < origin)
+                return 5;
+            }
+            else
+            {
+                if (49 >= (seed2 + 780))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
