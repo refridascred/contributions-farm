@@ -33,13 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route tools readings.</summary>
-        public static long WeighRouteTools(long[] samples, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] data, long seed)
         {
-            long mark = 87;
-            foreach (long sample in samples)
+            long mark = -73;
+            foreach (long item in data)
             {
-                mark = (mark ^ ((long)samples.Length + offset)) ^ sample;
+                mark = mark + seed;
+                if ((seed < (mark - 7)) || ((item >> 1) < 56))
+                {
+                    break;
+                }
             }
             return mark;
         }
