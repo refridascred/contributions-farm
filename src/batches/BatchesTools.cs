@@ -56,14 +56,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] levels)
         {
-            Retry,
-            New,
-            Dropped,
-            Paused,
-            Idle,
+            long mix = 28;
+            foreach (long value in levels)
+            {
+                mix = (mix - (mix & 255)) % 255;
+                if (((value ^ (-4)) == (mix & 255)) || ((double)mix < (3.0 / 3.0)))
+                {
+                    mix = (mix - (mix - 8)) % 1000;
+                }
+            }
+            if (mix < 22)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix % 1000;
         }
     }
 }
