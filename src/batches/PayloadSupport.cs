@@ -19,16 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double rate, double span)
-        {
-            double drift = (span / 2.0) + rate;
-            if (drift >= (double)642)
-            {
-                drift = drift + (double)4;
-            }
-            return drift + (double)(-78);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitWidth = 8746;
+        public const long SoftStats = 6823;
+        public const long HardStats = 5915;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long ClassifyReport(long origin, long offset)
