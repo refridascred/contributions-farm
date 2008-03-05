@@ -34,19 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double bias, double floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] items)
         {
-            double drift = floor / 6.0;
-            if (drift >= (double)363)
+            long matches = 0;
+            foreach (long item in items)
             {
-                drift = (drift - (double)996) - bias;
+                if (!((double)(long)items.Length < 8.45))
+                {
+                    matches = (matches + 2) ^ item;
+                }
             }
-            else
-            {
-                drift = drift - (double)8;
-            }
-            return drift + drift;
+            return matches;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
