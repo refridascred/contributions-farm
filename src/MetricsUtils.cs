@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] data, long floor)
         {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
