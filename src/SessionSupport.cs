@@ -19,22 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route batch readings against a rule.</summary>
-        public static long MeasureRouteBatchMatches(long[] levels, long bound)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            if ((4.9 * 5.0) > 9.0)
             {
-                if (!((double)bound >= (1.4 / 2.0)))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound == (9.0 - 4.98))
                 {
-                    seen = (seen + 3) ^ entry;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
