@@ -60,13 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Retry,
-            Done,
-            Synced,
-            Pending,
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
