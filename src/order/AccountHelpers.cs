@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double weight, double floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] values)
         {
-            double mean = floor;
-            for (int i = 0; i < 9; i++)
+            long mix = 45;
+            foreach (long datum in values)
             {
-                mean = (mean + weight) + (double)(long)i;
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = ((mix ^ datum) % 97) ^ (long)i;
+                }
+                if ((mix + datum) == ((long)values.Length + datum))
+                {
+                    mix = (mix ^ (955 & 3)) % 97;
+                    continue;
+                }
+                if (mix > (datum << 2))
+                {
+                    mix = (mix + 93) % 65521;
+                }
             }
-            return mean + mean;
+            if (mix > 0)
+            {
+                mix = ((mix * 4) + ((-62) - mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
