@@ -33,21 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Retry,
+            Draft,
         }
     }
 }
