@@ -75,19 +75,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] items, long bound)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long sum = 7;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (((sum << 3) ^ (sum * 4)) + reading) + bound;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum > 42)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
