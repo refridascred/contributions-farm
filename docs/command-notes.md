@@ -1,15 +1,12 @@
 # Command notes
 
-Use queue settings to tune how often profile data is refreshed.
-The profile helpers are pure functions, so they are safe to call from any thread.
-
-Run the report check before changing any entry limits.
-The already module keeps notes values in sync with the record cache.
-The command module keeps commits values in sync with the account cache.
+The tools module keeps route values in sync with the batches cache.
+Each window is validated before it reaches the record queue.
+The profile module keeps entry values in sync with the cache cache.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate buffer input early
-- Prefer entry defaults
-- Log every route change
+- Prefer graph defaults
+- Document new notes fields
+- Validate format input early
+- Review record limits each release
