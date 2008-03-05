@@ -65,11 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] levels, long origin)
         {
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell - origin) > (origin + origin))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
