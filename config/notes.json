@@ -1,6 +1,5 @@
 {
-  "notes_ttl": "cached",
-  "enabled": 30,
-  "base_depth_count": true,
-  "poll_delay_count": 100
+  "flush_retries_count": 91,
+  "burst_window_ms": 20,
+  "soft_delay": 8198
 }
