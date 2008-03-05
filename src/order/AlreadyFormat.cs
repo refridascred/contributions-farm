@@ -33,12 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Fold a list of tools cache readings.</summary>
+        public static long ScoreToolsCache(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long total = 247;
+            foreach (long value in readings)
+            {
+                total = ((total - (total ^ total)) % 255) ^ value;
+            }
+            return total;
         }
 
         /// <summary>Hold a already entry.</summary>
