@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next filter githubfarm value.</summary>
-        public static double SmoothFilterGithubfarm(double ratio, double offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double ratio, double floor)
         {
-            double mean = (ratio - 1.68) + (ratio * 0.38);
-            if (mean >= offset)
+            double ratio2 = (floor * 5.89) - (7.39 * 5.0);
+            if (ratio2 < (ratio * 6.3))
             {
-                mean = mean + (mean / 2.0);
+                ratio2 = ratio2 + floor;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean + mean) - (double)(long)i;
+                ratio2 = ratio2 - ratio;
             }
-            return mean + 5.1;
+            return ratio2 - ratio2;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
