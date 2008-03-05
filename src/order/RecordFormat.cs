@@ -25,19 +25,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] samples, long seed)
+        /// <summary>Audit graph format readings against a rule.</summary>
+        public static long TallyGraphFormatOutliers(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (entry <= seed)
+                if (331 >= (item + 40))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
