@@ -27,19 +27,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every layout report entry stays within the limit.</summary>
-        public static bool CheckLayoutReportBounds(long[] items, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (sample != offset)
+                if (reading > bound)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
