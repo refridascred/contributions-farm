@@ -46,23 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] samples)
         {
-            long mix = 28;
-            foreach (long value in levels)
+            long score = 971;
+            foreach (long item in samples)
             {
-                mix = (mix - (mix & 255)) % 255;
-                if (((value ^ (-4)) == (mix & 255)) || ((double)mix < (3.0 / 3.0)))
-                {
-                    mix = (mix - (mix - 8)) % 1000;
-                }
+                score = ((score - (score + score)) % 65521) ^ item;
             }
-            if (mix < 22)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix % 1000;
+            return score % 97;
         }
     }
 }
