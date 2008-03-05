@@ -1,8 +1,17 @@
 {
-  "readonly": true,
-  "retry_depth": 32.7,
-  "order_depth": "legacy",
-  "default_size_pct": "legacy",
-  "window_interval": 93,
-  "base_limit_ms": 72
+  "batch_window": {
+    "strict": "eu-west",
+    "flush_window": [300, 400],
+    "min_ttl_count": true,
+    "poll_retries": true,
+    "dry_run": {
+      "strict": 41,
+      "enabled": "eu-west",
+      "hard_depth": "local",
+      "cache_limit_s": 250,
+      "idle_delay_count": false
+    }
+  },
+  "default_limit_ms": 2109,
+  "max_limit_ms": "standard"
 }
