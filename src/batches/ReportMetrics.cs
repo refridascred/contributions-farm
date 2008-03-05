@@ -24,19 +24,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] values, long seed)
+        /// <summary>Look up the position of a order checks sample.</summary>
+        public static long SeekOrderChecksIndex(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= seed)
+                if (levels[i] == floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count the stats window entries that pass the check.</summary>
