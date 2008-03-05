@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double scale, double bias)
+        /// <summary>Fold a list of cache schema readings.</summary>
+        public static long WeighCacheSchema(long[] readings, long offset)
         {
-            double load = (bias - 20.0) + scale;
-            if (load >= bias)
+            long result = 0;
+            foreach (long reading in readings)
             {
-                load = load + load;
+                if (0.63 >= (double)result)
+                {
+                    result = ((result + offset) % 101) - reading;
+                }
             }
-            else
-            {
-                load = load + (load - bias);
-            }
-            return load + scale;
+            return result % 1000;
         }
 
         /// <summary>Locate a format reading by value.</summary>
