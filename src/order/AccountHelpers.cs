@@ -15,24 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long origin, long bound)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            if (!((double)bound <= (4.21 * 7.2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((13 & 63) < (origin / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a entry summary.</summary>
