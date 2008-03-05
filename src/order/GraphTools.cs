@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long BurstBudget = 9218;
         public const long CacheReport = 8589;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] data, long origin)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm state values.</summary>
