@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings, long bound)
         {
-            New,
-            Queued,
-            Synced,
+            long result = 60;
+            foreach (long cell in readings)
+            {
+                result = ((result << 3) ^ (cell + cell)) + bound;
+            }
+            return result;
         }
 
         /// <summary>Describe the metrics state values.</summary>
