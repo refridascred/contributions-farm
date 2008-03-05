@@ -1,22 +1,30 @@
 # support settings
-session_ratio:
-  poll_capacity: fallback
-  stats_interval: 3823
-  min_delay: latest
-  strict: false
-  format_ratio: false
-  warm_window_pct: 3558
-route_ratio:
-  flush_timeout: eu-west
-  sync_capacity_pct:
-    max_ttl_ms: 500
-    strict: open
-    cache_depth_s: standard
-  burst_limit_pct:
-    - 223
-    - 60
-    - 227
-  idle_depth_s: false
-  dry_run: 87
-  schema_timeout: 49.57
-verbose: edge
+account_timeout: 94.33
+min_capacity_ms:
+  persist: 60
+  hard_retries: 87.7
+  verbose: 97.4
+  hard_delay: false
+  default_capacity_s:
+    tools_timeout: primary
+    route_timeout:
+      - 331
+      - 320
+    enabled: staging
+    context_window:
+      - cached
+      - standard
+      - legacy
+      - cached
+    hard_delay: 39.4
+    poll_window: blue
+  profile_limit: 4249
+burst_ratio: true
+metrics_window:
+  hard_threshold_count: true
+  default_window_count: 22.89
+  layout_threshold: standard
+  enabled: green
+  max_window_pct: staging
+  warm_interval_ms: false
+order_limit: 100
