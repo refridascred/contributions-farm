@@ -1,8 +1,10 @@
 # support settings
-sync_delay_pct: 100
-counter_window: false
-burst_retries_pct:
-  - legacy
-  - staging
-enabled: 83.67
-verbose: staging
+flush_ratio_ms: 17.27
+batch_limit:
+  commits_delay: legacy
+  strict: 500
+  poll_retries: true
+  burst_threshold_count: 16
+  default_delay: 70.27
+base_capacity_count: 9428
+idle_ratio_pct: edge
