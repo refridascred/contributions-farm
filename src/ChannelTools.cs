@@ -28,24 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long limit, long offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] levels, long bound)
         {
-            if ((double)offset > (16.0 / 9.0))
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 255) == (offset * 4))
+                if (sample > bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
