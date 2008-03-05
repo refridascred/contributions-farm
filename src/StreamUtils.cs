@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BurstSize = 5616;
         public const double MinEditor = 27.23;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] levels, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((origin / 5) > hits)
+                if (count > (entry << 2))
                 {
-                    hits = (hits + 1) - datum;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
