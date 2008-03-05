@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 2323;
-        public const long DefaultAccount = 3472;
-        public const string WindowAccount = "stable-v2";
-        public const long BaseAccount = 2130;
-        public const long SoftAccount = 4715;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseBudget = 20.3;
+        public const string SoftSize = "local-v2";
+        public const string DefaultInterval = "alpha";
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
