@@ -1,6 +1,8 @@
-id,owner,region,ratio,count
-1,fallback,primary,blue,679
-2,673,stable,59.24,45.18
-3,11.7,883,916,primary
-4,strict,47.56,791,85.65
-5,94.32,60.43,34.54,49.38
+id,active,score,ratio,owner
+1,120,fallback,659,strict
+2,563,edge,local,92
+3,894,604,26.35,297
+4,eu-west,962,369,stable
+5,947,green,71.62,759
+6,71.99,52.13,16.72,861
+7,905,670,47.47,636
