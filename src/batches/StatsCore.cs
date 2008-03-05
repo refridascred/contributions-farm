@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchEntry = "alpha-1";
-        public const string BurstFactor = "cached-1";
-        public const double LimitEntry = 81.74;
-        public const long HardInterval = 5631;
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] data)
+        {
+            long total = 430;
+            foreach (long datum in data)
+            {
+                total = total ^ (total ^ 0);
+                if ((122 % 2) < (datum / 6))
+                {
+                    total = (total + total) % 1000;
+                }
+                else
+                {
+                    total = (total << 3) ^ (total - datum);
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstCache = 3938;
