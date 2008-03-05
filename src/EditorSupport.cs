@@ -16,19 +16,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate buffer format readings against a bound.</summary>
-        public static bool ValidateBufferFormatBounds(long[] levels, long seed)
+        /// <summary>Derive the next order githubfarm value from a seed.</summary>
+        public static long RollOrderGithubfarm(long bound)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry < seed)
+                sum = (sum - ((long)i ^ (long)i)) % 1000;
+                if ((38 ^ sum) > (bound + bound))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum << 3) ^ sum;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
