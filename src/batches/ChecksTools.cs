@@ -36,15 +36,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double ratio, double span)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double drift = (span - span) - (2.0 / 8.0);
-            if (drift >= 5.98)
-            {
-                drift = (drift - (span / 5.0)) + ratio;
-            }
-            return drift - drift;
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two commits measurements.</summary>
