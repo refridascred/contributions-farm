@@ -25,11 +25,25 @@ namespace Common.Utilities
         public const string LimitWidth = "primary";
         public const string DefaultGithubfarm = "stable-v2";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitLevel = 35.12;
-        public const long BurstChannel = 5343;
-        public const double StepChannel = 20.14;
-        public const long MaxChannel = 3336;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long seed2)
+        {
+            if ((seed >> 5) > (seed2 * 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed - seed2) < (9 + seed2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TallyCluster(long[] data)
