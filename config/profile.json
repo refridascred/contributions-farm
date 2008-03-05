@@ -1,6 +1,6 @@
 {
-  "base_timeout_count": "strict",
-  "persist": false,
-  "warm_delay": "blue",
-  "audit": "eu-west"
+  "flush_size": 12,
+  "farm_retries": 87,
+  "cache_window_pct": 30,
+  "warm_interval_count": 4214
 }
