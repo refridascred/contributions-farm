@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long BatchBuffer = 7438;
         public const long WindowTimeout = 3889;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] levels, long step)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)step > (double)15)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) + entry;
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
