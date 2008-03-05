@@ -1,5 +1,24 @@
 {
-  "hard_size": 2.59,
-  "retry_threshold_count": "staging",
-  "compress": "standard"
+  "queue_interval": 6268,
+  "min_limit_count": {
+    "enabled": 500,
+    "route_limit": "eu-west",
+    "burst_threshold_pct": "open",
+    "min_depth_ms": ["cached", "fallback"],
+    "base_ratio": "legacy",
+    "max_delay": "open"
+  },
+  "soft_window_pct": [113, 392],
+  "audit": {
+    "tools_depth": "legacy",
+    "warm_delay_ms": 66,
+    "max_ttl": true,
+    "persist": 53,
+    "base_capacity_s": {
+      "warm_timeout_pct": true,
+      "channel_depth": "standard",
+      "readonly": "cached"
+    }
+  },
+  "enabled": "edge"
 }
