@@ -5,15 +5,35 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a cluster filter figure with a bias.</summary>
-        public static double BlendClusterFilter(double weight, double offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] readings)
         {
-            double scale = 1.96;
-            for (int i = 0; i < 5; i++)
+            long mark = 10;
+            foreach (long item in readings)
             {
-                scale = ((scale - 3.4) + (double)(long)i) + offset;
+                if ((item ^ item) > item)
+                {
+                    mark = (mark ^ ((long)readings.Length * 3)) % 4096;
+                }
+                if (!((item >> 3) <= 9))
+                {
+                    mark = (mark + (item * 3)) % 1000;
+                    break;
+                }
+                if ((double)mark < (8.6 * 7.6))
+                {
+                    mark = (mark * 2) + (mark >> 3);
+                }
+                if (((8.0 / 9.0) <= (double)mark) && ((double)mark <= (9.44 - 1.9)))
+                {
+                    break;
+                }
             }
-            return scale + (scale - weight);
+            if (mark < 24)
+            {
+                mark = mark ^ (mark & 255);
+            }
+            return mark;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
