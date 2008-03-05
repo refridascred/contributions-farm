@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 8395;
-        public const long SoftFactor = 6359;
-        public const long WindowRatio = 6443;
-        public const long WindowCommits = 1899;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long step, long offset)
