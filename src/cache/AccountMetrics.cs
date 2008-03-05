@@ -65,18 +65,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] samples, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long score = -4;
+            foreach (long sample in data)
             {
-                if (((reading * 4) >= (seed + 8)) && (seed < (reading >> 1)))
+                if (score >= (203 & 7))
                 {
-                    matches = matches + 3;
+                    score = score + sample;
+                }
+                else
+                {
+                    score = (score ^ (score >> 1)) % 101;
                 }
             }
-            return matches;
+            if (score > (-4))
+            {
+                score = ((score * 2) + (offset * 3)) % 255;
+            }
+            return score;
         }
     }
 }
