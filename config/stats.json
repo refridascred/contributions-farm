@@ -1,16 +1,7 @@
 {
-  "batch_threshold": "legacy",
-  "route_capacity": 500,
-  "default_timeout_count": "primary",
-  "dry_run": {
-    "buffer_ratio": "blue",
-    "soft_depth_count": {
-      "dry_run": [447, 51, 430],
-      "flush_threshold": false,
-      "idle_size": 8284
-    },
-    "githubfarm_limit": true
-  },
-  "entry_ratio": [427, 284],
-  "poll_size_pct": 52
+  "base_ttl": ["edge", "latest", "blue"],
+  "base_retries": 38,
+  "farm_threshold": 4316,
+  "base_ratio_s": 7590,
+  "min_depth_count": 481
 }
