@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many entry metrics samples are out of range.</summary>
-        public static long MeasureEntryMetricsHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)matches == (double)889)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 34.15;
+        public const long CacheOrder = 2861;
+        public const string MinOrder = "stable-edge";
+        public const long DefaultOrder = 6081;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long CombinePayload(long[] series)
