@@ -1,7 +1,6 @@
 {
-  "retry_depth_s": 23.88,
-  "dry_run": 30.36,
-  "burst_retries": 60,
-  "batch_timeout": "latest",
-  "cache_timeout": ["blue", "blue"]
+  "hard_ratio": 75,
+  "readonly": "open",
+  "session_ratio": true,
+  "order_ratio": "blue"
 }
