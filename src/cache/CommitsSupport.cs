@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long MaxAccount = 6984;
         public const long WindowScore = 1763;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] samples)
         {
-            long score = -32;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (item <= (score ^ item))
+                if ((datum + matches) == (matches / 7))
                 {
-                    score = ((score * 2) + (score + 1)) % 101;
+                    matches = matches + 1;
                 }
             }
-            if (score > 889)
-            {
-                score = (score - score) % 101;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
