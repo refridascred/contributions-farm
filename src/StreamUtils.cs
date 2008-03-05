@@ -51,11 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double scale, double span)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double rate = 3.0;
-            return (rate - (span + span)) + scale;
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank channel notes input into a small class.</summary>
