@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long offset, long offset2)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            if ((offset <= (offset2 % 60)) && ((offset << 3) > (offset2 + 723)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 2) <= (-51))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (86 > (offset2 & 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset * 4) >= (offset + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Locked,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a layout snapshot.</summary>
