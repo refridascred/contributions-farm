@@ -35,22 +35,19 @@ namespace Common.Utilities
             return gain + (gain + ratio);
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] readings)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((819 + tally) > (392 - reading))
+                if (cell <= floor)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
