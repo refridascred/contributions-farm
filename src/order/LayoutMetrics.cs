@@ -25,19 +25,25 @@ namespace Common.Utilities
             return scale + (scale - scale);
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] items, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long target, long offset)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long gap = target ^ offset;
+            if ((double)gap > 8.03)
             {
-                if (reading != limit)
+                return 8;
+            }
+            else
+            {
+                if ((target * 4) <= 12)
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
     }
 }
