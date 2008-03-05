@@ -1,6 +1,5 @@
 {
-  "retry_capacity_pct": [355, 383],
-  "base_retries": 8724,
-  "verbose": false,
-  "audit": "latest"
+  "editor_capacity": 93.53,
+  "hard_delay": false,
+  "audit": [332, 54, 492, 201]
 }
