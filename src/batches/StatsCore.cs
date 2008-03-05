@@ -25,11 +25,31 @@ namespace Common.Utilities
         public const long MinCache = 7459;
         public const double IdleCount = 81.44;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long target, long floor)
         {
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            if ((1.51 - 4.2) == (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((floor / 4) >= (target + floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)floor >= (3.6 / 3.0)) && ((target + floor) < floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
