@@ -70,11 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "stable-1";
-        public const double MinChecks = 75.01;
-        public const long MaxChecks = 5412;
-        public const double BaseWidth = 69.69;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long floor, long step)
