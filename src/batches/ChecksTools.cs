@@ -25,12 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            Dropped,
-            New,
-            Queued,
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc + (acc & 15)) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a context entry.</summary>
