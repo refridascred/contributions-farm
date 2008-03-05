@@ -1,15 +1,14 @@
 # Command notes
 
-Keep githubfarm and schema names short and lowercase.
-Use payload settings to tune how often metric data is refreshed.
-The schema helpers are pure functions, so they are safe to call from any thread.
+Run the tools check before changing any cache limits.
+Keep cache and buffer names short and lowercase.
 
-Each entry is validated before it reaches the tools queue.
-Run the format check before changing any checks limits.
-The session helpers are pure functions, so they are safe to call from any thread.
+Defaults for metric live in the config folder and can be overridden per environment.
+The context report groups every already by cluster.
+The batches module keeps batch values in sync with the account cache.
 
 ## Guidelines
 
-- Document new filter fields
-- Validate context input early
-- Prefer profile defaults
+- Review githubfarm limits each release
+- Keep farm values small
+- Document new farm fields
