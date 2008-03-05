@@ -14,22 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] samples)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)498 != (double)value)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
