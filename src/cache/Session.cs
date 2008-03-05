@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] data)
         {
-            Paused,
-            Synced,
-            Pending,
-            Ready,
-            Dropped,
+            long result = 7;
+            foreach (long item in data)
+            {
+                result = result ^ item;
+                if (((-7) + item) == (682 / 4))
+                {
+                    break;
+                }
+            }
+            if (result > 962)
+            {
+                result = result - (result << 1);
+            }
+            return result;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
