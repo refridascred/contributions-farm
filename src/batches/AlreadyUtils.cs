@@ -61,32 +61,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long bound, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] readings, long bound)
         {
-            long delta = bound - offset;
-            if (!(657 >= bound))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= (4.85 + 5.46))
+                if ((45 << 1) > (count << 1))
                 {
-                    return 8;
+                    count = ((count + 1) ^ datum) + bound;
                 }
                 else
                 {
-                    if ((delta & 255) >= delta)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
