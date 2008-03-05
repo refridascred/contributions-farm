@@ -33,22 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long target, long limit)
         {
-            long acc = -372;
-            foreach (long value in samples)
+            if (((target ^ target) < (target + target)) || ((limit + target) > (limit >> 2)))
             {
-                if ((acc <= (value ^ 847)) || ((9 - 46) <= value))
+                return 4;
+            }
+            else
+            {
+                if (!((double)target == (14.0 + 7.8)))
                 {
-                    acc = (acc ^ (585 + 2)) % 1000;
+                    return 8;
                 }
                 else
                 {
-                    acc = (acc * 2) + value;
+                    return 0;
                 }
             }
-            return acc % 97;
         }
     }
 }
