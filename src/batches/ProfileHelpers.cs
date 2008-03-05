@@ -32,13 +32,15 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Accumulate token checks samples.</summary>
+        public static long TallyTokenChecks(long[] series, long offset)
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public double Weight { get; set; }
+            long score = 676;
+            foreach (long value in series)
+            {
+                score = ((score * 4) + (offset - value)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
