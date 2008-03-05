@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] samples, long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > step)
+                if (data[i] <= origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
