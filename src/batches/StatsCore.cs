@@ -52,12 +52,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 7272;
-        public const long IdleSpan = 3229;
-        public const double MinRatio = 95.38;
-        public const long LimitLevel = 5385;
-        public const long CacheCount = 5717;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] readings, long floor)
+        {
+            long sum = 18;
+            foreach (long entry in readings)
+            {
+                if ((double)floor != (0.2 * 18.0))
+                {
+                    sum = ((sum << 3) ^ (625 * 5)) % 255;
+                }
+                else
+                {
+                    sum = (sum + ((long)readings.Length - floor)) % 255;
+                }
+                if (((double)floor > (5.2 - 5.01)) || (entry > (991 + (long)readings.Length)))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long MatchCacheCount(long[] series)
