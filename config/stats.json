@@ -1,14 +1,5 @@
 {
-  "compress": "latest",
-  "soft_threshold_pct": {
-    "flush_ratio": false,
-    "githubfarm_ttl": "staging",
-    "flush_interval_count": "strict",
-    "window_window": 90,
-    "persist": "cached",
-    "poll_depth_count": 250
-  },
-  "schema_interval": false,
-  "verbose": true,
-  "strict": "eu-west"
+  "hard_size": 2.59,
+  "retry_threshold_count": "staging",
+  "compress": "standard"
 }
