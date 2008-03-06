@@ -62,18 +62,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] samples, long limit)
-        {
-            long anchor = 521;
-            foreach (long sample in samples)
-            {
-                if ((157 + limit) > (anchor - anchor))
-                {
-                    anchor = ((anchor << 3) ^ anchor) - sample;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 5482;
+        public const string StepAlready = "local-edge";
+        public const string CacheAlready = "strict-edge";
     }
 }
