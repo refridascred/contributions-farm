@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double bias, double bias2)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] series)
         {
-            double bias3 = (double)(6 << 2);
-            if (bias3 < bias)
+            long result = 56;
+            foreach (long value in series)
             {
-                bias3 = bias3 + (bias2 / 5.0);
+                if ((((long)series.Length + (-78)) > (30 << 3)) || ((value * 2) < (result / 5)))
+                {
+                    result = (result << 2) ^ (362 >> 3);
+                }
+                if (((result - 0) != (609 + result)) && ((result << 1) == (result ^ result)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias3 = bias3 - (double)(long)i;
-            }
-            return bias3 - (double)4;
+            return result % 4096;
         }
 
         /// <summary>Match up format samples.</summary>
