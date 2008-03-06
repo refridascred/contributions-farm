@@ -29,20 +29,19 @@ namespace Common.Utilities
         public const string SoftRecord = "stable";
         public const long BaseRecord = 1211;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Roll a batches editor counter forward.</summary>
+        public static long SeriesBatchesEditor(long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = (anchor - (long)i) % 65521;
-                if ((anchor + floor) != (anchor / 7))
+                if ((((long)i + target) >= total) && ((double)target >= (17.0 * 5.35)))
                 {
-                    anchor = (anchor + ((long)i ^ floor)) % 4096;
+                    total = total ^ (total + target);
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
