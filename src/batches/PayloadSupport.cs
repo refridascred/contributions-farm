@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double gain, double offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            double mean = 4.5;
-            if (mean >= (gain - 4.0))
-            {
-                mean = (mean + mean) - offset;
-            }
-            return mean + (double)478;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
