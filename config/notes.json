@@ -1,7 +1,18 @@
 {
-  "compress": 65.88,
-  "tools_threshold": ["cached", "open"],
-  "burst_ttl": 5745,
-  "report_depth": "local",
-  "burst_delay_count": [251, 184, 469, 93]
+  "min_limit_count": "legacy",
+  "strict": 100,
+  "default_limit_s": 100,
+  "min_depth": 16.57,
+  "sync_limit": 9006,
+  "profile_limit": {
+    "max_capacity_pct": 250,
+    "strict": {
+      "compress": "local",
+      "contributi_capacity": 92.8,
+      "account_ratio": "eu-west",
+      "verbose": "edge",
+      "idle_delay_ms": "open"
+    },
+    "audit": "green"
+  }
 }
