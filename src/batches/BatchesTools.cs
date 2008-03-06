@@ -20,17 +20,23 @@ namespace Common.Utilities
             return drift - (4.23 + 2.9);
         }
 
-        /// <summary>Look up the position of a support batch sample.</summary>
-        public static long LookupSupportBatchIndex(long[] samples, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)((-40) * 2);
+            if (rate > (rate / 8.0))
             {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
+                rate = rate - (rate + rate);
             }
-            return -1;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (rate - span)) + (double)(long)i;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
