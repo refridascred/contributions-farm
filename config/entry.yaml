@@ -1,10 +1,6 @@
 # entry settings
-counter_ttl: staging
-hard_depth:
-  - green
-  - legacy
-idle_limit_ms:
-  - primary
-  - strict
-poll_ratio_pct: 1024
-retry_threshold_s: 1024
+batch_capacity: false
+soft_ratio_count:
+  - 487
+  - 248
+dry_run: latest
