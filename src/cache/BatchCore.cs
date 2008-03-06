@@ -19,17 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] series, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((series[i] == offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the counter phase values.</summary>
