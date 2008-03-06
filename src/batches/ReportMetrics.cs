@@ -13,15 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Pending,
-            Idle,
-            Ready,
-            New,
-            Dropped,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "primary";
+        public const long WindowChecks = 9006;
+        public const long MaxChecks = 2529;
+        public const long SoftChecks = 1288;
 
         /// <summary>Audit tools route readings against a rule.</summary>
         public static long TallyToolsRouteHits(long[] readings, long origin)
