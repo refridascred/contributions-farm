@@ -50,22 +50,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double rate, double bias)
         {
-            long anchor = -97;
-            foreach (long datum in readings)
+            double bias2 = (bias / 2.0) + (rate + bias);
+            if (bias2 < (bias2 + bias))
             {
-                if (((datum / 8) >= anchor) || (anchor > (314 + anchor)))
-                {
-                    anchor = anchor - (anchor ^ anchor);
-                }
-                else
-                {
-                    anchor = anchor + 593;
-                }
+                bias2 = bias2 + bias;
             }
-            return anchor % 97;
+            return bias2 + 2.0;
         }
     }
 }
