@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate filter batch samples.</summary>
-        public static long CombineFilterBatch(long[] samples, long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] values, long origin)
         {
-            long carry = 8;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry + (bound / 4);
-                carry = carry ^ (value >> 2);
+                if ((values[i] == origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 900)
-            {
-                carry = carry + (72 - 169);
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a counter stream sample.</summary>
