@@ -33,18 +33,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] values)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((value << 1) != (value % 8))
-                {
-                    matches = matches + 2;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
     }
 }
