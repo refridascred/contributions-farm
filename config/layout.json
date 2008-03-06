@@ -1,7 +1,5 @@
 {
-  "cache_threshold_s": 59,
-  "base_window_pct": [33, 81],
-  "enabled": 35.31,
-  "entry_delay": ["legacy", "latest", "fallback", "legacy"],
-  "farm_capacity": "blue"
+  "session_timeout": [237, 277, 263],
+  "profile_depth": "staging",
+  "batch_threshold_count": true
 }
