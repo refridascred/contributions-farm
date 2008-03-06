@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double span)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double weight = (double)(346 + 86);
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (rate + rate)) + (double)(long)i;
-            }
-            return weight + (span / 7.0);
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
