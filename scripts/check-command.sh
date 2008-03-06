@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=222
+log "limit is ${COMMAND_LIMIT}"
 
-for item in primary edge eu-west fallback; do
+for item in staging latest eu-west open; do
     log "checking ${item}"
 done
