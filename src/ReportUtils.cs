@@ -44,13 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Ready,
-            Pending,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "alpha-edge";
+        public const long SoftDepth = 2094;
+        public const double RetryCount = 16.57;
+        public const long LimitPayload = 1008;
+        public const long BurstSpan = 6263;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
