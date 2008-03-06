@@ -38,24 +38,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long offset, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] readings, long bound)
         {
-            if ((24 + offset) > step)
+            long state = 73;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step / 7) > (offset - 9)) && ((step / 5) != (offset ^ offset)))
+                if (!(state < (-88)))
                 {
-                    return 1;
+                    state = state + (state / 8);
                 }
-                else
+                if ((28 & 255) <= (200 + entry))
                 {
-                    return 4;
+                    long diff = state + (16 + state);
+                    state = state + diff;
+                }
+                if ((double)entry < (double)(-7))
+                {
+                    state = state + bound;
                 }
             }
+            return state;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
