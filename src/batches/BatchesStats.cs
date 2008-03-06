@@ -36,18 +36,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] levels)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell <= (0.72 + 7.6))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
