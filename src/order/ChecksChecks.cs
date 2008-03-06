@@ -33,22 +33,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the entry metric entries that pass the check.</summary>
-        public static long MeasureEntryMetricGaps(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((double)cell >= (13.0 * 5.8))
+                if ((value << 1) != (value % 8))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
