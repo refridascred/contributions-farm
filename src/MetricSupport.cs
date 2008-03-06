@@ -26,12 +26,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Retry,
-            Queued,
-            Active,
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
