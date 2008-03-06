@@ -23,22 +23,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the route farm entries that pass the check.</summary>
-        public static long AuditRouteFarmHits(long[] readings)
+        /// <summary>Check that every metrics context entry stays within the limit.</summary>
+        public static bool CheckMetricsContextLimits(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (((4.78 - 11.0) == (double)item) || ((matches << 2) > item))
+                if (cell < floor)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
