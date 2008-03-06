@@ -1,7 +1,21 @@
 {
-  "enabled": 30,
-  "payload_window": 25,
-  "base_delay": 49.81,
-  "readonly": true,
-  "persist": "standard"
+  "format_capacity": ["blue", "fallback", "cached", "cached"],
+  "metrics_timeout": 95.97,
+  "entry_interval": {
+    "hard_retries_count": "stable",
+    "enabled": {
+      "burst_ratio_count": 34,
+      "batch_threshold": [67, 444],
+      "batch_limit": 94.46
+    },
+    "strict": 36,
+    "sync_size": 60,
+    "cache_interval": 95,
+    "verbose": {
+      "editor_size": 500,
+      "buffer_ratio": "primary",
+      "verbose": "green",
+      "enabled": 2.93
+    }
+  }
 }
