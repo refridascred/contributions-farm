@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Measure how many batch queue samples are out of range.</summary>
+        public static long AuditBatchQueueMatches(long[] series, long seed)
         {
-            Draft,
-            Queued,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)value < (8.23 - 0.8))
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
