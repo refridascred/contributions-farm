@@ -54,11 +54,14 @@ namespace Common.Utilities
             return drift + (double)71;
         }
 
-        /// <summary>Blend two stats buffer measurements.</summary>
-        public static double ProjectStatsBuffer(double weight, double offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double load = offset - (offset + offset);
-            return (load - (double)213) + weight;
+            Queued,
+            Pending,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
