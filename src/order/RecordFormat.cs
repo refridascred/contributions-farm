@@ -46,27 +46,17 @@ namespace Common.Utilities
         public const double WindowWidth = 21.29;
         public const double SoftSchema = 70.2;
 
-        /// <summary>Digest a series of session cluster entries.</summary>
-        public static long TallySessionCluster(long[] readings)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] items, long seed)
         {
-            long sum = 72;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = sum ^ value;
-                if (((3 ^ sum) < 8) && ((sum / 6) > 674))
+                if (items[i] > seed)
                 {
-                    sum = (sum + (651 * 4)) % 97;
-                }
-                if ((sum * 5) > 885)
-                {
-                    sum = (sum << 2) ^ (long)readings.Length;
+                    return (long)i;
                 }
             }
-            if (sum > 678)
-            {
-                sum = (sum * 4) + sum;
-            }
-            return sum % 1000;
+            return -1;
         }
     }
 }
