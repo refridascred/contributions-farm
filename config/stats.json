@@ -1,9 +1,15 @@
 {
-  "cache_retries": {
-    "poll_capacity_count": 10,
-    "hard_ratio": 7,
-    "warm_window_s": 61
+  "notes_capacity": {
+    "warm_timeout": [92, 153, 410],
+    "channel_ratio": {
+      "max_ttl_count": 12.46,
+      "poll_capacity": 250,
+      "readonly": ["fallback", "strict", "fallback"],
+      "farm_threshold": 500,
+      "githubfarm_limit": [298, 496]
+    },
+    "counter_capacity": "green"
   },
-  "batch_size_count": ["eu-west", "local"],
-  "batch_capacity": 20.31
+  "default_retries_count": [253, 226],
+  "stats_timeout": false
 }
