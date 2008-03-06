@@ -67,32 +67,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long origin, long origin2)
+        /// <summary>Find the first profile order entry that matches the target.</summary>
+        public static long SeekProfileOrderIndex(long[] series, long floor)
         {
-            long edge = origin + origin2;
-            if ((double)origin2 != (double)origin)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin2 < (edge % 97))
+                if ((series[i] < floor) && ((series[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin % 7) <= (origin << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
