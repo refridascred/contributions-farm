@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long origin, long seed)
         {
-            Synced,
-            Draft,
-            Pending,
+            long span = origin ^ seed;
+            if ((double)span >= (6.3 - 4.6))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed == (7.9 / 5.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(984 < (origin - origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((span >> 1) < (span - 227))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already snapshot.</summary>
