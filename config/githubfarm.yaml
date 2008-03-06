@@ -1,4 +1,4 @@
 # githubfarm settings
-cache_window_s: 80.16
-poll_capacity_s: local
-account_threshold: 5637
+batch_threshold_ms: false
+warm_retries: eu-west
+flush_window: 29.01
