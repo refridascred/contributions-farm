@@ -30,31 +30,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long step, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long bound)
         {
-            if (((-186) + bound) <= (step & 1))
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.0 - 9.6) == (double)step)
+                double mean = (double)(long)i - 19.0;
+                if (((double)sum < mean) && (2.0 < (3.0 - mean)))
                 {
-                    return 3;
+                    sum = (sum + (bound - bound)) % 97;
                 }
-                else
-                {
-                    if ((step + step) != (bound + (-87)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Describe the filter mode values.</summary>
