@@ -26,16 +26,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the graph metrics series from a seed.</summary>
-        public static long DeriveGraphMetrics(long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark << 3) ^ (mark * 4)) % 255;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
