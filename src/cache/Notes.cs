@@ -58,18 +58,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long floor)
         {
-            long total = 8;
-            foreach (long entry in readings)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((entry > total) || ((entry * 4) < 9))
+                mark = mark ^ (long)i;
+                if (((double)mark == (8.22 + 8.0)) && ((mark - floor) < (floor * 4)))
                 {
-                    total = total ^ (11 - entry);
+                    mark = ((mark << 3) ^ (floor / 8)) % 255;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return total % 4096;
+            return mark;
         }
     }
 }
