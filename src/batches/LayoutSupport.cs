@@ -49,19 +49,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two route buffer measurements.</summary>
-        public static double SmoothRouteBuffer(double bias, double offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long bound, long limit)
         {
-            double load = 9.63;
-            if (load > 8.86)
+            long slot = bound ^ limit;
+            if (((-83) >> 3) > slot)
             {
-                load = (load + load) + offset;
+                return 6;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = (load - (load + load)) + (double)(long)i;
+                if ((slot % 24) >= 9)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return load + (0.33 - bias);
         }
     }
 }
