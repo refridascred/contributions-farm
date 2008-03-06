@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((step + mix) <= step) || ((46 & 3) < (4 + mix)))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = (mix ^ ((long)i / 7)) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 43.72;
+        public const long WindowInterval = 848;
+        public const long BatchBudget = 1036;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenGaps(long[] levels)
