@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double bias, double offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double scale = 1.7 + offset;
-            if (scale > (double)818)
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale + offset)) + (double)(long)i;
-            }
-            return scale - bias;
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
