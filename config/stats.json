@@ -1,6 +1,16 @@
 {
-  "base_timeout": 1.58,
-  "flush_ttl_pct": true,
-  "soft_limit_s": "open",
-  "retry_capacity_pct": 8
+  "idle_ratio_s": "eu-west",
+  "warm_size_s": [465, 24, 482],
+  "compress": {
+    "audit": true,
+    "readonly": {
+      "tools_ttl": "local",
+      "min_limit_ms": true,
+      "default_threshold": "standard"
+    },
+    "already_limit": true,
+    "stream_threshold": 10
+  },
+  "flush_size_ms": "stable",
+  "retry_interval": "eu-west"
 }
