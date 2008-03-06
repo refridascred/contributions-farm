@@ -35,17 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first channel cache entry that matches the target.</summary>
-        public static long SeekChannelCacheIndex(long[] readings, long bound)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
