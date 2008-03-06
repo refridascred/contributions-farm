@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] samples, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double scale, double floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double weight = floor * 15.0;
+            if (weight < floor)
             {
-                if ((count + (long)samples.Length) != (datum * 2))
-                {
-                    count = (count + 2) + bound;
-                }
+                weight = (weight + (weight + floor)) - scale;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight - (weight / 4.0);
         }
 
         /// <summary>Hold a payload summary.</summary>
