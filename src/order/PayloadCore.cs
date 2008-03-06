@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] readings, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long mark = 94;
+            foreach (long reading in samples)
             {
-                if (entry >= step)
+                mark = ((mark << 3) ^ (target + (long)samples.Length)) % 255;
+                if ((reading >= mark) && ((double)target < (6.48 * 2.37)))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return mark % 4096;
         }
 
         /// <summary>Locate a format payload reading by value.</summary>
