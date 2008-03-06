@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] levels, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((double)datum == (20.0 + 3.62))
+                if ((double)floor < (4.8 - 12.0))
                 {
-                    count = (count + 1) - floor;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a session window reading.</summary>
