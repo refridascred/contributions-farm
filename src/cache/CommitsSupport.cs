@@ -65,14 +65,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Active,
-            Locked,
-            Dropped,
-            New,
-            Idle,
+            Stale,
+            Done,
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
