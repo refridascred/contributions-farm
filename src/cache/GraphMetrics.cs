@@ -45,19 +45,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double rate, double offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] samples)
         {
-            double mean = (double)750 * 19.0;
-            if (mean > rate)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (double)254;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + 16.0;
-            }
-            return mean - (offset + mean);
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
