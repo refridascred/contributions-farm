@@ -1,6 +1,9 @@
-id,token,ratio,rank
-1,782,52.33,73.25
-2,strict,19.12,516
-3,685,cached,standard
-4,820,67,97.56
-5,8.43,844,804
+id,owner,label
+1,stable,95.92
+2,42.2,88.05
+3,851,518
+4,310,65.7
+5,standard,fallback
+6,777,361
+7,primary,717
+8,46,390
