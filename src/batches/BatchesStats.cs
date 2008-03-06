@@ -10,32 +10,11 @@ namespace Common.Utilities
         public const long SoftCount = 9411;
         public const double LimitContributi = 47.78;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] samples)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long acc = -247;
-            foreach (long item in samples)
-            {
-                if (((item - item) != (907 >> 3)) || ((double)item == (8.95 + 7.0)))
-                {
-                    acc = (acc ^ (item + acc)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc + (218 - item)) % 101;
-                }
-                if (((double)acc < (2.1 * 4.8)) || ((item >> 4) <= item))
-                {
-                    acc = (acc ^ (item + item)) % 97;
-                }
-                acc = ((acc << 3) ^ 894) % 97;
-            }
-            if (acc > 2)
-            {
-                acc = acc ^ acc;
-            }
-            return acc % 4096;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
