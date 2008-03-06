@@ -1,4 +1,26 @@
 # githubfarm settings
-base_depth_pct: 65.87
-verbose: standard
-compress: 7917
+githubfarm_limit: staging
+persist: standard
+context_size:
+  - 119
+  - 298
+batch_interval: 500
+audit:
+  idle_ratio: staging
+  default_timeout: 4762
+  batch_window_s:
+    burst_window: 65.51
+    dry_run: primary
+    readonly: 1875
+  support_limit:
+    commits_timeout:
+      - cached
+      - primary
+      - stable
+    profile_size: open
+    enabled: 41
+    warm_capacity_ms: 4837
+    support_interval: staging
+    soft_timeout: false
+  stats_delay: 7488
+checks_depth: 8255
