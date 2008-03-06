@@ -1,17 +1,38 @@
 # githubfarm settings
-batch_delay: false
-sync_threshold_pct: 42
-compress:
-  - staging
-  - eu-west
-readonly:
-  compress: open
-  layout_threshold: standard
-  cluster_threshold: fallback
-  buffer_retries: standard
-  stream_capacity: true
-  flush_interval_pct:
-    - stable
-    - local
-    - green
-    - open
+cache_ratio: eu-west
+route_retries:
+  - edge
+  - latest
+  - stable
+warm_delay:
+  audit:
+    counter_threshold: primary
+    order_ttl:
+      - standard
+      - primary
+      - blue
+      - staging
+    dry_run: edge
+    max_window_s:
+      - latest
+      - green
+    persist: true
+    checks_ttl:
+      - 59
+      - 499
+      - 113
+  farm_delay:
+    metric_capacity: 9.13
+    queue_delay:
+      - strict
+      - legacy
+    format_threshold:
+      - 49
+      - 131
+      - 399
+    idle_depth_pct: edge
+    payload_window: primary
+    strict: primary
+  poll_threshold_count: 6605
+  retry_capacity_pct: 100
+window_retries: cached
