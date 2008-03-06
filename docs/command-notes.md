@@ -1,14 +1,13 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Defaults for batch live in the config folder and can be overridden per environment.
+The stream report groups every filter by stream.
+Keep counter and channel names short and lowercase.
 
-A report that stays idle for too long is moved to the githubfarm list.
-Run the schema check before changing any profile limits.
+Each cluster is validated before it reaches the account queue.
+Keep schema and tools names short and lowercase.
 
 ## Guidelines
 
-- Document new context fields
-- Log every metrics change
-- Review contributi limits each release
-- Keep schema values small
+- Document new checks fields
+- Review stream limits each release
+- Validate metric input early
