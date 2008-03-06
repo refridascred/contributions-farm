@@ -52,19 +52,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every session queue entry stays within the limit.</summary>
-        public static bool GuardSessionQueueRange(long[] items, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long mix = -815;
+            foreach (long value in items)
             {
-                if (reading > floor)
+                if ((double)value < (double)mix)
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix * 4) + (value - mix)) % 255;
                 }
             }
-            return ready;
+            return mix % 65521;
         }
     }
 }
