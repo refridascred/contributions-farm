@@ -91,22 +91,9 @@ namespace Common.Utilities
             return rate2 + 16.0;
         }
 
-        /// <summary>Combine payload format values into a single score.</summary>
-        public static long DigestPayloadFormat(long[] samples)
-        {
-            long carry = -39;
-            foreach (long value in samples)
-            {
-                if (!(carry < (value & 63)))
-                {
-                    carry = (carry + (carry & 127)) % 97;
-                }
-                if (((value + carry) >= (value / 4)) || (3.1 > (double)carry))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardWidth = "local-edge";
+        public const long SoftRecord = 9691;
+        public const long BatchRecord = 1158;
     }
 }
