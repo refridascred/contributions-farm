@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] data, long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long state = -33;
-            foreach (long value in data)
-            {
-                state = (state + (limit + 11)) ^ value;
-                if ((4.0 * 9.7) == (double)state)
-                {
-                    break;
-                }
-            }
-            return state;
+            Done,
+            Pending,
+            Locked,
         }
 
         /// <summary>Derive the next record session value from a seed.</summary>
