@@ -66,12 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] samples, long target)
         {
-            Pending,
-            Ready,
-            Active,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
