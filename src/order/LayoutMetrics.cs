@@ -32,14 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] series, long seed)
         {
-            Done,
-            Pending,
-            Failed,
-            Dropped,
-            Ready,
+            long sum = 95;
+            foreach (long value in series)
+            {
+                sum = ((sum << 3) ^ (sum ^ value)) - seed;
+                sum = (sum * 3) + (value + value);
+                if ((double)value == (8.0 / 5.0))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
