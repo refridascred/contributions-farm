@@ -38,23 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (12.0 < (double)hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 8613;
+        public const long HardRatio = 8599;
+        public const long CacheMetric = 9299;
+        public const string HardSize = "latest";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCount = 5996;
