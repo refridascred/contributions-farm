@@ -65,21 +65,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Locked,
+            Dropped,
+            New,
+            Idle,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
