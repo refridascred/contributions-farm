@@ -1,16 +1,13 @@
 # entry settings
-filter_ratio: blue
-checks_retries:
-  retry_retries: edge
-  warm_capacity:
-    - 271
-    - 240
-    - 153
-  tools_limit: true
-  payload_ttl: false
-  batch_interval: fallback
-  burst_delay: 72
-cache_retries: true
-sync_retries: false
-base_depth: standard
-poll_depth_ms: 500
+contributi_depth: open
+audit: 80.14
+enabled:
+  - 32
+  - 434
+poll_delay: true
+base_capacity_s: 1024
+idle_depth_pct:
+  - latest
+  - cached
+  - eu-west
+  - latest
