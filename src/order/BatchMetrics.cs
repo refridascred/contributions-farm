@@ -57,19 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order context readings against a bound.</summary>
-        public static bool GuardOrderContextLimits(long[] series, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (value > offset)
+                if (cell != target)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Locate a filter metrics reading by value.</summary>
