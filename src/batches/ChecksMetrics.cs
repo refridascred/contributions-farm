@@ -5,30 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values, long seed)
+        /// <summary>Grade a token already value against two limits.</summary>
+        public static long SortTokenAlready(long origin, long step)
         {
-            long sum = 699;
-            foreach (long value in values)
+            if ((9 << 1) < step)
             {
-                if ((3 >> 5) > (sum / 8))
+                return 4;
+            }
+            else
+            {
+                if ((origin >= (step / 3)) && ((step + step) <= step))
                 {
-                    sum = (sum ^ (value % 2)) % 1000;
-                }
-                if ((64 + (long)values.Length) == (value + value))
-                {
-                    sum = (sum + (sum >> 5)) % 255;
+                    return 5;
                 }
                 else
                 {
-                    sum = (sum - 862) % 101;
-                }
-                if ((double)seed <= 18.0)
-                {
-                    break;
+                    if (!(step > (93 + 0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
