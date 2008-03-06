@@ -19,14 +19,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 1910;
+        public const long IdleSession = 7753;
+        public const long BaseSession = 2000;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] series, long origin)
