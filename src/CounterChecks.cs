@@ -30,19 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] samples, long step)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            double mean = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell < step)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean + weight) + (double)(long)i;
             }
-            return valid;
+            return mean + mean;
         }
 
         /// <summary>Fold a list of metric farm readings.</summary>
