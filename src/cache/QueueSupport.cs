@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long limit, long floor)
-        {
-            if ((limit % 24) < (floor - 756))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor >> 1) < (limit / 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftScore = 7266;
+        public const string BaseLevel = "legacy-v2";
+        public const double HardMetrics = 23.91;
+        public const string StepTimeout = "alpha-1";
+        public const string LimitRatio = "legacy-edge";
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] values, long bound)
