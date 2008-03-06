@@ -16,11 +16,18 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double ratio, double bias)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] values, long offset)
         {
-            double mean = bias;
-            return mean + ratio;
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value + seen) < (value * 4))
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
