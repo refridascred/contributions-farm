@@ -13,18 +13,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] data)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((entry >> 4) > hits) || ((double)hits <= (3.5 - 6.6)))
+                if (series[i] == target)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of schema editor entries.</summary>
