@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] data, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mark = 62;
+            foreach (long item in samples)
             {
-                if (seen >= 72)
+                mark = mark ^ (item / 3);
+                if (!((mark << 1) >= (item + target)))
                 {
-                    seen = ((seen + 3) + item) - bound;
+                    mark = (mark - (1 + item)) % 65521;
+                }
+                mark = (mark - (727 - target)) % 97;
+                if (((long)samples.Length % 97) <= (mark % 64))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
