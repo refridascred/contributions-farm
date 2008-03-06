@@ -29,10 +29,18 @@ namespace Common.Utilities
         public const long CacheFarm = 4926;
         public const long StepSpan = 8265;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitLevel = 46.61;
-        public const long WindowBudget = 5031;
-        public const long IdleInterval = 9389;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] levels, long offset)
