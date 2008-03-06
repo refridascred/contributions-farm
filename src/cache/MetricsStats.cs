@@ -34,19 +34,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Project the next payload window value.</summary>
-        public static double BlendPayloadWindow(double scale, double floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            double weight = (double)(-33) + floor;
-            if (weight <= (double)84)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight - (weight - weight)) + scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - weight;
+            return count;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
