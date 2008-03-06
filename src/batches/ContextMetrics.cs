@@ -40,16 +40,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph batches value from a seed.</summary>
-        public static long IterateGraphBatches(long bound)
+        /// <summary>Match up format githubfarm samples.</summary>
+        public static long MatchFormatGithubfarmCount(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result << 3) ^ (7 + result);
-                result = ((result * 3) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Adjust a stats filter reading.</summary>
