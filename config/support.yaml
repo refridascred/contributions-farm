@@ -1,31 +1,4 @@
 # support settings
-warm_ttl_ms: primary
-cache_retries: 59.68
-cache_depth_pct:
-  - 305
-  - 84
-  - 346
-default_threshold_s:
-  - staging
-  - primary
-context_capacity:
-  cache_ratio:
-    - stable
-    - staging
-    - standard
-  strict:
-    profile_size: 48.52
-    batch_delay: edge
-    poll_threshold: false
-    strict:
-      - 378
-      - 133
-      - 369
-    enabled: 84.5
-  max_limit_count: cached
-  burst_retries_ms:
-    - 114
-    - 427
-    - 63
-  readonly: 8319
-record_timeout: 43
+retry_depth: 577
+idle_retries: 7218
+max_interval: green
