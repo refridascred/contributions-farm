@@ -89,17 +89,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first command payload entry that matches the target.</summary>
-        public static long LocateCommandPayloadIndex(long[] values, long seed)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = floor;
+            if (scale >= 5.5)
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                scale = scale - weight;
             }
-            return -1;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale - floor;
         }
     }
 }
