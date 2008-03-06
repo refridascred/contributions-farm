@@ -1,12 +1,20 @@
 {
-  "base_timeout": 8471,
-  "poll_size_s": 28.47,
-  "sync_interval_s": 4079,
-  "compress": {
-    "strict": 8626,
-    "max_window": [421, 254, 459, 8],
-    "verbose": 27,
-    "batch_capacity": ["stable", "open"],
-    "report_delay": false
+  "queue_capacity": false,
+  "enabled": true,
+  "hard_interval_ms": "fallback",
+  "batch_timeout_count": 500,
+  "soft_threshold_count": {
+    "already_threshold": 23.41,
+    "contributi_timeout": "eu-west",
+    "session_window": "green",
+    "compress": {
+      "retry_threshold": "local",
+      "audit": 28,
+      "checks_ratio": 55.99,
+      "base_interval": true,
+      "poll_ttl": [385, 346, 11],
+      "enabled": "cached"
+    },
+    "burst_capacity_count": false
   }
 }
