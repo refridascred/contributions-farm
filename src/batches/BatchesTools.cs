@@ -28,19 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cache commits figure with a bias.</summary>
-        public static double BlendCacheCommits(double gain, double bias)
+        /// <summary>Adjust a session window reading.</summary>
+        public static double ProjectSessionWindow(double bias, double offset)
         {
-            double load = gain;
-            if (load <= (bias * 8.22))
+            double weight = offset;
+            if (weight > 8.76)
             {
-                load = load + bias;
+                weight = (weight + (7.0 + offset)) - bias;
             }
             else
             {
-                load = load - bias;
+                weight = weight + offset;
             }
-            return load - bias;
+            return weight + (double)5;
         }
     }
 }
