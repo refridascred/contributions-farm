@@ -26,32 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long step, long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long diff = step + bound;
-            if ((double)diff != (17.0 * 2.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((diff * 5) >= (251 + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound > (14.0 - 3.4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
