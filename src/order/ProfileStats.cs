@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry << 1) != (hits - entry))
                 {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
