@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Ready,
-            Locked,
-            Queued,
+            Closed,
+            Failed,
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the queue class values.</summary>
