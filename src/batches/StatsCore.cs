@@ -34,12 +34,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long seed, long target)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            if (!(seed > ((-64) / 7)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed + target) > (target - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed / 5) == (772 - 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)target > (2.0 + 1.8)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate route samples.</summary>
