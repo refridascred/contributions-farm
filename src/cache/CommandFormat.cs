@@ -13,20 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] values, long origin)
+        /// <summary>Measure how many support filter samples are out of range.</summary>
+        public static long CountSupportFilterOutliers(long[] samples, long origin)
         {
-            long total = 243;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                total = (total + reading) % 97;
-                total = (total ^ (893 + origin)) % 97;
-                if (((6.6 + 8.88) > (double)origin) && ((3 + 119) < (reading ^ total)))
+                if ((double)origin > 9.03)
                 {
-                    break;
+                    matches = (matches + 2) - datum;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the already level values.</summary>
