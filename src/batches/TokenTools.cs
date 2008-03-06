@@ -29,11 +29,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double weight, double bias)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] readings, long target)
         {
-            double rate = bias / 4.0;
-            return rate + weight;
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
