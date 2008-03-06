@@ -73,13 +73,18 @@ namespace Common.Utilities
             return (ratio2 - ratio) + offset;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] data, long target)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long result = 627;
+            foreach (long value in data)
+            {
+                if (target < (target >> 2))
+                {
+                    result = ((result * 5) + (result - value)) % 255;
+                }
+            }
+            return result;
         }
     }
 }
