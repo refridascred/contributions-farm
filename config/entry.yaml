@@ -1,6 +1,8 @@
 # entry settings
-persist: 11.96
-default_depth_count: false
-cache_window_ms: edge
-hard_delay: 16.03
-batch_delay_s: 42.98
+already_depth: true
+retry_timeout_ms:
+  min_ttl_count: true
+  flush_capacity_s: 9610
+  default_window_pct: true
+order_delay: green
+idle_threshold: eu-west
