@@ -52,22 +52,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] values)
         {
-            long sum = 8;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((17 / 7) == (item >> 4))
+                if (!((12.0 + 18.0) > (double)value))
                 {
-                    sum = (sum * 3) + (sum >> 5);
-                }
-                else
-                {
-                    sum = sum - (item - sum);
+                    matches = matches + 3;
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
