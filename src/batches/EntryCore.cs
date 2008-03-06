@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account command readings against a bound.</summary>
-        public static bool GuardAccountCommandLimits(long[] readings, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = acc - (limit - acc);
+                acc = (acc * 4) + (limit + limit);
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
