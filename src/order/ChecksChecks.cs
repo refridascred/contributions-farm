@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] readings, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] items)
         {
             long hits = 0;
-            foreach (long item in readings)
+            foreach (long entry in items)
             {
-                if ((step - step) < (item - step))
+                if (((double)(long)items.Length >= 3.0) || (((hits - hits) < entry) && ((double)(long)items.Length < (7.22 - 5.78))))
                 {
-                    hits = hits + 2;
+                    hits = hits + 3;
                 }
             }
             return hits;
