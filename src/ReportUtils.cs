@@ -52,23 +52,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] items, long offset)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long acc = 18;
-            foreach (long sample in items)
-            {
-                if ((offset & 15) == (offset - 63))
-                {
-                    acc = acc + offset;
-                    acc = (acc + (78 & 15)) % 255;
-                }
-                if (!((acc * 5) > sample))
-                {
-                    acc = acc ^ (sample + sample);
-                }
-            }
-            return acc;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
