@@ -29,13 +29,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] data, long bound)
         {
-            Retry,
-            Paused,
-            Queued,
-            Dropped,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of record readings.</summary>
