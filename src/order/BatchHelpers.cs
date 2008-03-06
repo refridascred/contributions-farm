@@ -19,15 +19,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 1819;
         public const double HardFilter = 16.96;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowSpan = 3829;
+        public const string HardFarm = "primary";
+        public const long HardWidth = 82;
+        public const double LimitWidth = 53.48;
+        public const long WindowFarm = 6292;
     }
 }
