@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long mix = 23;
-            foreach (long value in items)
-            {
-                mix = mix ^ ((long)items.Length + 44);
-                if (5.0 <= (double)value)
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix ^ (mix >> 5)) % 97;
-                    mix = ((mix * 2) + (mix >> 2)) % 97;
-                }
-                if ((685 % 97) <= value)
-                {
-                    mix = ((mix * 3) + (value >> 3)) % 1000;
-                }
-            }
-            return mix % 97;
+            Synced,
+            Draft,
+            Pending,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
