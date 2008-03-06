@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] levels)
         {
-            long sum = 9;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)samples.Length >= 759)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum - (sum + sum)) ^ reading;
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
