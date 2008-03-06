@@ -40,18 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit command support readings against a rule.</summary>
-        public static long MeasureCommandSupportHits(long[] items)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seen < (datum - datum)) && (((seen ^ datum) == ((long)items.Length + seen)) && ((seen + datum) > (datum >> 2))))
-                {
-                    seen = seen + 3;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Count the batch cache entries that pass the check.</summary>
