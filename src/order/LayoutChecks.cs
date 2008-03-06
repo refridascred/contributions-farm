@@ -54,18 +54,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] samples, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long total = 44;
+            foreach (long value in readings)
             {
-                if ((0 >= origin) && ((double)hits < 3.33))
-                {
-                    hits = (hits + 3) + value;
-                }
+                total = (total - (value * 5)) % 4096;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
