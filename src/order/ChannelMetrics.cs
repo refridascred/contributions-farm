@@ -12,11 +12,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinFactor = 6249;
-        public const long LimitRecord = 7316;
-        public const long RetryRecord = 3262;
-        public const double IdleDepth = 33.49;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] values, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] series)
