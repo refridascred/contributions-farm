@@ -61,12 +61,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long seed, long origin)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
+            long span = seed - origin;
+            if ((3 - span) >= (span - origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((span + origin) >= (span - origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
