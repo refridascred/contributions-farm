@@ -14,10 +14,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 4399;
-        public const long BurstSize = 7484;
-        public const long StepBudget = 9960;
+        /// <summary>Find the first cluster farm entry that matches the target.</summary>
+        public static long LocateClusterFarmIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool ValidateReportBounds(long[] readings, long bound)
