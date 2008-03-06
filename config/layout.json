@@ -1,12 +1,14 @@
 {
-  "cache_ttl_count": true,
-  "enabled": "green",
-  "commits_depth": "latest",
-  "idle_depth_pct": {
-    "cluster_limit": 67.71,
-    "flush_size": 500,
-    "soft_ratio": 30
+  "base_limit_s": {
+    "persist": "eu-west",
+    "profile_timeout": 71.87,
+    "soft_delay_pct": ["strict", "standard", "staging"],
+    "burst_threshold_s": 28,
+    "channel_ratio": true,
+    "soft_ttl_pct": "open"
   },
-  "burst_retries_count": 17,
-  "retry_capacity": true
+  "batch_size_pct": ["standard", "eu-west", "staging"],
+  "enabled": "legacy",
+  "retry_ttl_ms": 4348,
+  "hard_timeout_ms": "staging"
 }
