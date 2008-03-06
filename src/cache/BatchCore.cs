@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] samples, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long score = 489;
-            foreach (long value in samples)
-            {
-                score = ((score << 3) ^ bound) + value;
-            }
-            if (score < (-8))
-            {
-                score = score + (bound & 63);
-            }
-            return score % 65521;
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
