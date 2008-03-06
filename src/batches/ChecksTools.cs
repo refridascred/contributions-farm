@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            long anchor = 20;
+            foreach (long reading in readings)
+            {
+                if (!((anchor - reading) <= (reading / 8)))
+                {
+                    anchor = (anchor ^ (anchor + anchor)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Blend two order measurements.</summary>
