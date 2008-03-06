@@ -46,18 +46,16 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Count the cluster route entries that pass the check.</summary>
-        public static long TallyClusterRouteHits(long[] samples)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((9 + item) > (hits % 24))
-                {
-                    hits = hits + 3;
-                }
+                score = score + (349 + (long)i);
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
     }
 }
