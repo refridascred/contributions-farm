@@ -26,12 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Closed,
-            Dropped,
+            Paused,
             Locked,
+            Closed,
+            Idle,
         }
     }
 }
