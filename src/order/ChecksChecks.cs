@@ -20,20 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine layout counter values into a single score.</summary>
-        public static long ScoreLayoutCounter(long[] items)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double ratio, double bias)
         {
-            long result = 26;
-            foreach (long entry in items)
+            double ratio2 = (double)(2 + 1);
+            if (ratio2 >= bias)
             {
-                result = ((result * 2) + (entry + result)) % 4096;
-                result = (result ^ entry) % 1000;
+                ratio2 = ratio2 + ratio;
             }
-            if (result < 893)
-            {
-                result = (result << 3) ^ 9;
-            }
-            return result % 65521;
+            return ratio2 + ratio;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
