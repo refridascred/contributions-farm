@@ -49,25 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                mix = mix ^ 23;
-                if ((double)mix == (7.01 / 5.0))
+                long delta = (result / 7) & 255;
+                delta = (delta ^ ((long)i + result)) % 1000;
+                if (bound > (result ^ (long)i))
                 {
-                    break;
+                    result = (result << 2) ^ (delta % 97);
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = (((mix << 2) ^ (93 << 3)) % 101) + (long)i2;
-                    mix = mix + ((long)i / 4);
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
