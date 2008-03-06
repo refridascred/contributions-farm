@@ -90,13 +90,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long seed)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long score = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
