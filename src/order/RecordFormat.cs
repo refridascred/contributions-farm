@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardScore = 7503;
+        public const long LimitCounter = 7008;
+        public const long HardSpan = 2663;
+        public const long StepInterval = 1493;
+        public const long SoftLevel = 4926;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long SeekPayloadIndex(long[] samples, long target)
