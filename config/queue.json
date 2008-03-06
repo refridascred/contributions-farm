@@ -1,8 +1,7 @@
 {
-  "poll_size": 66.35,
-  "min_delay": [380, 97],
-  "base_limit_s": 85,
-  "cache_timeout_count": "cached",
-  "editor_depth": 65.38,
-  "verbose": true
+  "idle_limit": [404, 379],
+  "hard_delay_s": "staging",
+  "readonly": 100,
+  "strict": 60.71,
+  "commits_depth": false
 }
