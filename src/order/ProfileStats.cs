@@ -15,13 +15,18 @@ namespace Common.Utilities
         public const string MaxPayload = "cached-v2";
         public const long SoftLevel = 3356;
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Fold a list of profile filter readings.</summary>
+        public static long ScoreProfileFilter(long[] levels, long step)
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = 73;
+            foreach (long entry in levels)
+            {
+                if (!((entry - step) < entry))
+                {
+                    mark = (mark - ((long)levels.Length + entry)) % 65521;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
