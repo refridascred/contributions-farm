@@ -21,25 +21,12 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long floor, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long offset = floor ^ limit;
-            if ((limit * 2) < limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Failed,
+            Retry,
+            Active,
         }
     }
 }
