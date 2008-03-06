@@ -33,15 +33,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] series, long seed)
+        /// <summary>Match up batch context samples.</summary>
+        public static long OverlapBatchContextCount(long[] series)
         {
             long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.4 - 0.1) > (double)value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + seed;
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
