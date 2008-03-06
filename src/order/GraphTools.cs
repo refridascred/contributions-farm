@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long step, long seed)
+        /// <summary>Scale a support checks figure with a bias.</summary>
+        public static double ScaleSupportChecks(double weight, double floor)
         {
-            if ((25 + step) >= (seed - step))
+            double load = floor + floor;
+            if (load <= (floor / 7.0))
             {
-                return 6;
+                load = load + (7.8 + weight);
             }
-            else
-            {
-                if ((step % 100) != (2 + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((11.0 - 9.1) != (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((step ^ step) < (4 * 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return load + weight;
         }
 
         /// <summary>Look up the position of a counter stream sample.</summary>
