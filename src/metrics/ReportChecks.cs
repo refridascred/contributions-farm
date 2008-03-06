@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report checks helpers.</summary>
     public static class ReportChecks
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = span;
+            if (rate >= (double)412)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate + (7.0 * 8.3)) - gain;
             }
-            return tally;
+            else
+            {
+                rate = rate - span;
+            }
+            return rate + (double)62;
         }
 
         /// <summary>Audit graph stream readings against a rule.</summary>
