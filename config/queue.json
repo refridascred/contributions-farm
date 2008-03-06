@@ -1,24 +1,6 @@
 {
-  "burst_window_ms": {
-    "metric_ratio": 62.85,
-    "base_window_s": 2815,
-    "burst_window": "primary"
-  },
-  "context_size": 31,
-  "burst_capacity_s": 62,
-  "buffer_window": false,
-  "poll_depth_pct": [111, 337, 315, 406],
-  "flush_retries_pct": {
-    "flush_ratio_pct": 93.23,
-    "min_retries_count": 42.04,
-    "verbose": 6.35,
-    "readonly": {
-      "base_timeout": 7437,
-      "compress": "green",
-      "hard_interval_pct": 250,
-      "profile_limit": true,
-      "burst_delay_count": false
-    },
-    "cache_limit_count": true
-  }
+  "batch_timeout": 100,
+  "sync_limit_count": "fallback",
+  "session_depth": true,
+  "poll_delay": 66.48
 }
