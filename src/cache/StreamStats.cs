@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double rate, double offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] values)
         {
-            double gain = rate;
-            return (gain - 18.0) + offset;
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (tally < (datum - datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine command values into a single score.</summary>
