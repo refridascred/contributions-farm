@@ -24,22 +24,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] series, long step)
         {
-            long acc = 4;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading + acc) <= (acc - reading))
+                if ((series[i] > step) && ((series[i] % 5) == 0))
                 {
-                    acc = (acc ^ reading) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (reading % 2)) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
