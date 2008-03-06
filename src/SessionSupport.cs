@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long SoftLevel = 8164;
         public const string BaseInterval = "open";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 27.59;
-        public const double StepScore = 11.1;
-        public const long HardFarm = 4521;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((10.0 / 2.0) <= (double)tally)
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
