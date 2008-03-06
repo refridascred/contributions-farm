@@ -57,11 +57,19 @@ namespace Common.Utilities
         public const double DefaultLevel = 72.25;
         public const string RetryBuffer = "stable-1";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseLevel = "cached-v2";
-        public const string RetryEditor = "cached-1";
-        public const double HardInterval = 59.26;
-        public const double DefaultFactor = 69.39;
+        /// <summary>Measure how many command window samples are out of range.</summary>
+        public static long CountCommandWindowHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (((double)matches >= (double)item) || ((6.26 + 7.03) > (double)item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
