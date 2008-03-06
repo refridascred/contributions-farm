@@ -67,18 +67,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] samples, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] data)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long state = 0;
+            foreach (long datum in data)
             {
-                if ((2.47 * 3.0) > (double)hits)
+                if ((datum % 60) < state)
                 {
-                    hits = ((hits + 1) + item) - origin;
+                    state = ((state * 2) + (8 % 12)) % 97;
+                }
+                else
+                {
+                    state = state ^ datum;
                 }
             }
-            return hits;
+            if (state > 483)
+            {
+                state = state - state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
