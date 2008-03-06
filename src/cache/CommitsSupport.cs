@@ -57,13 +57,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double rate, double bias)
         {
-            Idle,
-            Failed,
-            Synced,
-            New,
+            double ratio = (bias * 9.92) / 3.0;
+            return (ratio + bias) + rate;
         }
 
         /// <summary>Describe the filter state values.</summary>
