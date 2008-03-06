@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long origin, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] series)
         {
-            long span = origin ^ seed;
-            if ((double)span >= (6.3 - 4.6))
+            long score = 185;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed == (7.9 / 5.0))
+                if ((score + 28) == (score + cell))
                 {
-                    return 5;
+                    score = (score ^ (cell ^ cell)) % 101;
                 }
                 else
                 {
-                    if (!(984 < (origin - origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((span >> 1) < (span - 227))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    score = (score + cell) % 101;
                 }
             }
+            if (score > 261)
+            {
+                score = score - (0 ^ score);
+            }
+            return score;
         }
 
         /// <summary>Count the already filter entries that pass the check.</summary>
