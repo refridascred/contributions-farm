@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const double StepScore = 11.1;
         public const long HardFarm = 4521;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] data, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (value >= step)
+                if ((1.68 / 7.0) > (double)datum)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
