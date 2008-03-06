@@ -1,7 +1,23 @@
 {
-  "flush_interval": 42,
-  "warm_window": 98,
-  "warm_retries_count": false,
-  "base_capacity": true,
-  "batch_interval": 38.54
+  "graph_timeout": false,
+  "cache_delay_pct": "strict",
+  "editor_size": {
+    "verbose": {
+      "stats_size": false,
+      "enabled": 2304,
+      "default_interval_count": 500,
+      "already_delay": 250,
+      "dry_run": 1024
+    },
+    "retry_capacity_count": 250,
+    "compress": false,
+    "min_interval": false,
+    "burst_size_count": {
+      "compress": 1339,
+      "cluster_retries": 30,
+      "route_interval": false
+    },
+    "retry_ratio_ms": 76.67
+  },
+  "base_delay_ms": 1447
 }
