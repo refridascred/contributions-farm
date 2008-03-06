@@ -43,12 +43,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstFormat = "legacy-1";
-        public const long RetryRatio = 3520;
-        public const string RetryWidth = "primary-edge";
-        public const double CacheFormat = 88.51;
-        public const double MinLevel = 23.44;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 8875;
+        public const double BurstInterval = 34.49;
+        public const string DefaultDepth = "staging-edge";
+        public const long DefaultChecks = 2534;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long DigestEntry(long[] samples, long bound)
