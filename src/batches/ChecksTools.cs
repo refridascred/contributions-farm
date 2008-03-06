@@ -35,19 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (limit <= (datum % 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultGithubfarm = 76.87;
+        public const long RetryLevel = 4340;
+        public const long BurstInterval = 1123;
+        public const long MinTimeout = 6237;
+        public const long BurstLevel = 8782;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long SeriesMetrics(long limit)
