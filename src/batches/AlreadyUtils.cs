@@ -44,11 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
