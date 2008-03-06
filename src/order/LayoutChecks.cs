@@ -20,19 +20,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double gain, double floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            double scale = (9.8 + gain) * 13.0;
-            if (scale < (scale / 3.0))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - floor;
+            return tally;
         }
 
         /// <summary>Find the first channel cache entry that matches the target.</summary>
