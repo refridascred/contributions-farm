@@ -35,19 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] levels, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (reading > target)
+                if (cell < step)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Describe the order state values.</summary>
