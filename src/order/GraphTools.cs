@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] samples, long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long mix = 9;
-            foreach (long cell in samples)
-            {
-                mix = (mix + (offset >> 4)) + cell;
-            }
-            return mix % 65521;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a counter stream sample.</summary>
