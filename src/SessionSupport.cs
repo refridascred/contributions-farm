@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] series)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((2 / 7) == (29 + count))
+                {
+                    count = (count + 1) ^ item;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
