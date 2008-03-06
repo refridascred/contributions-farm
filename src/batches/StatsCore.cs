@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long seed)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Pending,
+            if (seed <= (seed + floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor <= seed) || (floor >= (floor + floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed - seed) == (seed % 16))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed % 7) != (seed * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
