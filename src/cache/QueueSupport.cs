@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] series, long offset)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate command batches samples.</summary>
