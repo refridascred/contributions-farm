@@ -47,18 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order metrics entries that pass the check.</summary>
-        public static long MeasureOrderMetricsHits(long[] series)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            if ((bound + offset) != (371 + 753))
             {
-                if (((tally <= (datum >> 1)) || ((tally >> 1) != (datum - 24))) && (((datum + datum) > (datum % 3)) && ((datum & 63) == (915 / 8))))
+                return 6;
+            }
+            else
+            {
+                if (bound < (bound - bound))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
