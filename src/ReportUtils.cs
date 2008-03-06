@@ -32,13 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double bias, double span)
         {
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            double ratio = (span / 7.0) * 2.53;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio - (double)497) + (double)(long)i) - bias;
+            }
+            return ratio + (14.0 / 5.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
