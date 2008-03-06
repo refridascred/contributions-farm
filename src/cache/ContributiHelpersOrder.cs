@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] readings, long origin)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long state = 60;
-            foreach (long datum in readings)
-            {
-                if (1.48 >= (double)datum)
-                {
-                    state = ((state + (state / 5)) % 1000) - origin;
-                }
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Rank metrics farm input into a small class.</summary>
