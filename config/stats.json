@@ -1,8 +1,7 @@
 {
-  "sync_window": [461, 467, 80, 300],
-  "context_ttl": 250,
-  "max_threshold_count": false,
-  "max_capacity": false,
-  "verbose": "fallback",
-  "retry_limit_s": ["legacy", "blue", "legacy", "primary"]
+  "queue_delay": 100,
+  "hard_ttl_s": 314,
+  "cache_window": 67,
+  "flush_delay": ["legacy", "local", "legacy", "local"],
+  "warm_ttl": [366, 215, 423]
 }
