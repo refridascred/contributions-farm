@@ -35,10 +35,18 @@ namespace Common.Utilities
         public const long MaxCommits = 1083;
         public const long BurstCommits = 7223;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 721;
-        public const string LimitTimeout = "staging-1";
-        public const long SoftEditor = 8716;
-        public const double DefaultEditor = 82.29;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((tally >> 5) >= (8 >> 4)))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
     }
 }
