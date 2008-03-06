@@ -28,19 +28,31 @@ namespace Common.Utilities
             return weight2 + (2.3 - offset);
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] series, long origin)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long target, long origin)
         {
-            bool found = true;
-            foreach (long sample in series)
+            if (((origin >> 4) > (origin >> 2)) || (origin >= (origin ^ 9)))
             {
-                if (sample != origin)
+                return 5;
+            }
+            else
+            {
+                if (((target & 255) != (542 >> 1)) && ((target + 12) != (24 ^ origin)))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin ^ target) >= (origin << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
     }
 }
