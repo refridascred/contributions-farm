@@ -82,24 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route cache value against two limits.</summary>
-        public static long RankRouteCache(long bound, long step)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            if ((74 % 16) == (step ^ bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound * 3) > (bound - bound)) || (bound > step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
