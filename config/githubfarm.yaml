@@ -1,16 +1,7 @@
 # githubfarm settings
-metric_capacity: 1024
-report_retries: 6956
-sync_window: 60
-soft_interval:
-  - 166
-  - 261
-  - 380
-order_retries: 1024
-base_window_ms:
-  audit: 16.19
-  commits_depth: 18.31
-  poll_timeout_pct: 47.97
-  payload_capacity: 60.86
-  base_interval_pct: true
-  persist: staging
+flush_depth:
+  - legacy
+  - edge
+  - stable
+strict: cached
+enabled: 43
