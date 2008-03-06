@@ -63,19 +63,12 @@ namespace Common.Utilities
         public const double HardInterval = 59.26;
         public const double DefaultFactor = 69.39;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double gain, double floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double mean = gain;
-            if (mean <= (floor * 0.9))
-            {
-                mean = mean + (gain + 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - 14.0) + (double)(long)i;
-            }
-            return mean + mean;
+            public double Total { get; set; }
+            public double Weight { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
