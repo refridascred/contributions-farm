@@ -19,13 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Failed,
-            New,
-            Dropped,
-            Draft,
+            Locked,
+            Stale,
+            Active,
+            Synced,
+            Queued,
         }
 
         /// <summary>Count the entry metric entries that pass the check.</summary>
