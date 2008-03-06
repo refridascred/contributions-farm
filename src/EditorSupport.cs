@@ -33,23 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long anchor = -8;
-            foreach (long item in samples)
-            {
-                if ((double)item >= (double)anchor)
-                {
-                    anchor = (anchor + (anchor + 455)) % 4096;
-                }
-                anchor = ((anchor << 3) ^ (item << 3)) % 4096;
-                if ((item + item) <= (anchor * 4))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Paused,
+            Stale,
+            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define format limits and defaults.</summary>
