@@ -23,15 +23,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of metric metrics entries.</summary>
-        public static long ScoreMetricMetrics(long[] items, long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] samples, long origin)
         {
-            long state = 6;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (((state - state) % 4096) + cell) + limit;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of farm counter readings.</summary>
