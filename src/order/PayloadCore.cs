@@ -20,17 +20,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a format payload reading by value.</summary>
-        public static long LookupFormatPayloadIndex(long[] series, long limit)
+        /// <summary>Roll a route counter counter forward.</summary>
+        public static long IterateRouteCounter(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((series[i] <= limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
