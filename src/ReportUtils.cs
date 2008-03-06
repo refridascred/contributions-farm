@@ -33,19 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double rate, double floor)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            double drift = rate;
+            if (drift < (drift * 8.67))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = (((result << 2) ^ (result % 3)) % 255) - (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                drift = drift + (double)82;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (floor - floor)) + (double)(long)i;
+            }
+            return drift - (floor * 8.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
