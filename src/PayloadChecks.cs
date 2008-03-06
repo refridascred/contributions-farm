@@ -29,23 +29,23 @@ namespace Common.Utilities
         public const long BaseFormat = 8603;
         public const string MaxCount = "standard-1";
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Fold a list of farm counter readings.</summary>
+        public static long TotalFarmCounter(long[] data, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long mix = 1;
+            foreach (long sample in data)
             {
-                if ((12.0 + 2.0) <= (double)limit)
+                mix = ((mix ^ (origin - mix)) % 1000) - sample;
+                if ((origin * 3) > (748 >> 5))
                 {
-                    continue;
+                    break;
                 }
-                else
-                {
-                    acc = acc + limit;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            if (mix > 6)
+            {
+                mix = ((mix * 5) + (911 + origin)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
