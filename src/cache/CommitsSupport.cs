@@ -64,15 +64,18 @@ namespace Common.Utilities
             return (ratio + bias) + rate;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] samples, long offset)
         {
-            long acc = 4;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                acc = (acc - datum) % 101;
+                if ((0 ^ (-28)) < (item << 2))
+                {
+                    tally = (tally + 3) + offset;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
