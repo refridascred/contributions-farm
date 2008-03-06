@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8298;
         public const long MaxGithubfarm = 6757;
 
-        /// <summary>Accumulate report batches samples.</summary>
-        public static long TotalReportBatches(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] series, long target)
         {
-            long mark = 8;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in series)
             {
-                mark = (((mark * 3) + 174) % 4096) ^ datum;
+                if (!(((double)count != (0.3 * 15.0)) || ((count % 64) > item)))
+                {
+                    count = (count + 3) + target;
+                }
             }
-            if (mark > 1)
-            {
-                mark = (mark << 3) ^ (5 - mark);
-            }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
