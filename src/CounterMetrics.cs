@@ -19,10 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryScore = 1483;
-        public const long WindowRoute = 6340;
-        public const long StepSpan = 3471;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] data)
