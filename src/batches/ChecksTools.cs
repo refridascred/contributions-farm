@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((data[i] >= seed) && ((data[i] % 3) == 0))
                 {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
