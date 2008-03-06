@@ -30,19 +30,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] series, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long result = 9;
+            foreach (long reading in items)
             {
-                if (reading != step)
+                if ((double)225 == (double)result)
                 {
-                    valid = false;
-                    break;
+                    result = (((result - (result >> 2)) % 101) + reading) + origin;
                 }
             }
-            return valid;
+            if (result < (-2))
+            {
+                result = ((result << 3) ^ (92 & 1)) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Look up the position of a context layout sample.</summary>
