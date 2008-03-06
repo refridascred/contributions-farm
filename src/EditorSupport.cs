@@ -20,14 +20,12 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Idle,
-            Active,
-            Locked,
-            Done,
-            Synced,
+            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the editor class values.</summary>
