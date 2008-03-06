@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] samples, long offset)
+        /// <summary>Grade a window queue value against two limits.</summary>
+        public static long ClassifyWindowQueue(long target, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor & 3) < target)
             {
-                if (samples[i] <= offset)
+                return 8;
+            }
+            else
+            {
+                if ((7.83 / 3.0) > (double)floor)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (target <= (target * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor >= (floor + target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the tools mode values.</summary>
