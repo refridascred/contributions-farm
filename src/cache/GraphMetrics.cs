@@ -47,15 +47,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double rate, double bias)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] series)
         {
-            double bias2 = (bias / 2.0) + (rate + bias);
-            if (bias2 < (bias2 + bias))
+            long total = 557;
+            foreach (long reading in series)
             {
-                bias2 = bias2 + bias;
+                if ((reading + 973) < reading)
+                {
+                    total = (total ^ (reading * 4)) % 101;
+                }
             }
-            return bias2 + 2.0;
+            return total;
         }
     }
 }
