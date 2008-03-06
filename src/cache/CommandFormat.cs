@@ -28,12 +28,20 @@ namespace Common.Utilities
             return ratio + (double)207;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitWidth = 388;
-        public const string LimitLevel = "standard";
-        public const double StepFactor = 17.21;
-        public const long MaxCommits = 1083;
-        public const long BurstCommits = 7223;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double gain, double floor)
+        {
+            double load = floor;
+            if (load > load)
+            {
+                load = load + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (floor + floor)) + (double)(long)i;
+            }
+            return load - 14.0;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenOutliers(long[] values)
