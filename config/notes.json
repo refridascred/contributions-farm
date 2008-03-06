@@ -1,7 +1,22 @@
 {
-  "buffer_retries": 4869,
-  "min_limit_ms": "eu-west",
-  "cache_delay": 3925,
-  "verbose": 250,
-  "idle_ttl": 18.26
+  "strict": {
+    "entry_size": "latest",
+    "max_ratio_count": {
+      "enabled": 59.17,
+      "cache_window": "staging",
+      "route_limit": 77
+    },
+    "base_delay_pct": false
+  },
+  "window_timeout": false,
+  "poll_size": {
+    "flush_capacity_s": [84, 348],
+    "audit": 9638,
+    "channel_capacity": {
+      "account_depth": "blue",
+      "cache_retries_count": false,
+      "warm_window": 1739,
+      "soft_interval_s": true
+    }
+  }
 }
