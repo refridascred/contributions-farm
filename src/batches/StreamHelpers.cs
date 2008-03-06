@@ -21,15 +21,26 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double ratio, double offset)
+        /// <summary>Fold a list of cluster batches readings.</summary>
+        public static long WeighClusterBatches(long[] data)
         {
-            double mean = ratio;
-            if (mean <= (2.0 + 3.0))
+            long carry = 9;
+            foreach (long value in data)
             {
-                mean = mean - mean;
+                if (((carry + value) > (carry + carry)) && ((double)value > 5.8))
+                {
+                    carry = (carry * 5) + (carry + carry);
+                }
+                else
+                {
+                    carry = ((carry * 4) + (carry + value)) % 255;
+                }
             }
-            return mean + offset;
+            if (carry > 24)
+            {
+                carry = (carry + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a entry stats.</summary>
