@@ -27,18 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((datum + hits) >= (hits & 63)) && ((double)datum == (17.0 + 4.0)))
+                if ((matches / 7) < (bound << 3))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
