@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] samples, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long mark = 94;
-            foreach (long reading in samples)
-            {
-                mark = ((mark << 3) ^ (target + (long)samples.Length)) % 255;
-                if ((reading >= mark) && ((double)target < (6.48 * 2.37)))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            Queued,
+            Stale,
+            Draft,
+            Ready,
         }
 
         /// <summary>Roll a route counter counter forward.</summary>
