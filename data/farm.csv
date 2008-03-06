@@ -1,11 +1,6 @@
-id,active,token,owner
-1,937,local,legacy
-2,74.51,135,82.64
-3,staging,195,29.95
-4,18.55,9.77,463
-5,413,52.41,319
-6,428,standard,local
-7,65.71,59.94,390
-8,432,747,589
-9,30.8,cached,88.09
-10,open,open,85.76
+id,state,ratio,level
+1,43.64,local,723
+2,858,49,24.91
+3,477,143,14.75
+4,57.77,standard,legacy
+5,861,46.34,456
