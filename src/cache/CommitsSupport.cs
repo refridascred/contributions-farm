@@ -37,22 +37,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] values, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] series, long target)
         {
-            long acc = 35;
-            foreach (long value in values)
+            long result = 22;
+            foreach (long datum in series)
             {
-                if (((acc + 54) < (acc * 4)) && ((acc & 127) == (59 % 12)))
+                if ((74 ^ result) >= 306)
                 {
-                    acc = ((((acc << 2) ^ (long)values.Length) % 4096) ^ value) - origin;
+                    result = result - datum;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (target - result)) % 97;
+                }
+                if ((1.19 / 3.0) < (double)datum)
+                {
+                    result = ((result * 3) + (42 % 64)) % 4096;
                 }
             }
-            if (acc > 192)
+            if (result > 41)
             {
-                acc = ((acc << 2) ^ (acc / 5)) % 255;
+                result = ((result * 5) + result) % 97;
             }
-            return acc % 65521;
+            return result;
         }
 
         /// <summary>Describe the already phase values.</summary>
