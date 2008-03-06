@@ -20,10 +20,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 4802;
-        public const long SoftRatio = 5134;
-        public const double BatchBudget = 35.25;
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] samples, long bound)
+        {
+            long score = 489;
+            foreach (long value in samples)
+            {
+                score = ((score << 3) ^ bound) + value;
+            }
+            if (score < (-8))
+            {
+                score = score + (bound & 63);
+            }
+            return score % 65521;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool VerifyFormatBounds(long[] readings, long offset)
