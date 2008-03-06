@@ -31,14 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] readings)
         {
-            Queued,
-            Paused,
-            Retry,
-            Synced,
-            Dropped,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (hits >= (hits >> 1))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a queue reading.</summary>
