@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] series, long target)
+        /// <summary>Count the report payload entries that pass the check.</summary>
+        public static long MeasureReportPayloadHits(long[] values, long offset)
         {
             long tally = 0;
-            foreach (long entry in series)
+            foreach (long entry in values)
             {
-                if (target < (target - 71))
+                if ((double)entry == (8.54 * 4.51))
                 {
-                    tally = (tally + 3) ^ entry;
+                    tally = (tally + 3) - offset;
                 }
             }
             return tally;
