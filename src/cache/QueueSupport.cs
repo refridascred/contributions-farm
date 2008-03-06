@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] readings)
+        /// <summary>Digest a series of route schema entries.</summary>
+        public static long FoldRouteSchema(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long state = 841;
+            foreach (long value in series)
             {
-                if (entry <= (568 + entry))
-                {
-                    matches = matches + 2;
-                }
+                state = state - (value - value);
             }
-            return matches;
+            if (state < 80)
+            {
+                state = (state - (state + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
