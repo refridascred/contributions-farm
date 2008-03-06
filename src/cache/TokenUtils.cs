@@ -26,9 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowLayout = 20.17;
-        public const long BurstDepth = 5660;
-        public const double LimitLayout = 37.03;
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double gain, double floor)
+        {
+            double gain2 = (double)(-290) / 9.0;
+            return ((gain2 + 1.0) + gain) + floor;
+        }
     }
 }
