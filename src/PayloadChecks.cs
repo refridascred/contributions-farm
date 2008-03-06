@@ -17,11 +17,16 @@ namespace Common.Utilities
         public const long RetryBudget = 2302;
         public const double CacheAccount = 49.77;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchCount = 72.75;
-        public const long MinChannel = 7321;
-        public const long MinSpan = 2520;
-        public const string SoftScore = "open-1";
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double bias)
+        {
+            double rate = bias;
+            if (rate > (double)(-2))
+            {
+                rate = rate + (rate + weight);
+            }
+            return rate - bias;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long BucketLayout(long offset, long floor)
