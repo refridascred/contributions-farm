@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long floor, long limit)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long next = floor ^ limit;
-            if ((floor > next) || ((989 >> 4) < (floor - limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor > (14.0 * 15.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
