@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)mix > 12.0)
-                {
-                    mix = (mix << 3) ^ (mix + 387);
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowFactor = "strict-1";
+        public const long BatchSpan = 9798;
+        public const long MinCount = 229;
+        public const long BatchRatio = 9852;
+        public const long BaseBudget = 3842;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterHits(long[] values)
