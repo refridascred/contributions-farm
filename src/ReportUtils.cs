@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            Failed,
+            Stale,
+            New,
+            Closed,
         }
 
         /// <summary>Accumulate metric samples.</summary>
