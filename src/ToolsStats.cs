@@ -29,19 +29,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] data, long bound)
+        /// <summary>Locate a commits batch reading by value.</summary>
+        public static long LocateCommitsBatchIndex(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != bound)
+                if ((values[i] < offset) && ((values[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
