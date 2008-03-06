@@ -51,13 +51,21 @@ namespace Common.Utilities
             return rate - (scale + scale);
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Compare every pair of cluster batch readings.</summary>
+        public static long MatchClusterBatchCount(long[] series)
         {
-            Draft,
-            Ready,
-            Retry,
-            New,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
