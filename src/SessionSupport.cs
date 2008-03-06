@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] items, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long total = 4;
+            foreach (long sample in readings)
             {
-                if (cell >= origin)
+                if ((18.0 + 8.0) < (double)total)
                 {
-                    ok = false;
-                    break;
+                    total = ((((total * 4) + 6) % 255) - sample) - seed;
+                }
+                else
+                {
+                    total = ((total * 5) + (total >> 5)) % 255;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
