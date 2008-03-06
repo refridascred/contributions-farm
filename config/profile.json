@@ -1,8 +1,18 @@
 {
-  "already_limit": 94.54,
-  "retry_depth": "primary",
-  "token_window": "standard",
-  "max_delay_pct": "green",
-  "record_size": false,
-  "cache_capacity_pct": 1024
+  "base_threshold": 30,
+  "profile_retries": {
+    "base_delay": [396, 385, 205],
+    "context_size": "latest",
+    "max_size_s": "fallback",
+    "default_depth_count": 1024
+  },
+  "readonly": "local",
+  "audit": 71,
+  "poll_capacity_pct": 2.07,
+  "window_timeout": {
+    "sync_delay_s": "legacy",
+    "hard_threshold": true,
+    "soft_size": "open",
+    "already_threshold": "cached"
+  }
 }
