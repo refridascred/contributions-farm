@@ -50,20 +50,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Measure how many filter stats samples are out of range.</summary>
+        public static long TallyFilterStatsGaps(long[] values, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mark = mark ^ (long)i;
-                if (((double)mark == (8.22 + 8.0)) && ((mark - floor) < (floor * 4)))
+                if ((double)step != (2.8 - 3.0))
                 {
-                    mark = ((mark << 3) ^ (floor / 8)) % 255;
+                    matches = (matches + 1) - sample;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return matches;
         }
     }
 }
