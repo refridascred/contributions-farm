@@ -42,12 +42,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            New,
-            Failed,
-            Closed,
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
