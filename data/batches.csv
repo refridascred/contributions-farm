@@ -1,8 +1,8 @@
-id,level,owner,state
-1,42.35,891,597
-2,306,open,251
-3,515,92.88,edge
-4,58,stable,local
-5,47.42,533,77.39
-6,330,fallback,7.31
-7,270,66.15,35.1
+id,score,label,owner
+1,821,502,990
+2,86.49,922,427
+3,998,staging,fallback
+4,74.65,83.44,89.3
+5,78.26,latest,166
+6,847,481,latest
+7,616,standard,59.36
