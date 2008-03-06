@@ -54,13 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
