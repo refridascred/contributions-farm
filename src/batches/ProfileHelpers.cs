@@ -13,23 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double weight, double span)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double weight2 = (double)2 + (7.99 * 10.0);
-            if (weight2 > weight2)
-            {
-                weight2 = (weight2 + (double)4) + weight;
-            }
-            else
-            {
-                weight2 = weight2 - (double)25;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + span) - (double)(long)i;
-            }
-            return weight2 + span;
+            Idle,
+            Failed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Accumulate token checks samples.</summary>
