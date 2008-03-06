@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseRatio = 6299;
-        public const double RetryTimeout = 74.28;
-        public const long WindowCount = 3948;
-        public const double StepFactor = 90.58;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] levels)
