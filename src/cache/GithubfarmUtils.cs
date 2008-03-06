@@ -30,13 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] series, long seed)
         {
-            Draft,
-            Queued,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((7.4 - 0.1) > (double)value)
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
