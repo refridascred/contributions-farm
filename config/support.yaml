@@ -1,7 +1,32 @@
 # support settings
-hard_delay_count: 62.91
-base_ttl_ms: true
-max_interval_count: strict
-retry_interval_pct: 10
-burst_window: legacy
-batch_interval: true
+tools_delay:
+  poll_retries:
+    enabled: eu-west
+    min_threshold_s: eu-west
+    hard_delay_pct: 66
+  contributi_size: 500
+  strict: false
+  compress:
+    - staging
+    - local
+    - local
+    - strict
+  base_delay: 7852
+batch_ttl: 4137
+cache_interval_pct:
+  default_depth:
+    - edge
+    - edge
+  strict: false
+  enabled:
+    default_ratio_count: 30.76
+    strict: 19
+    context_ttl: false
+  default_window:
+    - 178
+    - 399
+  poll_limit_s:
+    - legacy
+    - fallback
+    - eu-west
+  max_capacity_pct: blue
