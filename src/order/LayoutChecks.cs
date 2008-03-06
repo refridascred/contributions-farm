@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] data, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] items, long bound)
         {
-            long mark = 461;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark + 674) <= (cell - mark))
+                if ((items[i] >= bound) && ((items[i] % 3) != 0))
                 {
-                    mark = (mark * 4) + seed;
-                }
-                if ((cell - mark) <= mark)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 92)
-            {
-                mark = ((mark * 4) + (mark * 2)) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
