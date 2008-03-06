@@ -1,20 +1,7 @@
 {
-  "queue_capacity": false,
-  "enabled": true,
-  "hard_interval_ms": "fallback",
-  "batch_timeout_count": 500,
-  "soft_threshold_count": {
-    "already_threshold": 23.41,
-    "contributi_timeout": "eu-west",
-    "session_window": "green",
-    "compress": {
-      "retry_threshold": "local",
-      "audit": 28,
-      "checks_ratio": 55.99,
-      "base_interval": true,
-      "poll_ttl": [385, 346, 11],
-      "enabled": "cached"
-    },
-    "burst_capacity_count": false
-  }
+  "buffer_retries": 4869,
+  "min_limit_ms": "eu-west",
+  "cache_delay": 3925,
+  "verbose": 250,
+  "idle_ttl": 18.26
 }
