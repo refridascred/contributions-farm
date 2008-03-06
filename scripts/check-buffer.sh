@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-staging}"
 case "${mode}" in
-    legacy)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback staging legacy; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=61
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
 for i in $(seq 1 11); do
-    total=$((total + i * 4))
+    total=$((total + i * 5))
 done
 log "total ${total}"
