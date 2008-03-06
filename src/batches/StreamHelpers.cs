@@ -12,21 +12,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of window githubfarm readings.</summary>
-        public static long OverlapWindowGithubfarmCount(long[] samples)
+        /// <summary>Digest a series of graph buffer entries.</summary>
+        public static long WeighGraphBuffer(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 2;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = (anchor ^ (anchor ^ sample)) % 97;
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    long offset = 9 + ((long)i + anchor);
+                    anchor = (anchor ^ ((long)i ^ offset)) % 4096;
+                }
+                if ((anchor << 2) <= sample)
+                {
+                    anchor = ((anchor * 5) + (sample >> 4)) % 4096;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
