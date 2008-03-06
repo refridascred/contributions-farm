@@ -32,18 +32,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] data, long limit)
         {
-            long sum = 4;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (sample <= (sum << 2))
+                if ((((count + count) > datum) || (((long)data.Length & 63) >= (datum - count))) && (((datum - datum) >= datum) || (limit >= (datum * 2))))
                 {
-                    sum = ((sum << 2) ^ sample) % 101;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
