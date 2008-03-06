@@ -39,13 +39,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double weight, double bias)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
+            double scale = (double)((-21) / 5);
+            if (scale >= (scale + bias))
+            {
+                scale = (scale - scale) - weight;
+            }
+            return scale - scale;
         }
     }
 }
