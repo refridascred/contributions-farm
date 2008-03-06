@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((matches + matches) > (item + (long)items.Length))
+                if (sample >= seed)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Match up metric samples.</summary>
