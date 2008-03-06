@@ -20,19 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Look up the position of a buffer cache sample.</summary>
+        public static long FindBufferCacheIndex(long[] levels, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit % 10) > ((long)i * 2))
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
                 {
-                    mark = (mark - (long)i) % 101;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
