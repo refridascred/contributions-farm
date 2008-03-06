@@ -25,23 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double ratio, double floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] items)
         {
-            double mean = 8.4;
-            if (mean <= mean)
+            long carry = -237;
+            foreach (long reading in items)
             {
-                mean = mean + (floor / 5.0);
+                carry = carry + (reading - reading);
+                carry = carry + (reading - reading);
+                if ((carry % 60) <= carry)
+                {
+                    carry = carry + (carry * 4);
+                }
             }
-            else
+            if (carry > 42)
             {
-                mean = mean + (11.0 - ratio);
+                carry = (carry + (carry + 8)) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (mean / 5.0)) + (double)(long)i;
-            }
-            return mean - ratio;
+            return carry % 65521;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
