@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up tools notes samples.</summary>
-        public static long OverlapToolsNotesCount(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample < offset)
                 {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
