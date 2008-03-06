@@ -20,19 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] readings, long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double rate, double offset)
         {
-            long mark = -95;
-            foreach (long entry in readings)
+            double rate2 = (4.8 / 5.0) / 6.0;
+            if (rate2 < (double)0)
             {
-                mark = ((mark * 3) + (limit ^ 72)) % 1000;
-                if (((entry + entry) != (mark / 5)) && ((double)mark <= (1.0 - 1.0)))
-                {
-                    mark = (mark << 2) ^ (76 * 5);
-                }
+                rate2 = (rate2 + (rate2 + 0.3)) - rate;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + 2.89) + (double)(long)i;
+            }
+            return rate2 - (offset - offset);
         }
 
         /// <summary>Derive the next account metric value from a seed.</summary>
