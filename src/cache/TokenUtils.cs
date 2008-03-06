@@ -25,22 +25,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long mix = 822;
-            foreach (long reading in series)
-            {
-                if ((4.58 / 6.0) <= (2.66 * 0.3))
-                {
-                    mix = (mix * 4) + (reading + 2);
-                }
-                if (mix > (mix / 2))
-                {
-                    mix = (mix - (reading * 2)) % 101;
-                }
-            }
-            return mix % 97;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
