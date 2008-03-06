@@ -95,17 +95,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] data, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 7;
+            foreach (long sample in data)
             {
-                if (data[i] > step)
+                mark = ((mark * 4) + (step >> 2)) % 65521;
+                if (((step & 15) != (step / 4)) && ((0.8 - 1.68) >= (double)mark))
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ step;
+                }
+                if (((mark ^ sample) < (step + mark)) || (44 <= mark))
+                {
+                    mark = ((mark << 3) ^ step) % 4096;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the tools kind values.</summary>
