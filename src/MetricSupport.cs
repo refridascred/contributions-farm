@@ -14,11 +14,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 6438;
-        public const double MaxLevel = 94.89;
-        public const long MaxFactor = 660;
-        public const long HardLevel = 3860;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 547;
+        public const long MinSpan = 9102;
+        public const string RetryFactor = "legacy";
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
