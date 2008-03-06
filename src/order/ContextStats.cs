@@ -28,12 +28,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstInterval = 3616;
-        public const long IdleSpan = 4251;
-        public const long RetryTimeout = 7452;
-        public const string WindowToken = "cached-edge";
-        public const long DefaultSpan = 7763;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] samples, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (matches >= (504 << 3))
+                {
+                    matches = ((matches + 3) + datum) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordBounds(long[] series, long offset)
