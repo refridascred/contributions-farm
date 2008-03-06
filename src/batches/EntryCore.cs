@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] items)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double scale2 = (double)((-7) * 2);
+            if (scale2 <= scale)
             {
-                if (value <= 1)
-                {
-                    seen = seen + 3;
-                }
+                scale2 = (scale2 + scale) + floor;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (double)936) + (double)(long)i;
+            }
+            return scale2 - (double)(-6);
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
