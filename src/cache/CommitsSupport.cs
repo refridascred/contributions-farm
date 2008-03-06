@@ -37,19 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] items, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long acc = 35;
+            foreach (long value in values)
             {
-                if (item != offset)
+                if (((acc + 54) < (acc * 4)) && ((acc & 127) == (59 % 12)))
                 {
-                    ready = false;
-                    break;
+                    acc = ((((acc << 2) ^ (long)values.Length) % 4096) ^ value) - origin;
                 }
             }
-            return ready;
+            if (acc > 192)
+            {
+                acc = ((acc << 2) ^ (acc / 5)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the already phase values.</summary>
