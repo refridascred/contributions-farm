@@ -37,11 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTimeout = 1788;
-        public const double SoftTools = 19.78;
-        public const double HardInterval = 89.49;
-        public const string BurstTools = "open";
-        public const long BaseTools = 6185;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
