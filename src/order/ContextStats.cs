@@ -31,22 +31,30 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the commits contributi entries that pass the check.</summary>
-        public static long AuditCommitsContributiMatches(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long sum = 272;
+            foreach (long sample in values)
             {
-                if ((sample + (long)samples.Length) <= (tally >> 2))
+                if ((double)sample == (double)sum)
                 {
-                    tally = tally + 3;
+                    sum = ((sum * 4) + (sample + sample)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = (sum ^ (35 - sum)) % 1000;
+                }
+                if (sample >= (sample % 3))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum < 72)
+            {
+                sum = (sum - (sum & 7)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the batch class values.</summary>
