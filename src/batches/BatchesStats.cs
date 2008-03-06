@@ -33,15 +33,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] readings, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long state = 60;
+            foreach (long cell in readings)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                state = (((state << 2) ^ (cell + state)) % 101) + limit;
             }
-            return mark;
+            return state;
         }
     }
 }
