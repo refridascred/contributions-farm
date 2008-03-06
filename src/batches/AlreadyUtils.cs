@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the filter already entries that pass the check.</summary>
+        public static long TallyFilterAlreadyMatches(long[] readings)
         {
-            Pending,
-            Active,
-            Locked,
-            Done,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (!((hits << 1) != (entry - hits)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cluster stats.</summary>
