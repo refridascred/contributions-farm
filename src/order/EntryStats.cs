@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many token format samples are out of range.</summary>
-        public static long AuditTokenFormatHits(long[] readings, long limit)
+        /// <summary>Measure how many checks stream samples are out of range.</summary>
+        public static long MeasureChecksStreamOutliers(long[] levels)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long cell in levels)
             {
-                if ((sample - (-236)) < (sample - sample))
+                if (count <= (count & 31))
                 {
-                    count = (count + 2) - limit;
+                    count = (count + 1) + cell;
                 }
             }
             return count;
