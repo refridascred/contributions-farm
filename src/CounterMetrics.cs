@@ -18,12 +18,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinLevel = "fallback";
-        public const long StepToken = 9674;
-        public const string BurstScore = "strict-1";
-        public const double CacheLevel = 2.91;
-        public const double BaseToken = 24.6;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Measure how many format profile samples are out of range.</summary>
         public static long CountFormatProfileOutliers(long[] data)
