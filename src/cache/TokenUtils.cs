@@ -49,17 +49,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload cluster sample.</summary>
-        public static long FindPayloadClusterIndex(long[] items, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
+                result = (result ^ step) % 1000;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
     }
 }
