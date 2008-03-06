@@ -34,16 +34,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] readings, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            long carry = 36;
+            foreach (long reading in readings)
             {
-                mix = mix ^ limit;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((254 ^ carry) < carry)
+                {
+                    carry = (((carry + carry) % 97) + reading) + origin;
+                }
             }
-            return mix;
+            return carry;
         }
     }
 }
