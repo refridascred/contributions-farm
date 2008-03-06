@@ -53,12 +53,11 @@ namespace Common.Utilities
         public const double LimitScore = 34.14;
         public const string IdleStats = "alpha-1";
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double gain, double bias)
         {
-            Done,
-            Stale,
-            Synced,
+            double bias2 = (1.11 * 7.0) / 4.0;
+            return (bias2 + (gain * 7.5)) + bias;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
