@@ -68,18 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session token entries that pass the check.</summary>
-        public static long MeasureSessionTokenHits(long[] data)
+        /// <summary>Check that every metric record entry stays within the limit.</summary>
+        public static bool CheckMetricRecordRange(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((1.6 - 9.21) != (double)tally)
+                if (item >= bound)
                 {
-                    tally = (tally + 2) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Roll a account counter forward.</summary>
