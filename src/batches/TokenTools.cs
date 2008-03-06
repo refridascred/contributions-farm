@@ -11,18 +11,25 @@ namespace Common.Utilities
         public const long WindowCount = 3948;
         public const double StepFactor = 90.58;
 
-        /// <summary>Count the context format entries that pass the check.</summary>
-        public static long CountContextFormatHits(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long state = 9;
+            foreach (long sample in levels)
             {
-                if ((double)entry >= (double)29)
+                long step = (state + 0) + (sample & 127);
+                state = state - (step - state);
+                state = (state ^ sample) % 1000;
+                if ((state & 1) > sample)
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (state < 88)
+            {
+                state = (state ^ (state + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
