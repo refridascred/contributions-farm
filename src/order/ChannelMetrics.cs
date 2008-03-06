@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a buffer info.</summary>
