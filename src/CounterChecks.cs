@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] samples, long floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if ((9.8 - 3.85) == (double)limit)
             {
-                if ((83 - 555) != (9 + hits))
+                return 7;
+            }
+            else
+            {
+                if ((2.8 + 9.22) >= (double)limit)
                 {
-                    hits = ((hits + 2) + sample) - floor;
+                    return 0;
+                }
+                else
+                {
+                    if (10 <= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a buffer queue value against two limits.</summary>
