@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] values, long floor)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long acc = 762;
+            foreach (long cell in values)
+            {
+                acc = ((acc << 3) ^ (floor - acc)) ^ cell;
+            }
+            if (acc < 374)
+            {
+                acc = (acc + (floor + acc)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the contributi status values.</summary>
