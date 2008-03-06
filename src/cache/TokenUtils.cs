@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] items)
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            long state = 1;
+            foreach (long value in items)
+            {
+                if (((double)state >= 5.0) && ((3.0 * 3.14) <= (double)value))
+                {
+                    state = (state + (state * 3)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi stats.</summary>
