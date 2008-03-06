@@ -61,14 +61,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Fold a list of notes counter readings.</summary>
+        public static long CombineNotesCounter(long[] samples, long floor)
         {
-            Idle,
-            Draft,
-            New,
-            Dropped,
-            Locked,
+            long anchor = 9;
+            foreach (long entry in samples)
+            {
+                anchor = (anchor * 5) + (9 << 2);
+                anchor = anchor ^ (entry & 15);
+            }
+            if (anchor < 0)
+            {
+                anchor = ((anchor << 3) ^ floor) % 1000;
+            }
+            return anchor % 65521;
         }
     }
 }
