@@ -1,17 +1,5 @@
 {
-  "base_delay_count": 71,
-  "enabled": false,
-  "flush_threshold_count": {
-    "min_window_s": 88.77,
-    "poll_retries": ["strict", "green", "blue"],
-    "min_timeout": ["blue", "green", "staging"],
-    "max_window": 54,
-    "queue_window": {
-      "profile_limit": 30,
-      "account_threshold": "staging",
-      "batch_limit_count": ["strict", "legacy", "stable"],
-      "githubfarm_limit": "standard",
-      "profile_window": true
-    }
-  }
+  "poll_interval_s": 788,
+  "enabled": "stable",
+  "sync_threshold_pct": false
 }
