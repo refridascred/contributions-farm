@@ -21,25 +21,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long step, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double bias, double offset)
         {
-            long next = step + bound;
-            if ((21 << 3) < (next * 3))
+            double ratio = 2.33 / 4.0;
+            if (ratio <= offset)
             {
-                return 8;
+                ratio = ratio - offset;
             }
             else
             {
-                if ((bound << 2) < bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
+                ratio = ratio - bias;
             }
+            return ratio - bias;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
