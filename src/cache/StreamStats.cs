@@ -33,35 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format report entries.</summary>
-        public static long CombineFormatReport(long[] readings, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] data, long target)
         {
-            long anchor = -917;
-            foreach (long reading in readings)
+            long mix = 4;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 4; i++)
+                if ((mix - mix) == (4 >> 1))
                 {
-                    anchor = ((anchor ^ anchor) % 101) - (long)i;
-                }
-                if ((reading / 3) != (anchor << 1))
-                {
-                    anchor = ((anchor * 2) + anchor) % 97;
-                    anchor = anchor - 62;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (limit >> 5)) % 4096;
-                }
-                if (!(anchor > 4))
-                {
-                    anchor = (anchor * 2) + (2 + anchor);
+                    mix = (mix + (target + target)) ^ entry;
                 }
             }
-            if (anchor < 549)
+            if (mix < 387)
             {
-                anchor = anchor + anchor;
+                mix = (mix ^ (mix & 3)) % 101;
             }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
