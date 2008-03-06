@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Accumulate filter batch samples.</summary>
+        public static long CombineFilterBatch(long[] samples, long bound)
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public double Total { get; set; }
+            long carry = 8;
+            foreach (long value in samples)
+            {
+                carry = carry + (bound / 4);
+                carry = carry ^ (value >> 2);
+            }
+            if (carry > 900)
+            {
+                carry = carry + (72 - 169);
+            }
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a counter stream sample.</summary>
