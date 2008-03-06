@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8298;
         public const long MaxGithubfarm = 6757;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftRatio = 2091;
-        public const long RetryBudget = 2302;
-        public const double CacheAccount = 49.77;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((823 + target) >= matches)
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two route measurements.</summary>
         public static double BlendRoute(double weight, double bias)
