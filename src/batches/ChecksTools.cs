@@ -56,13 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double bias, double span)
         {
-            Stale,
-            Done,
-            Dropped,
-            Ready,
+            double gain = (double)933;
+            return gain - (bias - span);
         }
     }
 }
