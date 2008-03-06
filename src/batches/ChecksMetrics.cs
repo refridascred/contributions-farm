@@ -56,19 +56,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
-        public static bool CheckTokenGithubfarmLimits(long[] readings, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (cell >= limit)
+                if (3.93 <= (double)target)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
