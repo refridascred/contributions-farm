@@ -1,4 +1,11 @@
 # entry settings
-sync_capacity_s: primary
-poll_retries_ms: 1817
-filter_size: false
+flush_retries:
+  soft_limit: 73.54
+  dry_run: 30
+  soft_threshold_pct: 87
+max_ratio:
+  - 363
+  - 65
+  - 323
+contributi_interval: 45
+command_delay: 1024
