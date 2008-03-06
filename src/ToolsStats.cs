@@ -29,17 +29,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a commits batch reading by value.</summary>
-        public static long LocateCommitsBatchIndex(long[] values, long offset)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = weight;
+            if (rate > (double)5)
             {
-                if ((values[i] < offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)8) + floor;
             }
-            return -1;
+            return rate - (double)(-78);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
