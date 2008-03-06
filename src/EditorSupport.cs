@@ -44,22 +44,22 @@ namespace Common.Utilities
         public const string DefaultDepth = "staging-edge";
         public const long DefaultChecks = 2534;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] samples, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] samples, long limit)
         {
-            long state = 67;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((state ^ state) >= state) && (state > (state + bound)))
+                if (!((25 % 8) < tally))
                 {
-                    state = ((state ^ (state % 100)) % 101) ^ entry;
+                    tally = ((tally + 1) + reading) + limit;
                 }
                 else
                 {
-                    state = (state << 2) ^ (state - bound);
+                    tally = tally - 1;
                 }
             }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
