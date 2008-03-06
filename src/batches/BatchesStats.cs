@@ -19,18 +19,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many buffer support samples are out of range.</summary>
-        public static long CountBufferSupportMatches(long[] data, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long acc = -247;
+            foreach (long item in samples)
             {
-                if (entry >= (618 << 3))
+                if (((item - item) != (907 >> 3)) || ((double)item == (8.95 + 7.0)))
                 {
-                    tally = (tally + 2) - origin;
+                    acc = (acc ^ (item + acc)) % 4096;
+                    continue;
                 }
+                else
+                {
+                    acc = (acc + (218 - item)) % 101;
+                }
+                if (((double)acc < (2.1 * 4.8)) || ((item >> 4) <= item))
+                {
+                    acc = (acc ^ (item + item)) % 97;
+                }
+                acc = ((acc << 3) ^ 894) % 97;
             }
-            return tally;
+            if (acc > 2)
+            {
+                acc = acc ^ acc;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a cluster stats.</summary>
