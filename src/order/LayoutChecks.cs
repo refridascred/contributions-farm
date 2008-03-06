@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultDepth = 901;
-        public const long IdleLevel = 8503;
-        public const string CacheInterval = "latest-v2";
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items, long limit)
+        {
+            long sum = -8;
+            foreach (long datum in items)
+            {
+                if ((sum >> 2) < 76)
+                {
+                    sum = (sum * 2) + (sum / 8);
+                }
+                else
+                {
+                    sum = sum - (datum ^ datum);
+                }
+                if ((datum + limit) != (sum - datum))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] values, long origin)
