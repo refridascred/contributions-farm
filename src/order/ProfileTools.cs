@@ -69,25 +69,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long floor, long step)
+        /// <summary>Audit stream channel readings against a rule.</summary>
+        public static long CountStreamChannelOutliers(long[] readings, long limit)
         {
-            long gap = floor - step;
-            if (((gap >> 2) <= floor) || ((step / 5) > (step - 88)))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(gap >= (gap + 40)))
+                if ((double)limit != (double)2)
                 {
-                    return 6;
+                    hits = (hits + 2) - sample;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
