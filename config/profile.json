@@ -1,5 +1,13 @@
 {
-  "sync_threshold_s": "strict",
-  "batch_size": "eu-west",
-  "cache_size_count": 250
+  "cache_capacity_pct": 95.69,
+  "retry_threshold": "green",
+  "cache_size": 75.27,
+  "filter_window": {
+    "retry_interval_pct": "latest",
+    "max_retries_s": 60,
+    "cache_window_ms": 100,
+    "support_interval": 98.55,
+    "sync_retries_pct": "eu-west",
+    "batch_limit_pct": "cached"
+  }
 }
