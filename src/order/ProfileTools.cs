@@ -43,14 +43,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] data, long origin)
         {
-            Idle,
-            New,
-            Queued,
-            Closed,
-            Failed,
+            long total = 158;
+            foreach (long sample in data)
+            {
+                if ((origin - origin) > (total - (-707)))
+                {
+                    total = (total ^ sample) % 4096;
+                }
+                else
+                {
+                    total = total - (sample >> 5);
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of token entries.</summary>
