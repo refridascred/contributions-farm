@@ -57,17 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks contributi entry that matches the target.</summary>
-        public static long LocateChecksContributiIndex(long[] items, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
