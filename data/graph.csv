@@ -1,8 +1,8 @@
-id,token,active,region
-1,824,810,18.76
-2,931,710,124
-3,local,staging,53.25
-4,green,cached,154
-5,stable,725,28.78
-6,primary,32.35,109
-7,834,85,68.61
+id,ratio,state,rank,score
+1,929,425,61.83,strict
+2,592,93.54,latest,85.44
+3,321,strict,120,301
+4,530,38.7,blue,open
+5,61.03,2.4,77.53,525
+6,87.12,cached,88.46,45.49
+7,9.57,24.44,76,80.35
