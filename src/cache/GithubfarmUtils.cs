@@ -28,12 +28,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinWidth = 2735;
-        public const double MinRatio = 77.66;
-        public const long WindowLevel = 2117;
-        public const long LimitLayout = 2333;
-        public const long DefaultInterval = 7368;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamGaps(long[] items)
