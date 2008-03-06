@@ -1,4 +1,7 @@
 # support settings
-retry_depth: 577
-idle_retries: 7218
-max_interval: green
+cache_window_count: 33.77
+retry_timeout_s: fallback
+dry_run: 49.27
+batch_delay_pct:
+  - 423
+  - 123
