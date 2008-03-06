@@ -50,10 +50,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowRatio = 75.84;
-        public const long MinScore = 324;
-        public const double MaxScore = 43.79;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!((6.0 - 2.17) != (double)seen))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many command window samples are out of range.</summary>
         public static long CountCommandWindowHits(long[] samples)
