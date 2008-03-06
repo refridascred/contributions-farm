@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 43.72;
-        public const long WindowInterval = 848;
-        public const long BatchBudget = 1036;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] data, long bound)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenGaps(long[] levels)
