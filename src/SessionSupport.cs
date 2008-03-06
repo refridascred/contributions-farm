@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 7383;
-        public const double StepCounter = 36.53;
-        public const double SoftCounter = 89.07;
-        public const long HardCounter = 2410;
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double ratio, double offset)
+        {
+            double scale = (double)(325 + 2);
+            return ((scale - (double)0) + ratio) + offset;
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double AdjustBuffer(double scale, double span)
