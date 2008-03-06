@@ -78,21 +78,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Accumulate context session samples.</summary>
+        public static long TotalContextSession(long[] series)
         {
-            long total = 585;
-            foreach (long reading in data)
+            long total = 923;
+            foreach (long value in series)
             {
-                long seen = (total << 2) + reading;
-                for (int i = 0; i < 11; i++)
+                if (((double)value != (0.82 + 5.7)) && (409 > total))
                 {
-                    total = ((total * 4) + (seen - 5)) + (long)i;
-                    total = (total - (reading / 9)) % 255;
+                    total = (total << 2) ^ (-339);
                 }
-                total = total ^ (total << 1);
             }
-            return total;
+            return total % 97;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
