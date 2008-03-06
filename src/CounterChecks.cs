@@ -35,11 +35,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double scale, double span)
         {
-            public double Stamp { get; set; }
-            public double Label { get; set; }
+            double drift = (double)(979 - 633);
+            if (drift >= (drift / 3.0))
+            {
+                drift = drift + (scale - span);
+            }
+            else
+            {
+                drift = drift + (drift * 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (span - scale)) + (double)(long)i;
+            }
+            return drift + (double)71;
         }
 
         /// <summary>Blend two stats buffer measurements.</summary>
