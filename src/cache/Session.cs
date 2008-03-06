@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] readings, long floor)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metrics context entry stays within the limit.</summary>
