@@ -1,8 +1,8 @@
 {
-  "soft_size": false,
-  "graph_limit": 1862,
-  "soft_window_ms": "staging",
-  "hard_retries_ms": true,
-  "flush_size_pct": "strict",
-  "poll_delay": 2625
+  "already_limit": 94.54,
+  "retry_depth": "primary",
+  "token_window": "standard",
+  "max_delay_pct": "green",
+  "record_size": false,
+  "cache_capacity_pct": 1024
 }
