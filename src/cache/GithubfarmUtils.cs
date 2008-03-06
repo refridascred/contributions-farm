@@ -44,10 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftFactor = 2309;
-        public const long BurstCounter = 4270;
-        public const long CacheCounter = 7336;
-        public const long MinCounter = 3353;
+        /// <summary>Measure how many session profile samples are out of range.</summary>
+        public static long CountSessionProfileHits(long[] series, long floor)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading >> 5) != (floor / 9))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
