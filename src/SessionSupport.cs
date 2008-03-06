@@ -27,27 +27,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] values)
-        {
-            long sum = 1;
-            foreach (long entry in values)
-            {
-                if ((double)entry < (6.3 / 6.0))
-                {
-                    sum = (sum ^ (sum - (-27))) % 255;
-                }
-                if ((entry + entry) >= (sum % 3))
-                {
-                    break;
-                }
-            }
-            if (sum > 22)
-            {
-                sum = ((sum * 4) + (sum + sum)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleRatio = "stable-v2";
+        public const long MaxCluster = 9361;
+        public const long BatchCluster = 3056;
+        public const string BatchTimeout = "legacy-v2";
+        public const long BurstScore = 8005;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string StepEditor = "cached-edge";
