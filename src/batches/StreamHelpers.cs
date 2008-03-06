@@ -52,23 +52,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] data, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] levels)
         {
-            long mark = 7;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                mark = ((mark * 4) + (step >> 2)) % 65521;
-                if (((step & 15) != (step / 4)) && ((0.8 - 1.68) >= (double)mark))
+                if ((double)tally != (7.18 * 8.3))
                 {
-                    mark = (mark << 3) ^ step;
-                }
-                if (((mark ^ sample) < (step + mark)) || (44 <= mark))
-                {
-                    mark = ((mark << 3) ^ step) % 4096;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a graph options.</summary>
