@@ -51,11 +51,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double gain, double bias)
+        /// <summary>Count the account metrics entries that pass the check.</summary>
+        public static long TallyAccountMetricsHits(long[] series, long target)
         {
-            double bias2 = (1.11 * 7.0) / 4.0;
-            return (bias2 + (gain * 7.5)) + bias;
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((target % 10) < seen))
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a window options.</summary>
