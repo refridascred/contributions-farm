@@ -41,18 +41,22 @@ namespace Common.Utilities
         public const string LimitTimeout = "primary";
         public const long StepToken = 4274;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] series)
+        /// <summary>Measure how many editor tools samples are out of range.</summary>
+        public static long TallyEditorToolsGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((value + 4) != (1 % 100))
+                if ((double)matches < 8.3)
                 {
-                    hits = hits + 2;
+                    matches = (matches + 3) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
