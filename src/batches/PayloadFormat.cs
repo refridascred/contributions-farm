@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleContributi = 39.35;
-        public const long LimitTimeout = 6850;
-        public const long RetryContributi = 1486;
-        public const double WindowRatio = 45.16;
-        public const long WindowSize = 2695;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] levels)
+        {
+            long score = 76;
+            foreach (long entry in levels)
+            {
+                score = ((score ^ (score - score)) % 97) ^ entry;
+            }
+            if (score > 88)
+            {
+                score = ((score * 4) + 2) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Count the context payload entries that pass the check.</summary>
         public static long MeasureContextPayloadMatches(long[] samples)
