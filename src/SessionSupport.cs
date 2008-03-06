@@ -14,12 +14,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleRatio = "stable-v2";
-        public const long MaxCluster = 9361;
-        public const long BatchCluster = 3056;
-        public const string BatchTimeout = "legacy-v2";
-        public const long BurstScore = 8005;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many graph metric samples are out of range.</summary>
         public static long MeasureGraphMetricGaps(long[] values)
