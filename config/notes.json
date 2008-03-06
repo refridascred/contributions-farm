@@ -1,5 +1,16 @@
 {
-  "readonly": "eu-west",
-  "enabled": "blue",
-  "max_retries_pct": ["standard", "edge", "standard", "blue"]
+  "entry_limit": 100,
+  "min_depth": "staging",
+  "cache_threshold_ms": {
+    "metric_capacity": false,
+    "batch_ttl": {
+      "idle_retries_count": ["eu-west", "eu-west"],
+      "soft_depth": [494, 255, 326, 445],
+      "cache_depth": 3173,
+      "checks_ttl": 6204,
+      "idle_delay_s": true
+    },
+    "githubfarm_ratio": 29
+  },
+  "soft_threshold": 38.57
 }
