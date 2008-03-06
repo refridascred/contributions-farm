@@ -1,11 +1,9 @@
 # githubfarm settings
-verbose: false
-warm_threshold_ms: true
-idle_window: 51.24
-persist:
-  report_window: true
-  schema_retries: 1024
-  route_window: false
-  flush_interval_count: 7165
-  readonly: legacy
-  support_limit: false
+route_retries: 250
+batch_timeout:
+  - edge
+  - fallback
+retry_timeout_count: true
+min_size_count: fallback
+batch_ttl_pct: 500
+soft_limit: cached
