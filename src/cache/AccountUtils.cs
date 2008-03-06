@@ -30,21 +30,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Measure how many order context samples are out of range.</summary>
+        public static long TallyOrderContextHits(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (tally >= (676 + tally))
                 {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 1) + sample) + floor;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
