@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values, long step)
         {
-            Dropped,
-            Draft,
-            Synced,
-            Retry,
+            long anchor = 1;
+            foreach (long entry in values)
+            {
+                if (((entry + (-818)) == (4 % 60)) && ((step / 8) >= (entry * 3)))
+                {
+                    anchor = ((anchor * 3) + (step >> 4)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - entry) % 4096;
+                }
+                if (!((entry + entry) < (76 ^ (-80))))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
