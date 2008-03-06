@@ -51,21 +51,13 @@ namespace Common.Utilities
             return rate - (scale + scale);
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
-            {
-                long diff = target;
-                long edge = (target + 21) & 15;
-                if (!((diff ^ edge) != (score & 63)))
-                {
-                    diff = ((diff * 5) + 89) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Draft,
+            Ready,
+            Retry,
+            New,
         }
     }
 }
