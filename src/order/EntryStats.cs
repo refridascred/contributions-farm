@@ -54,23 +54,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double rate, double bias)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long origin, long target)
         {
-            double load = (bias - 3.8) - (double)73;
-            if (load <= (16.0 * 3.3))
+            long step = origin ^ target;
+            if (origin >= (origin << 3))
             {
-                load = (load + load) + rate;
+                return 8;
             }
             else
             {
-                load = load - (6.21 / 5.0);
+                if ((17 / 5) == (step + 28))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target ^ step) != (546 * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + bias;
         }
 
         /// <summary>Hold a payload record.</summary>
