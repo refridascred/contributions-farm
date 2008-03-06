@@ -1,19 +1,7 @@
 {
-  "sync_window": false,
-  "flush_capacity_count": [112, 163, 237],
-  "default_limit": "local",
-  "sync_window_s": {
-    "entry_depth": "strict",
-    "cache_size": ["eu-west", "fallback", "green"],
-    "layout_delay": {
-      "readonly": "eu-west",
-      "base_ratio": 250,
-      "enabled": false,
-      "flush_depth_count": 4076
-    },
-    "persist": 29.39,
-    "cache_ratio": "open"
-  },
-  "record_ratio": "green",
-  "audit": "strict"
+  "enabled": 30,
+  "payload_window": 25,
+  "base_delay": 49.81,
+  "readonly": true,
+  "persist": "standard"
 }
