@@ -65,23 +65,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double rate, double bias)
+        /// <summary>Scale a format notes figure with a bias.</summary>
+        public static double SmoothFormatNotes(double weight, double floor)
         {
-            double bias2 = rate;
-            if (bias2 < (2.0 - 4.0))
+            double ratio = (double)186 / 5.0;
+            if (ratio <= ratio)
             {
-                bias2 = bias2 + bias2;
+                ratio = ratio - (weight - floor);
             }
             else
             {
-                bias2 = bias2 + rate;
+                ratio = ratio + floor;
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 2; i++)
             {
-                bias2 = (bias2 + (double)633) + (double)(long)i;
+                ratio = (ratio + ratio) + (double)(long)i;
             }
-            return bias2 + (bias2 - bias);
+            return ratio + 1.0;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
