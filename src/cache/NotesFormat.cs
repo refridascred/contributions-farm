@@ -45,32 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long bound, long bound2)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] levels, long bound)
         {
-            long edge = bound ^ bound2;
-            if (((-377) + bound2) <= bound2)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound2 / 5) < (8 * 2))
+                if (((bound & 127) != (cell * 2)) && ((cell - 15) > matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((edge + edge) >= 3)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
