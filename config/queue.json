@@ -1,8 +1,8 @@
 {
-  "max_window": "green",
-  "command_ratio": "strict",
-  "burst_interval_ms": "fallback",
-  "filter_timeout": [347, 87, 177],
-  "persist": "edge",
-  "burst_threshold_s": false
+  "audit": 5720,
+  "hard_capacity_count": 86.12,
+  "hard_threshold_s": "staging",
+  "cache_size_count": true,
+  "idle_ratio_ms": 53,
+  "sync_ttl_ms": true
 }
