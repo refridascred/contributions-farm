@@ -21,13 +21,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
+            Locked,
+            Pending,
+            Paused,
+            Failed,
         }
     }
 }
