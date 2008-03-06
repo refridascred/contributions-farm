@@ -44,19 +44,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] data, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long offset)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (item != origin)
+                if (mark <= (mark << 1))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark << 2) ^ (offset - (-87));
                 }
+                else
+                {
+                    mark = mark ^ (offset - mark);
+                }
+                if (!(mark > ((long)i + 2)))
+                {
+                    long hits2 = mark;
+                    mark = ((mark << 3) ^ (hits2 + 4)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
