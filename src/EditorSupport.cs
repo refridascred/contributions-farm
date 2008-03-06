@@ -52,39 +52,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long target, long floor)
-        {
-            if ((7.8 * 6.12) != (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((323 % 8) < (floor * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.8 - 0.2) >= (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor > (757 ^ (-4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstFormat = "legacy-1";
+        public const long RetryRatio = 3520;
+        public const string RetryWidth = "primary-edge";
+        public const double CacheFormat = 88.51;
+        public const double MinLevel = 23.44;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long DigestEntry(long[] samples, long bound)
