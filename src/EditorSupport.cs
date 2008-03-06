@@ -64,23 +64,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] items, long floor)
         {
-            long anchor = 71;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if (items[i] <= floor)
                 {
-                    anchor = ((anchor * 3) + (anchor + datum)) - (long)i;
-                }
-                anchor = anchor - (anchor / 8);
-                if ((anchor << 3) < 9)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
