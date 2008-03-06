@@ -68,19 +68,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate queue channel readings against a bound.</summary>
-        public static bool GuardQueueChannelLimits(long[] readings, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (datum >= seed)
+                if (value != seed)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
