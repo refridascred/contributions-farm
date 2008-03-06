@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+COMMAND_LIMIT=327
+log "limit is ${COMMAND_LIMIT}"
 
-for item in eu-west stable staging; do
+for item in cached open; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
+mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    eu-west)
         log "fast path"
         ;;
     *)
