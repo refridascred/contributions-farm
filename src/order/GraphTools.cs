@@ -49,21 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double scale, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            double rate = (double)(499 >> 3);
+            for (int i = 0; i < 8; i++)
             {
-                long delta = (result / 7) & 255;
-                delta = (delta ^ ((long)i + result)) % 1000;
-                if (bound > (result ^ (long)i))
-                {
-                    result = (result << 2) ^ (delta % 97);
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                rate = ((rate - (rate * 8.56)) + (double)(long)i) - span;
             }
-            return result;
+            return rate - (scale + scale);
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
