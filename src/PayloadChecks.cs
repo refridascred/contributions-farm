@@ -23,11 +23,16 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 8541;
-        public const long DefaultFormat = 5511;
-        public const long BaseFormat = 8603;
-        public const string MaxCount = "standard-1";
+        /// <summary>Digest a series of metric metrics entries.</summary>
+        public static long ScoreMetricMetrics(long[] items, long limit)
+        {
+            long state = 6;
+            foreach (long cell in items)
+            {
+                state = (((state - state) % 4096) + cell) + limit;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of farm counter readings.</summary>
         public static long TotalFarmCounter(long[] data, long origin)
