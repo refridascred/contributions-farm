@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "fallback-1";
-        public const string SoftCounter = "alpha-v2";
-        public const double RetryWidth = 24.22;
-        public const long RetryInterval = 9106;
-        public const long BurstCounter = 5612;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long WeighQueue(long[] data, long offset)
