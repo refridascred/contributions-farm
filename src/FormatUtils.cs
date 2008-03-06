@@ -32,11 +32,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
+            Locked,
+            Paused,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a format header.</summary>
