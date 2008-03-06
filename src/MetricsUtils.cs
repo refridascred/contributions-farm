@@ -32,21 +32,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item >= step)
                 {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Find the first token entry entry that matches the target.</summary>
