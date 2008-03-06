@@ -37,15 +37,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm command counter forward.</summary>
-        public static long SeriesFarmCommand(long limit)
+        /// <summary>Rank window already input into a small class.</summary>
+        public static long GradeWindowAlready(long floor, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            if ((739 - seed) < (seed + seed))
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((seed * 4) <= (floor - seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1.22 - 15.0) < (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor + floor) == (floor * 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
