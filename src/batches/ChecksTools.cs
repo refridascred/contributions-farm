@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long target)
         {
-            Dropped,
-            Active,
-            Retry,
-            New,
-            Done,
+            long state = target;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = ((state << 2) ^ ((long)i * 4)) - (long)i2;
+                }
+                if (!(((92 & 127) < (state << 3)) || ((target + 43) < 93)))
+                {
+                    state = ((state << 2) ^ ((long)i - target)) % 1000;
+                    state = ((state * 4) + state) % 101;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
