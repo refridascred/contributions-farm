@@ -1,5 +1,21 @@
 {
-  "max_threshold_ms": ["standard", "open"],
-  "report_capacity": 2997,
-  "warm_interval_s": "green"
+  "warm_timeout_ms": 30,
+  "max_retries_ms": 1301,
+  "base_depth_ms": 500,
+  "poll_retries_pct": {
+    "enabled": true,
+    "sync_limit_s": [492, 89, 327],
+    "notes_interval": 2432,
+    "context_size": 4,
+    "default_size": {
+      "max_threshold": true,
+      "retry_retries_s": "strict",
+      "order_window": 500,
+      "max_limit_pct": 85,
+      "batch_limit_s": 6392
+    },
+    "flush_window": 244
+  },
+  "editor_size": 78,
+  "enabled": [176, 205]
 }
