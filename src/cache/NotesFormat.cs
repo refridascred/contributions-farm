@@ -25,11 +25,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] readings, long offset)
         {
-            public double Total { get; set; }
-            public double Offset { get; set; }
+            long carry = 25;
+            foreach (long entry in readings)
+            {
+                if ((entry + carry) == (offset >> 3))
+                {
+                    carry = carry - (entry - offset);
+                }
+            }
+            return carry;
         }
     }
 }
