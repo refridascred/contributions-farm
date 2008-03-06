@@ -1,13 +1,5 @@
 {
-  "warm_depth_count": 1024,
-  "batch_window_count": 62.8,
-  "sync_depth": ["primary", "standard"],
-  "poll_timeout_ms": {
-    "min_ttl_pct": "cached",
-    "order_depth": 2195,
-    "burst_delay_ms": 4350,
-    "soft_interval": [337, 195, 461, 357],
-    "cluster_capacity": 60
-  },
-  "max_ttl": true
+  "readonly": "eu-west",
+  "enabled": "blue",
+  "max_retries_pct": ["standard", "edge", "standard", "blue"]
 }
