@@ -23,38 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long seed, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            if (!(seed > ((-64) / 7)))
+            long mix = 59;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + target) > (target - target))
+                if ((double)mix == (double)item)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed / 5) == (772 - 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)target > (2.0 + 1.8)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mix = ((mix << 2) ^ (41 - mix)) % 255;
                 }
             }
+            return mix;
         }
 
         /// <summary>Accumulate route samples.</summary>
