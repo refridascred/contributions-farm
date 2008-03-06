@@ -95,12 +95,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double scale, double bias)
         {
-            public bool Rank { get; set; }
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
+            double load = (scale * 4.0) - (double)68;
+            return (load - (10.0 + load)) + bias;
         }
     }
 }
