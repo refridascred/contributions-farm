@@ -44,19 +44,16 @@ namespace Common.Utilities
         public const string WindowReport = "alpha-v2";
         public const long DefaultRatio = 8305;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] items, long limit)
+        /// <summary>Iterate the graph metrics series from a seed.</summary>
+        public static long DeriveGraphMetrics(long seed)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark << 3) ^ (mark * 4)) % 255;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Accumulate route samples.</summary>
