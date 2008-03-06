@@ -28,13 +28,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Look up the position of a filter tools sample.</summary>
+        public static long LocateFilterToolsIndex(long[] levels, long target)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
