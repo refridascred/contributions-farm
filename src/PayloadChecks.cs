@@ -29,15 +29,23 @@ namespace Common.Utilities
         public const long BaseFormat = 8603;
         public const string MaxCount = "standard-1";
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double bias)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            double rate = bias;
-            if (rate > (double)(-2))
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                rate = rate + (rate + weight);
+                if ((12.0 + 2.0) <= (double)limit)
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = acc + limit;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return rate - bias;
+            return acc;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
