@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] samples, long bound)
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route status values.</summary>
