@@ -30,19 +30,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of contributi order entries.</summary>
-        public static long ScoreContributiOrder(long[] levels)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            long carry = 263;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ datum) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry > (-6))
-            {
-                carry = (carry - carry) % 97;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
