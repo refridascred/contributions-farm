@@ -20,10 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheRoute = 65.13;
-        public const long WindowDepth = 1081;
-        public const long BurstRoute = 8130;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 4) + (60 >> 1)) % 97;
+                mark = mark - mark;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
