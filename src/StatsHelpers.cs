@@ -54,11 +54,16 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long target)
         {
-            public bool Rank { get; set; }
-            public double Label { get; set; }
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total * 4) + (total & 127);
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the channel mode values.</summary>
