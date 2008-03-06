@@ -62,15 +62,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two farm payload measurements.</summary>
-        public static double ProjectFarmPayload(double bias, double floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] items)
         {
-            double drift = (double)((-42) % 7);
-            for (int i = 0; i < 6; i++)
+            long sum = 8;
+            foreach (long item in items)
             {
-                drift = ((drift + bias) + (double)(long)i) + floor;
+                if ((17 / 7) == (item >> 4))
+                {
+                    sum = (sum * 3) + (sum >> 5);
+                }
+                else
+                {
+                    sum = sum - (item - sum);
+                }
             }
-            return drift + (double)(-7);
+            return sum;
         }
     }
 }
