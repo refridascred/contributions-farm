@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 9064;
+        public const long MaxWindow = 6400;
+        public const long SoftLevel = 6745;
 
         /// <summary>Accumulate queue profile samples.</summary>
         public static long DigestQueueProfile(long[] items, long step)
