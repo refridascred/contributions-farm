@@ -21,12 +21,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
+            Closed,
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the metric phase values.</summary>
