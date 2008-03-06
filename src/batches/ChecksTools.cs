@@ -25,18 +25,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] values)
+        /// <summary>Measure how many token batch samples are out of range.</summary>
+        public static long CountTokenBatchMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((entry + tally) != (tally + tally))
+                if (5.3 >= (double)sample)
                 {
-                    tally = tally + 1;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
