@@ -74,21 +74,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 821;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value / 8) != (acc - acc))
                 {
-                    if ((values[i] ^ values[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - (value << 3)) % 101;
                 }
             }
-            return seen;
+            return acc;
         }
     }
 }
