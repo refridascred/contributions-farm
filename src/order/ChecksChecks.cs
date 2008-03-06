@@ -19,20 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score * 2) + (score >> 3);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = (((score << 2) ^ origin) % 1000) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Failed,
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the entry metric entries that pass the check.</summary>
