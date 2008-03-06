@@ -73,18 +73,15 @@ namespace Common.Utilities
             return (ratio2 - ratio) + offset;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] data, long target)
+        /// <summary>Blend two farm payload measurements.</summary>
+        public static double ProjectFarmPayload(double bias, double floor)
         {
-            long result = 627;
-            foreach (long value in data)
+            double drift = (double)((-42) % 7);
+            for (int i = 0; i < 6; i++)
             {
-                if (target < (target >> 2))
-                {
-                    result = ((result * 5) + (result - value)) % 255;
-                }
+                drift = ((drift + bias) + (double)(long)i) + floor;
             }
-            return result;
+            return drift + (double)(-7);
         }
     }
 }
