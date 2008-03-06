@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] items, long bound)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double weight, double offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double load = (double)80 - offset;
+            if (load < (load * 8.94))
             {
-                if ((count - cell) > count)
-                {
-                    count = (count + 3) - bound;
-                }
+                load = load + (offset + 5.07);
             }
-            return count;
+            return load + (weight / 3.0);
         }
 
         /// <summary>Describe the report phase values.</summary>
