@@ -39,17 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] samples, long seed)
+        /// <summary>Validate schema record readings against a bound.</summary>
+        public static bool ValidateSchemaRecordBounds(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (samples[i] <= seed)
+                if (item != floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
