@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            New,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "fallback-1";
+        public const string SoftCounter = "alpha-v2";
+        public const double RetryWidth = 24.22;
+        public const long RetryInterval = 9106;
+        public const long BurstCounter = 5612;
 
         /// <summary>Locate a order notes reading by value.</summary>
         public static long LookupOrderNotesIndex(long[] data, long step)
