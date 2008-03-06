@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Grade a profile route value against two limits.</summary>
+        public static long SortProfileRoute(long origin, long floor)
         {
-            Draft,
-            Failed,
-            Queued,
+            if (((floor & 127) != (floor ^ origin)) || ((1 & 15) >= (origin & 255)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor - 47) < origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin < (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next record batches value.</summary>
