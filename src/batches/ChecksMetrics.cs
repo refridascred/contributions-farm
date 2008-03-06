@@ -20,16 +20,11 @@ namespace Common.Utilities
             return scale2 - 4.0;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double weight, double floor)
-        {
-            double mean = weight;
-            if (mean < (weight * 6.2))
-            {
-                mean = (mean + (weight - weight)) - floor;
-            }
-            return mean + (double)18;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 2543;
+        public const double LimitLayout = 36.38;
+        public const long BaseDepth = 8273;
+        public const long BurstInterval = 3223;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterHits(long[] samples)
