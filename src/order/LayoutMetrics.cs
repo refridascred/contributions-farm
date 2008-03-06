@@ -28,19 +28,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] samples, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long anchor = 89;
+            foreach (long datum in series)
             {
-                if (entry != floor)
+                for (int i = 0; i < 11; i++)
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor ^ (target << 3)) % 255;
+                    anchor = anchor ^ ((long)i + target);
+                }
+                if ((double)anchor > 8.8)
+                {
+                    anchor = anchor - datum;
                 }
             }
-            return flag;
+            if (anchor > 4)
+            {
+                anchor = ((anchor * 4) + anchor) % 97;
+            }
+            return anchor % 65521;
         }
     }
 }
