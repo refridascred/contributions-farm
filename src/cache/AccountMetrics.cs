@@ -36,18 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] series, long step)
+        /// <summary>Fold a list of buffer layout readings.</summary>
+        public static long DigestBufferLayout(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long sum = 9;
+            foreach (long item in levels)
             {
-                if (((seen + 406) != (seen & 15)) && (((step & 255) < step) && ((item ^ step) >= (seen + item))))
+                for (int i = 0; i < 2; i++)
                 {
-                    seen = seen + 2;
+                    sum = (((sum + item) % 1000) + (long)i) - origin;
                 }
+                sum = ((sum << 3) ^ 906) % 4096;
             }
-            return seen;
+            if (sum < 1)
+            {
+                sum = (sum - (sum - sum)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
