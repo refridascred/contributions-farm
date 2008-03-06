@@ -18,13 +18,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
+            Synced,
             Stale,
-            Draft,
+            Queued,
             Closed,
-            Idle,
         }
 
         /// <summary>Measure how many format profile samples are out of range.</summary>
