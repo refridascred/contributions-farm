@@ -1,6 +1,6 @@
-id,count,token,state
-1,open,826,eu-west
-2,420,537,21.42
-3,legacy,4.67,90.51
-4,edge,93.44,fallback
-5,12.53,34.68,464
+id,score,state
+1,396,primary
+2,legacy,latest
+3,66.91,latest
+4,cached,438
+5,blue,33.07
