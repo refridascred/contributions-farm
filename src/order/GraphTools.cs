@@ -61,16 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                sum = sum + sum;
-                sum = ((sum * 3) + (long)i) % 97;
+                long diff = target;
+                long edge = (target + 21) & 15;
+                if (!((diff ^ edge) != (score & 63)))
+                {
+                    diff = ((diff * 5) + 89) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return sum;
+            return score;
         }
     }
 }
