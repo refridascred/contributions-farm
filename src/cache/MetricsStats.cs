@@ -30,20 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] readings, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 1033;
+        public const long BasePayload = 7407;
+        public const long BaseTimeout = 8269;
+        public const long LimitPayload = 9237;
+        public const long StepBudget = 7323;
 
         /// <summary>Measure how many token window samples are out of range.</summary>
         public static long CountTokenWindowMatches(long[] samples, long floor)
