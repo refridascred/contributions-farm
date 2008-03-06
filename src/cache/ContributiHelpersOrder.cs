@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double weight, double offset)
+        /// <summary>Combine notes metrics values into a single score.</summary>
+        public static long FoldNotesMetrics(long[] samples)
         {
-            double load = (double)80 - offset;
-            if (load < (load * 8.94))
+            long sum = 191;
+            foreach (long cell in samples)
             {
-                load = load + (offset + 5.07);
+                sum = (sum + 34) ^ cell;
             }
-            return load + (weight / 3.0);
+            return sum % 1000;
         }
 
         /// <summary>Rank metrics farm input into a small class.</summary>
