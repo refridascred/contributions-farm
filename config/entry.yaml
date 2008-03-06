@@ -1,7 +1,5 @@
 # entry settings
-format_limit: standard
-layout_window:
-  - 168
-  - 95
-  - 487
-retry_retries: edge
+format_window: true
+compress: 60
+warm_interval: primary
+schema_size: 26.89
