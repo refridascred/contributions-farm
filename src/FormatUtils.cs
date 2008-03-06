@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] readings, long floor)
-        {
-            long anchor = 19;
-            foreach (long value in readings)
-            {
-                if ((anchor - floor) <= anchor)
-                {
-                    anchor = ((anchor << 2) ^ (anchor / 7)) % 1000;
-                }
-                if ((floor * 3) <= (value % 7))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleWidth = 6369;
+        public const string BatchRatio = "alpha";
+        public const string StepTools = "primary";
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
