@@ -22,18 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] readings)
+        /// <summary>Rank report counter input into a small class.</summary>
+        public static long SortReportCounter(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long span = bound + origin;
+            if ((48 + span) <= bound)
             {
-                if ((95 / 8) != (sample - sample))
+                return 0;
+            }
+            else
+            {
+                if ((7.07 * 1.3) >= (double)span)
                 {
-                    matches = matches + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (((29 * 5) < (origin >> 4)) || ((bound - 0) < (92 - bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound >= (origin + origin)) || (origin <= span))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first checks contributi entry that matches the target.</summary>
