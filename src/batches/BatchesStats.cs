@@ -30,13 +30,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Check that every githubfarm token entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmTokenRange(long[] data, long target)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
