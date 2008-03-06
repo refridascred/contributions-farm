@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] values, long floor)
+        /// <summary>Count the already filter entries that pass the check.</summary>
+        public static long TallyAlreadyFilterHits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((double)value == (6.14 - 19.0))
+                if ((value + matches) >= matches)
                 {
-                    tally = (tally + 2) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 1) - step;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
