@@ -80,10 +80,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "open-edge";
-        public const long BaseInterval = 5406;
-        public const long BatchCount = 9216;
-        public const string SoftBudget = "cached-v2";
+        /// <summary>Rank payload entry input into a small class.</summary>
+        public static long GradePayloadEntry(long target, long floor)
+        {
+            if (floor > (target * 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target >= 5.1)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor <= 98)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
