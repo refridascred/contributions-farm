@@ -14,18 +14,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first cluster farm entry that matches the target.</summary>
-        public static long LocateClusterFarmIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 6438;
+        public const double MaxLevel = 94.89;
+        public const long MaxFactor = 660;
+        public const long HardLevel = 3860;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
