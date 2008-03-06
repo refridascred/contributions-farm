@@ -20,28 +20,11 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] items)
-        {
-            long total = 41;
-            foreach (long cell in items)
-            {
-                if (!((total * 3) != (cell - cell)))
-                {
-                    total = ((total << 2) ^ cell) % 97;
-                    total = (total + total) % 4096;
-                }
-                if ((total * 3) < (1 % 64))
-                {
-                    total = (total ^ (cell ^ cell)) % 1000;
-                }
-                else
-                {
-                    total = total ^ (92 * 2);
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstTimeout = 2873;
+        public const long RetryBuffer = 8770;
+        public const long IdleInterval = 3454;
+        public const long StepBuffer = 1338;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double ProjectEditor(double weight, double bias)
