@@ -39,32 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long target, long limit)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long lane = target + limit;
-            if ((target ^ limit) <= (target << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (3.0 >= (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane & 1) != (target + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
