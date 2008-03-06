@@ -53,31 +53,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long offset, long limit)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            if ((offset << 2) <= offset)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit + limit) < 68)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset < 319)
+                    if ((series[i] - series[j]) == 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
