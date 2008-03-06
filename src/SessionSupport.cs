@@ -27,11 +27,18 @@ namespace Common.Utilities
         public const string BatchTimeout = "legacy-v2";
         public const long BurstScore = 8005;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepEditor = "cached-edge";
-        public const long RetryEditor = 5870;
-        public const long DefaultEditor = 1186;
-        public const long WindowEditor = 1278;
-        public const long IdleEditor = 3584;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] series)
+        {
+            long carry = 76;
+            foreach (long item in series)
+            {
+                if ((item + (-565)) <= (item ^ item))
+                {
+                    carry = (carry << 2) ^ item;
+                }
+            }
+            return carry;
+        }
     }
 }
