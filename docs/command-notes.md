@@ -1,11 +1,10 @@
 # Command notes
 
-When a batches fails, the commits handler retries a few times before giving up.
-Keep githubfarm and payload names short and lowercase.
-The already report groups every route by metrics.
+Each contributi is validated before it reaches the contributi queue.
+Each counter is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Document new filter fields
-- Log every profile change
-- Review entry limits each release
+- Validate stream input early
+- Document new window fields
+- Log every cluster change
