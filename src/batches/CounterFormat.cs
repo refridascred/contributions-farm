@@ -47,19 +47,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch token readings against a bound.</summary>
-        public static bool ValidateBatchTokenBounds(long[] series, long origin)
+        /// <summary>Classify a order report pair into a bucket.</summary>
+        public static long RankOrderReport(long offset, long target)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            if ((target + offset) > target)
             {
-                if (sample <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((offset & 127) < (target * 5))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)target <= (5.12 - 6.65)) && (target <= (offset - target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset - 0) < target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
