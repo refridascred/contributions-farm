@@ -25,13 +25,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] data, long step)
         {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public bool Mode { get; set; }
+            long mix = 7;
+            foreach (long value in data)
+            {
+                mix = (((mix << 2) ^ mix) + value) + step;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the cache state values.</summary>
