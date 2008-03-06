@@ -47,31 +47,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long limit, long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            if ((limit << 2) >= (floor ^ floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit <= 2.13)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((9 ^ floor) < limit) && (406 > floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Dropped,
+            New,
+            Done,
         }
 
         /// <summary>Roll a profile session counter forward.</summary>
