@@ -44,16 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] samples)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                score = score + (349 + (long)i);
-                score = ((score * 3) + (long)i) % 97;
+                if (!((matches <= (entry - matches)) || ((matches + matches) >= 42)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
