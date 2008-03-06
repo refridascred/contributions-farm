@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
