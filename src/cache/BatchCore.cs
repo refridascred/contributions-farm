@@ -28,19 +28,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] readings, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (reading > offset)
+                if (!(cell < (3 % 8)))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the filter mode values.</summary>
