@@ -1,8 +1,5 @@
 # entry settings
-base_window_s: 31.78
-report_window:
-  - 306
-  - 469
-  - 180
-entry_capacity: 47
-editor_interval: 4776
+strict: local
+graph_window: 6207
+hard_window_pct: 85.41
+default_ratio: 30
