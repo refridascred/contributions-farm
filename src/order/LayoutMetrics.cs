@@ -16,11 +16,23 @@ namespace Common.Utilities
             return ratio + (double)120;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseDepth = 4797;
-        public const long MaxGraph = 6570;
-        public const double StepCount = 60.83;
-        public const double CacheGraph = 54.86;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (reading > (matches ^ matches))
+                {
+                    matches = (matches + 3) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LocateBatchIndex(long[] items, long bound)
