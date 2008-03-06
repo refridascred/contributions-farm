@@ -47,15 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi channel readings against a rule.</summary>
-        public static long CountContributiChannelMatches(long[] values, long seed)
+        /// <summary>Count route metric pairs that satisfy a relation.</summary>
+        public static long CompareRouteMetricCount(long[] series)
         {
             long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((11.0 * 4.0) == (double)cell) && (cell > (seen + seed))) || ((cell * 3) >= (seen - seed)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((series[i] - series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
