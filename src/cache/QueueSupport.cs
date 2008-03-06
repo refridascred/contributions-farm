@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] levels)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((item / 5) == (item % 64))
+                if (((seed >> 5) != (31 + anchor)) && ((double)seed >= (double)anchor))
                 {
-                    count = count + 3;
+                    anchor = (anchor - anchor) % 255;
                 }
+                anchor = anchor ^ 507;
+                if ((8.6 / 2.0) > (double)seed)
+                {
+                    anchor = ((anchor << 3) ^ (416 & 127)) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
