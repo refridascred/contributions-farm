@@ -28,23 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] levels)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long result = 27;
-            foreach (long value in levels)
-            {
-                result = result - (result + result);
-                if ((value + result) < 92)
-                {
-                    result = ((result << 2) ^ (5 - value)) % 1000;
-                }
-                else
-                {
-                    result = (result + 946) % 101;
-                }
-            }
-            return result % 65521;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
