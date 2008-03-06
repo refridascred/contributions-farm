@@ -22,11 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double ratio = weight;
-            return (ratio - ratio) + floor;
+            Ready,
+            Active,
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Check that every already order entry stays within the limit.</summary>
