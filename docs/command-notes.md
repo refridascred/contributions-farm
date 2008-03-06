@@ -1,11 +1,14 @@
 # Command notes
 
-When a metric fails, the order handler retries a few times before giving up.
-A entry that stays idle for too long is moved to the metrics list.
-When a buffer fails, the queue handler retries a few times before giving up.
+Defaults for tools live in the config folder and can be overridden per environment.
+When a route fails, the filter handler retries a few times before giving up.
+
+Defaults for stats live in the config folder and can be overridden per environment.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new tools fields
-- Validate tools input early
-- Log every order change
+- Prefer schema defaults
+- Log every counter change
+- Validate filter input early
+- Document new account fields
