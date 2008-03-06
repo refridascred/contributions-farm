@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of record session entries.</summary>
-        public static long WeighRecordSession(long[] samples)
-        {
-            long result = 460;
-            foreach (long sample in samples)
-            {
-                result = (result ^ (sample * 4)) % 4096;
-                if ((6.26 - 12.0) == (double)sample)
-                {
-                    result = (result ^ result) % 1000;
-                }
-            }
-            if (result > (-520))
-            {
-                result = (result - ((long)samples.Length / 3)) % 101;
-            }
-            return result % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 4648;
+        public const double SoftEditor = 1.83;
+        public const long CacheTimeout = 3933;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] levels, long step)
