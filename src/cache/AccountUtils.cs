@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long DefaultContext = 2217;
         public const string RetryLevel = "stable-1";
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 6329;
+        public const long RetryGraph = 5275;
+        public const long IdleWidth = 291;
+        public const string HardGraph = "local-v2";
+        public const long BaseFactor = 8919;
 
         /// <summary>Adjust a window reading.</summary>
         public static double ScaleWindow(double gain, double floor)
