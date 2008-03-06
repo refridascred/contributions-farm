@@ -68,21 +68,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Validate queue channel readings against a bound.</summary>
+        public static bool GuardQueueChannelLimits(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum >= seed)
                 {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
