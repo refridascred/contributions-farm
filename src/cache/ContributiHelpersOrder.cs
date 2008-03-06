@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] values)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long acc = 17;
-            foreach (long sample in values)
-            {
-                if ((((long)values.Length ^ acc) <= (sample & 255)) || ((double)acc <= 2.0))
-                {
-                    acc = ((acc * 4) + acc) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (long)values.Length) % 101;
-                }
-            }
-            return acc;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Rank metrics farm input into a small class.</summary>
