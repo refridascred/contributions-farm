@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Closed,
+            Ready,
             Done,
-            Active,
+            Stale,
+            New,
+            Synced,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
