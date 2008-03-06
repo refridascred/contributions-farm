@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
