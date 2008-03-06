@@ -27,21 +27,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Retry,
+            Queued,
+            New,
+            Dropped,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
