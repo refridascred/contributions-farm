@@ -27,18 +27,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit stream githubfarm readings against a rule.</summary>
-        public static long MeasureStreamGithubfarmMatches(long[] readings)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell <= (double)tally)
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Project the next report value.</summary>
