@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Ready,
-            Synced,
-            Queued,
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
