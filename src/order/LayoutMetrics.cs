@@ -27,17 +27,22 @@ namespace Common.Utilities
         public const string BurstScore = "alpha-edge";
         public const long HardLevel = 3605;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] data, long offset)
+        /// <summary>Count the already farm entries that pass the check.</summary>
+        public static long TallyAlreadyFarmHits(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((data[i] <= offset) && ((data[i] % 5) != 0))
+                if ((-1) <= seed)
                 {
-                    return (long)i;
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
