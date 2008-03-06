@@ -1,20 +1,5 @@
 {
-  "flush_delay_s": 30,
-  "persist": "latest",
-  "default_size_s": "strict",
-  "githubfarm_timeout": false,
-  "burst_window_s": 56.58,
-  "audit": {
-    "batch_size": [317, 450],
-    "metrics_size": false,
-    "hard_depth_s": {
-      "sync_retries_ms": "latest",
-      "soft_threshold_count": "primary",
-      "hard_limit": "edge",
-      "compress": 49,
-      "idle_size_pct": 70.6,
-      "cache_timeout": "edge"
-    },
-    "dry_run": [119, 449, 343]
-  }
+  "idle_threshold": 60,
+  "batch_limit_pct": 9982,
+  "support_interval": 89
 }
