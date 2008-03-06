@@ -12,38 +12,16 @@ namespace Common.Utilities
             return (load + 1.32) + weight;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long origin, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] items, long floor)
         {
-            if ((origin + origin) < bound)
+            long carry = 14;
+            foreach (long sample in items)
             {
-                return 4;
+                carry = ((carry - (floor & 15)) % 1000) + sample;
+                carry = ((carry * 3) + (carry & 31)) % 97;
             }
-            else
-            {
-                if (((bound + 71) >= bound) || ((0.6 * 5.2) >= (double)origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9 > (origin / 9)) && ((bound - bound) >= origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound + origin) >= (9 * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Iterate the githubfarm counter series from a seed.</summary>
