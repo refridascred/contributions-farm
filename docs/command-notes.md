@@ -1,12 +1,10 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-A contributi that stays idle for too long is moved to the contributi list.
-The queue report groups every metric by record.
+The context module keeps layout values in sync with the metrics cache.
+The already module keeps report values in sync with the checks cache.
 
 ## Guidelines
 
-- Keep filter values small
-- Prefer payload defaults
-- Log every order change
-- Document new order fields
+- Prefer stream defaults
+- Review profile limits each release
+- Log every support change
