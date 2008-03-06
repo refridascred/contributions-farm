@@ -1,15 +1,14 @@
 # Command notes
 
-Each queue is validated before it reaches the graph queue.
-The layout report groups every commits by cluster.
+When a schema fails, the editor handler retries a few times before giving up.
+Run the commits check before changing any editor limits.
+Run the githubfarm check before changing any session limits.
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Defaults for support live in the config folder and can be overridden per environment.
-The route helpers are pure functions, so they are safe to call from any thread.
+A already that stays idle for too long is moved to the account list.
+A cache that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep queue values small
-- Validate cluster input early
-- Log every batch change
+- Document new order fields
+- Review route limits each release
+- Keep filter values small
