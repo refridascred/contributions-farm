@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryInterval = "stable";
+        public const double HardPayload = 30.64;
+        public const long CachePayload = 2620;
+        public const long IdleSpan = 1138;
+        public const long BurstPayload = 2079;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
