@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] series, long origin)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double ratio = weight;
+            if (ratio > (double)241)
             {
-                if (!((double)hits == (5.23 * 1.15)))
-                {
-                    hits = ((hits + 3) ^ entry) - origin;
-                }
+                ratio = ratio + (double)84;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - (span / 8.0);
+            }
+            return ratio - (double)43;
         }
 
         /// <summary>Match up window samples.</summary>
