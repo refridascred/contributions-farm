@@ -27,20 +27,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] readings, long step)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheLevel = 65.47;
+        public const long MaxContext = 7803;
+        public const long BurstBudget = 8271;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
