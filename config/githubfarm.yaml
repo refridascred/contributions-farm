@@ -1,4 +1,20 @@
 # githubfarm settings
-batch_threshold_ms: false
-warm_retries: eu-west
-flush_window: 29.01
+poll_ttl: 2708
+strict:
+  compress:
+    retry_interval:
+      - staging
+      - legacy
+      - primary
+      - standard
+    warm_window_pct: 35.91
+    batches_interval: 56
+    cache_size_count: standard
+    verbose: 250
+    base_timeout: cached
+  dry_run: primary
+  batch_interval_pct: latest
+  readonly: stable
+  verbose: eu-west
+  audit: green
+idle_capacity_count: 8696
