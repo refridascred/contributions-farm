@@ -40,16 +40,23 @@ namespace Common.Utilities
             return load - (8.5 - weight);
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] data, long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double gain, double floor)
         {
-            long carry = 44;
-            foreach (long cell in data)
+            double mean = floor;
+            if (mean > (1.4 * 6.2))
             {
-                carry = (((carry << 2) ^ (carry / 6)) + cell) + offset;
-                carry = (carry + (carry ^ carry)) % 101;
+                mean = mean - (gain - gain);
             }
-            return carry % 1000;
+            else
+            {
+                mean = mean + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 2.69) + (double)(long)i;
+            }
+            return mean - (gain - mean);
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
