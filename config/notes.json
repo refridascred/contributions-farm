@@ -1,7 +1,12 @@
 {
-  "batch_delay_count": 58.63,
-  "base_size": [365, 209],
-  "default_threshold_pct": 53,
-  "cache_interval": 2066,
-  "command_depth": 3597
+  "burst_window_pct": 1450,
+  "min_timeout_pct": {
+    "min_size_pct": "standard",
+    "batch_limit": 54,
+    "readonly": 93,
+    "channel_ratio": 2897,
+    "burst_capacity_count": 77,
+    "order_window": 2912
+  },
+  "tools_window": "blue"
 }
