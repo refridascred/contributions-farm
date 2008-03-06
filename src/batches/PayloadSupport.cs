@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double gain, double offset)
         {
-            Stale,
-            Failed,
-            Draft,
-            Synced,
+            double mean = 4.5;
+            if (mean >= (gain - 4.0))
+            {
+                mean = (mean + mean) - offset;
+            }
+            return mean + (double)478;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
