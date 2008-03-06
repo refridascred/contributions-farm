@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 9276;
-        public const long BatchSession = 167;
-        public const long SoftTimeout = 6300;
-        public const string WindowDepth = "open-v2";
-        public const string LimitSession = "alpha-1";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (value <= 1)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long GradeMetric(long step, long bound)
