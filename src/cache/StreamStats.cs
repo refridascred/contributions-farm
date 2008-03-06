@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] readings, long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (limit >= (entry + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double gain = rate;
+            return (gain - 18.0) + offset;
         }
 
         /// <summary>Combine command values into a single score.</summary>
