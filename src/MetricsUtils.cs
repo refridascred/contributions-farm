@@ -80,9 +80,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryScore = 9842;
-        public const long StepQueue = 1401;
-        public const long LimitQueue = 2296;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public double Score { get; set; }
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
