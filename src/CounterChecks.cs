@@ -51,27 +51,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Fold a list of metric farm readings.</summary>
-        public static long TallyMetricFarm(long[] items, long seed)
+        /// <summary>Check that every window batches entry stays within the limit.</summary>
+        public static bool GuardWindowBatchesRange(long[] readings, long limit)
         {
-            long result = 326;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 4; i++)
+                if (cell < limit)
                 {
-                    result = ((result ^ 1) % 65521) ^ (long)i;
+                    flag = false;
+                    break;
                 }
-                if (((14 + item) > (result + (long)items.Length)) && ((item >> 4) <= (seed & 15)))
-                {
-                    result = result + 16;
-                }
-                result = result ^ (575 + 982);
             }
-            if (result > 8)
-            {
-                result = (result - (result >> 4)) % 65521;
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Count the already metric entries that pass the check.</summary>
