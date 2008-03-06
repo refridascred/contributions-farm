@@ -72,12 +72,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a filter metrics reading by value.</summary>
-        public static long LocateFilterMetricsIndex(long[] series, long target)
+        /// <summary>Find the first command payload entry that matches the target.</summary>
+        public static long LocateCommandPayloadIndex(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] == target)
+                if (values[i] <= seed)
                 {
                     return (long)i;
                 }
