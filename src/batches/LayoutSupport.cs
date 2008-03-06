@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Grade a session githubfarm value against two limits.</summary>
+        public static long RankSessionGithubfarm(long origin, long target)
         {
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
+            if ((origin ^ origin) < (origin % 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target ^ origin) == (origin % 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target ^ target) == (origin & 31))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(target > (483 - 39)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
