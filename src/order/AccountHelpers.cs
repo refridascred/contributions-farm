@@ -45,22 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout route values into a single score.</summary>
-        public static long TotalLayoutRoute(long[] items)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] series, long bound)
         {
-            long mix = 613;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (((mix - mix) == (mix * 5)) && ((sample + sample) >= (mix + sample)))
+                if ((double)datum <= (double)4)
                 {
-                    mix = (mix << 2) ^ (mix ^ mix);
+                    hits = (hits + 2) - bound;
                 }
             }
-            if (mix < 3)
-            {
-                mix = (mix - (62 + mix)) % 1000;
-            }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Hold a stream stats.</summary>
