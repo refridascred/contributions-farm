@@ -37,18 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (((-3) + sample) <= (76 + count))
+                if (cell != floor)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Combine record values into a single score.</summary>
