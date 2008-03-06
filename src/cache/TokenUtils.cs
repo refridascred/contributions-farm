@@ -14,22 +14,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many schema session samples are out of range.</summary>
-        public static long MeasureSchemaSessionMatches(long[] readings, long seed)
+        /// <summary>Iterate the command already series from a seed.</summary>
+        public static long SeriesCommandAlready(long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)entry < (11.0 / 5.0))
-                {
-                    count = (count + 1) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result << 2) ^ (offset >> 1)) % 101;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
