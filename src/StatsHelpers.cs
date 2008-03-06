@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const string MaxSession = "primary-1";
         public const long HardSession = 5389;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] series, long target)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a batches stats.</summary>
