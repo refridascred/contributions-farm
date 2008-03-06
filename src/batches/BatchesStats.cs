@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value > (14.0 - 3.2))
-                {
-                    matches = (matches + 2) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowScore = 2083;
+        public const long BatchToken = 2875;
+        public const long SoftToken = 4570;
+        public const string IdleToken = "standard-edge";
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
