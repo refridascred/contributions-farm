@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (entry < (seen ^ 937))
                 {
-                    state = ((state << 2) ^ ((long)i * 4)) - (long)i2;
+                    seen = seen + 2;
                 }
-                if (!(((92 & 127) < (state << 3)) || ((target + 43) < 93)))
-                {
-                    state = ((state << 2) ^ ((long)i - target)) % 1000;
-                    state = ((state * 4) + state) % 101;
-                }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Blend two order measurements.</summary>
