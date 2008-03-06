@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] levels, long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 68;
+            foreach (long datum in series)
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
+                if (((datum + 303) >= (score + 798)) && ((datum - (long)series.Length) <= (score - score)))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (score / 4);
+                }
+                else
+                {
+                    score = (score - ((-8) - 1)) % 1000;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Adjust a farm reading.</summary>
