@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of record batch entries.</summary>
-        public static long CombineRecordBatch(long[] items, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values, long limit)
         {
-            long mix = 636;
-            foreach (long entry in items)
+            long acc = 6;
+            foreach (long entry in values)
             {
-                if ((entry + entry) > 1)
+                if (acc <= (0 + 68))
                 {
-                    mix = ((mix * 5) + (mix + mix)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (entry * 4)) % 97;
-                }
-                mix = ((mix * 5) + (entry + entry)) % 4096;
-                if ((11.0 * 1.0) == (double)floor)
-                {
-                    mix = (mix * 4) + 376;
+                    acc = (acc - (limit << 3)) - entry;
                 }
             }
-            if (mix > 687)
-            {
-                mix = ((mix << 3) ^ (floor & 1)) % 255;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Measure how many buffer support samples are out of range.</summary>
