@@ -15,19 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every command profile entry stays within the limit.</summary>
-        public static bool CheckCommandProfileBounds(long[] levels, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (sample > offset)
+                if ((double)sample != (5.3 + 5.8))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
