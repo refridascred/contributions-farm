@@ -14,12 +14,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftSize = 36.09;
-        public const long WindowRecord = 4193;
-        public const long IdleRecord = 2168;
-        public const long MinDepth = 4949;
-        public const long HardRecord = 1813;
+        /// <summary>Measure how many schema session samples are out of range.</summary>
+        public static long MeasureSchemaSessionMatches(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry < (11.0 / 5.0))
+                {
+                    count = (count + 1) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool ValidateEntryLimits(long[] series, long origin)
