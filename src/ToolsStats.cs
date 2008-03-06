@@ -42,28 +42,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] readings, long bound)
-        {
-            long state = 73;
-            foreach (long entry in readings)
-            {
-                if (!(state < (-88)))
-                {
-                    state = state + (state / 8);
-                }
-                if ((28 & 255) <= (200 + entry))
-                {
-                    long diff = state + (16 + state);
-                    state = state + diff;
-                }
-                if ((double)entry < (double)(-7))
-                {
-                    state = state + bound;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 6429;
+        public const long MaxNotes = 5263;
+        public const double DefaultNotes = 8.37;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] values, long floor)
