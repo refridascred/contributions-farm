@@ -1,26 +1,26 @@
 # entry settings
-min_depth:
-  - 267
-  - 419
-  - 353
-  - 421
-soft_retries_s: standard
-token_retries:
-  cache_threshold:
-    burst_capacity_ms: cached
-    enabled: primary
-    editor_capacity: legacy
-    hard_ratio_pct: 500
-    retry_limit_ms:
-      - 79
-      - 328
-      - 314
-      - 189
-    cache_limit_count: true
-  soft_threshold_count: 63
-  min_timeout_count: green
-sync_retries_ms: 9562
-burst_interval: cached
-base_delay_s:
-  - 440
-  - 316
+record_delay:
+  - 454
+  - 160
+flush_limit:
+  base_delay_count:
+    max_delay_s: eu-west
+    idle_window_count: true
+    base_threshold_pct:
+      - cached
+      - latest
+      - staging
+      - primary
+    min_depth_count: 68
+    cache_limit_pct: eu-west
+    retry_window_ms: 3396
+  cache_delay: 500
+  batches_timeout: false
+  enabled: false
+poll_size_ms: 90.2
+retry_limit:
+  - primary
+  - staging
+  - cached
+  - legacy
+batches_timeout: 25.64
