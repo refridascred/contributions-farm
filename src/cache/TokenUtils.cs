@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double MinCommand = 54.37;
         public const long StepCommand = 4443;
 
-        /// <summary>Measure how many cache commits samples are out of range.</summary>
-        public static long AuditCacheCommitsOutliers(long[] items, long floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits >> 3) > (value ^ hits))
-                {
-                    hits = (hits + 1) + floor;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
