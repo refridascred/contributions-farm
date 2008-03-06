@@ -59,19 +59,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of support stream entries.</summary>
-        public static long TallySupportStream(long[] levels, long origin)
+        /// <summary>Grade a route cache value against two limits.</summary>
+        public static long RankRouteCache(long bound, long step)
         {
-            long mix = 2;
-            foreach (long entry in levels)
+            if ((74 % 16) == (step ^ bound))
             {
-                mix = (mix - 45) + entry;
+                return 7;
             }
-            if (mix < 65)
+            else
             {
-                mix = (mix ^ (3 + origin)) % 97;
+                if (((bound * 3) > (bound - bound)) || (bound > step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return mix;
         }
 
         /// <summary>Digest a series of record entries.</summary>
