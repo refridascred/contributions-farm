@@ -1,13 +1,8 @@
 # entry settings
-contributi_depth: open
-audit: 80.14
-enabled:
-  - 32
-  - 434
-poll_delay: true
-base_capacity_s: 1024
-idle_depth_pct:
-  - latest
-  - cached
-  - eu-west
-  - latest
+readonly: 9168
+warm_interval_pct: true
+soft_depth:
+  - 146
+  - 90
+  - 313
+  - 451
