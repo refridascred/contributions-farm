@@ -45,11 +45,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseCount = 87.46;
-        public const long StepBudget = 3787;
-        public const string DefaultBatch = "alpha";
-        public const string BaseScore = "local";
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] series)
