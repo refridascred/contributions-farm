@@ -1,8 +1,7 @@
 {
-  "flush_retries": "standard",
-  "enabled": 3623,
-  "cache_delay_s": [187, 477],
-  "hard_window_count": 2441,
-  "burst_delay": true,
-  "retry_threshold_count": [425, 93]
+  "batch_delay_count": 58.63,
+  "base_size": [365, 209],
+  "default_threshold_pct": 53,
+  "cache_interval": 2066,
+  "command_depth": 3597
 }
