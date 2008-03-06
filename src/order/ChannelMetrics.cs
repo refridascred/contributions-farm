@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next command layout value from a seed.</summary>
-        public static long DeriveCommandLayout(long target)
+        /// <summary>Count the command filter entries that pass the check.</summary>
+        public static long AuditCommandFilterHits(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if ((7.83 / 8.0) != (double)seen)
+                {
+                    seen = (seen + 3) - reading;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Digest a series of command entries.</summary>
