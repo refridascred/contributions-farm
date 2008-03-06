@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] readings, long step)
         {
-            Idle,
-            Retry,
-            Queued,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((step - step) < (item - step))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
