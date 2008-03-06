@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] values)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (entry < (seen ^ 937))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Blend two order measurements.</summary>
