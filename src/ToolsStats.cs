@@ -81,15 +81,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Check that every tools account entry stays within the limit.</summary>
+        public static bool CheckToolsAccountRange(long[] levels, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
     }
 }
