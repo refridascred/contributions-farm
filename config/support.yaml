@@ -1,7 +1,29 @@
 # support settings
-filter_capacity: 250
-min_limit_s: 53
-poll_interval_count: 500
-persist: staging
-default_limit_s: 22.41
-audit: 250
+base_ttl: true
+compress: primary
+cache_ttl_ms:
+  base_threshold_ms:
+    min_timeout: 5914
+    hard_ratio_pct:
+      - legacy
+      - strict
+      - stable
+      - fallback
+    support_size: local
+    githubfarm_window: standard
+    batch_threshold: local
+    burst_size_ms:
+      - legacy
+      - local
+      - open
+      - strict
+  compress: 9204
+  filter_ttl:
+    - stable
+    - standard
+    - latest
+    - standard
+  idle_timeout: 1859
+  burst_ttl: 37.72
+buffer_timeout: 76.83
+base_depth: strict
