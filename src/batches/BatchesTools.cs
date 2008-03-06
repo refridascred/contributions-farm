@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] levels, long floor)
         {
-            Stale,
-            Draft,
-            Dropped,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum == (20.0 + 3.62))
+                {
+                    count = (count + 1) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
