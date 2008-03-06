@@ -18,11 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long seed, long offset)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            if ((seed ^ seed) >= seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset & 63) == (4 & 63)) && ((offset << 1) <= seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((1.9 + 4.0) < (double)offset) || (offset < 137))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate checks samples.</summary>
