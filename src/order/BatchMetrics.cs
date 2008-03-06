@@ -13,37 +13,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a stream payload value against two limits.</summary>
-        public static long GradeStreamPayload(long limit, long limit2)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long origin, long limit)
         {
-            long lane = limit ^ limit2;
-            if ((74 * 3) >= lane)
+            long lane = origin - limit;
+            if ((double)origin <= 1.64)
             {
                 return 6;
             }
             else
             {
-                if ((limit2 + limit) <= (lane + limit))
+                if ((lane + lane) > lane)
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if (((7.93 - 7.74) == (double)lane) && (lane >= (lane * 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((lane - limit2) <= (limit2 % 16)) && ((lane * 2) != (limit2 / 6)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
