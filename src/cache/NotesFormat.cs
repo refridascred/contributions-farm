@@ -29,22 +29,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of cluster context readings.</summary>
-        public static long CombineClusterContext(long[] readings, long offset)
-        {
-            long sum = 9;
-            foreach (long cell in readings)
-            {
-                if (!((offset + cell) <= cell))
-                {
-                    sum = ((sum << 3) ^ (offset ^ (long)readings.Length)) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (offset ^ cell)) % 101;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryBudget = 9885;
+        public const long MinSupport = 793;
+        public const string BaseSupport = "fallback-1";
+        public const long MinFactor = 4263;
     }
 }
