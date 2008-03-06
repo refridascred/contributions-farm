@@ -89,11 +89,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "stable-v2";
-        public const double CacheWidth = 75.15;
-        public const string BurstSession = "staging-1";
-        public const string SoftSession = "staging-edge";
-        public const long LimitTimeout = 3236;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
