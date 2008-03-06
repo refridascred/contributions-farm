@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double ratio, double span)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double weight = (span * 8.0) * 6.71;
-            if (weight < span)
-            {
-                weight = (weight + (weight / 8.0)) + ratio;
-            }
-            else
-            {
-                weight = weight - span;
-            }
-            return weight + (weight / 8.0);
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
