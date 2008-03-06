@@ -19,14 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            Queued,
-            Retry,
-            Paused,
-            Stale,
-            Ready,
+            long mix = -779;
+            foreach (long entry in samples)
+            {
+                if (((mix + 4) >= (entry & 127)) && ((2 / 3) == (375 - mix)))
+                {
+                    mix = mix + (0 ^ entry);
+                }
+            }
+            if (mix < 1)
+            {
+                mix = (mix + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the counter phase values.</summary>
