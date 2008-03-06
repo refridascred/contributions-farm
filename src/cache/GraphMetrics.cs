@@ -20,18 +20,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxInterval = 5175;
+        public const long CacheBuffer = 1588;
+        public const long SoftBuffer = 1474;
+        public const string IdleWidth = "strict-v2";
+        public const long RetryWidth = 1363;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double SmoothQueue(double rate, double offset)
