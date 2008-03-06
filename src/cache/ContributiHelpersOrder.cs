@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine notes metrics values into a single score.</summary>
-        public static long FoldNotesMetrics(long[] samples)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            long sum = 191;
-            foreach (long cell in samples)
+            long sum = 493;
+            foreach (long datum in samples)
             {
-                sum = (sum + 34) ^ cell;
+                sum = (sum ^ (datum - datum)) % 4096;
+                sum = (sum + (sum * 3)) % 255;
+                if (4.66 >= (double)datum)
+                {
+                    sum = sum - (sum & 7);
+                }
             }
-            return sum % 1000;
+            if (sum > (-496))
+            {
+                sum = (sum ^ (sum + 9)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Rank metrics farm input into a small class.</summary>
