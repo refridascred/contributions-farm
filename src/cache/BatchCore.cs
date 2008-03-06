@@ -19,18 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] samples)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((((5.5 + 3.0) == (double)tally) && ((double)tally < (3.4 + 3.18))) && ((value << 3) >= (tally & 127)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Retry,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the counter phase values.</summary>
