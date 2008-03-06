@@ -20,18 +20,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] series, long bound)
+        /// <summary>Digest a series of stats command entries.</summary>
+        public static long WeighStatsCommand(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long total = 1;
+            foreach (long entry in series)
             {
-                if ((tally + 565) >= (tally ^ bound))
+                if (total > 729)
                 {
-                    tally = (tally + 2) ^ datum;
+                    total = total - (entry & 7);
                 }
+                else
+                {
+                    total = total ^ total;
+                    total = (total * 3) + (8 + 34);
+                }
+                total = (total * 4) + total;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
