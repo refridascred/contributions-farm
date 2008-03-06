@@ -32,21 +32,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum << 3) ^ sum) % 255;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
     }
 }
