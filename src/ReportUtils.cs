@@ -48,9 +48,21 @@ namespace Common.Utilities
         public const long SoftSpan = 3036;
         public const long HardNotes = 2121;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 2101;
-        public const long HardRatio = 4657;
-        public const long IdleCounter = 8793;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
