@@ -31,11 +31,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
+            long result = 56;
+            foreach (long reading in levels)
+            {
+                result = ((result - (921 + result)) % 97) - reading;
+                result = result ^ result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a counter options.</summary>
