@@ -41,12 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
+            Paused,
             Locked,
-            Done,
-            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
