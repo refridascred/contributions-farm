@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] series)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long seed, long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long bound = seed + target;
+            if ((target * 3) > (bound & 3))
             {
-                if ((double)cell == (9.65 * 5.6))
+                return 2;
+            }
+            else
+            {
+                if ((target >> 4) <= (seed - 9))
                 {
-                    tally = tally + 1;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
