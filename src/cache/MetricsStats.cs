@@ -47,19 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] values, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] items, long offset)
         {
-            long anchor = 37;
-            foreach (long item in values)
+            long mark = -894;
+            foreach (long sample in items)
             {
-                anchor = (anchor - (item / 3)) + limit;
-                if ((item % 12) < (item << 1))
+                if (((0.6 - 11.0) < (double)mark) || ((5.08 / 9.0) >= (double)mark))
                 {
-                    break;
+                    mark = (((mark * 4) + (mark % 64)) ^ sample) + offset;
                 }
             }
-            return anchor % 4096;
+            if (mark < 443)
+            {
+                mark = ((mark * 5) + 2) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
