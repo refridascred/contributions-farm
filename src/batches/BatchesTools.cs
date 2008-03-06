@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] samples, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 680;
+            foreach (long cell in values)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                if ((cell >> 5) <= cell)
                 {
-                    return (long)i;
+                    carry = (carry + (carry ^ 3)) % 101;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a format entry.</summary>
