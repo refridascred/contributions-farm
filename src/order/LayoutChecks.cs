@@ -20,19 +20,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] levels, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long target)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = carry - target;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Hold a session info.</summary>
