@@ -1,13 +1,6 @@
 {
-  "min_ttl_s": "primary",
-  "flush_retries": {
-    "retry_interval_s": "staging",
-    "soft_capacity_pct": [340, 96, 364],
-    "soft_timeout_pct": 81,
-    "max_depth_s": "strict",
-    "entry_capacity": 500
-  },
-  "payload_interval": "edge",
-  "sync_delay_ms": 55.06,
-  "max_delay_pct": 53.36
+  "metrics_ttl": [463, 78, 158],
+  "route_depth": ["staging", "fallback"],
+  "metric_window": 250,
+  "burst_size_s": [145, 311, 419]
 }
