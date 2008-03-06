@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long bound, long step)
         {
-            Closed,
-            Paused,
-            Done,
+            if ((bound < (bound + step)) || ((38 >> 4) >= bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step <= (double)51)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the order state values.</summary>
