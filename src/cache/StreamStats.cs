@@ -27,13 +27,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitDepth = 84.63;
+        public const long MaxBudget = 8806;
+        public const double MaxCount = 68.39;
+        public const long SoftTimeout = 8657;
+        public const double StepCount = 44.59;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
