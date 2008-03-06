@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "staging-v2";
+        public const double BaseLayout = 23.16;
+        public const long MaxCount = 4774;
+        public const long IdleLayout = 6571;
+        public const long SoftLayout = 591;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long SoftMetric = 8613;
