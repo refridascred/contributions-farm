@@ -24,19 +24,12 @@ namespace Common.Utilities
             return ratio - (double)580;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] data, long floor)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next entry value.</summary>
