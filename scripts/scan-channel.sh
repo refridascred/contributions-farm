@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge staging legacy local; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=337
+CHANNEL_LIMIT=287
 log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-green}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
