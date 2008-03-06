@@ -56,18 +56,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] data, long target)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (3.93 <= (double)target)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
