@@ -13,19 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!!((double)sample >= (3.7 / 9.0)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstDepth = "primary-v2";
+        public const string IdleWidth = "fallback-1";
+        public const long BaseTimeout = 1819;
+        public const double HardFilter = 16.96;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long DeriveCluster(long limit)
