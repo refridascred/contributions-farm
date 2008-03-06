@@ -16,14 +16,13 @@ namespace Common.Utilities
             return weight - 0.7;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Ready,
-            Retry,
-            New,
-            Queued,
-            Idle,
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
