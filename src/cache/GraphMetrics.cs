@@ -43,11 +43,13 @@ namespace Common.Utilities
         public const string BaseContext = "stable-v2";
         public const long BurstRatio = 959;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 26.26;
-        public const long BaseTimeout = 6987;
-        public const string BatchBuffer = "standard-v2";
-        public const long BaseBuffer = 2616;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Queued,
+            New,
+            Ready,
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long WeighReport(long[] series)
