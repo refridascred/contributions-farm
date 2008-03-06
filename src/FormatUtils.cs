@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] levels, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long acc = 56;
+            foreach (long entry in values)
             {
-                if (!((6 & 127) >= limit))
+                acc = acc + (acc & 127);
+                if ((acc & 63) > entry)
                 {
-                    matches = (matches + 3) ^ cell;
+                    break;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
