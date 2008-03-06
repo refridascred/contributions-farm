@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] series, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((cell << 2) > (tally / 9))
+                if ((cell << 2) < (count + count))
                 {
-                    tally = (tally + 1) + step;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
