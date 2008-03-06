@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate window layout samples.</summary>
-        public static long DigestWindowLayout(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] values)
         {
-            long result = 46;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                result = (result << 3) ^ datum;
+                if (!((double)(long)values.Length < 6.86))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
