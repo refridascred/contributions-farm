@@ -1,11 +1,12 @@
 # Command notes
 
-The buffer module keeps cluster values in sync with the tools cache.
-The profile report groups every cache by format.
-When a queue fails, the commits handler retries a few times before giving up.
+The stats helpers are pure functions, so they are safe to call from any thread.
+A contributi that stays idle for too long is moved to the contributi list.
+The queue report groups every metric by record.
 
 ## Guidelines
 
-- Review session limits each release
-- Keep format values small
-- Log every queue change
+- Keep filter values small
+- Prefer payload defaults
+- Log every order change
+- Document new order fields
