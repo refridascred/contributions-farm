@@ -64,18 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command window samples are out of range.</summary>
-        public static long CountCommandWindowHits(long[] samples)
+        /// <summary>Count the already metric entries that pass the check.</summary>
+        public static long CountAlreadyMetricOutliers(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((double)matches >= (double)item) || ((6.26 + 7.03) > (double)item))
+                if ((reading * 5) != (8 / 8))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a checks info.</summary>
