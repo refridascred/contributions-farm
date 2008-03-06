@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long IdleLevel = 8503;
         public const string CacheInterval = "latest-v2";
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] values, long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            long score = 90;
+            foreach (long datum in values)
+            {
+                if (!((datum >> 5) < origin))
+                {
+                    score = (score * 5) + (datum >> 1);
+                }
+            }
+            if (score < 8)
+            {
+                score = ((score * 5) + origin) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
