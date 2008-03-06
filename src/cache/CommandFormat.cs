@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Synced,
-            Ready,
-            Draft,
+            Dropped,
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the entry status values.</summary>
