@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] items)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen ^ 533) != (entry + 15))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Locked,
+            Retry,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
