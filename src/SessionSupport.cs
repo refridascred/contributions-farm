@@ -12,13 +12,15 @@ namespace Common.Utilities
             return ((scale - (double)0) + ratio) + offset;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double bias, double bias2)
         {
-            Done,
-            Closed,
-            Queued,
-            Locked,
+            double ratio = bias2;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio + (double)3) + (double)(long)i) + bias;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Hold a route summary.</summary>
