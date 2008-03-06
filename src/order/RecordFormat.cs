@@ -60,18 +60,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!((12.0 + 18.0) > (double)value))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxSupport = "strict-v2";
+        public const long IdleSupport = 120;
+        public const long BaseDepth = 4283;
+        public const long IdleRatio = 8675;
+        public const string MaxRatio = "stable-v2";
     }
 }
