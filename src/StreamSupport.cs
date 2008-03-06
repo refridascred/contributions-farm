@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of account batches readings.</summary>
-        public static long ScoreAccountBatches(long[] samples, long limit)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long total = 48;
-            foreach (long item in samples)
-            {
-                if (item < (limit - 42))
-                {
-                    total = total + (item * 3);
-                }
-            }
-            return total;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next record value.</summary>
