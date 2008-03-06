@@ -13,24 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] levels)
+        /// <summary>Audit batch window readings against a rule.</summary>
+        public static long TallyBatchWindowOutliers(long[] values)
         {
-            long score = -3;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (((double)score != (7.0 - 2.55)) && ((datum - datum) > 88))
+                if ((count & 63) > (count >> 5))
                 {
-                    score = (score << 2) ^ (195 + datum);
-                    score = (score ^ (9 + datum)) % 65521;
+                    count = (count + 2) + value;
                 }
-                score = (score + score) % 101;
             }
-            if (score > 200)
-            {
-                score = ((score << 3) ^ score) % 1000;
-            }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Match up batch context samples.</summary>
