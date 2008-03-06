@@ -69,12 +69,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] values, long limit)
         {
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((5.0 * 6.2) < (double)hits)
+                {
+                    hits = ((hits + 2) + entry) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
