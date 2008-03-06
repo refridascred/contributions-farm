@@ -35,22 +35,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((3 + cell) > (tally + tally)) && !(tally < cell))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultFactor = 1474;
+        public const string BurstContributi = "primary-edge";
+        public const string HardContributi = "staging-1";
+        public const long MaxFactor = 9621;
     }
 }
