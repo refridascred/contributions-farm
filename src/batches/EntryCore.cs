@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const string WindowDepth = "open-v2";
         public const string LimitSession = "alpha-1";
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((levels[i] <= offset) && ((levels[i] % 2) != 0))
                 {
-                    if ((values[i] + values[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate account command readings against a bound.</summary>
