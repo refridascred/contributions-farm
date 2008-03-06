@@ -1,39 +1,9 @@
 # support settings
-retry_retries:
-  - 455
-  - 335
-  - 380
-  - 454
-order_depth:
-  max_interval_count: 69.82
-  warm_depth:
-    max_retries: green
-    enabled: false
-    dry_run: stable
-  warm_retries:
-    - green
-    - strict
-    - fallback
-  contributi_interval: 2.82
-  hard_ttl:
-    - latest
-    - eu-west
-    - legacy
-  poll_window: cached
-tools_threshold: 20.32
-checks_depth:
-  burst_capacity: 60
-  entry_ratio: 85
-  poll_limit_ms: 15
-  soft_delay_pct:
-    enabled: staging
-    default_retries: 75
-    default_delay_ms:
-      - cached
-      - stable
-      - local
-      - cached
-    sync_threshold: 60
-    queue_retries: 48.83
-  tools_retries: 8521
-poll_capacity_s: green
+cache_limit: strict
+flush_retries: 62.05
+command_ratio: local
+enabled:
+  - standard
+  - latest
+  - eu-west
+  - strict
