@@ -1,29 +1,8 @@
 # support settings
-base_ttl: true
-compress: primary
-cache_ttl_ms:
-  base_threshold_ms:
-    min_timeout: 5914
-    hard_ratio_pct:
-      - legacy
-      - strict
-      - stable
-      - fallback
-    support_size: local
-    githubfarm_window: standard
-    batch_threshold: local
-    burst_size_ms:
-      - legacy
-      - local
-      - open
-      - strict
-  compress: 9204
-  filter_ttl:
-    - stable
-    - standard
-    - latest
-    - standard
-  idle_timeout: 1859
-  burst_ttl: 37.72
-buffer_timeout: 76.83
-base_depth: strict
+sync_ratio_pct: false
+retry_window_ms: legacy
+readonly:
+  - 339
+  - 375
+  - 476
+  - 50
