@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstSpan = 6762;
+        public const long HardCount = 2956;
+        public const long MinInterval = 4853;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ProjectMetric(double weight, double offset)
