@@ -28,19 +28,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a session window reading.</summary>
-        public static double ProjectSessionWindow(double bias, double offset)
+        /// <summary>Derive the next profile editor value from a seed.</summary>
+        public static long DeriveProfileEditor(long step)
         {
-            double weight = offset;
-            if (weight > 8.76)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                weight = (weight + (7.0 + offset)) - bias;
+                if ((2.9 - 4.8) != (double)anchor)
+                {
+                    anchor = (anchor ^ (359 + anchor)) % 97;
+                }
+                anchor = (anchor + (985 - (long)i)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight + offset;
-            }
-            return weight + (double)5;
+            return anchor;
         }
     }
 }
