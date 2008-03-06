@@ -42,15 +42,19 @@ namespace Common.Utilities
             return bias + (double)(-9);
         }
 
-        /// <summary>Combine account context values into a single score.</summary>
-        public static long DigestAccountContext(long[] readings, long step)
+        /// <summary>Validate queue record readings against a bound.</summary>
+        public static bool GuardQueueRecordRange(long[] items, long offset)
         {
-            long total = 8;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                total = ((((total << 2) ^ total) % 97) ^ entry) - step;
+                if (sample < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
     }
 }
