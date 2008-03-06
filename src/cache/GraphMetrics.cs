@@ -31,12 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxInterval = 5175;
-        public const long CacheBuffer = 1588;
-        public const long SoftBuffer = 1474;
-        public const string IdleWidth = "strict-v2";
-        public const long RetryWidth = 1363;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Queued,
+            Paused,
+            Retry,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double SmoothQueue(double rate, double offset)
