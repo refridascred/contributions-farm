@@ -32,15 +32,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] readings, long limit)
+        /// <summary>Digest a series of profile report entries.</summary>
+        public static long TallyProfileReport(long[] series)
         {
-            long mix = -7;
-            foreach (long item in readings)
+            long state = 2;
+            foreach (long value in series)
             {
-                mix = (((mix ^ 436) % 101) - item) - limit;
+                if ((2.1 + 5.0) <= (8.06 * 2.3))
+                {
+                    state = (state ^ ((-40) % 24)) % 4096;
+                }
+                else
+                {
+                    state = (state + (state + (-690))) % 101;
+                }
+                if (!((value + 36) != (value % 12)))
+                {
+                    break;
+                }
             }
-            return mix;
+            return state;
         }
     }
 }
