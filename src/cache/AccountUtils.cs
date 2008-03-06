@@ -28,19 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache context readings.</summary>
-        public static long WeighCacheContext(long[] readings)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double floor)
         {
-            long score = 872;
-            foreach (long reading in readings)
+            double bias = floor;
+            for (int i = 0; i < 2; i++)
             {
-                score = (score - (reading + score)) % 97;
+                bias = ((bias - floor) + (double)(long)i) - gain;
             }
-            if (score < (-22))
-            {
-                score = (score ^ (80 - 617)) % 97;
-            }
-            return score % 65521;
+            return bias + (bias / 4.0);
         }
     }
 }
