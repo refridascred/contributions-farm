@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] readings, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] data, long offset)
         {
-            long sum = 107;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((12 / 5) != (seed + 77))
+                if ((6 >= (entry << 1)) && ((entry + offset) >= (710 - count)))
                 {
-                    sum = ((sum * 2) + (sum / 5)) - value;
+                    count = count + 3;
                 }
                 else
                 {
-                    sum = (sum * 2) + (seed % 97);
+                    count = count - 1;
                 }
             }
-            if (sum < 2)
-            {
-                sum = (sum * 5) + (seed + seed);
-            }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
