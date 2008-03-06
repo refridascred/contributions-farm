@@ -50,12 +50,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepInterval = 70.5;
-        public const double CacheInterval = 93.88;
-        public const long BaseSize = 1326;
-        public const double DefaultLevel = 72.25;
-        public const string RetryBuffer = "stable-1";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowRatio = 75.84;
+        public const long MinScore = 324;
+        public const double MaxScore = 43.79;
 
         /// <summary>Measure how many command window samples are out of range.</summary>
         public static long CountCommandWindowHits(long[] samples)
