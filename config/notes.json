@@ -1,13 +1,22 @@
 {
-  "graph_ttl": 3700,
-  "channel_depth": "eu-west",
-  "burst_capacity_ms": 9475,
-  "default_depth_count": 500,
-  "dry_run": {
-    "metric_retries": 250,
-    "farm_capacity": 4332,
-    "idle_depth_s": 8,
-    "metric_ratio": "eu-west"
+  "warm_retries_count": "latest",
+  "window_depth": [145, 402, 334],
+  "hard_window_pct": {
+    "notes_retries": 37.27,
+    "dry_run": true,
+    "soft_delay_s": "strict"
   },
-  "githubfarm_window": "latest"
+  "min_retries_pct": {
+    "payload_ttl": false,
+    "retry_threshold": {
+      "base_depth_ms": 60,
+      "idle_interval_count": "latest",
+      "commits_retries": 250,
+      "farm_window": false
+    },
+    "soft_delay": false,
+    "filter_interval": 500,
+    "min_limit_ms": ["staging", "blue", "strict"]
+  },
+  "token_limit": 86
 }
