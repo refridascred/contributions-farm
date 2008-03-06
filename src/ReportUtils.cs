@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] items, long bound)
+        /// <summary>Iterate the layout command series from a seed.</summary>
+        public static long SeriesLayoutCommand(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] > bound)
+                if ((long)i < (acc + (long)i))
                 {
-                    return (long)i;
+                    continue;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
