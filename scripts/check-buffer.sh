@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=50
-log "limit is ${BUFFER_LIMIT}"
-
-for item in latest open staging; do
+for item in fallback legacy local; do
     log "checking ${item}"
 done
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=438
+log "limit is ${BUFFER_LIMIT}"
