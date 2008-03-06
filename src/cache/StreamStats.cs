@@ -33,18 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the schema metrics entries that pass the check.</summary>
-        public static long AuditSchemaMetricsMatches(long[] values)
+        /// <summary>Measure how many command commits samples are out of range.</summary>
+        public static long MeasureCommandCommitsHits(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (4.0 < (double)item)
+                if ((1 & 127) <= (origin << 3))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
