@@ -1,5 +1,11 @@
 # entry settings
-strict: local
-graph_window: 6207
-hard_window_pct: 85.41
-default_ratio: 30
+compress:
+  warm_capacity_count: false
+  min_capacity_s: blue
+  retry_limit: 2733
+session_size: 80
+poll_size:
+  idle_limit: 55.33
+  stats_size: false
+  soft_retries_s: 7424
+cache_retries: 11
