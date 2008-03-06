@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const string BatchTimeout = "legacy-v2";
         public const long BurstScore = 8005;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Measure how many graph metric samples are out of range.</summary>
+        public static long MeasureGraphMetricGaps(long[] values)
         {
-            long carry = 76;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((item + (-565)) <= (item ^ item))
+                if ((entry * 3) <= (entry + entry))
                 {
-                    carry = (carry << 2) ^ item;
+                    matches = matches + 2;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
