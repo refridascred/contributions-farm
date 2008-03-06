@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] series, long offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long total = 97;
-            foreach (long reading in series)
-            {
-                total = ((total + (total ^ 684)) % 65521) ^ reading;
-            }
-            if (total < 235)
-            {
-                total = (total << 3) ^ offset;
-            }
-            return total % 4096;
+            Done,
+            Ready,
+            Active,
+            Queued,
         }
 
         /// <summary>Define record limits and defaults.</summary>
