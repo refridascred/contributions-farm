@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            New,
-            Done,
-            Stale,
-            Closed,
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
