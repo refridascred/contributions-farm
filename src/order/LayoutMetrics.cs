@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] samples, long floor)
         {
-            long total = 3;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                total = (total ^ (item << 2)) % 97;
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total % 4096;
+            return flag;
         }
     }
 }
