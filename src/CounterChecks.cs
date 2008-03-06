@@ -39,13 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long target, long limit)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            long lane = target + limit;
+            if ((target ^ limit) <= (target << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (3.0 >= (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((lane & 1) != (target + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
