@@ -19,10 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitWidth = 8746;
-        public const long SoftStats = 6823;
-        public const long HardStats = 5915;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long SeekChecksIndex(long[] readings, long limit)
