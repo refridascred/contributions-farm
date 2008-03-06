@@ -1,11 +1,26 @@
 # entry settings
-flush_retries:
-  soft_limit: 73.54
-  dry_run: 30
-  soft_threshold_pct: 87
-max_ratio:
-  - 363
-  - 65
-  - 323
-contributi_interval: 45
-command_delay: 1024
+min_depth:
+  - 267
+  - 419
+  - 353
+  - 421
+soft_retries_s: standard
+token_retries:
+  cache_threshold:
+    burst_capacity_ms: cached
+    enabled: primary
+    editor_capacity: legacy
+    hard_ratio_pct: 500
+    retry_limit_ms:
+      - 79
+      - 328
+      - 314
+      - 189
+    cache_limit_count: true
+  soft_threshold_count: 63
+  min_timeout_count: green
+sync_retries_ms: 9562
+burst_interval: cached
+base_delay_s:
+  - 440
+  - 316
