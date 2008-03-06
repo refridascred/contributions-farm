@@ -37,27 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] series)
-        {
-            long acc = 14;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = ((acc ^ (5 / 8)) % 97) + (long)i;
-                }
-                acc = ((acc * 4) + (datum + acc)) % 101;
-                if (4 <= acc)
-                {
-                    acc = ((acc * 3) + (838 + acc)) % 65521;
-                }
-            }
-            if (acc < 266)
-            {
-                acc = (acc - (0 + acc)) % 1000;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "open";
+        public const long BaseSpan = 8712;
+        public const long SoftBatches = 1633;
+        public const long HardBatches = 6983;
     }
 }
