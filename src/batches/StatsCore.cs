@@ -63,17 +63,18 @@ namespace Common.Utilities
         public const long BatchChannel = 127;
         public const long DefaultChannel = 5255;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] readings, long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 7;
+            foreach (long cell in readings)
             {
-                if (readings[i] > step)
+                if ((double)mix == (6.95 - 6.9))
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ cell;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
