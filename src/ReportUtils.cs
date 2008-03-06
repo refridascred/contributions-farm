@@ -30,18 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout context entries that pass the check.</summary>
-        public static long MeasureLayoutContextGaps(long[] items, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((item + origin) < (matches ^ origin))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    matches = matches + 2;
+                    result = (((result << 2) ^ (result % 3)) % 255) - (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
