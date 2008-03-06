@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 4784;
-        public const string CacheFactor = "staging-edge";
-        public const long MinBudget = 1789;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                state = state ^ (state << 3);
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double AdjustFilter(double scale, double bias)
