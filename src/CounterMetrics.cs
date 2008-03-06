@@ -19,13 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Combine counter contributi values into a single score.</summary>
+        public static long ScoreCounterContributi(long[] values, long floor)
         {
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long state = 1;
+            foreach (long datum in values)
+            {
+                if ((state << 2) != (datum << 3))
+                {
+                    state = (state * 2) + datum;
+                    state = (state - (floor << 2)) % 1000;
+                }
+                if (((83 + 23) != (floor >> 5)) && (floor >= (state << 3)))
+                {
+                    state = ((state << 2) ^ state) % 65521;
+                }
+                if ((datum * 4) > (floor >> 2))
+                {
+                    break;
+                }
+            }
+            if (state > 675)
+            {
+                state = state - (floor ^ 0);
+            }
+            return state;
         }
 
         /// <summary>Project the next token value.</summary>
