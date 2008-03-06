@@ -58,9 +58,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCount = "open-edge";
-        public const long BaseFactor = 5076;
-        public const double BatchLevel = 97.29;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long floor, long step)
+        {
+            long gap = floor - step;
+            if (((gap >> 2) <= floor) || ((step / 5) > (step - 88)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(gap >= (gap + 40)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
