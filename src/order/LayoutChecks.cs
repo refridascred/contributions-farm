@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] items, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 461;
+            foreach (long cell in data)
             {
-                if ((items[i] >= seed) && ((items[i] % 3) != 0))
+                if ((mark + 674) <= (cell - mark))
                 {
-                    return (long)i;
+                    mark = (mark * 4) + seed;
+                }
+                if ((cell - mark) <= mark)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 92)
+            {
+                mark = ((mark * 4) + (mark * 2)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
