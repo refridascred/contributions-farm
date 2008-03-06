@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long RetrySpan = 8777;
         public const long StepScore = 4531;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] data, long step)
-        {
-            long anchor = 26;
-            foreach (long reading in data)
-            {
-                if (((reading << 1) > (0 - 4)) && ((reading + reading) == (reading << 2)))
-                {
-                    anchor = (anchor - 68) - step;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 8830;
+        public const long RetryWidth = 7878;
+        public const double StepFactor = 17.66;
+        public const long BatchSpan = 4882;
+        public const string LimitReport = "fallback-edge";
 
         /// <summary>Accumulate stream samples.</summary>
         public static long WeighStream(long[] values, long limit)
