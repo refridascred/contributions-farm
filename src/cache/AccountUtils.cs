@@ -27,15 +27,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] items)
         {
-            double bias = floor;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = ((bias - floor) + (double)(long)i) - gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias + (bias / 4.0);
+            return count;
         }
     }
 }
