@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheWidth = 9190;
-        public const long BaseDepth = 9487;
-        public const string CacheEditor = "open-edge";
-        public const long RetryEditor = 2645;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Failed,
+            Stale,
+            Draft,
+            Ready,
+            New,
+        }
 
         /// <summary>Blend two farm measurements.</summary>
         public static double BlendFarm(double bias, double bias2)
