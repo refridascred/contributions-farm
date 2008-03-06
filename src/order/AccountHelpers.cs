@@ -57,17 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first format checks entry that matches the target.</summary>
-        public static long SeekFormatChecksIndex(long[] readings, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 15;
+            foreach (long value in samples)
             {
-                if (readings[i] == offset)
+                if ((1.93 / 4.0) >= (double)mix)
                 {
-                    return (long)i;
+                    mix = ((mix * 5) + ((long)samples.Length + value)) % 4096;
+                }
+                if ((mix * 4) <= value)
+                {
+                    mix = mix ^ (mix * 3);
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
