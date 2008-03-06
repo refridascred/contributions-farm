@@ -26,11 +26,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] readings, long bound)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
