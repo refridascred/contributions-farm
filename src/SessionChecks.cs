@@ -25,21 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster editor pairs that satisfy a relation.</summary>
-        public static long PairClusterEditorCount(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 66;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)carry <= (8.0 * 8.5))
                 {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry - ((-862) >> 5);
+                }
+                if ((floor & 15) > sample)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (carry < 673)
+            {
+                carry = ((carry * 4) + ((long)readings.Length / 9)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the buffer class values.</summary>
