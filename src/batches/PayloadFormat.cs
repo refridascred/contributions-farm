@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double SoftEditor = 1.83;
         public const long CacheTimeout = 3933;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 39.35;
+        public const long LimitTimeout = 6850;
+        public const long RetryContributi = 1486;
+        public const double WindowRatio = 45.16;
+        public const long WindowSize = 2695;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
