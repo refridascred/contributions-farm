@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 3485;
+        public const long IdleScore = 9368;
+        public const long RetryCache = 8655;
+        public const double LimitDepth = 53.88;
+        public const string DefaultCache = "local-1";
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsHits(long[] series)
