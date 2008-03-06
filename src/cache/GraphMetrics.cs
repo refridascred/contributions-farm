@@ -39,22 +39,12 @@ namespace Common.Utilities
         public const string BaseContext = "stable-v2";
         public const long BurstRatio = 959;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] items, long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)seen <= 5.78)
-                {
-                    seen = ((seen + 2) + value) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
