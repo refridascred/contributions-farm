@@ -27,22 +27,19 @@ namespace Common.Utilities
         public const string BurstScore = "alpha-edge";
         public const long HardLevel = 3605;
 
-        /// <summary>Count the already farm entries that pass the check.</summary>
-        public static long TallyAlreadyFarmHits(long[] data, long seed)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((-1) <= seed)
+                if (datum > step)
                 {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
