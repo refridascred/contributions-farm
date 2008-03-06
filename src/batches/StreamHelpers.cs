@@ -69,19 +69,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] items, long floor)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
