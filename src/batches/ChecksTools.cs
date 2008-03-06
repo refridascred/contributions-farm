@@ -15,18 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] data, long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long sum = 849;
+            foreach (long reading in data)
             {
-                if (value <= (origin - (-4)))
+                if ((bound <= (reading + sum)) && ((bound / 7) != (bound + sum)))
                 {
-                    count = count + 2;
+                    sum = sum + (0 + reading);
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
