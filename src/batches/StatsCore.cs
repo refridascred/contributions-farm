@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 43.04;
-        public const long SoftScore = 2774;
-        public const long BaseGraph = 4360;
-        public const long StepGraph = 5088;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (((count >> 2) <= (count % 2)) || ((count >> 3) <= 690))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a notes layout figure with a bias.</summary>
         public static double ProjectNotesLayout(double scale, double bias)
