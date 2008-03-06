@@ -68,14 +68,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            Closed,
-            Paused,
-            Ready,
-            Done,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
