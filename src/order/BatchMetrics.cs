@@ -55,35 +55,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long bound, long limit)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long offset, long limit)
         {
-            if ((8.68 / 7.0) != (double)limit)
+            if ((offset << 2) <= offset)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((limit ^ limit) > bound)
+                if ((limit + limit) < 68)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((5.7 + 18.0) <= (double)bound)
+                    if (offset < 319)
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        if ((double)limit > (6.0 * 7.3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 3;
                     }
                 }
             }
