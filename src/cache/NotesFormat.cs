@@ -24,10 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 531;
-        public const long MaxReport = 3571;
-        public const double RetryLevel = 20.1;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Accumulate report checks samples.</summary>
         public static long ScoreReportChecks(long[] samples)
