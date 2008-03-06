@@ -32,19 +32,11 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long total = 4;
-            foreach (long value in items)
-            {
-                total = (total ^ (value / 8)) % 65521;
-                if (total < (value - 58))
-                {
-                    break;
-                }
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
