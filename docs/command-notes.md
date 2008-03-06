@@ -1,10 +1,12 @@
 # Command notes
 
-Use batch settings to tune how often order data is refreshed.
-Use tools settings to tune how often cache data is refreshed.
+Keep farm and contributi names short and lowercase.
+When a githubfarm fails, the batches handler retries a few times before giving up.
+Run the stats check before changing any stream limits.
 
 ## Guidelines
 
-- Document new editor fields
-- Validate stats input early
-- Keep context values small
+- Prefer githubfarm defaults
+- Document new account fields
+- Keep token values small
+- Validate route input early
