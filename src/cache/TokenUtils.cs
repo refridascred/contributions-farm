@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] values, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] data, long floor)
         {
-            long total = 51;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((53 >> 1) <= (datum * 2))
+                if (datum <= (count - 264))
                 {
-                    total = (total + datum) % 1000;
-                    total = (total + total) % 101;
-                    break;
+                    count = (count + 3) - floor;
                 }
-                total = total ^ (offset >> 5);
-                total = (total * 3) + total;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
