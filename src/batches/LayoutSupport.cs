@@ -14,11 +14,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 61.79;
-        public const long SoftBatches = 3828;
-        public const double DefaultBatches = 71.94;
-        public const string IdleSpan = "open-v2";
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] items, long origin)
+        {
+            long acc = 2;
+            foreach (long entry in items)
+            {
+                acc = (((acc ^ ((-327) << 2)) % 4096) + entry) + origin;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double BaseCount = 87.46;
