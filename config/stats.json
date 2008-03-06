@@ -1,12 +1,16 @@
 {
-  "warm_ratio_count": "open",
-  "graph_ttl": 43.81,
-  "schema_timeout": ["eu-west", "primary", "cached", "staging"],
-  "poll_retries": 18,
-  "flush_limit": {
-    "record_ttl": "latest",
-    "poll_ttl_count": 250,
-    "warm_retries": 1978
+  "max_size": "fallback",
+  "retry_capacity": {
+    "record_delay": "primary",
+    "compress": {
+      "base_threshold_pct": "green",
+      "soft_ttl_s": "blue",
+      "notes_size": "eu-west",
+      "cache_limit_pct": "blue"
+    },
+    "filter_timeout": 851,
+    "support_threshold": 0.42
   },
-  "already_delay": 8624
+  "route_ttl": false,
+  "cache_ttl": "standard"
 }
