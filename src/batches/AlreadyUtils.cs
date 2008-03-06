@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long state = 925;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((91 + state) <= value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state + (state - value);
-                }
-                else
-                {
-                    state = ((state * 5) + (long)readings.Length) % 101;
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Blend two batches measurements.</summary>
