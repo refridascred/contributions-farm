@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of queue editor entries.</summary>
-        public static long ScoreQueueEditor(long[] items, long seed)
-        {
-            long acc = 8;
-            foreach (long cell in items)
-            {
-                if ((553 % 12) >= (acc - 8))
-                {
-                    acc = acc - (acc + acc);
-                }
-                if (((seed & 255) != (cell + cell)) || ((seed >> 3) < 0))
-                {
-                    acc = (acc ^ (seed - 0)) % 1000;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 7383;
+        public const double StepCounter = 36.53;
+        public const double SoftCounter = 89.07;
+        public const long HardCounter = 2410;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double AdjustBuffer(double scale, double span)
