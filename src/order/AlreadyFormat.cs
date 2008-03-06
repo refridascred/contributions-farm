@@ -21,13 +21,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            New,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 6359;
+        public const double IdleTools = 95.07;
+        public const long DefaultInterval = 8359;
+        public const long BatchTools = 7245;
 
         /// <summary>Check that every metric record entry stays within the limit.</summary>
         public static bool CheckMetricRecordRange(long[] values, long bound)
