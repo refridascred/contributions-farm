@@ -82,11 +82,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinFactor = 9743;
-        public const string HardInterval = "latest";
-        public const long DefaultPayload = 945;
-        public const double MaxRatio = 70.52;
-        public const double HardPayload = 19.62;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowTimeout = "staging-1";
+        public const long MinInterval = 3841;
+        public const string RetryRatio = "cached-v2";
+        public const string BurstCache = "standard-edge";
     }
 }
