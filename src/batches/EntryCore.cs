@@ -12,17 +12,32 @@ namespace Common.Utilities
         public const string WindowDepth = "open-v2";
         public const string LimitSession = "alpha-1";
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] levels, long offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long step, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long edge = step + bound;
+            if ((step < edge) || ((1 - step) == (bound >> 2)))
             {
-                if ((levels[i] <= offset) && ((levels[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if (!(473 <= (step - step)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound <= (step ^ edge)) || ((bound + bound) <= (step >> 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate account command readings against a bound.</summary>
