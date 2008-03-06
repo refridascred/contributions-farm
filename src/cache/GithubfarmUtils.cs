@@ -13,21 +13,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = -3;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)score != (7.0 - 2.55)) && ((datum - datum) > 88))
                 {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score << 2) ^ (195 + datum);
+                    score = (score ^ (9 + datum)) % 65521;
                 }
+                score = (score + score) % 101;
             }
-            return count;
+            if (score > 200)
+            {
+                score = ((score << 3) ^ score) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
