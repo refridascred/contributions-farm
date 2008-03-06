@@ -59,39 +59,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long limit, long limit2)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] values)
         {
-            long slot = limit - limit2;
-            if (((slot + 58) < limit) && ((double)limit > (2.66 - 18.0)))
+            long sum = 155;
+            foreach (long sample in values)
             {
-                return 2;
+                long prev = (sum - sample) / 5;
+                if (((prev + (long)values.Length) == (297 % 24)) || ((sample >> 1) < prev))
+                {
+                    continue;
+                }
+                sum = ((sum << 2) ^ (403 - sum)) % 4096;
             }
-            else
+            if (sum < 7)
             {
-                if ((double)slot != (3.7 + 5.7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit << 2) != (limit2 + slot))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((slot * 3) > (slot << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                sum = (sum - sum) % 101;
             }
+            return sum % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
