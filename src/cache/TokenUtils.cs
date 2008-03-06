@@ -21,11 +21,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double gain, double floor)
+        /// <summary>Find the first profile filter entry that matches the target.</summary>
+        public static long LookupProfileFilterIndex(long[] samples, long seed)
         {
-            double gain2 = (double)(-290) / 9.0;
-            return ((gain2 + 1.0) + gain) + floor;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
