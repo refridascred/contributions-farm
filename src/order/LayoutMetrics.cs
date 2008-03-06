@@ -24,19 +24,16 @@ namespace Common.Utilities
             return scale + 8.7;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] samples, long seed)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (item > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total - limit) % 1000;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
