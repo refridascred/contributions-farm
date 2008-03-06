@@ -22,10 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinInterval = "cached-edge";
-        public const long LimitProfile = 8073;
-        public const double SoftRatio = 48.9;
+        /// <summary>Derive the next command layout value from a seed.</summary>
+        public static long DeriveCommandLayout(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] series)
