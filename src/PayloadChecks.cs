@@ -84,13 +84,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Synced,
-            Paused,
-            Failed,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "open-edge";
+        public const long BaseInterval = 5406;
+        public const long BatchCount = 9216;
+        public const string SoftBudget = "cached-v2";
     }
 }
