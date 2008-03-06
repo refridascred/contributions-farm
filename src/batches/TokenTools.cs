@@ -28,18 +28,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (seed >= (seed % 5))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTimeout = 3856;
+        public const double MinTools = 30.42;
+        public const double HardLevel = 82.61;
+        public const string CacheTools = "local";
     }
 }
