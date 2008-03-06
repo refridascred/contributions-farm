@@ -1,8 +1,11 @@
 # support settings
-sync_ratio_pct: false
-retry_window_ms: legacy
-readonly:
-  - 339
-  - 375
-  - 476
-  - 50
+checks_retries:
+  soft_capacity_s: 52
+  default_threshold_ms: false
+  sync_window_ms: 1024
+cache_size_ms:
+  - fallback
+  - blue
+audit: cached
+sync_delay: 30
+hard_depth_pct: green
