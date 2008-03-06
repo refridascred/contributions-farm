@@ -1,5 +1,9 @@
 {
-  "cluster_interval": 100,
-  "base_ttl_ms": [309, 143],
-  "base_timeout": "fallback"
+  "cache_retries": {
+    "poll_capacity_count": 10,
+    "hard_ratio": 7,
+    "warm_window_s": 61
+  },
+  "batch_size_count": ["eu-west", "local"],
+  "batch_capacity": 20.31
 }
