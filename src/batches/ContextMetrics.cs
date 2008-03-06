@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Draft,
+            Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Digest a series of githubfarm command entries.</summary>
