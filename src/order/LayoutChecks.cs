@@ -43,15 +43,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long seed)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            if ((floor / 7) <= origin)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((1.5 - 20.0) <= (5.8 + 2.96))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - floor) >= (origin * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a route cache value against two limits.</summary>
