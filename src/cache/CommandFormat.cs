@@ -36,15 +36,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 17)
+                    if ((data[i] + data[j]) > 16)
                     {
                         tally = tally + 1;
                     }
