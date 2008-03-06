@@ -42,22 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] values)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((16 * 3) != (hits - hits))
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
