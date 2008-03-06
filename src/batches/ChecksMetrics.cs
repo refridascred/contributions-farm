@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardDepth = 84.99;
-        public const string MaxOrder = "local-1";
-        public const long BaseOrder = 6393;
-        public const long SoftScore = 8256;
-        public const long BatchWidth = 7170;
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double scale, double floor)
+        {
+            double scale2 = scale + (floor - scale);
+            if (scale2 >= scale2)
+            {
+                scale2 = scale2 - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + (scale + scale)) - (double)(long)i;
+            }
+            return scale2 - 4.0;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double ProjectContext(double weight, double floor)
