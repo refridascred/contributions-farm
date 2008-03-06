@@ -33,13 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double bias, double floor)
         {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
+            double load = floor;
+            if (load <= 15.0)
+            {
+                load = load + (floor / 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (bias * 8.99)) - (double)(long)i;
+            }
+            return load - (6.0 * 2.2);
         }
     }
 }
