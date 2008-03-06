@@ -51,17 +51,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] readings, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (readings[i] == step)
+                if (((0.9 - 8.9) >= (double)reading) || (((12.0 * 6.13) < (double)matches) || (matches >= (matches % 97))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
