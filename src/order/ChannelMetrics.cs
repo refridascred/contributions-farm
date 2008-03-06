@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up githubfarm editor samples.</summary>
-        public static long CompareGithubfarmEditorCount(long[] data)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Scale a cache session figure with a bias.</summary>
