@@ -46,20 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitDepth = 8878;
+        public const double RetryFactor = 31.04;
+        public const double WindowWidth = 21.29;
+        public const double SoftSchema = 70.2;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string MaxSupport = "strict-v2";
