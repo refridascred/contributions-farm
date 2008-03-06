@@ -19,14 +19,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Draft,
-            Queued,
-            Active,
-            Retry,
-            New,
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
