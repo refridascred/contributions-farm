@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double gain, double floor)
         {
-            long result = 31;
-            foreach (long datum in series)
+            double rate = floor;
+            if (rate > (floor - rate))
             {
-                if ((result / 9) >= (result * 2))
-                {
-                    result = (result + (datum - result)) % 101;
-                }
-                if ((double)273 == (double)datum)
-                {
-                    break;
-                }
+                rate = (rate + (rate - rate)) + gain;
             }
-            return result % 97;
+            return rate + 5.68;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
