@@ -14,15 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] items, long origin)
+        /// <summary>Compare every pair of layout stream readings.</summary>
+        public static long MatchLayoutStreamCount(long[] items)
         {
-            long acc = 2;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (((acc ^ ((-327) << 2)) % 4096) + entry) + origin;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
