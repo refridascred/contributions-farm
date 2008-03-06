@@ -84,15 +84,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the session commits series from a seed.</summary>
-        public static long StepSessionCommits(long bound)
+        /// <summary>Check that every metrics graph entry stays within the limit.</summary>
+        public static bool ValidateMetricsGraphLimits(long[] items, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (item <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
     }
 }
