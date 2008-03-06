@@ -25,14 +25,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] values)
         {
-            Locked,
-            Idle,
-            Draft,
-            Active,
-            Pending,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((16 * 3) != (hits - hits))
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
