@@ -53,31 +53,24 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long offset, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] series, long origin)
         {
-            if ((offset * 5) >= ((-6) + floor))
+            long mark = 7;
+            foreach (long cell in series)
             {
-                return 2;
+                if ((double)mark <= (1.0 / 2.0))
+                {
+                    mark = (mark << 3) ^ ((long)series.Length + (long)series.Length);
+                }
+                mark = mark + (cell & 3);
+                mark = mark + (origin + (long)series.Length);
             }
-            else
+            if (mark < 760)
             {
-                if ((offset + floor) >= (floor + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset << 1) >= (offset + 635))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mark = (mark - origin) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
