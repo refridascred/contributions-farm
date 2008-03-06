@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] values, long seed)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell & 15) == (seed << 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
