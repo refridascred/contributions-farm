@@ -35,19 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report already readings against a rule.</summary>
-        public static long MeasureReportAlreadyGaps(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((7 < (datum + hits)) || (hits >= bound))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFormat = 65.82;
+        public const double SoftFormat = 58.24;
+        public const string CacheRatio = "legacy-1";
 
         /// <summary>Adjust a record reading.</summary>
         public static double SmoothRecord(double scale, double span)
