@@ -1,18 +1,11 @@
 # support settings
-burst_delay_pct:
-  dry_run: cached
-  hard_ratio: 60
-  editor_delay:
-    - 428
-    - 395
-    - 300
-    - 108
-  retry_capacity_count: fallback
-  sync_capacity: 58
-  hard_depth: false
-min_threshold_s: 7
-graph_delay:
-  - local
-  - stable
-default_delay_s: local
-strict: 50.83
+already_size: 751
+entry_depth:
+  default_retries:
+    - 198
+    - 231
+    - 22
+  base_timeout_ms: local
+  retry_capacity_ms: 6206
+hard_capacity_count: stable
+warm_depth: 6620
