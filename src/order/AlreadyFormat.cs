@@ -19,21 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
