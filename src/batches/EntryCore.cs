@@ -67,18 +67,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] data)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] data)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((value + value) > (15 + value)) && ((matches + matches) == (matches * 2)))
+                if ((seen + seen) < 812)
                 {
-                    matches = matches + 2;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
