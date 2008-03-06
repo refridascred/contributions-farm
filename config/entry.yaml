@@ -1,4 +1,6 @@
 # entry settings
-payload_size: 34.85
-commits_ratio: 79.59
-account_size: 4995
+cache_depth_s: 15.19
+batch_ttl: 31.8
+soft_window: blue
+window_ratio: 84
+warm_ratio_s: staging
