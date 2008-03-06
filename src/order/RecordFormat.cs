@@ -66,17 +66,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] readings, long seed)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio2 = 4.5;
+            return (ratio2 - ratio) + offset;
         }
 
         /// <summary>Hold a window header.</summary>
