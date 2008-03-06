@@ -58,17 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long step)
+        /// <summary>Digest a series of schema editor entries.</summary>
+        public static long TotalSchemaEditor(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 77;
+            foreach (long datum in values)
             {
-                if (values[i] == step)
+                if ((datum / 6) > (datum + sum))
                 {
-                    return (long)i;
+                    sum = ((sum - (datum >> 5)) % 4096) - seed;
+                }
+                else
+                {
+                    sum = (sum - (datum >> 2)) % 65521;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
