@@ -16,12 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] samples)
         {
-            Closed,
-            Dropped,
-            Retry,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum * 2) > (seen * 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
