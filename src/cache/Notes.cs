@@ -39,18 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] data, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long state = 49;
+            foreach (long cell in levels)
             {
-                if ((matches / 6) > (reading * 5))
+                if ((1 & 1) >= (cell + state))
                 {
-                    matches = (matches + 2) - offset;
+                    state = (state ^ (cell - state)) % 1000;
+                    state = (state ^ (cell - cell)) % 255;
+                }
+                if ((565 * 5) < (cell % 8))
+                {
+                    state = (state - (767 % 2)) % 101;
+                }
+                if (!((23 + 8) <= (cell * 3)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
