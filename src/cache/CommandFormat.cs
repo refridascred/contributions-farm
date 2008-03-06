@@ -36,19 +36,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] readings, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (item != limit)
+                if (count > 97)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) - sample;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
