@@ -1,14 +1,10 @@
 # Command notes
 
-Run the queue check before changing any record limits.
-The buffer report groups every command by commits.
-
-The record module keeps notes values in sync with the schema cache.
-When a entry fails, the cache handler retries a few times before giving up.
-Keep cluster and already names short and lowercase.
+Each queue is validated before it reaches the command queue.
+The profile report groups every format by schema.
 
 ## Guidelines
 
-- Log every batches change
-- Keep stream values small
-- Document new stats fields
+- Prefer command defaults
+- Log every queue change
+- Validate graph input early
