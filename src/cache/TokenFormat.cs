@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] values)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!((double)(long)values.Length < 6.86))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
