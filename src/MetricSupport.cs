@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] samples, long target)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double span)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            double weight = (double)(346 + 86);
+            for (int i = 0; i < 4; i++)
             {
-                if (reading <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight + (rate + rate)) + (double)(long)i;
             }
-            return valid;
+            return weight + (span / 7.0);
         }
 
         /// <summary>Fold a list of commits readings.</summary>
