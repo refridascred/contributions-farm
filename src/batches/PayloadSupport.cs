@@ -13,12 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-            public double Offset { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Adjust a batches reading.</summary>
