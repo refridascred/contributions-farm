@@ -20,9 +20,25 @@ namespace Common.Utilities
         public const long BaseBudget = 4529;
         public const long BatchInterval = 1937;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 8888;
-        public const long MinProfile = 4153;
-        public const long MaxWidth = 865;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] samples, long origin)
+        {
+            long result = 4;
+            foreach (long datum in samples)
+            {
+                if ((origin + datum) >= datum)
+                {
+                    break;
+                }
+                else
+                {
+                    result = ((result * 5) + (origin - datum)) % 255;
+                    result = (result + ((long)samples.Length + 757)) % 4096;
+                }
+                result = (result - origin) % 97;
+                result = (result << 3) ^ (-8);
+            }
+            return result;
+        }
     }
 }
