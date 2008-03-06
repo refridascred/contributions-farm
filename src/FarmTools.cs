@@ -39,22 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Digest a series of support command entries.</summary>
+        public static long TotalSupportCommand(long[] levels)
         {
-            long carry = 22;
-            foreach (long entry in samples)
+            long mark = 1;
+            foreach (long sample in levels)
             {
-                if (!((9 & 255) < (entry - (-95))))
+                for (int i = 0; i < 3; i++)
                 {
-                    carry = carry ^ carry;
+                    mark = mark - (366 + (long)i);
+                    mark = (mark * 2) + (sample + sample);
+                }
+                if (sample <= (mark % 24))
+                {
+                    mark = ((mark * 4) + sample) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (0 / 2)) % 255;
                 }
             }
-            if (carry > 55)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry % 1000;
+            return mark;
         }
 
         /// <summary>Describe the contributi class values.</summary>
