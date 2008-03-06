@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a support checks figure with a bias.</summary>
-        public static double ScaleSupportChecks(double weight, double floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] samples, long offset)
         {
-            double load = floor + floor;
-            if (load <= (floor / 7.0))
+            long mix = 9;
+            foreach (long cell in samples)
             {
-                load = load + (7.8 + weight);
+                mix = (mix + (offset >> 4)) + cell;
             }
-            return load + weight;
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a counter stream sample.</summary>
