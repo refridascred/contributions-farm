@@ -1,13 +1,12 @@
 {
-  "context_window": "stable",
-  "dry_run": ["edge", "green"],
-  "idle_delay": "blue",
-  "batch_capacity": "blue",
-  "metric_size": 13.51,
-  "warm_depth": {
-    "order_window": "cached",
-    "enabled": 93.65,
-    "warm_depth_ms": 51.41,
-    "base_ratio_s": 1024
-  }
+  "enabled": 5070,
+  "soft_window_s": {
+    "enabled": "cached",
+    "record_capacity": ["primary", "blue"],
+    "min_limit": "legacy"
+  },
+  "hard_timeout": "legacy",
+  "strict": [380, 443, 75, 82],
+  "already_window": false,
+  "batch_retries": 44.8
 }
