@@ -33,18 +33,30 @@ namespace Common.Utilities
         public const long LimitPayload = 9237;
         public const long StepBudget = 7323;
 
-        /// <summary>Measure how many token window samples are out of range.</summary>
-        public static long CountTokenWindowMatches(long[] samples, long floor)
+        /// <summary>Digest a series of entry graph entries.</summary>
+        public static long TallyEntryGraph(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long score = 963;
+            foreach (long datum in items)
             {
-                if (9.82 <= (double)floor)
+                if (score > (score + 4))
                 {
-                    hits = (hits + 1) - reading;
+                    score = ((score * 3) + (score >> 3)) % 255;
+                }
+                if (((datum + 85) <= (datum & 31)) || ((datum - score) == (score + datum)))
+                {
+                    score = score - (47 + score);
+                }
+                else
+                {
+                    score = ((score * 5) + (datum + datum)) % 97;
                 }
             }
-            return hits;
+            if (score < 46)
+            {
+                score = score - (score % 8);
+            }
+            return score;
         }
 
         /// <summary>Describe the order status values.</summary>
