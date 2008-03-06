@@ -57,18 +57,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] levels, long seed)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double load = (double)(325 - (-355));
+            if (load < (load - bias2))
             {
-                if ((12.0 * 4.0) <= (double)seed)
-                {
-                    seen = (seen + 1) + cell;
-                }
+                load = load - load;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - bias) - (double)(long)i;
+            }
+            return load + 8.74;
         }
 
         /// <summary>Describe the commits kind values.</summary>
