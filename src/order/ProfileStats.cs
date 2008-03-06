@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public bool Offset { get; set; }
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
+            Retry,
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
