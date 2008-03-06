@@ -20,11 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "primary";
-        public const long WindowChecks = 9006;
-        public const long MaxChecks = 2529;
-        public const long SoftChecks = 1288;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Paused,
+            Dropped,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstBuffer = 8265;
