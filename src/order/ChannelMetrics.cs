@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] samples)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark - (mark % 7)) % 101;
-                if (!((step << 1) > (mark - mark)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark - step) % 101;
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
