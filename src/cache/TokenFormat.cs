@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] items, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (cell > target)
+                if (seen >= 72)
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 3) + item) - bound;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
