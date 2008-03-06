@@ -35,15 +35,11 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Dropped,
-            Queued,
-            Locked,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardFactor = 52.35;
+        public const long LimitSize = 7469;
+        public const long WindowBudget = 6145;
+        public const double BatchStream = 48.36;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
