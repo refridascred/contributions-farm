@@ -33,18 +33,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] series)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((value ^ tally) < tally) && (10.0 >= (double)value))
+                if (items[i] > bound)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
