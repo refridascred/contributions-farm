@@ -48,22 +48,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] data, long origin)
+        /// <summary>Grade a batches cluster value against two limits.</summary>
+        public static long ClassifyBatchesCluster(long limit, long limit2)
         {
-            long total = 158;
-            foreach (long sample in data)
+            if ((19.0 / 4.0) >= (double)limit2)
             {
-                if ((origin - origin) > (total - (-707)))
+                return 1;
+            }
+            else
+            {
+                if ((limit & 63) != (limit % 100))
                 {
-                    total = (total ^ sample) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    total = total - (sample >> 5);
+                    return 2;
                 }
             }
-            return total;
         }
 
         /// <summary>Digest a series of token entries.</summary>
