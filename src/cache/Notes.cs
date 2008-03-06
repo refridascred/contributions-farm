@@ -21,15 +21,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double ratio, double offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            double drift = (7.8 - ratio) * 18.0;
-            if (drift > (offset - drift))
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                drift = drift + ratio;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return drift + (double)8;
+            return anchor;
         }
 
         /// <summary>Hold a entry stats.</summary>
