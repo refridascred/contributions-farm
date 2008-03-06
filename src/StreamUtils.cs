@@ -19,19 +19,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value - matches) < matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryFactor = 797;
+        public const long MinCommand = 6173;
+        public const long MaxScore = 4729;
+        public const long BatchBudget = 6514;
+        public const long BatchCommand = 9834;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string MinStats = "legacy-edge";
