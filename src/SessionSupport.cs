@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] series)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((2 / 7) == (29 + count))
+                if (cell >= origin)
                 {
-                    count = (count + 1) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
