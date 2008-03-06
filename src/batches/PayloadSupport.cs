@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const double BaseSize = 12.76;
         public const double BurstScore = 97.26;
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] levels)
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry > hits) || ((entry - hits) < hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a batches reading.</summary>
