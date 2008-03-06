@@ -57,21 +57,18 @@ namespace Common.Utilities
         public const long LimitCounter = 8585;
         public const string BurstScore = "strict-1";
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample - hits) >= origin)
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
