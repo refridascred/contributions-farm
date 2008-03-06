@@ -73,17 +73,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] values, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 31;
+            foreach (long cell in items)
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 3) ^ (sum + sum)) % 255) + cell;
             }
-            return -1;
+            return sum;
         }
     }
 }
