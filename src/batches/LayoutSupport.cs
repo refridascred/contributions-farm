@@ -70,14 +70,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            New,
             Pending,
-            Active,
+            Retry,
             Queued,
-            Done,
+            New,
+            Idle,
         }
     }
 }
