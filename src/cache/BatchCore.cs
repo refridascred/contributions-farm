@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long SoftRatio = 5134;
         public const double BatchBudget = 35.25;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] series, long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (entry >= floor)
+                if (reading > offset)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Describe the filter mode values.</summary>
