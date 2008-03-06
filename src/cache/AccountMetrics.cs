@@ -46,15 +46,22 @@ namespace Common.Utilities
         public const long IdleFactor = 7661;
         public const long CacheEntry = 8411;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] items)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long mix = 6;
+            foreach (long value in items)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((value < (value - 206)) && ((mix ^ 94) != (value + value)))
+                {
+                    mix = (mix ^ value) % 65521;
+                }
             }
-            return mark;
+            if (mix > 1)
+            {
+                mix = (mix * 3) + 672;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
