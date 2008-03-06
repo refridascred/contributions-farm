@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] items, long floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long mark = 6;
-            foreach (long value in items)
-            {
-                mark = (mark ^ (value / 4)) % 4096;
-                if ((mark ^ value) <= floor)
-                {
-                    mark = (mark ^ (mark + mark)) % 97;
-                }
-            }
-            if (mark < (-60))
-            {
-                mark = (mark - (mark + mark)) % 4096;
-            }
-            return mark;
+            New,
+            Ready,
+            Draft,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
