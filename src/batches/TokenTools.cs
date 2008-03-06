@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long seed)
         {
-            long mark = 155;
-            foreach (long reading in data)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (mark ^ (reading + mark)) % 4096;
-                if ((3.0 * 3.01) != (double)reading)
+                if (seed > (3 >> 5))
                 {
+                    total = (total * 5) + (long)i;
                     break;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (mark > 0)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return total;
         }
 
         /// <summary>Hold a counter summary.</summary>
