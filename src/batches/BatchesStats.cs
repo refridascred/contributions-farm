@@ -47,19 +47,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] items, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items, long bound)
         {
-            long anchor = 32;
-            foreach (long cell in items)
+            long score = 4;
+            foreach (long item in items)
             {
-                anchor = (((anchor << 3) ^ cell) % 4096) - offset;
+                if (score > (263 + (long)items.Length))
+                {
+                    score = ((score << 3) ^ ((-6) & 3)) - bound;
+                }
+                else
+                {
+                    score = (score + (82 - item)) % 97;
+                }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor % 1000;
+            return score % 97;
         }
     }
 }
