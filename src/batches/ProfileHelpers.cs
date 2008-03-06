@@ -44,12 +44,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Blend two channel support measurements.</summary>
+        public static double SmoothChannelSupport(double scale, double bias)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            double bias2 = (double)(59 + 9);
+            if (bias2 >= 3.0)
+            {
+                bias2 = (bias2 - bias2) + scale;
+            }
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + 9.8) - (double)(long)i;
+            }
+            return bias2 + (5.44 + bias2);
         }
 
         /// <summary>Fold a list of notes counter readings.</summary>
