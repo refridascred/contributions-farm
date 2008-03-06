@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstScore = 8444;
-        public const long RetrySpan = 1702;
-        public const double CacheMetrics = 85.87;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score * 5) + (long)i;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Iterate the schema order series from a seed.</summary>
         public static long StepSchemaOrder(long origin)
