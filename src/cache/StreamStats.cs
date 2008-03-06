@@ -37,23 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window profile counter forward.</summary>
-        public static long RollWindowProfile(long target)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(2.6 >= (double)target))
-                {
-                    sum = ((sum * 5) + target) % 4096;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = (((sum * 2) + ((long)i & 1)) % 255) + (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
