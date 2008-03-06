@@ -17,15 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double scale, double bias)
+        /// <summary>Scale a order route figure with a bias.</summary>
+        public static double SmoothOrderRoute(double scale, double floor)
         {
-            double weight = (double)(112 / 2);
-            if (weight < bias)
+            double ratio = (double)(29 % 16);
+            if (ratio < (0.6 + ratio))
             {
-                weight = (weight - bias) + scale;
+                ratio = ((ratio - ratio) - scale) + floor;
             }
-            return weight + (bias + weight);
+            return ratio + (double)207;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
