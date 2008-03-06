@@ -114,18 +114,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the queue cache entries that pass the check.</summary>
-        public static long MeasureQueueCacheMatches(long[] values)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (((matches / 8) < matches) || ((11.0 - 4.3) < (double)value))
+                if (entry != floor)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
