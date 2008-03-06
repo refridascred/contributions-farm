@@ -37,15 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Done,
-            Failed,
-            Pending,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 56.24;
+        public const double MaxDepth = 60.56;
+        public const long StepInterval = 9970;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TotalGithubfarm(long[] items, long bound)
