@@ -44,18 +44,15 @@ namespace Common.Utilities
         public const long BurstContext = 9887;
         public const string SoftContext = "stable-edge";
 
-        /// <summary>Audit contributi cache readings against a rule.</summary>
-        public static long AuditContributiCacheHits(long[] readings, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mark = 72;
+            foreach (long value in data)
             {
-                if (((long)readings.Length - reading) <= (reading & 3))
-                {
-                    seen = (seen + 2) + bound;
-                }
+                mark = mark - value;
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
