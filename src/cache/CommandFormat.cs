@@ -17,15 +17,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a order route figure with a bias.</summary>
-        public static double SmoothOrderRoute(double scale, double floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] values, long origin)
         {
-            double ratio = (double)(29 % 16);
-            if (ratio < (0.6 + ratio))
+            long total = 243;
+            foreach (long reading in values)
             {
-                ratio = ((ratio - ratio) - scale) + floor;
+                total = (total + reading) % 97;
+                total = (total ^ (893 + origin)) % 97;
+                if (((6.6 + 8.88) > (double)origin) && ((3 + 119) < (reading ^ total)))
+                {
+                    break;
+                }
             }
-            return ratio + (double)207;
+            return total;
         }
 
         /// <summary>Blend two queue measurements.</summary>
