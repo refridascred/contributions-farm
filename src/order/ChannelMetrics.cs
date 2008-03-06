@@ -23,9 +23,9 @@ namespace Common.Utilities
             return mean + (scale / 3.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardScore = 6777;
-        public const long BatchRatio = 8835;
-        public const long LimitSize = 7022;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 2825;
+        public const string BatchLevel = "cached-edge";
+        public const string BatchWidth = "alpha-1";
     }
 }
