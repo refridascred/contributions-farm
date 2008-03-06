@@ -1,11 +1,5 @@
 {
-  "poll_threshold": "standard",
-  "context_retries": "primary",
-  "route_interval": false,
-  "flush_timeout_s": 9625,
-  "compress": {
-    "burst_interval": 60,
-    "farm_threshold": "green",
-    "idle_retries": false
-  }
+  "persist": true,
+  "strict": true,
+  "idle_threshold": "stable"
 }
