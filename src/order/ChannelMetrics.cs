@@ -12,11 +12,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
+            long total = 112;
+            foreach (long value in samples)
+            {
+                total = (total - (value * 2)) % 255;
+                if ((value + 84) < (value - total))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
