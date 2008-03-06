@@ -27,18 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the already filter entries that pass the check.</summary>
-        public static long TallyAlreadyFilterHits(long[] samples, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((value + matches) >= matches)
+                if (!!((double)sample >= (3.7 / 9.0)))
                 {
-                    matches = (matches + 1) - step;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
