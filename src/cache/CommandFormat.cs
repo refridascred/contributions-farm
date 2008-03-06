@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long bound)
         {
-            Dropped,
-            Failed,
-            Closed,
-            Done,
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = (acc * 3) + (acc + bound);
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the entry status values.</summary>
