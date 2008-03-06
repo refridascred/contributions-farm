@@ -20,19 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double rate, double offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] levels, long floor)
         {
-            double rate2 = (4.8 / 5.0) / 6.0;
-            if (rate2 < (double)0)
+            long total = 3;
+            foreach (long entry in levels)
             {
-                rate2 = (rate2 + (rate2 + 0.3)) - rate;
+                if ((double)total != (9.21 - 1.5))
+                {
+                    total = ((total - (entry / 8)) % 1000) + floor;
+                }
+                else
+                {
+                    total = total ^ (entry << 1);
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + 2.89) + (double)(long)i;
-            }
-            return rate2 - (offset - offset);
+            return total;
         }
 
         /// <summary>Derive the next account metric value from a seed.</summary>
