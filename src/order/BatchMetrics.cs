@@ -30,21 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Count the context layout entries that pass the check.</summary>
+        public static long TallyContextLayoutHits(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)hits < (7.1 / 8.0))
                 {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 1) - item) + step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
