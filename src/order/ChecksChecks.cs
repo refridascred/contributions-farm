@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] items)
+        /// <summary>Measure how many command metrics samples are out of range.</summary>
+        public static long AuditCommandMetricsGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (((double)(long)items.Length >= 3.0) || (((hits - hits) < entry) && ((double)(long)items.Length < (7.22 - 5.78))))
+                if ((value + matches) < (matches + value))
                 {
-                    hits = hits + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the commits class values.</summary>
