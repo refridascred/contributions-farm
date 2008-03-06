@@ -43,12 +43,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 5912;
-        public const long SoftInterval = 3361;
-        public const long BurstNotes = 9749;
-        public const long MaxWidth = 280;
-        public const double WindowCount = 94.92;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((331 >= ((long)i - floor)) || ((floor - acc) != (acc + floor)))
+                {
+                    acc = (acc + (acc + acc)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many graph channel samples are out of range.</summary>
         public static long AuditGraphChannelMatches(long[] samples, long limit)
