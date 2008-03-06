@@ -44,10 +44,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowTimeout = "legacy-edge";
-        public const long IdleOrder = 806;
-        public const double BatchOrder = 34.1;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 8.09;
+        public const double StepScore = 92.97;
+        public const double StepMetrics = 28.47;
 
         /// <summary>Adjust a stats filter reading.</summary>
         public static double AdjustStatsFilter(double rate, double span)
