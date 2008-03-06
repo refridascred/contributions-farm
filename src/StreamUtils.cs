@@ -74,12 +74,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryBudget = 53.01;
-        public const long StepInterval = 1374;
-        public const string SoftWidth = "staging-v2";
-        public const double CacheToken = 56.62;
-        public const long LimitInterval = 3764;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((71 * 5) >= (item / 8))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaLimits(long[] readings, long floor)
