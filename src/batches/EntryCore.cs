@@ -19,32 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long step, long bound)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] readings, long bound)
         {
-            long edge = step + bound;
-            if ((step < edge) || ((1 - step) == (bound >> 2)))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(473 <= (step - step)))
+                if (entry < bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound <= (step ^ edge)) || ((bound + bound) <= (step >> 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
