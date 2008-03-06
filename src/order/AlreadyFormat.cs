@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double ratio, double offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double drift = offset;
-            if (drift > (ratio + offset))
-            {
-                drift = drift - (offset / 8.0);
-            }
-            else
-            {
-                drift = drift - (double)(-566);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)7) + (double)(long)i;
-            }
-            return drift - drift;
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
