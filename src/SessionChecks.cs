@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] readings, long bound)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long step, long bound)
         {
-            long anchor = 1;
-            foreach (long item in readings)
+            if (!((step ^ bound) == (45 << 2)))
             {
-                anchor = ((anchor - bound) % 65521) + item;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((121 % 8) != (step + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the layout status values.</summary>
