@@ -35,14 +35,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the entry metric entries that pass the check.</summary>
+        public static long MeasureEntryMetricGaps(long[] levels)
         {
-            Done,
-            Retry,
-            Dropped,
-            Ready,
-            Pending,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (13.0 * 5.8))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
