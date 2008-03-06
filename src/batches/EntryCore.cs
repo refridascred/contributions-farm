@@ -33,20 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] samples, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] series)
         {
-            long mix = 7;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (bound <= (item & 255))
+                if ((matches + matches) <= (-750))
                 {
-                    mix = ((mix << 2) ^ (item * 3)) % 97;
-                    continue;
+                    matches = (matches + 1) ^ reading;
                 }
-                mix = mix ^ (mix + bound);
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
