@@ -7,14 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in stable edge; do
+BUFFER_LIMIT=408
+log "limit is ${BUFFER_LIMIT}"
+
+for item in strict fallback legacy; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=105
-log "limit is ${BUFFER_LIMIT}"
