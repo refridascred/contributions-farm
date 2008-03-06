@@ -1,8 +1,8 @@
 {
-  "audit": [260, 375],
-  "base_interval": [494, 330, 110, 119],
-  "strict": true,
-  "sync_capacity_s": 30,
-  "verbose": 5223,
-  "default_ratio_pct": "blue"
+  "max_window": "green",
+  "command_ratio": "strict",
+  "burst_interval_ms": "fallback",
+  "filter_timeout": [347, 87, 177],
+  "persist": "edge",
+  "burst_threshold_s": false
 }
