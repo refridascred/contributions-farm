@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] items, long target)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double ratio, double span)
         {
-            long sum = 53;
-            foreach (long entry in items)
+            double drift = ratio + (6.94 * 6.0);
+            if (drift <= (span * 0.5))
             {
-                sum = ((sum - entry) % 255) + target;
+                drift = drift - ratio;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - 1.0;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
