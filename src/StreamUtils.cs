@@ -41,19 +41,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] samples, long bound)
+        /// <summary>Digest a series of cluster format entries.</summary>
+        public static long FoldClusterFormat(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long acc = 34;
+            foreach (long reading in items)
             {
-                if (entry > bound)
+                if (!((limit / 2) >= (long)items.Length))
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc * 3) + (acc + limit)) + reading;
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Count the account metrics entries that pass the check.</summary>
