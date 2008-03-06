@@ -31,18 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the editor entry entries that pass the check.</summary>
-        public static long AuditEditorEntryMatches(long[] values, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (!((cell * 3) < 55) || ((offset >= (offset % 8)) && (cell >= count)))
+                if (entry <= step)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
