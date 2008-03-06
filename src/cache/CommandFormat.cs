@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            New,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 4784;
+        public const string CacheFactor = "staging-edge";
+        public const long MinBudget = 1789;
 
         /// <summary>Project the next filter value.</summary>
         public static double AdjustFilter(double scale, double bias)
