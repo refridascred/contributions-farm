@@ -42,18 +42,12 @@ namespace Common.Utilities
             return mean - (offset + mean);
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] values, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((6.32 / 6.0) < (double)limit)
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            Paused,
+            New,
+            Dropped,
         }
 
         /// <summary>Digest a series of report entries.</summary>
