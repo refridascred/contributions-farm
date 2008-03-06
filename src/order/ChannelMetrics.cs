@@ -23,9 +23,18 @@ namespace Common.Utilities
             return mean + (scale / 3.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 2825;
-        public const string BatchLevel = "cached-edge";
-        public const string BatchWidth = "alpha-1";
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((value ^ tally) < tally) && (10.0 >= (double)value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
