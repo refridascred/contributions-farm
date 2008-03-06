@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] data, long origin)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((origin + value) < origin) && ((89 + value) > (29 + 76))) || (origin > value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the stream format entries that pass the check.</summary>
