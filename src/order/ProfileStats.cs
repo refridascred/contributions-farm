@@ -12,13 +12,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 752;
+            foreach (long sample in items)
+            {
+                sum = (sum + sample) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
