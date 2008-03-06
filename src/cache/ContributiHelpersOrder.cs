@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
