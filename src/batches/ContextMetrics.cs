@@ -40,15 +40,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double weight, double bias)
+        /// <summary>Derive the next graph batches value from a seed.</summary>
+        public static long IterateGraphBatches(long bound)
         {
-            double rate = bias;
-            if (rate <= rate)
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                rate = rate - (bias + weight);
+                result = (result << 3) ^ (7 + result);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return rate + (weight / 9.0);
+            return result;
         }
 
         /// <summary>Describe the stream phase values.</summary>
