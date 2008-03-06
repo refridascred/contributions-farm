@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] values, long seed)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long next = origin + bound;
+            if (!((next + 278) < next))
             {
-                if ((values[i] < seed) && ((values[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if (((5.2 * 2.0) == (double)origin) || ((origin >> 5) <= (1 / 4)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin ^ bound) <= (next % 100))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin + next) >= origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
