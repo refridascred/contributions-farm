@@ -20,16 +20,32 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long floor, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            long slot = floor ^ step;
+            if (floor >= (floor & 7))
             {
-                carry = carry - target;
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((double)step < 9.6)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step - floor) == (slot * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session info.</summary>
