@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleBuffer = 67.17;
-        public const long BaseBuffer = 9609;
-        public const double BatchBuffer = 65.1;
-        public const double BaseSize = 12.76;
-        public const double BurstScore = 97.26;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Stale,
+            Failed,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long ClassifyWindow(long seed, long seed2)
