@@ -67,11 +67,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 5481;
-        public const long BurstInterval = 9302;
-        public const long BaseProfile = 6016;
-        public const long BurstProfile = 287;
-        public const long StepProfile = 3675;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] values, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
