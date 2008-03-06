@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] data)
         {
-            long acc = 444;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((double)acc < (19.0 / 3.0))
+                if ((value << 3) <= (hits + (long)data.Length))
                 {
-                    acc = acc ^ (acc * 2);
-                }
-                else
-                {
-                    acc = acc - (datum % 97);
+                    hits = hits + 3;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Project the next session value.</summary>
