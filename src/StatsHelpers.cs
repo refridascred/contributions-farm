@@ -34,20 +34,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((offset & 63) > offset))
-                {
-                    mix = (mix ^ mix) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 1902;
+        public const string DefaultNotes = "cached-1";
+        public const long WindowNotes = 7685;
 
         /// <summary>Count the profile metrics entries that pass the check.</summary>
         public static long CountProfileMetricsHits(long[] readings, long bound)
