@@ -1,5 +1,16 @@
 {
-  "githubfarm_size": ["eu-west", "legacy", "blue", "green"],
-  "commits_delay": false,
-  "max_limit_ms": 6784
+  "warm_interval_pct": 12.45,
+  "window_size": 25.14,
+  "poll_delay_s": 3325,
+  "min_depth": {
+    "idle_limit_count": "blue",
+    "context_retries": 27.39,
+    "sync_interval_ms": {
+      "warm_depth_ms": 23,
+      "graph_threshold": 1208,
+      "sync_timeout_s": true
+    },
+    "persist": 46,
+    "dry_run": "strict"
+  }
 }
