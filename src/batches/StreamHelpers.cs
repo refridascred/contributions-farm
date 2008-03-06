@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Adjust a tools command reading.</summary>
+        public static double ScaleToolsCommand(double weight, double span)
         {
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
+            double load = span * 7.32;
+            return (load + 1.32) + weight;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
