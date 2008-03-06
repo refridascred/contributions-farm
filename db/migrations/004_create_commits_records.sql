@@ -3,13 +3,11 @@ CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
     state TEXT NOT NULL DEFAULT 'new',
-    rank INTEGER,
-    score REAL NOT NULL DEFAULT 0,
+    weight REAL,
+    created_at TIMESTAMP,
     token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
+CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
 
-INSERT INTO commits_records (active, state, rank, score, token) VALUES (63, 'staging', 5, 77.48, 'fallback');
-INSERT INTO commits_records (active, state, rank, score, token) VALUES (21, 'primary', 29, 35.83, 'fallback');
-INSERT INTO commits_records (active, state, rank, score, token) VALUES (40, 'legacy', 19, 93.27, 'edge');
+INSERT INTO commits_records (active, state, weight, token) VALUES (96, 'fallback', 86.23, 'primary');
