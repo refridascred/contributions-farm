@@ -30,32 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long step, long origin)
-        {
-            if ((double)step < (8.86 / 8.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((4 % 16) >= (step ^ step)) || ((double)step >= (4.6 - 17.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin - step) >= (87 + origin)) || ((double)step <= (13.0 - 14.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 10.74;
+        public const double BurstSize = 78.82;
+        public const long HardRatio = 4117;
+        public const long BatchBatches = 2814;
 
         /// <summary>Check that every metric record entry stays within the limit.</summary>
         public static bool CheckMetricRecordRange(long[] values, long bound)
