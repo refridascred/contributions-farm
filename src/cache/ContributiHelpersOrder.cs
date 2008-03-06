@@ -27,21 +27,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next record session value from a seed.</summary>
-        public static long IterateRecordSession(long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] data, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                total = (total - (total - 275)) % 65521;
-                total = (total << 3) ^ seed;
-                if ((seed ^ 5) >= 50)
+                if (cell >= floor)
                 {
-                    total = total + total;
+                    ok = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return ok;
         }
     }
 }
