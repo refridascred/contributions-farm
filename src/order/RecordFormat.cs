@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
