@@ -31,21 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = floor / 2.0;
+            if (ratio <= (double)39)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio - (bias / 6.0);
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (floor * 14.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (double)33;
         }
     }
 }
