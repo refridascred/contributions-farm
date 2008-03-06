@@ -84,15 +84,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double rate, double span)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            double rate2 = (span + span) * 13.0;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                rate2 = (rate2 + rate) + (double)(long)i;
             }
-            return sum;
+            return rate2 + 16.0;
         }
 
         /// <summary>Combine payload format values into a single score.</summary>
