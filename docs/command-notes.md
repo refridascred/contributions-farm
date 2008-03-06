@@ -1,12 +1,11 @@
 # Command notes
 
-Keep farm and contributi names short and lowercase.
-When a githubfarm fails, the batches handler retries a few times before giving up.
-Run the stats check before changing any stream limits.
+A stats that stays idle for too long is moved to the filter list.
+A session that stays idle for too long is moved to the graph list.
+Each command is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Document new account fields
-- Keep token values small
-- Validate route input early
+- Log every account change
+- Keep graph values small
+- Document new batches fields
