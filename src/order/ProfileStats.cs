@@ -26,13 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen + cell) < cell)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every session queue entry stays within the limit.</summary>
