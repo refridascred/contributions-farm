@@ -19,25 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long cur = bound + floor;
-            if ((double)bound <= (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur - bound) <= (bound ^ 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Stale,
+            Dropped,
+            Idle,
+            Draft,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
