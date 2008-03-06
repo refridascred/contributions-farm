@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const string SoftRecord = "stable";
         public const long BaseRecord = 1211;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] series, long target)
         {
-            long mix = 58;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((406 ^ reading) < ((long)data.Length + mix))
+                if (datum < target)
                 {
-                    mix = mix + mix;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Hold a batches stats.</summary>
