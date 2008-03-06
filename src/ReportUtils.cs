@@ -55,13 +55,11 @@ namespace Common.Utilities
         public const long SoftSpan = 3036;
         public const long HardNotes = 2121;
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
     }
 }
