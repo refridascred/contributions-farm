@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Check that every order report entry stays within the limit.</summary>
+        public static bool VerifyOrderReportLimits(long[] samples, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                acc = acc + acc;
-                acc = (acc + bound) % 97;
-                acc = ((acc * 4) + (long)i) % 97;
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
