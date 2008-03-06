@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] values)
         {
-            Locked,
-            Dropped,
-            Done,
-            Failed,
+            long sum = 1;
+            foreach (long datum in values)
+            {
+                if (8 >= (sum * 5))
+                {
+                    sum = ((sum + 205) % 1000) - datum;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sum * 5)) % 65521;
+                }
+            }
+            if (sum > 360)
+            {
+                sum = (sum * 3) + ((long)values.Length % 97);
+            }
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
