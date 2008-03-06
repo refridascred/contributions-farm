@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryInterval = "stable";
-        public const double HardPayload = 30.64;
-        public const long CachePayload = 2620;
-        public const long IdleSpan = 1138;
-        public const long BurstPayload = 2079;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleBuffer = 67.17;
+        public const long BaseBuffer = 9609;
+        public const double BatchBuffer = 65.1;
+        public const double BaseSize = 12.76;
+        public const double BurstScore = 97.26;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
