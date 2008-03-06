@@ -47,18 +47,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] samples, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches >= (504 << 3))
+                if (samples[i] < step)
                 {
-                    matches = ((matches + 3) + datum) - origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
