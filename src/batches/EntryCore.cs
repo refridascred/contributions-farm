@@ -49,12 +49,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 2248;
-        public const string IdleCounter = "fallback-v2";
-        public const string MinCount = "standard-v2";
-        public const long LimitCounter = 8585;
-        public const string BurstScore = "strict-1";
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] series)
+        {
+            long anchor = 915;
+            foreach (long item in series)
+            {
+                if ((5.4 - 16.0) <= (double)anchor)
+                {
+                    anchor = ((anchor - (894 << 2)) % 255) - item;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 1000;
+                }
+                if (!(anchor >= (anchor / 5)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextMatches(long[] values, long origin)
