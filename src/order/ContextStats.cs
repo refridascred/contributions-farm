@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a window queue value against two limits.</summary>
-        public static long ClassifyWindowQueue(long target, long floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double gain, double span)
         {
-            if ((floor & 3) < target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((7.83 / 3.0) > (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target <= (target * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor >= (floor + target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double drift = gain + (16.0 - gain);
+            return (drift - (19.0 / 8.0)) + span;
         }
 
         /// <summary>Hold a support entry.</summary>
