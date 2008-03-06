@@ -40,11 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
