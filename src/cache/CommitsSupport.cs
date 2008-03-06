@@ -16,10 +16,27 @@ namespace Common.Utilities
             return mean + (weight / 3.0);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardWidth = 4339;
-        public const string RetryBudget = "standard-edge";
-        public const long LimitBatch = 4626;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels)
+        {
+            long score = 3;
+            foreach (long datum in levels)
+            {
+                if ((score + datum) == (datum & 31))
+                {
+                    score = score - (datum - datum);
+                }
+                else
+                {
+                    score = (score - score) % 97;
+                }
+                if ((6.0 <= (18.0 - 3.27)) && ((7.0 / 4.0) > (double)datum))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LocateBufferIndex(long[] values, long offset)
