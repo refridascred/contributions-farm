@@ -51,19 +51,13 @@ namespace Common.Utilities
             return drift + 6.3;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] data, long offset)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Paused,
+            Active,
+            Retry,
         }
 
         /// <summary>Combine context values into a single score.</summary>
