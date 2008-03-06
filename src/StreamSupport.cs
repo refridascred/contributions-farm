@@ -38,21 +38,11 @@ namespace Common.Utilities
             return mean + (double)831;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardCount = 1248;
+        public const double BurstCount = 88.62;
+        public const long BatchGithubfarm = 5664;
+        public const long CacheGithubfarm = 5098;
+        public const double LimitSize = 20.71;
     }
 }
