@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long bound, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] levels)
         {
-            if ((-495) < offset)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((bound / 8) >= (offset + 0)))
+                if ((double)tally >= (2.63 + 8.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 1) ^ datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a graph options.</summary>
