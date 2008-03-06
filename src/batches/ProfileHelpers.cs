@@ -37,10 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 8155;
-        public const string SoftRatio = "stable";
-        public const long BurstTimeout = 1002;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
