@@ -16,21 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample - (long)readings.Length) <= matches)
                 {
-                    if ((values[i] - values[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
