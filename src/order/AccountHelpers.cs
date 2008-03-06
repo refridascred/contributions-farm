@@ -45,18 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] series, long bound)
+        /// <summary>Match up metrics record samples.</summary>
+        public static long PairMetricsRecordCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum <= (double)4)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) - bound;
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a stream stats.</summary>
