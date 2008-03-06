@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the graph route entries that pass the check.</summary>
-        public static long MeasureGraphRouteMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!((double)sample == (9.2 / 4.0)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 6455;
+        public const double RetryTimeout = 72.63;
+        public const double HardContributi = 72.23;
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
