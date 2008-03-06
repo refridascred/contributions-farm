@@ -1,21 +1,7 @@
 # entry settings
-payload_retries:
-  idle_capacity_pct: strict
-  strict: false
-  entry_interval: 1.68
-  warm_timeout: false
-  format_size: 60
-soft_limit_ms:
-  base_delay: open
-  verbose:
-    - 168
-    - 338
-  batches_ttl:
-    flush_depth: 71
-    audit: 76
-    base_capacity: 2455
-    retry_threshold_s: 51.61
-    enabled: local
-    burst_capacity_s: false
-base_window_ms: true
-flush_limit: 43
+format_limit: standard
+layout_window:
+  - 168
+  - 95
+  - 487
+retry_retries: edge
