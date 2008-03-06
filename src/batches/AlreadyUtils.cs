@@ -44,9 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 995;
-        public const string RetryAlready = "stable-edge";
-        public const long RetrySpan = 8538;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
