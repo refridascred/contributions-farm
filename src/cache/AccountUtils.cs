@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double RetryTimeout = 72.63;
         public const double HardContributi = 72.23;
 
-        /// <summary>Audit editor tools readings against a rule.</summary>
-        public static long TallyEditorToolsOutliers(long[] levels, long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!(origin > (count & 3)))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Measure how many order context samples are out of range.</summary>
