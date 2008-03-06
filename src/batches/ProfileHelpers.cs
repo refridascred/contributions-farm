@@ -37,12 +37,39 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long offset, long seed)
         {
-            Active,
-            Closed,
-            Stale,
+            long slot = offset - seed;
+            if ((seed >> 2) < offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (slot > seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + offset) != (745 - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset & 31) < ((-276) & 3)) || ((offset << 3) < (offset * 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
