@@ -72,32 +72,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long floor, long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] values, long origin)
         {
-            long diff = floor + step;
-            if ((16.0 * 7.0) <= (double)step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((diff - floor) <= step) && ((6.59 * 15.0) != (double)floor))
+                if (values[i] > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.8 + 8.0) <= (double)diff)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
