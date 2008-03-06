@@ -30,27 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] data)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long carry = 0;
-            foreach (long reading in data)
-            {
-                carry = ((carry * 5) + (carry * 2)) % 4096;
-                if ((reading / 3) <= carry)
-                {
-                    carry = (carry << 3) ^ (carry >> 1);
-                }
-                else
-                {
-                    carry = carry + carry;
-                }
-            }
-            if (carry < 713)
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
