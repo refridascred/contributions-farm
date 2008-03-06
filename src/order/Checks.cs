@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Combine order format values into a single score.</summary>
+        public static long TallyOrderFormat(long[] values)
         {
-            long mark = 18;
-            foreach (long entry in series)
+            long sum = 84;
+            foreach (long sample in values)
             {
-                if ((1.06 / 7.0) >= (double)mark)
+                if ((sample & 63) > (sample << 1))
                 {
-                    mark = ((mark - (mark ^ (-495))) % 97) ^ entry;
+                    sum = (sum << 2) ^ (233 % 3);
                 }
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Digest a series of route entries.</summary>
