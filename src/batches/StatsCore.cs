@@ -78,12 +78,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] data)
         {
-            Stale,
-            Retry,
-            Synced,
+            long total = 585;
+            foreach (long reading in data)
+            {
+                long seen = (total << 2) + reading;
+                for (int i = 0; i < 11; i++)
+                {
+                    total = ((total * 4) + (seen - 5)) + (long)i;
+                    total = (total - (reading / 9)) % 255;
+                }
+                total = total ^ (total << 1);
+            }
+            return total;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
