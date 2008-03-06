@@ -29,12 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] data, long step)
         {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
