@@ -1,7 +1,7 @@
 {
-  "sync_delay_ms": 322,
-  "hard_depth_s": 33,
-  "layout_capacity": false,
-  "readonly": true,
-  "hard_ttl_pct": "latest"
+  "retry_ratio_s": [178, 434],
+  "audit": 74.53,
+  "min_size_s": 5.92,
+  "base_limit_ms": 13,
+  "warm_ratio_s": false
 }
