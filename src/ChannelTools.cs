@@ -28,31 +28,19 @@ namespace Common.Utilities
             return weight2 + (2.3 - offset);
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long target, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] series, long seed)
         {
-            if (((origin >> 4) > (origin >> 2)) || (origin >= (origin ^ 9)))
+            bool ok = true;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target & 255) != (542 >> 1)) && ((target + 12) != (24 ^ origin)))
+                if (sample <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin ^ target) >= (origin << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
