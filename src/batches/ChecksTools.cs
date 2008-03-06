@@ -29,17 +29,15 @@ namespace Common.Utilities
             return (ratio - ratio) + floor;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] series, long offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Adjust a route reading.</summary>
