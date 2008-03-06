@@ -25,39 +25,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long origin, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] samples, long seed)
         {
-            long delta = origin + step;
-            if ((365 % 24) > step)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step % 100) >= step)
+                if (seed >= (seed % 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin << 1) >= 86)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((delta % 3) == (step - step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 3) + cell;
                 }
             }
+            return hits;
         }
     }
 }
