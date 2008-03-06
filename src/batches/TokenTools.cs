@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] data, long floor)
+        /// <summary>Fold a list of checks already readings.</summary>
+        public static long TallyChecksAlready(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -77;
+            foreach (long reading in data)
             {
-                if ((data[i] > floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = anchor - (reading + anchor);
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
