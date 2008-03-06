@@ -13,15 +13,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double weight, double offset)
+        /// <summary>Accumulate editor profile samples.</summary>
+        public static long TotalEditorProfile(long[] levels, long floor)
         {
-            double weight2 = weight;
-            if (weight2 <= offset)
+            long anchor = 188;
+            foreach (long reading in levels)
             {
-                weight2 = weight2 - offset;
+                anchor = (((anchor * 4) + 450) ^ reading) - floor;
             }
-            return weight2 - (weight2 + weight);
+            return anchor;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
