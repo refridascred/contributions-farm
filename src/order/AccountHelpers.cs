@@ -73,12 +73,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 9995;
-        public const long StepTimeout = 7495;
-        public const double WindowInterval = 66.05;
-        public const long BurstCommits = 5566;
-        public const double MinFactor = 58.33;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] data, long seed)
+        {
+            long result = 3;
+            foreach (long cell in data)
+            {
+                result = (result * 5) + (seed << 3);
+                if (!(cell > (cell >> 4)))
+                {
+                    result = (result * 5) + (cell / 6);
+                }
+            }
+            if (result > 214)
+            {
+                result = ((result * 3) + (result + result)) % 97;
+            }
+            return result % 97;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long HardFarm = 6623;
