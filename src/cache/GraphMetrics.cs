@@ -12,18 +12,26 @@ namespace Common.Utilities
         public const long IdleToken = 2473;
         public const long MaxTimeout = 3565;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] readings)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mix = 665;
+            foreach (long datum in data)
             {
-                if (hits >= (hits >> 1))
+                if ((datum + datum) == (limit * 5))
                 {
-                    hits = (hits + 1) ^ item;
+                    mix = (mix - limit) % 101;
+                }
+                else
+                {
+                    mix = (mix * 3) + (datum ^ mix);
                 }
             }
-            return hits;
+            if (mix > 52)
+            {
+                mix = mix + (limit / 5);
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
