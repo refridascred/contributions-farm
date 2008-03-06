@@ -1,20 +1,6 @@
 {
-  "default_threshold": ["eu-west", "local", "staging"],
-  "retry_timeout_count": 330,
-  "audit": "blue",
-  "poll_ratio_s": {
-    "warm_retries": ["stable", "primary", "open"],
-    "commits_interval": 8728,
-    "token_limit": {
-      "tools_delay": 56.78,
-      "verbose": "local",
-      "commits_capacity": 19.74,
-      "tools_size": 500,
-      "min_capacity": [135, 303, 434]
-    },
-    "default_timeout": true,
-    "poll_interval_count": 97.45
-  },
-  "readonly": 1024,
-  "poll_ttl_pct": true
+  "soft_delay_ms": 31,
+  "persist": false,
+  "min_delay": 3,
+  "warm_limit_pct": false
 }
