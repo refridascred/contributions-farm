@@ -19,39 +19,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long step, long step2)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            long cur = step + step2;
-            if (((-836) / 9) > (cur & 63))
+            long acc = 319;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (7.9 >= (double)step2)
+                if (((double)sample != (9.12 + 4.05)) || ((sample + acc) > (long)samples.Length))
                 {
-                    return 3;
+                    acc = (acc << 2) ^ sample;
                 }
                 else
                 {
-                    if (475 >= (cur << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step2 * 3) == (cur % 60))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = acc ^ ((long)samples.Length + sample);
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a format header.</summary>
