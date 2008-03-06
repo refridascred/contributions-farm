@@ -59,12 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public double Level { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the cache mode values.</summary>
