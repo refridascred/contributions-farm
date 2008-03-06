@@ -23,18 +23,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] levels, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((823 + target) >= matches)
+                if (tally < (origin % 60))
                 {
-                    matches = (matches + 3) + item;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Blend two route measurements.</summary>
