@@ -25,31 +25,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] data, long target)
-        {
-            long score = 308;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    score = score + (long)i;
-                }
-                if ((target ^ score) < score)
-                {
-                    score = score - sample;
-                }
-                else
-                {
-                    score = score ^ (target + 591);
-                }
-            }
-            if (score < 619)
-            {
-                score = (score - (652 >> 4)) % 97;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "strict-v2";
+        public const string MinStats = "fallback-1";
+        public const long StepScore = 9382;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordOutliers(long[] samples)
