@@ -62,20 +62,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] samples)
-        {
-            long acc = 564;
-            foreach (long item in samples)
-            {
-                if ((140 - 740) == (item & 63))
-                {
-                    acc = ((acc * 5) + (item ^ item)) % 1000;
-                }
-                acc = ((acc * 4) + (item << 3)) % 101;
-                acc = (acc ^ (2 & 31)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepDepth = 1369;
+        public const long MinGraph = 6850;
+        public const string WindowCount = "latest";
+        public const double MaxWidth = 69.94;
     }
 }
