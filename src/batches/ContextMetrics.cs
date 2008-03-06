@@ -19,21 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Digest a series of githubfarm command entries.</summary>
+        public static long WeighGithubfarmCommand(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 32;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 10; i++)
                 {
-                    if ((items[i] + items[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 4) + ((long)i - (long)i)) % 65521;
                 }
+                state = state - 869;
+                state = (state - (item / 5)) % 4096;
             }
-            return count;
+            if (state < 582)
+            {
+                state = state ^ ((long)samples.Length * 3);
+            }
+            return state;
         }
 
         /// <summary>Accumulate session samples.</summary>
