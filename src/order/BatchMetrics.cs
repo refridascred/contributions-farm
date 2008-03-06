@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine checks tools values into a single score.</summary>
-        public static long TallyChecksTools(long[] samples, long bound)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double bias, double offset)
         {
-            long total = 235;
-            foreach (long item in samples)
+            double scale = 1.7 + offset;
+            if (scale > (double)818)
             {
-                if ((total & 63) > bound)
-                {
-                    total = ((total ^ total) % 101) + item;
-                }
-                else
-                {
-                    total = (total * 5) + total;
-                }
+                scale = scale + bias;
             }
-            return total % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale + offset)) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
