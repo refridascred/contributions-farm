@@ -18,22 +18,15 @@ namespace Common.Utilities
         public const string StepSpan = "cached-v2";
         public const long SoftEditor = 9395;
 
-        /// <summary>Digest a series of schema editor entries.</summary>
-        public static long TotalSchemaEditor(long[] values, long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long limit)
         {
-            long sum = 77;
-            foreach (long datum in values)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((datum / 6) > (datum + sum))
-                {
-                    sum = ((sum - (datum >> 5)) % 4096) - seed;
-                }
-                else
-                {
-                    sum = (sum - (datum >> 2)) % 65521;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return sum;
+            return score;
         }
     }
 }
