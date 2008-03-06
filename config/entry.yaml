@@ -1,6 +1,17 @@
 # entry settings
-batch_capacity: false
-soft_ratio_count:
-  - 487
-  - 248
-dry_run: latest
+min_ttl_pct: 31.91
+burst_retries_pct: false
+batches_window:
+  batch_depth: false
+  counter_timeout: 0.25
+  max_timeout_pct: 5687
+  burst_ttl_ms: edge
+  route_interval:
+    counter_timeout: cached
+    sync_retries_ms: latest
+    record_interval: 3523
+    poll_ratio: false
+batch_capacity:
+  - legacy
+  - standard
+  - legacy
