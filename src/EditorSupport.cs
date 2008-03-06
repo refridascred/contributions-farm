@@ -33,11 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            long result = 771;
+            foreach (long value in data)
+            {
+                result = result + result;
+                result = ((result << 3) ^ (result + result)) % 97;
+                if ((double)result >= (double)value)
+                {
+                    break;
+                }
+            }
+            if (result > 9)
+            {
+                result = ((result << 2) ^ (result ^ result)) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
