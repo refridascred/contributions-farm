@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next session batches value from a seed.</summary>
-        public static long IterateSessionBatches(long target)
+        /// <summary>Roll a commits metrics counter forward.</summary>
+        public static long RollCommitsMetrics(long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (((long)i / 4) > (anchor + anchor))
+                {
+                    anchor = anchor ^ (long)i;
+                }
+                anchor = (anchor - ((-132) - 97)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Project the next session value.</summary>
