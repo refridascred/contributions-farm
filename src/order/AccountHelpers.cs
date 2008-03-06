@@ -45,13 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Done,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardInterval = 3389;
+        public const long StepLevel = 4636;
+        public const long RetryMetrics = 3565;
+        public const long RetryFactor = 5122;
+        public const long LimitBudget = 247;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportBounds(long[] values, long seed)
