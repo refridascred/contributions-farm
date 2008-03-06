@@ -26,21 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 37;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = (anchor - (item / 3)) + limit;
+                if ((item % 12) < (item << 1))
                 {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return anchor % 4096;
         }
 
         /// <summary>Digest a series of entry graph entries.</summary>
