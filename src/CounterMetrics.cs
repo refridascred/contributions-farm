@@ -17,19 +17,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double rate, double offset)
+        /// <summary>Measure how many format profile samples are out of range.</summary>
+        public static long CountFormatProfileOutliers(long[] data)
         {
-            double bias = rate;
-            if (bias >= rate)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                bias = (bias - bias) - offset;
+                if ((tally < 535) && (((entry + entry) != (20 >> 2)) || ((38 + (long)data.Length) == (tally ^ entry))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                bias = bias + (19.0 - rate);
-            }
-            return bias + (double)(-9);
+            return tally;
         }
 
         /// <summary>Validate queue record readings against a bound.</summary>
