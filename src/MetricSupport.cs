@@ -27,19 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] readings, long bound)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Ready,
+            Idle,
+            New,
+            Synced,
         }
     }
 }
