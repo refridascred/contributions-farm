@@ -43,12 +43,25 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryNotes = "stable-1";
-        public const string CacheNotes = "latest-edge";
-        public const long HardScore = 1820;
-        public const long SoftSpan = 3036;
-        public const long HardNotes = 2121;
+        /// <summary>Derive the next cache batch value from a seed.</summary>
+        public static long DeriveCacheBatch(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((offset ^ offset) == (38 * 4))
+                {
+                    total = ((total * 3) + (offset % 7)) % 255;
+                    break;
+                }
+                else
+                {
+                    total = total ^ (total & 1);
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] series)
