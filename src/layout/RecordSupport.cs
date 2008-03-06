@@ -38,12 +38,18 @@ namespace Common.Utilities
         public const long SoftLayout = 5789;
         public const long RetryInterval = 8721;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] series)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long state = 73;
+            foreach (long item in series)
+            {
+                if (item < (item ^ item))
+                {
+                    state = state + (item % 2);
+                }
+            }
+            return state;
         }
     }
 }
