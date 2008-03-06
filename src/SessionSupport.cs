@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double ratio, double offset)
+        /// <summary>Digest a series of context tools entries.</summary>
+        public static long DigestContextTools(long[] readings)
         {
-            double scale = (double)(325 + 2);
-            return ((scale - (double)0) + ratio) + offset;
+            long mix = 1;
+            foreach (long cell in readings)
+            {
+                if ((double)mix < 1.46)
+                {
+                    mix = (((mix << 2) ^ (mix & 31)) % 101) - cell;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Project the next order value.</summary>
