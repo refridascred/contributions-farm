@@ -1,5 +1,6 @@
 {
-  "queue_ratio": "primary",
-  "warm_depth_s": ["strict", "green"],
-  "burst_depth": 30
+  "base_timeout": 1.58,
+  "flush_ttl_pct": true,
+  "soft_limit_s": "open",
+  "retry_capacity_pct": 8
 }
