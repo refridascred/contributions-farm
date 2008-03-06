@@ -84,10 +84,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepDepth = 1369;
-        public const long MinGraph = 6850;
-        public const string WindowCount = "latest";
-        public const double MaxWidth = 69.94;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCount = "open-edge";
+        public const long BaseFactor = 5076;
+        public const double BatchLevel = 97.29;
     }
 }
