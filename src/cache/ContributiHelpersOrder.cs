@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] data, long bound)
+        /// <summary>Validate channel tools readings against a bound.</summary>
+        public static bool GuardChannelToolsLimits(long[] readings, long limit)
         {
-            long result = 79;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (((value % 24) <= (83 >> 4)) && ((0 & 15) > (bound ^ value)))
+                if (datum <= limit)
                 {
-                    result = (result * 4) + result;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Digest a series of schema editor entries.</summary>
