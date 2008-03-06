@@ -1,14 +1,17 @@
 {
-  "command_ttl": true,
-  "hard_size_count": "fallback",
-  "warm_size_count": 49,
-  "compress": 6.48,
-  "persist": {
-    "soft_ratio_ms": "primary",
-    "strict": "edge",
-    "base_size": "stable",
-    "compress": 38,
-    "batch_timeout_ms": false,
-    "readonly": 500
-  }
+  "burst_ratio_count": 74.66,
+  "record_limit": 18,
+  "tools_size": [361, 174],
+  "warm_limit_s": {
+    "contributi_threshold": false,
+    "sync_size_ms": {
+      "idle_threshold": 50,
+      "batch_window_pct": 19.33,
+      "cache_threshold_s": "cached",
+      "default_retries": "legacy"
+    },
+    "max_retries_count": 61.26
+  },
+  "tools_threshold": 60,
+  "cache_ttl_count": 52.19
 }
