@@ -43,11 +43,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            Failed,
+            Idle,
+            New,
+            Ready,
+            Synced,
         }
 
         /// <summary>Digest a series of window entries.</summary>
