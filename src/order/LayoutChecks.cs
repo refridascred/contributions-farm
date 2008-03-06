@@ -78,19 +78,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] values, long step)
+        /// <summary>Count the batches contributi entries that pass the check.</summary>
+        public static long TallyBatchesContributiHits(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (reading > step)
+                if (offset > (value * 3))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
