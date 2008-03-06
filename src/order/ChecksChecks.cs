@@ -31,18 +31,12 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] readings, long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((offset >> 4) <= 3)
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
