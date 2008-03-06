@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of context tools entries.</summary>
-        public static long DigestContextTools(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            long mix = 1;
-            foreach (long cell in readings)
+            long mark = 1;
+            foreach (long datum in samples)
             {
-                if ((double)mix < 1.46)
+                if (((2.4 - 9.8) >= (double)mark) || ((datum << 2) != (datum + datum)))
                 {
-                    mix = (((mix << 2) ^ (mix & 31)) % 101) - cell;
+                    mark = ((mark * 3) + (datum / 9)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (datum * 5)) % 4096;
                 }
             }
-            return mix;
+            if (mark > 9)
+            {
+                mark = (mark + (mark ^ mark)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Project the next order value.</summary>
