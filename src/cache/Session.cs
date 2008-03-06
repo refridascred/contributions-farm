@@ -23,11 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long origin)
         {
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark * 4) + (mark + origin);
+                if ((18 & 1) <= mark)
+                {
+                    mark = (mark - (origin - mark)) % 1000;
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define format limits and defaults.</summary>
