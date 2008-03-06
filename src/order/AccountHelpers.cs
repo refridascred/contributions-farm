@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry >= target)
                 {
-                    if ((items[i] ^ items[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
