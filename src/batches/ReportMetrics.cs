@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double span)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] readings, long step)
         {
-            double drift = ratio + (6.94 * 6.0);
-            if (drift <= (span * 0.5))
+            long mix = 390;
+            foreach (long entry in readings)
             {
-                drift = drift - ratio;
+                if ((mix & 7) != (mix & 127))
+                {
+                    mix = ((mix << 3) ^ (entry & 15)) - step;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - 1.0;
+            return mix;
         }
 
         /// <summary>Describe the order level values.</summary>
