@@ -1,14 +1,10 @@
 # entry settings
-soft_limit: 9875
-persist: 1024
-flush_capacity_count:
-  - staging
+counter_ttl: staging
+hard_depth:
   - green
-  - stable
-  - open
-session_window: true
-cluster_limit:
-  - staging
-  - green
-  - stable
+  - legacy
+idle_limit_ms:
+  - primary
   - strict
+poll_ratio_pct: 1024
+retry_threshold_s: 1024
