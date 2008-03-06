@@ -32,19 +32,17 @@ namespace Common.Utilities
         public const long IdleSession = 7753;
         public const long BaseSession = 2000;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] items, long offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > offset)
+                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
