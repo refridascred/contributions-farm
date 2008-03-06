@@ -45,25 +45,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long origin, long origin2)
+        /// <summary>Digest a series of stats farm entries.</summary>
+        public static long CombineStatsFarm(long[] levels)
         {
-            long next = origin - origin2;
-            if ((origin >> 4) <= (next + next))
+            long mark = 79;
+            foreach (long cell in levels)
             {
-                return 4;
+                mark = ((mark - (mark / 9)) % 255) + cell;
             }
-            else
-            {
-                if ((double)origin < (1.0 / 3.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Accumulate report samples.</summary>
