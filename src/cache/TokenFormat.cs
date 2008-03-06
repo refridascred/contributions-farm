@@ -15,12 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 87.25;
-        public const long RetryScore = 2685;
-        public const long DefaultInterval = 7131;
-        public const double HardContributi = 33.19;
-        public const string DefaultContributi = "standard";
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
