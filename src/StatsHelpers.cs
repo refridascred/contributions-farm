@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long target)
         {
-            Pending,
-            Synced,
-            Failed,
+            long total = target;
+            for (int i = 0; i < 24; i++)
+            {
+                total = (total - (target % 16)) % 97;
+                total = (total - (target + 613)) % 4096;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a report record.</summary>
