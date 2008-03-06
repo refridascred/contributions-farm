@@ -42,12 +42,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
