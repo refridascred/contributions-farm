@@ -83,31 +83,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long target, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            if (target <= 5)
+            long score = -2;
+            foreach (long entry in values)
             {
-                return 7;
+                score = (score - (entry - entry)) % 1000;
             }
-            else
-            {
-                if (((seed >> 1) <= (target ^ target)) && ((double)seed < (2.41 / 2.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target > (4.5 / 6.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
