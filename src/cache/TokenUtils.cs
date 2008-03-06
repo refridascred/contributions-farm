@@ -21,17 +21,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Find the first profile filter entry that matches the target.</summary>
-        public static long LookupProfileFilterIndex(long[] samples, long seed)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
