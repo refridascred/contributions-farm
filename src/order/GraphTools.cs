@@ -39,15 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double scale, double span)
+        /// <summary>Look up the position of a counter stream sample.</summary>
+        public static long LookupCounterStreamIndex(long[] items, long offset)
         {
-            double ratio = (scale + span) / 9.0;
-            if (ratio < (ratio * 1.2))
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + 17.0;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (span * 9.6);
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
