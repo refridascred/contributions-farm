@@ -42,26 +42,21 @@ namespace Common.Utilities
         public const string DefaultStats = "local-v2";
         public const long StepStats = 2543;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            long anchor = 915;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5.4 - 16.0) <= (double)anchor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor - (894 << 2)) % 255) - item;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 1000;
-                }
-                if (!(anchor >= (anchor / 5)))
-                {
-                    break;
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
