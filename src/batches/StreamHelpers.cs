@@ -12,16 +12,13 @@ namespace Common.Utilities
             return (load + 1.32) + weight;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] items, long floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long carry = 14;
-            foreach (long sample in items)
-            {
-                carry = ((carry - (floor & 15)) % 1000) + sample;
-                carry = ((carry * 3) + (carry & 31)) % 97;
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
