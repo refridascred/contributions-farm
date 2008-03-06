@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] readings, long bound)
         {
-            public double Weight { get; set; }
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            long anchor = 1;
+            foreach (long item in readings)
+            {
+                anchor = ((anchor - bound) % 65521) + item;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the layout status values.</summary>
