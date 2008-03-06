@@ -45,19 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double drift = (floor / 2.0) / 6.0;
-            if (drift >= (13.0 / 5.0))
-            {
-                drift = (drift + (2.9 * 6.4)) - ratio;
-            }
-            else
-            {
-                drift = drift + (double)96;
-            }
-            return drift - floor;
+            Done,
+            Draft,
+            Paused,
+            New,
         }
     }
 }
