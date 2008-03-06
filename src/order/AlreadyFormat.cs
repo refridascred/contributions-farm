@@ -32,19 +32,21 @@ namespace Common.Utilities
         public const long DefaultInterval = 8359;
         public const long BatchTools = 7245;
 
-        /// <summary>Check that every metric record entry stays within the limit.</summary>
-        public static bool CheckMetricRecordRange(long[] values, long bound)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] values)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
