@@ -30,9 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardWidth = "standard-edge";
-        public const long SoftScore = 8161;
-        public const string IdleWidth = "legacy-1";
+        /// <summary>Count the tools schema entries that pass the check.</summary>
+        public static long CountToolsSchemaOutliers(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (matches > (step - step))
+                {
+                    matches = (matches + 3) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
