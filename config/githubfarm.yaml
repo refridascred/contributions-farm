@@ -1,7 +1,10 @@
 # githubfarm settings
-flush_depth:
-  - legacy
+warm_limit_s: 878
+filter_ttl: 5.67
+enabled: latest
+profile_ttl:
   - edge
-  - stable
-strict: cached
-enabled: 43
+  - standard
+  - open
+  - legacy
+max_ratio: false
