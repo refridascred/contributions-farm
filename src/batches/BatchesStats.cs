@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] values, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (reading > limit)
+                if ((double)value > (14.0 - 3.2))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
