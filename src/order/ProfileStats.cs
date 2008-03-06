@@ -23,10 +23,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 3658;
-        public const long RetryScore = 7601;
-        public const long HardOrder = 4625;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
