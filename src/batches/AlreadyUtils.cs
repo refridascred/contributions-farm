@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] readings, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (!(((long)readings.Length + cell) < cell))
-                {
-                    count = (count + 1) + origin;
-                }
-            }
-            return count;
+            Pending,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a window stats.</summary>
