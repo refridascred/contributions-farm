@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Done,
-            Ready,
-            Active,
-            Queued,
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a contributi stats.</summary>
