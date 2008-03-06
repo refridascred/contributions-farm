@@ -46,24 +46,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a batches cluster value against two limits.</summary>
-        public static long ClassifyBatchesCluster(long limit, long limit2)
+        /// <summary>Derive the next support report value from a seed.</summary>
+        public static long StepSupportReport(long limit)
         {
-            if ((19.0 / 4.0) >= (double)limit2)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((limit & 63) != (limit % 100))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return score;
         }
 
         /// <summary>Count payload editor pairs that satisfy a relation.</summary>
