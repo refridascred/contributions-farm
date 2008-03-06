@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Audit queue profile readings against a rule.</summary>
+        public static long AuditQueueProfileGaps(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((datum ^ datum) < (tally * 4))
+                {
+                    tally = tally + 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
