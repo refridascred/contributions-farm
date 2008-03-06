@@ -38,19 +38,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long anchor = 1;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor - anchor) % 101) + value;
-            }
-            if (anchor > 23)
-            {
-                anchor = (anchor - (anchor - anchor)) % 255;
-            }
-            return anchor;
+            Ready,
+            Idle,
+            Paused,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
