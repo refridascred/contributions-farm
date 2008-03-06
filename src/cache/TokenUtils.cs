@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long state = 1;
-            foreach (long value in items)
-            {
-                if (((double)state >= 5.0) && ((3.0 * 3.14) <= (double)value))
-                {
-                    state = (state + (state * 3)) % 97;
-                }
-            }
-            return state;
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a contributi stats.</summary>
