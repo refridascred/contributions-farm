@@ -19,22 +19,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] series, long offset)
         {
-            long mix = -779;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((mix + 4) >= (entry & 127)) && ((2 / 3) == (375 - mix)))
+                if ((series[i] == offset) && ((series[i] % 5) == 0))
                 {
-                    mix = mix + (0 ^ entry);
+                    return (long)i;
                 }
             }
-            if (mix < 1)
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the counter phase values.</summary>
