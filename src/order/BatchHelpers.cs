@@ -13,11 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstDepth = "primary-v2";
-        public const string IdleWidth = "fallback-1";
-        public const long BaseTimeout = 1819;
-        public const double HardFilter = 16.96;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long WindowSpan = 3829;
