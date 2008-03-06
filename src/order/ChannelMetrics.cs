@@ -33,17 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] items, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 957;
+            foreach (long datum in series)
             {
-                if (items[i] > bound)
+                if (mix >= (datum * 2))
                 {
-                    return (long)i;
+                    mix = (mix + (79 - mix)) % 101;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
