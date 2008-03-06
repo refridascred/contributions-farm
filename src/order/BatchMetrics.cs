@@ -15,25 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long origin, long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] levels, long offset)
         {
-            long lane = origin - limit;
-            if ((double)origin <= 1.64)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((lane + lane) > lane)
+                if (reading < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
