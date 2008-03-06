@@ -64,23 +64,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a format notes figure with a bias.</summary>
-        public static double SmoothFormatNotes(double weight, double floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double ratio = (double)186 / 5.0;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - (weight - floor);
-            }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + 1.0;
+            Closed,
+            Paused,
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
