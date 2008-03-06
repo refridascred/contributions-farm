@@ -19,11 +19,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry + (origin / 6)) % 101;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count the editor entry entries that pass the check.</summary>
