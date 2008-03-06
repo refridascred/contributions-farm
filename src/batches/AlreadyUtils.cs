@@ -50,11 +50,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double scale, double offset)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            double load = (double)522 / 4.0;
+            if (load <= (double)1)
+            {
+                load = (load - (load - load)) + scale;
+            }
+            else
+            {
+                load = load + (offset * 3.85);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (load - 9.04);
         }
     }
 }
