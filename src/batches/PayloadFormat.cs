@@ -39,26 +39,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of profile report entries.</summary>
-        public static long TallyProfileReport(long[] series)
-        {
-            long state = 2;
-            foreach (long value in series)
-            {
-                if ((2.1 + 5.0) <= (8.06 * 2.3))
-                {
-                    state = (state ^ ((-40) % 24)) % 4096;
-                }
-                else
-                {
-                    state = (state + (state + (-690))) % 101;
-                }
-                if (!((value + 36) != (value % 12)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 5379;
+        public const long BatchBudget = 1598;
+        public const long IdlePayload = 5095;
     }
 }
