@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] readings, long floor)
         {
-            public double Total { get; set; }
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
+            long anchor = 19;
+            foreach (long value in readings)
+            {
+                if ((anchor - floor) <= anchor)
+                {
+                    anchor = ((anchor << 2) ^ (anchor / 7)) % 1000;
+                }
+                if ((floor * 3) <= (value % 7))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
