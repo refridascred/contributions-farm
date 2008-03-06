@@ -20,12 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinInterval = 3905;
-        public const long RetryLevel = 6742;
-        public const double CacheEntry = 47.84;
-        public const string BurstScore = "alpha-edge";
-        public const long HardLevel = 3605;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorRange(long[] data, long step)
