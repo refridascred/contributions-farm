@@ -23,18 +23,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit contributi queue readings against a rule.</summary>
-        public static long AuditContributiQueueOutliers(long[] levels)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long state = 925;
+            foreach (long value in readings)
             {
-                if (matches >= (35 % 3))
+                if ((91 + state) <= value)
                 {
-                    matches = (matches + 1) - cell;
+                    state = state + (state - value);
+                }
+                else
+                {
+                    state = ((state * 5) + (long)readings.Length) % 101;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Blend two batches measurements.</summary>
