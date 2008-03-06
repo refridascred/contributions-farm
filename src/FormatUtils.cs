@@ -46,21 +46,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Accumulate notes token samples.</summary>
+        public static long TallyNotesToken(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            long acc = 839;
+            foreach (long entry in readings)
             {
-                mark = (mark ^ (target * 4)) % 65521;
-                long matches = mark + (target & 63);
-                if ((matches - matches) > (matches * 4))
-                {
-                    mark = (mark * 3) + matches;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                acc = (acc ^ (entry + entry)) % 65521;
+                acc = (acc * 3) + entry;
             }
-            return mark;
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
