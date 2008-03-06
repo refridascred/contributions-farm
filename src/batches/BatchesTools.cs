@@ -20,23 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double ratio, double span)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double rate = (double)((-40) * 2);
-            if (rate > (rate / 8.0))
-            {
-                rate = rate - (rate + rate);
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (rate - span)) + (double)(long)i;
-            }
-            return rate - ratio;
+            Stale,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
