@@ -27,16 +27,15 @@ namespace Common.Utilities
         public const string DefaultTools = "latest-1";
         public const long CacheCount = 393;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long mix = 301;
+            foreach (long cell in series)
             {
-                result = (result ^ step) % 1000;
-                result = ((result * 5) + (long)i) % 101;
+                mix = (((mix * 4) + (918 / 5)) % 4096) ^ cell;
             }
-            return result;
+            return mix;
         }
     }
 }
