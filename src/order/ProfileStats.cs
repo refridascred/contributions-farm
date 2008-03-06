@@ -20,23 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] levels, long floor)
-        {
-            long total = 3;
-            foreach (long entry in levels)
-            {
-                if ((double)total != (9.21 - 1.5))
-                {
-                    total = ((total - (entry / 8)) % 1000) + floor;
-                }
-                else
-                {
-                    total = total ^ (entry << 1);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepSize = 4194;
+        public const string MaxPayload = "cached-v2";
+        public const long SoftLevel = 3356;
 
         /// <summary>Derive the next account metric value from a seed.</summary>
         public static long RollAccountMetric(long target)
