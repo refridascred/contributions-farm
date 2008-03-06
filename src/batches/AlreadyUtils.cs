@@ -31,12 +31,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitTimeout = "primary-1";
-        public const double RetryLevel = 92.96;
-        public const long BatchContext = 5009;
-        public const double HardScore = 13.19;
-        public const string StepSize = "alpha-1";
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double bias, double floor)
+        {
+            double rate = bias;
+            if (rate <= floor)
+            {
+                rate = rate - bias;
+            }
+            return rate + (double)4;
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
