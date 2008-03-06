@@ -1,11 +1,16 @@
 {
-  "batch_retries": 5673,
-  "strict": 97.97,
-  "dry_run": false,
-  "githubfarm_limit": {
-    "warm_ratio": "primary",
-    "base_limit_count": false,
-    "layout_window": "latest"
+  "base_delay_ms": {
+    "stream_window": {
+      "flush_retries_ms": 43.43,
+      "burst_retries": 96.62,
+      "cache_ratio_ms": "cached"
+    },
+    "readonly": ["eu-west", "latest", "eu-west"],
+    "sync_retries": "blue",
+    "poll_ttl": "cached",
+    "hard_interval_s": 12
   },
-  "soft_capacity_pct": 5976
+  "commits_retries": 28,
+  "idle_size_ms": "local",
+  "poll_threshold": 36.23
 }
