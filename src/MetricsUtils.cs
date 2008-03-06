@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double ratio, double floor)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double ratio2 = (floor * 5.89) - (7.39 * 5.0);
-            if (ratio2 < (ratio * 6.3))
-            {
-                ratio2 = ratio2 + floor;
-            }
-            else
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            return ratio2 - ratio2;
+            Failed,
+            Active,
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
