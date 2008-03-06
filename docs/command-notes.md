@@ -1,10 +1,11 @@
 # Command notes
 
-Each contributi is validated before it reaches the contributi queue.
-Each counter is validated before it reaches the stream queue.
+The window module keeps queue values in sync with the entry cache.
+A editor that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Validate stream input early
-- Document new window fields
-- Log every cluster change
+- Keep notes values small
+- Review schema limits each release
+- Log every already change
+- Validate format input early
