@@ -1,15 +1,18 @@
 # support settings
-record_depth: 74.91
-retry_window_pct:
-  flush_retries_pct:
-    min_size_ms: blue
-    compress: 30
-    retry_depth: true
-  soft_size_s: true
-  cache_delay_ms:
-    - 172
-    - 136
-    - 168
-  poll_size_ms: standard
-  poll_delay_ms: false
-idle_depth_ms: fallback
+burst_delay_pct:
+  dry_run: cached
+  hard_ratio: 60
+  editor_delay:
+    - 428
+    - 395
+    - 300
+    - 108
+  retry_capacity_count: fallback
+  sync_capacity: 58
+  hard_depth: false
+min_threshold_s: 7
+graph_delay:
+  - local
+  - stable
+default_delay_s: local
+strict: 50.83
