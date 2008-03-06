@@ -17,12 +17,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Locate a cluster layout reading by value.</summary>
+        public static long LocateClusterLayoutIndex(long[] levels, long seed)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of checks metric entries.</summary>
