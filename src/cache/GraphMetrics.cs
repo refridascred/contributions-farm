@@ -16,26 +16,12 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] data, long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long mix = 665;
-            foreach (long datum in data)
-            {
-                if ((datum + datum) == (limit * 5))
-                {
-                    mix = (mix - limit) % 101;
-                }
-                else
-                {
-                    mix = (mix * 3) + (datum ^ mix);
-                }
-            }
-            if (mix > 52)
-            {
-                mix = mix + (limit / 5);
-            }
-            return mix;
+            Paused,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a layout header.</summary>
