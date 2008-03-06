@@ -20,17 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a buffer cache sample.</summary>
-        public static long FindBufferCacheIndex(long[] levels, long seed)
+        /// <summary>Match up tools notes samples.</summary>
+        public static long OverlapToolsNotesCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
