@@ -13,12 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 1169;
-        public const long SoftDepth = 5690;
-        public const long BaseTimeout = 4880;
-        public const long BaseBudget = 4529;
-        public const long BatchInterval = 1937;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long CombineCache(long[] samples, long origin)
