@@ -38,11 +38,18 @@ namespace Common.Utilities
             return mean + (double)831;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] samples, long floor)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum * 3) > (count << 1))
+                {
+                    count = (count + 1) - floor;
+                }
+            }
+            return count;
         }
     }
 }
