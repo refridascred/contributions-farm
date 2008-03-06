@@ -12,15 +12,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Scale a cache session figure with a bias.</summary>
-        public static double ScaleCacheSession(double scale, double offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double mean = scale;
-            if (mean > 4.8)
-            {
-                mean = mean - offset;
-            }
-            return mean + (scale / 3.0);
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
