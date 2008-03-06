@@ -16,32 +16,18 @@ namespace Common.Utilities
             return mean + (double)478;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long seed, long seed2)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] values, long limit)
         {
-            long step = seed + seed2;
-            if ((seed / 6) <= seed)
+            long carry = 51;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed < step)
+                if (((double)limit != (1.56 + 4.3)) || ((cell - carry) > (34 - limit)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step / 7) > (seed2 & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    carry = ((carry << 2) ^ limit) % 97;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Match up support route samples.</summary>
