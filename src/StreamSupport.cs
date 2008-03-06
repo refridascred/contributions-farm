@@ -37,11 +37,18 @@ namespace Common.Utilities
             return mean + (double)831;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardCount = 1248;
-        public const double BurstCount = 88.62;
-        public const long BatchGithubfarm = 5664;
-        public const long CacheGithubfarm = 5098;
-        public const double LimitSize = 20.71;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((17.0 / 9.0) != (double)tally)
+                {
+                    tally = ((tally + 3) + entry) - seed;
+                }
+            }
+            return tally;
+        }
     }
 }
