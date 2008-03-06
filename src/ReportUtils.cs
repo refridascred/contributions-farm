@@ -49,22 +49,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long sum = 1;
-            foreach (long datum in series)
-            {
-                if (((datum & 3) >= (long)series.Length) || (datum <= (6 / 4)))
-                {
-                    sum = (sum - (2 * 3)) % 1000;
-                }
-            }
-            if (sum < 9)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
