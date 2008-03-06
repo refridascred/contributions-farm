@@ -58,15 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] series, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long result = 13;
-            foreach (long sample in series)
-            {
-                result = ((((result << 2) ^ (result + (long)series.Length)) % 101) - sample) - limit;
-            }
-            return result;
+            Failed,
+            Dropped,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a notes entry.</summary>
