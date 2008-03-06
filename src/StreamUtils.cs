@@ -62,23 +62,18 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double scale, double bias)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] data)
         {
-            double weight = (double)534 / 5.0;
-            if (weight >= weight)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                weight = (weight + (double)(-6)) - bias;
+                if (2.9 > (double)hits)
+                {
+                    hits = (hits + 3) ^ cell;
+                }
             }
-            else
-            {
-                weight = weight + 2.12;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (scale / 5.0)) + (double)(long)i;
-            }
-            return weight + weight;
+            return hits;
         }
     }
 }
