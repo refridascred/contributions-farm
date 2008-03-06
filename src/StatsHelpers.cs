@@ -41,24 +41,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a metric tools pair into a bucket.</summary>
-        public static long BucketMetricTools(long origin, long origin2)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            if (((origin2 >> 2) != (origin2 + origin)) && ((origin2 % 12) < (origin2 >> 4)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + origin) < (origin << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
