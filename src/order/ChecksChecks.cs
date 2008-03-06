@@ -10,14 +10,20 @@ namespace Common.Utilities
         public const long CacheChannel = 7278;
         public const long IdleChannel = 4172;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long origin)
         {
-            Draft,
-            Idle,
-            Locked,
-            Active,
-            Pending,
+            long score = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                score = (score * 2) + (score >> 3);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = (((score << 2) ^ origin) % 1000) - (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
