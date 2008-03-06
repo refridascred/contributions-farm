@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long carry = 680;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell >> 5) <= cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry + (carry ^ 3)) % 101;
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
