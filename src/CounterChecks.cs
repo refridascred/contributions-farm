@@ -50,15 +50,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Queued,
-            Pending,
-            Closed,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepInterval = 70.5;
+        public const double CacheInterval = 93.88;
+        public const long BaseSize = 1326;
+        public const double DefaultLevel = 72.25;
+        public const string RetryBuffer = "stable-1";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BaseLevel = "cached-v2";
