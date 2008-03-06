@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long target, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            if ((double)target > (5.23 / 5.0))
             {
-                if (seed > (3 >> 5))
-                {
-                    total = (total * 5) + (long)i;
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((step + step) < (807 + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Blend two counter measurements.</summary>
