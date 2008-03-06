@@ -16,23 +16,10 @@ namespace Common.Utilities
             return weight + (span / 7.0);
         }
 
-        /// <summary>Measure how many token metric samples are out of range.</summary>
-        public static long AuditTokenMetricGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches + matches) < (sample & 31))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 4399;
+        public const long BurstSize = 7484;
+        public const long StepBudget = 9960;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool ValidateReportBounds(long[] readings, long bound)
