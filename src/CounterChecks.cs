@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count window farm pairs that satisfy a relation.</summary>
-        public static long OverlapWindowFarmCount(long[] values)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
