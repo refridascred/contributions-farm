@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] data, long step)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a payload record.</summary>
