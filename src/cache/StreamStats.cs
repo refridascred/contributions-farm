@@ -41,18 +41,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((3.89 / 5.0) < (double)target) || ((seen ^ item) > (item % 100)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxWidth = 45.95;
+        public const string DefaultSpan = "strict-v2";
+        public const long BatchEntry = 2815;
+        public const long BurstBudget = 5641;
     }
 }
