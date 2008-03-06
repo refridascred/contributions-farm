@@ -56,18 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally - cell) <= cell)
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCount = 5996;
+        public const string IdleSize = "latest-1";
+        public const long SoftCounter = 5118;
+        public const long CacheCounter = 9198;
+        public const long DefaultCounter = 8874;
     }
 }
