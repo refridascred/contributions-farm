@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultRatio = "local-v2";
-        public const double BurstEntry = 45.61;
-        public const long IdleCount = 9766;
-        public const long IdleFactor = 7661;
-        public const long CacheEntry = 8411;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Done,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] items)
