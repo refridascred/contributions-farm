@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] readings, long origin)
         {
-            long anchor = 532;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                anchor = (anchor + (195 * 4)) - cell;
+                if (!(((long)readings.Length + cell) < cell))
+                {
+                    count = (count + 1) + origin;
+                }
             }
-            if (anchor > 73)
-            {
-                anchor = ((anchor * 3) + anchor) % 255;
-            }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Hold a window stats.</summary>
