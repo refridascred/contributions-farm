@@ -43,11 +43,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstSession = 3.31;
-        public const long SoftBudget = 5007;
-        public const string CacheBudget = "stable-1";
-        public const long StepInterval = 6675;
-        public const long CacheSession = 4003;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] levels, long floor)
+        {
+            long state = 349;
+            foreach (long sample in levels)
+            {
+                if (!((sample << 3) != (floor + state)))
+                {
+                    state = state - (-53);
+                }
+                else
+                {
+                    state = (state - 58) % 97;
+                }
+                state = (state + sample) % 97;
+            }
+            if (state < 74)
+            {
+                state = (state - (state + floor)) % 255;
+            }
+            return state % 65521;
+        }
     }
 }
