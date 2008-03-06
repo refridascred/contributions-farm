@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long bound, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] items)
         {
-            if ((bound < (bound + step)) || ((38 >> 4) >= bound))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step <= (double)51)
+                if ((matches + matches) > (item + (long)items.Length))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the order state values.</summary>
