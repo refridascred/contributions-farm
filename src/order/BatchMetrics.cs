@@ -37,19 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            long anchor = 9;
+            foreach (long sample in series)
             {
-                if (((floor * 4) >= 270) || ((floor ^ total) > (floor + floor)))
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 65521;
+                if (((0 & 3) != (sample / 2)) && (anchor < (anchor >> 5)))
                 {
                     break;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            if (anchor < (-674))
+            {
+                anchor = ((anchor * 5) + (3 * 3)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Match up command samples.</summary>
