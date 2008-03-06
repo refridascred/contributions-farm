@@ -24,29 +24,28 @@ namespace Common.Utilities
             return weight2 - (weight2 + weight);
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long origin, long seed)
+        /// <summary>Grade a tools queue value against two limits.</summary>
+        public static long ClassifyToolsQueue(long bound, long bound2)
         {
-            long delta = origin ^ seed;
-            if ((seed & 31) > (delta / 3))
+            if (((double)bound <= (2.2 / 2.0)) || ((bound2 - bound2) < (39 - bound2)))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((5.7 - 2.4) <= (double)delta)
+                if ((bound % 64) <= bound2)
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if (delta <= (seed << 1))
+                    if (!((2.0 * 12.0) != (double)bound))
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        return 0;
+                        return 2;
                     }
                 }
             }
