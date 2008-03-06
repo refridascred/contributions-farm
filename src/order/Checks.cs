@@ -47,18 +47,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first graph buffer entry that matches the target.</summary>
-        public static long LocateGraphBufferIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultRatio = 66.76;
+        public const string CacheContributi = "stable";
+        public const string RetryScore = "primary-v2";
+        public const string WindowBudget = "legacy";
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] items, long offset)
