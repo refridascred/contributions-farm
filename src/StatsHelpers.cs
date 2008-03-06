@@ -33,12 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] series, long target)
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches stats.</summary>
