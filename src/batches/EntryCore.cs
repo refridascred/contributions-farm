@@ -61,18 +61,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            long acc = 821;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value / 8) != (acc - acc))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc - (value << 3)) % 101;
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
