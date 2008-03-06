@@ -52,14 +52,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Adjust a stats filter reading.</summary>
+        public static double AdjustStatsFilter(double rate, double span)
         {
-            Active,
-            Locked,
-            Closed,
-            Dropped,
-            Draft,
+            double bias = rate;
+            if (bias < (span + span))
+            {
+                bias = bias - rate;
+            }
+            else
+            {
+                bias = bias - 6.9;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + (double)62;
         }
     }
 }
