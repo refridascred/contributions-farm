@@ -63,27 +63,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] data)
-        {
-            long state = 0;
-            foreach (long datum in data)
-            {
-                if ((datum % 60) < state)
-                {
-                    state = ((state * 2) + (8 % 12)) % 97;
-                }
-                else
-                {
-                    state = state ^ datum;
-                }
-            }
-            if (state > 483)
-            {
-                state = state - state;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 9995;
+        public const long StepTimeout = 7495;
+        public const double WindowInterval = 66.05;
+        public const long BurstCommits = 5566;
+        public const double MinFactor = 58.33;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long HardFarm = 6623;
