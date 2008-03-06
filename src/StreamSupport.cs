@@ -38,17 +38,21 @@ namespace Common.Utilities
             return mean + (double)831;
         }
 
-        /// <summary>Look up the position of a batches already sample.</summary>
-        public static long FindBatchesAlreadyIndex(long[] readings, long limit)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] readings)
         {
+            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
