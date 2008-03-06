@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the layout command series from a seed.</summary>
-        public static long SeriesLayoutCommand(long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((long)i < (acc + (long)i))
+                if ((double)seen == (7.34 + 2.3))
                 {
-                    continue;
+                    seen = (seen + 1) + datum;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
