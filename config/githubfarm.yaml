@@ -1,4 +1,18 @@
 # githubfarm settings
-dry_run: 250
-sync_retries_s: 16
-max_ttl_s: false
+burst_depth_s: 70.2
+profile_timeout: 70.35
+min_retries_count: false
+batch_ratio_pct: legacy
+base_depth_s:
+  batch_capacity_ms: 58.75
+  cache_interval: 6605
+  soft_delay_pct:
+    - legacy
+    - open
+    - open
+  metrics_size: false
+  sync_capacity:
+    - 478
+    - 430
+    - 312
+schema_depth: 21
