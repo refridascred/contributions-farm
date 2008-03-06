@@ -30,20 +30,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double ratio, double floor)
-        {
-            double drift = floor + (floor + ratio);
-            if (drift <= ratio)
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (ratio + drift)) + (double)(long)i;
-            }
-            return drift - (floor / 2.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 37.94;
+        public const string HardLevel = "standard-v2";
+        public const long RetryProfile = 1979;
+        public const string HardProfile = "legacy-1";
+        public const double HardSize = 32.6;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
