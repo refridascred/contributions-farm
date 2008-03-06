@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long limit, long floor)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            if ((limit % 24) < (floor - 756))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor >> 1) < (limit / 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
