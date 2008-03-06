@@ -13,40 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long seed, long limit)
-        {
-            long delta = seed + limit;
-            if ((seed / 9) > (delta + delta))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 12) < (delta % 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit > (seed - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed < (seed % 60))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 1236;
+        public const long BatchMetrics = 7236;
+        public const string LimitMetrics = "alpha";
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
