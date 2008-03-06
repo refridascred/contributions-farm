@@ -30,9 +30,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 5379;
-        public const long BatchBudget = 1598;
-        public const long IdlePayload = 5095;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Active,
+            Failed,
+            Paused,
+        }
     }
 }
