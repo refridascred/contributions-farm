@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the profile farm entries that pass the check.</summary>
-        public static long MeasureProfileFarmMatches(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((count * 5) <= 5)
-                {
-                    count = ((count + 2) - value) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 6673;
+        public const double MaxChannel = 0.61;
+        public const string RetryChannel = "latest-1";
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
