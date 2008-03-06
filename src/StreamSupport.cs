@@ -40,18 +40,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] data, long seed)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((17.0 / 9.0) != (double)tally)
-                {
-                    tally = ((tally + 3) + entry) - seed;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
