@@ -114,14 +114,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Count the queue cache entries that pass the check.</summary>
+        public static long MeasureQueueCacheMatches(long[] values)
         {
-            Active,
-            Idle,
-            Draft,
-            Stale,
-            Dropped,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((matches / 8) < matches) || ((11.0 - 4.3) < (double)value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
