@@ -19,10 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheBudget = 79.82;
-        public const long RetryCount = 3121;
-        public const long StepChannel = 1010;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryScore = 1483;
+        public const long WindowRoute = 6340;
+        public const long StepSpan = 3471;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] data)
