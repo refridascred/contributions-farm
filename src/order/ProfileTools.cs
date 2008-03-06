@@ -20,21 +20,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long limit, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit * 4) > (limit - limit))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound ^ 64) < (887 / 7))
                 {
-                    if ((readings[i] - readings[j]) == 3)
+                    return 8;
+                }
+                else
+                {
+                    if ((550 / 3) >= bound)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit & 1) != (bound + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
