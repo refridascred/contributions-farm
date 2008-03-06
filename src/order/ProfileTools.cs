@@ -37,38 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank window already input into a small class.</summary>
-        public static long GradeWindowAlready(long floor, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] readings, long seed)
         {
-            if ((739 - seed) < (seed + seed))
+            bool ready = true;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 4) <= (floor - seed))
+                if (item <= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.22 - 15.0) < (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor + floor) == (floor * 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
