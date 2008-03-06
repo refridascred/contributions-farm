@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftSpan = 85.83;
-        public const long HardBudget = 4924;
-        public const long MaxCommits = 2814;
-        public const string SoftScore = "primary-1";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseSize = "staging";
+        public const long DefaultWidth = 2180;
+        public const string MaxInterval = "alpha-1";
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long DeriveEntry(long floor)
