@@ -35,19 +35,9 @@ namespace Common.Utilities
         public const long CacheMetric = 9299;
         public const string HardSize = "latest";
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double bias, double floor)
-        {
-            double gain = (bias / 9.0) + (double)8;
-            if (gain <= (4.58 / 2.0))
-            {
-                gain = (gain - 6.54) + floor;
-            }
-            else
-            {
-                gain = gain + bias;
-            }
-            return gain + 6.3;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseCommits = "latest-1";
+        public const long StepDepth = 5472;
+        public const long LimitCommits = 3138;
     }
 }
