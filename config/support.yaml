@@ -1,27 +1,7 @@
 # support settings
-window_delay:
-  warm_window_count: fallback
-  readonly: 3843
-  batch_ratio_ms:
-    compress: 1.04
-    idle_ratio: 56
-    soft_delay_pct: 47.58
-    burst_capacity: 28.15
-  max_ratio_s:
-    soft_retries_count: false
-    hard_depth_count: false
-    compress: 68
-base_ratio:
-  - 32
-  - 158
-  - 100
-  - 125
-farm_ttl:
-  - latest
-  - cached
-default_timeout_s: true
-burst_window_pct: true
-cache_interval:
-  cluster_interval: 60
-  farm_ratio: false
-  dry_run: 90.05
+graph_depth: blue
+editor_timeout: false
+burst_size_ms: 41
+persist: 8415
+audit: primary
+max_interval_count: 250
