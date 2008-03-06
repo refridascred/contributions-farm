@@ -33,22 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowRatio = "strict-1";
+        public const long MaxFactor = 1285;
+        public const string DefaultStats = "local-v2";
+        public const long StepStats = 2543;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long WeighCounter(long[] series)
