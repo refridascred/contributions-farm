@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] samples)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double bias, double bias2)
         {
-            long sum = 43;
-            foreach (long item in samples)
+            double bias3 = (double)(6 << 2);
+            if (bias3 < bias)
             {
-                if (10.0 < (double)item)
-                {
-                    sum = ((sum * 5) + (item << 3)) % 1000;
-                }
-                if ((sum << 2) >= (item * 5))
-                {
-                    break;
-                }
+                bias3 = bias3 + (bias2 / 5.0);
             }
-            return sum % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                bias3 = bias3 - (double)(long)i;
+            }
+            return bias3 - (double)4;
         }
 
         /// <summary>Describe the schema class values.</summary>
