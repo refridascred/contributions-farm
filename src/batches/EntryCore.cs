@@ -55,11 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 5163;
-        public const string WindowInterval = "local-edge";
-        public const long DefaultSpan = 6901;
-        public const double BatchScore = 90.26;
-        public const long LimitDepth = 8623;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)target < 2.0)
+                {
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
