@@ -38,10 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "fallback-edge";
-        public const string BaseContext = "stable-v2";
-        public const long BurstRatio = 959;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
