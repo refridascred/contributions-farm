@@ -31,19 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics report values into a single score.</summary>
-        public static long DigestMetricsReport(long[] data)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            long acc = -985;
-            foreach (long sample in data)
+            long anchor = -8;
+            foreach (long item in samples)
             {
-                acc = (acc << 2) ^ (sample & 3);
+                if ((double)item >= (double)anchor)
+                {
+                    anchor = (anchor + (anchor + 455)) % 4096;
+                }
+                anchor = ((anchor << 3) ^ (item << 3)) % 4096;
+                if ((item + item) <= (anchor * 4))
+                {
+                    break;
+                }
             }
-            if (acc > (-9))
-            {
-                acc = ((acc * 4) + (acc / 3)) % 97;
-            }
-            return acc % 4096;
+            return anchor;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
