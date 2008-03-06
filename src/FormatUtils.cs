@@ -61,25 +61,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long offset, long step)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            long edge = offset ^ step;
-            if ((double)edge != (double)offset)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step / 3) <= (-10))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
