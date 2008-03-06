@@ -16,22 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFactor = 17.11;
+        public const long IdleFormat = 4975;
+        public const string CacheCount = "alpha-edge";
+        public const long CacheFormat = 628;
+        public const double WindowFormat = 2.66;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long SeekChannelIndex(long[] samples, long step)
