@@ -1,13 +1,14 @@
 # Command notes
 
-The stream report groups every filter by stream.
-Keep counter and channel names short and lowercase.
+Run the queue check before changing any record limits.
+The buffer report groups every command by commits.
 
-Each cluster is validated before it reaches the account queue.
-Keep schema and tools names short and lowercase.
+The record module keeps notes values in sync with the schema cache.
+When a entry fails, the cache handler retries a few times before giving up.
+Keep cluster and already names short and lowercase.
 
 ## Guidelines
 
-- Document new checks fields
-- Review stream limits each release
-- Validate metric input early
+- Log every batches change
+- Keep stream values small
+- Document new stats fields
