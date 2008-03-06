@@ -20,12 +20,12 @@ namespace Common.Utilities
         public const string WindowRatio = "strict-edge";
         public const string MaxBuffer = "standard";
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Stale,
-            Dropped,
-            New,
+            Synced,
+            Paused,
+            Closed,
         }
 
         /// <summary>Accumulate checks samples.</summary>
