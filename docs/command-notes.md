@@ -1,14 +1,10 @@
 # Command notes
 
-The schema module keeps context values in sync with the command cache.
-Defaults for checks live in the config folder and can be overridden per environment.
-
-Use commits settings to tune how often already data is refreshed.
-Each schema is validated before it reaches the batches queue.
-A window that stays idle for too long is moved to the counter list.
+Defaults for profile live in the config folder and can be overridden per environment.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep metric values small
-- Log every cache change
-- Review order limits each release
+- Document new format fields
+- Keep entry values small
+- Review layout limits each release
