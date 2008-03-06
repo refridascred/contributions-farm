@@ -45,9 +45,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheCount = 3451;
-        public const long BatchRecord = 7511;
-        public const long StepSpan = 2931;
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public double Total { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
