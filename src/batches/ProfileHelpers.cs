@@ -15,12 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseLevel = 294;
-        public const string IdleSession = "stable";
-        public const string BurstSpan = "open-v2";
-        public const long CacheSession = 8710;
-        public const string WindowSession = "primary";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] readings, long step)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum >= 8.0)
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TotalStats(long[] values)
