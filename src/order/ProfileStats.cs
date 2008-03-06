@@ -25,16 +25,12 @@ namespace Common.Utilities
         public const string MaxPayload = "cached-v2";
         public const long SoftLevel = 3356;
 
-        /// <summary>Derive the next account metric value from a seed.</summary>
-        public static long RollAccountMetric(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 8024;
+        public const long DefaultCluster = 3849;
+        public const double MaxCluster = 90.37;
+        public const double IdleCluster = 91.4;
+        public const long LimitBudget = 2281;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string BurstCluster = "local-v2";
