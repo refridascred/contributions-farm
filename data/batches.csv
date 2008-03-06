@@ -1,6 +1,9 @@
-id,ratio,active
-1,400,51.84
-2,902,open
-3,open,green
-4,758,229
-5,749,129
+id,rank,token
+1,87.2,18.32
+2,707,79.77
+3,446,553
+4,fallback,81.6
+5,204,247
+6,staging,662
+7,green,55.91
+8,local,77.73
