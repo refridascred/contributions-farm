@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] data, long step)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            long anchor = 9;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor ^ (reading << 3)) % 1000) - step;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Locate a cluster layout reading by value.</summary>
