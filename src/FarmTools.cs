@@ -14,10 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstInterval = 5178;
-        public const long StepRoute = 6724;
-        public const long MaxFactor = 2708;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 9473;
+        public const long BatchScore = 5803;
+        public const long IdleInterval = 2063;
+        public const long LimitStream = 7330;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long SeekSessionIndex(long[] readings, long seed)
