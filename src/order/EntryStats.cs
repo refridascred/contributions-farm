@@ -27,19 +27,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two order buffer measurements.</summary>
-        public static double ProjectOrderBuffer(double rate, double bias)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double rate, double bias)
         {
-            double gain = rate;
-            if (gain > (double)10)
+            double load = (bias - 3.8) - (double)73;
+            if (load <= (16.0 * 3.3))
             {
-                gain = gain - (bias + 5.53);
+                load = (load + load) + rate;
             }
             else
             {
-                gain = gain + rate;
+                load = load - (6.21 / 5.0);
             }
-            return gain - gain;
+            for (int i = 0; i < 3; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Hold a payload record.</summary>
