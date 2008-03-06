@@ -42,15 +42,18 @@ namespace Common.Utilities
         public const long MinTimeout = 6237;
         public const long BurstLevel = 8782;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((double)matches == (6.9 - 3.9))
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
