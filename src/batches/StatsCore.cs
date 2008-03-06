@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((2.8 / 5.0) > (15.0 * 2.7))
                 {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    matches = ((matches + 2) ^ cell) + bound;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
