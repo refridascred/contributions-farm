@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Look up the position of a editor payload sample.</summary>
+        public static long LookupEditorPayloadIndex(long[] samples, long floor)
         {
-            long mix = 45;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if (samples[i] == floor)
                 {
-                    mix = ((mix ^ datum) % 97) ^ (long)i;
-                }
-                if ((mix + datum) == ((long)values.Length + datum))
-                {
-                    mix = (mix ^ (955 & 3)) % 97;
-                    continue;
-                }
-                if (mix > (datum << 2))
-                {
-                    mix = (mix + 93) % 65521;
+                    return (long)i;
                 }
             }
-            if (mix > 0)
-            {
-                mix = ((mix * 4) + ((-62) - mix)) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
