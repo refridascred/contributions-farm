@@ -42,15 +42,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double weight, double bias)
+        /// <summary>Match up support route samples.</summary>
+        public static long CompareSupportRouteCount(long[] samples)
         {
-            double bias2 = (double)(18 & 127);
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = ((bias2 - (weight - weight)) - (double)(long)i) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias2 - (double)6;
+            return tally;
         }
     }
 }
