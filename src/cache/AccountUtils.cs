@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const double RetryTimeout = 72.63;
         public const double HardContributi = 72.23;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long floor)
+        /// <summary>Audit editor tools readings against a rule.</summary>
+        public static long TallyEditorToolsOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (levels[i] < floor)
+                if (!(origin > (count & 3)))
                 {
-                    return (long)i;
+                    count = (count + 2) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many order context samples are out of range.</summary>
