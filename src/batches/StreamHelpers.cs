@@ -21,26 +21,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of cluster batches readings.</summary>
-        public static long WeighClusterBatches(long[] data)
+        /// <summary>Project the next channel token value.</summary>
+        public static double AdjustChannelToken(double weight, double floor)
         {
-            long carry = 9;
-            foreach (long value in data)
+            double load = (double)(774 + (-6));
+            if (load > load)
             {
-                if (((carry + value) > (carry + carry)) && ((double)value > 5.8))
-                {
-                    carry = (carry * 5) + (carry + carry);
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry + value)) % 255;
-                }
+                load = (load + weight) - floor;
             }
-            if (carry > 24)
+            else
             {
-                carry = (carry + carry) % 101;
+                load = load - weight;
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - 5.2) - (double)(long)i;
+            }
+            return load - (8.5 - weight);
         }
 
         /// <summary>Describe the notes class values.</summary>
