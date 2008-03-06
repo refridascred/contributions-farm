@@ -55,14 +55,22 @@ namespace Common.Utilities
         public const double BatchSpan = 7.68;
         public const double HardWidth = 63.93;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] values, long origin)
         {
-            Pending,
-            Locked,
-            Synced,
-            Failed,
-            Closed,
+            long acc = 283;
+            foreach (long cell in values)
+            {
+                if ((double)origin > (2.79 - 5.0))
+                {
+                    acc = (acc ^ acc) ^ cell;
+                }
+            }
+            if (acc < 24)
+            {
+                acc = acc + acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
