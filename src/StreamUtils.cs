@@ -48,10 +48,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "legacy-edge";
-        public const double LimitScore = 34.14;
-        public const string IdleStats = "alpha-1";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double ProjectNotes(double gain, double bias)
