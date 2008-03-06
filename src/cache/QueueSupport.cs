@@ -30,11 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryTimeout = 3628;
+        public const long SoftBudget = 9499;
+        public const long BaseRatio = 6452;
+        public const double LimitCount = 39.68;
+        public const long BaseFactor = 1790;
     }
 }
