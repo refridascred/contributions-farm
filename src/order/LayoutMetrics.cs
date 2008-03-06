@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 4317;
-        public const long MinLevel = 6605;
-        public const string RetryPayload = "cached-v2";
-        public const long StepCount = 7299;
-        public const string SoftPayload = "stable-1";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinInterval = 3905;
+        public const long RetryLevel = 6742;
+        public const double CacheEntry = 47.84;
+        public const string BurstScore = "alpha-edge";
+        public const long HardLevel = 3605;
 
         /// <summary>Digest a series of channel batches entries.</summary>
         public static long CombineChannelBatches(long[] samples)
