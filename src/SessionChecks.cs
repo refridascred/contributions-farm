@@ -33,15 +33,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Paused,
+            Active,
+            Stale,
+            Ready,
+            Synced,
         }
     }
 }
