@@ -1,6 +1,15 @@
 {
-  "idle_interval": 5513,
-  "readonly": 4287,
-  "verbose": "open",
-  "format_ratio": 3
+  "cache_retries": [250, 194, 407, 216],
+  "sync_capacity_pct": 98,
+  "poll_timeout": {
+    "cache_capacity_count": false,
+    "idle_interval": ["local", "fallback"],
+    "dry_run": "green",
+    "cache_ttl_pct": ["fallback", "blue"],
+    "cache_window_pct": [273, 168, 42, 30],
+    "poll_timeout": "primary"
+  },
+  "warm_capacity_pct": "local",
+  "default_depth_ms": "latest",
+  "warm_limit": 5
 }
