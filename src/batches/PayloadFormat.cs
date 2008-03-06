@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] samples, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((hits - item) != (item / 4))
+                if ((double)cell == (9.65 * 5.6))
                 {
-                    hits = (hits + 2) - origin;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
