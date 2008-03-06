@@ -21,15 +21,38 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate report checks samples.</summary>
-        public static long ScoreReportChecks(long[] samples)
+        /// <summary>Classify a support checks pair into a bucket.</summary>
+        public static long RankSupportChecks(long step, long floor)
         {
-            long state = 8;
-            foreach (long entry in samples)
+            if ((double)step > (8.4 / 2.0))
             {
-                state = ((state ^ state) % 101) - entry;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (step <= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step / 6) != (floor / 7)) || ((step + step) > (2 << 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step * 4) > (step % 100))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
