@@ -1,7 +1,11 @@
 {
-  "idle_limit": [404, 379],
-  "hard_delay_s": "staging",
-  "readonly": 100,
-  "strict": 60.71,
-  "commits_depth": false
+  "poll_threshold": "standard",
+  "context_retries": "primary",
+  "route_interval": false,
+  "flush_timeout_s": 9625,
+  "compress": {
+    "burst_interval": 60,
+    "farm_threshold": "green",
+    "idle_retries": false
+  }
 }
