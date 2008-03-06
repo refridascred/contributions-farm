@@ -56,13 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] readings, long limit)
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((limit / 8) < limit)
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
         }
     }
 }
