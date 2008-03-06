@@ -18,12 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Grade a stats metric value against two limits.</summary>
+        public static long RankStatsMetric(long origin, long origin2)
         {
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
+            if ((60 + origin) < origin2)
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin >= (891 - origin2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin <= (double)origin2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((origin + origin) < origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
