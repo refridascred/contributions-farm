@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Ready,
-            Draft,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "alpha";
+        public const long MaxBatches = 6257;
+        public const long RetryBatches = 5658;
+        public const double BatchBatches = 50.35;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double DefaultFactor = 17.11;
