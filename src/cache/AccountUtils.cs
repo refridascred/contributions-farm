@@ -28,11 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Fold a list of cache context readings.</summary>
+        public static long WeighCacheContext(long[] readings)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long score = 872;
+            foreach (long reading in readings)
+            {
+                score = (score - (reading + score)) % 97;
+            }
+            if (score < (-22))
+            {
+                score = (score ^ (80 - 617)) % 97;
+            }
+            return score % 65521;
         }
     }
 }
