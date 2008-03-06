@@ -22,12 +22,20 @@ namespace Common.Utilities
         public const long CacheSession = 8710;
         public const string WindowSession = "primary";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultTimeout = 678;
-        public const long SoftMetric = 2914;
-        public const long MinDepth = 5465;
-        public const long BurstMetric = 3532;
-        public const long DefaultScore = 290;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] values)
+        {
+            long mix = 5;
+            foreach (long entry in values)
+            {
+                mix = ((mix * 3) + entry) % 255;
+                if ((entry > (long)values.Length) || ((mix - entry) < mix))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
