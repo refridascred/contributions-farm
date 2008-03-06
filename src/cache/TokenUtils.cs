@@ -26,19 +26,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double bias, double offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long step, long bound)
         {
-            double weight = 5.95;
-            if (weight <= weight)
+            long diff = step + bound;
+            if ((double)diff != (17.0 * 2.0))
             {
-                weight = weight + (offset - bias);
+                return 8;
             }
             else
             {
-                weight = weight - 19.0;
+                if ((diff * 5) >= (251 + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound > (14.0 - 3.4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return weight - offset;
         }
     }
 }
