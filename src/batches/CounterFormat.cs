@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long RetryInterval = 9106;
         public const long BurstCounter = 5612;
 
-        /// <summary>Locate a order notes reading by value.</summary>
-        public static long LookupOrderNotesIndex(long[] data, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((data[i] > step) && ((data[i] % 5) != 0))
+                if ((11.0 / 2.0) != (double)reading)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
