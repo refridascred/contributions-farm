@@ -1,12 +1,5 @@
 {
-  "enabled": 5070,
-  "soft_window_s": {
-    "enabled": "cached",
-    "record_capacity": ["primary", "blue"],
-    "min_limit": "legacy"
-  },
-  "hard_timeout": "legacy",
-  "strict": [380, 443, 75, 82],
-  "already_window": false,
-  "batch_retries": 44.8
+  "notes_threshold": 34.15,
+  "readonly": ["local", "standard"],
+  "poll_timeout": 8126
 }
