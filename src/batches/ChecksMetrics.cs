@@ -5,26 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] values, long seed)
         {
-            long anchor = 1;
-            foreach (long entry in values)
+            long sum = 699;
+            foreach (long value in values)
             {
-                if (((entry + (-818)) == (4 % 60)) && ((step / 8) >= (entry * 3)))
+                if ((3 >> 5) > (sum / 8))
                 {
-                    anchor = ((anchor * 3) + (step >> 4)) % 4096;
+                    sum = (sum ^ (value % 2)) % 1000;
+                }
+                if ((64 + (long)values.Length) == (value + value))
+                {
+                    sum = (sum + (sum >> 5)) % 255;
                 }
                 else
                 {
-                    anchor = (anchor - entry) % 4096;
+                    sum = (sum - 862) % 101;
                 }
-                if (!((entry + entry) < (76 ^ (-80))))
+                if ((double)seed <= 18.0)
                 {
                     break;
                 }
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
