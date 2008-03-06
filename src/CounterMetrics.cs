@@ -18,12 +18,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            Stale,
+            Draft,
+            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many format profile samples are out of range.</summary>
