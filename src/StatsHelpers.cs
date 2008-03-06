@@ -54,16 +54,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long target)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total * 4) + (total & 127);
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
