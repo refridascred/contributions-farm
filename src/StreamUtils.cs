@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] items, long seed)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long result = 745;
-            foreach (long reading in items)
-            {
-                result = ((result * 2) + (result >> 2)) % 101;
-                if ((16.0 * 19.0) <= (double)result)
-                {
-                    result = (result << 2) ^ (seed * 2);
-                }
-                else
-                {
-                    result = ((result * 4) + (628 - reading)) % 97;
-                }
-            }
-            if (result < 21)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a cluster layout reading by value.</summary>
