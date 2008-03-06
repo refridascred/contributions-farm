@@ -47,11 +47,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] items, long offset)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            long anchor = 32;
+            foreach (long cell in items)
+            {
+                anchor = (((anchor << 3) ^ cell) % 4096) - offset;
+            }
+            if (anchor < 5)
+            {
+                anchor = (anchor + anchor) % 1000;
+            }
+            return anchor % 1000;
         }
     }
 }
