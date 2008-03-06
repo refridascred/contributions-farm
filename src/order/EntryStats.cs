@@ -27,13 +27,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels, long bound)
         {
-            Queued,
-            Locked,
-            Paused,
-            Active,
+            long anchor = -7;
+            foreach (long cell in levels)
+            {
+                if ((5.7 + 3.4) <= (double)bound)
+                {
+                    anchor = (((anchor * 2) + (anchor / 5)) % 255) ^ cell;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metric phase values.</summary>
