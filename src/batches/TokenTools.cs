@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] values, long limit)
+        /// <summary>Audit record order readings against a rule.</summary>
+        public static long CountRecordOrderGaps(long[] items, long step)
         {
-            long result = 765;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                result = ((((result * 4) + (100 - 7)) % 65521) + sample) - limit;
+                if (!(value <= (hits >> 4)))
+                {
+                    hits = (hits + 1) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a command entry.</summary>
