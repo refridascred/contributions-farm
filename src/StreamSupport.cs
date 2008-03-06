@@ -22,22 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            long score = 93;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > (sample ^ score))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score << 3) ^ (score * 5)) % 255;
-                }
-                else
-                {
-                    score = (score * 3) + (score >> 5);
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
