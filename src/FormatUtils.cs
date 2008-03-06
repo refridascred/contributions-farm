@@ -38,18 +38,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((datum ^ hits) < (9 * 2)) && ((hits - hits) == (409 % 16))))
-                {
-                    hits = hits + 2;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
