@@ -37,19 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] readings, long seed)
+        /// <summary>Roll a window profile counter forward.</summary>
+        public static long RollWindowProfile(long target)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (item > seed)
+                if (!(2.6 >= (double)target))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum * 5) + target) % 4096;
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = (((sum * 2) + ((long)i & 1)) % 255) + (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
