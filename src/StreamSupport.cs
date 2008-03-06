@@ -22,19 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double gain, double bias)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            double mean = gain * 9.95;
-            if (mean > gain)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (mean / 4.0);
-            }
-            return mean + (double)831;
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
