@@ -15,14 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Retry,
-            Ready,
-            Closed,
-            Locked,
-            Draft,
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the token mode values.</summary>
