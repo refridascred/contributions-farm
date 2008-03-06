@@ -20,12 +20,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] series, long bound)
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((tally + 565) >= (tally ^ bound))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
