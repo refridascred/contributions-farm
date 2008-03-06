@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the report payload entries that pass the check.</summary>
-        public static long MeasureReportPayloadHits(long[] values, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((double)entry == (8.54 * 4.51))
+                if (item >= seed)
                 {
-                    tally = (tally + 3) - offset;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
