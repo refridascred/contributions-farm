@@ -59,23 +59,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the account metrics entries that pass the check.</summary>
-        public static long TallyAccountMetricsHits(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!((target % 10) < seen))
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryBudget = 53.01;
+        public const long StepInterval = 1374;
+        public const string SoftWidth = "staging-v2";
+        public const double CacheToken = 56.62;
+        public const long LimitInterval = 3764;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long SeriesBatches(long bound)
