@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long offset, long limit)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            if ((9.44 * 2.9) != (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ offset) > (limit / 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit % 100) <= offset) && ((5.29 / 5.0) == (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Fold a list of command readings.</summary>
