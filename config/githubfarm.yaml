@@ -1,9 +1,4 @@
 # githubfarm settings
-cache_retries:
-  - open
-  - green
-  - staging
-base_size_ms: true
-sync_depth_pct: 81.67
-sync_ratio_ms: edge
-route_size: local
+dry_run: 250
+sync_retries_s: 16
+max_ttl_s: false
