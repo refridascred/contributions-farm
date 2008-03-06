@@ -29,39 +29,12 @@ namespace Common.Utilities
         public const long BurstMetric = 3532;
         public const long DefaultScore = 290;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long offset, long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long offset2 = offset + floor;
-            if ((floor & 63) != (floor + 93))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset2 <= (2.0 + 9.3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset2 != (13.0 / 9.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor > (floor % 7)) || (offset >= offset2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Active,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the batch level values.</summary>
