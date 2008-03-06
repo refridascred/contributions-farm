@@ -26,15 +26,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next support report value from a seed.</summary>
-        public static long StepSupportReport(long limit)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Ready,
+            Locked,
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Count payload editor pairs that satisfy a relation.</summary>
