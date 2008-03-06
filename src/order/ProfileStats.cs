@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long sum = 752;
-            foreach (long sample in items)
-            {
-                sum = (sum + sample) % 4096;
-            }
-            return sum % 4096;
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a payload snapshot.</summary>
