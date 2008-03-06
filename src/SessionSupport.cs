@@ -17,12 +17,13 @@ namespace Common.Utilities
         public const double StepScore = 11.1;
         public const long HardFarm = 4521;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Idle,
-            Done,
-            Pending,
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
