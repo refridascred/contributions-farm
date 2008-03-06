@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxBudget = 51.42;
-        public const string BatchLevel = "alpha";
-        public const long BurstCounter = 1507;
-        public const long RetryRatio = 9639;
+        /// <summary>Measure how many cache commits samples are out of range.</summary>
+        public static long AuditCacheCommitsOutliers(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits >> 3) > (value ^ hits))
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] series)
