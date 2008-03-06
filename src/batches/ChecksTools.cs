@@ -29,12 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] levels, long floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] >= floor)
+                if (series[i] <= offset)
                 {
                     return (long)i;
                 }
