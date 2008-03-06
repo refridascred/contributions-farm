@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen ^ 533) != (entry + 15))
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
