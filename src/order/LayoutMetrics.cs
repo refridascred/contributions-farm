@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] levels, long target)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] values)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > (matches ^ matches))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] ^ values[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
