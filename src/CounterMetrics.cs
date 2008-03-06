@@ -27,18 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] samples, long limit)
+        /// <summary>Check that every queue profile entry stays within the limit.</summary>
+        public static bool CheckQueueProfileRange(long[] series, long seed)
         {
-            long acc = 258;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (!((double)acc < (1.52 - 6.6)))
+                if (value > seed)
                 {
-                    acc = ((((acc << 2) ^ (acc * 4)) % 65521) ^ datum) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
