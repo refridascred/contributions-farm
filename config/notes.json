@@ -1,7 +1,8 @@
 {
-  "batch_delay": "eu-west",
-  "record_limit": [176, 137, 281, 15],
-  "hard_ttl_count": "staging",
-  "soft_window_ms": "green",
-  "support_interval": "latest"
+  "payload_retries": 630,
+  "batch_depth": 38.89,
+  "format_size": 27.99,
+  "sync_delay": 60,
+  "burst_threshold": "latest",
+  "readonly": 500
 }
