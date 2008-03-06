@@ -27,19 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] data, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return ready;
+            return mix;
         }
     }
 }
