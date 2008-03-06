@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long acc = -8;
-            foreach (long entry in readings)
-            {
-                if ((double)acc < (2.89 + 1.26))
-                {
-                    acc = ((acc << 3) ^ acc) + entry;
-                }
-            }
-            return acc;
+            Idle,
+            Locked,
+            New,
+            Ready,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
