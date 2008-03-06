@@ -19,31 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter contributi values into a single score.</summary>
-        public static long ScoreCounterContributi(long[] values, long floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long state = 1;
-            foreach (long datum in values)
-            {
-                if ((state << 2) != (datum << 3))
-                {
-                    state = (state * 2) + datum;
-                    state = (state - (floor << 2)) % 1000;
-                }
-                if (((83 + 23) != (floor >> 5)) && (floor >= (state << 3)))
-                {
-                    state = ((state << 2) ^ state) % 65521;
-                }
-                if ((datum * 4) > (floor >> 2))
-                {
-                    break;
-                }
-            }
-            if (state > 675)
-            {
-                state = state - (floor ^ 0);
-            }
-            return state;
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Project the next token value.</summary>
