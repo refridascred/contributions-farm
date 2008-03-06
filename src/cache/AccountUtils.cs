@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] readings, long target)
         {
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many order context samples are out of range.</summary>
