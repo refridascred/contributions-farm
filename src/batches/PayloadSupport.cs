@@ -12,18 +12,32 @@ namespace Common.Utilities
         public const double BaseSize = 12.76;
         public const double BurstScore = 97.26;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] levels)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long step = seed + seed2;
+            if ((seed / 6) <= seed)
             {
-                if (!((entry > hits) || ((entry - hits) < hits)))
+                return 0;
+            }
+            else
+            {
+                if (seed < step)
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((step / 7) > (seed2 & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a batches reading.</summary>
