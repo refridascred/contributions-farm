@@ -13,19 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate graph window readings against a bound.</summary>
-        public static bool GuardGraphWindowRange(long[] levels, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
