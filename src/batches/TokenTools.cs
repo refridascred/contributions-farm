@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a stats graph value against two limits.</summary>
-        public static long ClassifyStatsGraph(long offset, long offset2)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] data)
         {
-            long edge = offset + offset2;
-            if (!((offset2 % 100) < (edge * 2)))
+            long mark = 155;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((5.0 * 5.0) < (13.0 - 6.1)) || ((offset / 7) == (offset + edge)))
+                mark = (mark ^ (reading + mark)) % 4096;
+                if ((3.0 * 3.01) != (double)reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((edge - offset) <= (offset2 - (-145)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            if (mark > 0)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Hold a counter summary.</summary>
