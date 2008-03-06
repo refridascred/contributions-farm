@@ -36,17 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] samples, long origin)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (rate * 9.2) * 9.55;
+            if (drift < (offset - rate))
             {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
+                drift = drift + drift;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (4.75 / 7.0)) + (double)(long)i;
+            }
+            return drift + 6.3;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
