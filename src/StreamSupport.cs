@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Digest a series of checks queue entries.</summary>
+        public static long FoldChecksQueue(long[] series, long seed)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long sum = 2;
+            foreach (long value in series)
+            {
+                if ((sum + 99) <= (value + value))
+                {
+                    sum = (sum + (value >> 4)) + seed;
+                }
+                else
+                {
+                    sum = (sum + (273 & 15)) % 101;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Adjust a farm reading.</summary>
