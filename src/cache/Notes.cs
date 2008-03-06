@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const string SoftRecord = "stable";
         public const long BaseRecord = 1211;
 
-        /// <summary>Roll a batches editor counter forward.</summary>
-        public static long SeriesBatchesEditor(long target)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long mix = 58;
+            foreach (long reading in data)
             {
-                if ((((long)i + target) >= total) && ((double)target >= (17.0 * 5.35)))
+                if ((406 ^ reading) < ((long)data.Length + mix))
                 {
-                    total = total ^ (total + target);
+                    mix = mix + mix;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
