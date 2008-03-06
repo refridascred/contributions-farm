@@ -25,13 +25,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
