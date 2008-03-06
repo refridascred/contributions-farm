@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many metrics session samples are out of range.</summary>
-        public static long TallyMetricsSessionMatches(long[] samples, long seed)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long total = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((11.0 + 9.1) >= (double)seen))
+                if ((total + total) > offset)
                 {
-                    seen = ((seen + 2) + value) - seed;
+                    total = ((total << 2) ^ (19 >> 2)) % 1000;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
