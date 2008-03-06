@@ -32,20 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] series, long seed)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            long sum = 95;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum << 3) ^ (sum ^ value)) - seed;
-                sum = (sum * 3) + (value + value);
-                if ((double)value == (8.0 / 5.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return count;
         }
     }
 }
