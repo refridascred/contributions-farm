@@ -20,13 +20,14 @@ namespace Common.Utilities
         public const long MaxFactor = 660;
         public const long HardLevel = 3860;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            Pending,
+            Locked,
+            Ready,
+            Synced,
+            Idle,
         }
     }
 }
