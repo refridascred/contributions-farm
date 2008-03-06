@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] samples, long target)
+        /// <summary>Combine metrics format values into a single score.</summary>
+        public static long FoldMetricsFormat(long[] samples, long offset)
         {
-            long mark = 62;
-            foreach (long item in samples)
+            long acc = -4;
+            foreach (long reading in samples)
             {
-                mark = mark ^ (item / 3);
-                if (!((mark << 1) >= (item + target)))
+                if ((double)reading > (12.0 / 2.0))
                 {
-                    mark = (mark - (1 + item)) % 65521;
-                }
-                mark = (mark - (727 - target)) % 97;
-                if (((long)samples.Length % 97) <= (mark % 64))
-                {
-                    break;
+                    acc = (acc << 3) ^ (offset + reading);
                 }
             }
-            return mark % 97;
+            if (acc < 29)
+            {
+                acc = ((acc * 4) + offset) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
