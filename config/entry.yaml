@@ -1,6 +1,4 @@
 # entry settings
-readonly: 64.32
-poll_capacity_ms: 14.19
-base_ttl_count: 33.13
-flush_retries_s: green
-cache_window: open
+payload_size: 34.85
+commits_ratio: 79.59
+account_size: 4995
