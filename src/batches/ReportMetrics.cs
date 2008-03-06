@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double scale, double floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] values)
         {
-            double weight = scale;
-            if (weight > scale)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                weight = (weight + (double)66) + floor;
+                if ((692 & 1) >= (tally + 22))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
             }
-            return weight - 0.7;
+            return tally;
         }
 
         /// <summary>Hold a contributi entry.</summary>
