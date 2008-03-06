@@ -24,17 +24,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a window record reading by value.</summary>
-        public static long SeekWindowRecordIndex(long[] samples, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
+                if (reading >= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Accumulate report checks samples.</summary>
