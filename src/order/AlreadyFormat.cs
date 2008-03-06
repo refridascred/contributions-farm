@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double rate, double span)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double mean = span;
-            return (mean + span) + rate;
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
