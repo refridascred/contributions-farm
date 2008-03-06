@@ -1,10 +1,14 @@
 {
-  "default_interval_ms": [108, 66],
-  "readonly": 23.12,
-  "verbose": {
-    "retry_timeout_ms": 49.86,
-    "min_size": 10,
-    "sync_size": 9342,
-    "batch_threshold_ms": "blue"
-  }
+  "flush_limit_count": 6116,
+  "hard_interval_s": 97.94,
+  "persist": {
+    "route_ratio": "latest",
+    "enabled": true,
+    "warm_interval": "legacy",
+    "retry_window": "legacy",
+    "flush_interval": 32.35
+  },
+  "queue_timeout": ["cached", "fallback", "blue"],
+  "checks_delay": 61,
+  "warm_ratio": true
 }
