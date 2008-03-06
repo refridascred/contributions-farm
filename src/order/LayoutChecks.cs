@@ -64,15 +64,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            long total = 44;
-            foreach (long value in readings)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                total = (total - (value * 5)) % 4096;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Count the batches contributi entries that pass the check.</summary>
