@@ -53,15 +53,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next route tools value from a seed.</summary>
-        public static long DeriveRouteTools(long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            if ((origin % 97) < (-272))
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (3.0 < (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin / 7) < (origin - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3.0 + 6.0) >= (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
