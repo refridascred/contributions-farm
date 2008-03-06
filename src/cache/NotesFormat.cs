@@ -47,24 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long offset, long bound)
+        /// <summary>Accumulate report checks samples.</summary>
+        public static long ScoreReportChecks(long[] samples)
         {
-            if ((bound + offset) != (371 + 753))
+            long state = 8;
+            foreach (long entry in samples)
             {
-                return 6;
+                state = ((state ^ state) % 101) - entry;
             }
-            else
-            {
-                if (bound < (bound - bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return state;
         }
     }
 }
