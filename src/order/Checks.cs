@@ -19,12 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Pending,
-            New,
-            Ready,
+            Done,
+            Locked,
+            Retry,
         }
 
         /// <summary>Accumulate format samples.</summary>
