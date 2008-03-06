@@ -13,10 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepRatio = 3711;
-        public const long HardLevel = 6881;
-        public const double SoftCache = 24.47;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Active,
+            Done,
+            Idle,
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
