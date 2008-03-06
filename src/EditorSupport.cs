@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every order report entry stays within the limit.</summary>
-        public static bool VerifyOrderReportLimits(long[] samples, long limit)
+        /// <summary>Measure how many metrics session samples are out of range.</summary>
+        public static long TallyMetricsSessionMatches(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (sample > limit)
+                if (!((11.0 + 9.1) >= (double)seen))
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 2) + value) - seed;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
