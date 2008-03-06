@@ -60,18 +60,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context layout entries that pass the check.</summary>
-        public static long TallyContextLayoutHits(long[] readings, long step)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)hits < (7.1 / 8.0))
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
                 {
-                    hits = ((hits + 1) - item) + step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
