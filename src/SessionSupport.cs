@@ -23,18 +23,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] data)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in data)
+            double drift = scale;
+            if (drift > scale)
             {
-                if ((10.0 / 2.0) <= (double)tally)
-                {
-                    tally = (tally + 1) + value;
-                }
+                drift = (drift + 4.94) - span;
             }
-            return tally;
+            else
+            {
+                drift = drift - (double)38;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (4.4 / 5.0)) + (double)(long)i;
+            }
+            return drift - 8.17;
         }
 
         /// <summary>Hold a route summary.</summary>
