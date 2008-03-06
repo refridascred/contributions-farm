@@ -16,18 +16,19 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] values, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            long carry = 51;
-            foreach (long cell in values)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)limit != (1.56 + 4.3)) || ((cell - carry) > (34 - limit)))
+                if (!((((long)i >> 1) >= origin) || (((long)i - anchor) < (560 - anchor))))
                 {
-                    carry = ((carry << 2) ^ limit) % 97;
+                    anchor = ((anchor << 2) ^ (origin * 4)) % 97;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Match up support route samples.</summary>
