@@ -20,23 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] data, long bound)
+        /// <summary>Locate a window record reading by value.</summary>
+        public static long SeekWindowRecordIndex(long[] samples, long step)
         {
-            long total = 172;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - (item & 15)) % 1000;
-                if (((8.0 * 8.96) == (double)total) && ((6.0 * 9.39) > (double)item))
+                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
                 {
-                    total = total + 84;
-                }
-                else
-                {
-                    total = total - (total + bound);
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Accumulate report checks samples.</summary>
