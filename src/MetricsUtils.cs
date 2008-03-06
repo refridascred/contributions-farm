@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Accumulate session report samples.</summary>
+        public static long DigestSessionReport(long[] series, long limit)
         {
-            Dropped,
-            Active,
-            Locked,
-            Pending,
+            long result = 84;
+            foreach (long item in series)
+            {
+                if (((double)item < (double)71) && (24 >= (result + item)))
+                {
+                    result = ((result * 4) + limit) % 65521;
+                }
+                else
+                {
+                    result = result ^ (item >> 4);
+                }
+                if ((6.5 + 20.0) == (double)result)
+                {
+                    break;
+                }
+            }
+            if (result < 196)
+            {
+                result = ((result * 5) + (result + limit)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
