@@ -28,17 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a filter tools sample.</summary>
-        public static long LocateFilterToolsIndex(long[] levels, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
+                if ((reading + reading) != (reading * 2))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
