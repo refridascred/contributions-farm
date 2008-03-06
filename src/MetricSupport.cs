@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a batch report counter forward.</summary>
-        public static long SeriesBatchReport(long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] samples, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (reading <= target)
                 {
-                    mix = ((mix * 5) + 3) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
