@@ -1,17 +1,8 @@
 {
-  "readonly": true,
-  "filter_delay": {
-    "max_capacity": "local",
-    "buffer_ttl": 9964,
-    "max_ratio": 8
-  },
-  "cache_window_s": {
-    "warm_size": 60,
-    "warm_size_pct": 66.84,
-    "min_retries_ms": "fallback",
-    "hard_interval_pct": ["staging", "stable", "stable", "stable"],
-    "idle_window_ms": 6173
-  },
-  "burst_interval": "cached",
-  "metric_delay": true
+  "poll_size": 66.35,
+  "min_delay": [380, 97],
+  "base_limit_s": 85,
+  "cache_timeout_count": "cached",
+  "editor_depth": 65.38,
+  "verbose": true
 }
