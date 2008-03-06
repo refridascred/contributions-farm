@@ -23,19 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] readings, long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many order context samples are out of range.</summary>
