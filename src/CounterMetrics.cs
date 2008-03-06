@@ -28,10 +28,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 3910;
-        public const string WindowCommits = "fallback-edge";
-        public const string DefaultFactor = "local-edge";
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double rate, double offset)
+        {
+            double bias = rate;
+            if (bias >= rate)
+            {
+                bias = (bias - bias) - offset;
+            }
+            else
+            {
+                bias = bias + (19.0 - rate);
+            }
+            return bias + (double)(-9);
+        }
 
         /// <summary>Combine account context values into a single score.</summary>
         public static long DigestAccountContext(long[] readings, long step)
