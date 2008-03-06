@@ -39,24 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long limit, long limit2)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            if ((limit + limit) <= (643 + 37))
-            {
-                return 1;
-            }
-            else
-            {
-                if (limit > (74 * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
