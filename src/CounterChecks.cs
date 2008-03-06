@@ -42,21 +42,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Blend two stats buffer measurements.</summary>
+        public static double ProjectStatsBuffer(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double load = offset - (offset + offset);
+            return (load - (double)213) + weight;
         }
 
         /// <summary>Fold a list of buffer window readings.</summary>
