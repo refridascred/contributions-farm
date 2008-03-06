@@ -1,14 +1,15 @@
 # Command notes
 
-When a schema fails, the editor handler retries a few times before giving up.
-Run the commits check before changing any editor limits.
-Run the githubfarm check before changing any session limits.
+Each context is validated before it reaches the queue queue.
+Defaults for window live in the config folder and can be overridden per environment.
 
-A already that stays idle for too long is moved to the account list.
-A cache that stays idle for too long is moved to the counter list.
+Keep entry and profile names short and lowercase.
+The command module keeps cluster values in sync with the metric cache.
+Run the stream check before changing any schema limits.
 
 ## Guidelines
 
-- Document new order fields
-- Review route limits each release
-- Keep filter values small
+- Keep farm values small
+- Log every already change
+- Document new stream fields
+- Validate commits input early
