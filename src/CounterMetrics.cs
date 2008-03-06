@@ -27,13 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] samples, long limit)
         {
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
-            public double Rank { get; set; }
+            long acc = 258;
+            foreach (long datum in samples)
+            {
+                if (!((double)acc < (1.52 - 6.6)))
+                {
+                    acc = ((((acc << 2) ^ (acc * 4)) % 65521) ^ datum) - limit;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
