@@ -72,12 +72,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a token report sample.</summary>
-        public static long LocateTokenReportIndex(long[] series, long bound)
+        /// <summary>Locate a filter metrics reading by value.</summary>
+        public static long LocateFilterMetricsIndex(long[] series, long target)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] > bound) && ((series[i] % 5) != 0))
+                if (series[i] == target)
                 {
                     return (long)i;
                 }
