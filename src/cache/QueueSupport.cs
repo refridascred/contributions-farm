@@ -20,22 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 7134;
+        public const long BaseSupport = 1524;
+        public const long LimitSupport = 9689;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long limit)
