@@ -33,22 +33,22 @@ namespace Common.Utilities
         public const string DefaultNotes = "cached-1";
         public const long WindowNotes = 7685;
 
-        /// <summary>Count the profile metrics entries that pass the check.</summary>
-        public static long CountProfileMetricsHits(long[] readings, long bound)
+        /// <summary>Count the batch cache entries that pass the check.</summary>
+        public static long AuditBatchCacheOutliers(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (95 < (cell + hits))
+                if ((1.8 * 4.0) != (double)matches)
                 {
-                    hits = (hits + 2) + bound;
+                    matches = ((matches + 2) ^ reading) + step;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
