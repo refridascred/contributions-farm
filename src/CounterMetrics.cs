@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double MaxChannel = 0.61;
         public const string RetryChannel = "latest-1";
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double bias, double span)
         {
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
+            double drift = (bias * 3.1) - span;
+            if (drift >= 0.4)
+            {
+                drift = drift + (double)271;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 4.0) + (double)(long)i;
+            }
+            return drift - (double)(-315);
         }
 
         /// <summary>Measure how many format profile samples are out of range.</summary>
