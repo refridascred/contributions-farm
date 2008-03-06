@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] readings, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            bool ok = true;
+            long sum = 283;
             foreach (long entry in readings)
             {
-                if (entry > floor)
+                sum = sum + (sum + sum);
+                sum = sum ^ (sum ^ entry);
+                if ((entry < (sum % 10)) && ((sum + sum) != ((long)readings.Length << 3)))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum * 5) + (sum >> 1)) % 4096;
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
