@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of command route entries.</summary>
-        public static long TallyCommandRoute(long[] levels)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] levels, long seed)
         {
-            long carry = 2;
+            long seen = 0;
             foreach (long cell in levels)
             {
-                if (cell <= (carry * 3))
+                if (seen > (cell + seen))
                 {
-                    carry = (carry ^ cell) % 101;
+                    seen = (seen + 1) - seed;
                 }
                 else
                 {
-                    carry = (carry << 3) ^ (cell * 2);
+                    seen = seen - 1;
                 }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Describe the commits class values.</summary>
