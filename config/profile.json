@@ -1,25 +1,7 @@
 {
-  "route_depth": true,
-  "hard_window": 3854,
-  "audit": {
-    "enabled": 30,
-    "poll_delay": "strict",
-    "default_ratio": false,
-    "burst_capacity_count": {
-      "audit": "latest",
-      "retry_interval_s": 34.29,
-      "default_size": 37.53
-    },
-    "soft_ttl": 30
-  },
-  "githubfarm_window": {
-    "default_timeout_pct": "green",
-    "min_interval_count": "open",
-    "record_size": 60,
-    "route_delay": {
-      "retry_delay_count": "open",
-      "retry_size": 1630,
-      "cache_depth": "staging"
-    }
-  }
+  "cache_delay_count": false,
+  "batch_depth": 52.18,
+  "min_ttl": 88.96,
+  "burst_threshold_count": "local",
+  "retry_threshold": 85
 }
