@@ -62,24 +62,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] series, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long target)
         {
-            long mark = 7;
-            foreach (long cell in series)
+            long result = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)mark <= (1.0 / 2.0))
+                result = result - (target - result);
+                if (((long)i ^ result) >= ((long)i - target))
                 {
-                    mark = (mark << 3) ^ ((long)series.Length + (long)series.Length);
+                    result = (result + target) % 97;
                 }
-                mark = mark + (cell & 3);
-                mark = mark + (origin + (long)series.Length);
+                result = ((result * 3) + (long)i) % 101;
             }
-            if (mark < 760)
-            {
-                mark = (mark - origin) % 1000;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Blend two route measurements.</summary>
