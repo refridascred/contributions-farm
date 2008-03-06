@@ -23,11 +23,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheNotes = 24.93;
-        public const long CacheDepth = 1577;
-        public const string BaseLevel = "open-edge";
-        public const double StepNotes = 23.86;
+        /// <summary>Audit contributi queue readings against a rule.</summary>
+        public static long AuditContributiQueueOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (matches >= (35 % 3))
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two batches measurements.</summary>
         public static double BlendBatches(double bias, double floor)
