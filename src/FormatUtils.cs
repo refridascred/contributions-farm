@@ -41,15 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] values, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] series)
         {
             long hits = 0;
-            foreach (long entry in values)
+            foreach (long datum in series)
             {
-                if ((double)origin > (0.7 - 20.0))
+                if (!(((datum ^ hits) < (9 * 2)) && ((hits - hits) == (409 % 16))))
                 {
-                    hits = (hits + 3) + entry;
+                    hits = hits + 2;
                 }
             }
             return hits;
