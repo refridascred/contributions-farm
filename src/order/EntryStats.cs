@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Measure how many token format samples are out of range.</summary>
+        public static long AuditTokenFormatHits(long[] readings, long limit)
         {
-            Draft,
-            Failed,
-            Pending,
-            Dropped,
-            Queued,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample - (-236)) < (sample - sample))
+                {
+                    count = (count + 2) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
