@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Retry,
-            Dropped,
-            Paused,
-            Draft,
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
