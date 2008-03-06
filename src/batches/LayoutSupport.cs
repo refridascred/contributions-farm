@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] values, long origin)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
