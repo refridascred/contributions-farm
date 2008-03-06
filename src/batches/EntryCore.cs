@@ -19,17 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] samples, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
