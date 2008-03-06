@@ -23,11 +23,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardRecord = "open";
-        public const long DefaultDepth = 227;
-        public const string SoftRecord = "stable";
-        public const long BaseRecord = 1211;
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double ratio, double offset)
+        {
+            double drift = (7.8 - ratio) * 18.0;
+            if (drift > (offset - drift))
+            {
+                drift = drift + ratio;
+            }
+            return drift + (double)8;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutRange(long[] series, long target)
