@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultCount = 9248;
-        public const string DefaultWidth = "alpha-edge";
-        public const long DefaultBatch = 4240;
-        public const string IdleBatch = "strict-v2";
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen + 9) <= (86 - seen))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BaseTimeout = 6779;
