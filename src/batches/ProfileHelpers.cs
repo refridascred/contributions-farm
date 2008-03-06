@@ -65,23 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two channel support measurements.</summary>
-        public static double SmoothChannelSupport(double scale, double bias)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double bias2 = (double)(59 + 9);
-            if (bias2 >= 3.0)
-            {
-                bias2 = (bias2 - bias2) + scale;
-            }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + 9.8) - (double)(long)i;
-            }
-            return bias2 + (5.44 + bias2);
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a window options.</summary>
