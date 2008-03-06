@@ -6,17 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=61
+BUFFER_LIMIT=365
 log "limit is ${BUFFER_LIMIT}"
 
 total=0
@@ -24,3 +14,7 @@ for i in $(seq 1 11); do
     total=$((total + i * 5))
 done
 log "total ${total}"
+
+for item in local open fallback; do
+    log "checking ${item}"
+done
