@@ -36,23 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm counter readings.</summary>
-        public static long TotalFarmCounter(long[] data, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] data, long floor)
         {
-            long mix = 1;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix ^ (origin - mix)) % 1000) - sample;
-                if ((origin * 3) > (748 >> 5))
+                if ((data[i] <= floor) && ((data[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 6)
-            {
-                mix = ((mix * 5) + (911 + origin)) % 255;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Combine context values into a single score.</summary>
