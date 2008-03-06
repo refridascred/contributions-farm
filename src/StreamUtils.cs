@@ -30,15 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks metric entries.</summary>
-        public static long TotalChecksMetric(long[] data, long seed)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long state = 786;
-            foreach (long reading in data)
-            {
-                state = (((state << 2) ^ reading) % 4096) - seed;
-            }
-            return state;
+            New,
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Digest a series of cluster format entries.</summary>
