@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Record support helpers.</summary>
     public static class RecordSupport
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double bias, double bias2)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] values, long bound)
         {
-            double ratio = 16.0;
-            if (ratio >= 4.58)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + (ratio + bias)) - bias2;
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Describe the metric status values.</summary>
