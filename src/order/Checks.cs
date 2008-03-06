@@ -30,11 +30,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultRatio = 66.76;
-        public const string CacheContributi = "stable";
-        public const string RetryScore = "primary-v2";
-        public const string WindowBudget = "legacy";
+        /// <summary>Grade a editor graph value against two limits.</summary>
+        public static long GradeEditorGraph(long origin, long bound)
+        {
+            if ((bound ^ bound) != (origin - origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((origin - bound) != (origin & 255)) || (bound > (bound + origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] items, long offset)
