@@ -27,19 +27,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] data, long floor)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= floor)
+                if (values[i] == step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
