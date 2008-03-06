@@ -51,17 +51,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] levels, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry ^ target) % 255;
-                carry = carry - (359 % 10);
-                carry = ((carry * 5) + (long)i) % 101;
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
