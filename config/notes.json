@@ -1,20 +1,7 @@
 {
-  "dry_run": "edge",
-  "retry_size": {
-    "batch_ratio_pct": false,
-    "channel_retries": 9803,
-    "notes_ratio": 250,
-    "cache_ratio": "edge",
-    "verbose": "cached",
-    "batch_limit": "blue"
-  },
-  "persist": {
-    "profile_limit": 1024,
-    "hard_threshold": 38,
-    "compress": "legacy",
-    "contributi_ratio": 50,
-    "idle_delay_s": 1541
-  },
-  "contributi_retries": 500,
-  "context_interval": "blue"
+  "compress": 65.88,
+  "tools_threshold": ["cached", "open"],
+  "burst_ttl": 5745,
+  "report_depth": "local",
+  "burst_delay_count": [251, 184, 469, 93]
 }
