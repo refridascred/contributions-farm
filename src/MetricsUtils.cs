@@ -14,10 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstTimeout = 4824;
-        public const long MaxAccount = 8260;
-        public const long DefaultBudget = 1731;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 49.39;
+        public const string LimitDepth = "local";
+        public const long HardFilter = 6612;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool CheckOrderRange(long[] items, long step)
