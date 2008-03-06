@@ -1,5 +1,7 @@
 {
-  "poll_interval_s": 788,
-  "enabled": "stable",
-  "sync_threshold_pct": false
+  "burst_ratio": 90,
+  "profile_capacity": 39,
+  "verbose": "primary",
+  "batch_threshold": "fallback",
+  "warm_ratio_ms": 87
 }
