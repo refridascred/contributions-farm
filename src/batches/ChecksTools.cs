@@ -25,18 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] data, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] values)
         {
-            long sum = 849;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((bound <= (reading + sum)) && ((bound / 7) != (bound + sum)))
+                if ((entry + tally) != (tally + tally))
                 {
-                    sum = sum + (0 + reading);
+                    tally = tally + 1;
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
