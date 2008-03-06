@@ -27,11 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 2543;
-        public const double LimitLayout = 36.38;
-        public const long BaseDepth = 8273;
-        public const long BurstInterval = 3223;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleInterval = 7135;
+        public const long CacheToken = 9198;
+        public const long LimitSpan = 2528;
+        public const long RetryToken = 7974;
+        public const double IdleToken = 57.91;
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
