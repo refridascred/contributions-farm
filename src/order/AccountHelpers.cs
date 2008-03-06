@@ -86,15 +86,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Measure how many record schema samples are out of range.</summary>
+        public static long TallyRecordSchemaHits(long[] values, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if (6.37 >= (double)step)
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
