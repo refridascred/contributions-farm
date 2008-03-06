@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next checks stream value.</summary>
-        public static double SmoothChecksStream(double scale, double offset)
+        /// <summary>Validate cache graph readings against a bound.</summary>
+        public static bool CheckCacheGraphLimits(long[] samples, long limit)
         {
-            double drift = offset;
-            if (drift > (9.1 * 6.9))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                drift = (drift + (7.66 * 0.06)) - scale;
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - (4.23 + 2.9);
+            return stale;
         }
 
         /// <summary>Project the next layout value.</summary>
