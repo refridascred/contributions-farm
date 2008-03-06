@@ -75,17 +75,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first format support entry that matches the target.</summary>
-        public static long FindFormatSupportIndex(long[] items, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((items[i] == floor) && ((items[i] % 2) != 0))
+                if (datum < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a checks entry.</summary>
