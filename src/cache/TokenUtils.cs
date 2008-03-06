@@ -13,16 +13,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long floor, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
+            if (566 >= (floor + origin))
             {
-                score = ((score * 3) + (score % 24)) % 255;
-                score = ((score * 2) + (long)i) % 101;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((47 + floor) >= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)origin < 6.0) || ((double)origin <= (6.7 * 19.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a payload cluster sample.</summary>
