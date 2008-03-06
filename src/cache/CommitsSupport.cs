@@ -64,14 +64,12 @@ namespace Common.Utilities
             return (ratio + bias) + rate;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Stale,
-            Done,
-            Retry,
-            Queued,
-            Ready,
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
