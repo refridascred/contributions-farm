@@ -57,24 +57,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric account value from a seed.</summary>
-        public static long StepMetricAccount(long origin)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.04 + 8.9) >= (double)result)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result + 70;
-                    result = ((result << 2) ^ (result + origin)) % 4096;
+                    if ((items[i] + items[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    result = (result ^ origin) % 97;
-                }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
