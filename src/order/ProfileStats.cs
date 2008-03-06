@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a command record reading.</summary>
-        public static double ProjectCommandRecord(double bias, double offset)
-        {
-            double scale = offset + offset;
-            return (scale + scale) + bias;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseCount = 10.28;
+        public const long DefaultInterval = 449;
+        public const long SoftFilter = 9892;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepSize = 4194;
