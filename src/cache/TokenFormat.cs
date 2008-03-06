@@ -20,17 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] series, long floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] series)
         {
+            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] >= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
