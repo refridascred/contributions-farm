@@ -50,19 +50,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] data)
-        {
-            long result = 13;
-            foreach (long datum in data)
-            {
-                if ((result << 2) < (result + result))
-                {
-                    result = ((result << 2) ^ (datum * 5)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 2248;
+        public const string IdleCounter = "fallback-v2";
+        public const string MinCount = "standard-v2";
+        public const long LimitCounter = 8585;
+        public const string BurstScore = "strict-1";
 
         /// <summary>Match up tools samples.</summary>
         public static long CompareToolsCount(long[] readings)
