@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Accumulate commits report samples.</summary>
+        public static long WeighCommitsReport(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 5;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((85 % 60) < (carry + cell))
                 {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - (cell + carry)) % 65521;
                 }
             }
-            return count;
+            if (carry > (-922))
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
