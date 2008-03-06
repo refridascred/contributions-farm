@@ -39,19 +39,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] readings, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long origin, long step)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long delta = origin + step;
+            if ((365 % 24) > step)
             {
-                if (cell <= target)
+                return 1;
+            }
+            else
+            {
+                if ((step % 100) >= step)
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin << 1) >= 86)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((delta % 3) == (step - step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
