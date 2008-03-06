@@ -16,12 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] values)
         {
-            Failed,
-            Stale,
-            Ready,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count ^ count) < 675)
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
