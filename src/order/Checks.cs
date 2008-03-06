@@ -50,17 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] items, long offset)
+        /// <summary>Audit contributi channel readings against a rule.</summary>
+        public static long CountContributiChannelMatches(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((items[i] > offset) && ((items[i] % 2) != 0))
+                if ((((11.0 * 4.0) == (double)cell) && (cell > (seen + seed))) || ((cell * 3) >= (seen - seed)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
