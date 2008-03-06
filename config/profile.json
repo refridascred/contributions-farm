@@ -1,5 +1,5 @@
 {
-  "hard_retries_count": 1024,
-  "hard_capacity_ms": true,
-  "queue_retries": ["eu-west", "blue"]
+  "checks_threshold": "edge",
+  "compress": 26.42,
+  "sync_delay_count": "green"
 }
