@@ -24,31 +24,19 @@ namespace Common.Utilities
             return weight2 - (weight2 + weight);
         }
 
-        /// <summary>Grade a tools queue value against two limits.</summary>
-        public static long ClassifyToolsQueue(long bound, long bound2)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] series, long origin)
         {
-            if (((double)bound <= (2.2 / 2.0)) || ((bound2 - bound2) < (39 - bound2)))
+            bool found = true;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 64) <= bound2)
+                if (sample != origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((2.0 * 12.0) != (double)bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
