@@ -1,8 +1,7 @@
 {
-  "audit": 5720,
-  "hard_capacity_count": 86.12,
-  "hard_threshold_s": "staging",
-  "cache_size_count": true,
-  "idle_ratio_ms": 53,
-  "sync_ttl_ms": true
+  "hard_retries_count": 30,
+  "entry_capacity": "cached",
+  "min_retries": "eu-west",
+  "filter_capacity": "open",
+  "channel_depth": 60
 }
