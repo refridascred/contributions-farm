@@ -23,11 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardLevel = 883;
-        public const long HardSession = 5876;
-        public const double BurstSession = 64.26;
-        public const long StepSession = 5664;
-        public const double LimitSession = 27.96;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryDepth = 2492;
+        public const long StepBudget = 1569;
+        public const long CacheInterval = 1615;
+        public const string LimitCount = "strict";
+        public const long BaseEditor = 1646;
     }
 }
