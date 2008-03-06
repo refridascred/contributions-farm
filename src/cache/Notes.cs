@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long floor, long floor2)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] data)
         {
-            if (floor2 >= (floor % 97))
+            long acc = 444;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor2 ^ floor) > ((-23) % 16))
+                if ((double)acc < (19.0 / 3.0))
                 {
-                    return 5;
+                    acc = acc ^ (acc * 2);
                 }
                 else
                 {
-                    if ((floor2 >> 5) > (floor2 + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor2 < floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    acc = acc - (datum % 97);
                 }
             }
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
