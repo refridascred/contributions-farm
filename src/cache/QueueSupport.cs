@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long bound, long step)
+        /// <summary>Locate a profile graph reading by value.</summary>
+        public static long SeekProfileGraphIndex(long[] levels, long target)
         {
-            if ((9.5 * 19.0) > (double)bound)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + bound) != (bound + bound))
+                if ((levels[i] < target) && ((levels[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((19.0 * 6.2) != (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((5.53 + 9.52) < (double)step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up report samples.</summary>
