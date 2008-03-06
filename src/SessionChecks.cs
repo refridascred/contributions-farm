@@ -25,13 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count cluster editor pairs that satisfy a relation.</summary>
+        public static long PairClusterEditorCount(long[] items)
         {
-            Dropped,
-            New,
-            Synced,
-            Locked,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
