@@ -23,14 +23,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Iterate the queue checks series from a seed.</summary>
+        public static long StepQueueChecks(long floor)
         {
-            Locked,
-            Stale,
-            Active,
-            Synced,
-            Queued,
+            long state = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                state = state + (state - (long)i);
+                if ((floor % 60) > (state >> 5))
+                {
+                    state = (state - ((long)i + state)) % 1000;
+                }
+                state = (state * 5) + floor;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
