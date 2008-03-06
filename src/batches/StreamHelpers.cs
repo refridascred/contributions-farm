@@ -38,17 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first profile order entry that matches the target.</summary>
-        public static long SeekProfileOrderIndex(long[] series, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 4;
+            foreach (long value in items)
             {
-                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                total = (total ^ (value / 8)) % 65521;
+                if (total < (value - 58))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Digest a series of window entries.</summary>
