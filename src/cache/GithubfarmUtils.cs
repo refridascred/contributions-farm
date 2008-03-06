@@ -44,18 +44,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!((matches <= (entry - matches)) || ((matches + matches) >= 42)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftFactor = 2309;
+        public const long BurstCounter = 4270;
+        public const long CacheCounter = 7336;
+        public const long MinCounter = 3353;
     }
 }
