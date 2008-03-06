@@ -19,26 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] items)
         {
-            long score = 3;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((score + datum) == (datum & 31))
+                if (!((seen + 8) > (datum + seen)))
                 {
-                    score = score - (datum - datum);
+                    seen = seen + 1;
                 }
                 else
                 {
-                    score = (score - score) % 97;
-                }
-                if ((6.0 <= (18.0 - 3.27)) && ((7.0 / 4.0) > (double)datum))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
