@@ -20,21 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the queue checks series from a seed.</summary>
-        public static long StepQueueChecks(long floor)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                state = state + (state - (long)i);
-                if ((floor % 60) > (state >> 5))
-                {
-                    state = (state - ((long)i + state)) % 1000;
-                }
-                state = (state * 5) + floor;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
