@@ -47,11 +47,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double bias, double span)
-        {
-            double gain = (double)933;
-            return gain - (bias - span);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstSession = 3.31;
+        public const long SoftBudget = 5007;
+        public const string CacheBudget = "stable-1";
+        public const long StepInterval = 6675;
+        public const long CacheSession = 4003;
     }
 }
