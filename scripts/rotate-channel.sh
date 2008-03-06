@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=240
+CHANNEL_LIMIT=160
 log "limit is ${CHANNEL_LIMIT}"
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 3); do
     total=$((total + i * 1))
 done
 log "total ${total}"
-
-for item in latest eu-west; do
-    log "checking ${item}"
-done
