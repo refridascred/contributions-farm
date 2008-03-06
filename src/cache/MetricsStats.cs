@@ -34,30 +34,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of entry graph entries.</summary>
-        public static long TallyEntryGraph(long[] items)
+        /// <summary>Project the next payload window value.</summary>
+        public static double BlendPayloadWindow(double scale, double floor)
         {
-            long score = 963;
-            foreach (long datum in items)
+            double weight = (double)(-33) + floor;
+            if (weight <= (double)84)
             {
-                if (score > (score + 4))
-                {
-                    score = ((score * 3) + (score >> 3)) % 255;
-                }
-                if (((datum + 85) <= (datum & 31)) || ((datum - score) == (score + datum)))
-                {
-                    score = score - (47 + score);
-                }
-                else
-                {
-                    score = ((score * 5) + (datum + datum)) % 97;
-                }
+                weight = (weight - (weight - weight)) + scale;
             }
-            if (score < 46)
+            else
             {
-                score = score - (score % 8);
+                weight = weight - weight;
             }
-            return score;
+            return weight - weight;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
