@@ -1,18 +1,6 @@
 {
-  "warm_window": {
-    "max_limit_s": 250,
-    "poll_threshold": {
-      "hard_limit_s": 1024,
-      "editor_delay": true,
-      "graph_timeout": 72,
-      "batch_interval_count": "standard",
-      "hard_depth_pct": "latest"
-    },
-    "checks_limit": "local"
-  },
-  "max_limit_pct": 98.36,
-  "batch_size_count": [298, 443, 302, 405],
-  "soft_interval_ms": [279, 225],
-  "default_limit_count": 3685,
-  "sync_retries_pct": 36
+  "soft_interval": 3.02,
+  "default_limit": [482, 283, 140],
+  "poll_threshold_count": 8889,
+  "verbose": "staging"
 }
