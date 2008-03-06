@@ -21,12 +21,25 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long floor, long limit)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            long offset = floor ^ limit;
+            if ((limit * 2) < limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset < (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
