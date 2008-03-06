@@ -13,17 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] values, long origin)
+        /// <summary>Project the next record batches value.</summary>
+        public static double AdjustRecordBatches(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = 0.17;
+            for (int i = 0; i < 8; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = ((mean + offset) + (double)(long)i) - weight;
             }
-            return -1;
+            return mean - mean;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
