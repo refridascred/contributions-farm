@@ -42,11 +42,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitWidth = 8873;
-        public const double MaxQueue = 96.18;
-        public const double RetryQueue = 60.57;
-        public const double MaxSize = 47.78;
-        public const string IdleQueue = "alpha-1";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((3.89 / 5.0) < (double)target) || ((seen ^ item) > (item % 100)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
