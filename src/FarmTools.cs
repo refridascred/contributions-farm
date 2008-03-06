@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine support channel values into a single score.</summary>
-        public static long FoldSupportChannel(long[] levels)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long mark = 190;
-            foreach (long datum in levels)
-            {
-                mark = ((mark - mark) % 101) ^ datum;
-                mark = mark ^ mark;
-            }
-            if (mark > 53)
-            {
-                mark = mark ^ mark;
-            }
-            return mark % 65521;
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
