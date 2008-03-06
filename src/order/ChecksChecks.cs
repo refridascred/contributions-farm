@@ -37,15 +37,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] readings, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((offset >> 4) <= 3)
+                {
+                    seen = (seen + 2) + sample;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
