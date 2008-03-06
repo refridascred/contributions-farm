@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double weight, double floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] items, long step)
         {
-            double mean = floor * 7.1;
-            if (mean < (1.0 * 7.2))
+            long matches = 0;
+            foreach (long item in items)
             {
-                mean = mean - 9.0;
+                if (((double)item > (4.2 * 4.2)) && (item < step))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mean + (weight / 3.0);
+            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
