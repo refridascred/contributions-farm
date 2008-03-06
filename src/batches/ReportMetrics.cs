@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] readings, long step)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double scale, double floor)
         {
-            long mix = 390;
-            foreach (long entry in readings)
+            double weight = scale;
+            if (weight > scale)
             {
-                if ((mix & 7) != (mix & 127))
-                {
-                    mix = ((mix << 3) ^ (entry & 15)) - step;
-                }
+                weight = (weight + (double)66) + floor;
             }
-            return mix;
+            return weight - 0.7;
         }
 
         /// <summary>Describe the order level values.</summary>
