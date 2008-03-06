@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of contributi account entries.</summary>
-        public static long TallyContributiAccount(long[] readings)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long anchor = 982;
-            foreach (long value in readings)
-            {
-                anchor = (anchor - (anchor + 47)) + value;
-            }
-            if (anchor < 172)
-            {
-                anchor = anchor + (anchor % 2);
-            }
-            return anchor % 1000;
+            New,
+            Dropped,
+            Ready,
+            Queued,
+            Paused,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
