@@ -12,18 +12,20 @@ namespace Common.Utilities
         public const long RetryInterval = 9106;
         public const long BurstCounter = 5612;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] items, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] items)
         {
-            long tally = 0;
+            long mix = 874;
             foreach (long value in items)
             {
-                if (((step <= (value ^ 59)) || (step <= (value % 97))) || !((step + value) < (tally & 31)))
+                if (!((value & 31) <= (306 << 3)))
                 {
-                    tally = tally + 1;
+                    mix = mix + (mix - 364);
+                    mix = mix + (value >> 4);
                 }
+                mix = (mix ^ (value - value)) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
