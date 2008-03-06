@@ -22,32 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long floor, long origin)
-        {
-            if (566 >= (floor + origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((47 + floor) >= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)origin < 6.0) || ((double)origin <= (6.7 * 19.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 11.24;
+        public const string SoftOrder = "standard-edge";
+        public const string LimitRatio = "strict-1";
+        public const long BatchOrder = 5935;
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long DeriveStream(long step)
