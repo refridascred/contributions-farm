@@ -1,26 +1,9 @@
 # githubfarm settings
-poll_window:
-  base_retries_ms:
-    support_size: 11.24
-    min_interval_ms: 100
-    audit: 7151
-    verbose: true
-  compress: 92.04
-  strict: true
-  base_threshold_count:
-    persist: 8875
-    idle_size:
-      - staging
-      - cached
-      - latest
-      - edge
-    default_limit_pct: 9118
-    burst_size_s: false
-    cache_depth_s:
-      - 348
-      - 68
-      - 152
-verbose: false
-cache_window_count: 7
-batch_threshold: false
-schema_timeout: cached
+cache_retries:
+  - open
+  - green
+  - staging
+base_size_ms: true
+sync_depth_pct: 81.67
+sync_ratio_ms: edge
+route_size: local
