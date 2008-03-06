@@ -1,6 +1,4 @@
 # githubfarm settings
-warm_interval: cached
-max_delay: strict
-warm_delay: stable
-soft_window: true
-session_timeout: green
+base_depth_pct: 65.87
+verbose: standard
+compress: 7917
