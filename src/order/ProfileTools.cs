@@ -37,14 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Roll a farm command counter forward.</summary>
+        public static long SeriesFarmCommand(long limit)
         {
-            Retry,
-            Queued,
-            Ready,
-            Closed,
-            New,
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
