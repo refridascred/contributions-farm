@@ -60,18 +60,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (((double)entry > 9.1) || ((1.91 > (double)entry) || ((matches - matches) > matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 5481;
+        public const long BurstInterval = 9302;
+        public const long BaseProfile = 6016;
+        public const long BurstProfile = 287;
+        public const long StepProfile = 3675;
     }
 }
