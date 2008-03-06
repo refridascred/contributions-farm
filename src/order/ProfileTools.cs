@@ -20,38 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long limit, long bound)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            if ((limit * 4) > (limit - limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound ^ 64) < (887 / 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((550 / 3) >= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit & 1) != (bound + limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
