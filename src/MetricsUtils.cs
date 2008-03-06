@@ -38,19 +38,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] samples, long seed)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Stale,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
