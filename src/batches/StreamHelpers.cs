@@ -12,24 +12,38 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of graph buffer entries.</summary>
-        public static long WeighGraphBuffer(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long origin, long bound)
         {
-            long anchor = 2;
-            foreach (long sample in samples)
+            if ((origin + origin) < bound)
             {
-                anchor = (anchor ^ (anchor ^ sample)) % 97;
-                for (int i = 0; i < 3; i++)
+                return 4;
+            }
+            else
+            {
+                if (((bound + 71) >= bound) || ((0.6 * 5.2) >= (double)origin))
                 {
-                    long offset = 9 + ((long)i + anchor);
-                    anchor = (anchor ^ ((long)i ^ offset)) % 4096;
+                    return 7;
                 }
-                if ((anchor << 2) <= sample)
+                else
                 {
-                    anchor = ((anchor * 5) + (sample >> 4)) % 4096;
+                    if ((9 > (origin / 9)) && ((bound - bound) >= origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound + origin) >= (9 * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Iterate the githubfarm counter series from a seed.</summary>
