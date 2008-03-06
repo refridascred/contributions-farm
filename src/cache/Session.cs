@@ -22,14 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] levels)
         {
-            Active,
-            Ready,
-            Retry,
-            New,
-            Synced,
+            long state = 345;
+            foreach (long item in levels)
+            {
+                if ((item / 4) == (state - state))
+                {
+                    state = (state << 2) ^ (14 ^ state);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
