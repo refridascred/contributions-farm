@@ -13,21 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = -71;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((items[i] + items[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 2) ^ (item / 8)) + (long)i;
                 }
+                score = ((score * 3) + seed) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a token info.</summary>
