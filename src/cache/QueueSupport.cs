@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long bound, long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if ((9.5 * 19.0) > (double)bound)
             {
-                if (!(tally <= (sample - sample)))
+                return 7;
+            }
+            else
+            {
+                if ((step + bound) != (bound + bound))
                 {
-                    tally = tally + 2;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((19.0 * 6.2) != (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((5.53 + 9.52) < (double)step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up report samples.</summary>
