@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] values, long floor)
         {
-            Paused,
-            Stale,
-            Done,
+            long sum = -932;
+            foreach (long sample in values)
+            {
+                sum = sum + (floor - floor);
+                if ((sample + sum) > (sample * 5))
+                {
+                    sum = (sum * 5) + (sample % 5);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Match up buffer batch samples.</summary>
