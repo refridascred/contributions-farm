@@ -76,17 +76,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 13;
+            foreach (long sample in series)
             {
-                if ((values[i] > seed) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((((result << 2) ^ (result + (long)series.Length)) % 101) - sample) - limit;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a notes entry.</summary>
