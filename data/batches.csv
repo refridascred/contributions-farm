@@ -1,11 +1,6 @@
-id,rank,owner,token,state
-1,585,strict,eu-west,999
-2,17.77,primary,stable,69.97
-3,166,546,309,edge
-4,797,385,1.18,17
-5,21,primary,local,94.3
-6,90.24,local,995,cached
-7,284,green,10.78,403
-8,18.85,481,local,45.02
-9,13.62,fallback,30.75,50.35
-10,647,42,green,eu-west
+id,rank,token
+1,54.82,683
+2,1,latest
+3,979,267
+4,primary,cached
+5,cached,561
