@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a stream record figure with a bias.</summary>
-        public static double BlendStreamRecord(double scale, double bias)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            double gain = bias;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain + scale) - (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain - (scale * 3.66);
+            return hits;
         }
 
         /// <summary>Accumulate queue profile samples.</summary>
