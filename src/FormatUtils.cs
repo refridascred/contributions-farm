@@ -22,19 +22,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long acc = 56;
-            foreach (long entry in values)
-            {
-                acc = acc + (acc & 127);
-                if ((acc & 63) > entry)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
