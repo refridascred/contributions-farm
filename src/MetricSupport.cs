@@ -32,23 +32,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double bias, double floor)
-        {
-            double ratio = floor / 2.0;
-            if (ratio <= (double)39)
-            {
-                ratio = ratio - (bias / 6.0);
-            }
-            else
-            {
-                ratio = ratio - (floor * 14.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (double)33;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "cached";
+        public const string BurstWidth = "strict-edge";
+        public const long LimitRoute = 8481;
+        public const long MinRoute = 4650;
     }
 }
