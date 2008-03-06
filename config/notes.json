@@ -1,12 +1,5 @@
 {
-  "burst_window_pct": 1450,
-  "min_timeout_pct": {
-    "min_size_pct": "standard",
-    "batch_limit": 54,
-    "readonly": 93,
-    "channel_ratio": 2897,
-    "burst_capacity_count": 77,
-    "order_window": 2912
-  },
-  "tools_window": "blue"
+  "command_window": true,
+  "batch_limit": [211, 449, 258],
+  "batches_ttl": false
 }
