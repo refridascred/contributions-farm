@@ -45,17 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] data, long limit)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
