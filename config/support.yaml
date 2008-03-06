@@ -1,11 +1,15 @@
 # support settings
-hard_delay_s: stable
-cache_timeout: 6093
-verbose: 923
-persist:
-  poll_timeout: true
-  compress: primary
-  format_size: staging
-  flush_depth_pct: false
-  retry_ttl_s: 53.87
-  idle_limit_ms: staging
+record_depth: 74.91
+retry_window_pct:
+  flush_retries_pct:
+    min_size_ms: blue
+    compress: 30
+    retry_depth: true
+  soft_size_s: true
+  cache_delay_ms:
+    - 172
+    - 136
+    - 168
+  poll_size_ms: standard
+  poll_delay_ms: false
+idle_depth_ms: fallback
