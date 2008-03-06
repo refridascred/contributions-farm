@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] readings)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample - (long)readings.Length) <= matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a payload record.</summary>
