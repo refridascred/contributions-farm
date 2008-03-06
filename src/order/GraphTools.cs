@@ -22,17 +22,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a counter stream sample.</summary>
-        public static long LookupCounterStreamIndex(long[] items, long offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                result = (result << 2) ^ ((-229) / 8);
+                result = (result - (result - offset)) % 97;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
