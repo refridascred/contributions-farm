@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const long MaxChecks = 2529;
         public const long SoftChecks = 1288;
 
-        /// <summary>Audit tools route readings against a rule.</summary>
-        public static long TallyToolsRouteHits(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + 48) <= (datum >> 5))
-                {
-                    count = (count + 1) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 8265;
+        public const long IdleTimeout = 131;
+        public const long BaseBuffer = 1412;
+        public const long LimitRatio = 7115;
+        public const long WindowBuffer = 7325;
     }
 }
