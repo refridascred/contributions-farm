@@ -34,15 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long acc = 75;
-            foreach (long entry in samples)
-            {
-                acc = (((acc * 5) + acc) % 101) ^ entry;
-            }
-            return acc % 97;
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Derive the next cache batch value from a seed.</summary>
