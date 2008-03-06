@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepDepth = 21.9;
-        public const long MaxQueue = 5142;
-        public const long MinDepth = 3134;
-        public const double HardQueue = 20.3;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultTimeout = "open";
+        public const long StepLevel = 6329;
+        public const long CacheCommand = 6042;
+        public const double MinCommand = 54.37;
+        public const long StepCommand = 4443;
 
         /// <summary>Measure how many cache commits samples are out of range.</summary>
         public static long AuditCacheCommitsOutliers(long[] items, long floor)
