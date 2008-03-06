@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of already schema readings.</summary>
-        public static long CombineAlreadySchema(long[] data, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] items, long limit)
         {
-            long mix = 639;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (((mix + entry) < limit) || (6 < limit))
+                if (entry <= limit)
                 {
-                    mix = (mix ^ mix) % 4096;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (entry / 8)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return mix % 1000;
+            return found;
         }
 
         /// <summary>Iterate the queue checks series from a seed.</summary>
