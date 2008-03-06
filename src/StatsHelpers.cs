@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long target)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] items, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total - (target % 16)) % 97;
-                total = (total - (target + 613)) % 4096;
-                total = ((total * 3) + (long)i) % 1000;
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a report record.</summary>
