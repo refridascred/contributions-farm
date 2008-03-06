@@ -29,13 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] values, long step)
         {
-            New,
-            Closed,
-            Active,
-            Synced,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
