@@ -1,12 +1,12 @@
 # support settings
-warm_threshold: standard
-commits_capacity: true
-contributi_ratio: true
-readonly:
-  - 8
-  - 214
-batch_interval_s:
-  - fallback
-  - fallback
+warm_retries_count:
+  - 149
+  - 285
+audit: 43.77
+default_threshold_s:
   - staging
-retry_window: true
+  - eu-west
+  - cached
+sync_capacity_count: 86
+default_timeout_ms: legacy
+batch_retries_count: 1024
