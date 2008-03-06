@@ -44,39 +44,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long offset, long seed)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double rate, double span)
         {
-            long slot = offset - seed;
-            if ((seed >> 2) < offset)
+            double mean = (double)(99 >> 3);
+            if (mean > mean)
             {
-                return 0;
+                mean = (mean - mean) - rate;
             }
             else
             {
-                if (slot > seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + offset) != (745 - seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset & 31) < ((-276) & 3)) || ((offset << 3) < (offset * 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mean = mean + (double)18;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean - 4.4;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
