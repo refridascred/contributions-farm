@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally >> 1) >= (0 & 255))
-                {
-                    tally = ((tally + 3) + datum) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstScore = 8444;
+        public const long RetrySpan = 1702;
+        public const double CacheMetrics = 85.87;
 
         /// <summary>Iterate the schema order series from a seed.</summary>
         public static long StepSchemaOrder(long origin)
