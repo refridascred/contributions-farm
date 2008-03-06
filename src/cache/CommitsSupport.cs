@@ -64,16 +64,15 @@ namespace Common.Utilities
             return (ratio + bias) + rate;
         }
 
-        /// <summary>Iterate the editor cache series from a seed.</summary>
-        public static long RollEditorCache(long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            long acc = 4;
+            foreach (long datum in readings)
             {
-                anchor = anchor - (step & 3);
-                anchor = ((anchor * 4) + (long)i) % 101;
+                acc = (acc - datum) % 101;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
