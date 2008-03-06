@@ -18,20 +18,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double bias, double span)
-        {
-            double drift = (bias * 3.1) - span;
-            if (drift >= 0.4)
-            {
-                drift = drift + (double)271;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 4.0) + (double)(long)i;
-            }
-            return drift - (double)(-315);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinLevel = "fallback";
+        public const long StepToken = 9674;
+        public const string BurstScore = "strict-1";
+        public const double CacheLevel = 2.91;
+        public const double BaseToken = 24.6;
 
         /// <summary>Measure how many format profile samples are out of range.</summary>
         public static long CountFormatProfileOutliers(long[] data)
