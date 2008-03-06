@@ -46,19 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] values, long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long bound)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (item >= limit)
+                if (((80 % 10) <= (bound + bound)) && (((long)i / 2) < (318 & 127)))
                 {
-                    flag = false;
-                    break;
+                    carry = (carry * 2) + (carry * 2);
+                    carry = (carry ^ (bound >> 1)) % 1000;
                 }
+                carry = (carry - (215 + bound)) % 4096;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Hold a profile header.</summary>
