@@ -40,22 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session profile samples are out of range.</summary>
-        public static long CountSessionProfileHits(long[] series, long floor)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((reading >> 5) != (floor / 9))
+                sum = sum + 99;
+                if ((limit - (-85)) > (limit / 7))
                 {
-                    seen = seen + 1;
+                    sum = (sum * 5) + (sum + limit);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
     }
 }
