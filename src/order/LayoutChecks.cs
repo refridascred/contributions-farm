@@ -18,32 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long floor, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] samples)
         {
-            long slot = floor ^ step;
-            if (floor >= (floor & 7))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step < 9.6)
+                if (!!((tally + (long)samples.Length) == (tally - sample)))
                 {
-                    return 6;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((step - floor) == (slot * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
