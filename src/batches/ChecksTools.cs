@@ -43,12 +43,20 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultGithubfarm = 76.87;
-        public const long RetryLevel = 4340;
-        public const long BurstInterval = 1123;
-        public const long MinTimeout = 6237;
-        public const long BurstLevel = 8782;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] values, long target)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsOutliers(long[] data)
