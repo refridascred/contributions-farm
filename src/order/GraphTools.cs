@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] values, long origin)
+        /// <summary>Iterate the farm graph series from a seed.</summary>
+        public static long SeriesFarmGraph(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
+                result = result + result;
+                if ((619 * 3) > result)
                 {
-                    return (long)i;
+                    continue;
                 }
+                result = (result + ((long)i - result)) % 101;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Look up the position of a counter stream sample.</summary>
