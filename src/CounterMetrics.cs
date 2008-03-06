@@ -45,19 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue record readings against a bound.</summary>
-        public static bool GuardQueueRecordRange(long[] items, long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (sample < offset)
+                if (item <= seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
     }
 }
