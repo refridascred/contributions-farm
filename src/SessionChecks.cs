@@ -52,13 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] values, long seed)
         {
-            Retry,
-            Active,
-            Pending,
-            Closed,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((9 * 3) < (seed * 2))
+                {
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
