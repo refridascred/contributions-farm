@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Done,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 6400;
+        public const double BurstBuffer = 65.51;
+        public const string LimitTimeout = "standard-v2";
+        public const double MaxBuffer = 93.03;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportOutliers(long[] data)
