@@ -49,38 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long origin, long bound)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            if (bound > origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound + bound) <= (bound + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((835 + origin) < bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound == (3.32 - 9.84))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
