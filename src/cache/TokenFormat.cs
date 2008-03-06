@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] readings)
         {
-            Idle,
-            Paused,
-            Closed,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (!((tally + item) <= (item % 12)) && !((tally >> 5) == (item - 347)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batches info.</summary>
