@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] series, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 79;
+            foreach (long value in data)
             {
-                if (series[i] == target)
+                if (((value % 24) <= (83 >> 4)) && ((0 & 15) > (bound ^ value)))
                 {
-                    return (long)i;
+                    result = (result * 4) + result;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Digest a series of schema editor entries.</summary>
