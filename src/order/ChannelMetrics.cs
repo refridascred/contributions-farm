@@ -61,25 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long seed, long origin)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long span = seed - origin;
-            if ((3 - span) >= (span - origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((span + origin) >= (span - origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
