@@ -35,25 +35,10 @@ namespace Common.Utilities
         public const long MaxCommits = 1083;
         public const long BurstCommits = 7223;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long step, long seed)
-        {
-            long step2 = step ^ seed;
-            if ((step2 + seed) <= seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step <= (step2 + step2)) && ((seed ^ (-101)) >= step2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 721;
+        public const string LimitTimeout = "staging-1";
+        public const long SoftEditor = 8716;
+        public const double DefaultEditor = 82.29;
     }
 }
