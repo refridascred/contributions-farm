@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
