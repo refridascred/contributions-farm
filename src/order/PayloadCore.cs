@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long origin, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] items, long offset)
         {
-            long offset = origin - seed;
-            if (((origin - origin) != (offset >> 2)) || ((2.79 / 7.0) == (double)offset))
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset * 2) >= origin)
+                if ((((count ^ offset) > ((long)items.Length - count)) && ((-188) <= (count + 660))) && ((reading + reading) < (offset + reading)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)origin <= (6.1 * 0.1)) && ((origin + 0) >= (offset + origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset > (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the stream status values.</summary>
