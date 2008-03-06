@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a profile graph reading by value.</summary>
-        public static long SeekProfileGraphIndex(long[] levels, long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Locked,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Match up report samples.</summary>
