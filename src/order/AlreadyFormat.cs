@@ -13,22 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepRatio = 3711;
+        public const long HardLevel = 6881;
+        public const double SoftCache = 24.47;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BaseBatches = 10.74;
