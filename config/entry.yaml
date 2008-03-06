@@ -1,15 +1,23 @@
 # entry settings
-soft_size_pct: 10.23
-audit: true
-default_ratio: 42.93
-graph_limit: false
-max_size_s:
-  strict: 9616
-  batch_window: blue
-  min_threshold_count: 6246
-  min_delay:
-    - 189
-    - 356
-    - 106
-  cache_threshold_count: 43.37
-  warm_depth: 2380
+max_interval_s:
+  entry_threshold: 46.7
+  retry_size: 100
+  profile_size: strict
+  readonly: 31
+  sync_interval_count: legacy
+soft_capacity:
+  flush_size_pct:
+    - standard
+    - staging
+    - eu-west
+  batch_threshold:
+    - cached
+    - stable
+    - fallback
+    - latest
+  soft_ttl: 3871
+  schema_limit: false
+  poll_delay_count:
+    - 197
+    - 200
+base_capacity: edge
