@@ -1,7 +1,11 @@
 # support settings
-retry_limit:
-  - 51
-  - 271
-  - 416
-hard_retries_ms: 53.59
-hard_limit_ms: false
+checks_retries:
+  - 334
+  - 291
+audit:
+  - 303
+  - 188
+  - 113
+  - 325
+batches_ratio: primary
+support_interval: 250
