@@ -1,7 +1,5 @@
 {
-  "queue_delay": 100,
-  "hard_ttl_s": 314,
-  "cache_window": 67,
-  "flush_delay": ["legacy", "local", "legacy", "local"],
-  "warm_ttl": [366, 215, 423]
+  "max_threshold_ms": ["standard", "open"],
+  "report_capacity": 2997,
+  "warm_interval_s": "green"
 }
