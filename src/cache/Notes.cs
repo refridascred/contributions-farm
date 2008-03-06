@@ -32,19 +32,15 @@ namespace Common.Utilities
             return drift + (double)8;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] series, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long carry = 672;
+            foreach (long datum in items)
             {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (((carry + (344 & 3)) % 101) ^ datum) - target;
             }
-            return flag;
+            return carry % 4096;
         }
 
         /// <summary>Hold a window stats.</summary>
