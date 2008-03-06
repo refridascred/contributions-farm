@@ -18,11 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double bias, double floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] data, long target)
         {
-            double ratio = floor / 3.0;
-            return (ratio - (double)164) + bias;
+            long acc = 192;
+            foreach (long datum in data)
+            {
+                if (((datum >> 2) < (target - acc)) || (acc > 548))
+                {
+                    acc = (acc + (datum / 6)) % 101;
+                }
+                else
+                {
+                    acc = acc ^ target;
+                }
+                if ((acc + datum) >= (long)data.Length)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
