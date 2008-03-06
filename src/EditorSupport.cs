@@ -20,12 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] > floor)
+                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
