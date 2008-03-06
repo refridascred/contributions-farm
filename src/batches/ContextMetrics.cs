@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCount = 1788;
-        public const long DefaultFactor = 902;
-        public const double IdleCache = 31.59;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of githubfarm command entries.</summary>
         public static long WeighGithubfarmCommand(long[] samples)
