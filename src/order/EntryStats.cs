@@ -44,10 +44,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultScore = 8341;
-        public const string MaxFactor = "stable";
-        public const double BaseLevel = 64.8;
-        public const double CacheFactor = 80.53;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] samples, long floor)
+        {
+            long carry = 4;
+            foreach (long sample in samples)
+            {
+                if ((sample - carry) <= (floor % 24))
+                {
+                    carry = (carry << 2) ^ (carry << 3);
+                }
+                carry = (carry + (20 >> 5)) % 4096;
+            }
+            if (carry > (-762))
+            {
+                carry = carry + floor;
+            }
+            return carry % 97;
+        }
     }
 }
