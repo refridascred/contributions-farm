@@ -19,10 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheReport = "latest";
-        public const string WindowReport = "alpha-v2";
-        public const long DefaultRatio = 8305;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public long Label { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Iterate the graph metrics series from a seed.</summary>
         public static long DeriveGraphMetrics(long seed)
