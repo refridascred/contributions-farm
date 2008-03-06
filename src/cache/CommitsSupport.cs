@@ -52,38 +52,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue record value against two limits.</summary>
-        public static long BucketQueueRecord(long floor, long floor2)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double rate, double bias)
         {
-            if (((5.0 / 8.0) > (double)floor) && ((347 ^ floor) == (floor ^ floor2)))
+            double bias2 = rate;
+            if (bias2 < (2.0 - 4.0))
             {
-                return 0;
+                bias2 = bias2 + bias2;
             }
             else
             {
-                if (!((2.9 / 4.0) != (double)floor2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((0 + 3) <= (486 - floor2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((floor - floor2) > floor2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                bias2 = bias2 + rate;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + (double)633) + (double)(long)i;
+            }
+            return bias2 + (bias2 - bias);
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
