@@ -36,22 +36,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] data)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading > (11.0 * 19.0))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
