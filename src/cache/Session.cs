@@ -23,14 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Count the route farm entries that pass the check.</summary>
+        public static long AuditRouteFarmHits(long[] readings)
         {
-            Paused,
-            Pending,
-            Failed,
-            Done,
-            New,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (((4.78 - 11.0) == (double)item) || ((matches << 2) > item))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
