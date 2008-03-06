@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Compare every pair of account token readings.</summary>
+        public static long CompareAccountTokenCount(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) < 18)
+                    if ((series[i] - series[j]) < 0)
                     {
                         hits = hits + 1;
                     }
