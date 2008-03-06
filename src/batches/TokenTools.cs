@@ -57,19 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] items, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (item < bound)
+                if ((item + tally) != (tally - item))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
