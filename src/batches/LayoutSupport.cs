@@ -5,38 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a session githubfarm value against two limits.</summary>
-        public static long RankSessionGithubfarm(long origin, long target)
+        /// <summary>Digest a series of payload format entries.</summary>
+        public static long DigestPayloadFormat(long[] levels)
         {
-            if ((origin ^ origin) < (origin % 8))
+            long sum = 792;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target ^ origin) == (origin % 8))
+                sum = (sum * 2) + (sum * 5);
+                for (int i = 0; i < 5; i++)
                 {
-                    return 4;
+                    sum = ((sum << 2) ^ (sum & 1)) + (long)i;
+                }
+                if ((cell ^ sum) >= (-6))
+                {
+                    sum = ((sum << 3) ^ (sum + sum)) % 4096;
                 }
                 else
                 {
-                    if ((target ^ target) == (origin & 31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(target > (483 - 39)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = sum + (2 << 1);
                 }
             }
+            return sum;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
