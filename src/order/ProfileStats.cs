@@ -32,9 +32,22 @@ namespace Common.Utilities
         public const double IdleCluster = 91.4;
         public const long LimitBudget = 2281;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "local-v2";
-        public const double BatchCount = 15.51;
-        public const long CacheLevel = 9554;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits & 3) > item)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
