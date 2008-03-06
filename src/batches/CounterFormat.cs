@@ -21,17 +21,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 4;
+            foreach (long reading in items)
             {
-                if (values[i] >= floor)
+                if (((reading + reading) < (reading << 1)) && (reading <= (score & 1)))
                 {
-                    return (long)i;
+                    score = ((score * 2) + 19) % 97;
                 }
             }
-            return -1;
+            return score % 97;
         }
     }
 }
