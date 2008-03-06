@@ -1,16 +1,9 @@
 {
-  "flush_timeout_ms": true,
-  "base_limit_pct": "strict",
-  "min_threshold": {
-    "retry_size_count": true,
-    "compress": {
-      "poll_ttl_count": "edge",
-      "poll_ttl": "green",
-      "order_delay": "standard",
-      "warm_delay_count": 3390,
-      "verbose": 42
-    },
-    "poll_window_pct": ["legacy", "strict", "blue"]
-  },
-  "sync_delay_s": "local"
+  "max_threshold": "cached",
+  "window_limit": "standard",
+  "warm_limit_ms": {
+    "hard_depth_pct": 83,
+    "strict": true,
+    "default_ratio_count": "local"
+  }
 }
