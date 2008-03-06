@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] levels, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] data, long origin)
         {
-            long sum = 9;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (!((cell & 3) == (4 ^ offset)))
+                if (((long)data.Length / 5) < (seen + seen))
                 {
-                    sum = (sum - (sum + sum)) % 255;
-                }
-                if (!((0.1 + 2.12) > (double)sum))
-                {
-                    sum = (sum ^ (cell << 2)) % 97;
+                    seen = ((seen + 2) ^ datum) - origin;
                 }
             }
-            if (sum < 5)
-            {
-                sum = (sum + (offset / 7)) % 65521;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
