@@ -36,19 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double rate, double offset)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            double drift = (rate * 9.2) * 9.55;
-            if (drift < (offset - rate))
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (4.75 / 7.0)) + (double)(long)i;
-            }
-            return drift + 6.3;
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
