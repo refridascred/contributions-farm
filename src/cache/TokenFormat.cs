@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] levels, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long cell in items)
             {
                 if (cell > target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
