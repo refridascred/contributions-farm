@@ -48,19 +48,18 @@ namespace Common.Utilities
         public const long RetryFactor = 5122;
         public const long LimitBudget = 247;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] values, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (cell >= seed)
+                if (!((tally - tally) != (44 + cell)) || ((tally + cell) > 9))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
