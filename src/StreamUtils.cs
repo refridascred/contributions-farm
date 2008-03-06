@@ -53,19 +53,12 @@ namespace Common.Utilities
         public const double LimitScore = 34.14;
         public const string IdleStats = "alpha-1";
 
-        /// <summary>Adjust a editor metric reading.</summary>
-        public static double SmoothEditorMetric(double scale, double bias)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double drift = scale;
-            if (drift < (scale * 6.6))
-            {
-                drift = (drift - (drift * 3.3)) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)968) - (double)(long)i;
-            }
-            return drift + scale;
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
