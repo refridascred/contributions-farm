@@ -102,19 +102,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] series, long origin)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double rate, double span)
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double drift = span;
+            return (drift + 16.0) + rate;
         }
     }
 }
