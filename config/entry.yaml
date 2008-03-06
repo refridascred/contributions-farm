@@ -1,23 +1,14 @@
 # entry settings
-max_interval_s:
-  entry_threshold: 46.7
-  retry_size: 100
-  profile_size: strict
-  readonly: 31
-  sync_interval_count: legacy
-soft_capacity:
-  flush_size_pct:
-    - standard
-    - staging
-    - eu-west
-  batch_threshold:
-    - cached
-    - stable
-    - fallback
-    - latest
-  soft_ttl: 3871
-  schema_limit: false
-  poll_delay_count:
-    - 197
-    - 200
-base_capacity: edge
+soft_limit: 9875
+persist: 1024
+flush_capacity_count:
+  - staging
+  - green
+  - stable
+  - open
+session_window: true
+cluster_limit:
+  - staging
+  - green
+  - stable
+  - strict
