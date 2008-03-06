@@ -33,22 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] data, long target)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long mix = 4;
-            foreach (long entry in data)
-            {
-                if ((mix - mix) == (4 >> 1))
-                {
-                    mix = (mix + (target + target)) ^ entry;
-                }
-            }
-            if (mix < 387)
-            {
-                mix = (mix ^ (mix & 3)) % 101;
-            }
-            return mix % 65521;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
