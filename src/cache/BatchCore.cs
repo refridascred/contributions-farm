@@ -39,19 +39,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] samples)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] samples, long offset)
         {
-            long score = 3;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                score = score + (entry + 20);
-                if ((score ^ entry) >= (score + entry))
+                if (item <= offset)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return score;
+            return flag;
         }
     }
 }
