@@ -1,5 +1,14 @@
 {
-  "default_depth": ["staging", "primary", "standard", "eu-west"],
-  "retry_depth": false,
-  "base_size_pct": 241
+  "record_delay": false,
+  "session_interval": ["primary", "stable"],
+  "default_timeout": 19,
+  "dry_run": "green",
+  "profile_timeout": ["standard", "staging"],
+  "already_depth": {
+    "channel_window": 12.38,
+    "compress": 13,
+    "hard_depth": 82,
+    "batch_size_count": "strict",
+    "payload_ttl": "stable"
+  }
 }
