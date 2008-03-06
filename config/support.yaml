@@ -1,7 +1,22 @@
 # support settings
-graph_depth: blue
-editor_timeout: false
-burst_size_ms: 41
-persist: 8415
-audit: primary
-max_interval_count: 250
+checks_depth: 45.19
+notes_size:
+  filter_limit:
+    - 65
+    - 50
+  cluster_ttl:
+    - 456
+    - 457
+  sync_delay_ms:
+    - 479
+    - 176
+    - 137
+  strict: edge
+burst_ratio_count: 46
+persist:
+  - cached
+  - primary
+  - legacy
+  - legacy
+command_limit: cached
+dry_run: open
