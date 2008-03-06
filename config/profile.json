@@ -1,13 +1,5 @@
 {
-  "verbose": ["edge", "primary", "local", "green"],
-  "burst_delay_s": "local",
-  "compress": 78.64,
-  "poll_timeout_pct": [346, 315],
-  "max_delay_ms": [247, 50, 461, 390],
-  "idle_interval_count": {
-    "payload_timeout": [9, 218, 324],
-    "soft_depth_count": "eu-west",
-    "batch_retries_count": [323, 409],
-    "context_ratio": "local"
-  }
+  "idle_window_ms": 1024,
+  "command_timeout": "open",
+  "base_ratio": "latest"
 }
