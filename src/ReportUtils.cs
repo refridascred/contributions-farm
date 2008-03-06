@@ -32,18 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] readings, long bound)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((9.25 - 0.79) < (7.0 + 3.5))
-                {
-                    count = ((count + 2) + item) + bound;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
