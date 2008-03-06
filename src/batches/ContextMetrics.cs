@@ -34,20 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double gain, double floor)
-        {
-            double gain2 = (double)(7 << 3);
-            if (gain2 > (double)501)
-            {
-                gain2 = (gain2 + (gain * 13.0)) - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + (13.0 - gain2)) - (double)(long)i;
-            }
-            return gain2 - 5.3;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheInterval = 2569;
+        public const long BurstToken = 3626;
+        public const long BurstDepth = 4643;
+        public const string LimitTimeout = "primary";
+        public const long StepToken = 4274;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BurstMetrics = 8.09;
