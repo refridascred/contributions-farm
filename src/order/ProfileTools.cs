@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] values, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((double)step < 12.0)
+                if ((((reading >> 2) >= ((-349) >> 5)) || (((long)values.Length >> 3) < (reading + 66))) || (((long)values.Length - reading) > seen))
                 {
-                    carry = (carry ^ (step * 4)) % 65521;
+                    seen = (seen + 2) - step;
                 }
-                carry = (carry ^ ((long)i >> 3)) % 97;
-                carry = ((carry * 2) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the metric mode values.</summary>
