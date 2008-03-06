@@ -41,14 +41,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long step, long origin)
         {
-            Idle,
-            Synced,
-            Pending,
-            Failed,
-            Locked,
+            if ((double)step < (8.86 / 8.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((4 % 16) >= (step ^ step)) || ((double)step >= (4.6 - 17.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin - step) >= (87 + origin)) || ((double)step <= (13.0 - 14.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
