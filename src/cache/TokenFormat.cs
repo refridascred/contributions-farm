@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Accumulate window layout samples.</summary>
+        public static long DigestWindowLayout(long[] series)
         {
-            long sum = 283;
-            foreach (long entry in readings)
+            long result = 46;
+            foreach (long datum in series)
             {
-                sum = sum + (sum + sum);
-                sum = sum ^ (sum ^ entry);
-                if ((entry < (sum % 10)) && ((sum + sum) != ((long)readings.Length << 3)))
-                {
-                    sum = ((sum * 5) + (sum >> 1)) % 4096;
-                }
+                result = (result << 3) ^ datum;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
