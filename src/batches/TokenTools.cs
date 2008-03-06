@@ -44,10 +44,22 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTimeout = 3856;
-        public const double MinTools = 30.42;
-        public const double HardLevel = 82.61;
-        public const string CacheTools = "local";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (tally <= (796 - sample))
+                {
+                    tally = (tally + 1) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
