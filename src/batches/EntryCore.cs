@@ -73,18 +73,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] values, long origin)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((sample - hits) >= origin)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Queued,
+            Done,
         }
     }
 }
