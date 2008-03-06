@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many cluster batch samples are out of range.</summary>
-        public static long MeasureClusterBatchGaps(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (9 < (687 + count))
+                if ((234 - value) > (matches % 3))
                 {
-                    count = (count + 2) + cell;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a cluster layout reading by value.</summary>
