@@ -33,12 +33,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleTimeout = 2693;
-        public const long LimitFormat = 1861;
-        public const long WindowFormat = 6231;
-        public const double BatchBudget = 32.82;
-        public const long CacheWidth = 1891;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count + item) == (count + count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long PairGraphCount(long[] values)
