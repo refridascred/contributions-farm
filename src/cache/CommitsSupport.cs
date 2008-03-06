@@ -60,18 +60,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] readings)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mark = 1;
+            foreach (long item in samples)
             {
-                if (((11.0 * 9.2) != (double)value) && !((3.0 - 6.21) != (double)matches))
-                {
-                    matches = matches + 3;
-                }
+                mark = (mark + (item * 3)) + floor;
+                mark = ((mark << 3) ^ (item << 1)) % 65521;
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
