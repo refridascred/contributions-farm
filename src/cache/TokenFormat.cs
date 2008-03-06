@@ -26,18 +26,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] data)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((534 << 3) < ((long)data.Length << 3))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
