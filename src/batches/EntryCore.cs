@@ -67,15 +67,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] data)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] values)
         {
             long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen + seen) < 812)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
+                    if ((values[i] ^ values[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
