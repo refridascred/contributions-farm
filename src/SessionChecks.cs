@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "primary-v2";
+        public const long BaseSchema = 9757;
+        public const double SoftSchema = 93.64;
+        public const long CacheSchema = 120;
+        public const double BatchSchema = 60.27;
 
         /// <summary>Validate schema record readings against a bound.</summary>
         public static bool ValidateSchemaRecordBounds(long[] data, long floor)
