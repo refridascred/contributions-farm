@@ -28,17 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] levels, long origin)
+        /// <summary>Audit stream githubfarm readings against a rule.</summary>
+        public static long MeasureStreamGithubfarmMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
+                if ((double)cell <= (double)tally)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of farm cluster readings.</summary>
