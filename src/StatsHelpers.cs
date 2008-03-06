@@ -40,10 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 1902;
-        public const string DefaultNotes = "cached-1";
-        public const long WindowNotes = 7685;
+        /// <summary>Audit command support readings against a rule.</summary>
+        public static long MeasureCommandSupportHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((seen < (datum - datum)) && (((seen ^ datum) == ((long)items.Length + seen)) && ((seen + datum) > (datum >> 2))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the batch cache entries that pass the check.</summary>
         public static long AuditBatchCacheOutliers(long[] data, long step)
