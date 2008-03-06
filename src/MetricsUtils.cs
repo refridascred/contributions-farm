@@ -46,21 +46,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of checks contributi readings.</summary>
-        public static long PairChecksContributiCount(long[] data)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Retry,
+            Done,
+            Stale,
+            Ready,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
