@@ -1,7 +1,7 @@
 {
-  "route_limit": 7182,
-  "poll_limit_s": "eu-west",
-  "filter_timeout": 1024,
-  "channel_window": true,
-  "base_delay_ms": 90
+  "sync_delay_ms": 322,
+  "hard_depth_s": 33,
+  "layout_capacity": false,
+  "readonly": true,
+  "hard_ttl_pct": "latest"
 }
