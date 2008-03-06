@@ -23,15 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardLevel = 883;
+        public const long HardSession = 5876;
+        public const double BurstSession = 64.26;
+        public const long StepSession = 5664;
+        public const double LimitSession = 27.96;
     }
 }
