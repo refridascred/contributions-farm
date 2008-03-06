@@ -78,17 +78,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a cache token reading by value.</summary>
-        public static long FindCacheTokenIndex(long[] samples, long bound)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
