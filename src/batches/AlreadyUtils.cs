@@ -26,10 +26,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 2656;
-        public const long IdleCommits = 8456;
-        public const double MaxInterval = 41.43;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordOutliers(long[] samples)
