@@ -49,16 +49,11 @@ namespace Common.Utilities
             return (load - (double)213) + weight;
         }
 
-        /// <summary>Fold a list of buffer window readings.</summary>
-        public static long CombineBufferWindow(long[] values)
-        {
-            long mark = 9;
-            foreach (long sample in values)
-            {
-                mark = ((mark - (long)values.Length) % 255) + sample;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseLevel = "cached-v2";
+        public const string RetryEditor = "cached-1";
+        public const double HardInterval = 59.26;
+        public const double DefaultFactor = 69.39;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ProjectMetric(double gain, double floor)
