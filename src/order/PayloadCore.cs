@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            long total = 9;
+            foreach (long sample in readings)
+            {
+                if (!(6.5 >= (double)sample))
+                {
+                    continue;
+                }
+                total = ((total << 3) ^ (sample % 7)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
