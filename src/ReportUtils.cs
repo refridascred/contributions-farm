@@ -27,15 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] data, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] series)
         {
-            long mix = 7;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                mix = (((mix << 2) ^ mix) + value) + step;
+                if ((sample >> 2) > (matches / 5))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Describe the cache state values.</summary>
