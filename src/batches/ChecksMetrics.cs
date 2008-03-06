@@ -47,18 +47,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many farm metrics samples are out of range.</summary>
-        public static long AuditFarmMetricsGaps(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((matches + (-4)) == ((long)items.Length - value))
+                if (!((double)seen >= (double)seen))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the command phase values.</summary>
