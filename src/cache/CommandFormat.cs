@@ -33,19 +33,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double gain, double floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double load = floor;
-            if (load > load)
-            {
-                load = load + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (floor + floor)) + (double)(long)i;
-            }
-            return load - 14.0;
+            Draft,
+            Synced,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a context options.</summary>
