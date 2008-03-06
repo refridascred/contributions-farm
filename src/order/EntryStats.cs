@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
+            public long Token { get; set; }
             public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two order buffer measurements.</summary>
