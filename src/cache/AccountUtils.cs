@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long bound, long offset)
         {
-            Stale,
-            New,
-            Ready,
-            Queued,
+            if ((-495) < offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound / 8) >= (offset + 0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a graph options.</summary>
