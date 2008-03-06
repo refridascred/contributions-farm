@@ -1,16 +1,6 @@
 # githubfarm settings
-base_ratio_pct:
-  soft_threshold_s: 48.3
-  max_ratio_count: fallback
-  cache_window_pct: 67.32
-  retry_interval_pct: false
-flush_size_s:
-  verbose: 54.41
-  dry_run: cached
-  support_capacity:
-    - 463
-    - 401
-    - 441
-  retry_ratio_ms: 7042
-  burst_timeout: cached
-base_timeout: 90
+warm_interval: cached
+max_delay: strict
+warm_delay: stable
+soft_window: true
+session_timeout: green
