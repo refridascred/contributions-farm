@@ -47,38 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order report pair into a bucket.</summary>
-        public static long RankOrderReport(long offset, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            if ((target + offset) > target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 127) < (target * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)target <= (5.12 - 6.65)) && (target <= (offset - target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset - 0) < target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
