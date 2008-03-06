@@ -1,13 +1,8 @@
 {
-  "idle_timeout": ["primary", "staging", "green"],
-  "readonly": {
-    "verbose": 1024,
-    "max_ttl_s": "primary",
-    "persist": [44, 180, 112],
-    "batches_threshold": [46, 40, 220, 180]
-  },
-  "min_delay_pct": 8762,
-  "session_size": "edge",
-  "sync_depth": 500,
-  "profile_delay": 251
+  "soft_size": false,
+  "graph_limit": 1862,
+  "soft_window_ms": "staging",
+  "hard_retries_ms": true,
+  "flush_size_pct": "strict",
+  "poll_delay": 2625
 }
