@@ -44,22 +44,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] series)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (cell <= (0 & 7))
+                if (item != origin)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count the account metrics entries that pass the check.</summary>
