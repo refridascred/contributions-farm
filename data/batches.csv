@@ -1,8 +1,9 @@
-id,label,active
-1,77.06,strict
-2,76.17,9.94
-3,743,primary
-4,878,34.91
-5,edge,stable
-6,473,661
-7,blue,green
+id,count,ratio,token,weight
+1,1.95,56.56,green,12.96
+2,strict,386,54.65,17
+3,48,40.02,72.94,61.68
+4,450,206,906,885
+5,strict,blue,71.96,15.85
+6,690,60,77.28,open
+7,956,13.12,41.15,738
+8,76.63,826,legacy,25.49
