@@ -6,17 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-strict}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=352
-log "limit is ${BUFFER_LIMIT}"
+for item in fallback staging legacy; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
