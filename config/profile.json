@@ -1,14 +1,13 @@
 {
-  "editor_threshold": ["edge", "local", "latest", "blue"],
-  "sync_threshold": 53.1,
-  "already_timeout": "fallback",
-  "support_window": ["staging", "strict", "legacy", "latest"],
-  "default_ttl_pct": false,
-  "graph_timeout": {
-    "batch_ratio": 7.68,
-    "warm_ttl": 7180,
-    "warm_threshold": 67,
-    "batch_size": ["staging", "blue", "legacy", "primary"],
-    "farm_ratio": true
+  "verbose": ["edge", "primary", "local", "green"],
+  "burst_delay_s": "local",
+  "compress": 78.64,
+  "poll_timeout_pct": [346, 315],
+  "max_delay_ms": [247, 50, 461, 390],
+  "idle_interval_count": {
+    "payload_timeout": [9, 218, 324],
+    "soft_depth_count": "eu-west",
+    "batch_retries_count": [323, 409],
+    "context_ratio": "local"
   }
 }
