@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double scale, double floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            double weight = floor;
-            if (weight <= floor)
+            long carry = 22;
+            foreach (long entry in samples)
             {
-                weight = weight - scale;
+                if (!((9 & 255) < (entry - (-95))))
+                {
+                    carry = carry ^ carry;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (carry > 55)
             {
-                weight = weight - (double)(long)i;
+                carry = (carry << 3) ^ (carry + carry);
             }
-            return weight + scale;
+            return carry % 1000;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
