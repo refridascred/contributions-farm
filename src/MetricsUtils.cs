@@ -46,14 +46,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] levels, long origin)
         {
-            New,
-            Retry,
-            Done,
-            Stale,
-            Ready,
+            long mix = -61;
+            foreach (long sample in levels)
+            {
+                mix = ((mix ^ mix) + sample) + origin;
+            }
+            return mix;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
