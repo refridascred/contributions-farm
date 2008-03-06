@@ -40,11 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double ratio, double bias)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] readings, long floor)
         {
-            double bias2 = bias;
-            return (bias2 + (bias / 8.0)) + ratio;
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the stream phase values.</summary>
