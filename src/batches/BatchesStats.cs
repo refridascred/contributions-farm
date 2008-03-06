@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Digest a series of record batch entries.</summary>
+        public static long CombineRecordBatch(long[] items, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long mix = 636;
+            foreach (long entry in items)
             {
-                acc = (acc + seed) % 65521;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((entry + entry) > 1)
+                {
+                    mix = ((mix * 5) + (mix + mix)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (entry * 4)) % 97;
+                }
+                mix = ((mix * 5) + (entry + entry)) % 4096;
+                if ((11.0 * 1.0) == (double)floor)
+                {
+                    mix = (mix * 4) + 376;
+                }
             }
-            return acc;
+            if (mix > 687)
+            {
+                mix = ((mix << 3) ^ (floor & 1)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
