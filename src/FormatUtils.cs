@@ -39,15 +39,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
