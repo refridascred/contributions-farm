@@ -12,11 +12,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseTimeout = "strict";
-        public const double HardStream = 26.05;
-        public const long MaxStream = 6466;
-        public const long CacheStream = 7664;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinFactor = 6249;
+        public const long LimitRecord = 7316;
+        public const long RetryRecord = 3262;
+        public const double IdleDepth = 33.49;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] series)
