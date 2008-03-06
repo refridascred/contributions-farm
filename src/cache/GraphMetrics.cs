@@ -53,12 +53,22 @@ namespace Common.Utilities
             return mean - (offset + mean);
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] items, long offset)
         {
-            Paused,
-            New,
-            Dropped,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)seen <= 5.78)
+                {
+                    seen = ((seen + 2) + value) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate report samples.</summary>
