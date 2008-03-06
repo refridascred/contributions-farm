@@ -30,12 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] readings, long bound)
         {
-            Stale,
-            Locked,
-            Done,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate schema samples.</summary>
