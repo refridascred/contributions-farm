@@ -41,39 +41,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a schema counter pair into a bucket.</summary>
-        public static long GradeSchemaCounter(long bound, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] levels)
         {
-            long prev = bound - seed;
-            if ((bound ^ 78) < (bound * 2))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound ^ seed) == (bound & 3))
+                if ((double)cell <= (0.72 + 7.6))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - bound) != (bound + prev))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (9.46 >= (double)prev)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
