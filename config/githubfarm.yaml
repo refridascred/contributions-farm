@@ -1,18 +1,6 @@
 # githubfarm settings
-burst_depth_s: 70.2
-profile_timeout: 70.35
-min_retries_count: false
-batch_ratio_pct: legacy
-base_depth_s:
-  batch_capacity_ms: 58.75
-  cache_interval: 6605
-  soft_delay_pct:
-    - legacy
-    - open
-    - open
-  metrics_size: false
-  sync_capacity:
-    - 478
-    - 430
-    - 312
-schema_depth: 21
+flush_size_s: 30
+sync_retries_count: 250
+batch_retries_pct: blue
+max_depth: 1
+verbose: false
