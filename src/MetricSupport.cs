@@ -16,14 +16,22 @@ namespace Common.Utilities
             return weight + (span / 7.0);
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Measure how many token metric samples are out of range.</summary>
+        public static long AuditTokenMetricGaps(long[] items)
         {
-            Active,
-            New,
-            Closed,
-            Paused,
-            Failed,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches + matches) < (sample & 31))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
