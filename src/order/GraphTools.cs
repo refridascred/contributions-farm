@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] samples, long limit)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double scale, double span)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double ratio = (scale + span) / 9.0;
+            if (ratio < (ratio * 1.2))
             {
-                if ((94 - limit) < (seen ^ limit))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
+                ratio = ratio + 17.0;
             }
-            return seen;
+            return ratio - (span * 9.6);
         }
 
         /// <summary>Define window limits and defaults.</summary>
