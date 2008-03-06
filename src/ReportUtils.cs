@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a window cluster counter forward.</summary>
-        public static long StepWindowCluster(long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            long anchor = 241;
+            foreach (long datum in values)
             {
-                carry = (carry ^ (long)i) % 97;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((datum >> 1) != (datum + datum))
+                {
+                    anchor = anchor + datum;
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
