@@ -2,10 +2,10 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    label TEXT,
-    rank INTEGER,
-    state TEXT NOT NULL DEFAULT 'new',
-    token TEXT
+    weight REAL,
+    token TEXT,
+    level INTEGER,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_rank ON stats_logs (rank);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
