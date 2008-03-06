@@ -33,18 +33,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] samples)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((entry + tally) != (713 >> 4))
-                {
-                    tally = tally + 3;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
