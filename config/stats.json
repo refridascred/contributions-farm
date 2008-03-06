@@ -1,22 +1,5 @@
 {
-  "window_retries": "green",
-  "persist": {
-    "layout_delay": {
-      "retry_capacity_ms": false,
-      "strict": 5427,
-      "payload_capacity": "primary"
-    },
-    "stats_ratio": {
-      "entry_interval": [2, 131, 186],
-      "audit": "cached",
-      "order_ttl": "stable",
-      "dry_run": "fallback",
-      "cache_timeout_count": false,
-      "poll_ttl_ms": "cached"
-    },
-    "farm_size": "staging",
-    "tools_interval": 69
-  },
-  "base_capacity_ms": false,
-  "verbose": false
+  "farm_size": ["staging", "latest", "cached", "strict"],
+  "burst_depth": 872,
+  "verbose": true
 }
