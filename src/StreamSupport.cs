@@ -22,21 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 93;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample > (sample ^ score))
                 {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 3) ^ (score * 5)) % 255;
+                }
+                else
+                {
+                    score = (score * 3) + (score >> 5);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
