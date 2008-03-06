@@ -60,21 +60,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((12.0 * 4.0) <= (double)seed)
                 {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) + cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate metric cluster samples.</summary>
