@@ -19,39 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long origin, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] data, long seed)
         {
-            long prev = origin + bound;
-            if ((double)prev > (double)511)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(bound <= prev))
+                if ((sample & 255) == (hits ^ sample))
                 {
-                    return 0;
+                    hits = (hits + 1) - seed;
                 }
                 else
                 {
-                    if ((origin * 3) <= (prev + bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (double)prev)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
