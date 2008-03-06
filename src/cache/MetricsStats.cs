@@ -67,19 +67,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long seed)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Dropped,
+            Retry,
+            Draft,
         }
     }
 }
