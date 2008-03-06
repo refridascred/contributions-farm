@@ -61,22 +61,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] series)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long anchor = 952;
+            foreach (long reading in values)
             {
-                if (8 >= (reading + reading))
+                if (!((floor >= anchor) && ((floor / 3) < (floor - floor))))
                 {
-                    hits = hits + 1;
+                    anchor = (anchor << 3) ^ (anchor + 67);
+                    anchor = anchor ^ anchor;
                 }
-                else
+                if ((anchor < floor) && ((anchor / 4) < (reading + floor)))
                 {
-                    hits = hits - 1;
+                    anchor = (anchor + floor) % 4096;
                 }
             }
-            return hits;
+            if (anchor > 2)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first format support entry that matches the target.</summary>
