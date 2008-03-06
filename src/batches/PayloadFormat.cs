@@ -44,12 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Active,
-            Failed,
-            Paused,
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
