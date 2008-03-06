@@ -1,37 +1,17 @@
 # support settings
-cluster_retries:
-  - 413
-  - 94
-sync_capacity_ms: strict
-soft_retries_pct: 48.72
-cache_ratio_count:
-  default_retries:
-    - 86
-    - 371
-    - 118
-    - 397
-  readonly:
-    - 252
-    - 316
-    - 356
-  default_delay:
-    - green
-    - legacy
-    - open
-    - strict
-  format_delay: primary
-  enabled:
-    poll_threshold_pct:
-      - green
-      - cached
-      - cached
-    flush_timeout:
-      - edge
-      - staging
-      - primary
-    order_threshold: staging
-  hard_delay:
-    - 259
-    - 252
-    - 101
-hard_timeout: 605
+format_threshold:
+  - 143
+  - 18
+enabled:
+  readonly: 35
+  flush_retries_pct: 93.97
+  batch_ratio_pct: 17
+  already_delay:
+    dry_run: 2413
+    poll_threshold_s:
+      - 275
+      - 180
+    retry_interval_ms: true
+verbose: 6849
+min_window_s: 63
+commits_threshold: fallback
