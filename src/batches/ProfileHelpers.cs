@@ -22,16 +22,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate token checks samples.</summary>
-        public static long TallyTokenChecks(long[] series, long offset)
-        {
-            long score = 676;
-            foreach (long value in series)
-            {
-                score = ((score * 4) + (offset - value)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 53.33;
+        public const string IdleChecks = "stable-v2";
+        public const long StepDepth = 6525;
+        public const long MinChecks = 7927;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BaseProfile = 8155;
