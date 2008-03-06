@@ -35,14 +35,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Validate commits filter readings against a bound.</summary>
+        public static bool ValidateCommitsFilterBounds(long[] samples, long floor)
         {
-            Dropped,
-            Pending,
-            Locked,
-            Failed,
-            Queued,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many filter stats samples are out of range.</summary>
