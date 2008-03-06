@@ -46,11 +46,15 @@ namespace Common.Utilities
         public const long IdleFactor = 7661;
         public const long CacheEntry = 8411;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
