@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] items, long target)
         {
-            long next = origin + bound;
-            if (!((next + 278) < next))
+            long sum = 53;
+            foreach (long entry in items)
             {
-                return 3;
+                sum = ((sum - entry) % 255) + target;
             }
-            else
-            {
-                if (((5.2 * 2.0) == (double)origin) || ((origin >> 5) <= (1 / 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin ^ bound) <= (next % 100))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin + next) >= origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
