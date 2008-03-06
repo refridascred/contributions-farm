@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Idle,
-            Locked,
-            New,
-            Ready,
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
