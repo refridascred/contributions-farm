@@ -13,18 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many support filter samples are out of range.</summary>
-        public static long CountSupportFilterOutliers(long[] samples, long origin)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)origin > 9.03)
-                {
-                    matches = (matches + 2) - datum;
-                }
-            }
-            return matches;
+            Pending,
+            Idle,
+            Retry,
+            Ready,
+            Draft,
         }
 
         /// <summary>Describe the already level values.</summary>
