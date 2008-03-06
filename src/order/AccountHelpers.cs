@@ -42,12 +42,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardInterval = 3389;
-        public const long StepLevel = 4636;
-        public const long RetryMetrics = 3565;
-        public const long RetryFactor = 5122;
-        public const long LimitBudget = 247;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaOutliers(long[] levels)
