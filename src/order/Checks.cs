@@ -58,22 +58,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long origin, long bound)
         {
-            if ((limit ^ target) <= (limit + 75))
+            if (bound > origin)
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((limit + limit) <= limit)
+                if ((bound + bound) <= (bound + origin))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 5;
+                    if ((835 + origin) < bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound == (3.32 - 9.84))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
