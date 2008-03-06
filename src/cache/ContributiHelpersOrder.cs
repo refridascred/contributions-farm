@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] data, long limit)
         {
-            public double Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((entry >> 5) >= 67) && ((limit + limit) <= seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
