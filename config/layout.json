@@ -1,14 +1,17 @@
 {
-  "flush_limit_count": 6116,
-  "hard_interval_s": 97.94,
-  "persist": {
-    "route_ratio": "latest",
-    "enabled": true,
-    "warm_interval": "legacy",
-    "retry_window": "legacy",
-    "flush_interval": 32.35
+  "base_retries_count": "edge",
+  "strict": {
+    "soft_timeout_pct": {
+      "audit": ["cached", "strict"],
+      "sync_ratio_pct": [276, 409],
+      "farm_limit": [36, 278, 158, 260],
+      "account_size": 72.67,
+      "max_size": 99,
+      "flush_retries_s": 60
+    },
+    "persist": ["eu-west", "primary", "local"],
+    "soft_capacity_s": false
   },
-  "queue_timeout": ["cached", "fallback", "blue"],
-  "checks_delay": 61,
-  "warm_ratio": true
+  "batch_interval": 50.59,
+  "hard_capacity": 6927
 }
