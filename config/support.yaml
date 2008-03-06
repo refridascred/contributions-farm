@@ -1,22 +1,7 @@
 # support settings
-checks_depth: 45.19
-notes_size:
-  filter_limit:
-    - 65
-    - 50
-  cluster_ttl:
-    - 456
-    - 457
-  sync_delay_ms:
-    - 479
-    - 176
-    - 137
-  strict: edge
-burst_ratio_count: 46
-persist:
-  - cached
+max_window_s: 96
+enabled: false
+cache_size_s:
   - primary
-  - legacy
-  - legacy
-command_limit: cached
-dry_run: open
+  - cached
+  - green
