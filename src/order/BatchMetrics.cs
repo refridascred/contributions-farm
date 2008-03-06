@@ -15,19 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series)
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
+            long result = 31;
+            foreach (long datum in series)
             {
-                if (!(acc < limit))
+                if ((result / 9) >= (result * 2))
                 {
-                    acc = acc + acc;
+                    result = (result + (datum - result)) % 101;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((double)273 == (double)datum)
+                {
+                    break;
+                }
             }
-            return acc;
+            return result % 97;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
