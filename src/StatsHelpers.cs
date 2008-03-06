@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheRatio = "latest-v2";
+        public const long WindowSession = 8445;
+        public const string MaxSession = "primary-1";
+        public const long HardSession = 5389;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long FindChannelIndex(long[] series, long target)
