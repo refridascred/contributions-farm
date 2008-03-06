@@ -54,17 +54,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] levels, long offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long offset, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = offset - step;
+            if (!(step < offset))
             {
-                if (levels[i] > offset)
+                return 2;
+            }
+            else
+            {
+                if (((5.98 / 7.0) <= (double)step) || ((double)prev >= (double)offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
