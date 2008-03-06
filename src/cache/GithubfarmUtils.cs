@@ -46,18 +46,18 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] data)
+        /// <summary>Count the cluster route entries that pass the check.</summary>
+        public static long TallyClusterRouteHits(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (sample < (count + 953))
+                if ((9 + item) > (hits % 24))
                 {
-                    count = count + 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
