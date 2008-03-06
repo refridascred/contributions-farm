@@ -25,11 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long floor)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
+            long bound = offset ^ floor;
+            if ((offset >> 4) >= (offset << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor / 6) != (offset ^ 422))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound >= (bound >> 2)) && (((-30) - 8) > (bound * 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
