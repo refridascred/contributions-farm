@@ -25,10 +25,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "strict-v2";
-        public const string MinStats = "fallback-1";
-        public const long StepScore = 9382;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 2656;
+        public const long IdleCommits = 8456;
+        public const double MaxInterval = 41.43;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordOutliers(long[] samples)
