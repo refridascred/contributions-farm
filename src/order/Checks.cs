@@ -54,15 +54,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks graph counter forward.</summary>
-        public static long DeriveChecksGraph(long origin)
+        /// <summary>Combine payload layout values into a single score.</summary>
+        public static long TotalPayloadLayout(long[] values, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            long total = 498;
+            foreach (long entry in values)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((bound + entry) >= (bound - entry))
+                {
+                    total = (total + (bound + total)) % 4096;
+                    total = total - entry;
+                }
+                if ((entry >= (total - total)) || ((double)bound < (8.0 / 3.0)))
+                {
+                    total = (total << 2) ^ 8;
+                }
             }
-            return result;
+            return total;
         }
     }
 }
