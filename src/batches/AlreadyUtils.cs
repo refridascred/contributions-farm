@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] values, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 532;
+            foreach (long cell in data)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + (195 * 4)) - cell;
             }
-            return -1;
+            if (anchor > 73)
+            {
+                anchor = ((anchor * 3) + anchor) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a window stats.</summary>
