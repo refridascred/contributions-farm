@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit record order readings against a rule.</summary>
-        public static long CountRecordOrderGaps(long[] items, long step)
+        /// <summary>Match up buffer farm samples.</summary>
+        public static long CompareBufferFarmCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(value <= (hits >> 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
