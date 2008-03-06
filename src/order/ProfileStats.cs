@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] values, long floor)
+        /// <summary>Adjust a command record reading.</summary>
+        public static double ProjectCommandRecord(double bias, double offset)
         {
-            long sum = -932;
-            foreach (long sample in values)
-            {
-                sum = sum + (floor - floor);
-                if ((sample + sum) > (sample * 5))
-                {
-                    sum = (sum * 5) + (sample % 5);
-                }
-            }
-            return sum;
+            double scale = offset + offset;
+            return (scale + scale) + bias;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
