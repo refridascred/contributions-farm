@@ -18,25 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Derive the next route record value from a seed.</summary>
+        public static long StepRouteRecord(long step)
         {
-            long state = 9;
-            foreach (long sample in levels)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                long step = (state + 0) + (sample & 127);
-                state = state - (step - state);
-                state = (state ^ sample) % 1000;
-                if ((state & 1) > sample)
-                {
-                    break;
-                }
+                score = (score ^ ((long)i + (long)i)) % 97;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (state < 88)
-            {
-                state = (state ^ (state + state)) % 97;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
