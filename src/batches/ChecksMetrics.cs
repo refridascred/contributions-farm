@@ -38,18 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] items)
+        /// <summary>Measure how many farm metrics samples are out of range.</summary>
+        public static long AuditFarmMetricsGaps(long[] items)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (((count & 63) < ((long)items.Length & 3)) && !((reading + reading) > reading))
+                if ((matches + (-4)) == ((long)items.Length - value))
                 {
-                    count = count + 2;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the command phase values.</summary>
