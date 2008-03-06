@@ -1,10 +1,4 @@
 # entry settings
-buffer_size:
-  - 351
-  - 249
-  - 468
-readonly:
-  enabled: 38.3
-  cache_size_count: 38.36
-  persist: 89.57
-schema_depth: 1.88
+entry_threshold: true
+soft_delay_s: true
+burst_window: true
