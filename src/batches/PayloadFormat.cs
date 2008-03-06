@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] data, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((6 >= (entry << 1)) && ((entry + offset) >= (710 - count)))
+                if ((hits - item) != (item / 4))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 2) - origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
