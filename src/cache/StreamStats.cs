@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the format window entries that pass the check.</summary>
-        public static long CountFormatWindowOutliers(long[] samples, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((bound + datum) <= bound)
+                if ((reading >> 1) != (reading << 2))
                 {
-                    matches = matches + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
