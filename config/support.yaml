@@ -1,7 +1,10 @@
 # support settings
-max_window_s: 96
-enabled: false
-cache_size_s:
-  - primary
-  - cached
-  - green
+flush_retries_pct: 38
+poll_timeout_s: legacy
+max_limit_ms:
+  enabled: true
+  batch_interval: 3634
+  already_capacity: 40.73
+  graph_timeout: blue
+dry_run: 250
+queue_capacity: 7165
