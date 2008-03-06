@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long bound, long origin)
+        /// <summary>Scale a stream record figure with a bias.</summary>
+        public static double BlendStreamRecord(double scale, double bias)
         {
-            if (!((origin >> 1) == (origin - bound)))
+            double gain = bias;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                gain = (gain + scale) - (double)(long)i;
             }
-            else
-            {
-                if ((origin - bound) <= origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound < (bound + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin >> 4) >= (bound + origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return gain - (scale * 3.66);
         }
 
         /// <summary>Hold a payload stats.</summary>
