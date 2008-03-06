@@ -69,13 +69,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            long carry = target;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry << 3) ^ ((-28) * 2);
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
