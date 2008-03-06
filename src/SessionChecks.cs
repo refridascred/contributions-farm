@@ -20,14 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Locked,
-            Dropped,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 155;
+        public const long StepSpan = 7425;
+        public const long BurstFactor = 4753;
+        public const double MinFarm = 52.48;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
