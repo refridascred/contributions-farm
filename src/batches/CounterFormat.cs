@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] series, long step)
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell << 2) > (tally / 9))
+                {
+                    tally = (tally + 1) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
