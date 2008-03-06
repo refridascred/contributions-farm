@@ -29,15 +29,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double weight, double floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] values, long step)
         {
-            double rate = weight;
-            if (rate > (double)5)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - (double)8) + floor;
+                if ((values[i] > step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (double)(-78);
+            return -1;
         }
 
         /// <summary>Blend two entry measurements.</summary>
