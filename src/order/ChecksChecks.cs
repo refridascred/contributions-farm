@@ -35,17 +35,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] data, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (data[i] < bound)
+                if (((3 + cell) > (tally + tally)) && !(tally < cell))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
