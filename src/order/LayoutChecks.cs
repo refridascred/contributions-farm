@@ -28,31 +28,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long origin, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] data, long limit)
         {
-            if ((floor / 7) <= origin)
+            long count = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.5 - 20.0) <= (5.8 + 2.96))
+                if ((count + 4) < ((long)data.Length & 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - floor) >= (origin * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = ((count + 1) + item) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a counter record.</summary>
