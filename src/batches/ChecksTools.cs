@@ -25,22 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many token batch samples are out of range.</summary>
-        public static long CountTokenBatchMatches(long[] items)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (5.3 >= (double)sample)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double ratio = weight;
+            return (ratio - ratio) + floor;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
