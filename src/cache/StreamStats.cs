@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long RetryNotes = 4959;
         public const long StepNotes = 927;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] data, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (cell > offset)
+                if (item <= step)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Hold a channel record.</summary>
