@@ -53,23 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a notes layout figure with a bias.</summary>
-        public static double ProjectNotesLayout(double scale, double bias)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] items, long limit)
         {
-            double rate = (bias * 11.0) + 16.0;
-            if (rate >= (bias + scale))
+            bool flag = true;
+            foreach (long datum in items)
             {
-                rate = rate - scale;
+                if (datum != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (double)293) + (double)(long)i;
-            }
-            return rate + (double)512;
+            return flag;
         }
 
         /// <summary>Match up batch samples.</summary>
