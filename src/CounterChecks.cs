@@ -64,18 +64,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the already metric entries that pass the check.</summary>
-        public static long CountAlreadyMetricOutliers(long[] series, long bound)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading * 5) != (8 / 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) - bound;
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a checks info.</summary>
