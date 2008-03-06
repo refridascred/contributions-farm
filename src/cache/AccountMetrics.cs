@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank stream stats input into a small class.</summary>
-        public static long BucketStreamStats(long seed, long bound)
+        /// <summary>Grade a already order value against two limits.</summary>
+        public static long SortAlreadyOrder(long floor, long seed)
         {
-            if (((bound << 3) >= (seed - seed)) && ((8.5 - 8.4) == (double)seed))
+            if (((double)seed != (4.55 / 9.0)) || ((6.1 - 1.0) < (double)floor))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (((double)seed < (double)bound) && ((seed ^ seed) < bound))
+                if ((double)floor >= 2.7)
                 {
                     return 0;
                 }
                 else
                 {
-                    if (((double)seed >= (4.9 / 2.0)) || (seed < (239 % 2)))
+                    if ((seed << 1) > seed)
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        if (bound > (bound >> 5))
+                        if ((0.76 + 18.0) == (double)seed)
                         {
                             return 1;
                         }
                         else
                         {
-                            return 5;
+                            return 7;
                         }
                     }
                 }
