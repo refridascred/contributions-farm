@@ -20,22 +20,18 @@ namespace Common.Utilities
         public const long BaseDepth = 8273;
         public const long BurstInterval = 3223;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((seen << 1) < seen)
+                if ((double)cell <= 1.0)
                 {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 2) + offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many farm metrics samples are out of range.</summary>
