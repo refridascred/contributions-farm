@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (tally < (origin % 60))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 8541;
+        public const long DefaultFormat = 5511;
+        public const long BaseFormat = 8603;
+        public const string MaxCount = "standard-1";
 
         /// <summary>Blend two route measurements.</summary>
         public static double BlendRoute(double weight, double bias)
