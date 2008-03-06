@@ -27,22 +27,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many format profile samples are out of range.</summary>
-        public static long CountFormatProfileOutliers(long[] data)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally < 535) && (((entry + entry) != (20 >> 2)) || ((38 + (long)data.Length) == (tally ^ entry))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
