@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (datum <= (count - 264))
-                {
-                    count = (count + 3) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxBudget = 51.42;
+        public const string BatchLevel = "alpha";
+        public const long BurstCounter = 1507;
+        public const long RetryRatio = 9639;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] series)
