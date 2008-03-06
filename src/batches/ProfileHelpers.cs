@@ -37,12 +37,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] readings, long floor)
         {
-            Draft,
-            Done,
-            Queued,
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
