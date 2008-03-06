@@ -41,22 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((count + item) == (count + count))
+                if (12.0 < (double)hits)
                 {
-                    count = count + 1;
+                    hits = (hits + 1) + datum;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
