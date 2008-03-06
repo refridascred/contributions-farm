@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a commits metrics counter forward.</summary>
-        public static long RollCommitsMetrics(long floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (((long)i / 4) > (anchor + anchor))
-                {
-                    anchor = anchor ^ (long)i;
-                }
-                anchor = (anchor - ((-132) - 97)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
