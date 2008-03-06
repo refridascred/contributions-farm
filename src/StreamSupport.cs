@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double weight, double span)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double gain, double bias)
         {
-            double load = weight + span;
-            return load + (span + weight);
+            double mean = gain * 9.95;
+            if (mean > gain)
+            {
+                mean = mean + bias;
+            }
+            else
+            {
+                mean = mean - (mean / 4.0);
+            }
+            return mean + (double)831;
         }
 
         /// <summary>Hold a order summary.</summary>
