@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] values, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 6;
+            foreach (long value in data)
             {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
+                total = ((total << 3) ^ (value - value)) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a already stats.</summary>
