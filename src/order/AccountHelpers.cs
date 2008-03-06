@@ -32,13 +32,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public string Score { get; set; } = "";
+            Draft,
+            Queued,
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
