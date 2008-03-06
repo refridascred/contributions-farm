@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] data, long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((double)seen >= 7.76)
+                if (entry < offset)
                 {
-                    seen = ((seen + 1) ^ sample) + bound;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
