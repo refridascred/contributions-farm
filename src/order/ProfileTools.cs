@@ -23,24 +23,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Iterate the schema order series from a seed.</summary>
+        public static long StepSchemaOrder(long origin)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (!(40 >= total))
+                if (((325 / 9) < (origin >> 2)) && ((7 >> 3) < (anchor % 12)))
                 {
-                    total = ((total * 5) + (step >> 3)) % 255;
+                    anchor = (anchor << 2) ^ (anchor ^ anchor);
+                    anchor = (anchor - (origin * 2)) % 65521;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    total = ((total * 3) + total) ^ (long)i2;
+                    anchor = ((anchor << 3) ^ (0 * 3)) + (long)i2;
+                    anchor = (anchor + (origin & 15)) % 101;
                 }
-                total = total - (392 + step);
-                total = ((total * 4) + (long)i) % 65521;
+                if (((long)i - (long)i) <= (1 + origin))
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + (long)i) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Accumulate batches samples.</summary>
