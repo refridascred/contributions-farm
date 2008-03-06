@@ -12,23 +12,13 @@ namespace Common.Utilities
             return ((scale - (double)0) + ratio) + offset;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double scale, double span)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double drift = scale;
-            if (drift > scale)
-            {
-                drift = (drift + 4.94) - span;
-            }
-            else
-            {
-                drift = drift - (double)38;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (4.4 / 5.0)) + (double)(long)i;
-            }
-            return drift - 8.17;
+            Done,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a route summary.</summary>
