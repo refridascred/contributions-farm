@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "primary-v2";
-        public const long BaseSchema = 9757;
-        public const double SoftSchema = 93.64;
-        public const long CacheSchema = 120;
-        public const double BatchSchema = 60.27;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Dropped,
+            New,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Validate schema record readings against a bound.</summary>
         public static bool ValidateSchemaRecordBounds(long[] data, long floor)
