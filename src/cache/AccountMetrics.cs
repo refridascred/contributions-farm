@@ -40,13 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            Done,
+            Closed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Accumulate cache samples.</summary>
