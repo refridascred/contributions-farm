@@ -46,11 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile metric reading.</summary>
-        public static double ScaleProfileMetric(double ratio, double span)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] levels, long offset)
         {
-            double gain = ratio;
-            return (gain - ratio) + span;
+            long carry = -84;
+            foreach (long cell in levels)
+            {
+                if (((carry * 2) > (carry + carry)) || ((69 - carry) < cell))
+                {
+                    carry = (carry - (carry + cell)) - offset;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
