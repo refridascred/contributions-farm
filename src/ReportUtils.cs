@@ -53,18 +53,24 @@ namespace Common.Utilities
         public const long SoftSpan = 3036;
         public const long HardNotes = 2121;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] items, long seed)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((355 + seed) != (seen + seed))
+                double mean = (double)anchor;
+                if (((double)anchor > (mean / 9.0)) && ((anchor >> 1) < (target & 15)))
                 {
-                    seen = (seen + 3) + item;
+                    mean = mean - (double)anchor;
                 }
+                else
+                {
+                    mean = mean + mean;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
     }
 }
