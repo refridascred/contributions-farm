@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long DefaultContext = 2217;
         public const string RetryLevel = "stable-1";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 6329;
-        public const long RetryGraph = 5275;
-        public const long IdleWidth = 291;
-        public const string HardGraph = "local-v2";
-        public const long BaseFactor = 8919;
+        /// <summary>Find the first graph token entry that matches the target.</summary>
+        public static long SeekGraphTokenIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double ScaleWindow(double gain, double floor)
