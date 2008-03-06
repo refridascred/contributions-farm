@@ -1,17 +1,11 @@
 # entry settings
-min_ttl_pct: 31.91
-burst_retries_pct: false
-batches_window:
-  batch_depth: false
-  counter_timeout: 0.25
-  max_timeout_pct: 5687
-  burst_ttl_ms: edge
-  route_interval:
-    counter_timeout: cached
-    sync_retries_ms: latest
-    record_interval: 3523
-    poll_ratio: false
-batch_capacity:
-  - legacy
-  - standard
-  - legacy
+burst_timeout_ms:
+  min_retries: 7164
+  min_timeout_ms:
+    - 279
+    - 102
+  default_retries: 500
+  schema_depth: cached
+readonly: 3346
+batch_interval_count: true
+sync_interval_count: 2025
