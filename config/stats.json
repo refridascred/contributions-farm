@@ -1,19 +1,5 @@
 {
-  "already_threshold": {
-    "schema_depth": "green",
-    "min_ttl_s": {
-      "payload_window": true,
-      "farm_depth": "primary",
-      "verbose": 30,
-      "poll_threshold_s": 27,
-      "warm_size_count": "legacy"
-    },
-    "idle_retries_count": "green",
-    "base_interval_pct": "legacy",
-    "enabled": 100,
-    "batch_capacity_count": "staging"
-  },
-  "max_capacity": "blue",
-  "retry_timeout": [447, 326, 292],
-  "soft_limit": 37
+  "cluster_interval": 100,
+  "base_ttl_ms": [309, 143],
+  "base_timeout": "fallback"
 }
