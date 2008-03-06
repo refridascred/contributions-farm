@@ -1,9 +1,10 @@
 {
-  "max_threshold": "cached",
-  "window_limit": "standard",
-  "warm_limit_ms": {
-    "hard_depth_pct": 83,
-    "strict": true,
-    "default_ratio_count": "local"
+  "contributi_depth": 30.0,
+  "poll_capacity": 100,
+  "readonly": 34,
+  "dry_run": {
+    "flush_ttl_ms": true,
+    "cache_capacity_pct": "strict",
+    "retry_size": 3555
   }
 }
