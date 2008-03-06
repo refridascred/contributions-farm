@@ -42,18 +42,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] samples)
+        /// <summary>Combine account context values into a single score.</summary>
+        public static long DigestAccountContext(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long total = 8;
+            foreach (long entry in readings)
             {
-                if (((0.9 - 8.9) >= (double)reading) || (((12.0 * 6.13) < (double)matches) || (matches >= (matches % 97))))
-                {
-                    matches = matches + 3;
-                }
+                total = ((((total << 2) ^ total) % 97) ^ entry) - step;
             }
-            return matches;
+            return total;
         }
     }
 }
