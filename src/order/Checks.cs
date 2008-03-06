@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] series, long offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
