@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Queued,
+            Dropped,
+            Synced,
             Retry,
-            Stale,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a command info.</summary>
