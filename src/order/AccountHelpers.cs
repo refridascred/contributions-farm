@@ -42,19 +42,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next schema already value.</summary>
-        public static double AdjustSchemaAlready(double weight, double offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long step, long limit)
         {
-            double weight2 = weight;
-            if (weight2 <= 3.09)
+            long delta = step + limit;
+            if ((limit * 5) > (limit - step))
             {
-                weight2 = (weight2 + (weight2 - weight2)) + offset;
+                return 1;
             }
             else
             {
-                weight2 = weight2 - (double)0;
+                if ((double)step == (7.3 * 3.6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)delta >= 8.5)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return weight2 - weight2;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
