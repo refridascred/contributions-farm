@@ -24,25 +24,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the githubfarm counter series from a seed.</summary>
-        public static long DeriveGithubfarmCounter(long origin)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((total >> 4) >= (total / 7)) || (origin < total))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total + ((long)i ^ (long)i)) % 4096;
-                    total = total + (origin << 3);
-                    continue;
+                    if ((samples[i] ^ samples[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((double)total == (1.0 + 1.8))
-                {
-                    total = (total ^ (origin + (long)i)) % 97;
-                }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Find the first profile order entry that matches the target.</summary>
