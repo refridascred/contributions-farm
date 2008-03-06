@@ -13,12 +13,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            long score = step;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 3) + (score % 24)) % 255;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Accumulate batches samples.</summary>
