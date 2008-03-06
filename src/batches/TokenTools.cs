@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks already readings.</summary>
-        public static long TallyChecksAlready(long[] data)
+        /// <summary>Count the context format entries that pass the check.</summary>
+        public static long CountContextFormatHits(long[] data)
         {
-            long anchor = -77;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                anchor = anchor - (reading + anchor);
+                if ((double)entry >= (double)29)
+                {
+                    seen = seen + 3;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
