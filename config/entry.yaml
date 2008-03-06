@@ -1,8 +1,9 @@
 # entry settings
-readonly: 9168
-warm_interval_pct: true
-soft_depth:
-  - 146
-  - 90
-  - 313
-  - 451
+warm_depth_count:
+  - blue
+  - eu-west
+  - edge
+warm_threshold_pct:
+  - 431
+  - 51
+flush_size_s: primary
