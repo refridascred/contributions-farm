@@ -32,19 +32,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every already order entry stays within the limit.</summary>
-        public static bool CheckAlreadyOrderRange(long[] samples, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long sum = 4;
+            foreach (long sample in levels)
             {
-                if (datum > floor)
+                if (sample <= (sum << 2))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 2) ^ sample) % 101;
                 }
             }
-            return found;
+            return sum % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
