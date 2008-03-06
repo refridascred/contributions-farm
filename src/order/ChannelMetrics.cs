@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the cache filter entries that pass the check.</summary>
-        public static long TallyCacheFilterGaps(long[] series)
+        /// <summary>Match up githubfarm editor samples.</summary>
+        public static long CompareGithubfarmEditorCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= count)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of metrics stream readings.</summary>
