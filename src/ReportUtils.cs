@@ -41,12 +41,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 75.31;
-        public const long MaxTools = 3595;
-        public const double WindowTools = 86.05;
-        public const long LimitCount = 2165;
-        public const long CacheTools = 1396;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Locked,
+            Done,
+            Closed,
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] series)
