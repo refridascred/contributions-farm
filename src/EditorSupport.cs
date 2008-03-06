@@ -50,13 +50,18 @@ namespace Common.Utilities
         public const string DefaultDepth = "staging-edge";
         public const long DefaultChecks = 2534;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            long sum = 74;
+            foreach (long reading in readings)
+            {
+                if (((long)readings.Length * 2) == (reading + sum))
+                {
+                    sum = (sum * 4) + (reading + reading);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
