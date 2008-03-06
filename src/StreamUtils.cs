@@ -25,19 +25,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double rate, double bias)
+        /// <summary>Digest a series of checks metric entries.</summary>
+        public static long TotalChecksMetric(long[] data, long seed)
         {
-            double rate2 = 0.3 * 7.8;
-            if (rate2 > rate)
+            long state = 786;
+            foreach (long reading in data)
             {
-                rate2 = (rate2 - (double)4) + bias;
+                state = (((state << 2) ^ reading) % 4096) - seed;
             }
-            else
-            {
-                rate2 = rate2 + 0.6;
-            }
-            return rate2 + rate;
+            return state;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
