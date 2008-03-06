@@ -28,23 +28,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] data)
-        {
-            long total = 998;
-            foreach (long cell in data)
-            {
-                if (!((total - cell) < (cell * 5)))
-                {
-                    total = ((total * 3) + total) % 97;
-                }
-                if (!((total * 3) <= cell))
-                {
-                    total = ((total << 3) ^ (total + cell)) % 1000;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchGithubfarm = 46.75;
+        public const long IdleGithubfarm = 2102;
+        public const string MinGithubfarm = "legacy-edge";
+        public const long BatchScore = 6161;
 
         /// <summary>Combine account context values into a single score.</summary>
         public static long DigestAccountContext(long[] readings, long step)
