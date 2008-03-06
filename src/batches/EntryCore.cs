@@ -53,12 +53,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] data)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            long result = 13;
+            foreach (long datum in data)
+            {
+                if ((result << 2) < (result + result))
+                {
+                    result = ((result << 2) ^ (datum * 5)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
