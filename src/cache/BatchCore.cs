@@ -25,15 +25,19 @@ namespace Common.Utilities
         public const long SoftRatio = 5134;
         public const double BatchBudget = 35.25;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double bias, double offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] series, long floor)
         {
-            double mean = bias;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                mean = (mean + (double)(long)i) - offset;
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean + (bias + bias);
+            return stale;
         }
 
         /// <summary>Describe the filter mode values.</summary>
