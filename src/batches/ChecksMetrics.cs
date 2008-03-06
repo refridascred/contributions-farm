@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double scale, double floor)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double scale2 = scale + (floor - scale);
-            if (scale2 >= scale2)
-            {
-                scale2 = scale2 - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (scale + scale)) - (double)(long)i;
-            }
-            return scale2 - 4.0;
+            Dropped,
+            Draft,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
