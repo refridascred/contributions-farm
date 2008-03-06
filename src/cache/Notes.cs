@@ -32,15 +32,12 @@ namespace Common.Utilities
             return drift + (double)8;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] items, long target)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long carry = 672;
-            foreach (long datum in items)
-            {
-                carry = (((carry + (344 & 3)) % 101) ^ datum) - target;
-            }
-            return carry % 4096;
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
