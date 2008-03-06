@@ -22,15 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes checks value.</summary>
-        public static double ScaleNotesChecks(double ratio, double span)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double drift = ratio;
-            if (drift >= drift)
-            {
-                drift = (drift - 15.0) - span;
-            }
-            return drift + 13.0;
+            Active,
+            Ready,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
