@@ -42,17 +42,12 @@ namespace Common.Utilities
         public const string SoftRatio = "stable";
         public const long BurstTimeout = 1002;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] levels, long floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of notes counter readings.</summary>
