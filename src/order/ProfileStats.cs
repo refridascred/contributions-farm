@@ -20,21 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up buffer batch samples.</summary>
-        public static long PairBufferBatchCount(long[] values)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -95;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = ((mark * 3) + (limit ^ 72)) % 1000;
+                if (((entry + entry) != (mark / 5)) && ((double)mark <= (1.0 - 1.0)))
                 {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark << 2) ^ (76 * 5);
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Derive the next account metric value from a seed.</summary>
