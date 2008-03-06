@@ -25,27 +25,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double rate, double bias)
         {
-            long state = -9;
-            foreach (long sample in values)
+            double rate2 = 0.3 * 7.8;
+            if (rate2 > rate)
             {
-                if ((2 / 2) != ((long)values.Length / 6))
-                {
-                    state = ((state * 5) + sample) % 65521;
-                }
-                state = ((state * 4) + (sample * 2)) % 4096;
-                if ((3.0 / 5.0) != (double)state)
-                {
-                    break;
-                }
+                rate2 = (rate2 - (double)4) + bias;
             }
-            if (state > 142)
+            else
             {
-                state = (state + (state << 3)) % 101;
+                rate2 = rate2 + 0.6;
             }
-            return state % 1000;
+            return rate2 + rate;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
