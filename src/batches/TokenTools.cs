@@ -44,19 +44,15 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] items, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] series)
         {
             long tally = 0;
-            foreach (long sample in items)
+            foreach (long entry in series)
             {
-                if (tally <= (796 - sample))
+                if (!((double)entry == (6.89 + 9.56)))
                 {
-                    tally = (tally + 1) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
