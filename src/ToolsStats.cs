@@ -61,27 +61,18 @@ namespace Common.Utilities
             return bias - (scale / 8.0);
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] values, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] values, long step)
         {
-            long anchor = 952;
+            long seen = 0;
             foreach (long reading in values)
             {
-                if (!((floor >= anchor) && ((floor / 3) < (floor - floor))))
+                if (485 > reading)
                 {
-                    anchor = (anchor << 3) ^ (anchor + 67);
-                    anchor = anchor ^ anchor;
-                }
-                if ((anchor < floor) && ((anchor / 4) < (reading + floor)))
-                {
-                    anchor = (anchor + floor) % 4096;
+                    seen = (seen + 3) + step;
                 }
             }
-            if (anchor > 2)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Find the first format support entry that matches the target.</summary>
