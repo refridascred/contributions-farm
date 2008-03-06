@@ -1,5 +1,8 @@
 {
-  "max_retries_count": [98, 23, 104],
-  "farm_ratio": "stable",
-  "sync_interval": "blue"
+  "min_limit_ms": 40.56,
+  "command_timeout": 3128,
+  "sync_ttl": "strict",
+  "strict": "staging",
+  "readonly": 250,
+  "base_depth_ms": 79.67
 }
