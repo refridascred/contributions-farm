@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 8553;
-        public const long BaseSize = 5133;
-        public const long RetryScore = 6797;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Adjust a route reading.</summary>
         public static double SmoothRoute(double ratio, double bias)
