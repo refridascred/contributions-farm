@@ -1,5 +1,5 @@
 {
-  "max_limit_ms": false,
-  "verbose": 8739,
-  "stats_ratio": 85
+  "queue_ratio": "primary",
+  "warm_depth_s": ["strict", "green"],
+  "burst_depth": 30
 }
