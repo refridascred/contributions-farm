@@ -1,15 +1,6 @@
 {
-  "cache_threshold": [374, 272, 403, 207],
-  "batch_interval": {
-    "base_retries_count": 80,
-    "token_ttl": 92.07,
-    "max_timeout_s": 42,
-    "cache_window_ms": "stable",
-    "enabled": 55,
-    "hard_limit_s": [67, 94, 113, 395]
-  },
-  "default_delay_ms": [176, 327, 151, 40],
-  "batches_threshold": "staging",
-  "verbose": false,
-  "audit": 7204
+  "warm_threshold_s": false,
+  "poll_ttl_pct": [166, 134, 448, 428],
+  "burst_depth_ms": "green",
+  "route_capacity": [325, 335]
 }
