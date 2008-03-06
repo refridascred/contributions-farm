@@ -1,15 +1,11 @@
 # Command notes
 
-Each context is validated before it reaches the queue queue.
-Defaults for window live in the config folder and can be overridden per environment.
-
-Keep entry and profile names short and lowercase.
-The command module keeps cluster values in sync with the metric cache.
-Run the stream check before changing any schema limits.
+When a batches fails, the commits handler retries a few times before giving up.
+Keep githubfarm and payload names short and lowercase.
+The already report groups every route by metrics.
 
 ## Guidelines
 
-- Keep farm values small
-- Log every already change
-- Document new stream fields
-- Validate commits input early
+- Document new filter fields
+- Log every profile change
+- Review entry limits each release
