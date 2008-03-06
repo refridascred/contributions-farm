@@ -23,19 +23,21 @@ namespace Common.Utilities
         public const double BatchBudget = 32.82;
         public const long CacheWidth = 1891;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] samples, long origin)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
