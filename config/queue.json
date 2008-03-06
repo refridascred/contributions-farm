@@ -1,20 +1,8 @@
 {
-  "order_ratio": true,
-  "default_capacity_count": "local",
-  "min_ratio": {
-    "cache_delay_s": 59.75,
-    "batch_limit_s": 2.14,
-    "poll_interval_pct": 250,
-    "strict": {
-      "warm_ttl_s": 250,
-      "metric_ratio": 7606,
-      "max_threshold_pct": 5.61,
-      "poll_capacity_count": "eu-west",
-      "flush_window": "cached"
-    },
-    "verbose": "cached",
-    "audit": 6680
-  },
-  "already_limit": 96.47,
-  "soft_ttl": 60
+  "audit": [260, 375],
+  "base_interval": [494, 330, 110, 119],
+  "strict": true,
+  "sync_capacity_s": 30,
+  "verbose": 5223,
+  "default_ratio_pct": "blue"
 }
