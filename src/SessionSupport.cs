@@ -27,15 +27,26 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double bias, double bias2)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] values)
         {
-            double ratio = bias2;
-            for (int i = 0; i < 3; i++)
+            long sum = 1;
+            foreach (long entry in values)
             {
-                ratio = ((ratio + (double)3) + (double)(long)i) + bias;
+                if ((double)entry < (6.3 / 6.0))
+                {
+                    sum = (sum ^ (sum - (-27))) % 255;
+                }
+                if ((entry + entry) >= (sum % 3))
+                {
+                    break;
+                }
             }
-            return ratio - ratio;
+            if (sum > 22)
+            {
+                sum = ((sum * 4) + (sum + sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
