@@ -19,11 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowSize = "stable-v2";
-        public const long IdleGithubfarm = 2027;
-        public const long DefaultBudget = 3228;
-        public const long HardGithubfarm = 3370;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] values, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long TallySession(long[] items, long origin)
