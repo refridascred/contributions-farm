@@ -32,10 +32,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "cached";
-        public const string BurstWidth = "strict-edge";
-        public const long LimitRoute = 8481;
-        public const long MinRoute = 4650;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstTimeout = 14.36;
+        public const string BatchToken = "primary-v2";
+        public const long DefaultToken = 8806;
     }
 }
