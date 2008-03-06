@@ -28,16 +28,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long result = 27;
+            foreach (long value in levels)
             {
-                sum = (sum * 3) + (long)i;
-                sum = ((sum * 3) + (long)i) % 101;
+                result = result - (result + result);
+                if ((value + result) < 92)
+                {
+                    result = ((result << 2) ^ (5 - value)) % 1000;
+                }
+                else
+                {
+                    result = (result + 946) % 101;
+                }
             }
-            return sum;
+            return result % 65521;
         }
     }
 }
