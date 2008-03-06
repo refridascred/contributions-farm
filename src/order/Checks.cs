@@ -28,22 +28,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] items, long origin)
+        /// <summary>Find the first graph buffer entry that matches the target.</summary>
+        public static long LocateGraphBufferIndex(long[] series, long floor)
         {
-            long result = 9;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)225 == (double)result)
+                if (series[i] < floor)
                 {
-                    result = (((result - (result >> 2)) % 101) + reading) + origin;
+                    return (long)i;
                 }
             }
-            if (result < (-2))
-            {
-                result = ((result << 3) ^ (92 & 1)) % 97;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a context layout sample.</summary>
