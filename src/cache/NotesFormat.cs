@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] samples, long bound)
         {
-            Done,
-            Ready,
-            Retry,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((count + (long)samples.Length) != (datum * 2))
+                {
+                    count = (count + 2) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a payload summary.</summary>
