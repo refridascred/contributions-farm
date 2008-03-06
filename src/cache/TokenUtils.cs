@@ -14,16 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the command already series from a seed.</summary>
-        public static long SeriesCommandAlready(long offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result << 2) ^ (offset >> 1)) % 101;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
