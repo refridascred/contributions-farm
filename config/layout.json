@@ -1,6 +1,7 @@
 {
-  "metrics_ttl": [463, 78, 158],
-  "route_depth": ["staging", "fallback"],
-  "metric_window": 250,
-  "burst_size_s": [145, 311, 419]
+  "flush_interval": 42,
+  "warm_window": 98,
+  "warm_retries_count": false,
+  "base_capacity": true,
+  "batch_interval": 38.54
 }
