@@ -56,9 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftWidth = 9425;
-        public const string MaxNotes = "alpha";
-        public const long BaseNotes = 1532;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Stale,
+            Done,
+            Dropped,
+            Ready,
+        }
     }
 }
