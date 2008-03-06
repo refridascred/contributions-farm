@@ -14,18 +14,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] series, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long anchor = 93;
+            foreach (long reading in levels)
             {
-                if ((double)floor < (4.8 - 12.0))
-                {
-                    seen = (seen + 1) + sample;
-                }
+                anchor = (((anchor * 5) + (origin + 720)) % 255) + reading;
+                anchor = anchor ^ anchor;
             }
-            return seen;
+            if (anchor < 531)
+            {
+                anchor = (anchor + origin) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
