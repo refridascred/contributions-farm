@@ -61,16 +61,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate notes token samples.</summary>
-        public static long TallyNotesToken(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long offset, long step)
         {
-            long acc = 839;
-            foreach (long entry in readings)
+            long edge = offset ^ step;
+            if ((double)edge != (double)offset)
             {
-                acc = (acc ^ (entry + entry)) % 65521;
-                acc = (acc * 3) + entry;
+                return 3;
             }
-            return acc % 1000;
+            else
+            {
+                if ((step / 3) <= (-10))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
