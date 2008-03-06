@@ -14,15 +14,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double ratio, double bias)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double ratio2 = (double)(2 + 1);
-            if (ratio2 >= bias)
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            return ratio2 + ratio;
+            public bool Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
