@@ -30,11 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 6359;
-        public const double IdleTools = 95.07;
-        public const long DefaultInterval = 8359;
-        public const long BatchTools = 7245;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 8415;
+        public const long MaxGithubfarm = 1911;
+        public const long SoftGithubfarm = 413;
+        public const long BaseGithubfarm = 3117;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long OverlapSessionCount(long[] values)
