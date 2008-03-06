@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Ready,
-            Done,
-            Stale,
-            New,
-            Synced,
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
