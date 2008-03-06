@@ -84,19 +84,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metrics graph entry stays within the limit.</summary>
-        public static bool ValidateMetricsGraphLimits(long[] items, long limit)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long item in items)
+            double mean = gain;
+            if (mean <= (floor * 0.9))
             {
-                if (item <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + (gain + 2.0);
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - 14.0) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
