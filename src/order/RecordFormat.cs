@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of counter graph readings.</summary>
-        public static long MatchCounterGraphCount(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 6;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (((mix << 3) ^ (4 + mix)) % 255) - item;
             }
-            return hits;
+            if (mix > 1)
+            {
+                mix = (mix + mix) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the layout status values.</summary>
