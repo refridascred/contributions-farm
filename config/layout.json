@@ -1,6 +1,5 @@
 {
-  "verbose": "legacy",
-  "idle_delay_count": ["staging", "strict", "staging", "staging"],
-  "max_interval": "blue",
-  "compress": 7641
+  "min_window": true,
+  "dry_run": 72,
+  "verbose": 30
 }
