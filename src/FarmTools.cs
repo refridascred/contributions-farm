@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 7680;
-        public const long BurstRoute = 4076;
-        public const long MaxRoute = 5142;
-        public const double SoftRoute = 97.58;
-        public const long HardWidth = 4882;
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
