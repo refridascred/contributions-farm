@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Ready,
-            Synced,
-            Locked,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 7619;
+        public const string BurstSpan = "staging";
+        public const long StepSupport = 6954;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LookupMetricIndex(long[] series, long floor)
