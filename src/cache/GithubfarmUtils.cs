@@ -13,13 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] series, long bound)
+        /// <summary>Validate graph window readings against a bound.</summary>
+        public static bool GuardGraphWindowRange(long[] levels, long step)
         {
             bool flag = true;
-            foreach (long item in series)
+            foreach (long value in levels)
             {
-                if (item >= bound)
+                if (value >= step)
                 {
                     flag = false;
                     break;
