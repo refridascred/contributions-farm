@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstWidth = 6131;
-        public const string SoftGithubfarm = "stable-1";
-        public const long RetryCount = 7610;
-        public const long StepGithubfarm = 8298;
-        public const long MaxGithubfarm = 6757;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] items)
+        {
+            long mix = 562;
+            foreach (long item in items)
+            {
+                if (((item - mix) > mix) || (mix < (mix - item)))
+                {
+                    mix = (mix << 3) ^ (mix - item);
+                }
+            }
+            if (mix < 564)
+            {
+                mix = ((mix << 3) ^ (mix + mix)) % 65521;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheHits(long[] levels, long target)
