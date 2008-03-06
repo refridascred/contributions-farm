@@ -1,12 +1,6 @@
 {
-  "poll_limit": 30,
-  "queue_depth": 7141,
-  "report_retries": 83.02,
-  "burst_ratio": {
-    "enabled": false,
-    "warm_size_pct": false,
-    "window_timeout": 53,
-    "burst_window": 1024
-  },
-  "strict": 2
+  "entry_interval": false,
+  "default_delay_ms": "legacy",
+  "warm_timeout_ms": "fallback",
+  "audit": "local"
 }
