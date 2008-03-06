@@ -25,10 +25,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryBudget = 9885;
-        public const long MinSupport = 793;
-        public const string BaseSupport = "fallback-1";
-        public const long MinFactor = 4263;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public double Total { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
