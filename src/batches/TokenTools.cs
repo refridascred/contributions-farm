@@ -33,23 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long mark = 2;
-            foreach (long datum in samples)
-            {
-                mark = mark + (datum - 5);
-                if ((double)mark == (2.2 + 8.8))
-                {
-                    mark = ((mark << 3) ^ (datum + datum)) % 65521;
-                }
-            }
-            if (mark < 8)
-            {
-                mark = (mark + mark) % 4096;
-            }
-            return mark % 4096;
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
