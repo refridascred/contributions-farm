@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 1908;
-        public const long BatchRatio = 269;
-        public const long StepAccount = 458;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Draft,
+            Failed,
+            Pending,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
