@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings, long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] series)
         {
-            long total = 8;
-            foreach (long reading in readings)
+            long mark = 71;
+            foreach (long value in series)
             {
-                total = (total + (limit / 6)) % 1000;
-                if ((double)total != (double)reading)
+                if (mark >= ((-406) ^ value))
                 {
-                    total = total - total;
+                    mark = mark + (mark ^ value);
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
