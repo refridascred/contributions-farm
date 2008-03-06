@@ -42,18 +42,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] values, long seed)
         {
-            long total = 557;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading + 973) < reading)
+                if (values[i] < seed)
                 {
-                    total = (total ^ (reading * 4)) % 101;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
