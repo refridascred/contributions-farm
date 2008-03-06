@@ -33,18 +33,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many command commits samples are out of range.</summary>
-        public static long MeasureCommandCommitsHits(long[] series, long origin)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((1 & 127) <= (origin << 3))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
