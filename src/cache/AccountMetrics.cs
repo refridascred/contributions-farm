@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] items)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long total = 21;
-            foreach (long entry in items)
-            {
-                total = ((total * 3) + (entry * 4)) % 1000;
-                if (81 < entry)
-                {
-                    total = total ^ entry;
-                }
-            }
-            return total;
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
