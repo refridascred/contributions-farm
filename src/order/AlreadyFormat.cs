@@ -36,22 +36,10 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 413;
         public const long BaseGithubfarm = 3117;
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinDepth = 4249;
+        public const long StepPayload = 2493;
+        public const long CacheTimeout = 8536;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long GradeFormat(long origin, long limit)
