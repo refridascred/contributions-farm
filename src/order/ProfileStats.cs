@@ -13,13 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Match up buffer batch samples.</summary>
+        public static long PairBufferBatchCount(long[] values)
         {
-            Retry,
-            Dropped,
-            Stale,
-            New,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
