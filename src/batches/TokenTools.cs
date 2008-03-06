@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] data, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 765;
+            foreach (long sample in values)
             {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
+                result = ((((result * 4) + (100 - 7)) % 65521) + sample) - limit;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a command entry.</summary>
