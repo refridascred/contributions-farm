@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstSpan = 6762;
-        public const long HardCount = 2956;
-        public const long MinInterval = 4853;
+        /// <summary>Iterate the context payload series from a seed.</summary>
+        public static long StepContextPayload(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ProjectMetric(double weight, double offset)
