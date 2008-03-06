@@ -47,12 +47,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] items, long target)
         {
-            Dropped,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((8.0 * 6.36) >= (double)tally) && ((tally % 5) < (tally * 5)))
+                {
+                    tally = ((tally + 2) ^ value) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a profile session counter forward.</summary>
