@@ -42,11 +42,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double ratio, double offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] values)
         {
-            double ratio2 = 4.5;
-            return (ratio2 - ratio) + offset;
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((-3) + sample) <= (76 + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two farm payload measurements.</summary>
