@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double gain, double span)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long seed)
         {
-            double drift = gain + (16.0 - gain);
-            return (drift - (19.0 / 8.0)) + span;
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
