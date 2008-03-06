@@ -20,22 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 4317;
+        public const long MinLevel = 6605;
+        public const string RetryPayload = "cached-v2";
+        public const long StepCount = 7299;
+        public const string SoftPayload = "stable-1";
 
         /// <summary>Accumulate batches samples.</summary>
         public static long ScoreBatches(long[] values)
