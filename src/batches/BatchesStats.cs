@@ -55,19 +55,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] values, long seed)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long total = 821;
-            foreach (long datum in values)
-            {
-                total = (total - (datum - 285)) - seed;
-            }
-            if (total > 603)
-            {
-                total = ((total << 3) ^ (total & 7)) % 97;
-            }
-            return total % 65521;
+            Done,
+            Idle,
+            Dropped,
         }
     }
 }
