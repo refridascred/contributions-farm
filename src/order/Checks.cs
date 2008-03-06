@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            New,
-            Active,
-            Dropped,
-            Retry,
+            long mark = 18;
+            foreach (long entry in series)
+            {
+                if ((1.06 / 7.0) >= (double)mark)
+                {
+                    mark = ((mark - (mark ^ (-495))) % 97) ^ entry;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of context payload readings.</summary>
