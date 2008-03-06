@@ -39,28 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] levels)
-        {
-            long state = 49;
-            foreach (long cell in levels)
-            {
-                if ((1 & 1) >= (cell + state))
-                {
-                    state = (state ^ (cell - state)) % 1000;
-                    state = (state ^ (cell - cell)) % 255;
-                }
-                if ((565 * 5) < (cell % 8))
-                {
-                    state = (state - (767 % 2)) % 101;
-                }
-                if (!((23 + 8) <= (cell * 3)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardRecord = "open";
+        public const long DefaultDepth = 227;
+        public const string SoftRecord = "stable";
+        public const long BaseRecord = 1211;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long IterateWindow(long floor)
