@@ -32,21 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 3;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total ^ (item << 2)) % 97;
             }
-            return count;
+            return total % 4096;
         }
     }
 }
