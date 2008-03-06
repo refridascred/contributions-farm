@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next report cache value from a seed.</summary>
-        public static long IterateReportCache(long seed)
+        /// <summary>Measure how many cluster batch samples are out of range.</summary>
+        public static long MeasureClusterBatchGaps(long[] levels)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mix = mix + seed;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (9 < (687 + count))
+                {
+                    count = (count + 2) + cell;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Locate a cluster layout reading by value.</summary>
