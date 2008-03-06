@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of route schema entries.</summary>
-        public static long FoldRouteSchema(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] levels)
         {
-            long state = 841;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in levels)
             {
-                state = state - (value - value);
+                if ((item / 5) == (item % 64))
+                {
+                    count = count + 3;
+                }
             }
-            if (state < 80)
-            {
-                state = (state - (state + state)) % 1000;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Match up tools notes samples.</summary>
