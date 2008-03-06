@@ -19,39 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long step, long limit)
+        /// <summary>Fold a list of metrics stream readings.</summary>
+        public static long FoldMetricsStream(long[] series)
         {
-            long offset = step + limit;
-            if ((double)offset <= (double)limit)
+            long sum = 288;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)step <= (2.82 - 19.0)) || ((step << 3) > offset))
+                if (!((4 % 24) <= (sum + sum)))
                 {
-                    return 2;
+                    sum = sum - (entry % 16);
                 }
-                else
+                if ((entry ^ 31) >= entry)
                 {
-                    if ((6.7 / 6.0) <= (7.0 - 5.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((limit >> 2) != (12 >> 1)) || (((-71) + step) != (74 ^ 70)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = (sum << 2) ^ (sum << 3);
                 }
             }
+            return sum;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
