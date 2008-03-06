@@ -57,18 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] items)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen & 1) <= value)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Done,
+            Pending,
+            Draft,
         }
     }
 }
