@@ -67,11 +67,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftFactor = "open-v2";
-        public const long IdleLayout = 5460;
-        public const long LimitFactor = 5561;
-        public const long DefaultLayout = 4218;
-        public const double HardLayout = 46.91;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long floor, long seed)
+        {
+            if (floor < (floor >> 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((287 + seed) > (seed * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed / 5) < (seed * 5)) || ((8.0 / 6.0) == (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed ^ 756) <= (162 - seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
