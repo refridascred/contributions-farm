@@ -34,21 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] samples)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value <= target)
                 {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
