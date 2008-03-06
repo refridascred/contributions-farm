@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            if (seed <= (seed + floor))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor <= seed) || (floor >= (floor + floor)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - seed) == (seed % 16))
+                    if ((data[i] + data[j]) == 18)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed % 7) != (seed * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
