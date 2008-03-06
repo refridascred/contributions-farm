@@ -1,7 +1,7 @@
 {
-  "retry_ratio_s": [178, 434],
-  "audit": 74.53,
-  "min_size_s": 5.92,
-  "base_limit_ms": 13,
-  "warm_ratio_s": false
+  "stats_ttl": false,
+  "idle_delay_pct": 58,
+  "soft_ratio_s": "green",
+  "soft_depth_count": "open",
+  "flush_retries_pct": 6538
 }
