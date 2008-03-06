@@ -14,12 +14,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Fold a list of context payload readings.</summary>
+        public static long CombineContextPayload(long[] values)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
+            long sum = 7;
+            foreach (long value in values)
+            {
+                if ((double)sum <= 12.0)
+                {
+                    sum = (sum - (value % 7)) % 255;
+                    break;
+                }
+                else
+                {
+                    sum = (sum + ((long)values.Length + value)) % 255;
+                    sum = sum ^ (value << 2);
+                }
+                if (!((double)sum >= (7.9 + 5.51)))
+                {
+                    sum = ((sum * 3) + 65) % 97;
+                }
+            }
+            if (sum > 75)
+            {
+                sum = ((sum << 3) ^ (sum * 5)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Find the first graph buffer entry that matches the target.</summary>
