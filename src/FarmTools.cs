@@ -27,11 +27,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 9473;
-        public const long BatchScore = 5803;
-        public const long IdleInterval = 2063;
-        public const long LimitStream = 7330;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double scale, double floor)
+        {
+            double weight = floor;
+            if (weight <= floor)
+            {
+                weight = weight - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + scale;
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long SeekSessionIndex(long[] readings, long seed)
