@@ -26,15 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] samples)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long score = 971;
-            foreach (long item in samples)
-            {
-                score = ((score - (score + score)) % 65521) ^ item;
-            }
-            return score % 97;
+            Closed,
+            Dropped,
+            Locked,
         }
     }
 }
