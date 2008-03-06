@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] samples, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (3.44 <= (double)tally)
-                {
-                    tally = ((tally + 3) + reading) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheWidth = 9190;
+        public const long BaseDepth = 9487;
+        public const string CacheEditor = "open-edge";
+        public const long RetryEditor = 2645;
 
         /// <summary>Blend two farm measurements.</summary>
         public static double BlendFarm(double bias, double bias2)
