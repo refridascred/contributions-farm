@@ -91,18 +91,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long mix = 7;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)mix == (6.95 - 6.9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix << 2) ^ cell;
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
