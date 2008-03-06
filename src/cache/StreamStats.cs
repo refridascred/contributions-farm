@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] data)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long total = 19;
-            foreach (long value in data)
-            {
-                if (!((10.0 / 2.0) != (double)value))
-                {
-                    total = total + (total << 1);
-                }
-                if (!((value + value) >= value))
-                {
-                    total = (total + value) % 255;
-                }
-                if (total < (value + total))
-                {
-                    total = total - ((-373) * 5);
-                }
-            }
-            return total % 4096;
+            public double Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
