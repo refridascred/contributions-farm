@@ -1,11 +1,10 @@
 # support settings
-checks_retries:
-  - 334
-  - 291
-audit:
-  - 303
-  - 188
-  - 113
-  - 325
-batches_ratio: primary
-support_interval: 250
+persist:
+  - 312
+  - 367
+  - 386
+audit: standard
+sync_limit_ms: 8837
+retry_threshold: 2638
+warm_threshold: 34
+retry_ttl_count: 18.18
