@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] items, long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double drift = offset;
+            if (drift > (ratio + offset))
             {
-                if ((((-640) + hits) != (origin % 12)) && (((origin << 3) != (hits % 3)) || ((hits << 2) > 3)))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
+                drift = drift - (offset / 8.0);
             }
-            return hits;
+            else
+            {
+                drift = drift - (double)(-566);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (double)7) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
