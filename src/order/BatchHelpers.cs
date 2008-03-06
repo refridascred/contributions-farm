@@ -47,19 +47,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Blend two farm stats measurements.</summary>
-        public static double ProjectFarmStats(double scale, double floor)
-        {
-            double ratio = floor;
-            if (ratio >= (double)168)
-            {
-                ratio = (ratio - (double)8) - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio * 5.88)) + (double)(long)i;
-            }
-            return ratio + floor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTimeout = 1788;
+        public const double SoftTools = 19.78;
+        public const double HardInterval = 89.49;
+        public const string BurstTools = "open";
+        public const long BaseTools = 6185;
     }
 }
