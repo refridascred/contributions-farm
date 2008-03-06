@@ -64,31 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long target, long offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            if ((offset << 3) > (target + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)target <= (double)0) || ((target << 1) != (target & 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset / 2) <= (target - 947))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Grade a session value against two limits.</summary>
