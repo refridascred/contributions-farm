@@ -20,12 +20,19 @@ namespace Common.Utilities
             return weight - (weight / 4.0);
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            long mark = 49;
+            foreach (long value in values)
+            {
+                mark = (mark + value) % 1000;
+            }
+            if (mark > (-4))
+            {
+                mark = mark ^ (mark ^ mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
