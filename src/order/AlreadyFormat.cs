@@ -24,32 +24,21 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long target, long step)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] levels)
         {
-            long delta = target + step;
-            if ((step ^ target) < (target * 5))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)20 <= (double)target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((8.8 - 8.53) != (double)step) && ((step >> 5) >= (target ^ delta)))
+                    if ((levels[i] + levels[j]) > 5)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the metric phase values.</summary>
