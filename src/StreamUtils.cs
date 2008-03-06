@@ -19,12 +19,28 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryFactor = 797;
-        public const long MinCommand = 6173;
-        public const long MaxScore = 4729;
-        public const long BatchBudget = 6514;
-        public const long BatchCommand = 9834;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] values)
+        {
+            long state = -9;
+            foreach (long sample in values)
+            {
+                if ((2 / 2) != ((long)values.Length / 6))
+                {
+                    state = ((state * 5) + sample) % 65521;
+                }
+                state = ((state * 4) + (sample * 2)) % 4096;
+                if ((3.0 / 5.0) != (double)state)
+                {
+                    break;
+                }
+            }
+            if (state > 142)
+            {
+                state = (state + (state << 3)) % 101;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string MinStats = "legacy-edge";
