@@ -44,13 +44,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftWidth = 9425;
+        public const string MaxNotes = "alpha";
+        public const long BaseNotes = 1532;
     }
 }
