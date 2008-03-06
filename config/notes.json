@@ -1,8 +1,5 @@
 {
-  "base_ratio_ms": 500,
-  "layout_window": 1024,
-  "default_threshold_ms": 93,
-  "batch_size": "cached",
-  "poll_threshold": ["standard", "stable", "cached", "local"],
-  "flush_size_pct": true
+  "default_depth": ["staging", "primary", "standard", "eu-west"],
+  "retry_depth": false,
+  "base_size_pct": 241
 }
