@@ -33,12 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] readings, long seed)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
