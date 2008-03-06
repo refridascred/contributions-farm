@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 9064;
-        public const long MaxWindow = 6400;
-        public const long SoftLevel = 6745;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((((matches - matches) < (matches + cell)) && ((59 - cell) > matches)) || ((cell + (-9)) > (matches * 4)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string CacheStream = "alpha-1";
