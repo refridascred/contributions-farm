@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double gain, double offset)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            double bias = 8.0;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (offset + gain)) + (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
