@@ -20,12 +20,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long floor, long seed)
         {
-            Done,
-            Locked,
-            Idle,
+            if ((seed + seed) < seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed != (2.9 * 9.39))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the already mode values.</summary>
