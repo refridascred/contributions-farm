@@ -24,20 +24,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 531;
+        public const long MaxReport = 3571;
+        public const double RetryLevel = 20.1;
 
         /// <summary>Accumulate report checks samples.</summary>
         public static long ScoreReportChecks(long[] samples)
