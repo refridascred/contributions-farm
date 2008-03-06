@@ -42,19 +42,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] levels, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long total = 6;
+            foreach (long reading in values)
             {
-                if (datum != seed)
+                total = total + ((-567) - reading);
+                total = total + reading;
+                if ((15.0 / 4.0) != (double)reading)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
