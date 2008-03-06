@@ -63,15 +63,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] data, long seed)
         {
-            long sum = 31;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (((sum << 3) ^ (sum + sum)) % 255) + cell;
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
