@@ -15,19 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!((tally + item) <= (item % 12)) && !((tally >> 5) == (item - 347)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 87.25;
+        public const long RetryScore = 2685;
+        public const long DefaultInterval = 7131;
+        public const double HardContributi = 33.19;
+        public const string DefaultContributi = "standard";
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
