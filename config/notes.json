@@ -1,27 +1,5 @@
 {
-  "warm_threshold": {
-    "poll_size": ["strict", "eu-west", "strict", "local"],
-    "route_timeout": {
-      "session_threshold": 40,
-      "verbose": 2197,
-      "default_retries_s": [38, 430]
-    },
-    "sync_retries_count": [161, 254]
-  },
-  "sync_capacity": 66,
-  "persist": {
-    "max_window": true,
-    "base_capacity_ms": "primary",
-    "min_size": ["stable", "local"],
-    "base_size_pct": 9.29,
-    "farm_window": 43.01,
-    "default_delay_count": {
-      "max_retries_ms": false,
-      "flush_capacity_count": 88,
-      "token_interval": "stable",
-      "base_limit": "local",
-      "persist": 75,
-      "route_size": 30
-    }
-  }
+  "min_ratio_s": 6091,
+  "sync_delay": "cached",
+  "burst_timeout": 53.52
 }
