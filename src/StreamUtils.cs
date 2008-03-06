@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many filter checks samples are out of range.</summary>
-        public static long CountFilterChecksHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (reading >= (matches - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 42.68;
+        public const long HardScore = 8509;
+        public const long StepQueue = 581;
+        public const long HardQueue = 5290;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
