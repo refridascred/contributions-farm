@@ -7,14 +7,17 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in edge staging local; do
+for item in cached eu-west green; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=410
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
