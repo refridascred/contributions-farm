@@ -34,20 +34,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "fallback-edge";
+        public const string BaseContext = "stable-v2";
+        public const long BurstRatio = 959;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadMatches(long[] items, long offset)
