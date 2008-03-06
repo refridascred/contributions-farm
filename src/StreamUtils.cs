@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] data, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            long anchor = 9;
+            foreach (long reading in data)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                anchor = ((anchor ^ (reading << 3)) % 1000) - step;
             }
-            return sum;
+            return anchor % 4096;
         }
 
         /// <summary>Locate a cluster layout reading by value.</summary>
