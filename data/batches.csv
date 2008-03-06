@@ -1,8 +1,6 @@
-id,active,count,label,owner
-1,879,73,20.36,82.65
-2,84.14,715,96.16,staging
-3,50.01,21.72,56.07,852
-4,31.86,94.78,254,8.18
-5,62.45,eu-west,81.09,open
-6,776,29.79,11.76,6.3
-7,stable,stable,827,311
+id,token,active,region,count
+1,57.81,67.23,fallback,local
+2,49.84,open,587,849
+3,legacy,79.45,58.59,67.63
+4,404,330,89.47,blue
+5,staging,456,80.35,local
