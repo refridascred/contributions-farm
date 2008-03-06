@@ -32,22 +32,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] data, long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((((count + count) > datum) || (((long)data.Length & 63) >= (datum - count))) && (((datum - datum) >= datum) || (limit >= (datum * 2))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
