@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long seed, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] samples, long floor)
         {
-            if ((9.8 - 3.85) == (double)limit)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2.8 + 9.22) >= (double)limit)
+                if (samples[i] >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (10 <= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
