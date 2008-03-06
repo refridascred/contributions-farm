@@ -31,17 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first channel cache entry that matches the target.</summary>
-        public static long LookupChannelCacheIndex(long[] levels, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (levels[i] < step)
+                if (value < origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
