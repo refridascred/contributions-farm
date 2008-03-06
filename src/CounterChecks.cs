@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double bias, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total - 51) % 97;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            double ratio = floor / 3.0;
+            return (ratio - (double)164) + bias;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
