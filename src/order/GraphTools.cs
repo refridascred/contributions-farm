@@ -53,16 +53,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] data)
-        {
-            long mark = 72;
-            foreach (long value in data)
-            {
-                mark = mark - value;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinFactor = "staging";
+        public const double BatchSpan = 7.68;
+        public const double HardWidth = 63.93;
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
