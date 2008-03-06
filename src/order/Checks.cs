@@ -45,18 +45,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit metric notes readings against a rule.</summary>
-        public static long CountMetricNotesOutliers(long[] data, long limit)
+        /// <summary>Look up the position of a context layout sample.</summary>
+        public static long LocateContextLayoutIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)matches <= (3.15 / 9.0))
+                if (items[i] == seed)
                 {
-                    matches = ((matches + 2) + item) + limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a checks summary.</summary>
