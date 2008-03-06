@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] samples, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Idle,
+            Draft,
+            Done,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
