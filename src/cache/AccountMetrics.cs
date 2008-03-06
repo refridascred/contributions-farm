@@ -47,22 +47,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] data)
         {
-            long mix = 6;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((value < (value - 206)) && ((mix ^ 94) != (value + value)))
+                if (((entry * 5) < (matches + matches)) && ((matches + entry) > (entry + matches)))
                 {
-                    mix = (mix ^ value) % 65521;
+                    matches = matches + 1;
                 }
             }
-            if (mix > 1)
-            {
-                mix = (mix * 3) + 672;
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
