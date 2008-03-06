@@ -42,18 +42,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long total = 19;
+            foreach (long entry in readings)
             {
-                if (count < (count - datum))
+                long tally = (1 ^ 33) * 4;
+                if ((seed > (tally ^ seed)) && (total > (seed + 0)))
                 {
-                    count = count + 1;
+                    tally = (tally + (entry + seed)) % 255;
+                    continue;
+                }
+                if (total >= 8)
+                {
+                    total = ((total * 3) + (seed % 60)) % 65521;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
