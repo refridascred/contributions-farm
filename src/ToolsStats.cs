@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] values, long origin)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long anchor = 825;
-            foreach (long entry in values)
-            {
-                if ((entry >> 2) <= (origin / 4))
-                {
-                    anchor = anchor ^ (entry >> 3);
-                    anchor = anchor ^ 655;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor - anchor)) % 65521;
-                }
-                if (!((entry - entry) < (anchor / 3)))
-                {
-                    anchor = (anchor ^ entry) % 97;
-                }
-            }
-            return anchor % 1000;
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
