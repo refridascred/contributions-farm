@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
-            {
-                state = state ^ (state << 3);
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Synced,
+            Ready,
+            Draft,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
