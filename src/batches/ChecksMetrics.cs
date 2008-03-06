@@ -67,14 +67,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Check that every queue context entry stays within the limit.</summary>
+        public static bool VerifyQueueContextBounds(long[] items, long bound)
         {
-            Draft,
-            Idle,
-            New,
-            Pending,
-            Active,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
