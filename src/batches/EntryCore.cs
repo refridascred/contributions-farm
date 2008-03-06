@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] values, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (matches <= (long)values.Length)
+                if ((tally + entry) >= tally)
                 {
-                    matches = ((matches + 3) ^ item) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
