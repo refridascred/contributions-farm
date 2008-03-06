@@ -74,22 +74,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] values, long limit)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long bound)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((5.0 * 6.2) < (double)hits)
+                if (!(((bound ^ bound) == (489 - 6)) || ((bound ^ bound) <= (327 - (-743)))))
                 {
-                    hits = ((hits + 2) + entry) - limit;
+                    score = score + (bound & 127);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
     }
 }
