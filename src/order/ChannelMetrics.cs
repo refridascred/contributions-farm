@@ -30,18 +30,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Find the first checks contributi entry that matches the target.</summary>
+        public static long LocateChecksContributiIndex(long[] items, long target)
         {
-            long mix = 957;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (mix >= (datum * 2))
+                if (items[i] <= target)
                 {
-                    mix = (mix + (79 - mix)) % 101;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
