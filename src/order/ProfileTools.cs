@@ -59,20 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Count payload editor pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadEditorCount(long[] samples)
         {
-            long total = 6;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total + ((-567) - reading);
-                total = total + reading;
-                if ((15.0 / 4.0) != (double)reading)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Audit stream channel readings against a rule.</summary>
