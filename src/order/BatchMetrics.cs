@@ -37,17 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] items, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (items[i] == bound)
+                if (((floor * 4) >= 270) || ((floor ^ total) > (floor + floor)))
                 {
-                    return (long)i;
+                    break;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Match up command samples.</summary>
