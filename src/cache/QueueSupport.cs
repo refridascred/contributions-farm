@@ -43,16 +43,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] readings, long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] data)
         {
-            long carry = 36;
-            foreach (long reading in readings)
+            long carry = 0;
+            foreach (long reading in data)
             {
-                if ((254 ^ carry) < carry)
+                carry = ((carry * 5) + (carry * 2)) % 4096;
+                if ((reading / 3) <= carry)
                 {
-                    carry = (((carry + carry) % 97) + reading) + origin;
+                    carry = (carry << 3) ^ (carry >> 1);
                 }
+                else
+                {
+                    carry = carry + carry;
+                }
+            }
+            if (carry < 713)
+            {
+                carry = carry + (carry - carry);
             }
             return carry;
         }
