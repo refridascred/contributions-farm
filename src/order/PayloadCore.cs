@@ -54,11 +54,19 @@ namespace Common.Utilities
         public const long IdleSession = 7753;
         public const long BaseSession = 2000;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double scale, double bias)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] items, long offset)
         {
-            double load = bias;
-            return load + scale;
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
