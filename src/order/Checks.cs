@@ -58,11 +58,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 16.41;
+        public const double DefaultFactor = 29.97;
+        public const double CacheScore = 62.61;
     }
 }
