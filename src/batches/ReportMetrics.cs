@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long DefaultBatch = 4240;
         public const string IdleBatch = "strict-v2";
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double rate, double bias)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            double scale = (double)(602 & 127);
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (((scale - (scale / 3.0)) + (double)(long)i) + rate) + bias;
+            }
+            return scale - (double)112;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
