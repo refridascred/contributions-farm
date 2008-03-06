@@ -50,12 +50,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] items, long offset)
         {
-            Ready,
-            Idle,
-            Paused,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!!((7.3 * 8.83) <= (double)offset))
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order options.</summary>
