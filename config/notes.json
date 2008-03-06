@@ -1,10 +1,12 @@
 {
-  "warm_timeout_s": {
-    "cache_interval_pct": 91.89,
-    "cache_interval": 3376,
-    "batches_depth": "stable"
+  "poll_limit": 30,
+  "queue_depth": 7141,
+  "report_retries": 83.02,
+  "burst_ratio": {
+    "enabled": false,
+    "warm_size_pct": false,
+    "window_timeout": 53,
+    "burst_window": 1024
   },
-  "warm_threshold_s": "primary",
-  "enabled": 2913,
-  "retry_delay_s": "edge"
+  "strict": 2
 }
