@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 7134;
-        public const long BaseSupport = 1524;
-        public const long LimitSupport = 9689;
+        /// <summary>Accumulate command batches samples.</summary>
+        public static long TallyCommandBatches(long[] values, long bound)
+        {
+            long carry = 2;
+            foreach (long value in values)
+            {
+                if ((double)value > 20.0)
+                {
+                    carry = ((carry ^ (carry & 31)) % 65521) + bound;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long limit)
