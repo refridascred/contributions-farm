@@ -48,31 +48,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long bound, long limit)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long seed)
         {
-            if ((double)bound > (19.0 * 6.1))
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound % 100) <= bound)
+                mix = mix ^ 23;
+                if ((double)mix == (7.01 / 5.0))
                 {
-                    return 8;
+                    break;
                 }
-                else
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if (((4 >> 1) > (bound & 1)) && ((bound - limit) > 506))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = (((mix << 2) ^ (93 << 3)) % 101) + (long)i2;
+                    mix = mix + ((long)i / 4);
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
