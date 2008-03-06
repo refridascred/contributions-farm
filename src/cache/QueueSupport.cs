@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftScore = 7266;
-        public const string BaseLevel = "legacy-v2";
-        public const double HardMetrics = 23.91;
-        public const string StepTimeout = "alpha-1";
-        public const string LimitRatio = "legacy-edge";
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!(tally <= (sample - sample)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] levels)
