@@ -40,10 +40,24 @@ namespace Common.Utilities
             return rate - (double)(-78);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 6429;
-        public const long MaxNotes = 5263;
-        public const double DefaultNotes = 8.37;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double scale, double offset)
+        {
+            double bias = scale;
+            if (bias > (scale * 18.0))
+            {
+                bias = bias - (double)(-419);
+            }
+            else
+            {
+                bias = bias - (offset / 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (double)74) + (double)(long)i;
+            }
+            return bias - (scale / 8.0);
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] values, long floor)
