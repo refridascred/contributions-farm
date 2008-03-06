@@ -23,12 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            Ready,
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a window options.</summary>
