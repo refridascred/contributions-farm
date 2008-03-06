@@ -52,13 +52,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
+            Active,
+            Locked,
+            Closed,
+            Dropped,
+            Draft,
         }
     }
 }
