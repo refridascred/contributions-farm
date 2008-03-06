@@ -25,13 +25,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Count the editor entry entries that pass the check.</summary>
+        public static long AuditEditorEntryMatches(long[] values, long offset)
         {
-            Paused,
-            Locked,
-            Closed,
-            Idle,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell * 3) < 55) || ((offset >= (offset % 8)) && (cell >= count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
