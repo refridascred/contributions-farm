@@ -1,5 +1,17 @@
 {
-  "min_window": true,
-  "dry_run": 72,
-  "verbose": 30
+  "hard_ratio": "local",
+  "filter_delay": {
+    "idle_interval_count": 500,
+    "persist": 75,
+    "default_retries_s": ["stable", "green", "strict", "blue"],
+    "readonly": {
+      "flush_size_ms": "legacy",
+      "command_retries": "cached",
+      "batches_ttl": true,
+      "poll_capacity": "latest",
+      "session_interval": "fallback"
+    },
+    "compress": 25
+  },
+  "readonly": "stable"
 }
