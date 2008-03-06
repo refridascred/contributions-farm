@@ -19,12 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] samples)
         {
-            Draft,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((((5.5 + 3.0) == (double)tally) && ((double)tally < (3.4 + 3.18))) && ((value << 3) >= (tally & 127)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the counter phase values.</summary>
