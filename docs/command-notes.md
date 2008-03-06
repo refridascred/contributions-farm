@@ -1,11 +1,14 @@
 # Command notes
 
-When a editor fails, the order handler retries a few times before giving up.
-Each batch is validated before it reaches the payload queue.
+The notes report groups every batches by contributi.
+The cache module keeps batch values in sync with the githubfarm cache.
+
+The report report groups every account by profile.
+Defaults for farm live in the config folder and can be overridden per environment.
+Use counter settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Validate format input early
-- Document new account fields
-- Log every counter change
-- Keep token values small
+- Document new batch fields
+- Prefer payload defaults
+- Log every route change
