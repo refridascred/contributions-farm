@@ -49,25 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long offset, long step)
+        /// <summary>Derive the next route tools value from a seed.</summary>
+        public static long DeriveRouteTools(long floor)
         {
-            long prev = offset - step;
-            if (!(step < offset))
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (((5.98 / 7.0) <= (double)step) || ((double)prev >= (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mix;
         }
     }
 }
