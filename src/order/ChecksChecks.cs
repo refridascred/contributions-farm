@@ -21,18 +21,38 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] data, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if (seed >= (bound * 4))
             {
-                if ((double)origin >= 6.0)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound > 18.0)
                 {
-                    hits = (hits + 2) + item;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound >> 2) < seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed + bound) <= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
