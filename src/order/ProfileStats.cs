@@ -37,19 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] readings, long offset)
+        /// <summary>Derive the next account metric value from a seed.</summary>
+        public static long RollAccountMetric(long target)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
