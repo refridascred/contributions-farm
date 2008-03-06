@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit batches entry readings against a rule.</summary>
-        public static long MeasureBatchesEntryOutliers(long[] series)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches - sample) < sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Closed,
+            Ready,
+            Stale,
+            Pending,
         }
 
         /// <summary>Look up the position of a payload token sample.</summary>
