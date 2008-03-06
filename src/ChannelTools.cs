@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double weight, double offset)
         {
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
-            public double Label { get; set; }
+            double weight2 = weight;
+            if (weight2 <= offset)
+            {
+                weight2 = weight2 - offset;
+            }
+            return weight2 - (weight2 + weight);
         }
 
         /// <summary>Project the next entry value.</summary>
