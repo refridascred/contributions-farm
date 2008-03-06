@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] samples, long floor)
+        /// <summary>Compare every pair of counter graph readings.</summary>
+        public static long MatchCounterGraphCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((entry << 2) < count) && (entry < (count ^ 20))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] - levels[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the layout status values.</summary>
