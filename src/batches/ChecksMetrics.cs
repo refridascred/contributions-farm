@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values, long offset)
-        {
-            long mark = 84;
-            foreach (long sample in values)
-            {
-                mark = (((mark - (1 / 4)) % 1000) + sample) - offset;
-            }
-            if (mark > 0)
-            {
-                mark = ((mark << 3) ^ (mark * 2)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardDepth = 84.99;
+        public const string MaxOrder = "local-1";
+        public const long BaseOrder = 6393;
+        public const long SoftScore = 8256;
+        public const long BatchWidth = 7170;
 
         /// <summary>Blend two context measurements.</summary>
         public static double ProjectContext(double weight, double floor)
