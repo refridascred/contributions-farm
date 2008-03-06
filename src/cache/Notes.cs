@@ -40,22 +40,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] readings, long limit)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long mark = 3;
-            foreach (long value in readings)
-            {
-                if (value < (limit >> 5))
-                {
-                    mark = (mark - (value << 1)) % 255;
-                }
-            }
-            if (mark < 809)
-            {
-                mark = (mark * 5) + (mark >> 2);
-            }
-            return mark;
+            Dropped,
+            Pending,
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
