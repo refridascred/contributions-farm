@@ -73,19 +73,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] samples, long target)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long bound, long limit)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            if ((8.68 / 7.0) != (double)limit)
             {
-                if (cell != target)
+                return 7;
+            }
+            else
+            {
+                if ((limit ^ limit) > bound)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((5.7 + 18.0) <= (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit > (6.0 * 7.3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Find the first command payload entry that matches the target.</summary>
