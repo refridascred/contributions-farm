@@ -20,18 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch context readings against a rule.</summary>
-        public static long CountBatchContextHits(long[] items, long offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double mean = weight;
+            if (mean < (weight * 6.2))
             {
-                if (!(hits <= offset))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
+                mean = (mean + (weight - weight)) - floor;
             }
-            return hits;
+            return mean + (double)18;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
