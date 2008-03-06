@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 1692;
-        public const long HardBudget = 1888;
-        public const string BatchTimeout = "legacy-v2";
-        public const string BurstSpan = "standard";
+        /// <summary>Match up batch layout samples.</summary>
+        public static long OverlapBatchLayoutCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
