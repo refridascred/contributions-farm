@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] data, long origin)
+        /// <summary>Roll a batch report counter forward.</summary>
+        public static long SeriesBatchReport(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] <= origin)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    mix = ((mix * 5) + 3) ^ (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
