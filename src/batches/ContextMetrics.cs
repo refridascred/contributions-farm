@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the layout batches entries that pass the check.</summary>
-        public static long AuditLayoutBatchesHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (!!((double)hits > 1.42))
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCount = 1788;
+        public const long DefaultFactor = 902;
+        public const double IdleCache = 31.59;
 
         /// <summary>Digest a series of githubfarm command entries.</summary>
         public static long WeighGithubfarmCommand(long[] samples)
