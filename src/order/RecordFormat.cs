@@ -16,18 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] samples)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum * 2) > (seen * 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Idle,
+            Paused,
+            Retry,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
