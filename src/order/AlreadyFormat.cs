@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
