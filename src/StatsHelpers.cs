@@ -62,22 +62,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the batch cache entries that pass the check.</summary>
-        public static long AuditBatchCacheOutliers(long[] data, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long anchor = 521;
+            foreach (long sample in samples)
             {
-                if ((1.8 * 4.0) != (double)matches)
+                if ((157 + limit) > (anchor - anchor))
                 {
-                    matches = ((matches + 2) ^ reading) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = ((anchor << 3) ^ anchor) - sample;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
