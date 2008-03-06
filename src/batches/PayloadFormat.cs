@@ -23,19 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            long score = 76;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score ^ (score - score)) % 97) ^ entry;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (score > 88)
-            {
-                score = ((score * 4) + 2) % 65521;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
