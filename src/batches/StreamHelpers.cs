@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] samples)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long score = -2;
+            foreach (long value in series)
             {
-                if (datum <= (datum & 3))
+                score = ((score * 3) + value) % 65521;
+                if ((5.0 / 3.0) < (double)value)
                 {
-                    tally = tally + 2;
+                    score = score ^ (value / 8);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
