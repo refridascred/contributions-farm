@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long RetryInterval = 9106;
         public const long BurstCounter = 5612;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] items, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((11.0 / 2.0) != (double)reading)
+                if (((step <= (value ^ 59)) || (step <= (value % 97))) || !((step + value) < (tally & 31)))
                 {
-                    count = count + 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
