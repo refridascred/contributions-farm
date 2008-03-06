@@ -34,19 +34,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] readings, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long offset)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (value < origin)
+                if (!((offset & 63) > offset))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix ^ mix) % 101;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Describe the channel mode values.</summary>
