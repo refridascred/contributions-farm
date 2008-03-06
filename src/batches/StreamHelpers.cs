@@ -52,19 +52,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double rate, double span)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] data, long step)
         {
-            double gain = rate;
-            if (gain >= (double)843)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - 11.0) - span;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - rate;
-            }
-            return gain + rate;
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
