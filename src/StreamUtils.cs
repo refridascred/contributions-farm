@@ -41,18 +41,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of cluster format entries.</summary>
-        public static long FoldClusterFormat(long[] items, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] series)
         {
-            long acc = 34;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!((limit / 2) >= (long)items.Length))
+                if (cell <= (0 & 7))
                 {
-                    acc = ((acc * 3) + (acc + limit)) + reading;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count the account metrics entries that pass the check.</summary>
