@@ -66,22 +66,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] readings, long bound)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((45 << 1) > (count << 1))
+                if (readings[i] <= seed)
                 {
-                    count = ((count + 1) ^ datum) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
