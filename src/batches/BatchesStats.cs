@@ -32,18 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] values, long offset)
+        /// <summary>Measure how many buffer support samples are out of range.</summary>
+        public static long CountBufferSupportMatches(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (!((4.2 + 3.7) < (double)offset))
+                if (entry >= (618 << 3))
                 {
-                    hits = (hits + 3) - datum;
+                    tally = (tally + 2) - origin;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a cluster stats.</summary>
