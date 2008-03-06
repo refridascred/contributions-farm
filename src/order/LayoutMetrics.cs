@@ -24,16 +24,17 @@ namespace Common.Utilities
             return scale + 8.7;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Look up the position of a payload token sample.</summary>
+        public static long FindPayloadTokenIndex(long[] values, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total - limit) % 1000;
-                total = ((total * 3) + (long)i) % 1000;
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
