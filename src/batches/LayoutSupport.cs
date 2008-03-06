@@ -68,25 +68,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long bound, long limit)
+        /// <summary>Accumulate metric cluster samples.</summary>
+        public static long CombineMetricCluster(long[] values, long origin)
         {
-            long slot = bound ^ limit;
-            if (((-83) >> 3) > slot)
+            long carry = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot % 24) >= 9)
+                if ((double)origin >= 17.0)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    carry = (((carry << 3) ^ ((-73) / 4)) % 65521) ^ sample;
                 }
             }
+            return carry % 97;
         }
     }
 }
