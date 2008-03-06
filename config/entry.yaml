@@ -1,26 +1,10 @@
 # entry settings
-record_delay:
-  - 454
-  - 160
-flush_limit:
-  base_delay_count:
-    max_delay_s: eu-west
-    idle_window_count: true
-    base_threshold_pct:
-      - cached
-      - latest
-      - staging
-      - primary
-    min_depth_count: 68
-    cache_limit_pct: eu-west
-    retry_window_ms: 3396
-  cache_delay: 500
-  batches_timeout: false
-  enabled: false
-poll_size_ms: 90.2
-retry_limit:
-  - primary
-  - staging
-  - cached
-  - legacy
-batches_timeout: 25.64
+buffer_size:
+  - 351
+  - 249
+  - 468
+readonly:
+  enabled: 38.3
+  cache_size_count: 38.36
+  persist: 89.57
+schema_depth: 1.88
