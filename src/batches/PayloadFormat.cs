@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] samples)
+        /// <summary>Measure how many token order samples are out of range.</summary>
+        public static long CountTokenOrderOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (17 >= (sample + seen))
+                if (hits <= (datum % 3))
                 {
-                    seen = seen + 1;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
