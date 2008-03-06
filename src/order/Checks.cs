@@ -14,12 +14,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] data, long bound)
         {
-            New,
-            Ready,
-            Stale,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((double)seen >= 7.76)
+                {
+                    seen = ((seen + 1) ^ sample) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
