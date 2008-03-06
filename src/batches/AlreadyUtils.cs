@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate commits report samples.</summary>
-        public static long WeighCommitsReport(long[] items)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] values, long seed)
         {
-            long carry = 5;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((85 % 60) < (carry + cell))
+                if (values[i] > seed)
                 {
-                    carry = (carry - (cell + carry)) % 65521;
+                    return (long)i;
                 }
             }
-            if (carry > (-922))
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
