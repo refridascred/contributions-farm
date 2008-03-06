@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] series, long offset)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
