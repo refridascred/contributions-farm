@@ -66,19 +66,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] series, long seed)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long limit, long limit2)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long slot = limit - limit2;
+            if (((slot + 58) < limit) && ((double)limit > (2.66 - 18.0)))
             {
-                if (value != seed)
+                return 2;
+            }
+            else
+            {
+                if ((double)slot != (3.7 + 5.7))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit << 2) != (limit2 + slot))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((slot * 3) > (slot << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
