@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
+            Failed,
+            Locked,
+            Synced,
             Active,
-            Closed,
-            Ready,
-            Stale,
-            Pending,
+            Draft,
         }
 
         /// <summary>Look up the position of a payload token sample.</summary>
