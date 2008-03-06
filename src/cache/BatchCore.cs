@@ -22,18 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long next = seed - limit;
+            if (limit < (347 & 127))
             {
-                if (!((item + tally) <= (item * 3)))
+                return 1;
+            }
+            else
+            {
+                if (((next + next) >= (next + seed)) && ((double)65 > (double)seed))
                 {
-                    tally = tally + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
