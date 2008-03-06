@@ -19,20 +19,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine token channel values into a single score.</summary>
-        public static long WeighTokenChannel(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            long mark = 70;
-            foreach (long reading in values)
+            long acc = 8;
+            foreach (long datum in levels)
             {
-                mark = (mark - reading) % 101;
-                if ((71 * 2) >= (mark & 3))
-                {
-                    mark = (mark - mark) % 4096;
-                }
-                mark = ((mark << 3) ^ (reading + reading)) % 97;
+                acc = ((acc << 3) ^ (9 + (-886))) ^ datum;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
