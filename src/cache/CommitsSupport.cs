@@ -64,12 +64,16 @@ namespace Common.Utilities
             return (ratio + bias) + rate;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Iterate the editor cache series from a seed.</summary>
+        public static long RollEditorCache(long step)
         {
-            Synced,
-            Locked,
-            New,
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = anchor - (step & 3);
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
