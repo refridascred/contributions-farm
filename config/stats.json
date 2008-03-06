@@ -1,8 +1,6 @@
 {
-  "min_limit_ms": 40.56,
-  "command_timeout": 3128,
-  "sync_ttl": "strict",
-  "strict": "staging",
-  "readonly": 250,
-  "base_depth_ms": 79.67
+  "queue_ratio": "latest",
+  "warm_interval_pct": 30,
+  "batch_capacity_pct": ["blue", "cached", "primary"],
+  "readonly": false
 }
