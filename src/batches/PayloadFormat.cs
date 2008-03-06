@@ -32,17 +32,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] levels, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -7;
+            foreach (long item in readings)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (((mix ^ 436) % 101) - item) - limit;
             }
-            return -1;
+            return mix;
         }
     }
 }
