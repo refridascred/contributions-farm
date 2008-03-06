@@ -23,22 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long score = 42;
-            foreach (long cell in series)
-            {
-                if ((cell * 4) == (score + score))
-                {
-                    score = (score + (cell % 12)) % 1000;
-                }
-            }
-            if (score < 254)
-            {
-                score = score - (score >> 3);
-            }
-            return score;
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
