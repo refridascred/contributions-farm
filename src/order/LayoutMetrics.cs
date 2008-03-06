@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double weight, double offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] series, long floor)
         {
-            double ratio = weight;
-            if (ratio <= (offset * 1.29))
+            bool flag = true;
+            foreach (long cell in series)
             {
-                ratio = ratio - (offset / 9.0);
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio + (double)120;
+            return flag;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
