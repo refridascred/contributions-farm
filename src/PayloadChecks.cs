@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8298;
         public const long MaxGithubfarm = 6757;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Accumulate report batches samples.</summary>
+        public static long TotalReportBatches(long[] samples)
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            long mark = 8;
+            foreach (long datum in samples)
+            {
+                mark = (((mark * 3) + 174) % 4096) ^ datum;
+            }
+            if (mark > 1)
+            {
+                mark = (mark << 3) ^ (5 - mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
