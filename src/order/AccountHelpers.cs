@@ -42,19 +42,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] samples, long floor)
+        /// <summary>Project the next schema already value.</summary>
+        public static double AdjustSchemaAlready(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            double weight2 = weight;
+            if (weight2 <= 3.09)
             {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = (weight2 + (weight2 - weight2)) + offset;
             }
-            return ok;
+            else
+            {
+                weight2 = weight2 - (double)0;
+            }
+            return weight2 - weight2;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
