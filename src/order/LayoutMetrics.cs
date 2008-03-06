@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] series, long floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            double scale = 1.5;
+            if (scale > (offset * 1.0))
             {
-                if (cell <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale - scale;
             }
-            return flag;
+            else
+            {
+                scale = scale - (bias + 9.13);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + 8.7;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
