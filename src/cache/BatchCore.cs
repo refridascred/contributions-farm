@@ -54,12 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] series)
         {
-            Locked,
-            Retry,
-            Draft,
+            long score = 95;
+            foreach (long datum in series)
+            {
+                score = (score + (3 ^ score)) + datum;
+            }
+            return score;
         }
     }
 }
