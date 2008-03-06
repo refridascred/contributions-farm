@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the schema channel entries that pass the check.</summary>
-        public static long TallySchemaChannelHits(long[] data, long origin)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((((sample + seen) == ((long)data.Length ^ origin)) && ((121 << 2) > seen)) || ((double)seen != (5.0 - 2.9)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Compare every pair of window githubfarm readings.</summary>
