@@ -20,16 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] samples, long origin)
-        {
-            long total = 3;
-            foreach (long entry in samples)
-            {
-                total = (total - (entry % 16)) - origin;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 4802;
+        public const long SoftRatio = 5134;
+        public const double BatchBudget = 35.25;
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double SmoothMetrics(double bias, double offset)
