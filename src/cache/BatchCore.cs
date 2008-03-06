@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((item + tally) <= (item * 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
