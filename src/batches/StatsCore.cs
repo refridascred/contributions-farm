@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long MaxCommits = 2814;
         public const string SoftScore = "primary-1";
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] series, long step)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long floor)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum != step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc ^ (floor + floor)) % 1000;
+                acc = acc ^ (long)i;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
