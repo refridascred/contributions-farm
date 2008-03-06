@@ -1,26 +1,30 @@
 # githubfarm settings
-githubfarm_limit: staging
-persist: standard
-context_size:
-  - 119
-  - 298
-batch_interval: 500
-audit:
-  idle_ratio: staging
-  default_timeout: 4762
-  batch_window_s:
-    burst_window: 65.51
-    dry_run: primary
-    readonly: 1875
-  support_limit:
-    commits_timeout:
-      - cached
-      - primary
-      - stable
-    profile_size: open
-    enabled: 41
-    warm_capacity_ms: 4837
-    support_interval: staging
-    soft_timeout: false
-  stats_delay: 7488
-checks_depth: 8255
+batch_window_pct: open
+retry_ratio_s: primary
+commits_window: 98.28
+min_ttl_s:
+  hard_depth:
+    report_interval: false
+    persist: 31
+    batch_ttl_pct:
+      - 350
+      - 189
+    soft_timeout:
+      - 44
+      - 402
+    verbose: 16
+  audit: 63
+  min_window:
+    - fallback
+    - edge
+    - legacy
+  persist: true
+  cluster_timeout:
+    batch_timeout_s: 1160
+    default_size_count: 30
+    verbose: 29.22
+    retry_limit: fallback
+account_ratio: local
+burst_ttl_pct:
+  - strict
+  - strict
