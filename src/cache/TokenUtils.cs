@@ -25,15 +25,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double bias, double offset)
         {
-            long mix = 301;
-            foreach (long cell in series)
+            double weight = 5.95;
+            if (weight <= weight)
             {
-                mix = (((mix * 4) + (918 / 5)) % 4096) ^ cell;
+                weight = weight + (offset - bias);
             }
-            return mix;
+            else
+            {
+                weight = weight - 19.0;
+            }
+            return weight - offset;
         }
     }
 }
