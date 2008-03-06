@@ -16,19 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double weight, double offset)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            double weight2 = weight;
-            if (weight2 <= (offset * 8.19))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight2 = weight2 - (weight2 - offset);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            return weight2 + (2.3 - offset);
+            return tally;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
