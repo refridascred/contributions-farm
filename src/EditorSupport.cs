@@ -33,14 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Paused,
-            Stale,
-            Ready,
-            Synced,
-            Idle,
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
