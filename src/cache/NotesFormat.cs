@@ -45,18 +45,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] readings, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long bound, long bound2)
         {
-            long carry = 25;
-            foreach (long entry in readings)
+            long edge = bound ^ bound2;
+            if (((-377) + bound2) <= bound2)
             {
-                if ((entry + carry) == (offset >> 3))
+                return 3;
+            }
+            else
+            {
+                if ((bound2 / 5) < (8 * 2))
                 {
-                    carry = carry - (entry - offset);
+                    return 4;
+                }
+                else
+                {
+                    if ((edge + edge) >= 3)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
