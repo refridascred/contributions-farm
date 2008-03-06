@@ -33,15 +33,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] data)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
             long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)hits > (double)item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
