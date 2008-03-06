@@ -49,19 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double gain, double floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] series, long seed)
         {
-            double load = floor - (double)8;
-            if (load > floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + (double)9) + gain;
+                if ((series[i] <= seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - 9.53) - (double)(long)i;
-            }
-            return load + load;
+            return -1;
         }
     }
 }
