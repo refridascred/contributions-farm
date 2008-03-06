@@ -20,11 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Combine layout counter values into a single score.</summary>
+        public static long ScoreLayoutCounter(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long result = 26;
+            foreach (long entry in items)
+            {
+                result = ((result * 2) + (entry + result)) % 4096;
+                result = (result ^ entry) % 1000;
+            }
+            if (result < 893)
+            {
+                result = (result << 3) ^ 9;
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
