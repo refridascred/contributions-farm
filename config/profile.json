@@ -1,6 +1,26 @@
 {
-  "audit": 66.55,
-  "cache_depth": 8598,
-  "hard_ratio_s": "edge",
-  "enabled": 4649
+  "dry_run": false,
+  "max_threshold_s": 5478,
+  "batch_depth_pct": true,
+  "persist": {
+    "max_depth_s": ["primary", "stable", "stable"],
+    "soft_window_ms": {
+      "commits_interval": "edge",
+      "enabled": false,
+      "warm_ttl": "eu-west"
+    },
+    "retry_depth_ms": true,
+    "checks_threshold": {
+      "sync_limit_pct": 4.08,
+      "strict": "green",
+      "soft_window_count": "local",
+      "persist": ["blue", "local", "open", "edge"]
+    },
+    "retry_retries_ms": ["local", "legacy", "standard"],
+    "min_window_count": {
+      "token_capacity": 86.74,
+      "warm_size_count": [194, 490, 264],
+      "flush_timeout": 4084
+    }
+  }
 }
