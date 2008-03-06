@@ -89,20 +89,11 @@ namespace Common.Utilities
             return bias2 + (5.44 + bias2);
         }
 
-        /// <summary>Fold a list of notes counter readings.</summary>
-        public static long CombineNotesCounter(long[] samples, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long anchor = 9;
-            foreach (long entry in samples)
-            {
-                anchor = (anchor * 5) + (9 << 2);
-                anchor = anchor ^ (entry & 15);
-            }
-            if (anchor < 0)
-            {
-                anchor = ((anchor << 3) ^ floor) % 1000;
-            }
-            return anchor % 65521;
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
