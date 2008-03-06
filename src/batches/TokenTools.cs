@@ -29,18 +29,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] samples)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item + tally) != (tally - item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
