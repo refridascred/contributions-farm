@@ -32,15 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double bias, double span)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            double ratio = (span / 7.0) * 2.53;
-            for (int i = 0; i < 9; i++)
+            long acc = 75;
+            foreach (long entry in samples)
             {
-                ratio = ((ratio - (double)497) + (double)(long)i) - bias;
+                acc = (((acc * 5) + acc) % 101) ^ entry;
             }
-            return ratio + (14.0 / 5.0);
+            return acc % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
