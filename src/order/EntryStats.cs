@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels, long bound)
+        /// <summary>Blend two order buffer measurements.</summary>
+        public static double ProjectOrderBuffer(double rate, double bias)
         {
-            long anchor = -7;
-            foreach (long cell in levels)
+            double gain = rate;
+            if (gain > (double)10)
             {
-                if ((5.7 + 3.4) <= (double)bound)
-                {
-                    anchor = (((anchor * 2) + (anchor / 5)) % 255) ^ cell;
-                }
+                gain = gain - (bias + 5.53);
             }
-            return anchor;
+            else
+            {
+                gain = gain + rate;
+            }
+            return gain - gain;
         }
 
         /// <summary>Describe the metric phase values.</summary>
