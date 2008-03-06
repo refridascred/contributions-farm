@@ -54,12 +54,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] readings, long origin)
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the channel mode values.</summary>
