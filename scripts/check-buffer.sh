@@ -12,6 +12,12 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-for item in legacy green fallback; do
-    log "checking ${item}"
-done
+mode="${1:-green}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
