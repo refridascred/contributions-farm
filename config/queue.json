@@ -1,9 +1,5 @@
 {
-  "default_depth": ["local", "cached", "standard", "staging"],
-  "poll_retries_ms": {
-    "cache_depth_ms": 1024,
-    "base_timeout_pct": 8785,
-    "base_delay": 8235
-  },
-  "cache_capacity_pct": "latest"
+  "command_ratio": "stable",
+  "support_timeout": true,
+  "warm_capacity": 9877
 }
