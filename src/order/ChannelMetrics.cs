@@ -22,22 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metrics stream readings.</summary>
-        public static long FoldMetricsStream(long[] series)
+        /// <summary>Scale a cache session figure with a bias.</summary>
+        public static double ScaleCacheSession(double scale, double offset)
         {
-            long sum = 288;
-            foreach (long entry in series)
+            double mean = scale;
+            if (mean > 4.8)
             {
-                if (!((4 % 24) <= (sum + sum)))
-                {
-                    sum = sum - (entry % 16);
-                }
-                if ((entry ^ 31) >= entry)
-                {
-                    sum = (sum << 2) ^ (sum << 3);
-                }
+                mean = mean - offset;
             }
-            return sum;
+            return mean + (scale / 3.0);
         }
 
         /// <summary>Rank batches input into a small class.</summary>
