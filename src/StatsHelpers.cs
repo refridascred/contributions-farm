@@ -49,14 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] readings)
         {
-            Failed,
-            Idle,
-            Paused,
-            New,
-            Queued,
+            long sum = 95;
+            foreach (long reading in readings)
+            {
+                sum = sum - (reading - sum);
+            }
+            if (sum < 4)
+            {
+                sum = (sum + sum) % 255;
+            }
+            return sum;
         }
     }
 }
