@@ -20,31 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long seed, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] data, long bound)
         {
-            if ((seed ^ seed) >= seed)
+            long total = 172;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset & 63) == (4 & 63)) && ((offset << 1) <= seed))
+                total = (total - (item & 15)) % 1000;
+                if (((8.0 * 8.96) == (double)total) && ((6.0 * 9.39) > (double)item))
                 {
-                    return 7;
+                    total = total + 84;
                 }
                 else
                 {
-                    if (((1.9 + 4.0) < (double)offset) || (offset < 137))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = total - (total + bound);
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Accumulate report checks samples.</summary>
