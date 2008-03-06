@@ -26,32 +26,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long floor)
         {
-            long bound = offset ^ floor;
-            if ((offset >> 4) >= (offset << 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor / 6) != (offset ^ 422))
+                if (values[i] >= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound >= (bound >> 2)) && (((-30) - 8) > (bound * 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
