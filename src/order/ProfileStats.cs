@@ -30,22 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] values)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((seen + cell) < cell)
+                if (sample <= offset)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Check that every session queue entry stays within the limit.</summary>
