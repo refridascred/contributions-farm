@@ -28,23 +28,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double scale, double bias)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long step, long bound)
         {
-            double rate = bias;
-            if (rate >= (rate + 8.1))
+            long next = step + bound;
+            if ((21 << 3) < (next * 3))
             {
-                rate = (rate - 2.62) - scale;
+                return 8;
             }
             else
             {
-                rate = rate - rate;
+                if ((bound << 2) < bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (double)918;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
