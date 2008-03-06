@@ -13,38 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long limit, long bound)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            if ((bound >= (limit + limit)) || ((bound / 3) == (limit ^ limit)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((984 * 2) < (bound - bound)) || ((17.0 - 4.3) == (double)limit))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - limit) <= (limit * 2))
+                    if ((items[i] + items[j]) < 19)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit ^ (-9)) >= (bound - bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a token info.</summary>
