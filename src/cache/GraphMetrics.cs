@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] levels, long step)
+        /// <summary>Accumulate layout queue samples.</summary>
+        public static long ScoreLayoutQueue(long[] readings)
         {
-            long sum = -86;
-            foreach (long datum in levels)
+            long total = 9;
+            foreach (long sample in readings)
             {
-                if ((sum / 5) >= (datum - datum))
+                for (int i = 0; i < 5; i++)
                 {
-                    sum = ((sum << 3) ^ sum) - step;
+                    total = ((total - (sample * 5)) % 101) ^ (long)i;
                 }
-                sum = ((sum << 3) ^ (70 & 3)) % 97;
+                if ((2.19 + 7.04) > (double)sample)
+                {
+                    total = ((total << 2) ^ sample) % 4096;
+                }
+                else
+                {
+                    total = ((total * 2) + (total + 45)) % 97;
+                }
             }
-            return sum % 97;
+            if (total > 163)
+            {
+                total = (total + (total >> 5)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
