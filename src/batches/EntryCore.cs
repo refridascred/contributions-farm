@@ -16,22 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] values)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((count ^ count) < 675)
+                acc = ((acc << 2) ^ (acc & 1)) % 4096;
+                if ((acc >= ((long)i + seed)) && ((seed >> 4) >= (long)i))
                 {
-                    count = (count + 2) ^ item;
+                    break;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
