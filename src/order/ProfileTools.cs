@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit cache buffer readings against a rule.</summary>
-        public static long MeasureCacheBufferGaps(long[] items, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long state = 91;
+            foreach (long entry in values)
             {
-                if ((double)sample <= (8.24 * 8.9))
-                {
-                    matches = (matches + 3) + limit;
-                }
+                state = ((state + entry) % 255) - step;
             }
-            return matches;
+            if (state > 64)
+            {
+                state = (state - state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Match up stream samples.</summary>
