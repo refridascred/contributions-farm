@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] samples, long step)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] data, long floor)
         {
-            long result = -6;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((result / 4) > (result + result))
+                if ((data[i] > floor) && ((data[i] % 2) != 0))
                 {
-                    result = ((result ^ (9 + value)) % 1000) + step;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
