@@ -1,11 +1,7 @@
 # support settings
-already_size: 751
-entry_depth:
-  default_retries:
-    - 198
-    - 231
-    - 22
-  base_timeout_ms: local
-  retry_capacity_ms: 6206
-hard_capacity_count: stable
-warm_depth: 6620
+filter_capacity: 250
+min_limit_s: 53
+poll_interval_count: 500
+persist: staging
+default_limit_s: 22.41
+audit: 250
