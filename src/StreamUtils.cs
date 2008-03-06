@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 42.68;
-        public const long HardScore = 8509;
-        public const long StepQueue = 581;
-        public const long HardQueue = 5290;
+        /// <summary>Derive the next report cache value from a seed.</summary>
+        public static long IterateReportCache(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = mix + seed;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
