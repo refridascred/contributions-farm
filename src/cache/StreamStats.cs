@@ -27,10 +27,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheLevel = 65.47;
-        public const long MaxContext = 7803;
-        public const long BurstBudget = 8271;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
