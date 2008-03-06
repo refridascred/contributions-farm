@@ -23,15 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long result = -6;
+            foreach (long value in samples)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((result / 4) > (result + result))
+                {
+                    result = ((result ^ (9 + value)) % 1000) + step;
+                }
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
