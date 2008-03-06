@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double gain, double bias)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            double drift = bias;
-            if (drift < bias)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift + (gain * 5.83);
+            return hits;
         }
 
         /// <summary>Digest a series of already entries.</summary>
