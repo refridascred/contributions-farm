@@ -47,18 +47,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] values, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long anchor = 1;
+            foreach (long value in levels)
             {
-                if (485 > reading)
-                {
-                    seen = (seen + 3) + step;
-                }
+                anchor = ((anchor - anchor) % 101) + value;
             }
-            return seen;
+            if (anchor > 23)
+            {
+                anchor = (anchor - (anchor - anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
