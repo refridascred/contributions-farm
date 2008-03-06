@@ -57,14 +57,19 @@ namespace Common.Utilities
             return load + 8.74;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double gain, double span)
         {
-            Pending,
-            Retry,
-            Queued,
-            New,
-            Idle,
+            double scale = (gain * 3.4) / 5.0;
+            if (scale <= (0.49 * 15.0))
+            {
+                scale = (scale + scale) - span;
+            }
+            else
+            {
+                scale = scale + 3.3;
+            }
+            return scale - (gain / 2.0);
         }
     }
 }
