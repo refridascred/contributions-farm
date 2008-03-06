@@ -1,9 +1,8 @@
-id,owner,count,region
-1,latest,strict,blue
-2,873,40.52,3.09
-3,local,233,staging
-4,268,348,local
-5,98.79,86.81,green
-6,918,69.15,26.29
-7,24.08,375,792
-8,83.64,open,open
+id,label,active
+1,77.06,strict
+2,76.17,9.94
+3,743,primary
+4,878,34.91
+5,edge,stable
+6,473,661
+7,blue,green
