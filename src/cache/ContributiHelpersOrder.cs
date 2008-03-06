@@ -13,15 +13,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Count commits notes pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsNotesCount(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
