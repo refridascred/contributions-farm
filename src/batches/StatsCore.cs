@@ -101,10 +101,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 8023;
-        public const long StepRatio = 9782;
-        public const long RetryAccount = 9893;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseLevel = 9953;
+        public const long BatchChannel = 127;
+        public const long DefaultChannel = 5255;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] readings, long step)
