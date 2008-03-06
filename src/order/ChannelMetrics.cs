@@ -33,31 +33,9 @@ namespace Common.Utilities
             return mean + (scale / 3.0);
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long step, long seed)
-        {
-            if ((seed + 95) != (seed * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((19.0 + 3.0) >= (double)step) || ((double)seed < (9.0 - 7.1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed < (step - step)) || ((seed << 1) > (74 * 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardScore = 6777;
+        public const long BatchRatio = 8835;
+        public const long LimitSize = 7022;
     }
 }
