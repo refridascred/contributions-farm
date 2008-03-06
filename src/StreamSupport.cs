@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseSpan = 3301;
+        public const long BatchScore = 1731;
+        public const string HardFactor = "strict-edge";
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double weight, double span)
