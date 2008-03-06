@@ -39,17 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 5) + (seed % 10)) % 65521;
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheReport = "latest";
+        public const string WindowReport = "alpha-v2";
+        public const long DefaultRatio = 8305;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmBounds(long[] items, long limit)
