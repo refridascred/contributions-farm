@@ -37,17 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] levels, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
+                if ((tally < (item / 6)) || ((tally << 2) >= (target + target)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
