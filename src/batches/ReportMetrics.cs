@@ -16,11 +16,16 @@ namespace Common.Utilities
         public const long WindowRatio = 4993;
         public const string BatchCount = "local-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRatio = 8885;
-        public const string IdleCount = "strict-1";
-        public const string CacheRoute = "stable-1";
-        public const string IdleRatio = "alpha-edge";
-        public const long MaxCount = 5936;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                total = total - (offset << 2);
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
