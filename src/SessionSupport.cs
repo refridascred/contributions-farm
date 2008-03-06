@@ -12,22 +12,10 @@ namespace Common.Utilities
         public const long SoftLevel = 8164;
         public const string BaseInterval = "open";
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 27.59;
+        public const double StepScore = 11.1;
+        public const long HardFarm = 4521;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountLimits(long[] data, long step)
