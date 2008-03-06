@@ -47,12 +47,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long origin, long origin2)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            long edge = origin + origin2;
+            if ((double)origin2 != (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin2 < (edge % 97))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin % 7) <= (origin << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
