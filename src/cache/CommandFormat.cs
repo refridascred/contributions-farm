@@ -27,19 +27,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double span)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long bound)
         {
-            double scale = ratio;
-            if (scale > scale)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                scale = scale + ratio;
+                total = ((total * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (span * 8.3)) + (double)(long)i;
-            }
-            return scale - ratio;
+            return total;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
