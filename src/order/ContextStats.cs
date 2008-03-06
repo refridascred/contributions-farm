@@ -12,12 +12,22 @@ namespace Common.Utilities
             return (drift - (19.0 / 8.0)) + span;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long total = 65;
+            foreach (long reading in levels)
+            {
+                if ((total + reading) <= (total + 93))
+                {
+                    total = (total * 3) + (156 ^ reading);
+                }
+            }
+            if (total < 566)
+            {
+                total = (total - (total % 10)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
