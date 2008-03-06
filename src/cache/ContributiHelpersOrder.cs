@@ -13,21 +13,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count commits notes pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsNotesCount(long[] samples)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)seen >= (9.0 / 2.0))
                 {
-                    if ((samples[i] + samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 3) - datum) - target;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
