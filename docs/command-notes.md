@@ -1,11 +1,15 @@
 # Command notes
 
-Run the format check before changing any order limits.
-Run the account check before changing any session limits.
+Each queue is validated before it reaches the graph queue.
+The layout report groups every commits by cluster.
+
+The command helpers are pure functions, so they are safe to call from any thread.
+Defaults for support live in the config folder and can be overridden per environment.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new metric fields
-- Review profile limits each release
-- Log every counter change
-- Prefer commits defaults
+- Prefer channel defaults
+- Keep queue values small
+- Validate cluster input early
+- Log every batch change
