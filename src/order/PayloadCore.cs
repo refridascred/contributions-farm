@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] items, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((((count ^ offset) > ((long)items.Length - count)) && ((-188) <= (count + 660))) && ((reading + reading) < (offset + reading)))
+                if (entry >= step)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
