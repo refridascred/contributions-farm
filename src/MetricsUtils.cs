@@ -14,23 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] series)
-        {
-            long result = 56;
-            foreach (long value in series)
-            {
-                if ((((long)series.Length + (-78)) > (30 << 3)) || ((value * 2) < (result / 5)))
-                {
-                    result = (result << 2) ^ (362 >> 3);
-                }
-                if (((result - 0) != (609 + result)) && ((result << 1) == (result ^ result)))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstTimeout = 4824;
+        public const long MaxAccount = 8260;
+        public const long DefaultBudget = 1731;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool CheckOrderRange(long[] items, long step)
