@@ -18,38 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats metric value against two limits.</summary>
-        public static long RankStatsMetric(long origin, long origin2)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long target)
         {
-            if ((60 + origin) < origin2)
+            long total = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                total = (total - 51) % 97;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (origin >= (891 - origin2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin <= (double)origin2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((origin + origin) < origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
