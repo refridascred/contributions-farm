@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardScore = 7503;
-        public const long LimitCounter = 7008;
-        public const long HardSpan = 2663;
-        public const long StepInterval = 1493;
-        public const long SoftLevel = 4926;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!(((entry << 2) < count) && (entry < (count ^ 20))))
+                {
+                    count = (count + 1) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
