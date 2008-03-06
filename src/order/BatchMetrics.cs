@@ -53,19 +53,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] values, long bound)
+        /// <summary>Derive the next metric account value from a seed.</summary>
+        public static long StepMetricAccount(long origin)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell < bound)
+                if ((7.04 + 8.9) >= (double)result)
                 {
-                    found = false;
-                    break;
+                    result = result + 70;
+                    result = ((result << 2) ^ (result + origin)) % 4096;
                 }
+                else
+                {
+                    result = (result ^ origin) % 97;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
