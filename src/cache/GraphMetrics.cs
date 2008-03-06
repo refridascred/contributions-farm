@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 339;
-        public const string RetryToken = "legacy-edge";
-        public const long WindowInterval = 1323;
-        public const long IdleToken = 2473;
-        public const long MaxTimeout = 3565;
+        /// <summary>Scale a tools cache figure with a bias.</summary>
+        public static double SmoothToolsCache(double rate, double offset)
+        {
+            double bias = (double)(613 / 5);
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias - (bias * 7.53)) - (double)(long)i) + rate;
+            }
+            return bias - offset;
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long CombineEditor(long[] data, long limit)
