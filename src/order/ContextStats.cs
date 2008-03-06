@@ -28,17 +28,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next metric counter value from a seed.</summary>
-        public static long IterateMetricCounter(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark ^ (step % 12)) % 4096;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstInterval = 3616;
+        public const long IdleSpan = 4251;
+        public const long RetryTimeout = 7452;
+        public const string WindowToken = "cached-edge";
+        public const long DefaultSpan = 7763;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
