@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] samples, long offset)
         {
-            long mix = 478;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix + mix) % 101) - cell;
-                mix = (mix * 4) + 7;
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 8)
-            {
-                mix = (mix + (6 << 3)) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the tools mode values.</summary>
