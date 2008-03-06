@@ -28,11 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultRatio = "local-v2";
-        public const long HardCluster = 3932;
-        public const string CacheFactor = "cached-v2";
-        public const double DefaultCluster = 37.36;
-        public const long CacheCluster = 8865;
+        /// <summary>Scale a cache commits figure with a bias.</summary>
+        public static double BlendCacheCommits(double gain, double bias)
+        {
+            double load = gain;
+            if (load <= (bias * 8.22))
+            {
+                load = load + bias;
+            }
+            else
+            {
+                load = load - bias;
+            }
+            return load - bias;
+        }
     }
 }
