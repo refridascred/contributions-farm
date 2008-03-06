@@ -27,38 +27,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a support checks pair into a bucket.</summary>
-        public static long RankSupportChecks(long step, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] readings, long offset)
         {
-            if ((double)step > (8.4 / 2.0))
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (step <= floor)
+                if (reading > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((step / 6) != (floor / 7)) || ((step + step) > (2 << 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step * 4) > (step % 100))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
