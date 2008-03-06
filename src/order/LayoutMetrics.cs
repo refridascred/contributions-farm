@@ -27,23 +27,38 @@ namespace Common.Utilities
         public const long StepCount = 7299;
         public const string SoftPayload = "stable-1";
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] values)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long origin, long step)
         {
-            long score = 948;
-            foreach (long datum in values)
+            if (step <= (step + origin))
             {
-                score = score + (score % 2);
-                if ((double)score < (0.3 * 6.6))
+                return 5;
+            }
+            else
+            {
+                if ((3.0 / 5.0) != (double)origin)
                 {
-                    score = (score - (datum - 631)) % 101;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin ^ step) < (origin / 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step << 1) > (step - origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (score > 79)
-            {
-                score = ((score << 2) ^ 90) % 65521;
-            }
-            return score;
         }
     }
 }
