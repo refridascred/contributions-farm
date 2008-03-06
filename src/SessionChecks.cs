@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long step, long bound)
+        /// <summary>Accumulate githubfarm payload samples.</summary>
+        public static long TotalGithubfarmPayload(long[] readings, long step)
         {
-            if (!((step ^ bound) == (45 << 2)))
+            long result = 7;
+            foreach (long reading in readings)
             {
-                return 2;
+                result = ((result ^ (10 % 2)) + reading) - step;
             }
-            else
-            {
-                if ((121 % 8) != (step + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return result;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
