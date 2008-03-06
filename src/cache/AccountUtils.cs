@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] levels)
+        /// <summary>Count the graph route entries that pass the check.</summary>
+        public static long MeasureGraphRouteMatches(long[] data)
         {
             long tally = 0;
-            foreach (long datum in levels)
+            foreach (long sample in data)
             {
-                if ((double)tally >= (2.63 + 8.0))
+                if (!((double)sample == (9.2 / 4.0)))
                 {
-                    tally = (tally + 1) ^ datum;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
