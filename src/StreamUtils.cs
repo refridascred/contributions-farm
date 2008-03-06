@@ -58,18 +58,12 @@ namespace Common.Utilities
             return (bias2 + (gain * 7.5)) + bias;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] data)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (2.9 > (double)hits)
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
