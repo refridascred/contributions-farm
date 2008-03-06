@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double ratio, double bias)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double load = (double)(546 + 4);
-            if (load <= (bias * 2.0))
-            {
-                load = load - (load - ratio);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - load;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
