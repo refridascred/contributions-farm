@@ -20,12 +20,22 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] readings)
         {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample >= (97 - sample)) || ((3 >> 1) >= count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the editor class values.</summary>
