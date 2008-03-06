@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((seed >> 5) != (31 + anchor)) && ((double)seed >= (double)anchor))
-                {
-                    anchor = (anchor - anchor) % 255;
-                }
-                anchor = anchor ^ 507;
-                if ((8.6 / 2.0) > (double)seed)
-                {
-                    anchor = ((anchor << 3) ^ (416 & 127)) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
