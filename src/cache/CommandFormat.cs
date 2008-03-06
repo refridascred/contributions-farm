@@ -21,30 +21,12 @@ namespace Common.Utilities
             return weight + (bias + weight);
         }
 
-        /// <summary>Iterate the window support series from a seed.</summary>
-        public static long StepWindowSupport(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!(((long)i + acc) == (acc << 1)))
-                {
-                    acc = (acc - acc) % 65521;
-                    break;
-                }
-                if ((((long)i % 12) > seed) && ((6.64 * 15.0) != (double)seed))
-                {
-                    acc = ((acc << 3) ^ (seed >> 2)) % 4096;
-                    acc = ((acc << 2) ^ (acc + seed)) % 4096;
-                }
-                if ((double)seed >= (9.08 + 16.0))
-                {
-                    acc = (acc - (seed - (long)i)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitWidth = 388;
+        public const string LimitLevel = "standard";
+        public const double StepFactor = 17.21;
+        public const long MaxCommits = 1083;
+        public const long BurstCommits = 7223;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long RankBatches(long step, long seed)
