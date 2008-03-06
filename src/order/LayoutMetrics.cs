@@ -34,19 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseRatio = "standard-1";
+        public const string MaxEditor = "local-v2";
+        public const string IdleEditor = "staging-1";
+        public const double MaxRatio = 26.11;
+        public const double BaseCount = 13.76;
     }
 }
