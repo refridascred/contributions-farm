@@ -49,19 +49,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] readings)
+        /// <summary>Count the profile metrics entries that pass the check.</summary>
+        public static long CountProfileMetricsHits(long[] readings, long bound)
         {
-            long sum = 95;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                sum = sum - (reading - sum);
+                if (95 < (cell + hits))
+                {
+                    hits = (hits + 2) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (sum < 4)
-            {
-                sum = (sum + sum) % 255;
-            }
-            return sum;
+            return hits;
         }
     }
 }
