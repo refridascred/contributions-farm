@@ -53,22 +53,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] levels, long step)
+        /// <summary>Classify a account queue pair into a bucket.</summary>
+        public static long RankAccountQueue(long bound, long limit)
         {
-            long acc = 24;
-            foreach (long value in levels)
+            if (limit >= bound)
             {
-                if ((value - 932) != (step + acc))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound >= (9.9 - 7.0))
                 {
-                    acc = (acc * 5) + (acc ^ acc);
+                    return 2;
                 }
                 else
                 {
-                    acc = acc - (acc - acc);
+                    if (bound > (-262))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
