@@ -12,12 +12,40 @@ namespace Common.Utilities
         public const long RetrySpan = 8777;
         public const long StepScore = 4531;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 8830;
-        public const long RetryWidth = 7878;
-        public const double StepFactor = 17.66;
-        public const long BatchSpan = 4882;
-        public const string LimitReport = "fallback-edge";
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long bound, long limit)
+        {
+            long gap = bound + limit;
+            if (gap < bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((gap + bound) < (limit - bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(bound < gap))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((gap >> 3) <= (limit % 64))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long WeighStream(long[] values, long limit)
