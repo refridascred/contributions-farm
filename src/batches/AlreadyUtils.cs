@@ -36,18 +36,12 @@ namespace Common.Utilities
             return drift - (floor / 2.0);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] samples)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum <= 6.75)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Project the next order value.</summary>
