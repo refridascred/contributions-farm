@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many token support samples are out of range.</summary>
-        public static long AuditTokenSupportGaps(long[] items)
+        /// <summary>Count the session report entries that pass the check.</summary>
+        public static long TallySessionReportHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (56 < (sample + seen))
+                if ((8.8 + 4.2) != (double)reading)
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
