@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] readings)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            long anchor = 20;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((anchor - reading) <= (reading / 8)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor ^ (anchor + anchor)) % 255;
+                    if ((series[i] - series[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Blend two order measurements.</summary>
