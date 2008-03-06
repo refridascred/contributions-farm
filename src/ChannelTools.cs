@@ -24,19 +24,32 @@ namespace Common.Utilities
             return weight2 - (weight2 + weight);
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long origin, long seed)
         {
-            long mark = 359;
-            foreach (long sample in readings)
+            long delta = origin ^ seed;
+            if ((seed & 31) > (delta / 3))
             {
-                if ((sample << 1) <= (sample + sample))
-                {
-                    mark = ((mark << 3) ^ sample) % 101;
-                }
-                mark = ((mark << 2) ^ (mark >> 4)) % 97;
+                return 8;
             }
-            return mark % 4096;
+            else
+            {
+                if ((5.7 - 2.4) <= (double)delta)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (delta <= (seed << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
