@@ -40,12 +40,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] readings, long limit)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            long mark = 3;
+            foreach (long value in readings)
+            {
+                if (value < (limit >> 5))
+                {
+                    mark = (mark - (value << 1)) % 255;
+                }
+            }
+            if (mark < 809)
+            {
+                mark = (mark * 5) + (mark >> 2);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate entry samples.</summary>
