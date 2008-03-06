@@ -34,11 +34,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseRatio = "standard-1";
-        public const string MaxEditor = "local-v2";
-        public const string IdleEditor = "staging-1";
-        public const double MaxRatio = 26.11;
-        public const double BaseCount = 13.76;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] values)
+        {
+            long score = 948;
+            foreach (long datum in values)
+            {
+                score = score + (score % 2);
+                if ((double)score < (0.3 * 6.6))
+                {
+                    score = (score - (datum - 631)) % 101;
+                }
+            }
+            if (score > 79)
+            {
+                score = ((score << 2) ^ 90) % 65521;
+            }
+            return score;
+        }
     }
 }
