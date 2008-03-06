@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] series)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell * 5) >= (cell & 127))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the layout status values.</summary>
