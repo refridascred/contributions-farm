@@ -83,19 +83,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] samples, long seed)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long target, long seed)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            if (target <= 5)
             {
-                if (sample != seed)
+                return 7;
+            }
+            else
+            {
+                if (((seed >> 1) <= (target ^ target)) && ((double)seed < (2.41 / 2.0)))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target > (4.5 / 6.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
