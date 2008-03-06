@@ -49,13 +49,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] items, long floor)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
