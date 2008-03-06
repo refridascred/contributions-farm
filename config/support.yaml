@@ -1,17 +1,39 @@
 # support settings
-format_threshold:
-  - 143
-  - 18
-enabled:
-  readonly: 35
-  flush_retries_pct: 93.97
-  batch_ratio_pct: 17
-  already_delay:
-    dry_run: 2413
-    poll_threshold_s:
-      - 275
-      - 180
-    retry_interval_ms: true
-verbose: 6849
-min_window_s: 63
-commits_threshold: fallback
+retry_retries:
+  - 455
+  - 335
+  - 380
+  - 454
+order_depth:
+  max_interval_count: 69.82
+  warm_depth:
+    max_retries: green
+    enabled: false
+    dry_run: stable
+  warm_retries:
+    - green
+    - strict
+    - fallback
+  contributi_interval: 2.82
+  hard_ttl:
+    - latest
+    - eu-west
+    - legacy
+  poll_window: cached
+tools_threshold: 20.32
+checks_depth:
+  burst_capacity: 60
+  entry_ratio: 85
+  poll_limit_ms: 15
+  soft_delay_pct:
+    enabled: staging
+    default_retries: 75
+    default_delay_ms:
+      - cached
+      - stable
+      - local
+      - cached
+    sync_threshold: 60
+    queue_retries: 48.83
+  tools_retries: 8521
+poll_capacity_s: green
