@@ -63,12 +63,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Audit order batches readings against a rule.</summary>
+        public static long TallyOrderBatchesOutliers(long[] levels, long bound)
         {
-            public double Total { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((bound & 15) > (cell * 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
