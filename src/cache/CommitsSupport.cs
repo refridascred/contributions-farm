@@ -78,16 +78,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                state = state + (state & 3);
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinFactor = 9743;
+        public const string HardInterval = "latest";
+        public const long DefaultPayload = 945;
+        public const double MaxRatio = 70.52;
+        public const double HardPayload = 19.62;
     }
 }
