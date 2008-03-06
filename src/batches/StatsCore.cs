@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] values, long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((seed >> 5) <= (seed / 5))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            Ready,
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
