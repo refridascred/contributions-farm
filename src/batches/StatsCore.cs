@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 3938;
-        public const double RetryCache = 57.83;
-        public const long MinCache = 7459;
-        public const double IdleCount = 81.44;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinGraph = 43.04;
+        public const long SoftScore = 2774;
+        public const long BaseGraph = 4360;
+        public const long StepGraph = 5088;
 
         /// <summary>Scale a notes layout figure with a bias.</summary>
         public static double ProjectNotesLayout(double scale, double bias)
