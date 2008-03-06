@@ -1,5 +1,8 @@
 {
-  "idle_window_ms": 1024,
-  "command_timeout": "open",
-  "base_ratio": "latest"
+  "soft_ratio_pct": "stable",
+  "burst_retries_ms": "standard",
+  "enabled": 3708,
+  "verbose": "edge",
+  "cache_timeout": true,
+  "batch_threshold": 94.95
 }
