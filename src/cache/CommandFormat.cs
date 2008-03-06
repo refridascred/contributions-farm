@@ -27,13 +27,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double span)
         {
-            Draft,
-            Synced,
-            Failed,
-            Done,
+            double scale = ratio;
+            if (scale > scale)
+            {
+                scale = scale + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (span * 8.3)) + (double)(long)i;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
