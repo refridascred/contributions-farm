@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] values)
         {
-            Active,
-            Done,
-            Idle,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally >> 3) <= tally)
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
