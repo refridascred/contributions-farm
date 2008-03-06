@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const double RetryTimeout = 72.63;
         public const double HardContributi = 72.23;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many order context samples are out of range.</summary>
