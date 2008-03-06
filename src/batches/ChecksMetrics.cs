@@ -33,18 +33,13 @@ namespace Common.Utilities
         public const long BaseDepth = 8273;
         public const long BurstInterval = 3223;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] levels, long offset)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell <= 1.0)
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
+            Stale,
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Measure how many farm metrics samples are out of range.</summary>
