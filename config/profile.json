@@ -1,22 +1,10 @@
 {
-  "max_retries_s": {
-    "queue_ttl": 6793,
-    "window_interval": 70,
-    "context_ttl": "edge",
-    "max_window": true,
-    "readonly": "cached",
-    "poll_size": 500
+  "warm_ttl_s": ["eu-west", "standard", "staging", "standard"],
+  "retry_retries_ms": {
+    "poll_retries": "local",
+    "poll_depth": "open",
+    "warm_size": 7636
   },
-  "poll_size_s": 250,
-  "metric_retries": "strict",
-  "hard_timeout_pct": 250,
-  "queue_interval": {
-    "flush_size_ms": {
-      "editor_ratio": 34.8,
-      "githubfarm_limit": 9.01,
-      "cache_depth_s": [410, 140]
-    },
-    "default_limit_ms": 83,
-    "format_limit": 68.78
-  }
+  "idle_timeout": 3775,
+  "hard_window_ms": true
 }
