@@ -31,20 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double bias, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            double mean = bias;
+            for (int i = 0; i < 6; i++)
             {
-                double mean = (double)(long)i - 19.0;
-                if (((double)sum < mean) && (2.0 < (3.0 - mean)))
-                {
-                    sum = (sum + (bound - bound)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                mean = (mean + (double)(long)i) - offset;
             }
-            return sum;
+            return mean + (bias + bias);
         }
 
         /// <summary>Describe the filter mode values.</summary>
