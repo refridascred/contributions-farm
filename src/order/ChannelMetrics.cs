@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long step, long target)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long next = step ^ target;
+            if ((6.6 - 12.0) < (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target - 455) >= (next + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Rank report counter input into a small class.</summary>
