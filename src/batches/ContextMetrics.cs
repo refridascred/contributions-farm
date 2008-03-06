@@ -42,15 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm cluster readings.</summary>
-        public static long FoldFarmCluster(long[] series, long target)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double ratio, double bias)
         {
-            long mix = 3;
-            foreach (long cell in series)
-            {
-                mix = ((mix << 3) ^ (78 + cell)) - target;
-            }
-            return mix % 4096;
+            double bias2 = bias;
+            return (bias2 + (bias / 8.0)) + ratio;
         }
 
         /// <summary>Describe the stream phase values.</summary>
