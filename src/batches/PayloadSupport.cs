@@ -21,17 +21,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] readings, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (double)(18 & 127);
+            for (int i = 0; i < 5; i++)
             {
-                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = ((bias2 - (weight - weight)) - (double)(long)i) - bias;
             }
-            return -1;
+            return bias2 - (double)6;
         }
     }
 }
