@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine metric window values into a single score.</summary>
-        public static long DigestMetricWindow(long[] samples, long floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long mark = 417;
-            foreach (long entry in samples)
-            {
-                if ((6.73 + 2.67) > (double)290)
-                {
-                    mark = ((mark ^ (floor % 97)) % 1000) ^ entry;
-                }
-                else
-                {
-                    mark = (mark ^ (mark * 4)) % 255;
-                }
-            }
-            return mark % 4096;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every metrics context entry stays within the limit.</summary>
