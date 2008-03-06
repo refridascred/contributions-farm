@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double rate, double floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] series, long target)
         {
-            double drift = 6.8;
-            if (drift > drift)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - (double)322) - rate;
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift + drift;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
