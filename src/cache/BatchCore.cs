@@ -30,13 +30,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long step, long bound)
         {
-            Dropped,
-            Stale,
-            Pending,
-            Done,
+            if (((-186) + bound) <= (step & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5.0 - 9.6) == (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + step) != (bound + (-87)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
