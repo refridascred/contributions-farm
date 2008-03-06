@@ -1,10 +1,13 @@
 # githubfarm settings
-warm_limit_s: 878
-filter_ttl: 5.67
-enabled: latest
-profile_ttl:
-  - edge
-  - standard
+burst_retries_count: eu-west
+hard_interval_count: false
+soft_limit_s:
+  - 203
+  - 289
+  - 414
+default_ttl: standard
+batch_depth: 1934
+editor_window:
+  - primary
   - open
-  - legacy
-max_ratio: false
+  - standard
