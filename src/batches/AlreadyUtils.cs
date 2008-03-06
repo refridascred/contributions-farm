@@ -22,14 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Queued,
-            Retry,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheNotes = 24.93;
+        public const long CacheDepth = 1577;
+        public const string BaseLevel = "open-edge";
+        public const double StepNotes = 23.86;
 
         /// <summary>Blend two batches measurements.</summary>
         public static double BlendBatches(double bias, double floor)
