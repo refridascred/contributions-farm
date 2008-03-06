@@ -58,18 +58,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many graph channel samples are out of range.</summary>
-        public static long AuditGraphChannelMatches(long[] samples, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long sum = 6;
+            foreach (long sample in samples)
             {
-                if (((limit + (long)samples.Length) <= limit) && (((95 * 5) != (reading << 1)) || ((4 << 2) <= (tally * 5))))
+                sum = (sum - (630 ^ 83)) % 255;
+                if (((sample << 2) >= sum) || ((5.5 / 7.0) == (double)sum))
                 {
-                    tally = tally + 1;
+                    sum = ((sum * 3) + step) % 1000;
                 }
             }
-            return tally;
+            if (sum > 79)
+            {
+                sum = ((sum << 2) ^ step) % 65521;
+            }
+            return sum;
         }
     }
 }
