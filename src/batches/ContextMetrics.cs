@@ -36,18 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] items, long origin)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double gain, double floor)
         {
-            long mix = 68;
-            foreach (long value in items)
+            double gain2 = (double)(7 << 3);
+            if (gain2 > (double)501)
             {
-                if (((double)mix != (5.07 - 18.0)) && ((15 - 63) != (origin % 10)))
-                {
-                    mix = (mix + origin) - value;
-                }
+                gain2 = (gain2 + (gain * 13.0)) - floor;
             }
-            return mix % 97;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + (13.0 - gain2)) - (double)(long)i;
+            }
+            return gain2 - 5.3;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
