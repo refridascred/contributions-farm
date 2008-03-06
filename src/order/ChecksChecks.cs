@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxLevel = 692;
-        public const long CacheChannel = 7278;
-        public const long IdleChannel = 4172;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long RollFormat(long origin)
