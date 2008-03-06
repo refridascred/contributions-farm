@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values, long limit)
-        {
-            long acc = 6;
-            foreach (long entry in values)
-            {
-                if (acc <= (0 + 68))
-                {
-                    acc = (acc - (limit << 3)) - entry;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 8199;
+        public const long SoftCount = 9411;
+        public const double LimitContributi = 47.78;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TotalWindow(long[] samples)
