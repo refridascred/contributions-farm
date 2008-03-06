@@ -19,15 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long acc = 8;
-            foreach (long datum in levels)
-            {
-                acc = ((acc << 3) ^ (9 + (-886))) ^ datum;
-            }
-            return acc;
+            Pending,
+            New,
+            Ready,
         }
 
         /// <summary>Grade a editor graph value against two limits.</summary>
