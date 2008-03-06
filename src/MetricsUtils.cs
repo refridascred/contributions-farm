@@ -34,31 +34,21 @@ namespace Common.Utilities
             return bias3 - (double)4;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long limit, long offset)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            if (((double)7 == (double)limit) || (offset > (limit + offset)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset - limit) <= (offset ^ limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + offset) >= (offset + limit))
+                    if ((values[i] + values[j]) != 19)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first token entry entry that matches the target.</summary>
