@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long StepInterval = 1493;
         public const long SoftLevel = 4926;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] samples, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 35;
+            foreach (long entry in items)
             {
-                if (samples[i] <= target)
+                carry = ((carry * 3) + (entry - carry)) % 101;
+                if ((double)entry != (double)554)
                 {
-                    return (long)i;
+                    carry = carry ^ entry;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
