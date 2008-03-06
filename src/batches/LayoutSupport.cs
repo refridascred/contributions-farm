@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a editor cache figure with a bias.</summary>
-        public static double ScaleEditorCache(double weight, double offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double rate = offset;
-            if (rate >= (rate - rate))
-            {
-                rate = (rate + offset) + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (7.56 / 5.0)) + (double)(long)i;
-            }
-            return rate - (offset * 9.9);
+            New,
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
