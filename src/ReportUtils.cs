@@ -41,25 +41,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next cache batch value from a seed.</summary>
-        public static long DeriveCacheBatch(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((offset ^ offset) == (38 * 4))
-                {
-                    total = ((total * 3) + (offset % 7)) % 255;
-                    break;
-                }
-                else
-                {
-                    total = total ^ (total & 1);
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 75.31;
+        public const long MaxTools = 3595;
+        public const double WindowTools = 86.05;
+        public const long LimitCount = 2165;
+        public const long CacheTools = 1396;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] series)
