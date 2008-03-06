@@ -30,13 +30,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Ready,
-            Idle,
-            Failed,
-            Paused,
+            Dropped,
+            Stale,
+            Pending,
+            Done,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
