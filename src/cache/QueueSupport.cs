@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const string StepTimeout = "alpha-1";
         public const string LimitRatio = "legacy-edge";
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] values, long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long acc = 8;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound <= (long)values.Length) && ((double)bound != (20.0 * 7.81)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc - bound) % 101) + cell;
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 793)
-            {
-                acc = acc - (bound ^ 58);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
