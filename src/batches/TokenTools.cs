@@ -23,14 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowSize = "alpha-1";
+        public const double HardSpan = 98.75;
+        public const long DefaultRoute = 8980;
+        public const long BatchDepth = 9346;
+        public const long StepRoute = 9812;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileGaps(long[] samples, long seed)
