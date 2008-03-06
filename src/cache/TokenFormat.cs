@@ -33,12 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "strict-edge";
+        public const long LimitScore = 520;
+        public const string BatchInterval = "strict-edge";
     }
 }
