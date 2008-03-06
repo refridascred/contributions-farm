@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] items, long bound)
         {
-            long anchor = 241;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum >> 1) != (datum + datum))
+                if (items[i] > bound)
                 {
-                    anchor = anchor + datum;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
