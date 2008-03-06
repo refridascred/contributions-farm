@@ -35,11 +35,18 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardFactor = 52.35;
-        public const long LimitSize = 7469;
-        public const long WindowBudget = 6145;
-        public const double BatchStream = 48.36;
+        /// <summary>Find the first channel cache entry that matches the target.</summary>
+        public static long SeekChannelCacheIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
