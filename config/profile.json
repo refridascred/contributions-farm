@@ -1,6 +1,12 @@
 {
-  "warm_threshold_s": false,
-  "poll_ttl_pct": [166, 134, 448, 428],
-  "burst_depth_ms": "green",
-  "route_capacity": [325, 335]
+  "farm_capacity": {
+    "poll_retries": ["open", "stable", "strict"],
+    "readonly": false,
+    "min_limit_s": 250
+  },
+  "warm_delay": 48,
+  "githubfarm_window": [256, 168],
+  "min_ratio": true,
+  "enabled": 82.3,
+  "poll_retries_pct": "strict"
 }
