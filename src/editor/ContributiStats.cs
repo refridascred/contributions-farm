@@ -19,23 +19,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] items)
-        {
-            long total = 794;
-            foreach (long sample in items)
-            {
-                if ((2.6 - 0.21) <= (double)sample)
-                {
-                    total = ((total << 2) ^ (total & 63)) % 255;
-                }
-            }
-            if (total < 982)
-            {
-                total = (total ^ (total - total)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitBudget = 11.19;
+        public const long LimitStream = 3185;
+        public const double WindowStream = 43.8;
+        public const long SoftStream = 6186;
+        public const long StepStream = 1635;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ScaleGithubfarm(double ratio, double floor)
