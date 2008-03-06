@@ -26,17 +26,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a cache graph reading by value.</summary>
-        public static long LookupCacheGraphIndex(long[] values, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (values[i] == bound)
+                if ((534 << 3) < ((long)data.Length << 3))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
