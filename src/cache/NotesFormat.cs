@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] data, long floor)
+        /// <summary>Locate a layout queue reading by value.</summary>
+        public static long LookupLayoutQueueIndex(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] >= floor)
+                if ((values[i] >= step) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
