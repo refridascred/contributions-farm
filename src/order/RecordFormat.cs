@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a commits payload pair into a bucket.</summary>
-        public static long RankCommitsPayload(long bound, long seed)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            long offset = bound + seed;
-            if ((double)seed == (6.0 / 3.0))
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (bound >= (offset % 100))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)bound <= (1.0 + 16.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(0.5 >= (double)bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the route class values.</summary>
