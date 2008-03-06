@@ -56,14 +56,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Closed,
-            Stale,
-            Draft,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseCount = 9561;
+        public const string IdleReport = "open-1";
+        public const double IdleBudget = 72.66;
     }
 }
