@@ -101,20 +101,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 8023;
+        public const long StepRatio = 9782;
+        public const long RetryAccount = 9893;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] readings, long step)
