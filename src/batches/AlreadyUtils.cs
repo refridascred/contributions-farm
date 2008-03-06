@@ -39,14 +39,18 @@ namespace Common.Utilities
             return rate + (double)4;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] samples)
         {
-            Done,
-            Stale,
-            Locked,
-            Closed,
-            Queued,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum <= 6.75)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
