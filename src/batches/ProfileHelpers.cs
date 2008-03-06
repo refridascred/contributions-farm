@@ -15,18 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] readings, long step)
+        /// <summary>Check that every command profile entry stays within the limit.</summary>
+        public static bool CheckCommandProfileBounds(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((double)datum >= 8.0)
+                if (sample > offset)
                 {
-                    matches = (matches + 2) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
