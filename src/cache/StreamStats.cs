@@ -33,12 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Count the schema metrics entries that pass the check.</summary>
+        public static long AuditSchemaMetricsMatches(long[] values)
         {
-            Failed,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (4.0 < (double)item)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
