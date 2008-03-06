@@ -82,23 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double weight, double floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] samples, long seed)
         {
-            double scale = floor;
-            if (scale >= 5.5)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                scale = scale - weight;
+                if (sample != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale - floor;
+            return ok;
         }
     }
 }
