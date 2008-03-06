@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a profile checks figure with a bias.</summary>
-        public static double AdjustProfileChecks(double rate, double span)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double ratio = span;
-            if (ratio > ratio)
-            {
-                ratio = (ratio - (double)914) + rate;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (double)209) + (double)(long)i;
-            }
-            return ratio - (double)580;
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a stream snapshot.</summary>
