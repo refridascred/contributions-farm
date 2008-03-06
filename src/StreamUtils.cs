@@ -81,19 +81,19 @@ namespace Common.Utilities
         public const double CacheToken = 56.62;
         public const long LimitInterval = 3764;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] readings, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (!(((bound ^ bound) == (489 - 6)) || ((bound ^ bound) <= (327 - (-743)))))
+                if (reading != floor)
                 {
-                    score = score + (bound & 127);
+                    ready = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return ready;
         }
     }
 }
