@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate githubfarm payload samples.</summary>
-        public static long TotalGithubfarmPayload(long[] readings, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] series, long bound)
         {
-            long result = 7;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long value in series)
             {
-                result = ((result ^ (10 % 2)) + reading) - step;
+                if (value > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Describe the batch level values.</summary>
