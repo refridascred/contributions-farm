@@ -1,14 +1,12 @@
 {
-  "record_delay": false,
-  "session_interval": ["primary", "stable"],
-  "default_timeout": 19,
-  "dry_run": "green",
-  "profile_timeout": ["standard", "staging"],
-  "already_depth": {
-    "channel_window": 12.38,
-    "compress": 13,
-    "hard_depth": 82,
-    "batch_size_count": "strict",
-    "payload_ttl": "stable"
+  "base_timeout": 8471,
+  "poll_size_s": 28.47,
+  "sync_interval_s": 4079,
+  "compress": {
+    "strict": 8626,
+    "max_window": [421, 254, 459, 8],
+    "verbose": 27,
+    "batch_capacity": ["stable", "open"],
+    "report_delay": false
   }
 }
