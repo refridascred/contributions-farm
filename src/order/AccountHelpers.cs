@@ -85,18 +85,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record schema samples are out of range.</summary>
-        public static long TallyRecordSchemaHits(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (6.37 >= (double)step)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 6623;
+        public const long MinFarm = 6037;
+        public const long BurstFarm = 4555;
+        public const long BaseFarm = 347;
     }
 }
