@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of checks channel readings.</summary>
-        public static long DigestChecksChannel(long[] series, long target)
+        /// <summary>Audit batches entry readings against a rule.</summary>
+        public static long MeasureBatchesEntryOutliers(long[] series)
         {
-            long mix = 12;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                mix = (mix - (mix % 100)) - target;
-                if (mix >= (reading << 2))
+                if ((matches - sample) < sample)
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Look up the position of a payload token sample.</summary>
