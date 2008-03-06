@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long RetrySpan = 8777;
         public const long StepScore = 4531;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] data, long step)
         {
-            long acc = 478;
-            foreach (long sample in series)
+            long anchor = 26;
+            foreach (long reading in data)
             {
-                if ((3.94 / 4.0) > (double)acc)
+                if (((reading << 1) > (0 - 4)) && ((reading + reading) == (reading << 2)))
                 {
-                    acc = ((acc << 3) ^ (acc & 127)) + sample;
+                    anchor = (anchor - 68) - step;
                 }
             }
-            if (acc < 495)
-            {
-                acc = (acc ^ (acc >> 1)) % 97;
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
