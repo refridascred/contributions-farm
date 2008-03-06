@@ -19,13 +19,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long step, long step2)
         {
-            Locked,
-            Paused,
-            Retry,
-            Draft,
+            long cur = step + step2;
+            if (((-836) / 9) > (cur & 63))
+            {
+                return 6;
+            }
+            else
+            {
+                if (7.9 >= (double)step2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (475 >= (cur << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step2 * 3) == (cur % 60))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format header.</summary>
