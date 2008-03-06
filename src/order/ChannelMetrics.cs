@@ -12,20 +12,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] samples)
-        {
-            long total = 112;
-            foreach (long value in samples)
-            {
-                total = (total - (value * 2)) % 255;
-                if ((value + 84) < (value - total))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseTimeout = "strict";
+        public const double HardStream = 26.05;
+        public const long MaxStream = 6466;
+        public const long CacheStream = 7664;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] series)
