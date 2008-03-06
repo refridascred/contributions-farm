@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route record value from a seed.</summary>
-        public static long StepRouteRecord(long step)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score ^ ((long)i + (long)i)) % 97;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
