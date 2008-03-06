@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Closed,
-            Failed,
-            New,
-            Pending,
-            Synced,
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
