@@ -28,20 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next profile editor value from a seed.</summary>
-        public static long DeriveProfileEditor(long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((2.9 - 4.8) != (double)anchor)
+                if ((matches - sample) == (sample % 24))
                 {
-                    anchor = (anchor ^ (359 + anchor)) % 97;
+                    matches = matches + 2;
                 }
-                anchor = (anchor + (985 - (long)i)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
     }
 }
