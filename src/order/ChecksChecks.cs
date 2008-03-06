@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] levels, long seed)
+        /// <summary>Fold a list of already schema readings.</summary>
+        public static long CombineAlreadySchema(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mix = 639;
+            foreach (long entry in data)
             {
-                if (seen > (cell + seen))
+                if (((mix + entry) < limit) || (6 < limit))
                 {
-                    seen = (seen + 1) - seed;
+                    mix = (mix ^ mix) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = ((mix << 3) ^ (entry / 8)) % 101;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Describe the commits class values.</summary>
