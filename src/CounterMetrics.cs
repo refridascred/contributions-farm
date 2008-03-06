@@ -27,19 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every queue profile entry stays within the limit.</summary>
-        public static bool CheckQueueProfileRange(long[] series, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (value > seed)
+                if ((tally << 2) <= (long)series.Length)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
