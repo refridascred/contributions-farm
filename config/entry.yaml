@@ -1,20 +1,6 @@
 # entry settings
-batch_ratio:
-  filter_ttl: true
-  burst_delay: false
-  retry_capacity_ms:
-    - strict
-    - open
-    - blue
-payload_ttl:
-  compress: 7395
-  profile_capacity: true
-  stats_window:
-    audit: 500
-    batch_threshold: 100
-    max_size: false
-    enabled: open
-  enabled: false
-  burst_size: fallback
-persist: false
-metric_threshold: 6060
+readonly: 64.32
+poll_capacity_ms: 14.19
+base_ttl_count: 33.13
+flush_retries_s: green
+cache_window: open
