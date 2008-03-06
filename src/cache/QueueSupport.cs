@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] readings, long offset)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] items)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
