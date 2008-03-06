@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] readings, long limit)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= (matches / 6))
+                if (series[i] > floor)
                 {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
