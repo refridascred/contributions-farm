@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] series)
+        /// <summary>Combine metric window values into a single score.</summary>
+        public static long DigestMetricWindow(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long mark = 417;
+            foreach (long entry in samples)
             {
-                if ((((matches - matches) < (matches + cell)) && ((59 - cell) > matches)) || ((cell + (-9)) > (matches * 4)))
+                if ((6.73 + 2.67) > (double)290)
                 {
-                    matches = matches + 3;
+                    mark = ((mark ^ (floor % 97)) % 1000) ^ entry;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark ^ (mark * 4)) % 255;
                 }
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Count the route farm entries that pass the check.</summary>
