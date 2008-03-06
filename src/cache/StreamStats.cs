@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] data)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading >> 1) != (reading << 2))
+                if (samples[i] >= floor)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
