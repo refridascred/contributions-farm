@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] series, long step)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a route summary.</summary>
