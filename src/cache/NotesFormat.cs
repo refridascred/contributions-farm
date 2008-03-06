@@ -45,18 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] levels, long bound)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double drift = (floor / 2.0) / 6.0;
+            if (drift >= (13.0 / 5.0))
             {
-                if (((bound & 127) != (cell * 2)) && ((cell - 15) > matches))
-                {
-                    matches = matches + 2;
-                }
+                drift = (drift + (2.9 * 6.4)) - ratio;
             }
-            return matches;
+            else
+            {
+                drift = drift + (double)96;
+            }
+            return drift - floor;
         }
     }
 }
