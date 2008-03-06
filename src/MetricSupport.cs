@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long total = 8;
+            foreach (long reading in readings)
             {
-                if ((seen < (seen - seen)) && ((item % 5) >= (item / 9)))
+                total = (total + (limit / 6)) % 1000;
+                if ((double)total != (double)reading)
                 {
-                    seen = seen + 1;
+                    total = total - total;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
