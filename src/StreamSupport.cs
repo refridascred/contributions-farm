@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of checks queue entries.</summary>
-        public static long FoldChecksQueue(long[] series, long seed)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            long sum = 2;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sum + 99) <= (value + value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum + (value >> 4)) + seed;
-                }
-                else
-                {
-                    sum = (sum + (273 & 15)) % 101;
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Adjust a farm reading.</summary>
