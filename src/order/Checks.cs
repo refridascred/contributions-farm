@@ -54,11 +54,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long limit)
         {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
+            if ((limit ^ target) <= (limit + 75))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) <= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
