@@ -29,24 +29,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] readings, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long total = 19;
-            foreach (long entry in readings)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                long tally = (1 ^ 33) * 4;
-                if ((seed > (tally ^ seed)) && (total > (seed + 0)))
-                {
-                    tally = (tally + (entry + seed)) % 255;
-                    continue;
-                }
-                if (total >= 8)
-                {
-                    total = ((total * 3) + (seed % 60)) % 65521;
-                }
+                mix = mix ^ limit;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
     }
 }
