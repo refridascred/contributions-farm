@@ -1,7 +1,7 @@
 # support settings
-cache_window_count: 33.77
-retry_timeout_s: fallback
-dry_run: 49.27
-batch_delay_pct:
-  - 423
-  - 123
+batch_capacity_s: 9053
+cache_limit_count: false
+sync_ratio_s:
+  - 232
+  - 75
+  - 222
