@@ -22,12 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "staging-v2";
-        public const double BaseLayout = 23.16;
-        public const long MaxCount = 4774;
-        public const long IdleLayout = 6571;
-        public const long SoftLayout = 591;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Closed,
+            Ready,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long SoftMetric = 8613;
