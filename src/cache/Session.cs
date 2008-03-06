@@ -23,11 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "alpha-1";
-        public const long RetryStream = 4283;
-        public const string IdleStream = "latest-1";
-        public const long HardLevel = 4002;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] series)
+        {
+            long score = 42;
+            foreach (long cell in series)
+            {
+                if ((cell * 4) == (score + score))
+                {
+                    score = (score + (cell % 12)) % 1000;
+                }
+            }
+            if (score < 254)
+            {
+                score = score - (score >> 3);
+            }
+            return score;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long IdleTimeout = 2693;
