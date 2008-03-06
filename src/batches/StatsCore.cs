@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((2.8 / 5.0) > (15.0 * 2.7))
-                {
-                    matches = ((matches + 2) ^ cell) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftSpan = 85.83;
+        public const long HardBudget = 4924;
+        public const long MaxCommits = 2814;
+        public const string SoftScore = "primary-1";
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamLimits(long[] series, long step)
