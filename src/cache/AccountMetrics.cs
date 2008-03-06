@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] data, long origin)
         {
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((((origin + value) < origin) && ((89 + value) > (29 + 76))) || (origin > value))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the stream format entries that pass the check.</summary>
