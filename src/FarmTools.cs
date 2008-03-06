@@ -32,12 +32,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
+            New,
             Closed,
-            Stale,
-            Ready,
+            Dropped,
+            Retry,
         }
     }
 }
