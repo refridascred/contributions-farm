@@ -12,20 +12,13 @@ namespace Common.Utilities
         public const long RetryInterval = 9106;
         public const long BurstCounter = 5612;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] items)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long mix = 874;
-            foreach (long value in items)
-            {
-                if (!((value & 31) <= (306 << 3)))
-                {
-                    mix = mix + (mix - 364);
-                    mix = mix + (value >> 4);
-                }
-                mix = (mix ^ (value - value)) % 97;
-            }
-            return mix;
+            Active,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
