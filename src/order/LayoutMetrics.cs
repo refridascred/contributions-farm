@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const string BurstScore = "alpha-edge";
         public const long HardLevel = 3605;
 
-        /// <summary>Digest a series of channel batches entries.</summary>
-        public static long CombineChannelBatches(long[] samples)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] data, long offset)
         {
-            long total = 3;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total << 3) ^ cell;
+                if ((data[i] <= offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 3)
-            {
-                total = total ^ (total << 2);
-            }
-            return total % 97;
+            return -1;
         }
     }
 }
