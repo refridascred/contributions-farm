@@ -34,17 +34,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] samples, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long mix = 7;
+            foreach (long item in samples)
             {
-                acc = acc - (limit - acc);
-                acc = (acc * 4) + (limit + limit);
-                acc = ((acc * 4) + (long)i) % 1000;
+                if (bound <= (item & 255))
+                {
+                    mix = ((mix << 2) ^ (item * 3)) % 97;
+                    continue;
+                }
+                mix = mix ^ (mix + bound);
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
