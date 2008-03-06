@@ -13,11 +13,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 6400;
-        public const double BurstBuffer = 65.51;
-        public const string LimitTimeout = "standard-v2";
-        public const double MaxBuffer = 93.03;
+        /// <summary>Count the stream format entries that pass the check.</summary>
+        public static long CountStreamFormatOutliers(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (bound > (bound << 1))
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamOutliers(long[] series, long step)
