@@ -21,13 +21,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Classify a metric tools pair into a bucket.</summary>
+        public static long BucketMetricTools(long origin, long origin2)
         {
-            Active,
-            Draft,
-            Stale,
-            Dropped,
+            if (((origin2 >> 2) != (origin2 + origin)) && ((origin2 % 12) < (origin2 >> 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + origin) < (origin << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
