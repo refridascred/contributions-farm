@@ -24,12 +24,12 @@ namespace Common.Utilities
             return ratio - (double)580;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
-            public double Mode { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Project the next entry value.</summary>
