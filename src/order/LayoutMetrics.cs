@@ -32,21 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            Failed,
+            Dropped,
+            Ready,
         }
     }
 }
