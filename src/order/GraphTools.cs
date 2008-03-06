@@ -68,11 +68,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 2337;
-        public const long LimitGraph = 7936;
-        public const long BatchGraph = 1573;
-        public const string HardScore = "legacy-v2";
-        public const long SoftGraph = 2183;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
