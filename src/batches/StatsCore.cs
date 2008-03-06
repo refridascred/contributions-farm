@@ -78,10 +78,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseLevel = 9953;
-        public const long BatchChannel = 127;
-        public const long DefaultChannel = 5255;
+        /// <summary>Locate a cache token reading by value.</summary>
+        public static long FindCacheTokenIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] readings)
