@@ -27,17 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a entry counter sample.</summary>
-        public static long FindEntryCounterIndex(long[] items, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (items[i] > target)
+                if (((datum + hits) >= (hits & 63)) && ((double)datum == (17.0 + 4.0)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
