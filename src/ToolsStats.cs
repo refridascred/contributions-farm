@@ -66,19 +66,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools account entry stays within the limit.</summary>
-        public static bool CheckToolsAccountRange(long[] levels, long step)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            double weight = ratio;
+            if (weight >= weight)
             {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight - floor;
             }
-            return valid;
+            else
+            {
+                weight = weight - (ratio - weight);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (double)6;
         }
     }
 }
