@@ -1,15 +1,4 @@
 # githubfarm settings
-entry_delay: false
-commits_threshold: standard
-max_capacity_s:
-  cache_retries_count:
-    - 193
-    - 272
-  warm_limit: 7070
-  persist: false
-  already_retries: fallback
-  layout_ratio: green
-farm_ratio:
-  - 93
-  - 418
-  - 225
+cache_window_s: 80.16
+poll_capacity_s: local
+account_threshold: 5637
