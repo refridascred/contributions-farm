@@ -13,10 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 1236;
-        public const long BatchMetrics = 7236;
-        public const string LimitMetrics = "alpha";
+        /// <summary>Locate a order notes reading by value.</summary>
+        public static long LookupOrderNotesIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
