@@ -20,25 +20,17 @@ namespace Common.Utilities
             return drift - (4.23 + 2.9);
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long bound, long origin)
+        /// <summary>Look up the position of a support batch sample.</summary>
+        public static long LookupSupportBatchIndex(long[] samples, long bound)
         {
-            long diff = bound - origin;
-            if ((bound & 31) < (diff + origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin % 100) > (bound - diff)) && ((17.0 + 4.28) <= (double)bound))
+                if (samples[i] < bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
