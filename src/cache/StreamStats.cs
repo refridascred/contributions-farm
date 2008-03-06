@@ -41,10 +41,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxWidth = 45.95;
-        public const string DefaultSpan = "strict-v2";
-        public const long BatchEntry = 2815;
-        public const long BurstBudget = 5641;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double rate, double span)
+        {
+            double gain = 13.0 / 6.0;
+            return ((gain + gain) + rate) + span;
+        }
     }
 }
