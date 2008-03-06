@@ -26,10 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinFactor = "staging";
-        public const double BatchSpan = 7.68;
-        public const double HardWidth = 63.93;
+        /// <summary>Audit report already readings against a rule.</summary>
+        public static long MeasureReportAlreadyGaps(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((7 < (datum + hits)) || (hits >= bound))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long RankWindow(long bound, long limit)
