@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 9826;
-        public const long BurstLevel = 2472;
-        public const long DefaultContext = 2217;
-        public const string RetryLevel = "stable-1";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first graph token entry that matches the target.</summary>
         public static long SeekGraphTokenIndex(long[] items, long offset)
