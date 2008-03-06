@@ -27,14 +27,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] levels)
         {
-            Stale,
-            Ready,
-            Idle,
-            New,
-            Synced,
+            long acc = 7;
+            foreach (long item in levels)
+            {
+                if (!(acc <= (acc - acc)))
+                {
+                    acc = (acc - (item ^ acc)) % 101;
+                    acc = (acc - (acc + item)) % 97;
+                }
+                if (acc > (acc + acc))
+                {
+                    acc = acc + (acc % 100);
+                }
+                else
+                {
+                    acc = (acc - (acc << 1)) % 255;
+                }
+            }
+            return acc;
         }
     }
 }
