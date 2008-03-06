@@ -1,31 +1,16 @@
 # githubfarm settings
-persist: 1024
-poll_capacity_s: 100
-poll_limit_count: 2264
-batches_size:
-  - blue
-  - open
-  - open
-retry_timeout_ms:
-  strict: 16
-  default_delay:
-    retry_interval_pct: 7435
-    session_window: 13.98
-    cache_retries_ms: 3472
-    cache_threshold: 83
-    order_ratio: primary
-  record_timeout: true
-  poll_timeout_pct: 51.76
-  record_limit: 9120
-  warm_window:
-    burst_window: local
-    strict: 95
-    default_depth_count: false
-    soft_ttl_pct: latest
-    poll_window:
-      - 320
-      - 462
-      - 36
-      - 66
-    session_ttl: 73
-max_limit_pct: 1024
+metric_capacity: 1024
+report_retries: 6956
+sync_window: 60
+soft_interval:
+  - 166
+  - 261
+  - 380
+order_retries: 1024
+base_window_ms:
+  audit: 16.19
+  commits_depth: 18.31
+  poll_timeout_pct: 47.97
+  payload_capacity: 60.86
+  base_interval_pct: true
+  persist: staging
