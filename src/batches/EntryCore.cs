@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] readings, long bound)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < bound)
+                if (samples[i] == target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
