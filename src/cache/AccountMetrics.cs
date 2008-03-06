@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading >> 1) < (reading >> 5)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultRatio = "local-v2";
+        public const double BurstEntry = 45.61;
+        public const long IdleCount = 9766;
+        public const long IdleFactor = 7661;
+        public const long CacheEntry = 8411;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
