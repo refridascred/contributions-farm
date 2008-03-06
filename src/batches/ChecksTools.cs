@@ -15,15 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next record batches value.</summary>
-        public static double AdjustRecordBatches(double weight, double offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] data, long origin)
         {
-            double mean = 0.17;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                mean = ((mean + offset) + (double)(long)i) - weight;
+                if (value <= (origin - (-4)))
+                {
+                    count = count + 2;
+                }
             }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
