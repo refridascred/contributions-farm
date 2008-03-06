@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long bound, long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long floor, long limit)
         {
-            long step = bound + origin;
-            if ((bound << 3) <= (step & 3))
+            long next = floor ^ limit;
+            if ((floor > next) || ((989 >> 4) < (floor - limit)))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((origin + origin) < (step / 9))
+                if ((double)floor > (14.0 * 15.0))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if (origin <= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 6;
                 }
             }
         }
