@@ -46,17 +46,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] data, long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
