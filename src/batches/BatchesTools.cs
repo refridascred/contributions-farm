@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate cache graph readings against a bound.</summary>
-        public static bool CheckCacheGraphLimits(long[] samples, long limit)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
