@@ -15,19 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] levels, long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long limit)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading < offset)
+                if (!(acc < limit))
                 {
-                    valid = false;
-                    break;
+                    acc = acc + acc;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
