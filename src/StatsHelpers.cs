@@ -66,22 +66,14 @@ namespace Common.Utilities
         public const string WindowFormat = "cached-1";
         public const string CacheDepth = "strict";
 
-        /// <summary>Audit order batches readings against a rule.</summary>
-        public static long TallyOrderBatchesOutliers(long[] levels, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((bound & 15) > (cell * 3))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Idle,
+            Paused,
+            New,
+            Queued,
         }
     }
 }
