@@ -35,15 +35,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double bias, double floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] data, long target)
         {
-            double rate = bias;
-            if (rate <= floor)
+            long score = 308;
+            foreach (long sample in data)
             {
-                rate = rate - bias;
+                for (int i = 0; i < 6; i++)
+                {
+                    score = score + (long)i;
+                }
+                if ((target ^ score) < score)
+                {
+                    score = score - sample;
+                }
+                else
+                {
+                    score = score ^ (target + 591);
+                }
             }
-            return rate + (double)4;
+            if (score < 619)
+            {
+                score = (score - (652 >> 4)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
