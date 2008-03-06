@@ -19,32 +19,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of context payload readings.</summary>
-        public static long CombineContextPayload(long[] values)
+        /// <summary>Combine token channel values into a single score.</summary>
+        public static long WeighTokenChannel(long[] values)
         {
-            long sum = 7;
-            foreach (long value in values)
+            long mark = 70;
+            foreach (long reading in values)
             {
-                if ((double)sum <= 12.0)
+                mark = (mark - reading) % 101;
+                if ((71 * 2) >= (mark & 3))
                 {
-                    sum = (sum - (value % 7)) % 255;
-                    break;
+                    mark = (mark - mark) % 4096;
                 }
-                else
-                {
-                    sum = (sum + ((long)values.Length + value)) % 255;
-                    sum = sum ^ (value << 2);
-                }
-                if (!((double)sum >= (7.9 + 5.51)))
-                {
-                    sum = ((sum * 3) + 65) % 97;
-                }
+                mark = ((mark << 3) ^ (reading + reading)) % 97;
             }
-            if (sum > 75)
-            {
-                sum = ((sum << 3) ^ (sum * 5)) % 1000;
-            }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
