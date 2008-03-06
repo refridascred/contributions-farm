@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a tools cache figure with a bias.</summary>
-        public static double SmoothToolsCache(double rate, double offset)
+        /// <summary>Adjust a queue checks reading.</summary>
+        public static double ScaleQueueChecks(double scale, double floor)
         {
-            double bias = (double)(613 / 5);
-            for (int i = 0; i < 9; i++)
-            {
-                bias = ((bias - (bias * 7.53)) - (double)(long)i) + rate;
-            }
-            return bias - offset;
+            double ratio = floor;
+            return (ratio - floor) + scale;
         }
 
         /// <summary>Describe the graph phase values.</summary>
