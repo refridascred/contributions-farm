@@ -44,18 +44,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first report metric entry that matches the target.</summary>
-        public static long LookupReportMetricIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "fallback-v2";
+        public const long BurstSize = 700;
+        public const double StepRatio = 52.57;
+        public const double MaxSize = 66.52;
+        public const long IdleChannel = 4014;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
