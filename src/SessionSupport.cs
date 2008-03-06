@@ -35,18 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many graph metric samples are out of range.</summary>
-        public static long MeasureGraphMetricGaps(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((entry * 3) <= (entry + entry))
+                if ((677 & 15) <= (value + (long)series.Length))
                 {
-                    matches = matches + 2;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
