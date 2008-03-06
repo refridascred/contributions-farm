@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] readings, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (reading <= (matches / 6))
+                {
+                    matches = (matches + 3) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Grade a farm account value against two limits.</summary>
