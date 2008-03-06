@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the editor entry entries that pass the check.</summary>
