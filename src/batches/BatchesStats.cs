@@ -42,22 +42,12 @@ namespace Common.Utilities
         public const double MaxDepth = 60.56;
         public const long StepInterval = 9970;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items, long bound)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long score = 4;
-            foreach (long item in items)
-            {
-                if (score > (263 + (long)items.Length))
-                {
-                    score = ((score << 3) ^ ((-6) & 3)) - bound;
-                }
-                else
-                {
-                    score = (score + (82 - item)) % 97;
-                }
-            }
-            return score % 97;
+            Queued,
+            Active,
+            Done,
         }
     }
 }
