@@ -1,8 +1,29 @@
 {
-  "payload_retries": 630,
-  "batch_depth": 38.89,
-  "format_size": 27.99,
-  "sync_delay": 60,
-  "burst_threshold": "latest",
-  "readonly": 500
+  "soft_interval_count": 71.23,
+  "dry_run": 65.18,
+  "sync_timeout_pct": true,
+  "hard_size_count": 60,
+  "flush_capacity_s": {
+    "min_ttl": {
+      "warm_threshold_count": 64,
+      "strict": 18.1,
+      "channel_window": 17
+    },
+    "min_limit_count": {
+      "idle_size_pct": false,
+      "compress": "standard",
+      "verbose": "blue"
+    },
+    "stream_ratio": "open",
+    "base_ttl": {
+      "metric_window": false,
+      "verbose": 77.83,
+      "idle_timeout_ms": 7653,
+      "batch_ttl": 60,
+      "batch_timeout_ms": "local",
+      "dry_run": false
+    },
+    "poll_ttl": "standard",
+    "compress": true
+  }
 }
