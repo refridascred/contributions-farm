@@ -37,18 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long mix = 8;
-            foreach (long reading in items)
-            {
-                if (mix <= ((long)items.Length + reading))
-                {
-                    mix = ((mix * 3) + (mix - mix)) % 97;
-                }
-            }
-            return mix;
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a payload record.</summary>
