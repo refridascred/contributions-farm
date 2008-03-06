@@ -54,11 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowCount = "standard";
-        public const long HardGraph = 6198;
-        public const string MaxGraph = "legacy-edge";
-        public const long HardBudget = 7170;
-        public const double DefaultGraph = 58.62;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
