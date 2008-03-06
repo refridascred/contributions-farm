@@ -54,17 +54,11 @@ namespace Common.Utilities
         public const long IdleSession = 7753;
         public const long BaseSession = 2000;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] series, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = bias;
+            return load + scale;
         }
     }
 }
