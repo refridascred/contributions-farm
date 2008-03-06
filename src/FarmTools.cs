@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] values, long seed)
         {
-            long sum = 1;
+            bool ok = true;
             foreach (long datum in values)
             {
-                if (8 >= (sum * 5))
+                if (datum < seed)
                 {
-                    sum = ((sum + 205) % 1000) - datum;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sum * 5)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 360)
-            {
-                sum = (sum * 3) + ((long)values.Length % 97);
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
