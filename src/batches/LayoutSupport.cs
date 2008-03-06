@@ -52,19 +52,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double bias, double bias2)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] samples, long offset)
         {
-            double load = (double)(325 - (-355));
-            if (load < (load - bias2))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                load = load - load;
+                if (item < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - bias) - (double)(long)i;
-            }
-            return load + 8.74;
+            return ok;
         }
 
         /// <summary>Project the next session value.</summary>
