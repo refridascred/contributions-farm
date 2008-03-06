@@ -16,18 +16,14 @@ namespace Common.Utilities
             return weight + (span / 7.0);
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mark = 71;
-            foreach (long value in series)
-            {
-                if (mark >= ((-406) ^ value))
-                {
-                    mark = mark + (mark ^ value);
-                }
-            }
-            return mark;
+            Active,
+            New,
+            Closed,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the metric class values.</summary>
