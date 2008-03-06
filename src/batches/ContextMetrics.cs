@@ -27,17 +27,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] readings, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 68;
+            foreach (long value in items)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                if (((double)mix != (5.07 - 18.0)) && ((15 - 63) != (origin % 10)))
                 {
-                    return (long)i;
+                    mix = (mix + origin) - value;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Match up format githubfarm samples.</summary>
