@@ -35,10 +35,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultFactor = 1474;
-        public const string BurstContributi = "primary-edge";
-        public const string HardContributi = "staging-1";
-        public const long MaxFactor = 9621;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Done,
+            Retry,
+            Dropped,
+            Ready,
+            Pending,
+        }
     }
 }
