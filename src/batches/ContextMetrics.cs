@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] values, long offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Accumulate session samples.</summary>
