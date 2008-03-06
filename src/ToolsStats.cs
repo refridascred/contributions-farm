@@ -42,23 +42,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double scale, double offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double bias = scale;
-            if (bias > (scale * 18.0))
-            {
-                bias = bias - (double)(-419);
-            }
-            else
-            {
-                bias = bias - (offset / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (double)74) + (double)(long)i;
-            }
-            return bias - (scale / 8.0);
+            Locked,
+            Queued,
+            Stale,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
