@@ -1,10 +1,11 @@
 # Command notes
 
-Each queue is validated before it reaches the command queue.
-The profile report groups every format by schema.
+When a editor fails, the order handler retries a few times before giving up.
+Each batch is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Prefer command defaults
-- Log every queue change
-- Validate graph input early
+- Validate format input early
+- Document new account fields
+- Log every counter change
+- Keep token values small
