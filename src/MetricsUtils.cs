@@ -34,17 +34,31 @@ namespace Common.Utilities
             return bias3 - (double)4;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] items, long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long limit, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((double)7 == (double)limit) || (offset > (limit + offset)))
             {
-                if (items[i] <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((offset - limit) <= (offset ^ limit))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + offset) >= (offset + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first token entry entry that matches the target.</summary>
