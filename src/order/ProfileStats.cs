@@ -52,18 +52,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] items)
-        {
-            long mix = -815;
-            foreach (long value in items)
-            {
-                if ((double)value < (double)mix)
-                {
-                    mix = ((mix * 4) + (value - mix)) % 255;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "local-v2";
+        public const double BatchCount = 15.51;
+        public const long CacheLevel = 9554;
     }
 }
