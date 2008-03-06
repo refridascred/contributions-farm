@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a layout tools counter forward.</summary>
-        public static long SeriesLayoutTools(long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] items, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                mark = mark - mark;
-                mark = (mark * 4) + (945 << 2);
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((count - cell) > count)
                 {
-                    mark = ((mark * 5) + ((long)i2 ^ limit)) % 255;
+                    count = (count + 3) - bound;
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Digest a series of session entries.</summary>
