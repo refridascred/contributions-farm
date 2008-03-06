@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Retry,
-            Ready,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowToken = "alpha-v2";
+        public const string BatchToken = "stable-1";
+        public const long CacheToken = 1502;
+        public const double WindowLevel = 88.63;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] items, long offset)
