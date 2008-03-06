@@ -35,19 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] readings, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] levels, long limit)
         {
             long tally = 0;
-            foreach (long datum in readings)
+            foreach (long datum in levels)
             {
-                if (limit > (tally * 3))
+                if (limit <= (datum % 2))
                 {
-                    tally = (tally + 2) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
