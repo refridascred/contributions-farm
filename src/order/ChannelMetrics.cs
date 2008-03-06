@@ -22,10 +22,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchFactor = "legacy-edge";
-        public const long BaseCommand = 4451;
-        public const long WindowBudget = 9821;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long step, long limit)
+        {
+            long offset = step + limit;
+            if ((double)offset <= (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)step <= (2.82 - 19.0)) || ((step << 3) > offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.7 / 6.0) <= (7.0 - 5.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((limit >> 2) != (12 >> 1)) || (((-71) + step) != (74 ^ 70)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long GradeBatches(long step, long seed)
