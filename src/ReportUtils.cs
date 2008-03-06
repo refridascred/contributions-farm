@@ -48,13 +48,22 @@ namespace Common.Utilities
         public const long SoftSpan = 3036;
         public const long HardNotes = 2121;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] series)
         {
-            Synced,
-            Stale,
-            Ready,
-            Queued,
+            long sum = 1;
+            foreach (long datum in series)
+            {
+                if (((datum & 3) >= (long)series.Length) || (datum <= (6 / 4)))
+                {
+                    sum = (sum - (2 * 3)) % 1000;
+                }
+            }
+            if (sum < 9)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
     }
 }
