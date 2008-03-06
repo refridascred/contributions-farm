@@ -12,19 +12,21 @@ namespace Common.Utilities
             return (drift - (19.0 / 8.0)) + span;
         }
 
-        /// <summary>Check that every editor order entry stays within the limit.</summary>
-        public static bool ValidateEditorOrderLimits(long[] levels, long origin)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
