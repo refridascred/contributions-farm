@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Stale,
-            Dropped,
-            Idle,
-            Draft,
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Audit stream githubfarm readings against a rule.</summary>
