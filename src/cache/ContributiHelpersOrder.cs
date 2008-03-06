@@ -13,20 +13,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate channel tools readings against a bound.</summary>
-        public static bool GuardChannelToolsLimits(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepWidth = "stable";
+        public const double DefaultEditor = 94.43;
+        public const string StepSpan = "cached-v2";
+        public const long SoftEditor = 9395;
 
         /// <summary>Digest a series of schema editor entries.</summary>
         public static long TotalSchemaEditor(long[] values, long seed)
