@@ -58,18 +58,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] data)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((double)matches == (6.9 - 3.9))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
