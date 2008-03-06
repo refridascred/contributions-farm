@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 4648;
-        public const double SoftEditor = 1.83;
-        public const long CacheTimeout = 3933;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (17 >= (sample + seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double IdleContributi = 39.35;
