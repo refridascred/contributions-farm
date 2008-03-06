@@ -46,18 +46,18 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((matches * 3) == (entry << 3))
+                if (sample < (count + 953))
                 {
-                    matches = matches + 3;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
