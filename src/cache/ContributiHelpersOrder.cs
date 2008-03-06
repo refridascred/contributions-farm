@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] readings, long origin)
         {
-            long sum = 493;
-            foreach (long datum in samples)
+            long state = 60;
+            foreach (long datum in readings)
             {
-                sum = (sum ^ (datum - datum)) % 4096;
-                sum = (sum + (sum * 3)) % 255;
-                if (4.66 >= (double)datum)
+                if (1.48 >= (double)datum)
                 {
-                    sum = sum - (sum & 7);
+                    state = ((state + (state / 5)) % 1000) - origin;
                 }
             }
-            if (sum > (-496))
-            {
-                sum = (sum ^ (sum + 9)) % 1000;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Rank metrics farm input into a small class.</summary>
