@@ -87,22 +87,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] items)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!(76 > (count & 15)))
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
