@@ -51,18 +51,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] data)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((39 - seen) >= (seen / 8))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Adjust a counter reading.</summary>
