@@ -1,5 +1,11 @@
 {
-  "readonly": "local",
-  "max_delay_pct": true,
-  "batch_timeout_pct": 56.85
+  "poll_delay": "open",
+  "base_retries_count": 3298,
+  "base_threshold_ms": 9107,
+  "retry_interval": {
+    "schema_ratio": "strict",
+    "entry_window": [485, 205, 108],
+    "cache_delay": ["stable", "strict"]
+  },
+  "idle_size_s": 1528
 }
