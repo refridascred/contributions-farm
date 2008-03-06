@@ -15,15 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] items, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            long mix = 63;
-            foreach (long cell in items)
+            long sum = 43;
+            foreach (long item in samples)
             {
-                mix = (mix ^ (offset - (long)items.Length)) - cell;
+                if (10.0 < (double)item)
+                {
+                    sum = ((sum * 5) + (item << 3)) % 1000;
+                }
+                if ((sum << 2) >= (item * 5))
+                {
+                    break;
+                }
             }
-            return mix % 65521;
+            return sum % 65521;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
