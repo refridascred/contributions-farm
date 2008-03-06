@@ -39,18 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] values)
+        /// <summary>Look up the position of a session support sample.</summary>
+        public static long LookupSessionSupportIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((count >> 2) <= (count % 2)) || ((count >> 3) <= 690))
+                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
                 {
-                    count = (count + 1) + value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
