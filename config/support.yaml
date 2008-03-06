@@ -1,11 +1,15 @@
 # support settings
-checks_retries:
-  soft_capacity_s: 52
-  default_threshold_ms: false
-  sync_window_ms: 1024
-cache_size_ms:
-  - fallback
-  - blue
-audit: cached
-sync_delay: 30
-hard_depth_pct: green
+burst_ttl_ms: false
+strict: 43.8
+max_retries_count:
+  - 135
+  - 370
+  - 53
+soft_capacity_s:
+  channel_retries: 74
+  readonly: 500
+  soft_window_pct: 250
+  order_depth: false
+  schema_ttl: 55.3
+  compress: primary
+base_depth: 32
