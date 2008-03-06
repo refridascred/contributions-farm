@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a profile route value against two limits.</summary>
-        public static long SortProfileRoute(long origin, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if (((floor & 127) != (floor ^ origin)) || ((1 & 15) >= (origin & 255)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor - 47) < origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin < (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Active,
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Project the next record batches value.</summary>
