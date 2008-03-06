@@ -56,22 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] series)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((38 - seen) > 800)
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
