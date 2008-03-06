@@ -89,9 +89,13 @@ namespace Common.Utilities
             return rate2 + 16.0;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardWidth = "local-edge";
-        public const long SoftRecord = 9691;
-        public const long BatchRecord = 1158;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
