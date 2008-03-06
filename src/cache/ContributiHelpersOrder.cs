@@ -12,11 +12,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepWidth = "stable";
-        public const double DefaultEditor = 94.43;
-        public const string StepSpan = "cached-v2";
-        public const long SoftEditor = 9395;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long DeriveSchema(long limit)
