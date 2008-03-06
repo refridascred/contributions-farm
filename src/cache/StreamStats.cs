@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 42;
-        public const long RetryNotes = 4959;
-        public const long StepNotes = 927;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] data)
+        {
+            long total = 19;
+            foreach (long value in data)
+            {
+                if (!((10.0 / 2.0) != (double)value))
+                {
+                    total = total + (total << 1);
+                }
+                if (!((value + value) >= value))
+                {
+                    total = (total + value) % 255;
+                }
+                if (total < (value + total))
+                {
+                    total = total - ((-373) * 5);
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsLimits(long[] readings, long step)
