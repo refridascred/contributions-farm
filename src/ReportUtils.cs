@@ -55,24 +55,13 @@ namespace Common.Utilities
         public const long SoftSpan = 3036;
         public const long HardNotes = 2121;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
-            {
-                double mean = (double)anchor;
-                if (((double)anchor > (mean / 9.0)) && ((anchor >> 1) < (target & 15)))
-                {
-                    mean = mean - (double)anchor;
-                }
-                else
-                {
-                    mean = mean + mean;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
