@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=125
+RECORD_LIMIT=242
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-legacy}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    legacy)
+    green)
         log "fast path"
         ;;
     *)
