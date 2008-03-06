@@ -44,17 +44,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitWidth = 8873;
+        public const double MaxQueue = 96.18;
+        public const double RetryQueue = 60.57;
+        public const double MaxSize = 47.78;
+        public const string IdleQueue = "alpha-1";
     }
 }
