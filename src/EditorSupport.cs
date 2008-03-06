@@ -64,11 +64,23 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double rate, double span)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] series)
         {
-            double drift = span;
-            return (drift + 16.0) + rate;
+            long anchor = 71;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = ((anchor * 3) + (anchor + datum)) - (long)i;
+                }
+                anchor = anchor - (anchor / 8);
+                if ((anchor << 3) < 9)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
