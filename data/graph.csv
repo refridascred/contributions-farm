@@ -1,9 +1,6 @@
-id,score,token,level
-1,local,292,7.12
-2,67.7,215,216
-3,12.96,306,648
-4,eu-west,92.64,cached
-5,93,152,408
-6,395,47.41,10.19
-7,96.81,441,legacy
-8,128,legacy,324
+id,count,region,owner
+1,strict,54.55,32.62
+2,fallback,607,42.48
+3,107,48.26,476
+4,54.24,open,blue
+5,549,514,63.75
