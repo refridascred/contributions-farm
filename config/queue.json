@@ -1,7 +1,17 @@
 {
-  "hard_retries_count": 30,
-  "entry_capacity": "cached",
-  "min_retries": "eu-west",
-  "filter_capacity": "open",
-  "channel_depth": 60
+  "support_threshold": true,
+  "profile_limit": 421,
+  "warm_ratio": {
+    "verbose": false,
+    "commits_interval": 100,
+    "order_retries": {
+      "default_ttl_pct": 4857,
+      "hard_window": 1024,
+      "batches_ratio": 100,
+      "retry_window_s": "strict",
+      "enabled": [472, 245]
+    },
+    "hard_retries": [469, 426, 50, 103]
+  },
+  "graph_limit": 2.71
 }
