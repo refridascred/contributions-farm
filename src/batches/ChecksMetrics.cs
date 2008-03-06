@@ -46,18 +46,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if ((limit << 2) >= (floor ^ floor))
             {
-                if (!(((2 - datum) != (datum + datum)) && ((8.8 - 7.6) > (double)datum)))
+                return 3;
+            }
+            else
+            {
+                if ((double)limit <= 2.13)
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (((9 ^ floor) < limit) && (406 > floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a profile session counter forward.</summary>
