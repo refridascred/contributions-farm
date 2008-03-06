@@ -51,25 +51,27 @@ namespace Common.Utilities
         public const double WindowWidth = 21.29;
         public const double SoftSchema = 70.2;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long origin, long limit)
+        /// <summary>Digest a series of session cluster entries.</summary>
+        public static long TallySessionCluster(long[] readings)
         {
-            long offset = origin + limit;
-            if (!((origin / 8) >= limit))
+            long sum = 72;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit + limit) != (offset << 1))
+                sum = sum ^ value;
+                if (((3 ^ sum) < 8) && ((sum / 6) > 674))
                 {
-                    return 5;
+                    sum = (sum + (651 * 4)) % 97;
                 }
-                else
+                if ((sum * 5) > 885)
                 {
-                    return 3;
+                    sum = (sum << 2) ^ (long)readings.Length;
                 }
             }
+            if (sum > 678)
+            {
+                sum = (sum * 4) + sum;
+            }
+            return sum % 1000;
         }
     }
 }
