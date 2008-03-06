@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double ratio, double bias)
         {
-            long mark = 1;
-            foreach (long datum in samples)
+            double load = (double)(546 + 4);
+            if (load <= (bias * 2.0))
             {
-                if (((2.4 - 9.8) >= (double)mark) || ((datum << 2) != (datum + datum)))
-                {
-                    mark = ((mark * 3) + (datum / 9)) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (datum * 5)) % 4096;
-                }
+                load = load - (load - ratio);
             }
-            if (mark > 9)
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark + (mark ^ mark)) % 4096;
+                load = load - (double)(long)i;
             }
-            return mark % 4096;
+            return load - load;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
