@@ -1,12 +1,5 @@
 {
-  "base_depth_count": true,
-  "hard_limit": {
-    "compress": 8197,
-    "hard_depth": [54, 481, 225],
-    "cache_capacity_count": [309, 496],
-    "persist": ["green", "latest", "local", "staging"],
-    "readonly": 82.37,
-    "profile_window": "primary"
-  },
-  "checks_limit": ["fallback", "open", "local"]
+  "readonly": true,
+  "cache_window_ms": 100,
+  "idle_size_pct": 77.22
 }
