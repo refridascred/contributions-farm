@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 81.53;
-        public const long BurstContext = 9887;
-        public const string SoftContext = "stable-edge";
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((94 - limit) < (seen ^ limit))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long DigestWindow(long[] data)
