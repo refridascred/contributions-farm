@@ -39,14 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Queued,
-            New,
-            Stale,
-            Idle,
-            Draft,
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
