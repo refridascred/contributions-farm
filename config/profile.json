@@ -1,11 +1,13 @@
 {
-  "poll_delay": "open",
-  "base_retries_count": 3298,
-  "base_threshold_ms": 9107,
-  "retry_interval": {
-    "schema_ratio": "strict",
-    "entry_window": [485, 205, 108],
-    "cache_delay": ["stable", "strict"]
+  "strict": 48.13,
+  "window_limit": {
+    "flush_capacity_pct": 69.24,
+    "batch_ttl": 97.13,
+    "batches_size": [314, 367],
+    "enabled": 772,
+    "batch_size_ms": "legacy",
+    "max_delay": 93.55
   },
-  "idle_size_s": 1528
+  "compress": 91.0,
+  "verbose": "blue"
 }
