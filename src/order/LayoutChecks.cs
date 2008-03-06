@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] items, long seed)
         {
-            New,
-            Dropped,
-            Ready,
-            Queued,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
