@@ -45,26 +45,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Measure how many token window samples are out of range.</summary>
+        public static long CountTokenWindowMatches(long[] samples, long floor)
         {
-            long score = -203;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (score > (score - cell))
+                if (9.82 <= (double)floor)
                 {
-                    score = ((score * 4) + (63 - score)) % 65521;
-                }
-                else
-                {
-                    score = (score + score) % 255;
+                    hits = (hits + 1) - reading;
                 }
             }
-            if (score > 137)
-            {
-                score = (score + (score / 6)) % 4096;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the order status values.</summary>
