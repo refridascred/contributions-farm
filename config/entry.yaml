@@ -1,11 +1,20 @@
 # entry settings
-compress:
-  warm_capacity_count: false
-  min_capacity_s: blue
-  retry_limit: 2733
-session_size: 80
-poll_size:
-  idle_limit: 55.33
-  stats_size: false
-  soft_retries_s: 7424
-cache_retries: 11
+hard_window_count: 83.7
+record_delay: false
+batch_delay: true
+idle_interval_ms:
+  graph_size:
+    - 419
+    - 414
+    - 185
+  default_ttl:
+    idle_retries_ms: cached
+    idle_delay_pct: false
+    graph_ttl: 84.62
+    batch_window: 73
+    warm_ttl_pct: fallback
+  max_depth: 60
+  stats_capacity:
+    - 11
+    - 349
+    - 62
