@@ -47,13 +47,18 @@ namespace Common.Utilities
         public const long MaxWidth = 280;
         public const double WindowCount = 94.92;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many graph channel samples are out of range.</summary>
+        public static long AuditGraphChannelMatches(long[] samples, long limit)
         {
-            Active,
-            Retry,
-            Queued,
-            Done,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((limit + (long)samples.Length) <= limit) && (((95 * 5) != (reading << 1)) || ((4 << 2) <= (tally * 5))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
