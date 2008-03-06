@@ -82,38 +82,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long floor, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] readings, long target)
         {
-            if (floor < (floor >> 2))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((287 + seed) > (seed * 2))
+                if (sample <= (target ^ sample))
                 {
-                    return 7;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (((seed / 5) < (seed * 5)) || ((8.0 / 6.0) == (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed ^ 756) <= (162 - seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
