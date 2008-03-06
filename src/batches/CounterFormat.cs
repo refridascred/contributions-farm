@@ -26,18 +26,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] data)
         {
-            long score = 4;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (((reading + reading) < (reading << 1)) && (reading <= (score & 1)))
+                if ((double)hits > (double)item)
                 {
-                    score = ((score * 2) + 19) % 97;
+                    hits = hits + 3;
                 }
             }
-            return score % 97;
+            return hits;
         }
     }
 }
