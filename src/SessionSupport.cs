@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] readings, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (reading <= step)
+                if (entry >= target)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Measure how many graph metric samples are out of range.</summary>
