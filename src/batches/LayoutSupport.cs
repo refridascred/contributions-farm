@@ -66,18 +66,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric cluster samples.</summary>
-        public static long CombineMetricCluster(long[] values, long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = 0;
-            foreach (long sample in values)
-            {
-                if ((double)origin >= 17.0)
-                {
-                    carry = (((carry << 3) ^ ((-73) / 4)) % 65521) ^ sample;
-                }
-            }
-            return carry % 97;
+            New,
+            Pending,
+            Active,
+            Queued,
+            Done,
         }
     }
 }
