@@ -1,10 +1,7 @@
 {
-  "contributi_depth": 30.0,
-  "poll_capacity": 100,
-  "readonly": 34,
-  "dry_run": {
-    "flush_ttl_ms": true,
-    "cache_capacity_pct": "strict",
-    "retry_size": 3555
-  }
+  "route_limit": 7182,
+  "poll_limit_s": "eu-west",
+  "filter_timeout": 1024,
+  "channel_window": true,
+  "base_delay_ms": 90
 }
