@@ -1,5 +1,17 @@
 {
-  "command_ratio": "stable",
-  "support_timeout": true,
-  "warm_capacity": 9877
+  "readonly": true,
+  "filter_delay": {
+    "max_capacity": "local",
+    "buffer_ttl": 9964,
+    "max_ratio": 8
+  },
+  "cache_window_s": {
+    "warm_size": 60,
+    "warm_size_pct": 66.84,
+    "min_retries_ms": "fallback",
+    "hard_interval_pct": ["staging", "stable", "stable", "stable"],
+    "idle_window_ms": 6173
+  },
+  "burst_interval": "cached",
+  "metric_delay": true
 }
