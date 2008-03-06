@@ -14,13 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Ready,
-            Locked,
-            Synced,
             Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
