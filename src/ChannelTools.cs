@@ -31,22 +31,21 @@ namespace Common.Utilities
             return weight2 + (2.3 - offset);
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] data)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits == (6.1 * 15.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
