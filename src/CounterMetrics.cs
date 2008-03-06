@@ -28,11 +28,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchGithubfarm = 46.75;
-        public const long IdleGithubfarm = 2102;
-        public const string MinGithubfarm = "legacy-edge";
-        public const long BatchScore = 6161;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 3910;
+        public const string WindowCommits = "fallback-edge";
+        public const string DefaultFactor = "local-edge";
 
         /// <summary>Combine account context values into a single score.</summary>
         public static long DigestAccountContext(long[] readings, long step)
