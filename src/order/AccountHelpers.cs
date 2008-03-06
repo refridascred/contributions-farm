@@ -32,17 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] values, long offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
