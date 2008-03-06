@@ -19,15 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] samples, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long total = 3;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                total = (total - (entry % 16)) - origin;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Roll a account counter forward.</summary>
