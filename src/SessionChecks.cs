@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long floor, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long slot = floor - origin;
-            if ((double)slot == (4.15 - 4.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((origin % 3) < (floor % 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Weight { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a editor reading by value.</summary>
