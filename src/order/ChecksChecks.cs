@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many command metrics samples are out of range.</summary>
-        public static long AuditCommandMetricsGaps(long[] items)
+        /// <summary>Digest a series of command route entries.</summary>
+        public static long TallyCommandRoute(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long carry = 2;
+            foreach (long cell in levels)
             {
-                if ((value + matches) < (matches + value))
+                if (cell <= (carry * 3))
                 {
-                    matches = matches + 3;
+                    carry = (carry ^ cell) % 101;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = (carry << 3) ^ (cell * 2);
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Describe the commits class values.</summary>
