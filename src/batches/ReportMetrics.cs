@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((692 & 1) >= (tally + 22))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultCount = 9248;
+        public const string DefaultWidth = "alpha-edge";
+        public const long DefaultBatch = 4240;
+        public const string IdleBatch = "strict-v2";
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
