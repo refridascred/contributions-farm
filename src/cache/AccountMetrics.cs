@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a already order value against two limits.</summary>
-        public static long SortAlreadyOrder(long floor, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            if (((double)seed != (4.55 / 9.0)) || ((6.1 - 1.0) < (double)floor))
+            long total = 21;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor >= 2.7)
+                total = ((total * 3) + (entry * 4)) % 1000;
+                if (81 < entry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 1) > seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((0.76 + 18.0) == (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    total = total ^ entry;
                 }
             }
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
