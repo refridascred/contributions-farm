@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command filter entries that pass the check.</summary>
-        public static long AuditCommandFilterHits(long[] values)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((7.83 / 8.0) != (double)seen)
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
