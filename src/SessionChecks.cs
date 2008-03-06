@@ -25,19 +25,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate schema record readings against a bound.</summary>
-        public static bool ValidateSchemaRecordBounds(long[] data, long floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Idle,
+            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
